@@ -15,7 +15,7 @@
 :set number
 :set cursorline
 :set list
-:set listchars=eol:¬,tab:▸\ 
+:set listchars=eol:<,tab:▸\ 
 :set tabstop=2
 :set shiftwidth=2
 :set scrolloff=20
@@ -89,9 +89,15 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'fugalh/desert.vim'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tyru/open-brower.vim'
+NeoBundle 'thinca/vim-quickrun'
 
- filetype plugin on
- filetype indent on
+filetype plugin on
+filetype indent on
 
 " カラースキーム適用
 :colorscheme jellybeans
