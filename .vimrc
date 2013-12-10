@@ -6,7 +6,6 @@
 :noremap gj j
 :noremap <Down> gj
 :noremap <Up> gk
-
 "" vimrc Edit Key Bind
 :nnoremap ,ev :tabnew $HOME/.vimrc<CR>
 :nnoremap ,rv :source $HOME/.vimrc<CR>
@@ -93,11 +92,18 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'fugalh/desert.vim'
 NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tyru/open-brower.vim'
+
+
 NeoBundle 'thinca/vim-quickrun'
 
+let g:quickrun_config = {}
+let g:quickrun_config['markdown'] = {
+	\ 'outputter':'browser'
+	\ }
 filetype plugin on
 filetype indent on
+
+NeoBundle 'tyru/open-browser.vim'
 
 " カラースキーム適用
 :colorscheme jellybeans
