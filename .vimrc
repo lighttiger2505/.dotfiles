@@ -3,8 +3,7 @@
 :noremap k gk
 :noremap j gj
 :noremap gk k
-:noremap gj j
-:noremap <Down> gj
+:noremap gj j :noremap <Down> gj
 :noremap <Up> gk
 "" vimrc Edit Key Bind
 :nnoremap ,ev :tabnew $HOME/.vimrc<CR>
@@ -37,14 +36,22 @@ NeoBundle 'Shougo/vimshell'
 
 "" Unite
 NeoBundle 'Shougo/unite.vim'
+
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
-nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimfiler'
@@ -100,11 +107,12 @@ let g:quickrun_config = {}
 let g:quickrun_config['markdown'] = {
 	\ 'outputter':'browser'
 	\ }
-filetype plugin on
-filetype indent on
 
 NeoBundle 'tyru/open-browser.vim'
 
+filetype plugin on
+filetype indent on
+
 " カラースキーム適用
-:colorscheme jellybeans
+:colorscheme desert
 

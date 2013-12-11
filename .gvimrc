@@ -1,2 +1,2 @@
-colorscheme jellybeans
+colorscheme desert
 
