@@ -20,7 +20,6 @@
 "" Keyvind edit .vimrc
 :nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
 :nnoremap <Space>rv :source $HOME/.vimrc<CR>
-
 "" Keybind call help
 nnoremap <C-h> :<C-u>help<Space>
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
@@ -34,7 +33,7 @@ nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 :set shiftwidth=2
 :set scrolloff=20
 
-"" NeoBundle Setup
+" NeoBundle Setup
 set nocompatible
 filetype off
 
@@ -43,21 +42,20 @@ if has('vim_starting')
    call neobundle#rc(expand('~/.vim/bundle/'))
  endif
 
-"" Install Plugin For NeoBUndle
+" Install Plugin For NeoBUndle
 NeoBundle 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'VimClojure'
 NeoBundle 'Shougo/vimshell'
 
-"" Unite
+" unite{{{
 NeoBundle 'Shougo/unite.vim'
-
-" Unite Setting
+" Unite Settings
 let g:unite_enable_start_insert=0
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
-
+let g:unite_split_rule = 'topleft'
 " Unite keybind
 nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
 nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
@@ -70,15 +68,29 @@ au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vspli
 au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+"}}}
 
-"" unite-outline
+" unite-outline{{{
 NeoBundle 'Shougo/unite-outline'
-nnoremap <silent> <Space>uo :<C-u>Unite outline<CR>
+" unite-outline keybind
+let g:unite_split_rule = 'botright'
+nnoremap <silent> <Space>uo :Unite -vertical -no-quit -winwidth=40 outline<Return>
+" }}}
 
+" vimfiler{{{
 NeoBundle 'Shougo/vimfiler'
+" Settings
+let g:vimfiler_as_default_explorer = 0
+let g:vimfiler_safe_mode_by_default = 0
+" Keybind
+nnoremap <silent> <Space>fe :<C-u>VimFilerBufferDir -quit<CR>
+nnoremap <silent> <Space>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+" }}}
 
-"" NeoComplcashe
+" NeoComplcashe{{{
 NeoBundle 'Shougo/neocomplcache'
+
+" Settings
 let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -90,10 +102,9 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : ''
     \ }
 
-" Plugin key-mappings.
+" Key-mappings
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
-" Recommended key-mappings.
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
@@ -106,30 +117,75 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
+" }}}
 
+" neosnippet{{{
 NeoBundle 'Shougo/neosnippet'
+
+" <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+" SuperTab like snippets behavior.
+" imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+" }}}
+
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'fugalh/desert.vim'
 NeoBundle 'tpope/vim-markdown'
+
+" vim-quickrun{{{
 NeoBundle 'thinca/vim-quickrun'
 
+" Key-mappings
 let g:quickrun_config = {}
 let g:quickrun_config['markdown'] = {
 	\ 'outputter':'browser'
 	\ }
+" }}}
 
 NeoBundle 'tyru/open-browser.vim'
 
+" vim-instant-markdown{{{
 NeoBundle 'suan/vim-instant-markdown'
 let g:instant_markdown_autostart = 0
+" }}}
+
+NeoBundle 'derekwyatt/vim-scala'
+
+NeoBundle 'osyo-manga/vim-over'
+
+NeoBundle 'LeafCage/yankround.vim'
+
+" wauto{{{
+NeoBundle 'syui/wauto.vim'
+" Settings
+let g:auto_write = 0
+" Key-mappings
+nmap <Leader>s  <Plug>(AutoWriteStart)
+nmap <Leader>ss <Plug>(AutoWriteStop)
+" }}}
+
+" Colorschemes{{{
+NeoBundle 'fugalh/desert.vim'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'altercation/vim-colors-solarized'
+" }}}
 
 filetype plugin on
 filetype indent on
 
-" カラースキーム適用
 :colorscheme desert
 
