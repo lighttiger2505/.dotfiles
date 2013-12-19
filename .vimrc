@@ -17,6 +17,13 @@
 :noremap ; :
 :noremap : ;
 
+
+"" Keybind window
+:noremap <Space>wh <C-w>wh
+:noremap <Space>wl <C-w>wl
+:noremap <Space>wj <C-w>wj
+:noremap <Space>wk <C-w>wk
+
 "" Keyvind edit .vimrc
 :nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
 :nnoremap <Space>rv :source $HOME/.vimrc<CR>
@@ -121,24 +128,25 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 " neosnippet{{{
 NeoBundle 'Shougo/neosnippet'
-
-" <TAB>: completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
-" imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 " }}}
 
 NeoBundle 'jpalardy/vim-slime'
