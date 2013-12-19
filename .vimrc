@@ -69,12 +69,12 @@ nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> <Space>uu :<C-u>Unite file_mru buffer<CR>
 nnoremap <silent> <Space>ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> <Space>uy :<C-u>Unite history/yank<CR>
 au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 "}}}
 
 " unite-outline{{{
@@ -183,6 +183,18 @@ let g:auto_write = 0
 " Key-mappings
 nmap <Leader>s  <Plug>(AutoWriteStart)
 nmap <Leader>ss <Plug>(AutoWriteStop)
+" }}}
+
+" scrround{{{
+NeoBundle 'tpope/vim-surround'
+" }}}
+
+" lightline{{{
+Bundle 'itchyny/lightline.vim'
+" Settings
+let g:lightline = {
+      \ 'colorscheme': 'wombat'
+      \ }
 " }}}
 
 " Colorschemes{{{
