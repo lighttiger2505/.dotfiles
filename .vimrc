@@ -174,8 +174,6 @@ NeoBundle 'derekwyatt/vim-scala'
 
 NeoBundle 'osyo-manga/vim-over'
 
-NeoBundle 'LeafCage/yankround.vim'
-
 " wauto{{{
 NeoBundle 'syui/wauto.vim'
 " Settings
@@ -190,7 +188,7 @@ NeoBundle 'tpope/vim-surround'
 " }}}
 
 " lightline{{{
-Bundle 'itchyny/lightline.vim'
+NeoBundle 'itchyny/lightline.vim'
 " Settings
 let g:lightline = {
       \ 'colorscheme': 'wombat'
