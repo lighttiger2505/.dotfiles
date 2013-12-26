@@ -115,7 +115,6 @@ NeoBundleLazy 'mattn/emmet-vim', {
     \ 'autoload' : { 'filetypes' : ['html', 'css'] }}
 NeoBundleLazy 'thinca/vim-ref', {
     \ 'autoload' : { 'commands' : ['Ref'] }}
-NeoBundleLazy 'Townk/vim-autoclose'
 
 " Syntax plugin
 NeoBundleLazy 'tpope/vim-markdown', {
@@ -130,7 +129,6 @@ NeoBundleLazy 'fugalh/desert.vim'
 NeoBundleLazy 'nanotech/jellybeans.vim'
 NeoBundleLazy 'tomasr/molokai'
 NeoBundleLazy 'altercation/vim-colors-solarized'
-"
 
 " unite{{{
 " Settings
