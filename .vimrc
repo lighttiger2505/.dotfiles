@@ -1,5 +1,13 @@
 
-"" Keybind move cursor
+" Release keymappings for plug-in.
+nnoremap ; <Nop>
+xnoremap ; <Nop>
+nnoremap m <Nop>
+xnoremap m <Nop>
+nnoremap , <Nop>
+xnoremap , <Nop>
+
+" Keybind move cursor
 :noremap k gk
 :noremap j gj
 :noremap gk k
@@ -9,32 +17,64 @@
 :noremap <Space>h ^
 :noremap <Space>l $
 
-"" Keybind edit
+" Keybind edit
 :noremap <Space>/ *
 :noremap <Space>m %
 
-"" Keybind mode change
+" Keybind mode change
 :noremap ; :
 :noremap : ;
 
-"" Keybind edit .vimrc
+" Keybind edit .vimrc
 :nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
 :nnoremap <Space>rv :source $HOME/.vimrc<CR>
 
-"" Keybind call help
+" Keybind call help
 nnoremap <C-h> :<C-u>help<Space>
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 
-"" File format
+" File format
 :set number
 :set cursorline
 :set list
 :set listchars=eol:$,tab:▸\ 
 
+" Tab setting
 :set expandtab
 :set tabstop=4
 :set shiftwidth=2
 :set scrolloff=20
+
+" Splitting a window will put the new window below the current one.
+set splitbelow
+" Splitting a window will put the new window right the current one.
+set splitright
+" Set minimal width for current window.
+set winwidth=30
+" Set minimal height for current window.
+" set winheight=20
+set winheight=1
+" Set maximam maximam command line window.
+set cmdwinheight=5
+" No equal window size.
+set noequalalways
+
+" Adjust window size of preview and help.
+set previewheight=8
+set helpheight=12
+
+" Repace command shotcut
+cnoreabb <expr>s getcmdtype()==':' && getcmdline()=~'^s' ? '%s/<C-r>=Eat_whitespace(''\s\\|;\\|:'')<CR>' : 's'
+function! Eat_whitespace(pat) "{{{
+  let c = nr2char(getchar(0))
+  if c=~a:pat
+    return ''
+  elseif c=~'\r'
+    return ''
+  end
+  return c
+endfunction
+"}}}
 
 " NeoBundle Setup
 set nocompatible
@@ -45,21 +85,42 @@ if has('vim_starting')
    call neobundle#rc(expand('~/.vim/bundle/'))
  endif
 
-" Install Plugin For NeoBUndle
+" Install plugin to NeoBundle
 NeoBundle 'Shougo/neobundle.vim'
-
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
-NeoBundle 'VimClojure'
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'syui/wauto.vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-fugitive'
+
+" Syntax plugin
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'suan/vim-instant-markdown'
+
+" Colorschemes
+NeoBundle 'fugalh/desert.vim'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'altercation/vim-colors-solarized'
+"
 
 " unite{{{
-NeoBundle 'Shougo/unite.vim'
-" Unite Settings
+" Settings
 let g:unite_enable_start_insert=0
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
 let g:unite_split_rule = 'topleft'
-" Unite keybind
+" Keybind
 nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
 nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
@@ -74,14 +135,12 @@ au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q au FileType unite inor
 "}}}
 
 " unite-outline{{{
-NeoBundle 'Shougo/unite-outline'
-" unite-outline keybind
+" unite-outline Keybind
 let g:unite_split_rule = 'botright'
 nnoremap <silent> <Space>uo :Unite -vertical -no-quit -winwidth=40 outline<Return>
 " }}}
 
 " vimfiler{{{
-NeoBundle 'Shougo/vimfiler'
 " Settings
 let g:vimfiler_as_default_explorer = 0
 let g:vimfiler_safe_mode_by_default = 0
@@ -91,8 +150,6 @@ nnoremap <silent> <Space>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 
 " }}}
 
 " NeoComplcashe{{{
-NeoBundle 'Shougo/neocomplcache'
-
 " Settings
 let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
@@ -123,7 +180,6 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " }}}
 
 " neosnippet{{{
-NeoBundle 'Shougo/neosnippet'
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -145,33 +201,22 @@ endif
 let g:neosnippet#snippets_directory='~/.vim/snippets'
 " }}}
 
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tpope/vim-markdown'
 
 " vim-quickrun{{{
-NeoBundle 'thinca/vim-quickrun'
-
 " Key-mappings
 let g:quickrun_config = {}
 let g:quickrun_config['markdown'] = {
-	\ 'outputter':'browser'
-	\ }
+    \ 'outputter':'browser'
+    \ }
 " }}}
 
-NeoBundle 'tyru/open-browser.vim'
 
 " vim-instant-markdown{{{
-NeoBundle 'suan/vim-instant-markdown'
 let g:instant_markdown_autostart = 0
 " }}}
 
-NeoBundle 'derekwyatt/vim-scala'
-
-NeoBundle 'osyo-manga/vim-over'
 
 " wauto{{{
-NeoBundle 'syui/wauto.vim'
 " Settings
 let g:auto_write = 0
 " Key-mappings
@@ -180,7 +225,6 @@ nmap <Leader>ss <Plug>(AutoWriteStop)
 " }}}
 
 " scrround{{{
-NeoBundle 'tpope/vim-surround'
 " }}}
 
 " lightline{{{
@@ -250,19 +294,21 @@ function! MyMode()
 endfunction
 " }}}
 
-" vim-fugitive{{{
-NeoBundle 'tpope/vim-fugitive'
-" }}}
 
-" Colorschemes{{{
-NeoBundle 'fugalh/desert.vim'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'altercation/vim-colors-solarized'
+" vim-over{{{
+cnoreabb <silent><expr>s getcmdtype()==':' && getcmdline()=~'^s' ? 'OverCommandLine<CR><C-u>%s/<C-r>=get([], getchar(0), '')<CR>' : 's'
+" lounch over
+nnoremap <silent> <Space>m :OverCommandLine<CR>
+" Word string replace
+nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+" Yank string replace
+nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
 " }}}
 
 filetype plugin on
 filetype indent on
 
-:colorscheme desert
+syntax enable
+set background=dark
+colorscheme desert
 
