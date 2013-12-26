@@ -63,6 +63,12 @@ set noequalalways
 set previewheight=8
 set helpheight=12
 
+" No create swp file
+set noswapfile
+
+" Share clipboard for other application
+set clipboard=unnamed,autoselect
+
 " Repace command shotcut
 cnoreabb <expr>s getcmdtype()==':' && getcmdline()=~'^s' ? '%s/<C-r>=Eat_whitespace(''\s\\|;\\|:'')<CR>' : 's'
 function! Eat_whitespace(pat) "{{{
@@ -89,29 +95,47 @@ if has('vim_starting')
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/vimshell'
+NeoBundle 'itchyny/lightline.vim'
+
+NeoBundleLazy 'Shougo/vimshell', {
+    \ 'filetype' : 'vimshell',
+    \ }
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'osyo-manga/vim-over'
-NeoBundle 'syui/wauto.vim'
-NeoBundle 'tpope/vim-surround'
+NeoBundleLazy 'Shougo/unite-outline'
+NeoBundleLazy 'Shougo/neocomplcache'
+NeoBundleLazy 'Shougo/neosnippet'
+NeoBundleLazy 'scrooloose/syntastic'
+NeoBundleLazy 'thinca/vim-quickrun'
+NeoBundleLazy 'tyru/open-browser.vim'
+NeoBundleLazy 'osyo-manga/vim-over'
+NeoBundleLazy 'syui/wauto.vim'
+NeoBundleLazy 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundleLazy 'kien/ctrlp.vim'
+NeoBundleLazy 'mattn/emmet-vim', {
+    \ 'filetypes' : ['html', 'css'],
+    \ }
+NeoBundleLazy 'thinca/vim-ref', {
+    \ 'commands' : 'Ref'
+    \ }
+NeoBundleLazy 'Townk/vim-autoclose'
 
 " Syntax plugin
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'suan/vim-instant-markdown'
+NeoBundleLazy 'tpope/vim-markdown', {
+    \ 'filetype' : 'md',
+    \ }
+NeoBundleLazy 'derekwyatt/vim-scala', {
+    \ 'filetype' : 'scala',
+    \ }
+NeoBundleLazy 'suan/vim-instant-markdown', {
+    \ 'filetype' : 'md',
+    \ }
 
 " Colorschemes
-NeoBundle 'fugalh/desert.vim'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundleLazy 'fugalh/desert.vim'
+NeoBundleLazy 'nanotech/jellybeans.vim'
+NeoBundleLazy 'tomasr/molokai'
+NeoBundleLazy 'altercation/vim-colors-solarized'
 "
 
 " unite{{{
@@ -228,7 +252,6 @@ nmap <Leader>ss <Plug>(AutoWriteStop)
 " }}}
 
 " lightline{{{
-NeoBundle 'itchyny/lightline.vim'
 set laststatus=2
 set t_Co=256
 " Settings
@@ -303,6 +326,37 @@ nnoremap <silent> <Space>m :OverCommandLine<CR>
 nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
 " Yank string replace
 nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
+" }}}
+
+" emmet-vim {{{
+let g:user_emmet_mode = 'iv'
+let g:user_emmet_leader_key = '<C-y>'
+let g:use_emmet_complete_tag = 1
+let g:user_emmet_settings = {
+      \ 'lang' : 'ja',
+      \ 'html' : {
+      \ 'filters' : 'html',
+      \ },
+      \ 'css' : {
+      \ 'filters' : 'fc',
+      \ },
+      \ 'php' : {
+      \ 'extends' : 'html',
+      \ 'filters' : 'html',
+      \ },
+      \}
+augroup EmmitVim
+    autocmd!
+    autocmd FileType * let g:user_emmet_settings.indentation = ' '[:&tabstop]
+augroup END
+" }}}
+
+" open-browser {{{
+" URL open is under cousol
+nmap <Leader>o <Plug>(openbrowser-open)
+vmap <Leader>o <Plug>(openbrowser-open)
+" Search word to google
+nnoremap <Leader>g :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
 " }}}
 
 filetype plugin on
