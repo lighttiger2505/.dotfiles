@@ -96,40 +96,34 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'syui/wauto.vim'
 
 NeoBundleLazy 'Shougo/vimshell', {
-    \ 'filetype' : 'vimshell',
-    \ }
-NeoBundle 'Shougo/vimfiler'
-NeoBundleLazy 'Shougo/unite-outline'
+    \ 'autoload' : { 'filetypes' : ['vimshell'] }}
 NeoBundleLazy 'Shougo/neocomplcache'
 NeoBundleLazy 'Shougo/neosnippet'
 NeoBundleLazy 'scrooloose/syntastic'
 NeoBundleLazy 'thinca/vim-quickrun'
 NeoBundleLazy 'tyru/open-browser.vim'
 NeoBundleLazy 'osyo-manga/vim-over'
-NeoBundleLazy 'syui/wauto.vim'
 NeoBundleLazy 'tpope/vim-surround'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundleLazy 'kien/ctrlp.vim'
 NeoBundleLazy 'mattn/emmet-vim', {
-    \ 'filetypes' : ['html', 'css'],
-    \ }
+    \ 'autoload' : { 'filetypes' : ['html', 'css'] }}
 NeoBundleLazy 'thinca/vim-ref', {
-    \ 'commands' : 'Ref'
-    \ }
+    \ 'autoload' : { 'commands' : ['Ref'] }}
 NeoBundleLazy 'Townk/vim-autoclose'
 
 " Syntax plugin
 NeoBundleLazy 'tpope/vim-markdown', {
-    \ 'filetype' : 'md',
-    \ }
+    \ 'autoload' : { 'filetypes' : ['md'] }}
 NeoBundleLazy 'derekwyatt/vim-scala', {
-    \ 'filetype' : 'scala',
-    \ }
+    \ 'autoload' : { 'filetypes' : ['scala'] }}
 NeoBundleLazy 'suan/vim-instant-markdown', {
-    \ 'filetype' : 'md',
-    \ }
+    \ 'autoload' : { 'filetypes' : ['md'] }}
 
 " Colorschemes
 NeoBundleLazy 'fugalh/desert.vim'
