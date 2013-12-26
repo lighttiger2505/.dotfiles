@@ -9,7 +9,7 @@
 :noremap <Space>h ^
 :noremap <Space>l $
 
-"" Keyvind edit
+"" Keybind edit
 :noremap <Space>/ *
 :noremap <Space>m %
 
@@ -17,16 +17,10 @@
 :noremap ; :
 :noremap : ;
 
-
-"" Keybind window
-:noremap <Space>wh <C-w>wh
-:noremap <Space>wl <C-w>wl
-:noremap <Space>wj <C-w>wj
-:noremap <Space>wk <C-w>wk
-
-"" Keyvind edit .vimrc
+"" Keybind edit .vimrc
 :nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
 :nnoremap <Space>rv :source $HOME/.vimrc<CR>
+
 "" Keybind call help
 nnoremap <C-h> :<C-u>help<Space>
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
@@ -35,8 +29,10 @@ nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 :set number
 :set cursorline
 :set list
-:set listchars=eol:<,tab:▸\ 
-:set tabstop=2
+:set listchars=eol:$,tab:▸\ 
+
+:set expandtab
+:set tabstop=4
 :set shiftwidth=2
 :set scrolloff=20
 
@@ -146,7 +142,7 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.vim/snippets'
 " }}}
 
 NeoBundle 'jpalardy/vim-slime'
@@ -189,10 +185,69 @@ NeoBundle 'tpope/vim-surround'
 
 " lightline{{{
 NeoBundle 'itchyny/lightline.vim'
+set laststatus=2
+set t_Co=256
 " Settings
 let g:lightline = {
-      \ 'colorscheme': 'wombat'
-      \ }
+        \ 'colorscheme': 'wombat',
+        \ 'mode_map': {'c': 'NORMAL'},
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'MyModified',
+        \   'readonly': 'MyReadonly',
+        \   'fugitive': 'MyFugitive',
+        \   'filename': 'MyFilename',
+        \   'fileformat': 'MyFileformat',
+        \   'filetype': 'MyFiletype',
+        \   'fileencoding': 'MyFileencoding',
+        \   'mode': 'MyMode'
+        \ }
+        \ }
+
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+      return fugitive#head()
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 " }}}
 
 " Colorschemes{{{
