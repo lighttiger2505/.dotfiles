@@ -250,6 +250,10 @@ function! MyMode()
 endfunction
 " }}}
 
+" vim-fugitive{{{
+NeoBundle 'tpope/vim-fugitive'
+" }}}
+
 " Colorschemes{{{
 NeoBundle 'fugalh/desert.vim'
 NeoBundle 'nanotech/jellybeans.vim'
