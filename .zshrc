@@ -67,7 +67,6 @@ local p_info="%n@%m${WINDOW:+"[$WINDOW]"}"
 # command result mark
 local p_mark="%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
 
-PROMPT=" $p_cdir$p_rhst$p_info $p_mark "
 
 # show git status
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
@@ -76,17 +75,17 @@ setopt prompt_subst
 setopt re_match_pcre
  
 function rprompt-git-current-branch {
-local name st color gitdir action
+
+local name st color
+
 if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
     return
 fi
+
 name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
-    if [[ -z $name ]]; then
-return
+if [[ -z $name ]]; then
+    return
 fi
- 
-gitdir=`git rev-parse --git-dir 2> /dev/null`
-action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
  
 st=`git status 2> /dev/null`
 if [[ "$st" =~ "(?m)^nothing to" ]]; then
@@ -99,7 +98,14 @@ else
     color=%F{red}
 fi
  
-echo "$color$name$action%f%b "
+echo "$color($name)%f%b "
 }
- 
-RPROMPT='(`rprompt-git-current-branch`%~)'
+
+local p_git='`rprompt-git-current-branch`'
+local p_dir="%F{yellow}(%~)%f"
+
+local cp_dir=" $p_dir$p_git"$'\n'
+local cp_user=" %F{yellow}[$p_rhst$p_info]%f $p_mark "
+
+PROMPT=$cp_dir$cp_user
+
