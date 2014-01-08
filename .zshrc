@@ -1,8 +1,12 @@
 ## Environment variable configuration
-#
 # LANG
-#
 export LANG=ja_JP.UTF-8
+
+# Turn on 256 color support...
+if [ "x$TERM" = "xxterm" ]
+then
+    export TERM="xterm-256color"
+fi
 
 ## complate
 # default

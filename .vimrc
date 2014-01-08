@@ -107,7 +107,8 @@ NeoBundleLazy 'Shougo/neocomplcache'
 NeoBundleLazy 'Shougo/neosnippet'
 NeoBundleLazy 'scrooloose/syntastic'
 NeoBundleLazy 'thinca/vim-quickrun'
-NeoBundleLazy 'tyru/open-browser.vim'
+NeoBundleLazy 'tyru/open-browser.vim', {
+    \ 'autoload' : { 'filetypes' : ['md'] }}
 NeoBundleLazy 'osyo-manga/vim-over'
 NeoBundleLazy 'tpope/vim-surround'
 NeoBundleLazy 'kien/ctrlp.vim'
