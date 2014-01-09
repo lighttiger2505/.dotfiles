@@ -1,88 +1,5 @@
 
-" Release keymappings for plug-in.
-nnoremap ; <Nop>
-xnoremap ; <Nop>
-nnoremap m <Nop>
-xnoremap m <Nop>
-nnoremap , <Nop>
-xnoremap , <Nop>
-
-" Keybind move cursor
-:noremap k gk
-:noremap j gj
-:noremap gk k
-:noremap gj j
-:noremap <Down> gj
-:noremap <Up> gk
-:noremap <Space>h ^
-:noremap <Space>l $
-
-" Keybind edit
-:noremap <Space>/ *
-:noremap <Space>m %
-
-" Keybind mode change
-:noremap ; :
-:noremap : ;
-
-" Keybind edit .vimrc
-:nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
-:nnoremap <Space>rv :source $HOME/.vimrc<CR>
-
-" Keybind call help
-nnoremap <C-h> :<C-u>help<Space>
-nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
-
-" File format
-:set number
-:set cursorline
-:set list
-:set listchars=eol:$,tab:▸\ 
-
-" Tab setting
-:set expandtab
-:set tabstop=4
-:set shiftwidth=2
-:set scrolloff=20
-
-" Splitting a window will put the new window below the current one.
-set splitbelow
-" Splitting a window will put the new window right the current one.
-set splitright
-" Set minimal width for current window.
-set winwidth=30
-" Set minimal height for current window.
-" set winheight=20
-set winheight=1
-" Set maximam maximam command line window.
-set cmdwinheight=5
-" No equal window size.
-set noequalalways
-
-" Adjust window size of preview and help.
-set previewheight=8
-set helpheight=12
-
-" No create swp file
-set noswapfile
-
-" Share clipboard for other application
-set clipboard=unnamed,autoselect
-
-" Repace command shotcut
-cnoreabb <expr>s getcmdtype()==':' && getcmdline()=~'^s' ? '%s/<C-r>=Eat_whitespace(''\s\\|;\\|:'')<CR>' : 's'
-function! Eat_whitespace(pat) "{{{
-  let c = nr2char(getchar(0))
-  if c=~a:pat
-    return ''
-  elseif c=~'\r'
-    return ''
-  end
-  return c
-endfunction
-"}}}
-
-" NeoBundle Setup
+" Bundle Settings {{{
 set nocompatible
 filetype off
 
@@ -104,7 +21,6 @@ NeoBundle 'syui/wauto.vim'
 NeoBundleLazy 'Shougo/vimshell', {
     \ 'autoload' : { 'filetypes' : ['vimshell'] }}
 NeoBundleLazy 'Shougo/neocomplcache'
-NeoBundleLazy 'Shougo/neosnippet'
 NeoBundleLazy 'scrooloose/syntastic'
 NeoBundleLazy 'thinca/vim-quickrun'
 NeoBundleLazy 'tyru/open-browser.vim', {
@@ -131,9 +47,116 @@ NeoBundleLazy 'nanotech/jellybeans.vim'
 NeoBundleLazy 'tomasr/molokai'
 NeoBundleLazy 'altercation/vim-colors-solarized'
 
-" unite{{{
+filetype plugin indent on
+" }}}
+
+" Basic Settings {{{
+"" Release keymappings for plug-in.
+nnoremap ; <Nop>
+xnoremap ; <Nop>
+nnoremap m <Nop>
+xnoremap m <Nop>
+nnoremap , <Nop>
+xnoremap , <Nop>
+"" Editing .vimrc
+nnoremap <F4> :tabnew $HOME/.vimrc<CR>
+nnoremap <F5> :source $HOME/.vimrc<CR>
+"" Keybind call help
+nnoremap <C-h> :<C-u>help<Space>
+nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
+"" No create swp file
+set noswapfile
+"" Share clipboard for other application
+set clipboard=unnamed,autoselect
+"" foldclose marker
+nnoremap <Space>fc :<C-u>%foldclose<CR>
+" }}}
+
+" Move Settings {{{
+:noremap k gk
+:noremap j gj
+:noremap gk k
+:noremap gj j
+:noremap <Down> gj
+:noremap <Up> gk
+:noremap <Space>h ^
+:noremap <Space>l $
+:noremap <Space>/ *
+:noremap <Space>m %
+:noremap ; :
+:noremap : ;
+" }}}
+
+" Apperance Settings {{{
+"" File format
+:set number
+:set cursorline
+:set list
+:set listchars=eol:$,tab:▸\ 
+
+"" Colors
+set background=dark
+colorscheme desert
+" }}}
+
+" Edit Settings"{{{
+" Smart insert tab setting.
+set smarttab
+" Excahnge tab to space.
+set expandtab
+" Round indent by shiftwidth.
+set shiftwidth=2
+set shiftround
+"" Tab space
+set tabstop=4
+set scrolloff=20
+"}}}
+
+" Encode Settings {{{
+"" File encoding
+set encoding=utf-8
+" }}}
+
+" Window Settings {{{
+"" Splitting a window will put the new window below the current one.
+set splitbelow
+"" Splitting a window will put the new window right the current one.
+set splitright
+"" Set minimal width for current window.
+set winwidth=30
+"" Set minimal height for current window.
+"" set winheight=20
+set winheight=1
+"" Set maximam maximam command line window.
+set cmdwinheight=5
+"" No equal window size.
+set noequalalways
+"" Adjust window size of preview and help.
+set previewheight=8
+set helpheight=12
+" }}}
+
+" Search Settings {{{
+"" Repace command shotcut
+cnoreabb <expr>s getcmdtype()==':' && getcmdline()=~'^s' ? '%s/<C-r>=Eat_whitespace(''\s\\|;\\|:'')<CR>' : 's'
+
+function! Eat_whitespace(pat) 
+  let c = nr2char(getchar(0))
+  if c=~a:pat
+    return ''
+  elseif c=~'\r'
+    return ''
+  end
+  return c
+endfunction
+" }}}
+
+" Plugin Settings:"{{{
+
+" unite"{{{
 " Settings
-let g:unite_enable_start_insert=0
+let g:unite_enable_start_insert=1
+let g:unite_winheight = 20
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
 let g:unite_split_rule = 'topleft'
@@ -151,22 +174,22 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vspli
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 "}}}
 
-" unite-outline{{{
+" unite-outline"{{{
 " unite-outline Keybind
 let g:unite_split_rule = 'botright'
 nnoremap <silent> <Space>uo :Unite -vertical -no-quit -winwidth=40 outline<Return>
-" }}}
+"}}}
 
-" vimfiler{{{
+" vimfiler"{{{
 " Settings
 let g:vimfiler_as_default_explorer = 0
 let g:vimfiler_safe_mode_by_default = 0
 " Keybind
 nnoremap <silent> <Space>fe :<C-u>VimFilerBufferDir -quit<CR>
 nnoremap <silent> <Space>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
-" }}}
+"}}}
 
-" NeoComplcashe{{{
+" neocomplcashe"{{{
 " Settings
 let g:acp_enableAtStartup = 0
 let g:neocomplcache_enable_at_startup = 1
@@ -194,30 +217,7 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
-" }}}
-
-" neosnippet{{{
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/snippets'
-" }}}
-
+"}}}
 
 " vim-quickrun{{{
 " Key-mappings
@@ -227,11 +227,9 @@ let g:quickrun_config['markdown'] = {
     \ }
 " }}}
 
-
 " vim-instant-markdown{{{
 let g:instant_markdown_autostart = 0
 " }}}
-
 
 " wauto{{{
 " Settings
@@ -310,7 +308,6 @@ function! MyMode()
 endfunction
 " }}}
 
-
 " vim-over{{{
 cnoreabb <silent><expr>s getcmdtype()==':' && getcmdline()=~'^s' ? 'OverCommandLine<CR><C-u>%s/<C-r>=get([], getchar(0), '')<CR>' : 's'
 " lounch over
@@ -344,18 +341,14 @@ augroup EmmitVim
 augroup END
 " }}}
 
-" open-browser {{{
+" open-browser"{{{
 " URL open is under cousol
 nmap <Leader>o <Plug>(openbrowser-open)
 vmap <Leader>o <Plug>(openbrowser-open)
 " Search word to google
 nnoremap <Leader>g :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
+"}}}
+
 " }}}
 
-filetype plugin on
-filetype indent on
-
-syntax enable
-set background=dark
-colorscheme desert
-
+" vim:set foldmethod=marker:
