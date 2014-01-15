@@ -36,10 +36,14 @@ NeoBundleLazy 'thinca/vim-ref', {
 " Syntax plugin
 NeoBundleLazy 'tpope/vim-markdown', {
     \ 'autoload' : { 'filetypes' : ['md'] }}
-NeoBundleLazy 'derekwyatt/vim-scala', {
-    \ 'autoload' : { 'filetypes' : ['scala'] }}
 NeoBundleLazy 'suan/vim-instant-markdown', {
     \ 'autoload' : { 'filetypes' : ['md'] }}
+NeoBundleLazy 'derekwyatt/vim-scala', {
+    \ 'autoload' : { 'filetypes' : ['scala'] }}
+NeoBundleLazy 'othree/html5.vim', {
+    \ 'autoload' : { 'filetypes' : ['html'] }}
+NeoBundleLazy 'hail2u/vim-css3-syntax', {
+    \ 'autoload' : { 'filetypes' : ['css'] }}
 
 " Colorschemes
 NeoBundleLazy 'fugalh/desert.vim'
@@ -59,8 +63,8 @@ xnoremap m <Nop>
 nnoremap , <Nop>
 xnoremap , <Nop>
 "" Editing .vimrc
-nnoremap <F4> :tabnew $HOME/.vimrc<CR>
-nnoremap <F5> :source $HOME/.vimrc<CR>
+nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
+nnoremap <Space>rv :source $HOME/.vimrc<CR>
 "" Keybind call help
 nnoremap <C-h> :<C-u>help<Space>
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
@@ -105,11 +109,13 @@ set smarttab
 " Excahnge tab to space.
 set expandtab
 " Round indent by shiftwidth.
-set shiftwidth=2
+set shiftwidth=4
 set shiftround
 "" Tab space
 set tabstop=4
 set scrolloff=20
+"" Format keybind
+nnoremap <Space>fm gg=G
 "}}}
 
 " Encode Settings {{{
