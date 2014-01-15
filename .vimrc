@@ -4,9 +4,9 @@ set nocompatible
 filetype off
 
 if has('vim_starting')
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
-   call neobundle#rc(expand('~/.vim/bundle/'))
- endif
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    call neobundle#rc(expand('~/.vim/bundle/'))
+endif
 
 " Install plugin to NeoBundle
 NeoBundle 'Shougo/neobundle.vim'
@@ -19,31 +19,33 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'syui/wauto.vim'
 
 NeoBundleLazy 'Shougo/vimshell', {
-    \ 'autoload' : { 'filetypes' : ['vimshell'] }}
+            \ 'autoload' : { 'filetypes' : ['vimshell'] }}
 NeoBundleLazy 'Shougo/neocomplcache'
 NeoBundleLazy 'scrooloose/syntastic'
 NeoBundleLazy 'thinca/vim-quickrun'
 NeoBundleLazy 'tyru/open-browser.vim', {
-    \ 'autoload' : { 'filetypes' : ['md'] }}
+            \ 'autoload' : { 'filetypes' : ['md'] }}
 NeoBundleLazy 'osyo-manga/vim-over'
 NeoBundleLazy 'tpope/vim-surround'
 NeoBundleLazy 'kien/ctrlp.vim'
 NeoBundleLazy 'mattn/emmet-vim', {
-    \ 'autoload' : { 'filetypes' : ['html', 'css'] }}
+            \ 'autoload' : { 'filetypes' : ['html', 'css'] }}
 NeoBundleLazy 'thinca/vim-ref', {
-    \ 'autoload' : { 'commands' : ['Ref'] }}
+            \ 'autoload' : { 'commands' : ['Ref'] }}
 
 " Syntax plugin
 NeoBundleLazy 'tpope/vim-markdown', {
-    \ 'autoload' : { 'filetypes' : ['md'] }}
+            \ 'autoload' : { 'filetypes' : ['md'] }}
 NeoBundleLazy 'suan/vim-instant-markdown', {
-    \ 'autoload' : { 'filetypes' : ['md'] }}
+            \ 'autoload' : { 'filetypes' : ['md'] }}
 NeoBundleLazy 'derekwyatt/vim-scala', {
-    \ 'autoload' : { 'filetypes' : ['scala'] }}
+            \ 'autoload' : { 'filetypes' : ['scala'] }}
+NeoBundleLazy 'tommorris/scala-vim-snippets', {
+            \ 'autoload' : { 'filetypes' : ['scala'] }}
 NeoBundleLazy 'othree/html5.vim', {
-    \ 'autoload' : { 'filetypes' : ['html'] }}
+            \ 'autoload' : { 'filetypes' : ['html'] }}
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
-    \ 'autoload' : { 'filetypes' : ['css'] }}
+            \ 'autoload' : { 'filetypes' : ['css'] }}
 
 " Colorschemes
 NeoBundleLazy 'fugalh/desert.vim'
@@ -147,13 +149,13 @@ set helpheight=12
 cnoreabb <expr>s getcmdtype()==':' && getcmdline()=~'^s' ? '%s/<C-r>=Eat_whitespace(''\s\\|;\\|:'')<CR>' : 's'
 
 function! Eat_whitespace(pat) 
-  let c = nr2char(getchar(0))
-  if c=~a:pat
-    return ''
-  elseif c=~'\r'
-    return ''
-  end
-  return c
+    let c = nr2char(getchar(0))
+    if c=~a:pat
+        return ''
+    elseif c=~'\r'
+        return ''
+    end
+    return c
 endfunction
 " }}}
 
@@ -205,8 +207,8 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : ''
-    \ }
+            \ 'default' : ''
+            \ }
 
 " Key-mappings
 inoremap <expr><C-g>     neocomplcache#undo_completion()
@@ -214,7 +216,7 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
+    return neocomplcache#smart_close_popup() . "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -229,8 +231,8 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Key-mappings
 let g:quickrun_config = {}
 let g:quickrun_config['markdown'] = {
-    \ 'outputter':'browser'
-    \ }
+            \ 'outputter':'browser'
+            \ }
 " }}}
 
 " vim-instant-markdown{{{
@@ -253,64 +255,64 @@ set laststatus=2
 set t_Co=256
 " Settings
 let g:lightline = {
-        \ 'colorscheme': 'wombat',
-        \ 'mode_map': {'c': 'NORMAL'},
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-        \ },
-        \ 'component_function': {
-        \   'modified': 'MyModified',
-        \   'readonly': 'MyReadonly',
-        \   'fugitive': 'MyFugitive',
-        \   'filename': 'MyFilename',
-        \   'fileformat': 'MyFileformat',
-        \   'filetype': 'MyFiletype',
-        \   'fileencoding': 'MyFileencoding',
-        \   'mode': 'MyMode'
-        \ }
-        \ }
+            \ 'colorscheme': 'wombat',
+            \ 'mode_map': {'c': 'NORMAL'},
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+            \ },
+            \ 'component_function': {
+            \   'modified': 'MyModified',
+            \   'readonly': 'MyReadonly',
+            \   'fugitive': 'MyFugitive',
+            \   'filename': 'MyFilename',
+            \   'fileformat': 'MyFileformat',
+            \   'filetype': 'MyFiletype',
+            \   'fileencoding': 'MyFileencoding',
+            \   'mode': 'MyMode'
+            \ }
+            \ }
 
 function! MyModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
 endfunction
 
 function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
+    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+                \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+                \  &ft == 'unite' ? unite#get_status_string() :
+                \  &ft == 'vimshell' ? vimshell#get_status_string() :
+                \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
 function! MyFugitive()
-  try
-    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-      return fugitive#head()
-    endif
-  catch
-  endtry
-  return ''
+    try
+        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+            return fugitive#head()
+        endif
+    catch
+    endtry
+    return ''
 endfunction
 
 function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
+    return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
 function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 function! MyFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! MyMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
+    return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 " }}}
 
@@ -329,18 +331,18 @@ let g:user_emmet_mode = 'iv'
 let g:user_emmet_leader_key = '<C-y>'
 let g:use_emmet_complete_tag = 1
 let g:user_emmet_settings = {
-      \ 'lang' : 'ja',
-      \ 'html' : {
-      \ 'filters' : 'html',
-      \ },
-      \ 'css' : {
-      \ 'filters' : 'fc',
-      \ },
-      \ 'php' : {
-      \ 'extends' : 'html',
-      \ 'filters' : 'html',
-      \ },
-      \}
+            \ 'lang' : 'ja',
+            \ 'html' : {
+            \ 'filters' : 'html',
+            \ },
+            \ 'css' : {
+            \ 'filters' : 'fc',
+            \ },
+            \ 'php' : {
+            \ 'extends' : 'html',
+            \ 'filters' : 'html',
+            \ },
+            \}
 augroup EmmitVim
     autocmd!
     autocmd FileType * let g:user_emmet_settings.indentation = ' '[:&tabstop]
