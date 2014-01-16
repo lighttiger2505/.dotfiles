@@ -21,6 +21,8 @@ NeoBundle 'syui/wauto.vim'
 NeoBundleLazy 'Shougo/vimshell', {
             \ 'autoload' : { 'filetypes' : ['vimshell'] }}
 NeoBundleLazy 'Shougo/neocomplcache'
+NeoBundleLazy 'Shougo/neosnippet.vim'
+NeoBundleLazy 'Shougo/neosnippet-snippets'
 NeoBundleLazy 'scrooloose/syntastic'
 NeoBundleLazy 'thinca/vim-quickrun'
 NeoBundleLazy 'tyru/open-browser.vim'
@@ -32,19 +34,17 @@ NeoBundleLazy 'thinca/vim-ref', {
 "}}}
 
 " For each filetype plugin"{{{
-" .markdown
+" markdown
 NeoBundleLazy 'tpope/vim-markdown', {
             \ 'autoload' : { 'filetypes' : ['md'] }}
 NeoBundleLazy 'suan/vim-instant-markdown', {
             \ 'autoload' : { 'filetypes' : ['md'] }}
 
-" .scala
+" scala
 NeoBundleLazy 'derekwyatt/vim-scala', {
             \ 'autoload' : { 'filetypes' : ['scala'] }}
-NeoBundleLazy 'tommorris/scala-vim-snippets', {
-            \ 'autoload' : { 'filetypes' : ['scala'] }}
 
-" .haskell
+" Haskell
 NeoBundleLazy 'dag/vim2hs', {
             \ 'autoload' : { 'filetypes' : ['hs'] }}
 NeoBundleLazy 'eagletmt/ghcmod-vim', {
@@ -56,13 +56,14 @@ NeoBundleLazy 'eagletmt/neco-ghc', {
 NeoBundleLazy 'eagletmt/unite-haddock', {
             \ 'autoload' : { 'filetypes' : ['hs'] }}
 
-" .html .css
+" HTML 
 NeoBundleLazy 'othree/html5.vim', {
             \ 'autoload' : { 'filetypes' : ['html'] }}
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
             \ 'autoload' : { 'filetypes' : ['css'] }}
 NeoBundleLazy 'mattn/emmet-vim', {
             \ 'autoload' : { 'filetypes' : ['html', 'css'] }}
+
 "}}}
 
 " Colorschemes"{{{
@@ -244,6 +245,34 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
+"}}}
+
+" neosnippet"{{{
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
 "}}}
 
 " vim-quickrun{{{
