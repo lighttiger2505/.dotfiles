@@ -9,7 +9,8 @@ if has('vim_starting')
 endif
 
 " Basic plugin"{{{
-NeoBundle 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'itchyny/lightline.vim'
@@ -17,20 +18,99 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'syui/wauto.vim'
+NeoBundle 'Shougo/neocomplcache'
 
 NeoBundleLazy 'Shougo/vimshell', {
             \ 'autoload' : { 'filetypes' : ['vimshell'] }}
-NeoBundleLazy 'Shougo/neocomplcache'
+
 NeoBundleLazy 'Shougo/neosnippet.vim'
+
 NeoBundleLazy 'Shougo/neosnippet-snippets'
+
 NeoBundleLazy 'scrooloose/syntastic'
-NeoBundleLazy 'thinca/vim-quickrun'
-NeoBundleLazy 'tyru/open-browser.vim'
+
+NeoBundleLazy 'thinca/vim-quickrun', {
+            \ 'commands' : 'QuickRun',
+            \ 'mappings' : [
+            \   ['nxo', '<Plug>(quickrun)']],
+            \ }
+
+NeoBundleLazy 'tyru/open-browser.vim', {
+            \   'commands' : ['OpenBrowserSearch', 'OpenBrowser'],
+            \   'functions' : 'openbrowser#open',
+            \ }
+
 NeoBundleLazy 'osyo-manga/vim-over'
 NeoBundleLazy 'tpope/vim-surround'
 NeoBundleLazy 'kien/ctrlp.vim'
 NeoBundleLazy 'thinca/vim-ref', {
             \ 'autoload' : { 'commands' : ['Ref'] }}
+
+" NeoBundle config"{{{
+call neobundle#config('neosnippet.vim', {
+            \ 'lazy' : 1,
+            \ 'depends' : 'Shougo/neosnippet-snippets',
+            \ 'autoload' : {
+            \   'insert' : 1,
+            \   'filetypes' : 'snippet',
+            \   'unite_sources' : [
+            \      'neosnippet', 'neosnippet/user', 'neosnippet/runtime'],
+            \ }})
+
+call neobundle#config('unite.vim',{
+            \ 'lazy' : 1,
+            \ 'autoload' : {
+            \   'commands' : [{ 'name' : 'Unite',
+            \                   'complete' : 'customlist,unite#complete_source'},
+            \                 'UniteWithCursorWord', 'UniteWithInput']
+            \ }})
+
+call neobundle#config('vimfiler', {
+            \ 'lazy' : 1,
+            \ 'depends' : 'Shougo/unite.vim',
+            \ 'autoload' : {
+            \    'commands' : [
+            \                  { 'name' : 'VimFiler',
+            \                    'complete' : 'customlist,vimfiler#complete' },
+            \                  { 'name' : 'VimFilerTab',
+            \                    'complete' : 'customlist,vimfiler#complete' },
+            \                  { 'name' : 'VimFilerExplorer',
+            \                    'complete' : 'customlist,vimfiler#complete' },
+            \                  { 'name' : 'Edit',
+            \                    'complete' : 'customlist,vimfiler#complete' },
+            \                  { 'name' : 'Write',
+            \                    'complete' : 'customlist,vimfiler#complete' },
+            \                  'Read', 'Source'],
+            \    'mappings' : '<Plug>(vimfiler_',
+            \    'explorer' : 1,
+            \ }
+            \ })
+
+call neobundle#config('vimproc', {
+            \ 'build' : {
+            \     'windows' : 'make -f make_mingw32.mak',
+            \     'cygwin' : 'make -f make_cygwin.mak',
+            \     'mac' : 'make -f make_mac.mak',
+            \     'unix' : 'make -f make_unix.mak',
+            \    },
+            \ })
+call neobundle#config('vimshell', {
+            \ 'lazy' : 1,
+            \ 'autoload' : {
+            \   'commands' : [{ 'name' : 'VimShell',
+            \                   'complete' : 'customlist,vimshell#complete'},
+            \                 'VimShellExecute', 'VimShellInteractive',
+            \                 'VimShellCreate',
+            \                 'VimShellTerminal', 'VimShellPop'],
+            \   'mappings' : '<Plug>(vimshell_'
+            \ }})
+call neobundle#config('unite-outline', {
+            \ 'lazy' : 1,
+            \ 'autoload' : {
+            \   'unite_sources' : 'outline'},
+            \ })
+"}}}
+
 "}}}
 
 " For each filetype plugin"{{{
@@ -250,21 +330,21 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " neosnippet"{{{
 
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
-  set conceallevel=2 concealcursor=i
+    set conceallevel=2 concealcursor=i
 endif
 
 " Enable snipMate compatibility feature.
