@@ -8,7 +8,7 @@ if has('vim_starting')
     call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
-" Install plugin to NeoBundle
+" Basic plugin"{{{
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
@@ -23,35 +23,42 @@ NeoBundleLazy 'Shougo/vimshell', {
 NeoBundleLazy 'Shougo/neocomplcache'
 NeoBundleLazy 'scrooloose/syntastic'
 NeoBundleLazy 'thinca/vim-quickrun'
-NeoBundleLazy 'tyru/open-browser.vim', {
-            \ 'autoload' : { 'filetypes' : ['md'] }}
+NeoBundleLazy 'tyru/open-browser.vim'
 NeoBundleLazy 'osyo-manga/vim-over'
 NeoBundleLazy 'tpope/vim-surround'
 NeoBundleLazy 'kien/ctrlp.vim'
-NeoBundleLazy 'mattn/emmet-vim', {
-            \ 'autoload' : { 'filetypes' : ['html', 'css'] }}
 NeoBundleLazy 'thinca/vim-ref', {
             \ 'autoload' : { 'commands' : ['Ref'] }}
+"}}}
 
-" Syntax plugin
+" For each filetype plugin"{{{
+" .markdown
 NeoBundleLazy 'tpope/vim-markdown', {
             \ 'autoload' : { 'filetypes' : ['md'] }}
 NeoBundleLazy 'suan/vim-instant-markdown', {
             \ 'autoload' : { 'filetypes' : ['md'] }}
+
+" .scala
 NeoBundleLazy 'derekwyatt/vim-scala', {
             \ 'autoload' : { 'filetypes' : ['scala'] }}
 NeoBundleLazy 'tommorris/scala-vim-snippets', {
             \ 'autoload' : { 'filetypes' : ['scala'] }}
+
+" .html .css
 NeoBundleLazy 'othree/html5.vim', {
             \ 'autoload' : { 'filetypes' : ['html'] }}
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
             \ 'autoload' : { 'filetypes' : ['css'] }}
+NeoBundleLazy 'mattn/emmet-vim', {
+            \ 'autoload' : { 'filetypes' : ['html', 'css'] }}
+"}}}
 
-" Colorschemes
+" Colorschemes"{{{
 NeoBundleLazy 'fugalh/desert.vim'
 NeoBundleLazy 'nanotech/jellybeans.vim'
 NeoBundleLazy 'tomasr/molokai'
 NeoBundleLazy 'altercation/vim-colors-solarized'
+"}}}
 
 filetype plugin indent on
 " }}}
