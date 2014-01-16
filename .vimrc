@@ -44,6 +44,18 @@ NeoBundleLazy 'derekwyatt/vim-scala', {
 NeoBundleLazy 'tommorris/scala-vim-snippets', {
             \ 'autoload' : { 'filetypes' : ['scala'] }}
 
+" .haskell
+NeoBundleLazy 'dag/vim2hs', {
+            \ 'autoload' : { 'filetypes' : ['hs'] }}
+NeoBundleLazy 'eagletmt/ghcmod-vim', {
+            \ 'autoload' : { 'filetypes' : ['hs'] }}
+NeoBundleLazy 'pbrisbin/html-template-syntax', {
+            \ 'autoload' : { 'filetypes' : ['hs'] }}
+NeoBundleLazy 'eagletmt/neco-ghc', {
+            \ 'autoload' : { 'filetypes' : ['hs'] }}
+NeoBundleLazy 'eagletmt/unite-haddock', {
+            \ 'autoload' : { 'filetypes' : ['hs'] }}
+
 " .html .css
 NeoBundleLazy 'othree/html5.vim', {
             \ 'autoload' : { 'filetypes' : ['html'] }}
