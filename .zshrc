@@ -3,7 +3,7 @@
 export LANG=ja_JP.UTF-8
 
 # Turn on 256 color support...
-if [ "x$TERM" = "xxterm" ]
+if [ "$TERM" = "xterm" ]
 then
     export TERM="xterm-256color"
 fi

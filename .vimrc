@@ -120,21 +120,21 @@ NeoBundleLazy 'tpope/vim-markdown', {
 NeoBundleLazy 'suan/vim-instant-markdown', {
             \ 'autoload' : { 'filetypes' : ['md'] }}
 
-" scala
+" Scala
 NeoBundleLazy 'derekwyatt/vim-scala', {
             \ 'autoload' : { 'filetypes' : ['scala'] }}
 
-" Haskell
+" haskell
 NeoBundleLazy 'dag/vim2hs', {
-            \ 'autoload' : { 'filetypes' : ['hs'] }}
+            \ 'autoload' : { 'filetypes' : ['haskell'] }}
 NeoBundleLazy 'eagletmt/ghcmod-vim', {
-            \ 'autoload' : { 'filetypes' : ['hs'] }}
+            \ 'autoload' : { 'filetypes' : ['haskell'] }}
 NeoBundleLazy 'pbrisbin/html-template-syntax', {
-            \ 'autoload' : { 'filetypes' : ['hs'] }}
+            \ 'autoload' : { 'filetypes' : ['haskell'] }}
 NeoBundleLazy 'eagletmt/neco-ghc', {
-            \ 'autoload' : { 'filetypes' : ['hs'] }}
+            \ 'autoload' : { 'filetypes' : ['haskell'] }}
 NeoBundleLazy 'eagletmt/unite-haddock', {
-            \ 'autoload' : { 'filetypes' : ['hs'] }}
+            \ 'autoload' : { 'filetypes' : ['haskell'] }}
 
 " HTML 
 NeoBundleLazy 'othree/html5.vim', {
@@ -201,6 +201,7 @@ nnoremap <Space>fc :<C-u>%foldclose<CR>
 :set listchars=eol:$,tab:▸\ 
 
 "" Colors
+set t_Co=256
 set background=dark
 colorscheme desert
 " }}}
@@ -380,7 +381,6 @@ nmap <Leader>ss <Plug>(AutoWriteStop)
 
 " lightline{{{
 set laststatus=2
-set t_Co=256
 " Settings
 let g:lightline = {
             \ 'colorscheme': 'wombat',
