@@ -28,7 +28,7 @@ sudo_path=({,/usr/pkg,/usr/local,/usr}/sbin(N-/))
 # alias setting
 ## MacVim
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim'
-alias mvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim'
+alias mvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/MacVim'
 
 # Editor
 ## vimを使う。
