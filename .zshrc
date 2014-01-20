@@ -1,39 +1,101 @@
-## Environment variable configuration
-# LANG
-export LANG=ja_JP.UTF-8
 
-# Turn on 256 color support...
-if [ "$TERM" = "xterm" ]
-then
-    export TERM="xterm-256color"
-fi
+source ~/.zshenv
 
-## complate
-# default
+# complate
+## default
 autoload -U compinit
 compinit
 
-# Auto change direcotry
+## 補完方法毎にグループ化する。
+### 補完方法の表示方法
+###   %B...%b: 「...」を太字にする。
+###   %d: 補完方法のラベル
+zstyle ':completion:*' format '%B%d%b'
+zstyle ':completion:*' group-name ''
+
+## 補完侯補をメニューから選択する。
+### select=2: 補完候補を一覧から選択する。
+###           ただし、補完候補が2つ以上なければすぐに補完する。
+zstyle ':completion:*:default' menu select=2
+
+## 補完候補に色を付ける。
+### "": 空文字列はデフォルト値を使うという意味。
+zstyle ':completion:*:default' list-colors ""
+
+## 補完候補がなければより曖昧に候補を探す。
+### m:{a-z}={A-Z}: 小文字を大文字に変えたものでも補完する。
+### r:|[._-]=*: 「.」「_」「-」の前にワイルドカード「*」があるものとして補完する。
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*'
+
+## 補完方法の設定。指定した順番に実行する。
+### _oldlist 前回の補完結果を再利用する。
+### _complete: 補完する。
+### _match: globを展開しないで候補の一覧から補完する。
+### _history: ヒストリのコマンドも補完候補とする。
+### _ignored: 補完候補にださないと指定したものも補完候補とする。
+### _approximate: 似ている補完候補も補完候補とする。
+### _prefix: カーソル以降を無視してカーソル位置までで補完する。
+zstyle ':completion:*' completer \
+    _oldlist _complete _match _history _ignored _approximate _prefix
+## 補完候補をキャッシュする。
+zstyle ':completion:*' use-cache yes
+## 詳細な情報を使う。
+zstyle ':completion:*' verbose yes
+## sudo時にはsudo用のパスも使う。
+zstyle ':completion:sudo:*' environ PATH="$SUDO_PATH:$PATH"
+
+## カーソル位置で補完する。
+setopt complete_in_word
+## globを展開しないで候補の一覧から補完する。
+setopt glob_complete
+## 補完時にヒストリを自動的に展開する。
+setopt hist_expand
+## 補完候補がないときなどにビープ音を鳴らさない。
+setopt no_beep
+## 辞書順ではなく数字順に並べる。
+setopt numeric_glob_sort
+
+## Auto change direcotry
 setopt auto_cd
 
-# Saving cd history
+## Saving cd history
 setopt auto_pushd
 
-# Teach error of command
+## Teach error of command
 setopt correct
 
-# Compact list of complate result
+## Compact list of complate result
 setopt list_packed
 
-# Beep sound off
+## Beep sound off
 setopt nolistbeep
 
-## keybind
-# vi bind
+## 実行中のコマンドとユーザ名とホスト名とカレントディレクトリを表示。
+update_title() {
+    local command_line=
+    typeset -a command_line
+    command_line=${(z)2}
+    local command=
+    if [ ${(t)command_line} = "array-local" ]; then
+        command="$command_line[1]"
+    else
+        command="$2"
+    fi
+    print -n -P "\e]2;"
+    echo -n "(${command})"
+    print -n -P " %n@%m:%~\a"
+}
+## X環境上でだけウィンドウタイトルを変える。
+if [ -n "$DISPLAY" ]; then
+    preexec_functions=($preexec_functions update_title)
+fi
+
+# keybind
+## vi bind
 bindkey -v
 
-## History
-# Limit of history
+# History
+## Limit of history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -49,11 +111,11 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end 
 
-## Customize prompt
+# Customize prompt
 autoload colors
 colors
 
-# localhost info
+## localhost info
 local p_rhst=""
 if [[ -n "${REMOTEHOST}${SSH_CONNECTION}" ]]; then
     local rhost=`who am i|sed 's/ .*(\(.*\)).*/\1/'`
@@ -62,17 +124,17 @@ if [[ -n "${REMOTEHOST}${SSH_CONNECTION}" ]]; then
     p_rhst="%B%F{yellow}($rhost)%f%b"
 fi
 
-# current directory
+## current directory
 local p_cdir="%B%F{blue}[%~]%f%b"$'\n'
 
-# macine and user info
+## macine and user info
 local p_info="%n@%m${WINDOW:+"[$WINDOW]"}"
 
-# command result mark
+## command result mark
 local p_mark="%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
 
 
-# show git status
+## show git status
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
  
 setopt prompt_subst
