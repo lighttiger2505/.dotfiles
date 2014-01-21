@@ -19,6 +19,7 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'syui/wauto.vim'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'tpope/vim-surround'
 
 NeoBundleLazy 'Shougo/vimshell', {
             \ 'autoload' : { 'filetypes' : ['vimshell'] }}
@@ -36,15 +37,15 @@ NeoBundleLazy 'thinca/vim-quickrun', {
             \ }
 
 NeoBundleLazy 'tyru/open-browser.vim', {
-            \   'commands' : ['OpenBrowserSearch', 'OpenBrowser'],
-            \   'functions' : 'openbrowser#open',
-            \ }
+            \ 'mappings' : '<Plug>(open-browser-',}
 
-NeoBundleLazy 'osyo-manga/vim-over'
-NeoBundleLazy 'tpope/vim-surround'
-NeoBundleLazy 'kien/ctrlp.vim'
+NeoBundleLazy 'osyo-manga/vim-over', {
+            \   'autoload' : {'commands' : ['OverCommandLine'] }}
+
 NeoBundleLazy 'thinca/vim-ref', {
             \ 'autoload' : { 'commands' : ['Ref'] }}
+
+NeoBundleLazy 'h1mesuke/vim-alignta'
 
 " NeoBundle config"{{{
 call neobundle#config('neosnippet.vim', {
@@ -62,7 +63,7 @@ call neobundle#config('unite.vim',{
             \ 'autoload' : {
             \   'commands' : [{ 'name' : 'Unite',
             \                   'complete' : 'customlist,unite#complete_source'},
-            \                 'UniteWithCursorWord', 'UniteWithInput']
+            \                   'UniteWithCursorWord', 'UniteWithInput', 'UniteWithBufferDir']
             \ }})
 
 call neobundle#config('vimfiler', {
@@ -80,7 +81,7 @@ call neobundle#config('vimfiler', {
             \                    'complete' : 'customlist,vimfiler#complete' },
             \                  { 'name' : 'Write',
             \                    'complete' : 'customlist,vimfiler#complete' },
-            \                  'Read', 'Source'],
+            \                  'Read', 'Source', 'VimFilerBufferDir'],
             \    'mappings' : '<Plug>(vimfiler_',
             \    'explorer' : 1,
             \ }
@@ -213,15 +214,22 @@ colorscheme hybrid
 " Edit Settings"{{{
 " Smart insert tab setting.
 set smarttab
+
 " Excahnge tab to space.
 set expandtab
+
+" Auto insert indent.
+set autoindent
+
 " Round indent by shiftwidth.
 set shiftwidth=4
 set shiftround
-"" Tab space
+
+" Space insert by autoindent
 set tabstop=4
 set scrolloff=20
-"" Format keybind
+
+" Format keybind
 nnoremap <Space>fm gg=G
 "}}}
 
@@ -250,18 +258,11 @@ set helpheight=12
 " }}}
 
 " Search Settings {{{
-"" Repace command shotcut
-cnoreabb <expr>s getcmdtype()==':' && getcmdline()=~'^s' ? '%s/<C-r>=Eat_whitespace(''\s\\|;\\|:'')<CR>' : 's'
+" Search is incremental search
+set incsearch
 
-function! Eat_whitespace(pat) 
-    let c = nr2char(getchar(0))
-    if c=~a:pat
-        return ''
-    elseif c=~'\r'
-        return ''
-    end
-    return c
-endfunction
+" Show search result highlight
+set hlsearch
 " }}}
 
 " Plugin Settings:"{{{
@@ -284,7 +285,8 @@ au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split
 au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q 
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 "}}}
 
 " unite-outline"{{{
@@ -449,13 +451,8 @@ endfunction
 " }}}
 
 " vim-over{{{
-cnoreabb <silent><expr>s getcmdtype()==':' && getcmdline()=~'^s' ? 'OverCommandLine<CR><C-u>%s/<C-r>=get([], getchar(0), '')<CR>' : 's'
-" lounch over
-nnoremap <silent> <Space>m :OverCommandLine<CR>
-" Word string replace
-nnoremap sub :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
-" Yank string replace
-nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
+" vim-over command line launch. Enterd command [%s/].
+nnoremap <silent><expr>s getcmdtype()==':' && getcmdline()=~'^s' ? 'OverCommandLine<CR><C-u>%s/<C-r>=get([], getchar(0), '')<CR>' : 's'
 " }}}
 
 " emmet-vim {{{
@@ -482,11 +479,26 @@ augroup END
 " }}}
 
 " open-browser"{{{
-" URL open is under cousol
-nmap <Leader>o <Plug>(openbrowser-open)
-vmap <Leader>o <Plug>(openbrowser-open)
-" Search word to google
-nnoremap <Leader>g :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
+" This is my setting.
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
+" Open URI under cursor.
+nmap map-you-like <Plug>(openbrowser-open)
+" Open selected URI.
+vmap map-you-like <Plug>(openbrowser-open)
+
+" Search word under cursor.
+nmap map-you-like <Plug>(openbrowser-search)
+" Search selected word. vmap map-you-like <Plug>(openbrowser-search)
+
+" If it looks like URI, Open URI under cursor.
+" Otherwise, Search word under cursor.
+nmap map-you-like <Plug>(openbrowser-smart-search)
+" If it looks like URI, Open selected URI.
+" Otherwise, Search selected word.
+vmap map-you-like <Plug>(openbrowser-smart-search)
 "}}}
 
 " }}}

@@ -14,12 +14,12 @@ if has('win16') || has('win32') || has('win64')
     " 使用していないので未実装
 elseif has('mac')
     " Mac
-    set guifont=Osaka－等幅:h11
-    set guifont=Ricty:h11
+    set guifont=Osaka－等幅:h12
+    set guifont=Ricty:h12
 else
     " linux
-    set guifont=Osaka－等幅\ 11
-    set guifont=Ricty\ 11
+    set guifont=Osaka－等幅\ 12
+    set guifont=Ricty\ 12
 endif
 " }}}
 
