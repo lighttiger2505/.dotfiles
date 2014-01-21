@@ -5,7 +5,7 @@ set visualbell
 " Apperance setting "{{{
 set lines=40
 set columns=120
-colorscheme desert
+colorscheme hybrid
 " }}}
 
 " Font setting "{{{

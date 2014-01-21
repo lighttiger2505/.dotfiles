@@ -147,10 +147,14 @@ NeoBundleLazy 'mattn/emmet-vim', {
 "}}}
 
 " Colorschemes"{{{
-NeoBundleLazy 'fugalh/desert.vim'
-NeoBundleLazy 'nanotech/jellybeans.vim'
-NeoBundleLazy 'tomasr/molokai'
-NeoBundleLazy 'altercation/vim-colors-solarized'
+NeoBundle 'fugalh/desert.vim'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'jeffreyiacono/vim-colors-wombat'
+NeoBundle 'mrkn/mrkn256.vim'
+NeoBundle 'therubymug/vim-pyte'
+NeoBundle 'w0ng/vim-hybrid'
 "}}}
 
 filetype plugin indent on
@@ -203,7 +207,7 @@ nnoremap <Space>fc :<C-u>%foldclose<CR>
 "" Colors
 set t_Co=256
 set background=dark
-colorscheme desert
+colorscheme hybrid
 " }}}
 
 " Edit Settings"{{{
