@@ -172,7 +172,7 @@ xnoremap , <Nop>
 "" Editing .vimrc
 nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
 nnoremap <Space>rv :source $HOME/.vimrc<CR>
-"" Keybind call help
+"" keymap call help
 nnoremap <C-h> :<C-u>help<Space>
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 "" No create swp file
@@ -274,13 +274,28 @@ let g:unite_winheight = 20
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
 let g:unite_split_rule = 'topleft'
-" Keybind
-nnoremap <silent> <Space>ub :<C-u>Unite buffer<CR>
-nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> <Space>uu :<C-u>Unite file_mru buffer<CR>
-nnoremap <silent> <Space>ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> <Space>uy :<C-u>Unite history/yank<CR>
+
+" keymap
+" Prefix key.
+nnoremap [unite] <Nop>
+nmap <Space>u [unite]
+
+nnoremap <silent> [unite]b 
+            \ :<C-u>Unite buffer<CR>
+nnoremap <silent> [unite]f 
+            \ :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> [unite]r 
+            \ :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> [unite]u 
+            \ :<C-u>Unite file_mru buffer<CR>
+nnoremap <silent> [unite]a 
+            \ :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]y 
+            \ :<C-u>Unite history/yank<CR>
+nnoremap <silent> [unite]g
+            \ :<C-u>Unite grep -buffer-name=search -auto-preview -no-quit -no-empty -resume<CR>
+nnoremap <silent> [unite]m 
+            \ :<C-u>Unite<Space>bookmark<CR>
 au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
@@ -290,19 +305,52 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 "}}}
 
 " unite-outline"{{{
-" unite-outline Keybind
+" unite-outline keymap
 let g:unite_split_rule = 'botright'
-nnoremap <silent> <Space>uo :Unite -vertical -no-quit -winwidth=40 outline<Return>
+nnoremap <silent> [unite]o :Unite -vertical -no-quit -winwidth=35 outline<Return>
 "}}}
 
 " vimfiler"{{{
 " Settings
-let g:vimfiler_as_default_explorer = 0
+let g:vimfiler_enable_clipboard = 0
 let g:vimfiler_safe_mode_by_default = 0
-" Keybind
-nnoremap <silent> <Space>fe :<C-u>VimFilerBufferDir -quit<CR>
-nnoremap <silent> <Space>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
-"}}}
+let g:vimfiler_as_default_explorer = 1
+
+" Like Textmate icons.
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = ' '
+let g:vimfiler_readonly_file_icon = '✗'
+let g:vimfiler_marked_file_icon = '✓'
+
+" Keymap
+nnoremap <silent> <Space>ff :<C-u>VimFiler -find -quit<CR>
+" nnoremap <silent> <Space>fe
+"            \ :<C-u>VimFilerExplorer -split -winwidth=35 -simple -no-quit<CR>
+nnoremap <silent> <Space>fe
+            \ :<C-u>VimFilerExplorer -winwidth=35<CR>
+autocmd! FileType vimfiler call g:my_vimfiler_settings()
+function! g:my_vimfiler_settings()
+    nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+    nnoremap <buffer>s :call vimfiler#mappings#do_action('my_split')<Cr>
+    nnoremap <buffer>v :call vimfiler#mappings#do_action('my_vsplit')<Cr>
+endfunction
+
+let s:my_action = { 'is_selectable' : 1 }
+function! s:my_action.func(candidates)
+    wincmd p
+    exec 'split '. a:candidates[0].action__path
+endfunction
+call unite#custom_action('file', 'my_split', s:my_action)
+
+let s:my_action = { 'is_selectable' : 1 }                     
+function! s:my_action.func(candidates)
+    wincmd p
+    exec 'vsplit '. a:candidates[0].action__path
+endfunction
+call unite#custom_action('file', 'my_vsplit', s:my_action)
+" }}}
 
 " neocomplcashe"{{{
 " Settings
@@ -452,7 +500,7 @@ endfunction
 
 " vim-over{{{
 " vim-over command line launch. Enterd command [%s/].
-nnoremap <silent><expr>s getcmdtype()==':' && getcmdline()=~'^s' ? 'OverCommandLine<CR><C-u>%s/<C-r>=get([], getchar(0), '')<CR>' : 's'
+cnoreabb <silent><expr>s getcmdtype()==':' && getcmdline()=~'^s' ? 'OverCommandLine<CR><C-u>%s/<C-r>=get([], getchar(0), '')<CR>' : 's'
 " }}}
 
 " emmet-vim {{{
@@ -499,6 +547,17 @@ nmap map-you-like <Plug>(openbrowser-smart-search)
 " If it looks like URI, Open selected URI.
 " Otherwise, Search selected word.
 vmap map-you-like <Plug>(openbrowser-smart-search)
+"}}}
+
+" vim-fugitive"{{{
+nnoremap <Space>gs :<C-u>Gstatus<CR>
+nnoremap <Space>ga :<C-u>Gwrite<CR>
+nnoremap <Space>gr :<C-u>Gread<CR>
+nnoremap <Space>gm :<C-u>Gmove<CR>
+nnoremap <Space>gv :<C-u>Gremove<CR>
+nnoremap <Space>gb :<C-u>Gblame<CR>
+nnoremap <Space>gd :<C-u>Gdiff<CR>
+nnoremap <Space>gc :<C-u>Gcommit<CR>
 "}}}
 
 " }}}
