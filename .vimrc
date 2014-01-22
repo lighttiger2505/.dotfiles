@@ -142,6 +142,8 @@ NeoBundleLazy 'suan/vim-instant-markdown', {
 " Scala
 NeoBundleLazy 'derekwyatt/vim-scala', {
             \ 'autoload' : { 'filetypes' : ['scala'] }}
+NeoBundleLazy 'gre/play2vim', {
+            \ 'autoload' : { 'filetypes' : ['html'] }}
 
 " haskell
 NeoBundleLazy 'dag/vim2hs', {
@@ -177,6 +179,13 @@ NeoBundle 'w0ng/vim-hybrid'
 "}}}
 
 filetype plugin indent on
+
+" Enable syntax color.
+syntax enable
+
+" Installation check.
+NeoBundleCheck
+
 " }}}
 
 " Basic Settings {{{
@@ -462,64 +471,17 @@ call unite#custom_action('file', 'my_vsplit', s:my_action)
 " "}}}
 
 " neocomplate"{{{
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_ignore_case = 1
 let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+let g:neocomplete#keyword_patterns._ = '\h\w*'
 
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 "}}}
 
 " neosnippet"{{{
@@ -704,12 +666,6 @@ nnoremap <Space>gc :<C-u>Gcommit<CR>
 "}}}
 
 " vim-indent-guides {{{
-let g:indent_guides_start_level = 1
-let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=green
-hi IndentGuidesEven ctermbg=black
-let g:indent_guides_guide_size = 1
-let g:indent_guides_guide_size = &tabstop
 " }}}
 
 " gundo"{{{
