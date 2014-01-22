@@ -666,6 +666,9 @@ nnoremap <Space>gc :<C-u>Gcommit<CR>
 "}}}
 
 " vim-indent-guides {{{
+IndentGuidesEnable
+let g:indent_guides_indent_levels = 30
+let g:indent_guides_auto_colors = 1
 " }}}
 
 " gundo"{{{
