@@ -20,6 +20,7 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'syui/wauto.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'tpope/vim-surround'
+NeoBundle "nathanaelkane/vim-indent-guides"
 
 NeoBundleLazy 'Shougo/vimshell', {
             \ 'autoload' : { 'filetypes' : ['vimshell'] }}
@@ -45,7 +46,13 @@ NeoBundleLazy 'osyo-manga/vim-over', {
 NeoBundleLazy 'thinca/vim-ref', {
             \ 'autoload' : { 'commands' : ['Ref'] }}
 
-NeoBundleLazy 'h1mesuke/vim-alignta'
+NeoBundleLazy 'vim-scripts/Align', {
+            \ 'autoload' : { 'commands' : ['Align'] }}
+
+NeoBundleLazy "sjl/gundo.vim", {
+            \ "autoload": {
+            \   "commands": ['GundoToggle'],
+            \}}
 
 " NeoBundle config"{{{
 call neobundle#config('neosnippet.vim', {
@@ -95,6 +102,7 @@ call neobundle#config('vimproc', {
             \     'unix' : 'make -f make_unix.mak',
             \    },
             \ })
+
 call neobundle#config('vimshell', {
             \ 'lazy' : 1,
             \ 'autoload' : {
@@ -105,6 +113,7 @@ call neobundle#config('vimshell', {
             \                 'VimShellTerminal', 'VimShellPop'],
             \   'mappings' : '<Plug>(vimshell_'
             \ }})
+
 call neobundle#config('unite-outline', {
             \ 'lazy' : 1,
             \ 'autoload' : {
@@ -217,7 +226,7 @@ set cursorline
 "" Long text
 set wrap
 set textwidth=0
-set colorcolumn=80
+set colorcolumn=120
 "" Invisible stirng
 set list
 set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$
@@ -356,7 +365,8 @@ nnoremap <silent> [unite]g
             \ :<C-u>Unite grep -buffer-name=search -auto-preview -no-quit -no-empty -resume<CR>
 nnoremap <silent> [unite]m 
             \ :<C-u>Unite<Space>bookmark<CR>
-au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>u FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+
 au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
@@ -476,6 +486,9 @@ let g:quickrun_config = {}
 let g:quickrun_config['markdown'] = {
             \ 'outputter':'browser'
             \ }
+let g:quickrun_config = {
+            \ "*": {"runner": "remote/vimproc"},
+            \ } 
 " }}}
 
 " vim-instant-markdown{{{
@@ -619,6 +632,19 @@ nnoremap <Space>gb :<C-u>Gblame<CR>
 nnoremap <Space>gd :<C-u>Gdiff<CR>
 nnoremap <Space>gc :<C-u>Gcommit<CR>
 "}}}
+
+" vim-indent-guides {{{
+let g:indent_guides_start_level = 1
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  ctermbg=green
+hi IndentGuidesEven ctermbg=black
+let g:indent_guides_guide_size = 1
+let g:indent_guides_guide_size = &tabstop
+" }}}
+
+" gundo"{{{
+nnoremap <Leader>g :GundoToggle<CR>
+" }}}
 
 " }}}
 
