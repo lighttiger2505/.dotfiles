@@ -162,6 +162,7 @@ filetype plugin indent on
 " }}}
 
 " Basic Settings {{{
+
 "" Release keymappings for plug-in.
 nnoremap ; <Nop>
 xnoremap ; <Nop>
@@ -169,18 +170,28 @@ nnoremap m <Nop>
 xnoremap m <Nop>
 nnoremap , <Nop>
 xnoremap , <Nop>
+
 "" Editing .vimrc
 nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
+
+"" Reload .vimrc
 nnoremap <Space>rv :source $HOME/.vimrc<CR>
-"" keymap call help
-nnoremap <C-h> :<C-u>help<Space>
-nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
-"" No create swp file
+
+"" Call help
+nnoremap ,h :<C-u>help<Space>
+nnoremap ,hh :<C-u>help<Space><C-r><C-w><CR>
+
+"" Don't create swp file
+set nowritebackup
+set nobackup
 set noswapfile
+
 "" Share clipboard for other application
 set clipboard=unnamed,autoselect
-"" foldclose marker
+
+"" Foldclose marker
 nnoremap <Space>fc :<C-u>%foldclose<CR>
+
 " }}}
 
 " Move Settings {{{
@@ -199,11 +210,17 @@ nnoremap <Space>fc :<C-u>%foldclose<CR>
 " }}}
 
 " Apperance Settings {{{
-"" File format
-:set number
-:set cursorline
-:set list
-:set listchars=eol:$,tab:▸\ 
+"" Show column number
+set number
+"" Show cousor line
+set cursorline
+"" Long text
+set wrap
+set textwidth=0
+set colorcolumn=80
+"" Invisible stirng
+set list
+set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$
 
 "" Colors
 set t_Co=256
@@ -212,6 +229,15 @@ colorscheme hybrid
 " }}}
 
 " Edit Settings"{{{
+" Round indent to multipul of shiftwidth
+set shiftround
+
+" Don't unload buffer when it is abandones
+set hidden
+
+" New load buffer is use open
+set switchbuf=useopen
+
 " Smart insert tab setting.
 set smarttab
 
@@ -246,7 +272,6 @@ set splitright
 "" Set minimal width for current window.
 set winwidth=30
 "" Set minimal height for current window.
-"" set winheight=20
 set winheight=1
 "" Set maximam maximam command line window.
 set cmdwinheight=5
@@ -255,14 +280,49 @@ set noequalalways
 "" Adjust window size of preview and help.
 set previewheight=8
 set helpheight=12
+
+" Move window
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Change window size
+nnoremap <S-Left>  <C-w><<CR>
+nnoremap <S-Right> <C-w>><CR>
+nnoremap <S-Up>    <C-w>-<CR>
+nnoremap <S-Down>  <C-w>+<CR>
 " }}}
 
 " Search Settings {{{
+" Ignore case is search patterns
+set ignorecase
+
+" No ignore case when pattern has uppercase
+set smartcase
+
 " Search is incremental search
 set incsearch
 
 " Show search result highlight
 set hlsearch
+
+" Search yank string
+nnoremap <Space>sy /<C-r>"<CR>
+"" Search of under cousor
+vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
+
+" Move cousor for search work of center
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+" Auto Escape
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
+cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 " }}}
 
 " Plugin Settings:"{{{
