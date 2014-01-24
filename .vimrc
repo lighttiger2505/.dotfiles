@@ -143,7 +143,8 @@ NeoBundleLazy 'suan/vim-instant-markdown', {
 NeoBundleLazy 'derekwyatt/vim-scala', {
             \ 'autoload' : { 'filetypes' : ['scala'] }}
 NeoBundleLazy 'gre/play2vim', {
-            \ 'autoload' : { 'filetypes' : ['html'] }}
+            \ 'depends' : 'derekwyatt/vim-scala',
+            \ 'autoload' : { 'filetypes' : ['html'] },}
 
 " haskell
 NeoBundleLazy 'dag/vim2hs', {
@@ -199,7 +200,7 @@ nnoremap , <Nop>
 xnoremap , <Nop>
 
 "" Editing .vimrc
-nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
+nnoremap <Space>ev :tabnew $HOME/.dotfiles/.vimrc<CR>
 
 "" Reload .vimrc
 nnoremap <Space>rv :source $HOME/.vimrc<CR>
@@ -256,6 +257,9 @@ colorscheme hybrid
 " }}}
 
 " Edit Settings"{{{
+" Auto change current directory to file open
+set autochdir
+
 " Round indent to multipul of shiftwidth
 set shiftround
 
@@ -383,7 +387,10 @@ nnoremap <silent> [unite]g
             \ :<C-u>Unite grep -buffer-name=search -auto-preview -no-quit -no-empty -resume<CR>
 nnoremap <silent> [unite]m 
             \ :<C-u>Unite<Space>bookmark<CR>
-nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>u FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+nnoremap <silent> [unite]a 
+            \ :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file
+            \  <CR>u FileType unite nnoremap <silent> <buffer> <expr> 
+            \  <C-j> unite#do_action('split')
 
 au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
@@ -393,8 +400,9 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 "}}}
 
 " unite-outline"{{{
-" unite-outline keymap
+" setting
 let g:unite_split_rule = 'botright'
+" keymap
 nnoremap <silent> [unite]o :Unite -vertical -no-quit -winwidth=35 outline<Return>
 "}}}
 
@@ -471,6 +479,7 @@ call unite#custom_action('file', 'my_vsplit', s:my_action)
 " "}}}
 
 " neocomplate"{{{
+" setting
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_ignore_case = 1
@@ -480,12 +489,14 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns._ = '\h\w*'
 
+" keymap
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>
+inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "<CR>"
+inoremap <expr><C-e> neocomplete#close_popup()
 "}}}
 
 " neosnippet"{{{
-
 " Plugin key-mappings.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -509,15 +520,11 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
 "}}}
 
 " vim-quickrun{{{
 " Key-mappings
 let g:quickrun_config = {}
-let g:quickrun_config['markdown'] = {
-            \ 'outputter':'browser'
-            \ }
 let g:quickrun_config = {
             \ "*": {"runner": "remote/vimproc"},
             \ } 
@@ -666,7 +673,6 @@ nnoremap <Space>gc :<C-u>Gcommit<CR>
 "}}}
 
 " vim-indent-guides {{{
-IndentGuidesEnable
 let g:indent_guides_indent_levels = 30
 let g:indent_guides_auto_colors = 1
 " }}}
