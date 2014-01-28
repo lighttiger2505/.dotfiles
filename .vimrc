@@ -21,7 +21,8 @@ NeoBundle 'syui/wauto.vim'
 " NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'tpope/vim-surround'
-NeoBundle "nathanaelkane/vim-indent-guides"
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'thinca/vim-template'
 
 NeoBundleLazy 'Shougo/vimshell', {
             \ 'autoload' : { 'filetypes' : ['vimshell'] }}
@@ -30,7 +31,9 @@ NeoBundleLazy 'Shougo/neosnippet.vim'
 
 NeoBundleLazy 'Shougo/neosnippet-snippets'
 
-NeoBundleLazy 'scrooloose/syntastic'
+NeoBundleLazy 'scrooloose/syntastic', {
+            \ 'autoload' : {
+            \ 'commands' : ['SyntasticCheck']}}
 
 NeoBundleLazy 'thinca/vim-quickrun', {
             \ 'commands' : 'QuickRun',
@@ -136,11 +139,13 @@ call neobundle#config('unite-outline', {
 " markdown
 NeoBundleLazy 'tpope/vim-markdown', {
             \ 'autoload' : { 'filetypes' : ['md'] }}
-NeoBundleLazy 'suan/vim-instant-markdown', {
-            \ 'autoload' : { 'filetypes' : ['md'] }}
 
 " Scala
 NeoBundleLazy 'derekwyatt/vim-scala', {
+            \ 'autoload' : { 'filetypes' : ['scala'] }}
+NeoBundleLazy 'ktvoelker/sbt-vim', {
+            \ 'autoload' : { 'filetypes' : ['scala'] }}
+NeoBundleLazy 'mpollmeier/vim-scalaConceal', {
             \ 'autoload' : { 'filetypes' : ['scala'] }}
 NeoBundleLazy 'gre/play2vim', {
             \ 'depends' : 'derekwyatt/vim-scala',
@@ -489,9 +494,18 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns._ = '\h\w*'
 
-" keymap
+" Include source paths
+"if !exists('g:neocomplete#sources#include#paths')
+"let g:neocomplete#sources#include#paths = {}
+"endif
+"let g:neocomplete#sources#include#paths.c = '/usr/include,'.'/usr/local/include'
+"
+"let g:neocomplete#sources#include#exprs = {}
+"let g:neocomplete#sources#include#patterns = {}
+
+" Keymap
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "<CR>"
 inoremap <expr><C-e> neocomplete#close_popup()
 "}}}
@@ -538,8 +552,8 @@ let g:instant_markdown_autostart = 0
 " Settings
 let g:auto_write = 0
 " Key-mappings
-nmap <Leader>s  <Plug>(AutoWriteStart)
-nmap <Leader>ss <Plug>(AutoWriteStop)
+nmap <Leader>as  <Plug>(AutoWriteStart)
+nmap <Leader>ass <Plug>(AutoWriteStop)
 " }}}
 
 " scrround{{{
@@ -678,9 +692,14 @@ let g:indent_guides_auto_colors = 1
 " }}}
 
 " gundo"{{{
-nnoremap <Leader>g :GundoToggle<CR>
+nmap <Leader>g :<C-u>GundoToggle<CR>
 " }}}
 
+" vim-template"{{{
+"}}}
+
+" syntastic
+nmap <Leader>s :<C-u>SyntasticCheck<CR>
 " }}}
 
 " vim:set foldmethod=marker:
