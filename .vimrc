@@ -145,8 +145,6 @@ NeoBundleLazy 'derekwyatt/vim-scala', {
             \ 'autoload' : { 'filetypes' : ['scala'] }}
 NeoBundleLazy 'ktvoelker/sbt-vim', {
             \ 'autoload' : { 'filetypes' : ['scala'] }}
-NeoBundleLazy 'mpollmeier/vim-scalaConceal', {
-            \ 'autoload' : { 'filetypes' : ['scala'] }}
 NeoBundleLazy 'gre/play2vim', {
             \ 'depends' : 'derekwyatt/vim-scala',
             \ 'autoload' : { 'filetypes' : ['html'] },}
@@ -170,6 +168,19 @@ NeoBundleLazy 'hail2u/vim-css3-syntax', {
             \ 'autoload' : { 'filetypes' : ['css'] }}
 NeoBundleLazy 'mattn/emmet-vim', {
             \ 'autoload' : { 'filetypes' : ['html', 'css'] }}
+
+" Ruby
+NeoBundleLazy 'tpope/vim-rails', {
+            \ 'autoload' : { 'filetypes' : ['rb'] }}
+
+NeoBundleLazy 'bbatsov/rubocop', {
+            \ 'autoload' : { 'filetypes' : ['rb'] }}
+
+NeoBundleLazy 'basyura/unite-rails', {
+            \ 'autoload' : { 'filetypes' : ['rb'] }}
+
+NeoBundleLazy 'vim-scripts/ruby-matchit', {
+            \ 'autoload' : { 'filetypes' : ['rb'] }}
 
 "}}}
 
@@ -262,8 +273,23 @@ colorscheme hybrid
 " }}}
 
 " Edit Settings"{{{
+
+" Change current directory.
+nnoremap <silent> <Space>cd :<C-u>CD<CR>
+
 " Auto change current directory to file open
-set autochdir
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
+function! s:ChangeCurrentDir(directory, bang)
+    if a:directory == ''
+        lcd %:p:h
+    else
+        execute 'lcd' . a:directory
+    endif
+
+    if a:bang == ''
+        pwd
+    endif
+endfunction
 
 " Round indent to multipul of shiftwidth
 set shiftround
@@ -293,6 +319,9 @@ set scrolloff=20
 
 " Format keybind
 nnoremap <Space>fm gg=G
+
+" Browser reload(firefox)
+nnoremap <silent> <C-e> :w<Bar>VimProcBang /usr/local/bin/autoreload.sh<CR>
 "}}}
 
 " Encode Settings {{{
@@ -511,18 +540,16 @@ inoremap <expr><C-e> neocomplete#close_popup()
 "}}}
 
 " neosnippet"{{{
+" <TAB>: completion.
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
 " Plugin key-mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
 " SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)"
-            \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)"
-            \: "\<TAB>"
+imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
@@ -537,11 +564,14 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 "}}}
 
 " vim-quickrun{{{
-" Key-mappings
-let g:quickrun_config = {}
 let g:quickrun_config = {
-            \ "*": {"runner": "remote/vimproc"},
-            \ } 
+\   "_" : {
+\       "runner" : "vimproc",
+\       "runner/vimproc/updatetime" : 60,
+\       "outputter/buffer/split" : ":botright",
+\       "outputter/buffer/close_on_empty" : 1
+\   },
+\}
 " }}}
 
 " vim-instant-markdown{{{
@@ -554,9 +584,6 @@ let g:auto_write = 0
 " Key-mappings
 nmap <Leader>as  <Plug>(AutoWriteStart)
 nmap <Leader>ass <Plug>(AutoWriteStop)
-" }}}
-
-" scrround{{{
 " }}}
 
 " lightline{{{
@@ -695,11 +722,8 @@ let g:indent_guides_auto_colors = 1
 nmap <Leader>g :<C-u>GundoToggle<CR>
 " }}}
 
-" vim-template"{{{
-"}}}
-
 " syntastic
-nmap <Leader>s :<C-u>SyntasticCheck<CR>
+nmap <Leader>sc :<C-u>SyntasticCheck<CR>
 " }}}
 
 " vim:set foldmethod=marker:
