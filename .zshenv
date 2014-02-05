@@ -18,7 +18,13 @@ path=(
 /usr/games(N-/)
 ## Cabal
 $HOME/.cabal/bin(N-/)
+## rvm(ruby version control)
+$HOME/.rvm/bin(N-/)
 )
+
+# sources
+## rvm(ruby version control)
+source "$HOME/.rvm/scripts/rvm"
 
 # Sudo path
 typeset -xT SUDO_PATH sudo_path
