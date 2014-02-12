@@ -22,10 +22,6 @@ $HOME/.cabal/bin(N-/)
 $HOME/.rvm/bin(N-/)
 )
 
-# sources
-## rvm(ruby version control)
-source "$HOME/.rvm/scripts/rvm"
-
 # Sudo path
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path

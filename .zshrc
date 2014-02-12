@@ -175,3 +175,4 @@ local cp_user=" %F{yellow}[$p_rhst$p_info]%f $p_mark "
 
 PROMPT=$cp_dir$cp_user
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
