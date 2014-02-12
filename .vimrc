@@ -170,17 +170,22 @@ NeoBundleLazy 'mattn/emmet-vim', {
             \ 'autoload' : { 'filetypes' : ['html', 'css'] }}
 
 " Ruby
+NeoBundleLazy 'vim-ruby/vim-ruby', {
+            \ 'mappings' : '<Plug>(ref-',
+            \ 'filetypes' : 'ruby'
+            \ }
+
 NeoBundleLazy 'tpope/vim-rails', {
-            \ 'autoload' : { 'filetypes' : ['rb'] }}
+            \ 'autoload' : { 'filetypes' : ['ruby'] }}
 
 NeoBundleLazy 'bbatsov/rubocop', {
-            \ 'autoload' : { 'filetypes' : ['rb'] }}
+            \ 'autoload' : { 'filetypes' : ['ruby'] }}
 
 NeoBundleLazy 'basyura/unite-rails', {
-            \ 'autoload' : { 'filetypes' : ['rb'] }}
+            \ 'autoload' : { 'filetypes' : ['ruby'] }}
 
 NeoBundleLazy 'vim-scripts/ruby-matchit', {
-            \ 'autoload' : { 'filetypes' : ['rb'] }}
+            \ 'autoload' : { 'filetypes' : ['ruby'] }}
 
 "}}}
 
@@ -322,11 +327,28 @@ nnoremap <Space>fm gg=G
 
 " Browser reload(firefox)
 nnoremap <silent> <C-e> :w<Bar>VimProcBang /usr/local/bin/autoreload.sh<CR>
+
+" Change tab width
+nnoremap <silent> [Space]t2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
+nnoremap <silent> [Space]t4 :<C-u>setl shiftwidth=4 softtabstop=4<CR>
+nnoremap <silent> [Space]t8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
 "}}}
 
 " Encode Settings {{{
 "" File encoding
 set encoding=utf-8
+
+"" Tab setting for file type
+augroup MyAutocmd
+    autocmd BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.scala set tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rb    set tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.erb    set tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.c    set tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.cpp  set tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.h    set tabstop=4 shiftwidth=4
+augroup END
 " }}}
 
 " Window Settings {{{
@@ -426,11 +448,13 @@ nnoremap <silent> [unite]a
             \  <CR>u FileType unite nnoremap <silent> <buffer> <expr> 
             \  <C-j> unite#do_action('split')
 
-au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q 
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+augroup MyAutocmd
+    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+    autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+    autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> q 
+    autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+augroup END
 "}}}
 
 " unite-outline"{{{
@@ -565,13 +589,13 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " vim-quickrun{{{
 let g:quickrun_config = {
-\   "_" : {
-\       "runner" : "vimproc",
-\       "runner/vimproc/updatetime" : 60,
-\       "outputter/buffer/split" : ":botright",
-\       "outputter/buffer/close_on_empty" : 1
-\   },
-\}
+            \   "_" : {
+            \       "runner" : "vimproc",
+            \       "runner/vimproc/updatetime" : 60,
+            \       "outputter/buffer/split" : ":botright",
+            \       "outputter/buffer/close_on_empty" : 1
+            \   },
+            \}
 " }}}
 
 " vim-instant-markdown{{{
