@@ -18,11 +18,11 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'syui/wauto.vim'
-" NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-template'
+NeoBundle 'h1mesuke/vim-alignta.git'
 
 NeoBundleLazy 'Shougo/vimshell', {
             \ 'autoload' : { 'filetypes' : ['vimshell'] }}
@@ -30,10 +30,6 @@ NeoBundleLazy 'Shougo/vimshell', {
 NeoBundleLazy 'Shougo/neosnippet.vim'
 
 NeoBundleLazy 'Shougo/neosnippet-snippets'
-
-NeoBundleLazy 'scrooloose/syntastic', {
-            \ 'autoload' : {
-            \ 'commands' : ['SyntasticCheck']}}
 
 NeoBundleLazy 'thinca/vim-quickrun', {
             \ 'commands' : 'QuickRun',
@@ -50,13 +46,14 @@ NeoBundleLazy 'osyo-manga/vim-over', {
 NeoBundleLazy 'thinca/vim-ref', {
             \ 'autoload' : { 'commands' : ['Ref'] }}
 
-NeoBundleLazy 'vim-scripts/Align', {
-            \ 'autoload' : { 'commands' : ['Align'] }}
-
 NeoBundleLazy "sjl/gundo.vim", {
             \ "autoload": {
             \   "commands": ['GundoToggle'],
             \}}
+
+NeoBundleLazy 'scrooloose/syntastic', {
+            \ 'autoload' : {
+            \ 'commands' : ['SyntasticCheck']}}
 
 " NeoBundle config"{{{
 call neobundle#config('neosnippet.vim', {
@@ -506,36 +503,6 @@ endfunction
 call unite#custom_action('file', 'my_vsplit', s:my_action)
 " }}}
 
-" " neocomplcashe"{{{
-" " Settings
-" let g:acp_enableAtStartup = 0
-" let g:neocomplcache_enable_at_startup = 1
-" let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_min_syntax_length = 3
-" let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-" 
-" " Define dictionary.
-" let g:neocomplcache_dictionary_filetype_lists = {
-"             \ 'default' : ''
-"             \ }
-" 
-" " Key-mappings
-" inoremap <expr><C-g>     neocomplcache#undo_completion()
-" inoremap <expr><C-l>     neocomplcache#complete_common_string()
-" " <CR>: close popup and save indent.
-" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-" function! s:my_cr_function()
-"     return neocomplcache#smart_close_popup() . "\<CR>"
-" endfunction
-" " <TAB>: completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" " <C-h>, <BS>: close popup and delete backword char.
-" inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-" inoremap <expr><C-y>  neocomplcache#close_popup()
-" inoremap <expr><c-e>  neocomplcache#cancel_popup()
-" "}}}
-
 " neocomplate"{{{
 " setting
 let g:neocomplete#enable_at_startup = 1
@@ -546,15 +513,6 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns._ = '\h\w*'
-
-" Include source paths
-"if !exists('g:neocomplete#sources#include#paths')
-"let g:neocomplete#sources#include#paths = {}
-"endif
-"let g:neocomplete#sources#include#paths.c = '/usr/include,'.'/usr/local/include'
-"
-"let g:neocomplete#sources#include#exprs = {}
-"let g:neocomplete#sources#include#patterns = {}
 
 " Keymap
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -743,11 +701,13 @@ let g:indent_guides_auto_colors = 1
 " }}}
 
 " gundo"{{{
-nmap <Leader>g :<C-u>GundoToggle<CR>
+nmap <Leader>g :<C-u>GundoToggle
 " }}}
 
-" syntastic
-nmap <Leader>sc :<C-u>SyntasticCheck<CR>
-" }}}
+" syntastic"{{{
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+nmap <Leader>sc :<C-u>SyntasticCheck
+"}}}
 
 " vim:set foldmethod=marker:
