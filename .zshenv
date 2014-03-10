@@ -2,6 +2,9 @@
 # LANG
 export LANG=ja_JP.UTF-8
 
+# JAVA_HOME
+export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v 1.6`
+
 # Color support
 if [ "$TERM" = "xterm" ]
 then
@@ -16,6 +19,9 @@ path=(
 /usr/local/bin(N-/)
 /usr/bin(N-/)
 /usr/games(N-/)
+~/bin(N-/)
+## Java
+JAVA_HOME/bin(N-/)
 ## Cabal
 $HOME/.cabal/bin(N-/)
 ## rvm(ruby version control)
