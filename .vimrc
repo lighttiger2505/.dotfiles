@@ -165,7 +165,7 @@ NeoBundleLazy 'othree/html5.vim', {
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
             \ 'autoload' : { 'filetypes' : ['css'] }}
 NeoBundleLazy 'mattn/emmet-vim', {
-            \ 'autoload' : { 'filetypes' : ['html', 'css'] }}
+            \ 'autoload' : { 'filetypes' : ['html', 'css', 'eruby' ,'scss'] }}
 
 " Ruby
 NeoBundleLazy 'vim-ruby/vim-ruby', {
@@ -379,7 +379,7 @@ nnoremap <S-Up>    <C-w>-<CR>
 nnoremap <S-Down>  <C-w>+<CR>
 " }}}
 
-" Search Settings {{{
+" Search and replace Settings {{{
 " Ignore case is search patterns
 set ignorecase
 
@@ -394,8 +394,12 @@ set hlsearch
 
 " Search yank string
 nnoremap <Space>sy /<C-r>"<CR>
-"" Search of under cousor
+" Search of under cousor
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
+
+" Replace cousor word"
+nnoremap <expr> c* ':%s ;\<' . expand('<cword>') . '\>;'
+vnoremap <expr> c* ':s ;\<' . expand('<cword>') . '\>;'
 
 " Move cousor for search work of center
 nnoremap n nzz
@@ -445,6 +449,8 @@ nnoremap <silent> [unite]a
             \ :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file
             \  <CR>u FileType unite nnoremap <silent> <buffer> <expr> 
             \  <C-j> unite#do_action('split')
+nnoremap <silent> [unite]g
+            \ :<C-u>Unite<Space>file_rec/async:!<CR>
 
 augroup MyAutocmd
     autocmd FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
@@ -473,15 +479,18 @@ let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_file_icon = ' '
-let g:vimfiler_readonly_file_icon = '✗'
-let g:vimfiler_marked_file_icon = '✓'
+let g:vimfiler_readonly_file_icon = 'X'
+let g:vimfiler_marked_file_icon = '*'
 
 " Keymap
+"" Open standerd filer
 nnoremap <silent> <Space>ff :<C-u>VimFiler -find -quit<CR>
-" nnoremap <silent> <Space>fe
-"            \ :<C-u>VimFilerExplorer -split -winwidth=35 -simple -no-quit<CR>
+"" Open file explorer
 nnoremap <silent> <Space>fe
             \ :<C-u>VimFilerExplorer -winwidth=35<CR>
+"" Show opend file on the file explorer
+nnoremap <silent> <Space>fo
+            \ :<C-u>VimFilerExplorer -winwidth=35 -find<CR>
 autocmd! FileType vimfiler call g:my_vimfiler_settings()
 function! g:my_vimfiler_settings()
     nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
