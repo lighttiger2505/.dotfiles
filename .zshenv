@@ -3,7 +3,10 @@
 export LANG=ja_JP.UTF-8
 
 # JAVA_HOME
-export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v 1.6`
+if [ "$OSTYPE" = "Darwin" ]
+then
+    export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v 1.6`
+fi
 
 # Color support
 if [ "$TERM" = "xterm" ]
