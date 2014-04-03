@@ -24,6 +24,8 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'h1mesuke/vim-alignta.git'
+NeoBundle 'tyru/capture.vim'
+NeoBundle 't9md/vim-quickhl'
 
 NeoBundleLazy 'Shougo/vimshell', {
             \ 'autoload' : { 'filetypes' : ['vimshell'] }}
