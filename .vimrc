@@ -499,14 +499,6 @@ nnoremap <silent> [unite]m
             \ :<C-u>Unite<Space>bookmark<CR>
 nnoremap <silent> [unite]p
             \ :<C-u>Unite<Space>file_rec/async:!<CR>
-
-augroup MyAutocmd
-    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-    autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-    autocmd FileType unite nnoremap <silent> <buffer> <ESC><ESC> q 
-    autocmd FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
-augroup END
 "}}}
 
 " unite-outline"{{{
