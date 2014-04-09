@@ -1,4 +1,4 @@
-
+                                           
 " Bundle Settings {{{
 set nocompatible
 filetype off
@@ -212,7 +212,7 @@ NeoBundleCheck
 
 " Basic Settings {{{
 
-"" Release keymappings for plug-in.
+" Release keymappings for plug-in.
 nnoremap ; <Nop>
 xnoremap ; <Nop>
 nnoremap m <Nop>
@@ -220,58 +220,60 @@ xnoremap m <Nop>
 nnoremap , <Nop>
 xnoremap , <Nop>
 
-"" Editing .vimrc
+" Editing .vimrc
 nnoremap <Space>ev :tabnew $HOME/.dotfiles/.vimrc<CR>
 
-"" Reload .vimrc
+" Reload .vimrc
 nnoremap <Space>rv :source $HOME/.vimrc<CR>
 
-"" Call help
+" Call help
 nnoremap ,h :<C-u>help<Space>
 nnoremap ,hh :<C-u>help<Space><C-r><C-w><CR>
 
-"" Don't create swp file
+" Don't create swp file
 set nowritebackup
 set nobackup
 set noswapfile
 
-"" Share clipboard for other application
+" Share clipboard for other application
 set clipboard=unnamed,autoselect
 
-"" Foldclose marker
+" Foldclose marker
 nnoremap <Space>fc :<C-u>%foldclose<CR>
-
 " }}}
 
 " Move Settings {{{
-:noremap k gk
-:noremap j gj
-:noremap gk k
-:noremap gj j
-:noremap <Down> gj
-:noremap <Up> gk
-:noremap <Space>h ^
-:noremap <Space>l $
-:noremap <Space>/ *
-:noremap <Space>m %
-:noremap ; :
-:noremap : ;
+noremap k gk
+noremap j gj
+noremap gk k
+noremap gj j
+noremap <Down> gj
+noremap <Up> gk
+noremap <Space>h ^
+noremap <Space>l $
+noremap <Space>/ *
+noremap <Space>m %
+noremap ; :
+noremap : ;
 " }}}
 
 " Apperance Settings {{{
-"" Show column number
+" Show column number
 set number
-"" Show cousor line
+
+" Show cousor line
 set cursorline
-"" Long text
+
+" Long text
 set wrap
 set textwidth=0
 set colorcolumn=120
-"" Invisible stirng
+
+" Invisible stirng
 set list
 set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$
 
-"" Colors
+" Colors
 set t_Co=256
 set background=dark
 colorscheme hybrid
@@ -352,19 +354,19 @@ augroup END
 " }}}
 
 " Window Settings {{{
-"" Splitting a window will put the new window below the current one.
+" Splitting a window will put the new window below the current one.
 set splitbelow
-"" Splitting a window will put the new window right the current one.
+" Splitting a window will put the new window right the current one.
 set splitright
-"" Set minimal width for current window.
+" Set minimal width for current window.
 set winwidth=30
-"" Set minimal height for current window.
+" Set minimal height for current window.
 set winheight=1
-"" Set maximam maximam command line window.
+" Set maximam maximam command line window.
 set cmdwinheight=5
-"" No equal window size.
+" No equal window size.
 set noequalalways
-"" Adjust window size of preview and help.
+" Adjust window size of preview and help.
 set previewheight=8
 set helpheight=12
 
@@ -379,6 +381,54 @@ nnoremap <S-Left>  <C-w><<CR>
 nnoremap <S-Right> <C-w>><CR>
 nnoremap <S-Up>    <C-w>-<CR>
 nnoremap <S-Down>  <C-w>+<CR>
+" }}}
+
+" Tab Settings {{{
+
+" Show tab line
+set showtabline=2
+
+" Anywhere SID.
+function! s:SID_PREFIX()
+  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+" Set tabline.
+function! s:my_tabline()
+  let s = ''
+  for i in range(1, tabpagenr('$'))
+    let bufnrs = tabpagebuflist(i)
+    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+    let no = i  " display 0-origin tabpagenr.
+    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+    let title = fnamemodify(bufname(bufnr), ':t')
+    let title = '[' . title . ']'
+    let s .= '%'.i.'T'
+    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+    let s .= no . ':' . title
+    let s .= mod
+    let s .= '%#TabLineFill# '
+  endfor
+  let s .= '%#TabLineFill#%T%=%#TabLine#'
+  return s
+endfunction
+let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
+
+" The prefix key.
+nnoremap [tab] <Nop>
+nmap t [tab]
+
+" Jump tab window 't1' ~ 't9'
+for n in range(1, 9)
+  execute 'nnoremap <silent> [tab]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
+
+" Add new tab window to right
+nnoremap <silent> [tab]c :<C-u>tablast <bar> tabnew<CR>
+" Move next tab window
+nnoremap <silent> [tab]n :<C-u>tabnext<CR>
+" Move previous tab window
+nnoremap <silent> [tab]p :<C-u>tabprevious<CR>
 " }}}
 
 " Search and replace Settings {{{
@@ -442,7 +492,7 @@ nnoremap <silent> [unite]u
 nnoremap <silent> [unite]y 
             \ :<C-u>Unite history/yank<CR>
 nnoremap <silent> [unite]g
-            \ :<C-u>Unite grep -buffer-name=search -auto-preview -no-quit -no-empty -resume<CR>
+            \ :<C-u>Unite<Space>grep -buffer-name=search -auto-preview -no-quit -no-empty -resume<CR>
 nnoremap <silent> [unite]m 
             \ :<C-u>Unite<Space>bookmark<CR>
 nnoremap <silent> [unite]p
