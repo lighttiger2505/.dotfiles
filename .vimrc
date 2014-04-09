@@ -371,10 +371,10 @@ set previewheight=8
 set helpheight=12
 
 " Move window
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <Space>h <C-w>h
+nnoremap <Space>j <C-w>j
+nnoremap <Space>k <C-w>k
+nnoremap <Space>l <C-w>l
 
 " Change window size
 nnoremap <S-Left>  <C-w><<CR>
