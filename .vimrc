@@ -219,6 +219,8 @@ nnoremap m <Nop>
 xnoremap m <Nop>
 nnoremap , <Nop>
 xnoremap , <Nop>
+noremap ; :
+noremap : ;
 
 " Editing .vimrc
 nnoremap <Space>ev :tabnew $HOME/.dotfiles/.vimrc<CR>
@@ -243,18 +245,18 @@ nnoremap <Space>fc :<C-u>%foldclose<CR>
 " }}}
 
 " Move Settings {{{
+" Multi line move
 noremap k gk
 noremap j gj
 noremap gk k
 noremap gj j
 noremap <Down> gj
 noremap <Up> gk
-noremap <Space>h ^
-noremap <Space>l $
-noremap <Space>/ *
-noremap <Space>m %
-noremap ; :
-noremap : ;
+" Skip move
+noremap H <Nop>
+noremap L <Nop>
+noremap H ^
+noremap L $
 " }}}
 
 " Apperance Settings {{{
