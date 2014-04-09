@@ -439,19 +439,13 @@ nnoremap <silent> [unite]r
             \ :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> [unite]u 
             \ :<C-u>Unite file_mru buffer<CR>
-nnoremap <silent> [unite]a 
-            \ :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]y 
             \ :<C-u>Unite history/yank<CR>
 nnoremap <silent> [unite]g
             \ :<C-u>Unite grep -buffer-name=search -auto-preview -no-quit -no-empty -resume<CR>
 nnoremap <silent> [unite]m 
             \ :<C-u>Unite<Space>bookmark<CR>
-nnoremap <silent> [unite]a 
-            \ :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file
-            \  <CR>u FileType unite nnoremap <silent> <buffer> <expr> 
-            \  <C-j> unite#do_action('split')
-nnoremap <silent> [unite]g
+nnoremap <silent> [unite]p
             \ :<C-u>Unite<Space>file_rec/async:!<CR>
 
 augroup MyAutocmd
