@@ -8,11 +8,14 @@ then
     export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v 1.6`
 fi
 
+# RSENSE_HOME
+export RSENSE_HOME=/opt/rsense-0.3
+
 # Color support
 if [ "$TERM" = "xterm" ]
 then
     export TERM="xterm-256color"
-fi
+  fi
 
 # Path
 typeset -U path

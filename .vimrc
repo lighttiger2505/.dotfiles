@@ -1,12 +1,12 @@
-                                           
+
 " Bundle Settings {{{
 set nocompatible
 filetype off
 
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
-    call neobundle#rc(expand('~/.vim/bundle/'))
 endif
+call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Basic plugin"{{{
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -25,7 +25,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'h1mesuke/vim-alignta.git'
 NeoBundle 'tyru/capture.vim'
-NeoBundle 't9md/vim-quickhl'
+NeoBundle 'alpaca-tc/vim-rsense'
 
 NeoBundleLazy 'Shougo/vimshell', {
             \ 'autoload' : { 'filetypes' : ['vimshell'] }}
@@ -57,6 +57,19 @@ NeoBundleLazy "sjl/gundo.vim", {
 NeoBundleLazy 'scrooloose/syntastic', {
             \ 'autoload' : {
             \ 'commands' : ['SyntasticCheck']}}
+
+NeoBundleLazy 't9md/vim-quickhl', {
+            \ 'autoload' : {
+            \   'commands' : ["QuickhlAdd"],
+            \   'mappings' : ["<Plug>(quickhl-toggle)", "<Plug>(quickhl-reset)", "<Plug>(quickhl-match)"],}}
+
+NeoBundleLazy 'alpaca-tc/alpaca_tags', {
+            \ 'rev' : 'development',
+            \ 'depends': ['Shougo/vimproc', 'Shougo/unite.vim'],
+            \ 'autoload' : {
+            \   'commands' : ['Tags', 'TagsUpdate', 'TagsSet', 'TagsBundle', 'TagsCleanCache'],
+            \   'unite_sources' : ['tags']
+            \ }}
 
 " NeoBundle config"{{{
 call neobundle#config('neosnippet.vim', {
@@ -345,13 +358,13 @@ set encoding=utf-8
 "" Tab setting for file type
 augroup MyAutocmd
     autocmd BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.html  set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.scala set tabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb    set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.erb    set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.c    set tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.cpp  set tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.h    set tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.erb   set tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.c     set tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.cpp   set tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.h     set tabstop=4 shiftwidth=4
 augroup END
 " }}}
 
@@ -392,27 +405,27 @@ set showtabline=2
 
 " Anywhere SID.
 function! s:SID_PREFIX()
-  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+    return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
 endfunction
 
 " Set tabline.
 function! s:my_tabline()
-  let s = ''
-  for i in range(1, tabpagenr('$'))
-    let bufnrs = tabpagebuflist(i)
-    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
-    let no = i  " display 0-origin tabpagenr.
-    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
-    let title = fnamemodify(bufname(bufnr), ':t')
-    let title = '[' . title . ']'
-    let s .= '%'.i.'T'
-    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
-    let s .= no . ':' . title
-    let s .= mod
-    let s .= '%#TabLineFill# '
-  endfor
-  let s .= '%#TabLineFill#%T%=%#TabLine#'
-  return s
+    let s = ''
+    for i in range(1, tabpagenr('$'))
+        let bufnrs = tabpagebuflist(i)
+        let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+        let no = i  " display 0-origin tabpagenr.
+        let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+        let title = fnamemodify(bufname(bufnr), ':t')
+        let title = '[' . title . ']'
+        let s .= '%'.i.'T'
+        let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+        let s .= no . ':' . title
+        let s .= mod
+        let s .= '%#TabLineFill# '
+    endfor
+    let s .= '%#TabLineFill#%T%=%#TabLine#'
+    return s
 endfunction
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 
@@ -422,7 +435,7 @@ nmap t [tab]
 
 " Jump tab window 't1' ~ 't9'
 for n in range(1, 9)
-  execute 'nnoremap <silent> [tab]'.n  ':<C-u>tabnext'.n.'<CR>'
+    execute 'nnoremap <silent> [tab]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 
 " Add new tab window to right
@@ -499,6 +512,28 @@ nnoremap <silent> [unite]m
             \ :<C-u>Unite<Space>bookmark<CR>
 nnoremap <silent> [unite]p
             \ :<C-u>Unite<Space>file_rec/async:!<CR>
+
+" unite-rails"{{{
+function! UniteRailsSetting()
+    nnoremap <buffer><C-H><C-H><C-H> :<C-U>Unite rails/view<CR>
+    nnoremap <buffer><C-H><C-H> :<C-U>Unite rails/model<CR>
+    nnoremap <buffer><C-H> :<C-U>Unite rails/controller<CR>
+
+    nnoremap <buffer><C-H>c :<C-U>Unite rails/config<CR>
+    nnoremap <buffer><C-H>s :<C-U>Unite rails/spec<CR>
+    nnoremap <buffer><C-H>m :<C-U>Unite rails/db -input=migrate<CR>
+    nnoremap <buffer><C-H>l :<C-U>Unite rails/lib<CR>
+    nnoremap <buffer><expr><C-H>g ':e '.b:rails_root.'/Gemfile<CR>'
+    nnoremap <buffer><expr><C-H>r ':e '.b:rails_root.'/config/routes.rb<CR>'
+    nnoremap <buffer><expr><C-H>se ':e '.b:rails_root.'/db/seeds.rb<CR>'
+    nnoremap <buffer><C-H>ra :<C-U>Unite rails/rake<CR>
+    nnoremap <buffer><C-H>h :<C-U>Unite rails/heroku<CR>
+endfunction
+aug MyAutoCmd
+    au User Rails call UniteRailsSetting()
+aug END
+"}}}
+
 "}}}
 
 " unite-outline"{{{
@@ -564,11 +599,21 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns._ = '\h\w*'
 
+let g:neocomplete#force_overwrite_completefunc = 1
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
 " Keymap
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "<CR>"
 inoremap <expr><C-e> neocomplete#close_popup()
+
+" rsense
+let g:rsenseHome = "/opt/rsense-0.3"
 "}}}
 
 " neosnippet"{{{
@@ -758,6 +803,57 @@ nmap <Leader>g :<C-u>GundoToggle
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 nmap <Leader>sc :<C-u>SyntasticCheck
+"}}}
+
+" vim-quickhl"{{{
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
+"}}}
+
+" alpaca_tags"{{{
+
+" Find of useful language is `ctags --list-maps=all`
+let g:alpaca_update_tags_config = {
+            \ '_' : '-R --sort=yes --languages=-js,html,css',
+            \ 'ruby': '--languages=+Ruby',
+            \ }
+
+augroup AlpacaTags
+    autocmd!
+    if exists(':Tags')
+        autocmd BufWritePost * TagsUpdate ruby
+        autocmd BufWritePost Gemfile TagsBundle
+        autocmd BufEnter * TagsSet
+    endif
+augroup END
+
+nnoremap <expr>tt  ':Unite tags -horizontal -buffer-name=tags -input='.expand("<cword>").'<CR>'
+"}}}
+
+" vim-rails"{{{
+let g:rails_default_file='config/database.yml'
+let g:rails_level = 4
+let g:rails_mappings=1
+let g:rails_modelines=0
+
+function! SetUpRailsSetting()
+    nnoremap <buffer>,r :R<CR>
+    nnoremap <buffer>,a :A<CR>
+    nnoremap <buffer>,m :Rmodel<CR>
+    nnoremap <buffer>,c :Rcontroller<CR>
+    nnoremap <buffer>,v :Rview<CR>
+    nnoremap <buffer>,p :Rpreview<CR>
+endfunction
+
+aug MyAutoCmd
+    au User Rails call SetUpRailsSetting()
+aug END
+
+aug RailsDictSetting
+    au!
+aug END
 "}}}
 
 " vim:set foldmethod=marker:
