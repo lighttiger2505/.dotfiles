@@ -2,21 +2,6 @@
 # LANG
 export LANG=ja_JP.UTF-8
 
-# JAVA_HOME
-if [ "$OSTYPE" = "Darwin" ]
-then
-    export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v 1.6`
-fi
-
-# RSENSE_HOME
-export RSENSE_HOME=/opt/rsense-0.3
-
-# Color support
-if [ "$TERM" = "xterm" ]
-then
-    export TERM="xterm-256color"
-  fi
-
 # Path
 typeset -U path
 path=(
@@ -39,15 +24,6 @@ typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
 sudo_path=({,/usr/pkg,/usr/local,/usr}/sbin(N-/))
 
-# alias setting
-## MacVim
-if [[ `uname` = "Darwin" ]]; then
-    if [[ -d /Applications/MacVim.app ]]; then
-        alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim'
-        alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/MacVim'
-    fi
-fi
-
 # Editor
 ## vimを使う。
 export EDITOR=vim
@@ -66,17 +42,6 @@ alias ls="ls -GF"
 alias gls="gls --color"
 alias lsa="ls -al"
 alias lsr="ls -ltr"
-
-## Homebrew
-alias b="brew"
-alias bs="brew -S"
-alias bi="brew info"
-alias bl="brew list"
-alias bh="brew home"
-alias bopt="brew options"
-alias bout="brew outdated"
-alias bup="brew update"
-alias bupg="brew upgrade"
 
 ## Git
 alias gs="git status"

@@ -1,4 +1,15 @@
 
+# settings for each OS
+case ${OSTYPE} in
+    darwin*)
+        [[ -f ~/.zshrc.osx ]] && source ~/.zshrc.osx
+        ;;
+    linux-gnu*)
+        [[ -f ~/.zshrc.linux ]] && source ~/.zshrc.linux
+        ;;
+esac
+
+# settings env
 source ~/.zshenv
 
 # complate
@@ -136,10 +147,10 @@ local p_mark="%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
 
 ## show git status
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
- 
+
 setopt prompt_subst
 setopt re_match_pcre
- 
+
 function rprompt-git-current-branch {
 
 local name st color
@@ -152,7 +163,7 @@ name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
 if [[ -z $name ]]; then
     return
 fi
- 
+
 st=`git status 2> /dev/null`
 if [[ "$st" =~ "(?m)^nothing to" ]]; then
     color=%F{green}
@@ -163,7 +174,7 @@ elif [[ "$st" =~ "(?m)^# Untracked" ]]; then
 else
     color=%F{red}
 fi
- 
+
 echo "$color($name)%f%b "
 }
 

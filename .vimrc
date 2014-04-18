@@ -25,7 +25,6 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'h1mesuke/vim-alignta.git'
 NeoBundle 'tyru/capture.vim'
-NeoBundle 'alpaca-tc/vim-rsense'
 
 NeoBundleLazy 'Shougo/vimshell', {
             \ 'autoload' : { 'filetypes' : ['vimshell'] }}
@@ -54,9 +53,10 @@ NeoBundleLazy "sjl/gundo.vim", {
             \   "commands": ['GundoToggle'],
             \}}
 
-NeoBundleLazy 'scrooloose/syntastic', {
-            \ 'autoload' : {
-            \ 'commands' : ['SyntasticCheck']}}
+"NeoBundleLazy 'scrooloose/syntastic', {
+"            \ 'autoload' : {
+"            \ 'commands' : ['SyntasticCheck']}}
+NeoBundle 'scrooloose/syntastic'
 
 NeoBundleLazy 't9md/vim-quickhl', {
             \ 'autoload' : {
@@ -174,8 +174,10 @@ NeoBundleLazy 'eagletmt/neco-ghc', {
 NeoBundleLazy 'eagletmt/unite-haddock', {
             \ 'autoload' : { 'filetypes' : ['haskell'] }}
 
-" HTML 
+" HTML ,CSS
 NeoBundleLazy 'othree/html5.vim', {
+            \ 'autoload' : { 'filetypes' : ['html'] }}
+NeoBundleLazy 'hokaccha/vim-html5validator', {
             \ 'autoload' : { 'filetypes' : ['html'] }}
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
             \ 'autoload' : { 'filetypes' : ['css'] }}
@@ -599,6 +601,7 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns._ = '\h\w*'
 
+" Ommi complete settings
 let g:neocomplete#force_overwrite_completefunc = 1
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 if !exists('g:neocomplete#force_omni_input_patterns')
@@ -606,14 +609,13 @@ if !exists('g:neocomplete#force_omni_input_patterns')
 endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
-" Keymap
+" Keybind
+"" Select
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+"" Decidet
 inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "<CR>"
-inoremap <expr><C-e> neocomplete#close_popup()
 
-" rsense
-let g:rsenseHome = "/opt/rsense-0.3"
 "}}}
 
 " neosnippet"{{{
@@ -857,3 +859,4 @@ aug END
 "}}}
 
 " vim:set foldmethod=marker:
+" u
