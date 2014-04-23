@@ -41,7 +41,12 @@ NeoBundleLazy 'thinca/vim-quickrun', {
             \ }
 
 NeoBundleLazy 'tyru/open-browser.vim', {
-            \ 'mappings' : '<Plug>(open-browser-',}
+\   'autoload' : {
+\       'functions' : "openbrowser#load()",
+\       'commands'  : ["OpenBrowser", "OpenBrowserSearch"],
+\       'mappings'  : "<Plug>(openbrowser-smart-search)"
+\   },
+\}
 
 NeoBundleLazy 'osyo-manga/vim-over', {
             \   'autoload' : {'commands' : ['OverCommandLine'] }}
@@ -366,9 +371,9 @@ nnoremap <Space>fm gg=G
 nnoremap <silent> <C-e> :w<Bar>VimProcBang /usr/local/bin/autoreload.sh<CR>
 
 " Change tab width
-nnoremap <silent> [Space]t2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
-nnoremap <silent> [Space]t4 :<C-u>setl shiftwidth=4 softtabstop=4<CR>
-nnoremap <silent> [Space]t8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
+nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
+nnoremap <silent> ts4 :<C-u>setl shiftwidth=4 softtabstop=4<CR>
+nnoremap <silent> ts8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
 "}}}
 
 " Encode Settings {{{
@@ -673,6 +678,7 @@ let g:quickrun_config = {
             \       "outputter/buffer/close_on_empty" : 1
             \   },
             \}
+let g:quickrun_config['html'] = { 'command' : 'open', 'exec' : '%c %s', 'outputter': 'browser' }
 " }}}
 
 " vim-instant-markdown{{{
