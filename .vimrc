@@ -25,6 +25,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'h1mesuke/vim-alignta.git'
 NeoBundle 'tyru/capture.vim'
+NeoBundle 'tyru/caw.vim'
 
 NeoBundleLazy 'Shougo/vimshell', {
             \ 'autoload' : { 'filetypes' : ['vimshell'] }}
@@ -182,7 +183,13 @@ NeoBundleLazy 'hokaccha/vim-html5validator', {
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
             \ 'autoload' : { 'filetypes' : ['css'] }}
 NeoBundleLazy 'mattn/emmet-vim', {
-            \ 'autoload' : { 'filetypes' : ['html', 'css', 'eruby' ,'scss'] }}
+            \ 'autoload' : { 'filetypes' : ['html', 'css' ,'scss', 'eruby'] }}
+NeoBundleLazy 'lilydjwg/colorizer',{
+            \ 'autoload' : { 'filetypes' : ['css', 'scss'] }}
+NeoBundleLazy 'cakebaker/scss-syntax.vim',{
+            \ 'autoload' : { 'filetypes' : ['scss'] }}
+NeoBundleLazy 'csscomb/vim-csscomb', {
+            \ 'autoload' : { 'filetypes' : ['css', 'scss'] }}
 
 " Ruby
 NeoBundleLazy 'vim-ruby/vim-ruby', {
@@ -257,6 +264,17 @@ set clipboard=unnamed,autoselect
 
 " Foldclose marker
 nnoremap <Space>fc :<C-u>%foldclose<CR>
+
+" Move project root directory to file open
+function! ChangeCurrentDirectoryToProjectRoot()
+    let root = unite#util#path2project_directory(expand('%'))
+    execute 'lcd' root
+endfunction
+:au BufEnter * :call ChangeCurrentDirectoryToProjectRoot()
+
+" Modifiable for vimfiler
+:set modifiable
+:set write
 " }}}
 
 " Move Settings {{{
@@ -361,13 +379,17 @@ set encoding=utf-8
 augroup MyAutocmd
     autocmd BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.html  set tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.css   set tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.scss  set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.scala set tabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb    set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.erb   set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.c     set tabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.cpp   set tabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.h     set tabstop=4 shiftwidth=4
+    autocmd BufRead,BufNewFile *.scss set filetype=scss
 augroup END
+
 " }}}
 
 " Window Settings {{{
@@ -605,7 +627,7 @@ let g:neocomplete#keyword_patterns._ = '\h\w*'
 let g:neocomplete#force_overwrite_completefunc = 1
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
+    let g:neocomplete#force_omni_input_patterns = {}
 endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
@@ -858,5 +880,11 @@ aug RailsDictSetting
 aug END
 "}}}
 
+" caw"{{{
+nmap <Leader>c <Plug>(caw:i:toggle)
+vmap <Leader>c <Plug>(caw:i:toggle)
+"}}}
+
+
 " vim:set foldmethod=marker:
-" u
+
