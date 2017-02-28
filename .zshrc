@@ -1,3 +1,4 @@
+#!/bin/zsh
 
 # settings for each OS
 case ${OSTYPE} in
@@ -10,7 +11,7 @@ case ${OSTYPE} in
 esac
 
 # settings env
-source ~/.zshenv
+source ~/.zshenv > /dev/null
 
 # complate
 ## default
@@ -120,11 +121,11 @@ autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end 
+bindkey "^N" history-beginning-search-forward-end
 
 # Customize prompt
-autoload colors
-colors
+# autoload colors
+# colors
 
 ## localhost info
 local p_rhst=""
@@ -153,7 +154,7 @@ setopt re_match_pcre
 
 function rprompt-git-current-branch {
 
-local name st color
+# local name st color
 
 if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
     return
@@ -186,5 +187,6 @@ local cp_user=" %F{yellow}[$p_rhst$p_info]%f $p_mark "
 
 PROMPT=$cp_dir$cp_user
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
+export PATH=$HOME/.nodebrew/current/bin:$PATH
