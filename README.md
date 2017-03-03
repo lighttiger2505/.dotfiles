@@ -1,8 +1,39 @@
 .dotfiles
 =========
 ターミナル設定、及びVimの設定
+## 前提
+homebrewインストール済み
 
-## 使用方法
+## 必須インストール
+
+### vim
+```
+brew install vim
+```
+
+### neovim
+```
+brew install neovim/neovim/neovim
+```
+
+### dein.vim
+```
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+chmod 755 installer.sh
+sh ./installer.sh ~/.vim/dein
+```
+
+### zsh
+```
+brew install zsh
+```
+
+## zplug
+```
+brew install zplug
+```
+
+## シンボリックリンク設定
 ホームディレクトリにシンボリックリンクを設定
 対象はつぎの通り
 - .vim
@@ -10,16 +41,13 @@
 - .zshrc
 - .zshenv
 - .zshrc.osx
+- .init.vim
 
-``` bash
-ln -s ~/.vim ~/.dotfiles/.vim
-ln -s ~/.vimrc ~/.dotfiles/.vim
-ln -s ~/.zshrc ~/.dotfiles/.vim
-ln -s ~/.zshenv ~/.dotfiles/.zshenv
-ln -s ~/.zshrc.osx ~/.dotfiles/.zshrc.osx
 ```
-
-## その他設定
-- デフォルトのエディタをVimに変更
-- デフォルトのシェルをzshに変更
-- ターミナルのフォントを変更
+ln -s ~/.dotfiles/.vim ~/.vim
+ln -s ~/.dotfiles/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/.zshenv ~/.zshenv
+ln -s ~/.dotfiles/.zshrc.osx ~/.zshrc.osx
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+```
