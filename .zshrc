@@ -190,3 +190,25 @@ PROMPT=$cp_dir$cp_user
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+
+# zplug settings
+source /usr/local/Cellar/zplug/2.4.1/init.zsh
+
+# set install plugins
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "b4b4r07/enhancd"
+zplug "mollifier/cd-gitroot"
+zplug "zsh-users/zsh-completions"
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# load zsh plugins
+zplug load --verbose
