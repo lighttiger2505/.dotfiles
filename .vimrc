@@ -253,6 +253,9 @@ nnoremap <Space>ev :tabnew $HOME/.dotfiles/.vimrc<CR>
 " Reload .vimrc
 nnoremap <Space>rv :source $HOME/.vimrc<CR>
 
+" Editing .zshrc
+nnoremap <Space>zev :tabnew $HOME/.dotfiles/.zshrc<CR>
+
 " Call help
 nnoremap ,h :<C-u>help<Space>
 nnoremap ,hh :<C-u>help<Space><C-r><C-w><CR>
