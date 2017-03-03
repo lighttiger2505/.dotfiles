@@ -265,9 +265,6 @@ set nowritebackup
 set nobackup
 set noswapfile
 
-" Share clipboard for other application
-set clipboard=unnamed,autoselect
-
 " Foldclose marker
 nnoremap <Space>fc :<C-u>%foldclose<CR>
 
