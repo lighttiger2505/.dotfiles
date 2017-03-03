@@ -196,11 +196,24 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 source /usr/local/Cellar/zplug/2.4.1/init.zsh
 
 # set install plugins
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "b4b4r07/enhancd"
+zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "b4b4r07/enhancd", use:init.sh
 zplug "mollifier/cd-gitroot"
 zplug "zsh-users/zsh-completions"
+zplug "peco/peco", \
+    as:command, \
+    from:gh-r, \
+    frozen:1
+zplug "junegunn/fzf-bin", \
+    as:command, \
+    from:gh-r, \
+    rename-to:"fzf", \
+    frozen:1
+
+# set enhancd filters
+ENHANCD_FILTER=fzf:peco
+export ENHANCD_FILTER
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
