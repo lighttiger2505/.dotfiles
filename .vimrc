@@ -246,8 +246,6 @@ nnoremap m <Nop>
 xnoremap m <Nop>
 nnoremap , <Nop>
 xnoremap , <Nop>
-noremap ; :
-noremap : ;
 
 " Editing .vimrc
 nnoremap <Space>ev :tabnew $HOME/.dotfiles/.vimrc<CR>
