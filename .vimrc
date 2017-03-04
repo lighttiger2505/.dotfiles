@@ -33,68 +33,7 @@ call s:source_rc('mappings.rc.vim')
 
 call s:source_rc('options.rc.vim')
 
-" Edit Settings"{{{
-
-" Change current directory.
-"nnoremap <silent> <Space>cd :<C-u>CD<CR>
-
-"" Auto change current directory to file open
-"command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
-"function! s:ChangeCurrentDir(directory, bang)
-"    if a:directory == ''
-"        lcd %:p:h
-"    else
-"        execute 'lcd' . a:directory
-"    endif
-"
-"    if a:bang == ''
-"        pwd
-"    endif
-"endfunction
-
-"" Round indent to multipul of shiftwidth
-"set shiftround
-"
-"" Don't unload buffer when it is abandones
-"set hidden
-"
-"" New load buffer is use open
-"set switchbuf=useopen
-"
-"" Smart insert tab setting.
-"set smarttab
-"
-"" Excahnge tab to space.
-"set expandtab
-"
-"" Auto insert indent.
-"set autoindent
-"
-"" Round indent by shiftwidth.
-"set shiftwidth=4
-"set shiftround
-"
-"" Space insert by autoindent
-"set tabstop=4
-"set scrolloff=20
-
-"" Format keybind
-"nnoremap <Space>fm gg=G
-"
-"" Browser reload(firefox)
-"nnoremap <silent> <C-e> :w<Bar>VimProcBang /usr/local/bin/autoreload.sh<CR>
-"
-"" Change tab width
-"nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
-"nnoremap <silent> ts4 :<C-u>setl shiftwidth=4 softtabstop=4<CR>
-"nnoremap <silent> ts8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
-""}}}
-
-" Encode Settings {{{
-"" File encoding
-"set encoding=utf-8
-
-"" Tab setting for file type
+" Tab setting for file type
 augroup MyAutocmd
     autocmd BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.html  set tabstop=2 shiftwidth=2
@@ -108,38 +47,6 @@ augroup MyAutocmd
     autocmd BufNewFile,BufRead *.h     set tabstop=4 shiftwidth=4
     autocmd BufRead,BufNewFile *.scss set filetype=scss
 augroup END
-
-" }}}
-
-"" Window Settings {{{
-"" Splitting a window will put the new window below the current one.
-"set splitbelow
-"" Splitting a window will put the new window right the current one.
-"set splitright
-"" Set minimal width for current window.
-"set winwidth=30
-"" Set minimal height for current window.
-"set winheight=1
-"" Set maximam maximam command line window.
-"set cmdwinheight=5
-"" No equal window size.
-"set noequalalways
-"" Adjust window size of preview and help.
-"set previewheight=8
-"set helpheight=12
-
-"" Move window
-"nnoremap <Space>h <C-w>h
-"nnoremap <Space>j <C-w>j
-"nnoremap <Space>k <C-w>k
-"nnoremap <Space>l <C-w>l
-"
-"" Change window size
-"nnoremap <S-Left>  <C-w><<CR>
-"nnoremap <S-Right> <C-w>><CR>
-"nnoremap <S-Up>    <C-w>-<CR>
-"nnoremap <S-Down>  <C-w>+<CR>
-" }}}
 
 " Tab Settings {{{
 
