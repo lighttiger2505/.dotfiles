@@ -1,44 +1,29 @@
 
-" Dein Settings {{{
+" rc files load function
+function! s:source_rc(path, ...) abort "{{{
+  let use_global = get(a:000, 0, !has('vim_starting'))
+  let abspath = resolve(expand('~/.vim/rc/' . a:path))
+  if !use_global
+    execute 'source' fnameescape(abspath)
+    return
+  endif
 
-if &compatible
-  set nocompatible
-endif
+  " substitute all 'set' to 'setglobal'
+  let content = map(readfile(abspath),
+        \ 'substitute(v:val, "^\\W*\\zsset\\ze\\W", "setglobal", "")')
+  " create tempfile and source the tempfile
+  let tempfile = tempname()
+  try
+    call writefile(content, tempfile)
+    execute 'source' fnameescape(tempfile)
+  finally
+    if filereadable(tempfile)
+      call delete(tempfile)
+    endif
+  endtry
+endfunction"}}}
 
-let s:dein_dir = expand('~/.vim/dein')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-execute 'set runtimepath^=' . s:dein_repo_dir
-
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-
-  call dein#add('Shougo/neocomplete.vim')
-  call dein#add('Shougo/unite.vim')
-  call dein#add('Shougo/vimproc')
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('Shougo/vimfiler')
-  call dein#add('Shougo/neomru.vim')
-  call dein#add('Shougo/unite-outline')
-  call dein#add('syui/wauto.vim')
-  call dein#add('Shougo/neocomplete.vim')
-  call dein#add('tpope/vim-surround')
-  call dein#add('nathanaelkane/vim-indent-guides')
-  call dein#add('thinca/vim-template')
-  call dein#add('h1mesuke/vim-alignta.git')
-  call dein#add('tyru/capture.vim')
-  call dein#add('tyru/caw.vim')
-  call dein#add('sjl/badwolf')
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-filetype plugin indent on
-syntax enable
-
-" }}}
+call s:source_rc('dein.rc.vim')
 
 " Bundle Settings {{{
 "set nocompatible
