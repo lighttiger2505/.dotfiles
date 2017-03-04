@@ -39,21 +39,6 @@ set noswapfile
 :set modifiable
 :set write
 
-" Move Settings {{{
-" Multi line move
-noremap k gk
-noremap j gj
-noremap gk k
-noremap gj j
-noremap <Down> gj
-noremap <Up> gk
-" Skip move
-noremap H <Nop>
-noremap L <Nop>
-noremap H ^
-noremap L $
-" }}}
-
 " Apperance Settings {{{
 " Show column number
 set number

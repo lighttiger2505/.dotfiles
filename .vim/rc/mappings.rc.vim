@@ -20,3 +20,16 @@ nnoremap ,hh :<C-u>help<Space><C-r><C-w><CR>
 " Foldclose marker
 nnoremap <Space>fc :<C-u>%foldclose<CR>
 
+" Multi line move
+noremap k gk
+noremap j gj
+noremap gk k
+noremap gj j
+noremap <Down> gj
+noremap <Up> gk
+
+" Skip move
+noremap H <Nop>
+noremap L <Nop>
+noremap H ^
+noremap L $
