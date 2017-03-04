@@ -230,65 +230,10 @@ let g:indent_guides_indent_levels = 30
 let g:indent_guides_auto_colors = 1
 " }}}
 
-" gundo"{{{
-nmap <Leader>g :<C-u>GundoToggle
-" }}}
-
 " syntastic"{{{
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 nmap <Leader>sc :<C-u>SyntasticCheck
-"}}}
-
-" vim-quickhl"{{{
-nmap <Space>m <Plug>(quickhl-manual-this)
-xmap <Space>m <Plug>(quickhl-manual-this)
-nmap <Space>M <Plug>(quickhl-manual-reset)
-xmap <Space>M <Plug>(quickhl-manual-reset)
-"}}}
-
-" alpaca_tags"{{{
-
-" Find of useful language is `ctags --list-maps=all`
-let g:alpaca_update_tags_config = {
-            \ '_' : '-R --sort=yes --languages=-js,html,css',
-            \ 'ruby': '--languages=+Ruby',
-            \ }
-
-augroup AlpacaTags
-    autocmd!
-    if exists(':Tags')
-        autocmd BufWritePost * TagsUpdate ruby
-        autocmd BufWritePost Gemfile TagsBundle
-        autocmd BufEnter * TagsSet
-    endif
-augroup END
-
-nnoremap <expr>tt  ':Unite tags -horizontal -buffer-name=tags -input='.expand("<cword>").'<CR>'
-"}}}
-
-" vim-rails"{{{
-let g:rails_default_file='config/database.yml'
-let g:rails_level = 4
-let g:rails_mappings=1
-let g:rails_modelines=0
-
-function! SetUpRailsSetting()
-    nnoremap <buffer>,r :R<CR>
-    nnoremap <buffer>,a :A<CR>
-    nnoremap <buffer>,m :Rmodel<CR>
-    nnoremap <buffer>,c :Rcontroller<CR>
-    nnoremap <buffer>,v :Rview<CR>
-    nnoremap <buffer>,p :Rpreview<CR>
-endfunction
-
-aug MyAutoCmd
-    au User Rails call SetUpRailsSetting()
-aug END
-
-aug RailsDictSetting
-    au!
-aug END
 "}}}
 
 " caw"{{{

@@ -23,28 +23,10 @@ repo = 'Shougo/vimfiler'
 repo = 'Shougo/neomru.vim'
 
 [[plugins]]
-repo = 'Shougo/unite-outline'
-
-[[plugins]]
-repo = 'syui/wauto.vim'
-
-[[plugins]]
 repo = 'Shougo/neocomplete.vim'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
-
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-
-[[plugins]]
-repo = 'thinca/vim-template'
-
-[[plugins]]
-repo = 'h1mesuke/vim-alignta.git'
-
-[[plugins]]
-repo = 'tyru/capture.vim'
 
 [[plugins]]
 repo = 'tyru/caw.vim'

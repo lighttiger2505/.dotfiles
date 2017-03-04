@@ -1,5 +1,3 @@
-[[plugins]]
-repo = 'tpope/vim-markdown'
 
 [[plugins]]
 repo = 'Shougo/vimshell'
@@ -15,15 +13,6 @@ repo = 'thinca/vim-quickrun'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
-
-[[plugins]]
-repo = 'osyo-manga/vim-over'
-
-[[plugins]]
-repo = 'thinca/vim-ref'
-
-[[plugins]]
-repo = 'tpope/vim-markdown'
 
 [[plugins]]
 repo = 'tpope/vim-markdown'
