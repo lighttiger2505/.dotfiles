@@ -50,9 +50,6 @@ augroup END
 
 " Tab Settings {{{
 
-" Show tab line
-set showtabline=2
-
 " Anywhere SID.
 function! s:SID_PREFIX()
     return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
@@ -78,58 +75,6 @@ function! s:my_tabline()
     return s
 endfunction
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
-
-" The prefix key.
-nnoremap [tab] <Nop>
-nmap t [tab]
-
-" Jump tab window 't1' ~ 't9'
-for n in range(1, 9)
-    execute 'nnoremap <silent> [tab]'.n  ':<C-u>tabnext'.n.'<CR>'
-endfor
-
-" Add new tab window to right
-nnoremap <silent> [tab]c :<C-u>tablast <bar> tabnew<CR>
-" Move next tab window
-nnoremap <silent> [tab]n :<C-u>tabnext<CR>
-" Move previous tab window
-nnoremap <silent> [tab]p :<C-u>tabprevious<CR>
-" }}}
-
-" Search and replace Settings {{{
-" Ignore case is search patterns
-set ignorecase
-
-" No ignore case when pattern has uppercase
-set smartcase
-
-" Search is incremental search
-set incsearch
-
-" Show search result highlight
-set hlsearch
-
-" Search yank string
-nnoremap <Space>sy /<C-r>"<CR>
-" Search of under cousor
-vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
-
-" Replace cousor word"
-nnoremap <expr> c* ':%s ;\<' . expand('<cword>') . '\>;'
-vnoremap <expr> c* ':s ;\<' . expand('<cword>') . '\>;'
-
-" Move cousor for search work of center
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
-
-" Auto Escape
-cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
-cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
-" }}}
 
 " Plugin Settings:"{{{
 

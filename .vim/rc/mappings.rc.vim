@@ -74,3 +74,40 @@ nnoremap <S-Right> <C-w>><CR>
 nnoremap <S-Up>    <C-w>-<CR>
 nnoremap <S-Down>  <C-w>+<CR>
 
+" The prefix key.
+nnoremap [tab] <Nop>
+nmap t [tab]
+
+" Jump tab window 't1' ~ 't9'
+for n in range(1, 9)
+    execute 'nnoremap <silent> [tab]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
+
+" Add new tab window to right
+nnoremap <silent> [tab]c :<C-u>tablast <bar> tabnew<CR>
+" Move next tab window
+nnoremap <silent> [tab]n :<C-u>tabnext<CR>
+" Move previous tab window
+nnoremap <silent> [tab]p :<C-u>tabprevious<CR>
+
+" Search yank string
+nnoremap <Space>sy /<C-r>"<CR>
+" Search of under cousor
+vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
+
+" Replace cousor word"
+nnoremap <expr> c* ':%s ;\<' . expand('<cword>') . '\>;'
+vnoremap <expr> c* ':s ;\<' . expand('<cword>') . '\>;'
+
+" Move cousor for search work of center
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+" Auto Escape
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
+cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
+

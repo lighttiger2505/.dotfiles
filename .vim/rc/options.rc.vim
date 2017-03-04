@@ -1,5 +1,5 @@
 
-"" File encoding
+" File encoding
 set encoding=utf-8
 
 " Don't create swp file
@@ -55,4 +55,35 @@ set shiftround
 " Space insert by autoindent
 set tabstop=4
 set scrolloff=20
+
+" Splitting a window will put the new window below the current one.
+set splitbelow
+" Splitting a window will put the new window right the current one.
+set splitright
+" Set minimal width for current window.
+set winwidth=30
+" Set minimal height for current window.
+set winheight=1
+" Set maximam maximam command line window.
+set cmdwinheight=5
+" No equal window size.
+set noequalalways
+" Adjust window size of preview and help.
+set previewheight=8
+set helpheight=12
+
+" show tab line
+set showtabline=2
+
+" Ignore case is search patterns
+set ignorecase
+
+" No ignore case when pattern has uppercase
+set smartcase
+
+" Search is incremental search
+set incsearch
+
+" Show search result highlight
+set hlsearch
 
