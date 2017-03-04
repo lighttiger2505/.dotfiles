@@ -24,34 +24,6 @@ endfunction"}}}
 
 call s:source_rc('dein.rc.vim')
 
-" Bundle Settings {{{
-"set nocompatible
-"filetype off
-"
-"if has('vim_starting')
-"    set runtimepath+=~/.vim/bundle/neobundle.vim/
-"endif
-"call neobundle#rc(expand('~/.vim/bundle/'))
-
-" Basic plugin"{{{
-"NeoBundleFetch 'Shougo/neobundle.vim'
-"
-"NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'Shougo/vimproc'
-"NeoBundle 'itchyny/lightline.vim'
-"NeoBundle 'tpope/vim-fugitive'
-"NeoBundle 'Shougo/vimfiler'
-"NeoBundle 'Shougo/neomru.vim'
-"NeoBundle 'Shougo/unite-outline'
-"NeoBundle 'syui/wauto.vim'
-"NeoBundle 'Shougo/neocomplete.vim'
-"NeoBundle 'tpope/vim-surround'
-"NeoBundle 'nathanaelkane/vim-indent-guides'
-"NeoBundle 'thinca/vim-template'
-"NeoBundle 'h1mesuke/vim-alignta.git'
-"NeoBundle 'tyru/capture.vim'
-"NeoBundle 'tyru/caw.vim'
-"
 "NeoBundleLazy 'Shougo/vimshell', {
 "            \ 'autoload' : { 'filetypes' : ['vimshell'] }}
 "
