@@ -88,6 +88,8 @@ call s:source_rc('plugins/vimquickrun.rc.vim')
 
 call s:source_rc('plugins/vimlightline.rc.vim')
 
+call s:source_rc('plugins/caw.rc.vim')
+
 " open-browser"{{{
 " This is my setting.
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -111,16 +113,10 @@ nmap map-you-like <Plug>(openbrowser-smart-search)
 vmap map-you-like <Plug>(openbrowser-smart-search)
 "}}}
 
+
+
 " syntastic"{{{
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 nmap <Leader>sc :<C-u>SyntasticCheck
 "}}}
-
-" caw"{{{
-nmap <Leader>c <Plug>(caw:i:toggle)
-vmap <Leader>c <Plug>(caw:i:toggle)
-"}}}
-
-
-" vim:set foldmethod=marker:
