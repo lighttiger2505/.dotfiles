@@ -82,19 +82,9 @@ call s:source_rc('plugins/unite.rc.vim')
 "
 call s:source_rc('plugins/vimfiler.rc.vim')
 
-call s:source_rc('plugins/vimfiler.rc.vim')
+call s:source_rc('plugins/neosnippet.rc.vim')
 
-" vim-quickrun{{{
-let g:quickrun_config = {
-            \   "_" : {
-            \       "runner" : "vimproc",
-            \       "runner/vimproc/updatetime" : 60,
-            \       "outputter/buffer/split" : ":botright",
-            \       "outputter/buffer/close_on_empty" : 1
-            \   },
-            \}
-let g:quickrun_config['html'] = { 'command' : 'open', 'exec' : '%c %s', 'outputter': 'browser' }
-" }}}
+call s:source_rc('plugins/vimquickrun.rc.vim')
 
 " vim-instant-markdown{{{
 let g:instant_markdown_autostart = 0
