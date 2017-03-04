@@ -92,8 +92,5 @@ call s:source_rc('plugins/caw.rc.vim')
 
 call s:source_rc('plugins/openbrowser.rc.vim')
 
-" syntastic"{{{
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
-nmap <Leader>sc :<C-u>SyntasticCheck
-"}}}
+call s:source_rc('plugins/syntastic.rc.vim')
+
