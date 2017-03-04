@@ -31,48 +31,13 @@ syntax enable
 
 call s:source_rc('mappings.rc.vim')
 
-" Basic Settings {{{
-
-" Release keymappings for plug-in.
-"nnoremap ; <Nop>
-"xnoremap ; <Nop>
-"nnoremap m <Nop>
-"xnoremap m <Nop>
-"nnoremap , <Nop>
-"xnoremap , <Nop>
-"
-"" Editing .vimrc
-"nnoremap <Space>ev :tabnew $HOME/.dotfiles/.vimrc<CR>
-"
-"" Reload .vimrc
-"nnoremap <Space>rv :source $HOME/.vimrc<CR>
-"
-"" Editing .zshrc
-"nnoremap <Space>zev :tabnew $HOME/.dotfiles/.zshrc<CR>
-"
-"" Call help
-"nnoremap ,h :<C-u>help<Space>
-"nnoremap ,hh :<C-u>help<Space><C-r><C-w><CR>
-
 " Don't create swp file
 set nowritebackup
 set nobackup
 set noswapfile
 
-" Foldclose marker
-"nnoremap <Space>fc :<C-u>%foldclose<CR>
-
-" Move project root directory to file open
-"function! ChangeCurrentDirectoryToProjectRoot()
-"    let root = unite#util#path2project_directory(expand('%'))
-"    execute 'lcd' root
-"endfunction
-":au BufEnter * :call ChangeCurrentDirectoryToProjectRoot()
-
-" Modifiable for vimfiler
 :set modifiable
 :set write
-" }}}
 
 " Move Settings {{{
 " Multi line move
