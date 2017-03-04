@@ -1,5 +1,4 @@
 
-" rc files load function
 function! s:source_rc(path, ...) abort "{{{
   let use_global = get(a:000, 0, !has('vim_starting'))
   let abspath = resolve(expand('~/.vim/rc/' . a:path))
@@ -263,28 +262,30 @@ syntax enable
 
 " }}}
 
+call s:source_rc('mappings.rc.vim')
+
 " Basic Settings {{{
 
 " Release keymappings for plug-in.
-nnoremap ; <Nop>
-xnoremap ; <Nop>
-nnoremap m <Nop>
-xnoremap m <Nop>
-nnoremap , <Nop>
-xnoremap , <Nop>
-
-" Editing .vimrc
-nnoremap <Space>ev :tabnew $HOME/.dotfiles/.vimrc<CR>
-
-" Reload .vimrc
-nnoremap <Space>rv :source $HOME/.vimrc<CR>
-
-" Editing .zshrc
-nnoremap <Space>zev :tabnew $HOME/.dotfiles/.zshrc<CR>
-
-" Call help
-nnoremap ,h :<C-u>help<Space>
-nnoremap ,hh :<C-u>help<Space><C-r><C-w><CR>
+"nnoremap ; <Nop>
+"xnoremap ; <Nop>
+"nnoremap m <Nop>
+"xnoremap m <Nop>
+"nnoremap , <Nop>
+"xnoremap , <Nop>
+"
+"" Editing .vimrc
+"nnoremap <Space>ev :tabnew $HOME/.dotfiles/.vimrc<CR>
+"
+"" Reload .vimrc
+"nnoremap <Space>rv :source $HOME/.vimrc<CR>
+"
+"" Editing .zshrc
+"nnoremap <Space>zev :tabnew $HOME/.dotfiles/.zshrc<CR>
+"
+"" Call help
+"nnoremap ,h :<C-u>help<Space>
+"nnoremap ,hh :<C-u>help<Space><C-r><C-w><CR>
 
 " Don't create swp file
 set nowritebackup
@@ -292,7 +293,7 @@ set nobackup
 set noswapfile
 
 " Foldclose marker
-nnoremap <Space>fc :<C-u>%foldclose<CR>
+"nnoremap <Space>fc :<C-u>%foldclose<CR>
 
 " Move project root directory to file open
 "function! ChangeCurrentDirectoryToProjectRoot()
