@@ -86,18 +86,6 @@ call s:source_rc('plugins/neosnippet.rc.vim')
 
 call s:source_rc('plugins/vimquickrun.rc.vim')
 
-" vim-instant-markdown{{{
-let g:instant_markdown_autostart = 0
-" }}}
-
-" wauto{{{
-" Settings
-let g:auto_write = 0
-" Key-mappings
-nmap <Leader>as  <Plug>(AutoWriteStart)
-nmap <Leader>ass <Plug>(AutoWriteStop)
-" }}}
-
 " lightline{{{
 set laststatus=2
 " Settings
@@ -163,34 +151,6 @@ function! MyMode()
 endfunction
 " }}}
 
-" vim-over{{{
-" vim-over command line launch. Enterd command [%s/].
-cnoreabb <silent><expr>s getcmdtype()==':' && getcmdline()=~'^s' ? 'OverCommandLine<CR><C-u>%s/<C-r>=get([], getchar(0), '')<CR>' : 's'
-" }}}
-
-" emmet-vim {{{
-let g:user_emmet_mode = 'iv'
-let g:user_emmet_leader_key = '<C-y>'
-let g:use_emmet_complete_tag = 1
-let g:user_emmet_settings = {
-            \ 'lang' : 'ja',
-            \ 'html' : {
-            \ 'filters' : 'html',
-            \ },
-            \ 'css' : {
-            \ 'filters' : 'fc',
-            \ },
-            \ 'php' : {
-            \ 'extends' : 'html',
-            \ 'filters' : 'html',
-            \ },
-            \}
-augroup EmmitVim
-    autocmd!
-    autocmd FileType * let g:user_emmet_settings.indentation = ' '[:&tabstop]
-augroup END
-" }}}
-
 " open-browser"{{{
 " This is my setting.
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -213,22 +173,6 @@ nmap map-you-like <Plug>(openbrowser-smart-search)
 " Otherwise, Search selected word.
 vmap map-you-like <Plug>(openbrowser-smart-search)
 "}}}
-
-" vim-fugitive"{{{
-nnoremap <Space>gs :<C-u>Gstatus<CR>
-nnoremap <Space>ga :<C-u>Gwrite<CR>
-nnoremap <Space>gr :<C-u>Gread<CR>
-nnoremap <Space>gm :<C-u>Gmove<CR>
-nnoremap <Space>gv :<C-u>Gremove<CR>
-nnoremap <Space>gb :<C-u>Gblame<CR>
-nnoremap <Space>gd :<C-u>Gdiff<CR>
-nnoremap <Space>gc :<C-u>Gcommit<CR>
-"}}}
-
-" vim-indent-guides {{{
-let g:indent_guides_indent_levels = 30
-let g:indent_guides_auto_colors = 1
-" }}}
 
 " syntastic"{{{
 let g:syntastic_enable_signs=1
