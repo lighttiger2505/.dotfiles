@@ -62,18 +62,6 @@ nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
 nnoremap <silent> ts4 :<C-u>setl shiftwidth=4 softtabstop=4<CR>
 nnoremap <silent> ts8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
 
-" Move window
-nnoremap <Space>h <C-w>h
-nnoremap <Space>j <C-w>j
-nnoremap <Space>k <C-w>k
-nnoremap <Space>l <C-w>l
-
-" Change window size
-nnoremap <S-Left>  <C-w><<CR>
-nnoremap <S-Right> <C-w>><CR>
-nnoremap <S-Up>    <C-w>-<CR>
-nnoremap <S-Down>  <C-w>+<CR>
-
 " The prefix key.
 nnoremap [tab] <Nop>
 nmap t [tab]
