@@ -90,3 +90,6 @@ set incsearch
 
 " Show search result highlight
 set hlsearch
+
+" Share clipborad with system
+set clipboard+=unnamedplus
