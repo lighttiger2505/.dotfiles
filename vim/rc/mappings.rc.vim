@@ -98,3 +98,7 @@ nnoremap g# g#zz
 " Auto Escape
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
+
+" Split window
+nnoremap <silent> ss :split<CR>
+nnoremap <silent> sv :vsplit<CR>
