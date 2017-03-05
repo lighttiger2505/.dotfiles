@@ -44,6 +44,9 @@ repo = 'vim-airline/vim-airline'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+  source ~/.vim/rc/plugins/vimairline.rc.vim
+'''
 
 # [[plugins]]
 # repo = 'tpope/vim-fugitive'

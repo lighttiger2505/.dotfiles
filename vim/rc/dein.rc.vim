@@ -9,6 +9,10 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml('~/.vim/rc/dein.toml', {'lazy': 0})
   call dein#load_toml('~/.vim/rc/dein_lazy.toml', {'lazy': 1})
 
+  if dein#tap('deoplete.nvim') && has('nvim')
+    call dein#disable('neocomplete.vim')
+  endif
+
   call dein#end()
   call dein#save_state()
 endif
