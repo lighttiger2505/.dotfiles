@@ -1,6 +1,10 @@
 
 " File encoding
-set encoding=utf-8
+if !exists ('g:encoding_set') || !has('nvim')
+    set encoding=utf-8
+    let g:encoding_set=1
+endif
+scriptencoding utf-8
 
 " Don't create swp file
 set nowritebackup
@@ -86,4 +90,3 @@ set incsearch
 
 " Show search result highlight
 set hlsearch
-
