@@ -11,6 +11,10 @@ repo = 'Shougo/unite.vim'
 repo = 'Shougo/vimproc'
 build = 'make' 
 
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
+
 # [[plugins]]
 # repo = 'itchyny/lightline.vim'
 

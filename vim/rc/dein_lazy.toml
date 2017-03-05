@@ -4,6 +4,7 @@ repo = 'Shougo/vimshell'
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
