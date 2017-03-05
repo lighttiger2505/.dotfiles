@@ -22,6 +22,30 @@ function! s:source_rc(path, ...) abort "{{{
   endtry
 endfunction"}}}
 
+let $CACHE = expand('~/.cache')
+
+if !isdirectory(expand($CACHE))
+  call mkdir(expand($CACHE), 'p')
+endif
+
+if filereadable(expand('~/.secret_vimrc'))
+  execute 'source' expand('~/.secret_vimrc')
+endif
+
+" Load dein.
+let s:dein_dir = finddir('dein.vim', '.;')
+if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
+  if s:dein_dir == '' && &runtimepath !~ '/dein.vim'
+    let s:dein_dir = expand('$CACHE/dein')
+          \. '/repos/github.com/Shougo/dein.vim'
+    if !isdirectory(s:dein_dir)
+      execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
+    endif
+  endif
+  execute 'set runtimepath^=' . substitute(
+        \ fnamemodify(s:dein_dir, ':p') , '/$', '', '')
+endif
+
 call s:source_rc('dein.rc.vim')
 
 filetype plugin indent on
@@ -93,4 +117,3 @@ call s:source_rc('plugins/caw.rc.vim')
 call s:source_rc('plugins/openbrowser.rc.vim')
 
 call s:source_rc('plugins/syntastic.rc.vim')
-
