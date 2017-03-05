@@ -10,8 +10,14 @@ repo = 'Shougo/unite.vim'
 [[plugins]]
 repo = 'Shougo/vimproc'
 
+#[[plugins]]
+#repo = 'itchyny/lightline.vim'
+
 [[plugins]]
-repo = 'itchyny/lightline.vim'
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
