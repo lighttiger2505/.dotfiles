@@ -28,10 +28,6 @@ if !isdirectory(expand($CACHE))
   call mkdir(expand($CACHE), 'p')
 endif
 
-if filereadable(expand('~/.secret_vimrc'))
-  execute 'source' expand('~/.secret_vimrc')
-endif
-
 " Load dein.
 let s:dein_dir = finddir('dein.vim', '.;')
 if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
@@ -47,8 +43,6 @@ if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
 endif
 
 call s:source_rc('dein.rc.vim')
-
-filetype plugin indent on
 
 " Enable syntax color.
 syntax enable
@@ -100,10 +94,8 @@ function! s:my_tabline()
 endfunction
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 
-" Plugin Settings:"{{{
-"
 call s:source_rc('plugins/unite.rc.vim')
-"
+
 call s:source_rc('plugins/vimfiler.rc.vim')
 
 call s:source_rc('plugins/neosnippet.rc.vim')
