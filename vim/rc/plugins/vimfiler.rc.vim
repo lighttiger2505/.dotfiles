@@ -22,16 +22,16 @@ nnoremap <silent> <Space>fe
 "" Show opend file on the file explorer
 nnoremap <silent> <Space>fo
             \ :<C-u>VimFilerExplorer -winwidth=35 -find<CR>
-autocmd! FileType vimfiler call g:my_vimfiler_settings()
-
-let s:my_action = { 'is_selectable' : 1 }
-function! s:my_action.func(candidates)
-    wincmd p
-    exec 'split '. a:candidates[0].action__path
-endfunction
-
-let s:my_action = { 'is_selectable' : 1 }
-function! s:my_action.func(candidates)
-    wincmd p
-    exec 'vsplit '. a:candidates[0].action__path
-endfunction
+"autocmd! FileType vimfiler call g:my_vimfiler_settings()
+"
+"let s:my_action = { 'is_selectable' : 1 }
+"function! s:my_action.func(candidates)
+"    wincmd p
+"    exec 'split '. a:candidates[0].action__path
+"endfunction
+"
+"let s:my_action = { 'is_selectable' : 1 }
+"function! s:my_action.func(candidates)
+"    wincmd p
+"    exec 'vsplit '. a:candidates[0].action__path
+"endfunction
