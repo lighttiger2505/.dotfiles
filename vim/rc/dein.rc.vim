@@ -3,7 +3,6 @@ if &compatible
 endif
 
 let s:dein_dir = expand('$CACHE/dein')
-
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
