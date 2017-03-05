@@ -22,7 +22,7 @@ nnoremap , <Nop>
 xnoremap , <Nop>
 
 " Editing .vimrc
-nnoremap <Space>ev :tabnew $HOME/.dotfiles/.vimrc<CR>
+nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
 
 " Reload .vimrc
 nnoremap <Space>rv :source $HOME/.vimrc<CR>
@@ -110,4 +110,3 @@ nnoremap g# g#zz
 " Auto Escape
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
-
