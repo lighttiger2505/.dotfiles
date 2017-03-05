@@ -19,3 +19,6 @@ repo = 'tpope/vim-markdown'
 
 [[plugins]]
 repo = 'othree/html5.vim'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
