@@ -3,27 +3,25 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
-depends = 'context_filetype.vim'
 if = "has('lua')"
 on_event = 'InsertEnter'
-hook_source = '''
+hook_add = '''
   let g:neocomplete#enable_at_startup = 1
   source ~/.vim/rc/plugins/neocomplete.rc.vim
 '''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
 if = "has('nvim')"
 on_i = 1
-hook_source = '''
+hook_add = '''
   let g:deoplete#enable_at_startup = 1
   source ~/.vim/rc/plugins/deoplete.rc.vim
 '''
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-hook_source = '''
+hook_add = '''
   source ~/.vim/rc/plugins/unite.rc.vim
 '''
 
@@ -34,7 +32,7 @@ build = 'make'
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
-hook_source = '''
+hook_add = '''
   source ~/.vim/rc/plugins/neosnippet.rc.vim
 '''
 
@@ -52,7 +50,7 @@ repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'Shougo/vimfiler'
-hook_source = '''
+hook_add = '''
   source ~/.vim/rc/plugins/vimfiler.rc.vim
 '''
 
@@ -64,13 +62,13 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
-hook_source = '''
+hook_add = '''
   source ~/.vim/rc/plugins/caw.rc.vim
 '''
 
 [[plugins]]
 repo = 'vim-syntastic/syntastic'
-hook_source = '''
+hook_add = '''
   source ~/.vim/rc/plugins/syntastic.rc.vim
 '''
 
