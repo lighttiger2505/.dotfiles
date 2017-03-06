@@ -69,17 +69,34 @@ alias ls="ls -GF"
 # alias lsa="ls -al"
 # alias lsr="ls -ltr"
 
-## Git
-# alias gs="git status"
-# alias ga="git add"
-# alias gc="git commit"
-# alias gpus="git push"
-# alias gpul="git pull"
+# git status
+alias gs="git status"
 
+# git diff
+alias gd="git diff"
+alias gdc="git diff --cached "
+
+# git add
+alias ga="git add "
+alias gap="git add -p "
+
+# git commit
+alias gc="git commit"
+alias gcm="git commit -m"
+
+# git log
+alias gl="git log"
+alias glogn="git log --oneline --graph -n10"
+
+# Django manage.py
 alias djrun="python manage.py runserver"
 alias djshell="python manage.py shell"
 
+# neovim
 alias vim=nvim
+
+# zsh
+alias sourcez="source ~/.zshrc"
 
 # zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*' list-colors $LSCOLORS
