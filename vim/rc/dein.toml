@@ -10,14 +10,17 @@ hook_add = '''
   source ~/.vim/rc/plugins/neocomplete.rc.vim
 '''
 
+# [[plugins]]
+# repo = 'Shougo/deoplete.nvim'
+# if = "has('nvim')"
+# hook_add = '''
+#   let g:deoplete#enable_at_startup = 1
+#   source ~/.vim/rc/plugins/deoplete.rc.vim
+# '''
+
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-if = "has('nvim')"
-on_i = 1
-hook_add = '''
-  let g:deoplete#enable_at_startup = 1
-  source ~/.vim/rc/plugins/deoplete.rc.vim
-'''
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
