@@ -1,21 +1,21 @@
 
 " Auto change current directory to file open
-command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
-function! s:ChangeCurrentDir(directory, bang)
-    if a:directory == ''
-        lcd %:p:h
-    else
-        execute 'lcd' . a:directory
-    endif
-
-    if a:bang == ''
-        pwd
-    endif
-endfunction
+" command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
+" function! s:ChangeCurrentDir(directory, bang)
+"     if a:directory == ''
+"         lcd %:p:h
+"     else
+"         execute 'lcd' . a:directory
+"     endif
+"
+"     if a:bang == ''
+"         pwd
+"     endif
+" endfunction
 
 " Release keymappings for plug-in.
-nnoremap ; <Nop>
-xnoremap ; <Nop>
+nnoremap ; :
+xnoremap : <Nop>
 nnoremap m <Nop>
 xnoremap m <Nop>
 nnoremap , <Nop>
@@ -62,21 +62,32 @@ nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
 nnoremap <silent> ts4 :<C-u>setl shiftwidth=4 softtabstop=4<CR>
 nnoremap <silent> ts8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
 
-" The prefix key.
+" The prefix key of tab.
 nnoremap [tab] <Nop>
 nmap t [tab]
 
-" Jump tab window 't1' ~ 't9'
+" Jump tab '1~9'
 for n in range(1, 9)
     execute 'nnoremap <silent> [tab]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 
-" Add new tab window to right
-nnoremap <silent> [tab]c :<C-u>tablast <bar> tabnew<CR>
-" Move next tab window
-nnoremap <silent> [tab]n :<C-u>tabnext<CR>
-" Move previous tab window
-nnoremap <silent> [tab]p :<C-u>tabprevious<CR>
+" Add new tab 
+nnoremap <silent> [tab]t :<C-u>tablast <bar> tabnew<CR>
+" Move tab
+nnoremap <silent> [tab]l :<C-u>tabnext<CR>
+nnoremap <silent> [tab]h :<C-u>tabprevious<CR>
+
+" The prefix key of window.
+nnoremap [window] <Nop>
+nmap s [window]
+
+" Split window
+nnoremap <silent> [window]s :split<CR>
+nnoremap <silent> [window]v :vsplit<CR>
+noremap [window]h <C-w>h 
+noremap [window]l <C-w>l
+noremap [window]j <C-w>j
+noremap [window]k <C-w>k
 
 " Search yank string
 nnoremap <Space>sy /<C-r>"<CR>
@@ -99,6 +110,4 @@ nnoremap g# g#zz
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 
-" Split window
-nnoremap <silent> ss :split<CR>
-nnoremap <silent> sv :vsplit<CR>
+
