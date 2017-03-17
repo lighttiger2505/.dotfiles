@@ -25,6 +25,8 @@ function! s:my_cr_function() abort
   return deoplete#cancel_popup() . "\<CR>"
 endfunction
 
+inoremap <expr><CR>  pumvisible() ? deoplete#close_popup() : "<CR>"
+
 inoremap <expr> '  pumvisible() ? deoplete#close_popup() : "'"
 
 " call deoplete#custom#set('_', 'matchers', ['matcher_head'])
