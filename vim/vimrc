@@ -28,6 +28,9 @@ if !isdirectory(expand($CACHE))
   call mkdir(expand($CACHE), 'p')
 endif
 
+" Load python3
+let g:python3_host_prog = $PYENV_PATH . '/shims/python3'
+
 " Load dein.
 let s:dein_dir = finddir('dein.vim', '.;')
 if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
