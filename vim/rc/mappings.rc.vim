@@ -1,18 +1,4 @@
 
-" Auto change current directory to file open
-" command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
-" function! s:ChangeCurrentDir(directory, bang)
-"     if a:directory == ''
-"         lcd %:p:h
-"     else
-"         execute 'lcd' . a:directory
-"     endif
-"
-"     if a:bang == ''
-"         pwd
-"     endif
-" endfunction
-
 " Release keymappings for plug-in.
 nnoremap ; :
 xnoremap : <Nop>
@@ -49,7 +35,7 @@ noremap H ^
 noremap L $
 
 " Change current directory.
-nnoremap <silent> <Space>cd :<C-u>CD<CR>
+nnoremap <silent> <Space>cd :<C-u>cd %:h<CR>
 
 " Format keybind
 nnoremap <Space>fm gg=G
@@ -84,10 +70,10 @@ nmap s [window]
 " Split window
 nnoremap <silent> [window]s :split<CR>
 nnoremap <silent> [window]v :vsplit<CR>
-noremap [window]h <C-w>h 
-noremap [window]l <C-w>l
-noremap [window]j <C-w>j
-noremap [window]k <C-w>k
+" noremap [window]h <C-w>h 
+" noremap [window]l <C-w>l
+" noremap [window]j <C-w>j
+" noremap [window]k <C-w>k
 
 " Search yank string
 nnoremap <Space>sy /<C-r>"<CR>
