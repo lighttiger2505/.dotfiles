@@ -2,8 +2,6 @@
 # Alias
 ## MacVim
 if [[ -d /Applications/MacVim.app ]]; then
-    # alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim'
-    # alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/MacVim'
-    alias gvim="/Applications/MacVim.app/Contents/MacOS/mvim --remote-tab-silent"
+    alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim "$@"'
 fi
 
