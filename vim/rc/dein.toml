@@ -38,9 +38,6 @@ hook_add = '''
   source ~/.vim/rc/plugins/neosnippet.rc.vim
 '''
 
-# [[plugins]]
-# repo = 'itchyny/lightline.vim'
-
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 
@@ -49,9 +46,6 @@ repo = 'vim-airline/vim-airline-themes'
 hook_add = '''
   source ~/.vim/rc/plugins/vimairline.rc.vim
 '''
-
-# [[plugins]]
-# repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'Shougo/vimfiler'
