@@ -1,47 +1,47 @@
 .dotfiles
 =========
-ターミナル設定、及びVimの設定
-## 前提
-homebrewインストール済み
+lighttiger's cli
 
-## 必須インストール
+## Install requirement
+- vim
+- neovim
+- zsh
+- zplug
+- pyenv
+- pyenv-vertualenv
 
-### vim
+## Install python
+
 ```
-brew install vim
+# Install python version
+pyenv install 2.7.12 # latest version
+pyenv install 3.4.5 # latest version
+
+# Create pyenv-vertualevn for neovim reference
+pyenv virtualenv 2.7.12 neovim2
+pyenv virtualenv 3.4.5 neovim3
+
+# Install neovim client and requirement middle 
+pyenv activate neovim2
+pip install -r ~/.dotfiles/python/neovim2_requirements.txt
+pyenv which python  # Note the path
+pyenv deactivate
+
+pyenv activate neovim3
+pip install -r ~/.dotfiles/python/neovim3_requirements.txt
+pyenv which python  # Note the path
+pyenv deactivate
 ```
 
-### neovim
-```
-brew install neovim/neovim/neovim
-```
+## Synbolic link
 
-### dein.vim
-```
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-chmod 755 installer.sh
-sh ./installer.sh ~/.vim/dein
-```
-
-### zsh
-```
-brew install zsh
-```
-
-## zplug
-```
-brew install zplug
-```
-
-## シンボリックリンク設定
-ホームディレクトリにシンボリックリンクを設定
-対象はつぎの通り
 - .vim
 - .vimrc
 - .zshrc
 - .zshenv
 - .zshrc.osx
 - .init.vim
+- .tmux.conf
 
 ```
 ln -s ~/.dotfiles/.vim ~/.vim
@@ -50,4 +50,5 @@ ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.zshenv ~/.zshenv
 ln -s ~/.dotfiles/.zshrc.osx ~/.zshrc.osx
 ln -s ~/.vimrc ~/.config/nvim/init.vim
+ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 ```
