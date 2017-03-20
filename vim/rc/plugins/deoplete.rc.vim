@@ -14,10 +14,10 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-g> deoplete#undo_completion()
+inoremap <expr><C-g> deoplete#undo_comcletion()
 
 " <C-l>: redraw candidates
-inoremap <expr><C-l>       deoplete#refresh()
+inoremap <expr><C-l> deoplete#refresh()
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -40,6 +40,7 @@ call deoplete#custom#set('_', 'converters', [
       \ 'converter_auto_delimiter',
       \ ])
 
+" Prams of deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
