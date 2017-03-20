@@ -13,10 +13,6 @@ nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
 " Reload .vimrc
 nnoremap <Space>rv :source $HOME/.vimrc<CR>
 
-" Call help
-nnoremap ,h :<C-u>help<Space>
-nnoremap ,hh :<C-u>help<Space><C-r><C-w><CR>
-
 " Foldclose marker
 nnoremap <Space>fc :<C-u>%foldclose<CR>
 
@@ -58,22 +54,28 @@ for n in range(1, 9)
 endfor
 
 " Add new tab 
-nnoremap <silent> [tab]t :<C-u>tablast <bar> tabnew<CR>
+nnoremap <silent> [tab]n :<C-u>tablast <bar> tabnew<CR>
 " Move tab
 nnoremap <silent> [tab]l :<C-u>tabnext<CR>
 nnoremap <silent> [tab]h :<C-u>tabprevious<CR>
 
 " The prefix key of window.
 nnoremap [window] <Nop>
-nmap s [window]
+nmap <Space> [window]
 
 " Split window
 nnoremap <silent> [window]s :split<CR>
 nnoremap <silent> [window]v :vsplit<CR>
-" noremap [window]h <C-w>h 
-" noremap [window]l <C-w>l
-" noremap [window]j <C-w>j
-" noremap [window]k <C-w>k
+" Move window
+noremap [window]h <C-w>h 
+noremap [window]l <C-w>l
+noremap [window]j <C-w>j
+noremap [window]k <C-w>k
+" Switch window
+noremap [window]H <C-w>H
+noremap [window]L <C-w>L
+noremap [window]J <C-w>J
+noremap [window]K <C-w>K
 
 " Search yank string
 nnoremap <Space>sy /<C-r>"<CR>
