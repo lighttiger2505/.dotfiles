@@ -7,6 +7,9 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
   call dein#load_toml('~/.vim/rc/dein.toml', {'lazy': 0})
+
+  colorscheme badwolf
+
   call dein#load_toml('~/.vim/rc/dein_lazy.toml', {'lazy': 1})
 
   if dein#tap('deoplete.nvim') && has('nvim')

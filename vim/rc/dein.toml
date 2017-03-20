@@ -13,18 +13,20 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_add = '''
-  let g:deoplete#enable_at_startup = 1
-  source ~/.vim/rc/plugins/deoplete.rc.vim
+    let g:deoplete#enable_at_startup = 1
+    source ~/.vim/rc/plugins/deoplete.rc.vim
 '''
-
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-on_ft = 'python'
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
 hook_add = '''
   source ~/.vim/rc/plugins/unite.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_source = '''
+    source ~/.vim/rc/plugins/denite.rc.vim
 '''
 
 [[plugins]]
@@ -40,12 +42,16 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes']
+hook_add = '''
+    let g:airline_powerline_fonts = 1
+    let g:airline_theme = 'badwolf'
+    let g:airline#extensions#virtualenv#enabled = 1
+    set laststatus=2
+'''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
-hook_add = '''
-  source ~/.vim/rc/plugins/vimairline.rc.vim
-'''
 
 [[plugins]]
 repo = 'Shougo/vimfiler'
@@ -73,3 +79,4 @@ hook_add = '''
 
 [[plugins]]
 repo = 'sjl/badwolf'
+
