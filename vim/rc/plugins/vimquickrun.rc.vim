@@ -1,5 +1,8 @@
 
-" mapping
+" Mapping
+nnoremap <leader>r :<C-u>QuickRun<CR>
+
+" Config vimproc
 let g:quickrun_config = {
             \   "_" : {
             \       "runner" : "vimproc",
