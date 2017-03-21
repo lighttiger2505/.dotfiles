@@ -25,7 +25,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-hook_source = '''
+depends = ['neomru', 'neoyank']
+hook_add = '''
     source ~/.vim/rc/plugins/denite.rc.vim
 '''
 
@@ -63,6 +64,9 @@ hook_add = '''
 repo = 'Shougo/neomru.vim'
 
 [[plugins]]
+repo = 'Shougo/neoyank.vim'
+
+[[plugins]]
 repo = 'tpope/vim-surround'
 
 [[plugins]]
@@ -80,3 +84,8 @@ hook_add = '''
 [[plugins]]
 repo = 'sjl/badwolf'
 
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
