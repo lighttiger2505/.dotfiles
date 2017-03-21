@@ -46,8 +46,6 @@ if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
         \ fnamemodify(s:dein_dir, ':p') , '/$', '', '')
 endif
 
-" Enable syntax color.
-syntax enable
 
 call s:source_rc('dein.rc.vim')
 
@@ -69,4 +67,8 @@ augroup MyAutocmd
     autocmd BufNewFile,BufRead *.h     set tabstop=4 shiftwidth=4
     autocmd BufRead,BufNewFile *.scss set filetype=scss
 augroup END
+
+" Enable syntax color.
+syntax enable
+colorscheme badwolf
 
