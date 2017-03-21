@@ -1,11 +1,3 @@
-
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-depends = ['badwolf']
-hook_post_source = '''
-    IndentGuidesEnable
-'''
-
 [[plugins]]
 repo = 'Shougo/vimshell'
 
