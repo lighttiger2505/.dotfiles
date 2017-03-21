@@ -11,8 +11,8 @@ set nowritebackup
 set nobackup
 set noswapfile
 
-:set modifiable
-:set write
+set modifiable
+set write
 
 " Show column number
 set number
@@ -27,7 +27,7 @@ set colorcolumn=120
 
 " Invisible stirng
 set list
-set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$
+set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$,trail:~
 
 " Colors
 set t_Co=256
