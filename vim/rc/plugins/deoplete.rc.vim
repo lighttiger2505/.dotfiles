@@ -51,4 +51,5 @@ let g:deoplete#omni#functions = {}
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#skip_chars = ['(', ')']
 
-
+" Hidden autocomplete preview
+set completeopt-=preview
