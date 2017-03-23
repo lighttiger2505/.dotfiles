@@ -10,15 +10,13 @@ scriptencoding utf-8
 set nowritebackup
 set nobackup
 set noswapfile
+set noundofile
 
-set modifiable
-set write
+" set modifiable
+" set write
 
 " Show column number
-set number
-
-" Show cousor line
-set cursorline
+" set number
 
 " Long text
 set wrap
