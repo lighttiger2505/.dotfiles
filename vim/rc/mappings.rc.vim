@@ -13,10 +13,6 @@ nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
 
 " Reload .vimrc
 nnoremap <Space>rv :source $HOME/.vimrc<CR>
-
-" Foldclose marker
-nnoremap <Space>fc :<C-u>%foldclose<CR>
-
 " Multi line move
 noremap k gk
 noremap j gj
@@ -33,12 +29,6 @@ noremap L $
 
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>cd %:h<CR>
-
-" Format keybind
-nnoremap <Space>fm gg=G
-
-" Browser reload(firefox)
-nnoremap <silent> <C-e> :w<Bar>VimProcBang /usr/local/bin/autoreload.sh<CR>
 
 " Change tab width
 nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
