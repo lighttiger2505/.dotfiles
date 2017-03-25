@@ -6,6 +6,7 @@ nnoremap m <Nop>
 xnoremap m <Nop>
 nnoremap , <Nop>
 xnoremap , <Nop>
+nnoremap q <Nop>
 
 " Editing .vimrc
 nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
