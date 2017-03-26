@@ -89,4 +89,5 @@ nnoremap g# g#zz
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 
-
+" Not yank is delete operation
+nnoremap qp "0p
