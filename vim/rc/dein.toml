@@ -12,6 +12,7 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
+on_event = 'InsertEnter'
 hook_add = '''
     let g:deoplete#enable_at_startup = 1
     source ~/.vim/rc/plugins/deoplete.rc.vim
@@ -25,7 +26,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-depends = ['neomru', 'neoyank']
+depends = ['neomru']
 hook_add = '''
     source ~/.vim/rc/plugins/denite.rc.vim
 '''
@@ -55,16 +56,7 @@ hook_add = '''
 repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
-repo = 'Shougo/vimfiler'
-hook_add = '''
-  source ~/.vim/rc/plugins/vimfiler.rc.vim
-'''
-
-[[plugins]]
 repo = 'Shougo/neomru.vim'
-
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -82,10 +74,19 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+  source ~/.vim/rc/plugins/vimquickrun.rc.vim
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+hook_add = '''
+  source ~/.vim/rc/plugins/openbrowser.rc.vim
+'''
+
+[[plugins]]
 repo = 'sjl/badwolf'
 
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
-
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
