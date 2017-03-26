@@ -12,6 +12,7 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
+if = "has('nvim')"
 on_event = 'InsertEnter'
 hook_add = '''
     let g:deoplete#enable_at_startup = 1
@@ -21,7 +22,7 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/unite.vim'
 hook_add = '''
-  source ~/.vim/rc/plugins/unite.rc.vim
+    source ~/.vim/rc/plugins/unite.rc.vim
 '''
 
 [[plugins]]
@@ -39,7 +40,7 @@ build = 'make'
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
 hook_add = '''
-  source ~/.vim/rc/plugins/neosnippet.rc.vim
+    source ~/.vim/rc/plugins/neosnippet.rc.vim
 '''
 
 [[plugins]]
@@ -64,13 +65,22 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'tyru/caw.vim'
 hook_add = '''
-  source ~/.vim/rc/plugins/caw.rc.vim
+    source ~/.vim/rc/plugins/caw.rc.vim
+'''
+
+[[plugins]]
+repo = 'neomake/neomake'
+if = "has('nvim')"
+hook_add = '''
+    autocmd! BufEnter,BufWritePost * Neomake
+    let g:neomake_python_enabled_makers = ['python', 'flake8']
 '''
 
 [[plugins]]
 repo = 'vim-syntastic/syntastic'
+if = "!has('nvim')"
 hook_add = '''
-  source ~/.vim/rc/plugins/syntastic.rc.vim
+    source ~/.vim/rc/plugins/syntastic.rc.vim
 '''
 
 [[plugins]]
@@ -82,7 +92,7 @@ hook_add = '''
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 hook_add = '''
-  source ~/.vim/rc/plugins/openbrowser.rc.vim
+    source ~/.vim/rc/plugins/openbrowser.rc.vim
 '''
 
 [[plugins]]
