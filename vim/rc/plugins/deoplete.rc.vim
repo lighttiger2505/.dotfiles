@@ -55,4 +55,5 @@ let g:deoplete#skip_chars = ['(', ')']
 set completeopt-=preview
 
 " Autocmplete rank for order
+call deoplete#custom#set('jedi', 'rank', 1000)
 call deoplete#custom#set('buffer', 'rank', 9999)

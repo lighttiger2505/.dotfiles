@@ -12,6 +12,8 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
+if = "has('nvim')"
+on_event = 'InsertEnter'
 hook_add = '''
     let g:deoplete#enable_at_startup = 1
     source ~/.vim/rc/plugins/deoplete.rc.vim
@@ -20,12 +22,12 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/unite.vim'
 hook_add = '''
-  source ~/.vim/rc/plugins/unite.rc.vim
+    source ~/.vim/rc/plugins/unite.rc.vim
 '''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-depends = ['neomru', 'neoyank']
+depends = ['neomru']
 hook_add = '''
     source ~/.vim/rc/plugins/denite.rc.vim
 '''
@@ -38,7 +40,7 @@ build = 'make'
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
 hook_add = '''
-  source ~/.vim/rc/plugins/neosnippet.rc.vim
+    source ~/.vim/rc/plugins/neosnippet.rc.vim
 '''
 
 [[plugins]]
@@ -54,17 +56,8 @@ hook_add = '''
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
 
-# [[plugins]]
-# repo = 'Shougo/vimfiler'
-# hook_add = '''
-#   source ~/.vim/rc/plugins/vimfiler.rc.vim
-# '''
-
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -72,16 +65,26 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'tyru/caw.vim'
 hook_add = '''
-  source ~/.vim/rc/plugins/caw.rc.vim
+    source ~/.vim/rc/plugins/caw.rc.vim
+'''
+
+[[plugins]]
+repo = 'neomake/neomake'
+if = "has('nvim')"
+hook_add = '''
+    autocmd! BufEnter,BufWritePost * Neomake
+    let g:neomake_python_enabled_makers = ['python', 'flake8']
 '''
 
 [[plugins]]
 repo = 'vim-syntastic/syntastic'
+if = "!has('nvim')"
 hook_add = '''
-  source ~/.vim/rc/plugins/syntastic.rc.vim
+    source ~/.vim/rc/plugins/syntastic.rc.vim
 '''
 
 [[plugins]]
+<<<<<<< HEAD
 repo = 'scrooloose/nerdtree'
 hook_add = '''
     nnoremap <Space>ff :<C-u>NERDTreeToggle<CR>
@@ -89,13 +92,29 @@ hook_add = '''
 
 [[plugins]]
 repo = 'sjl/badwolf'
+=======
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+  source ~/.vim/rc/plugins/vimquickrun.rc.vim
+'''
+>>>>>>> origin/develop
 
 [[plugins]]
-repo = 'nanotech/jellybeans.vim'
+repo = 'tyru/open-browser.vim'
+hook_add = '''
+    source ~/.vim/rc/plugins/openbrowser.rc.vim
+'''
 
 [[plugins]]
+<<<<<<< HEAD
 repo = 'w0ng/vim-hybrid'
 hook_add = '''
     set background=dark
 '''
 
+=======
+repo = 'sjl/badwolf'
+
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+>>>>>>> origin/develop

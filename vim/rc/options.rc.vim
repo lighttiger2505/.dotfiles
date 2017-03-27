@@ -16,7 +16,8 @@ set noundofile
 " set write
 
 " Show column number
-" set number
+set number
+set cursorline
 
 " Long text
 set wrap
