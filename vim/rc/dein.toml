@@ -54,11 +54,11 @@ hook_add = '''
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
 
-[[plugins]]
-repo = 'Shougo/vimfiler'
-hook_add = '''
-  source ~/.vim/rc/plugins/vimfiler.rc.vim
-'''
+# [[plugins]]
+# repo = 'Shougo/vimfiler'
+# hook_add = '''
+#   source ~/.vim/rc/plugins/vimfiler.rc.vim
+# '''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
@@ -82,10 +82,20 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+    nnoremap <Space>ff :<C-u>NERDTreeToggle<CR>
+'''
+
+[[plugins]]
 repo = 'sjl/badwolf'
 
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
+repo = 'w0ng/vim-hybrid'
+hook_add = '''
+    set background=dark
+'''
+
