@@ -1,14 +1,14 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-# [[plugins]]
-# repo = 'Shougo/neocomplete.vim'
-# if = "has('lua')"
-# on_event = 'InsertEnter'
-# hook_add = '''
-#   let g:neocomplete#enable_at_startup = 1
-#   source ~/.vim/rc/plugins/neocomplete.rc.vim
-# '''
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+if = "!has('nvim')"
+on_event = 'InsertEnter'
+hook_add = '''
+  let g:neocomplete#enable_at_startup = 1
+  source ~/.vim/rc/plugins/neocomplete.rc.vim
+'''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -84,20 +84,17 @@ hook_add = '''
 '''
 
 [[plugins]]
-<<<<<<< HEAD
 repo = 'scrooloose/nerdtree'
 hook_add = '''
     nnoremap <Space>ff :<C-u>NERDTreeToggle<CR>
+    let NERDTreeIgnore = ['\.pyc$']
 '''
 
 [[plugins]]
-repo = 'sjl/badwolf'
-=======
 repo = 'thinca/vim-quickrun'
 hook_add = '''
   source ~/.vim/rc/plugins/vimquickrun.rc.vim
 '''
->>>>>>> origin/develop
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
@@ -106,15 +103,13 @@ hook_add = '''
 '''
 
 [[plugins]]
-<<<<<<< HEAD
 repo = 'w0ng/vim-hybrid'
 hook_add = '''
     set background=dark
 '''
 
-=======
+[[plugins]]
 repo = 'sjl/badwolf'
 
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
->>>>>>> origin/develop

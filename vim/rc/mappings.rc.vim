@@ -56,7 +56,7 @@ nmap <Space> [window]
 
 " Split window
 nnoremap <silent> [window]s :split<CR>
-nnoremap <silent> [window]v :vsplit<CR>
+nnoremap <silent> [window]i :vsplit<CR>
 " Move window
 noremap [window]h <C-w>h 
 noremap [window]l <C-w>l
