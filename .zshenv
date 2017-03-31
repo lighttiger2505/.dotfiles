@@ -1,11 +1,16 @@
 
 # LANG
+export LANGUAGE=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
+export LC_CTYPE=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 
 #####################################################################
 # export
 #####################################################################
 
+# zplug
+export ZPLUG_HOME=$HOME/.zplug
 # golang
 export GOPATH=$HOME/go
 # pyenv
@@ -41,6 +46,10 @@ $HOME/.rvm/bin(N-/)
 $GOPATH/bin(N-/)
 ## Python
 /usr/sbin(N-/)
+## zplug
+$ZPLUG_HOME/bin(N-/)
+## Neovim
+$HOME/neovim/bin(N-/)
 )
 
 # Sudo path
