@@ -23,24 +23,25 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 
 typeset -U path
 path=(
-## pyenv
-$PYENV_PATH/shims(N-/)
-## System
+# bin
 /usr/local/bin(N-/)
-/bin(N-/)
 /usr/bin(N-/)
-/usr/games(N-/)
-~/bin(N-/)
-## Java
-JAVA_HOME/bin(N-/)
-## Cabal
-$HOME/.cabal/bin(N-/)
-## rvm(ruby version control)
-$HOME/.rvm/bin(N-/)
-## go lang
-$GOPATH/bin(N-/)
-## Python
+/bin(N-/)
+# sbin
+/usr/local/sbin(N-/)
 /usr/sbin(N-/)
+/sbin(N-/)
+# Java
+$JAVA_HOME/bin(N-/)
+# Cabal
+$HOME/.cabal/bin(N-/)
+# rvm(ruby version control)
+$HOME/.rvm/bin(N-/)
+# Go lang
+$GOPATH/bin(N-/)
+# pyenv
+$PYENV_PATH/bin(N-/)
+$PYENV_PATH/shims(N-/)
 )
 
 # Sudo path
@@ -64,10 +65,8 @@ fi
 # alias
 #####################################################################
 
-alias ls="ls -GF"
-# alias gls="gls --color"
-# alias lsa="ls -al"
-# alias lsr="ls -ltr"
+# ls
+alias ll="ls -al"
 
 # git status
 alias gs="git status"

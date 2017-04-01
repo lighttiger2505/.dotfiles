@@ -206,7 +206,7 @@ bindkey "^N" history-beginning-search-forward-end
 #####################################################################
 
 # zplug settings
-source /usr/local/Cellar/zplug/2.4.1/init.zsh
+source $HOME/.zplug/init.zsh
 
 # set install plugins
 zplug "zsh-users/zsh-history-substring-search", defer:3
