@@ -1,11 +1,9 @@
 
-# PATH
-## Java
-export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-i386
-
 # Color support
 if [ "$TERM" = "xterm" ]
 then
     export TERM="xterm-256color"
 fi
 
+# ls color
+alias ls='ls --color=auto'
