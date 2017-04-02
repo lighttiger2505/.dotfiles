@@ -18,6 +18,10 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
+if dein#check_install(['vimproc.vim'])
+  call dein#install(['vimproc.vim'])
+endif
+
 if !has('vim_starting') && dein#check_install()
   " Installation check.
   call dein#install()

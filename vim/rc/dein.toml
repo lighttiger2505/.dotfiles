@@ -2,24 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
-if = "!has('nvim')"
-on_event = 'InsertEnter'
-hook_add = '''
-  let g:neocomplete#enable_at_startup = 1
-  source ~/.vim/rc/plugins/neocomplete.rc.vim
-'''
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-if = "has('nvim')"
-on_event = 'InsertEnter'
-hook_add = '''
-    let g:deoplete#enable_at_startup = 1
-    source ~/.vim/rc/plugins/deoplete.rc.vim
-'''
-
-[[plugins]]
 repo = 'Shougo/unite.vim'
 hook_add = '''
     source ~/.vim/rc/plugins/unite.rc.vim
@@ -33,8 +15,19 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/vimproc'
-build = 'make' 
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if dein#util#_is_windows()
+    let cmd = 'tools\\update-dll-mingw'
+  elseif dein#util#_is_cygwin()
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -92,6 +85,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
+depends = ['vimproc.vim']
 hook_add = '''
   source ~/.vim/rc/plugins/vimquickrun.rc.vim
 '''

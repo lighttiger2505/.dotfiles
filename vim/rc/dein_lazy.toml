@@ -1,3 +1,22 @@
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+if = "!has('nvim')"
+on_i = 1
+hook_source = '''
+    let g:neocomplete#enable_at_startup = 1
+    source ~/.vim/rc/plugins/neocomplete.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = "has('nvim')"
+on_i = 1
+hook_source = '''
+    let g:deoplete#enable_at_startup = 1
+    source ~/.vim/rc/plugins/deoplete.rc.vim
+'''
+
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
@@ -19,6 +38,7 @@ on_ft = ['toml']
 
 [[plugins]]
 repo = 'zchee/deoplete-jedi'
+depends = ['deoplete.nvim']
 on_ft = ['python', "python3", "djangohtml"]
 
 [[plugins]]
