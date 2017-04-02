@@ -1,0 +1,2 @@
+bind-key -t vi-copy y copy-pipe 'xsel -bi'
+bind-key -t vi-copy Enter copy-pipe 'xsel -bi'
