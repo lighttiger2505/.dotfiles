@@ -7,10 +7,10 @@
 # load zshrc for os type
 case ${OSTYPE} in
     darwin*)
-        [[ -f ~/.zshrc.osx ]] && source ~/.zshrc.osx
+        [[ -f ~/.zshrc.osx ]] && source ~/.dotfiles/.zshrc.osx
         ;;
     linux-gnu*)
-        [[ -f ~/.zshrc.linux ]] && source ~/.zshrc.linux
+        [[ -f ~/.zshrc.linux ]] && source ~/.dotfiles/.zshrc.linux
         ;;
 esac
 
