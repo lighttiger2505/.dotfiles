@@ -91,3 +91,7 @@ cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 
 " Not yank is delete operation
 nnoremap qp "0p
+
+" Move quickfix
+nnoremap <C-[> :cp<CR>
+nnoremap <C-]> :cn<CR>
