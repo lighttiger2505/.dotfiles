@@ -223,6 +223,7 @@ zplug "junegunn/fzf-bin", \
     from:gh-r, \
     rename-to:"fzf", \
     frozen:1
+zplug "b4b4r07/zsh-gomi", if:"which fzf"
 
 # set enhancd filters
 ENHANCD_FILTER=fzf:peco
