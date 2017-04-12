@@ -2,12 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-hook_add = '''
-    source ~/.vim/rc/plugins/unite.rc.vim
-'''
-
-[[plugins]]
 repo = 'Shougo/denite.nvim'
 depends = ['neomru']
 hook_add = '''
@@ -59,13 +53,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'vim-syntastic/syntastic'
-if = "!has('nvim')"
-hook_add = '''
-    source ~/.vim/rc/plugins/syntastic.rc.vim
-'''
-
-[[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
     nnoremap <Space>ff :<C-u>NERDTreeToggle<CR>
@@ -73,11 +60,18 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'nixprime/cpsm'
+build = 'env PY3=ON ./install.sh'
+
+[[plugins]]
 repo = 'thinca/vim-quickrun'
 depends = ['vimproc.vim']
 hook_add = '''
   source ~/.vim/rc/plugins/vimquickrun.rc.vim
 '''
+
+[[plugins]]
+repo = szw/vim-tags
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
