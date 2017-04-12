@@ -39,17 +39,12 @@ on_ft = ['toml']
 [[plugins]]
 repo = 'zchee/deoplete-jedi'
 depends = ['deoplete.nvim']
-on_ft = ['python', "python3", "djangohtml"]
-
-# [[plugins]]
-# repo = 'davidhalter/jedi-vim'
-# on_ft = ['python', "python3", "djangohtml"]
+on_ft = ['python', "python3"]
 # hook_source = '''
-#     let g:jedi#completions_enabled = 0
-#     let g:jedi#auto_vim_configuration = 0
-#     let g:jedi#smart_auto_mappings = 1
-#     let g:jedi#show_call_signatures = 0
-#     let g:jedi#rename_command = '<Leader>R'
+#     let g:deoplete#enable_profile = 1
+#     let g:deoplete#sources#jedi#debug_server = 1
+#     call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
+#     call deoplete#custom#set('jedi', 'debug_enabled', 1)
 # '''
 
 [[plugins]]
@@ -58,11 +53,8 @@ on_ft = ['python', "python3", "djangohtml"]
 
 [[plugins]]
 repo = 'lambdalisue/vim-pyenv'
-on_ft = ['python', "python3", "djangohtml"]
+on_ft = ['python', "python3"]
 
 [[plugins]]
 repo = 'jmcantrell/vim-virtualenv'
-on_ft = ['python', "python3", "djangohtml"]
-hook_source = '''
-    let g:virtualenv_directory = '~/.virtualenvs'
-'''
+on_ft = ['python', "python3"]
