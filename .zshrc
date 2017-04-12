@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/local/bin/zsh
 
 #####################################################################
 # init
@@ -212,8 +212,11 @@ source $HOME/.zplug/init.zsh
 zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "b4b4r07/enhancd", use:init.sh
+zplug "b4b4r07/zsh-gomi", if:"which fzf"
 zplug "mollifier/cd-gitroot"
 zplug "zsh-users/zsh-completions"
+zplug "Tarrasch/zsh-autoenv"
+
 zplug "peco/peco", \
     as:command, \
     from:gh-r, \
@@ -223,7 +226,6 @@ zplug "junegunn/fzf-bin", \
     from:gh-r, \
     rename-to:"fzf", \
     frozen:1
-zplug "b4b4r07/zsh-gomi", if:"which fzf"
 
 # set enhancd filters
 ENHANCD_FILTER=fzf:peco
