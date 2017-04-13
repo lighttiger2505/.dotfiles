@@ -68,7 +68,7 @@ hook_add = '''
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
-    nnoremap <Space>ff :<C-u>NERDTreeToggle<CR>
+    nnoremap <Space>f :<C-u>NERDTreeToggle<CR>
     let NERDTreeIgnore = ['\.pyc$']
 '''
 
