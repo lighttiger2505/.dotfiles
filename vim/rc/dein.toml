@@ -1,4 +1,16 @@
 [[plugins]]
+repo = 'w0ng/vim-hybrid'
+hook_add = '''
+    set background=dark
+'''
+
+[[plugins]]
+repo = 'sjl/badwolf'
+
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
@@ -71,7 +83,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = szw/vim-tags
+repo = 'szw/vim-tags'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
@@ -79,14 +91,3 @@ hook_add = '''
     source ~/.vim/rc/plugins/openbrowser.rc.vim
 '''
 
-[[plugins]]
-repo = 'w0ng/vim-hybrid'
-hook_add = '''
-    set background=dark
-'''
-
-[[plugins]]
-repo = 'sjl/badwolf'
-
-[[plugins]]
-repo = 'nanotech/jellybeans.vim'
