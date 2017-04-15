@@ -54,15 +54,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'neomake/neomake'
-if = "has('nvim')"
-depends = ['vimproc.vim']
-hook_add = '''
-    autocmd! BufEnter,BufWritePost * Neomake
-    let g:neomake_python_enabled_makers = ['python', 'flake8']
-'''
-
-[[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
     nnoremap <Space>f :<C-u>NERDTreeToggle<CR>
@@ -72,13 +63,6 @@ hook_add = '''
 [[plugins]]
 repo = 'nixprime/cpsm'
 build = 'env PY3=ON ./install.sh'
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-depends = ['vimproc.vim']
-hook_add = '''
-  source ~/.vim/rc/plugins/vimquickrun.rc.vim
-'''
 
 [[plugins]]
 repo = 'szw/vim-tags'

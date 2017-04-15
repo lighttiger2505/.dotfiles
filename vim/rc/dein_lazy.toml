@@ -39,22 +39,35 @@ on_ft = ['toml']
 [[plugins]]
 repo = 'zchee/deoplete-jedi'
 depends = ['deoplete.nvim']
-on_ft = ['python', "python3"]
-# hook_source = '''
-#     let g:deoplete#enable_profile = 1
-#     let g:deoplete#sources#jedi#debug_server = 1
-#     call deoplete#enable_logging('DEBUG', '/tmp/deoplete.log')
-#     call deoplete#custom#set('jedi', 'debug_enabled', 1)
-# '''
+on_ft = ['python']
 
 [[plugins]]
 repo = 'lambdalisue/vim-django-support'
-on_ft = ['python', "python3", "djangohtml"]
+on_ft = ['python', "djangohtml"]
 
 [[plugins]]
 repo = 'lambdalisue/vim-pyenv'
-on_ft = ['python', "python3"]
+on_ft = ['python']
 
 [[plugins]]
 repo = 'jmcantrell/vim-virtualenv'
-on_ft = ['python', "python3"]
+on_ft = ['python']
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+depends = ['vimproc.vim']
+on_ft = ['python']
+hook_source = '''
+  source ~/.vim/rc/plugins/vimquickrun.rc.vim
+'''
+
+[[plugins]]
+repo = 'neomake/neomake'
+if = "has('nvim')"
+depends = ['vimproc.vim']
+on_ft = ['python']
+hook_source = '''
+    autocmd! BufEnter,BufWritePost * Neomake
+    let g:neomake_python_enabled_makers = ['python', 'flake8']
+'''
+
