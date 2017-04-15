@@ -3,6 +3,9 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
+hook_add = '''
+    set background=dark
+'''
 
 [[plugins]]
 repo = 'sjl/badwolf'
@@ -69,6 +72,15 @@ repo = 'szw/vim-tags'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+hook_add = '''
+    nnoremap [figitive] <Nop>
+    nmap <Leader>g [figitive]
+
+    nnoremap <silent> [figitive]a :<C-u>Git add -p<CR>
+    nnoremap <silent> [figitive]s :<C-u>Gstatus<CR>
+    nnoremap <silent> [figitive]d :<C-u>Gdiff<CR>
+    nnoremap <silent> [figitive]b :<C-u>Gblame<CR>
+'''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
