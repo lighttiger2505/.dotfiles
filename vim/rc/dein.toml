@@ -11,7 +11,13 @@ hook_add = '''
 repo = 'sjl/badwolf'
 
 [[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
 repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repo = 'michalbachowski/vim-wombat256mod'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'

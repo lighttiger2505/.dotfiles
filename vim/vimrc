@@ -70,5 +70,5 @@ augroup END
 
 " Enable syntax color.
 syntax enable
-colorscheme badwolf
+colorscheme wombat256mod
 
