@@ -90,6 +90,10 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+depends = ['vim-fugitive']
+
+[[plugins]]
 repo = 'tyru/open-browser.vim'
 hook_add = '''
     source ~/.vim/rc/plugins/openbrowser.rc.vim
