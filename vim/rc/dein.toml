@@ -99,3 +99,6 @@ hook_add = '''
     source ~/.vim/rc/plugins/openbrowser.rc.vim
 '''
 
+[[plugins]]
+repo = 'mattn/benchvimrc-vim'
+
