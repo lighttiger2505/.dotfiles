@@ -83,6 +83,7 @@ hook_add = '''
     nmap <Leader>g [figitive]
 
     nnoremap <silent> [figitive]a :<C-u>Git add -p<CR>
+    nnoremap <silent> [figitive]c :<C-u>Git commit -m<Space>
     nnoremap <silent> [figitive]s :<C-u>Gstatus<CR>
     nnoremap <silent> [figitive]d :<C-u>Gdiff<CR>
     nnoremap <silent> [figitive]b :<C-u>Gblame<CR>
