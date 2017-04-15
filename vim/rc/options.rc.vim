@@ -18,6 +18,7 @@ set noundofile
 " Show column number
 set number
 set cursorline
+hi CursorLine term=bold ctermfg=Cyan guifg=#80a0ff gui=bold
 
 " Long text
 set wrap
@@ -31,7 +32,6 @@ set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$,trail:~
 " Colors
 set t_Co=256
 set background=dark
-colorscheme badwolf
 
 " Round indent to multipul of shiftwidth
 set shiftround
