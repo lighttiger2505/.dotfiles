@@ -68,6 +68,9 @@ build = 'env PY3=ON ./install.sh'
 repo = 'szw/vim-tags'
 
 [[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
 repo = 'tyru/open-browser.vim'
 hook_add = '''
     source ~/.vim/rc/plugins/openbrowser.rc.vim
