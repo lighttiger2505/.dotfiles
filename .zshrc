@@ -201,6 +201,10 @@ bindkey "^N" history-beginning-search-forward-end
 #####################################################################
 # plugin manager
 #####################################################################
+#
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+  zcompile ~/.zshrc
+fi
 
 # zplug settings
 source $HOME/.zplug/init.zsh
@@ -209,10 +213,7 @@ source $HOME/.zplug/init.zsh
 zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "b4b4r07/enhancd", use:init.sh
-zplug "b4b4r07/zsh-gomi", if:"which fzf"
-zplug "mollifier/cd-gitroot"
 zplug "zsh-users/zsh-completions"
-zplug "Tarrasch/zsh-autoenv"
 
 zplug "peco/peco", \
     as:command, \
@@ -229,7 +230,7 @@ ENHANCD_FILTER=fzf:peco
 export ENHANCD_FILTER
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
+if ! zplug check; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
@@ -237,4 +238,8 @@ if ! zplug check --verbose; then
 fi
 
 # load zsh plugins
-zplug load --verbose
+zplug load
+
+if (which zprof > /dev/null) ;then
+  zprof | less
+fi

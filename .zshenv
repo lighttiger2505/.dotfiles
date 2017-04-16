@@ -1,3 +1,4 @@
+# zmodload zsh/zprof && zprof
 
 # LANG
 export LANGUAGE=en_US.UTF-8
@@ -99,16 +100,6 @@ alias vim=nvim
 
 # zsh
 alias sourcez="source ~/.zshrc"
-
-# autoenv
-function write_autoenv() {
-    echo 'source venv/bin/activate' > .autoenv.zsh
-    echo 'deactivate' > .autoenv_leave.zsh
-}
-alias autoenv=write_autoenv
-
-# cd-gitroot
-alias cdr="cd-gitroot"
 
 # zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*' list-colors $LSCOLORS
