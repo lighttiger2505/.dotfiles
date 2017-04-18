@@ -55,10 +55,27 @@ on_ft = ['python']
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
-depends = ['vimproc.vim']
+depends = ['vimproc.vim', 'shabadou.vim']
 on_ft = ['python']
 hook_source = '''
   source ~/.vim/rc/plugins/vimquickrun.rc.vim
+'''
+
+[[plugins]]
+repo = 'osyo-manga/shabadou.vim'
+hook_source = '''
+call quickrun#module#register(shabadou#make_quickrun_hook_anim(
+    \ "v_cannon",
+    \ [
+        \ 'ベクターキャノンモードヘ移行',
+        \ 'エネルギーライン、全段直結',
+        \ 'ランディングギア、アイゼン、ロック',
+        \ 'チャンバー内、正常加圧中',
+        \ 'ライフリング回転開始',
+        \ '撃てます',
+    \ ],
+    \ 5,
+    \), 1)
 '''
 
 [[plugins]]
