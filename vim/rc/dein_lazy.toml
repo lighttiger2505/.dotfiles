@@ -82,7 +82,7 @@ call quickrun#module#register(shabadou#make_quickrun_hook_anim(
 repo = 'neomake/neomake'
 if = "has('nvim')"
 depends = ['vimproc.vim']
-# on_ft = ['python']
+on_ft = ['python']
 hook_source = '''
     autocmd! BufEnter,BufWritePost * Neomake
     let g:neomake_python_enabled_makers = ['python', 'flake8']
