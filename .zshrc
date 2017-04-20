@@ -243,3 +243,11 @@ zplug load
 if (which zprof > /dev/null) ;then
   zprof | less
 fi
+
+#####################################################################
+# Init pyenv
+#####################################################################
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
