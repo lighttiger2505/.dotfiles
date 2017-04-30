@@ -10,7 +10,8 @@ augroup MyAutocmd
     autocmd BufNewFile,BufRead *.c     set tabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.cpp   set tabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.h     set tabstop=4 shiftwidth=4
-    autocmd BufRead,BufNewFile *.scss set filetype=scss
+    autocmd BufNewFile,BufRead *.go    set tabstop=4 shiftwidth=4
+    autocmd BufRead,BufNewFile *.scss  set filetype=scss
 augroup END
 
 " Python error format
