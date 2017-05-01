@@ -69,9 +69,9 @@ hook_add = '''
     let NERDTreeIgnore = ['\.pyc$']
 '''
 
-[[plugins]]
-repo = 'nixprime/cpsm'
-build = 'env PY3=ON ./install.sh'
+# [[plugins]]
+# repo = 'nixprime/cpsm'
+# build = 'env PY3=ON ./install.sh'
 
 [[plugins]]
 repo = 'szw/vim-tags'

@@ -29,10 +29,10 @@ call denite#custom#source(
 \ 'file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 
 " Matcher use cpsm
-if has('python3')
-    call denite#custom#source(
-    \ 'file_rec', 'matchers', ['matcher_cpsm'])
-endif
+" if has('python3')
+"     call denite#custom#source(
+"     \ 'file_rec', 'matchers', ['matcher_cpsm'])
+" endif
 
 " pt command on grep source
 if executable('pt')
