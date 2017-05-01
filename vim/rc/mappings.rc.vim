@@ -47,8 +47,8 @@ endfor
 " Add new tab 
 nnoremap <silent> [tab]n :<C-u>tablast <bar> tabnew<CR>
 " Move tab
-nnoremap <silent> [tab]l :<C-u>tabnext<CR>
-nnoremap <silent> [tab]h :<C-u>tabprevious<CR>
+nnoremap <silent> [tab]n :<C-u>tabnext<CR>
+nnoremap <silent> [tab]p :<C-u>tabprevious<CR>
 
 " The prefix key of window.
 nnoremap [window] <Nop>
