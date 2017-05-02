@@ -67,6 +67,11 @@ noremap [window]H <C-w>H
 noremap [window]L <C-w>L
 noremap [window]J <C-w>J
 noremap [window]K <C-w>K
+" Resize window
+noremap [window]> 10<C-w>>
+noremap [window]< 10<C-w><
+noremap [window]+ 10<C-w>+
+noremap [window]- 10<C-w>-
 
 " Search yank string
 nnoremap <Space>sy /<C-r>"<CR>
