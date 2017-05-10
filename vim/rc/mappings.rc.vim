@@ -45,7 +45,7 @@ for n in range(1, 9)
 endfor
 
 " Add new tab 
-nnoremap <silent> [tab]n :<C-u>tablast <bar> tabnew<CR>
+nnoremap <silent> [tab]c :<C-u>tablast <bar> tabnew<CR>
 " Move tab
 nnoremap <silent> [tab]n :<C-u>tabnext<CR>
 nnoremap <silent> [tab]p :<C-u>tabprevious<CR>
@@ -93,6 +93,10 @@ nnoremap g# g#zz
 " Auto Escape
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
+
+" Indent keybind for shutcut
+nnoremap <silent>> >>
+nnoremap <silent>< <<
 
 " Not yank is delete operation
 nnoremap qp "0p
