@@ -72,6 +72,7 @@ noremap [window]> 10<C-w>>
 noremap [window]< 10<C-w><
 noremap [window]+ 10<C-w>+
 noremap [window]- 10<C-w>-
+noremap [window]= <C-w>=
 
 " Search yank string
 nnoremap <Space>sy /<C-r>"<CR>
