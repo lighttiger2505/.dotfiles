@@ -15,4 +15,4 @@ augroup MyAutocmd
 augroup END
 
 " Python error format
-let &l:errorformat = '%A  File "%f"\, line %l\,%m'
+" let &l:errorformat = '%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m'
