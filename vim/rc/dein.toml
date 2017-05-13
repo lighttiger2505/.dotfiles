@@ -137,3 +137,9 @@ hook_add = '''
 
 [[plugins]]
 repo = 'xolox/vim-misc'
+
+[[plugins]]
+repo = 'lambdalisue/vim-gista'
+hook_add = '''
+    let g:gista#client#default_username = 'lighttiger2505'
+'''
