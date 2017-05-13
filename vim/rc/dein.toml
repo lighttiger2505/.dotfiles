@@ -73,14 +73,14 @@ hook_add = '''
 # repo = 'nixprime/cpsm'
 # build = 'env PY3=ON ./install.sh'
 
-[[plugins]]
-repo = 'szw/vim-tags'
+# [[plugins]]
+# repo = 'szw/vim-tags'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
     nnoremap [figitive] <Nop>
-    nmap <Leader>g [figitive]
+    nnoremap <Leader>g [figitive]
     nnoremap <silent> [figitive]s :<C-u>Gstatus<CR>
     nnoremap <silent> [figitive]d :<C-u>Gdiff<CR>
     nnoremap <silent> [figitive]b :<C-u>Gblame<CR>
@@ -105,26 +105,35 @@ repo = 'mattn/benchvimrc-vim'
 [[plugins]]
 repo = 'skywind3000/asyncrun.vim'
 hook_add = '''
-nnoremap <Leader>ar :call <SID>compile_and_run()<CR>
+    nnoremap <Leader>ar :call <SID>compile_and_run()<CR>
 
-" Automatically open the quickfix window
-augroup SPACEVIM_ASYNCRUN
-    autocmd!
-    autocmd User AsyncRunStart call asyncrun#quickfix_toggle(15, 1)
-augroup END
+    " Automatically open the quickfix window
+    augroup SPACEVIM_ASYNCRUN
+        autocmd!
+        autocmd User AsyncRunStart call asyncrun#quickfix_toggle(15, 1)
+    augroup END
 
-function! s:compile_and_run()
-    exec 'w'
-    if &filetype == 'c'
-        exec "AsyncRun! gcc % -o %<; time ./%<"
-    elseif &filetype == 'cpp'
-       exec "AsyncRun! g++ -std=c++11 % -o %<; time ./%<"
-    elseif &filetype == 'java'
-       exec "AsyncRun! javac %; time java %<"
-    elseif &filetype == 'sh'
-       exec "AsyncRun! time bash %"
-    elseif &filetype == 'python'
-       exec "AsyncRun! time python %"
-    endif
-endfunction
+    function! s:compile_and_run()
+        exec 'w'
+        if &filetype == 'c'
+            exec "AsyncRun! gcc % -o %<; time ./%<"
+        elseif &filetype == 'cpp'
+        exec "AsyncRun! g++ -std=c++11 % -o %<; time ./%<"
+        elseif &filetype == 'java'
+        exec "AsyncRun! javac %; time java %<"
+        elseif &filetype == 'sh'
+        exec "AsyncRun! time bash %"
+        elseif &filetype == 'python'
+        exec "AsyncRun! time python %"
+        endif
+    endfunction
 '''
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+hook_add = '''
+    nnoremap <silent> <Leader>w :FixWhitespace<CR>
+'''
+
+[[plugins]]
+repo = 'xolox/vim-misc'
