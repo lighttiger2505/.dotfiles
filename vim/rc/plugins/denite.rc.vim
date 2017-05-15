@@ -16,6 +16,8 @@ nnoremap <silent> [denite]<C-]> :<C-u>DeniteCursorWord grep<CR>
 nnoremap <silent> [denite]<C-r> :<C-u>Denite file_mru<CR>
 " Outline
 nnoremap <silent> [denite]<C-o> :<C-u>Denite outline<CR>
+" Command history
+nnoremap <silent> [denite]<C-n> :<C-u>Denite command_history<CR>
 " Seach dotfiles
 nnoremap <silent> [denite]<C-v> :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}])<CR>
 

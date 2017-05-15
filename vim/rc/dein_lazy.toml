@@ -103,3 +103,16 @@ hook_source = '''
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = ['go']
+
+[[plugins]]
+repo = 'xolox/vim-easytags'
+on_ft = ['python']
+depends = ['vim-misc']
+hook_add = '''
+    let g:easytags_cmd = '/usr/local/bin/ctags'
+    let g:easytags_opts = ['']
+    let g:easytags_events = ['BufEnter','BufWritePost']
+    let g:easytags_always_enabled = 1
+    let g:easytags_auto_update = 0
+    let g:easytags_auto_highlight = 0
+'''
