@@ -2,6 +2,7 @@
 " File encoding
 if !exists ('g:encoding_set') || !has('nvim')
     set encoding=utf-8
+    set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
     let g:encoding_set=1
 endif
 scriptencoding utf-8
