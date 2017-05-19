@@ -42,6 +42,7 @@ call deoplete#custom#set('_', 'converters', [
 
 " Prams of deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
 let g:deoplete#keyword_patterns.tex = '[^\w|\s][a-zA-Z_]\w*'
