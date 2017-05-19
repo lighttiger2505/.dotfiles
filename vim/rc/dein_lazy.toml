@@ -45,9 +45,9 @@ on_ft = ['python']
 repo = 'lambdalisue/vim-django-support'
 on_ft = ['python', "djangohtml"]
 
-[[plugins]]
-repo = 'lambdalisue/vim-pyenv'
-on_ft = ['python']
+# [[plugins]]
+# repo = 'lambdalisue/vim-pyenv'
+# on_ft = ['python']
 
 [[plugins]]
 repo = 'jmcantrell/vim-virtualenv'
