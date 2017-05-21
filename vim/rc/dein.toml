@@ -152,3 +152,10 @@ repo = 'lambdalisue/vim-gista'
 hook_add = '''
     let g:gista#client#default_username = 'lighttiger2505'
 '''
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype']
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
