@@ -20,7 +20,16 @@ repo = 'nanotech/jellybeans.vim'
 repo = 'michalbachowski/vim-wombat256mod'
 
 [[plugins]]
+repo = 'Shougo/unite.vim'
+if = "!has('nvim')"
+depends = ['neomru']
+hook_add = '''
+    source ~/.vim/rc/plugins/unite.rc.vim
+'''
+
+[[plugins]]
 repo = 'Shougo/denite.nvim'
+if = "has('nvim')"
 depends = ['neomru']
 hook_add = '''
     source ~/.vim/rc/plugins/denite.rc.vim
