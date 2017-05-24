@@ -22,10 +22,13 @@ nnoremap <silent> [denite]<C-n> :<C-u>Denite command_history<CR>
 nnoremap <silent> [denite]<C-v> :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}])<CR>
 
 " Insert mode keymap in dein
-call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
-call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
-call denite#custom#map('insert', '<C-j>', '<denite:assign_next_text>')
-call denite#custom#map('insert', '<C-k>', '<denite:assign_previous_text>')
+call denite#custom#map('insert', '<C-N>', '<denite:move_to_next_line>')
+call denite#custom#map('insert', '<C-P>', '<denite:move_to_previous_line>')
+call denite#custom#map('insert', '<C-J>', '<denite:assign_next_text>')
+call denite#custom#map('insert', '<C-K>', '<denite:assign_previous_text>')
+call denite#custom#map('insert', '<C-S>', '<denite:do_action:split>')
+call denite#custom#map('insert', '<C-I>', '<denite:do_action:vsplit>')
+call denite#custom#map('insert', '<C-O>', '<denite:do_action:tabopen>')
 
 call denite#custom#source(
 \ 'file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
