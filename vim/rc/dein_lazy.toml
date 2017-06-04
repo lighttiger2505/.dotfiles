@@ -1,4 +1,3 @@
-
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 if = "!has('nvim')"
@@ -18,11 +17,68 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'Shougo/unite.vim'
+if = "!has('nvim')"
+on_cmd = 'Unite'
+depends = ['neomru.vim']
+hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
+hook_add = '''
+    " Prefix key
+    nnoremap [unite] <Nop>
+    nmap <Space>u [unite]
+
+    " Keymap
+    " Current direcotry files
+    nnoremap <silent> [unite]<C-p> :<C-u>Unite<Space>file_rec/async:!<CR>
+    " Buffer files
+    nnoremap <silent> [unite]<C-b> :<C-u>Unite buffer<CR>
+    " Grep files
+    nnoremap <silent> [unite]<C-g> :<C-u>Unite<Space>grep -buffer-name=search -auto-preview -no-quit -no-empty -resume<CR>
+    " Recent files
+    nnoremap <silent> [unite]<C-r> :<C-u>Unite file_mru buffer<CR>
+    " Yank history
+    nnoremap <silent> [unite]<C-y> :<C-u>Unite history/yank<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+if = "has('nvim')"
+on_cmd = 'Denite'
+depends = ['neomru.vim']
+hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
+hook_add = '''
+    " Prefix key
+    nnoremap [denite] <Nop>
+    nmap <C-j> [denite]
+
+    " Keymap
+    " Current direcotry files
+    nnoremap <silent> [denite]<C-p> :<C-u>Denite file_rec<CR>
+    " Buffer files
+    nnoremap <silent> [denite]<C-b> :<C-u>Denite buffer<CR>
+    " Grep files
+    nnoremap <silent> [denite]<C-g> :<C-u>Denite -auto_preview grep<CR>
+    " Grep cursor word
+    nnoremap <silent> [denite]<C-]> :<C-u>DeniteCursorWord grep<CR>
+    " Recent files
+    nnoremap <silent> [denite]<C-r> :<C-u>Denite file_mru<CR>
+    " Outline
+    nnoremap <silent> [denite]<C-o> :<C-u>Denite outline<CR>
+    " Command history
+    nnoremap <silent> [denite]<C-n> :<C-u>Denite command_history<CR>
+    " Seach dotfiles
+    nnoremap <silent> [denite]<C-v> :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}])<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'tpope/vim-markdown'
@@ -104,15 +160,3 @@ hook_source = '''
 repo = 'fatih/vim-go'
 on_ft = ['go']
 
-[[plugins]]
-repo = 'xolox/vim-easytags'
-on_ft = ['python']
-depends = ['vim-misc']
-hook_add = '''
-    let g:easytags_cmd = '/usr/local/bin/ctags'
-    let g:easytags_opts = ['']
-    let g:easytags_events = ['BufEnter','BufWritePost']
-    let g:easytags_always_enabled = 1
-    let g:easytags_auto_update = 0
-    let g:easytags_auto_highlight = 0
-'''
