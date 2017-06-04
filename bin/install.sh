@@ -1,16 +1,16 @@
 #!/bin/bash
 
-./common/install-common.sh
 if [ "$(uname)" == 'Darwin' ]; then
     # Mac
-    ./mac/install-brew.sh
+    ~/.dotfiles/bin/mac/install-brew.sh
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     # Linux
-    ./mac/install-apt.sh
+    ~/.dotfiles/bin/linux/install-apt.sh
 else
     echo "Your platform ($(uname -a)) is not supported."
     exit 1
 fi
 
-./common/install-python.sh
+~/.dotfiles/bin/common/install-common.sh
 
+~/.dotfiles/bin/common/install-python.sh

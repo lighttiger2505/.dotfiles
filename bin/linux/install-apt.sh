@@ -3,7 +3,7 @@
 #====================================================================
 # Add repo
 #====================================================================
-sudo add-apt-repository -y ppa:neovim-ppa/stable
+sudo add-apt-repository ppa:neovim-ppa/stable
 
 #====================================================================
 # Update
@@ -18,7 +18,7 @@ sudo apt-get upgrade -y
 sudo apt-get install -y zsh
 
 # commands
-sudo apt-get install curl
+sudo apt-get install -y curl
 
 # utils
 sudo apt-get install -y language-pack-ja
@@ -27,3 +27,6 @@ sudo apt-get install -y language-pack-ja
 sudo apt-get install -y software-properties-common
 sudo apt-get install -y python-software-properties
 sudo apt-get install -y neovim
+
+# silversearcher
+sudo apt-get install -y silversearcher-ag
