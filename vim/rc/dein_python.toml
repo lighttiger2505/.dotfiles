@@ -15,3 +15,6 @@ on_ft = ['python', 'djangohtml']
 repo = 'jmcantrell/vim-virtualenv'
 on_ft = ['python']
 
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+on_ft = ['python']
