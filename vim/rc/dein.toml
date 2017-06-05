@@ -143,3 +143,6 @@ repo = 'lambdalisue/vim-gista'
 hook_add = '''
     let g:gista#client#default_username = 'lighttiger2505'
 '''
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'

@@ -9,9 +9,9 @@ nnoremap <silent> [denite]<C-p> :<C-u>Denite file_rec<CR>
 " Buffer files
 nnoremap <silent> [denite]<C-b> :<C-u>Denite buffer<CR>
 " Grep files
-nnoremap <silent> [denite]<C-g> :<C-u>Denite -auto_preview grep<CR>
+nnoremap <silent> [denite]<C-s> :<C-u>Denite -auto_preview grep<CR>
 " Grep cursor word
-nnoremap <silent> [denite]<C-]> :<C-u>DeniteCursorWord grep<CR>
+nnoremap <silent> [denite]<C-g> :<C-u>DeniteCursorWord grep<CR>
 " Recent files
 nnoremap <silent> [denite]<C-r> :<C-u>Denite file_mru<CR>
 " Outline
