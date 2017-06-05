@@ -2,17 +2,25 @@
 =========
 lighttiger's cli
 
-## Install requirement
+# Installation
+```bash
+$ cd ~/.dotfiles
+$ make init
+```
+
+# Install requirement
 - vim
 - neovim
 - zsh
 - zplug
 - pyenv
 - pyenv-vertualenv
+- tmux
+- the silver searcher(ga) or The Platinum Searcher(pt)
 
-## Install python
+# Install python
 
-```
+```bash
 # Install python version
 pyenv install 2.7.12 # latest version
 pyenv install 3.4.5 # latest version
@@ -33,7 +41,7 @@ pyenv which python  # Note the path
 pyenv deactivate
 ```
 
-## Synbolic link
+# Synbolic link
 
 - .vim
 - .vimrc
@@ -43,7 +51,7 @@ pyenv deactivate
 - .init.vim
 - .tmux.conf
 
-```
+```bash
 ln -s ~/.dotfiles/.vim ~/.vim
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ln -s ~/.dotfiles/.zshrc ~/.zshrc

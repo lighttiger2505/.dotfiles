@@ -46,6 +46,10 @@ repo = 'tpope/vim-markdown'
 on_ft = ['md']
 
 [[plugins]]
+repo = 'kannokanno/previm'
+on_ft = ['md']
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
 

@@ -6,10 +6,13 @@ export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+
 #####################################################################
 # export
 #####################################################################
 
+# zplug
+export ZPLUG_HOME=$HOME/.zplug
 # golang
 export GOPATH=$HOME/go
 # pyenv
@@ -72,4 +75,3 @@ alias sourcez="source ~/.zshrc"
 
 # zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*' list-colors $LSCOLORS
-

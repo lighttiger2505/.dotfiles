@@ -19,10 +19,10 @@ call denite#custom#source(
 " pt and ag command on grep source
 if executable('pt')
     call denite#custom#var('grep', 'command', ['pt'])
-elseif executable('ag')
-    call denite#custom#var('grep', 'command', ['ag'])
+elseif executable('ga')
+    call denite#custom#var('grep', 'command', ['ga'])
 else
-    echo "Please install [ag] or [pt] "
+    echo "Please install [ga] or [pt] "
 endif
 
 call denite#custom#var('grep', 'default_opts',
