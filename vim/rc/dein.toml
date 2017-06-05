@@ -18,23 +18,8 @@ repo = 'nanotech/jellybeans.vim'
 
 [[plugins]]
 repo = 'michalbachowski/vim-wombat256mod'
-
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-depends = ['neomru']
 hook_add = '''
-    source ~/.vim/rc/plugins/denite.rc.vim
-'''
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = ['neosnippet-snippets']
-hook_add = '''
-    source ~/.vim/rc/plugins/neosnippet.rc.vim
+   au MyAutoCmd VimEnter * nested colorscheme wombat256mod
 '''
 
 [[plugins]]
@@ -49,9 +34,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -69,13 +51,6 @@ hook_add = '''
     let NERDTreeIgnore = ['\.pyc$']
 '''
 
-# [[plugins]]
-# repo = 'nixprime/cpsm'
-# build = 'env PY3=ON ./install.sh'
-
-# [[plugins]]
-# repo = 'szw/vim-tags'
-
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
@@ -87,11 +62,11 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
 repo = 'Xuyuanp/nerdtree-git-plugin'
 depends = ['vim-fugitive']
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
@@ -103,40 +78,10 @@ hook_add = '''
 repo = 'mattn/benchvimrc-vim'
 
 [[plugins]]
-repo = 'skywind3000/asyncrun.vim'
-hook_add = '''
-    nnoremap <Leader>ar :call <SID>compile_and_run()<CR>
-
-    " Automatically open the quickfix window
-    augroup SPACEVIM_ASYNCRUN
-        autocmd!
-        autocmd User AsyncRunStart call asyncrun#quickfix_toggle(15, 1)
-    augroup END
-
-    function! s:compile_and_run()
-        exec 'w'
-        if &filetype == 'c'
-            exec "AsyncRun! gcc % -o %<; time ./%<"
-        elseif &filetype == 'cpp'
-        exec "AsyncRun! g++ -std=c++11 % -o %<; time ./%<"
-        elseif &filetype == 'java'
-        exec "AsyncRun! javac %; time java %<"
-        elseif &filetype == 'sh'
-        exec "AsyncRun! time bash %"
-        elseif &filetype == 'python'
-        exec "AsyncRun! time python %"
-        endif
-    endfunction
-'''
-
-[[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 hook_add = '''
     nnoremap <silent> <Leader>w :FixWhitespace<CR>
 '''
-
-[[plugins]]
-repo = 'xolox/vim-misc'
 
 [[plugins]]
 repo = 'lambdalisue/vim-gista'
@@ -146,3 +91,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype']
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
