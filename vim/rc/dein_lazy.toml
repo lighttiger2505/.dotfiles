@@ -77,6 +77,5 @@ hook_source = '''
 repo = 'junegunn/vim-easy-align'
 on_cmd = 'EasyAlign'
 hook_add = '''
-    nmap ga <Plug>(EasyAlign)
-    xmap ga <Plug>(EasyAlign)
+    vmap <Enter> <Plug>(EasyAlign)
 '''
