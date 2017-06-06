@@ -2,10 +2,6 @@ if &compatible
   set nocompatible
 endif
 
-augroup MyAutoCmd
-  autocmd!
-augroup END
-
 let s:dein_dir = expand('$CACHE/dein')
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
