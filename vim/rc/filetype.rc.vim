@@ -1,5 +1,6 @@
 " Tab setting for file type
 augroup TabStep
+    autocmd!
     autocmd BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.html  set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.css   set tabstop=2 shiftwidth=2
@@ -16,8 +17,7 @@ augroup TabStep
 augroup END
 
 augroup ErrorFormat
-    " autocmd BufNewFile,BufRead *.py
-    "     \ set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+    autocmd!
     autocmd BufNewFile,BufRead *.py
         \ set efm=%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 augroup END

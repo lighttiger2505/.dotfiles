@@ -51,17 +51,12 @@ alias gs="git status"
 alias gd="git diff"
 alias gdc="git diff --cached "
 
-# git add
-alias ga="git add "
-alias gap="git add -p "
-
-# git commit
-alias gc="git commit"
-alias gcm="git commit -m"
-
 # git log
 alias gl="git log"
 alias glogn="git log --oneline --graph -n10"
+
+# tig status
+alias ts="tig status"
 
 # Django manage.py
 alias djrun="python manage.py runserver"

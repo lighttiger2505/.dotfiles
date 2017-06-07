@@ -18,17 +18,21 @@ call denite#custom#source(
 
 " pt and ag command on grep source
 if executable('pt')
-    call denite#custom#var('grep', 'command', ['pt'])
-elseif executable('ga')
-    call denite#custom#var('grep', 'command', ['ga'])
+    call denite#custom#var('file_rec', 'command',
+        \ ['pt', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', ''])
+    call denite#custom#var('grep', 'command',
+        \ ['pt', '--nogroup', '--nocolor', '--smart-case', '--hidden'])
+    call denite#custom#var('grep', 'default_opts', [])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'separator', ['--'])
+elseif executable('ag')
+    call denite#custom#var('file_rec', 'command',
+        \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', ''])
+    call denite#custom#var('grep', 'command',
+        \ ['ag', '--nogroup', '--nocolor', '--smart-case', '--hidden'])
+    call denite#custom#var('grep', 'default_opts', [])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'separator', ['--'])
 else
-    echo "Please install [ga] or [pt] "
+    echo "Please install [ag] or [pt] "
 endif
-
-call denite#custom#var('grep', 'default_opts',
-        \ ['--nogroup', '--nocolor', '--smart-case'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-

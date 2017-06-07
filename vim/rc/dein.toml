@@ -18,9 +18,6 @@ repo = 'nanotech/jellybeans.vim'
 
 [[plugins]]
 repo = 'michalbachowski/vim-wombat256mod'
-hook_add = '''
-   au MyAutoCmd VimEnter * nested colorscheme wombat256mod
-'''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
@@ -41,7 +38,12 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'tyru/caw.vim'
 hook_add = '''
-    source ~/.vim/rc/plugins/caw.rc.vim
+    " Add comment to beginning line(consider whitespace)
+    nmap <Leader>c <Plug>(caw:hatpos:toggle)
+    vmap <Leader>c <Plug>(caw:hatpos:toggle)
+    " Add comment to beginning line(ignore whitespace)
+    nmap <Leader>, <Plug>(caw:zeropos:toggle)
+    vmap <Leader>, <Plug>(caw:zeropos:toggle)
 '''
 
 [[plugins]]

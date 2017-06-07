@@ -15,24 +15,24 @@ depends = ['neomru.vim']
 hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 hook_add = '''
     " Prefix key
-    nnoremap [denite] <Nop>
-    nmap <C-j> [denite]
+    noremap [denite] <Nop>
+    map <C-j> [denite]
 
     " Keymap
     " Current direcotry files
-    nnoremap <silent> [denite]<C-p> :<C-u>Denite file_rec<CR>
+    nmap <silent> [denite]<C-p> :<C-u>Denite file_rec<CR>
     " Buffer files
-    nnoremap <silent> [denite]<C-b> :<C-u>Denite buffer<CR>
+    nmap <silent> [denite]<C-b> :<C-u>Denite buffer<CR>
     " Grep files
-    nnoremap <silent> [denite]<C-g> :<C-u>Denite -auto_preview grep<CR>
+    nmap <silent> [denite]<C-s> :<C-u>Denite grep<CR>
     " Grep cursor word
-    nnoremap <silent> [denite]<C-]> :<C-u>DeniteCursorWord grep<CR>
+    nmap <silent> [denite]<C-g> :<C-u>DeniteCursorWord grep<CR>
     " Recent files
-    nnoremap <silent> [denite]<C-r> :<C-u>Denite file_mru<CR>
+    nmap <silent> [denite]<C-r> :<C-u>Denite file_mru<CR>
     " Outline
-    nnoremap <silent> [denite]<C-o> :<C-u>Denite outline<CR>
+    nmap <silent> [denite]<C-o> :<C-u>Denite outline<CR>
     " Command history
-    nnoremap <silent> [denite]<C-n> :<C-u>Denite command_history<CR>
+    nmap <silent> [denite]<C-n> :<C-u>Denite command_history<CR>
     " Seach dotfiles
-    nnoremap <silent> [denite]<C-v> :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}])<CR>
+    nmap <silent> [denite]<C-v> :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}])<CR>
 '''

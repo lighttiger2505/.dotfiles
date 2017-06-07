@@ -30,10 +30,6 @@ set colorcolumn=120
 set list
 set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$,trail:~
 
-" Colors
-set t_Co=256
-set background=dark
-
 " Round indent to multipul of shiftwidth
 set shiftround
 
