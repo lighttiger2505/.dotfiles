@@ -142,24 +142,6 @@ if [ -n "$DISPLAY" ]; then
     preexec_functions=($preexec_functions update_title)
 fi
 
-# localhost info
-local p_rhst=""
-if [[ -n "${REMOTEHOST}${SSH_CONNECTION}" ]]; then
-    local rhost=`who am i|sed 's/ .*(\(.*\)).*/\1/'`
-    rhost=${rhost#localhost:}
-    rhost=${rhost%%.*}
-    p_rhst="%B%F{yellow}($rhost)%f%b"
-fi
-
-# current directory
-local p_cdir="%B%F{blue}[%~]%f%b"$'\n'
-
-# macine and user info
-local p_info="%n@%m${WINDOW:+"[$WINDOW]"}"
-
-# command result mark
-local p_mark="%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
-
 # show git status
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
@@ -194,9 +176,10 @@ function rprompt-git-current-branch {
 local p_git='`rprompt-git-current-branch`'
 local p_dir="%F{yellow}(%~)%f"
 local p_vimjob='$([[ $(jobs|grep -c vim) != 0 ]] && print "vim")'
+local p_mark="%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
 
 local prow_dir=" $p_dir$p_git"$'\n'
-local prow_user=" %F{yellow}[$p_rhst$p_info]%f%F{green}[$p_vimjob]%f $p_mark "
+local prow_user=" %F{yellow}[%n@%m]%f%F{green}[$p_vimjob]%f $p_mark "
 
 PROMPT=$prow_dir$prow_user
 
