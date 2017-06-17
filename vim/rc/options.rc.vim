@@ -89,3 +89,15 @@ set hlsearch
 
 " Share clipborad with system
 set clipboard+=unnamedplus
+
+" Use the_platinum_searcher instead of vimgrep
+if executable('pt')
+    let &grepprg = 'pt --nocolor --nogroup --column'
+    set grepformat^=%f:%l:%c:%m
+endif
+
+" Show quickfix after grepcmd
+augroup GrepCmd
+    autocmd!
+    autocmd QuickFixCmdPost vim,grep,vimgrep if len(getqflist()) != 0 | cwindow | endif
+augroup END
