@@ -117,9 +117,3 @@ hook_add = '''
     " Show reference of cousor word on quickfix
     nmap <silent> R :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
 '''
-
-[[plugins]]
-repo = 'jsfaint/gen_tags.vim'
-hook_add = '''
-    let g:gen_tags#gtags_auto_gen = 1
-'''
