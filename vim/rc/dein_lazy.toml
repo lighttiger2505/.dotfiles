@@ -72,10 +72,3 @@ hook_source = '''
     autocmd! BufEnter,BufWritePost * Neomake
     let g:neomake_python_enabled_makers = ['python', 'flake8']
 '''
-
-[[plugins]]
-repo = 'junegunn/vim-easy-align'
-on_cmd = 'EasyAlign'
-hook_add = '''
-    vmap <Enter> <Plug>(EasyAlign)
-'''

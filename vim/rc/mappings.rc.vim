@@ -108,4 +108,4 @@ nnoremap <C-[> :cp<CR>
 nnoremap <C-]> :cn<CR>
 
 " Move tags
-nnoremap K :exe("tjump ".expand('<cword>'))<CR>
+" nnoremap K :exe("tjump ".expand('<cword>'))<CR>
