@@ -1,4 +1,6 @@
 " Insert mode keymap in dein
+call denite#custom#map('normal', '<C-N>', '<denite:move_to_next_line>')
+call denite#custom#map('normal', '<C-P>', '<denite:move_to_previous_line>')
 call denite#custom#map('insert', '<C-N>', '<denite:move_to_next_line>')
 call denite#custom#map('insert', '<C-P>', '<denite:move_to_previous_line>')
 call denite#custom#map('insert', '<C-J>', '<denite:assign_next_text>')
