@@ -54,5 +54,5 @@ call s:source_rc('filetype.rc.vim')
 set t_Co=256
 set background=dark
 syntax on
-filetype on
+filetype plugin indent on
 colorscheme wombat256mod

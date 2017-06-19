@@ -54,6 +54,10 @@ repo = 'cespare/vim-toml'
 on_ft = ['toml']
 
 [[plugins]]
+repo = 'IN3D/vim-raml'
+on_ft = ['raml']
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
