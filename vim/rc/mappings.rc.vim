@@ -100,12 +100,9 @@ nnoremap <silent>> >>
 nnoremap <silent>< <<
 
 " Not yank is delete operation
-nnoremap qp "0p
-vnoremap qp "0p
+nnoremap <Space>p "0p
+vnoremap <Space>p "0p
 
 " Move quickfix
-nnoremap <C-[> :cp<CR>
-nnoremap <C-]> :cn<CR>
-
-" Move tags
-" nnoremap K :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-p> :cp<CR>
+nnoremap <C-n> :cn<CR>
