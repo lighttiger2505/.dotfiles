@@ -205,26 +205,60 @@ SAVEHIST=10000
 setopt hist_ignore_dups
 setopt share_history
 
-# Search history
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+#####################################################################
+# peco selection
+#####################################################################
 
 # Select history on peco
-function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+function peco-cmd-history() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco --prompt "COMMAND HISTORYS>"`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
+zle -N peco-cmd-history
+bindkey '^R' peco-cmd-history
+
+# Select git repository on peco
+function peco-git-branch-checkout () {
+    local selected_branch_name="$(git branch -a | peco --prompt "GIT BRANCHES>" | tr -d ' ')"
+    case "$selected_branch_name" in
+        *-\>* )
+            selected_branch_name="$(echo ${selected_branch_name} | perl -ne 's/^.*->(.*?)\/(.*)$/\2/;print')";;
+        remotes* )
+            selected_branch_name="$(echo ${selected_branch_name} | perl -ne 's/^.*?remotes\/(.*?)\/(.*)$/\2/;print')";;
+    esac
+    if [ -n "$selected_branch_name" ]; then
+        BUFFER="git checkout ${selected_branch_name}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-git-branch-checkout
+bindkey '^B' peco-git-branch-checkout
+
+# Search ssh hosts by prco
+function peco-ssh-hosts () {
+  local selected_host=$(awk '
+  tolower($1)=="host" {
+    for (i=2; i<=NF; i++) {
+      if ($i !~ "[*?]") {
+        print $i
+      }
+    }
+  }
+  ' ~/.ssh/config | sort | peco --prompt "SSH HOSTS>")
+  if [ -n "$selected_host" ]; then
+    BUFFER="ssh ${selected_host}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-ssh-hosts
+bindkey '^\' peco-ssh-hosts
 
 #####################################################################
 # plugin manager
 #####################################################################
-#
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
   zcompile ~/.zshrc
 fi
