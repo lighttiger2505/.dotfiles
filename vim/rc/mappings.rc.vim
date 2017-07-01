@@ -104,3 +104,20 @@ vnoremap <Space>p "0p
 " Move quickfix
 nnoremap <C-p> :cp<CR>
 nnoremap <C-n> :cn<CR>
+
+" Toggle quickfix
+if exists("g:__QUICKFIX_TOGGLE_jfklds__")
+    finish
+endif
+let g:__QUICKFIX_TOGGLE_jfklds__ = 1
+
+function! ToggleQuickfix()
+    let nr = winnr("$")
+    cwindow
+    let nr2 = winnr("$")
+    if nr == nr2
+        cclose
+    endif
+endfunction
+
+nmap <script> <silent> R :call ToggleQuickfix()<CR>
