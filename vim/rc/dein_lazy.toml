@@ -65,12 +65,31 @@ hook_source = '''
   source ~/.vim/rc/plugins/vimquickrun.rc.vim
 '''
 
+# [[plugins]]
+# repo = 'neomake/neomake'
+# on_ft = ['python']
+# hook_source = '''
+#     autocmd! BufEnter,BufWritePost * Neomake
+#     let g:neomake_python_enabled_makers = ['python', 'flake8']
+# '''
+
+
 [[plugins]]
-repo = 'neomake/neomake'
+repo = 'w0rp/ale'
 on_ft = ['python']
 hook_source = '''
-    autocmd! BufEnter,BufWritePost * Neomake
-    let g:neomake_python_enabled_makers = ['python', 'flake8']
+    let g:ale_sign_error = '⨉'
+    let g:ale_sign_warning = '⚠'
+
+    let g:ale_set_loclist = 0
+    " let g:ale_set_quickfix = 1
+    let g:ale_open_list = 1
+    let g:ale_keep_list_window_open = 1
+
+    let g:airline#extensions#ale#enabled = 1
+
+    highlight clear ALEErrorSign
+    highlight clear ALEWarningSign
 '''
 
 [[plugins]]
