@@ -108,6 +108,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype']
 
