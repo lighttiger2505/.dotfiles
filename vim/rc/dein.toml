@@ -23,9 +23,6 @@ repo = 'michalbachowski/vim-wombat256mod'
 repo = 'vim-airline/vim-airline'
 depends = ['vim-airline-themes']
 hook_add = '''
-    let g:airline#extensions#ale#error_symbol = '⨉'
-    let g:airline#extensions#ale#warning_symbol = '⚠'
-
     " Mode shortening
     let g:airline_mode_map = {
         \ '__' : '-',
@@ -49,6 +46,11 @@ hook_add = '''
 
     " Enable virtualenv name
     let g:airline#extensions#virtualenv#enabled = 1
+
+    " Enable ALE plugin
+    let g:airline#extensions#ale#enabled = 1
+    let g:airline#extensions#ale#error_symbol = '⨉'
+    let g:airline#extensions#ale#warning_symbol = '⚠'
 '''
 
 [[plugins]]
