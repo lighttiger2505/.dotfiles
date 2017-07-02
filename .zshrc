@@ -205,6 +205,13 @@ SAVEHIST=10000
 setopt hist_ignore_dups
 setopt share_history
 
+# Search history
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
 #####################################################################
 # peco selection
 #####################################################################
@@ -279,7 +286,7 @@ fi
 source $HOME/.zplug/init.zsh
 
 # set install plugins
-zplug "zsh-users/zsh-history-substring-search", defer:3
+# zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "zsh-users/zsh-completions"
