@@ -8,6 +8,7 @@ hook_source = '''
     let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
     let g:deoplete#sources#go#package_dot = 1
     let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
+    call deoplete#custom#set('go', 'rank', 5)
 '''
 
 [[plugins]]

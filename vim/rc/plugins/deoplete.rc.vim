@@ -54,3 +54,6 @@ let g:deoplete#skip_chars = ['(', ')']
 
 " Hidden autocomplete preview
 set completeopt-=preview
+
+" Order deoplete source
+call deoplete#custom#set('buffer', 'rank', 9999)
