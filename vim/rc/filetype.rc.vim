@@ -3,8 +3,10 @@ augroup TabStep
     autocmd!
     autocmd BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.html  set tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.js    set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.css   set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.scss  set tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.md    set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.scala set tabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb    set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.erb   set tabstop=2 shiftwidth=2
