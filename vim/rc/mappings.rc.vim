@@ -2,8 +2,8 @@
 " Release keymappings for plug-in.
 nnoremap ; :
 xnoremap : <Nop>
-nnoremap m <Nop>
-xnoremap m <Nop>
+" nnoremap m <Nop>
+" xnoremap m <Nop>
 nnoremap , <Nop>
 xnoremap , <Nop>
 nnoremap q <Nop>
@@ -13,6 +13,7 @@ nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
 
 " Reload .vimrc
 nnoremap <Space>rv :source $HOME/.vimrc<CR>
+
 " Multi line move
 noremap k gk
 noremap j gj
@@ -26,9 +27,6 @@ noremap H <Nop>
 noremap L <Nop>
 noremap H ^
 noremap L $
-
-" Change current directory.
-nnoremap <silent> <Space>cd :<C-u>cd %:h<CR>
 
 " Change tab width
 nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
@@ -44,7 +42,7 @@ for n in range(1, 9)
     execute 'nnoremap <silent> [tab]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 
-" Add new tab 
+" Add new tab
 nnoremap <silent> [tab]c :<C-u>tablast <bar> tabnew<CR>
 " Move tab
 nnoremap <silent> [tab]n :<C-u>tabnext<CR>
@@ -58,7 +56,7 @@ nmap <Space> [window]
 nnoremap <silent> [window]s :split<CR>
 nnoremap <silent> [window]i :vsplit<CR>
 " Move window
-noremap [window]h <C-w>h 
+noremap [window]h <C-w>h
 noremap [window]l <C-w>l
 noremap [window]j <C-w>j
 noremap [window]k <C-w>k
@@ -100,12 +98,26 @@ nnoremap <silent>> >>
 nnoremap <silent>< <<
 
 " Not yank is delete operation
-nnoremap qp "0p
-vnoremap qp "0p
+nnoremap <Space>p "0p
+vnoremap <Space>p "0p
 
 " Move quickfix
-nnoremap <C-[> :cp<CR>
-nnoremap <C-]> :cn<CR>
+nnoremap <C-p> :cp<CR>
+nnoremap <C-n> :cn<CR>
 
-" Move tags
-" nnoremap K :exe("tjump ".expand('<cword>'))<CR>
+" Toggle quickfix
+if exists("g:__QUICKFIX_TOGGLE_jfklds__")
+    finish
+endif
+let g:__QUICKFIX_TOGGLE_jfklds__ = 1
+
+function! ToggleQuickfix()
+    let nr = winnr("$")
+    cwindow
+    let nr2 = winnr("$")
+    if nr == nr2
+        cclose
+    endif
+endfunction
+
+nmap <script> <silent> R :call ToggleQuickfix()<CR>
