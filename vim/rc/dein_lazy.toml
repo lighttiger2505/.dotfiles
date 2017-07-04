@@ -43,11 +43,11 @@ repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'tpope/vim-markdown'
-on_ft = ['md']
+on_ft = ['md', 'markdown']
 
 [[plugins]]
 repo = 'kannokanno/previm'
-on_ft = ['md']
+on_ft = ['md', 'markdown']
 
 [[plugins]]
 repo = 'cespare/vim-toml'
