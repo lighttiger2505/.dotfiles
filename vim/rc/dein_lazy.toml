@@ -90,7 +90,7 @@ hook_source = '''
     " Event of lint enter
     let g:ale_lint_on_enter = 0
     let g:ale_lint_on_save = 1
-    let g:ale_lint_on_text_changed = 0
+    let g:ale_lint_on_text_changed = 'never'
 
     " Quickfix and Loclist
     let g:ale_set_loclist = 0
@@ -100,12 +100,14 @@ hook_source = '''
 
     " Enable linter
     let g:ale_linters = {
-    \   'javascript': ['eslint'],
+    \   'javascript': ['jslint', 'eslint'],
     \   'python': ['flake8'],
     \}
 
     " Status line status
+    let g:airline#extensions#ale#enabled = 1
     let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+
     function! LinterStatus() abort
         let l:counts = ale#statusline#Count(bufnr(''))
 
@@ -118,7 +120,6 @@ hook_source = '''
         \   all_errors
         \)
     endfunction
-
     set statusline=%{LinterStatus()}
 '''
 
