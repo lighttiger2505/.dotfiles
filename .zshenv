@@ -23,3 +23,7 @@ export EDITOR=vim
 if ! type vim > /dev/null 2>&1; then
     alias vim=vi
 fi
+# when not exist nvim then start up vim
+if ! type nvim > /dev/null 2>&1; then
+    alias vim=nvim
+fi

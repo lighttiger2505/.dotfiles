@@ -19,11 +19,5 @@ alias ts="tig status"
 alias djrun="python manage.py runserver"
 alias djshell="python manage.py shell"
 
-# neovim
-alias vim=nvim
-
 # zshrc source
 alias sourcez="source ~/.zshrc"
-
-# zshenv source
-alias sourcee="source ~/.zshrc"
