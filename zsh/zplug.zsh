@@ -6,20 +6,27 @@ fi
 source $HOME/.zplug/init.zsh
 
 # set install plugins
-# zplug "zsh-users/zsh-history-substring-search", defer:3
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "b4b4r07/enhancd", use:init.sh
+zplug "zsh-users/zsh-syntax-highlighting", \
+    defer:2
+
+zplug "b4b4r07/enhancd", \
+    use:init.sh
+
 zplug "zsh-users/zsh-completions"
 
 zplug "peco/peco", \
     as:command, \
     from:gh-r, \
     frozen:1
+
+zplug "junegunn/fzf", \
+    as:command, \
+    use:"bin/fzf-tmux"
+
 zplug "junegunn/fzf-bin", \
     as:command, \
     from:gh-r, \
-    rename-to:"fzf", \
-    frozen:1
+    rename-to:"fzf"
 
 # set enhancd filters
 ENHANCD_FILTER=fzf:peco
