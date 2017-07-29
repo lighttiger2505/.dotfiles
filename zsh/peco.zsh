@@ -52,8 +52,3 @@ function peco-src () {
   zle clear-screen
 }
 zle -N peco-src
-
-bindkey '^R' peco-cmd-history
-bindkey '^B' peco-git-branch-checkout
-bindkey '^G' peco-src
-bindkey '^\' peco-ssh-hosts

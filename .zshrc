@@ -3,6 +3,7 @@
 #####################################################################
 # init
 #####################################################################
+source ~/.zshenv
 
 # load zshrc for os type
 case ${OSTYPE} in
@@ -15,9 +16,8 @@ case ${OSTYPE} in
 esac
 
 #####################################################################
-# path
+# path/valiables
 #####################################################################
-
 typeset -U path
 path=(
 # bin
@@ -50,59 +50,29 @@ typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
 sudo_path=({,/usr/pkg,/usr/local,/usr}/sbin(N-/))
 
-#####################################################################
-# auto complete
-#####################################################################
-source ~/.dotfiles/zsh/completion.zsh
-
-
-#####################################################################
-# prompt
-#####################################################################
-source ~/.dotfiles/zsh/prompt.zsh
-
-
-#####################################################################
-# keybind
-#####################################################################
-## vi bind
-bindkey -v
-
-
-#####################################################################
-# history
-#####################################################################
 ## Limit of history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-# Share history
-setopt hist_ignore_dups
-setopt share_history
-
-# Search history
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
-
-
 #####################################################################
+# load settings
+#####################################################################
+# auto complete
+source ~/.dotfiles/zsh/completion.zsh
+
+# prompt
+source ~/.dotfiles/zsh/prompt.zsh
+
 # peco selection
-#####################################################################
 source ~/.dotfiles/zsh/peco.zsh
 
+# keybind
+source ~/.dotfiles/zsh/keybind.zsh
 
-#####################################################################
 # plugin manager
-#####################################################################
 source ~/.dotfiles/zsh/zplug.zsh
 
-
-#####################################################################
 # Init pyenv
-#####################################################################
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
