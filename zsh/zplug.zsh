@@ -19,14 +19,14 @@ zplug "peco/peco", \
     from:gh-r, \
     frozen:1
 
-zplug "junegunn/fzf", \
-    as:command, \
-    use:"bin/fzf-tmux"
-
 zplug "junegunn/fzf-bin", \
     as:command, \
     from:gh-r, \
     rename-to:"fzf"
+
+zplug "junegunn/fzf", \
+    as:command, \
+    use:"bin/fzf-tmux"
 
 # set enhancd filters
 ENHANCD_FILTER=fzf:peco
