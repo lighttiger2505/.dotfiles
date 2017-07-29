@@ -40,24 +40,5 @@ zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' verbose yes
 # sudo時にはsudo用のパスも使う。
 zstyle ':completion:sudo:*' environ PATH="$SUDO_PATH:$PATH"
-
-# カーソル位置で補完する。
-setopt complete_in_word
-# globを展開しないで候補の一覧から補完する。
-setopt glob_complete
-# 補完時にヒストリを自動的に展開する。
-setopt hist_expand
-# 補完候補がないときなどにビープ音を鳴らさない。
-setopt no_beep
-# 辞書順ではなく数字順に並べる。
-setopt numeric_glob_sort
-# Auto change direcotry
-setopt auto_cd
-# Saving cd history
-setopt auto_pushd
-# Teach error of command
-setopt correct
-# Compact list of complate result
-setopt list_packed
-# Beep sound off
-setopt nolistbeep
+# zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+zstyle ':completion:*' list-colors $LSCOLORS

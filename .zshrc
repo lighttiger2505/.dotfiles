@@ -67,6 +67,9 @@ source ~/.dotfiles/zsh/prompt.zsh
 # peco selection
 source ~/.dotfiles/zsh/peco.zsh
 
+# alias
+source ~/.dotfiles/zsh/keybind.zsh
+
 # keybind
 source ~/.dotfiles/zsh/keybind.zsh
 
