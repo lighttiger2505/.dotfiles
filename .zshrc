@@ -64,11 +64,14 @@ source ~/.dotfiles/zsh/completion.zsh
 # prompt
 source ~/.dotfiles/zsh/prompt.zsh
 
-# peco selection
+# peco function
 source ~/.dotfiles/zsh/peco.zsh
 
+# fzf functions
+source ~/.dotfiles/zsh/fzf.zsh
+
 # alias
-source ~/.dotfiles/zsh/keybind.zsh
+source ~/.dotfiles/zsh/alias.zsh
 
 # keybind
 source ~/.dotfiles/zsh/keybind.zsh
