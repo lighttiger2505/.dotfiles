@@ -18,12 +18,9 @@ export XDG_CONGIG_HOME=~/.config
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # defaut editor is vim
-export EDITOR=vim
+export EDITOR=nvim
+alias vim=nvim
 # when not exist vim then start up vi
 if ! type vim > /dev/null 2>&1; then
     alias vim=vi
-fi
-# when not exist nvim then start up vim
-if ! type nvim > /dev/null 2>&1; then
-    alias vim=nvim
 fi
