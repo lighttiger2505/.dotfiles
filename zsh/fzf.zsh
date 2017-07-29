@@ -1,3 +1,7 @@
+# Default layout
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+
+
 # Checkout git branch (including remote branches)
 fzf-git-branch-checkout() {
     local BRANCHES BRANCH
