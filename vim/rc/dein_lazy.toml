@@ -39,9 +39,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neomru.vim'
-
-[[plugins]]
 repo = 'tpope/vim-markdown'
 on_ft = ['md', 'markdown']
 

@@ -28,7 +28,7 @@ hook_add = '''
     " Grep cursor word
     nmap <silent> [denite]<C-G> :<C-u>DeniteCursorWord grep -buffer-name=grep -highlight-mode-insert=Search<CR>
     " Reopen before grep result
-    nmap <silent> [denite]<C-R> :<C-u>Denite -resume -buffer-name=grep -highlight-mode-insert=Search<CR>
+    nmap <silent> [denite]<C-R> :<C-u>Denite file_mru -highlight-mode-insert=Search<CR>
     " Outline open file
     nmap <silent> [denite]<C-O> :<C-u>Denite outline -highlight-mode-insert=Search<CR>
     " Command history
@@ -38,6 +38,9 @@ hook_add = '''
     " Definetion of Function
     nmap <silent> [denite]<C-D> :Denite -buffer-name=gtags_completion gtags_completion -highlight-mode-insert=Search<cr>
 '''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'ozelentok/denite-gtags'
