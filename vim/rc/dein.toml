@@ -84,6 +84,9 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
+hook_add = '''
+    let g:indentLine_loaded = 1
+'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
