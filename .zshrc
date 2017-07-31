@@ -290,6 +290,7 @@ source $HOME/.zplug/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "zsh-users/zsh-completions"
+zplug "greymd/tmux-xpanes"
 
 zplug "peco/peco", \
     as:command, \
