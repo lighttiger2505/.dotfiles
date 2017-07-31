@@ -100,3 +100,7 @@ augroup GrepCmd
     autocmd!
     autocmd QuickFixCmdPost vim,grep,vimgrep if len(getqflist()) != 0 | cwindow | endif
 augroup END
+
+" For input multibyte chars
+set ttimeout
+set ttimeoutlen=50
