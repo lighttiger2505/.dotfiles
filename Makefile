@@ -6,9 +6,9 @@ all:
 
 
 install:
-	@DOTPATH=$(ROOT_PATH) bash $(ROOT_PATH)/bin/install.sh
+	@DOTPATH=$(ROOT_PATH) bash $(ROOT_PATH)/etc/install.sh
 
 link:
-	@DOTPATH=$(ROOT_PATH) bash $(ROOT_PATH)/bin/link.sh
+	@DOTPATH=$(ROOT_PATH) bash $(ROOT_PATH)/etc/link.sh
 
 init: install link
