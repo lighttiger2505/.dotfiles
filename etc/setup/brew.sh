@@ -1,16 +1,12 @@
+#!/bin/bash
 
-# zsh
-brew install zsh
-
-# pt
-brew install pt
-
-# global
-brew install global
-
-# Universal ctags
+# Tap repositorys
 brew tap universal-ctags/universal-ctags
-brew install --HEAD universal-ctags
+brew tap motemen/ghq
 
-# Neovim
-brew install --HEAD neovim
+# Install commands
+brew install zsh
+brew install pt
+brew install ghq
+brew install global --with-exuberant-ctags --with-pygments
+brew install universal-ctags
