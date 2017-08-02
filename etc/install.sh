@@ -10,7 +10,3 @@ else
     echo "Your platform ($(uname -a)) is not supported."
     exit 1
 fi
-
-~/.dotfiles/bin/common/install-common.sh
-
-~/.dotfiles/bin/common/install-python.sh
