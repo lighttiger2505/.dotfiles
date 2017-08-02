@@ -2,10 +2,10 @@
 
 if [ "$(uname)" == 'Darwin' ]; then
     # Mac
-    ./install-brew.sh
+    ./brew.sh
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     # Linux
-    ./install-apt.sh
+    ./apt.sh
 else
     echo "Your platform ($(uname -a)) is not supported."
     exit 1
