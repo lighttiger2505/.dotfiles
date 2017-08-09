@@ -21,3 +21,6 @@ alias djshell="python manage.py shell"
 
 # zshrc source
 alias sourcez="source ~/.zshrc"
+
+# Launch markdown diary
+alias dia='vim ~/diary/$(date "+%Y/%m/%d.md")'
