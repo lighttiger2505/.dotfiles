@@ -28,6 +28,22 @@ zplug "junegunn/fzf", \
     as:command, \
     use:"bin/fzf-tmux"
 
+zplug "stedolan/jq", \
+    as:command, \
+    from:gh-r, \
+    rename-to:jq
+
+zplug "monochromegane/the_platinum_searcher", \
+    as:command, \
+    from:gh-r, \
+    rename-to:"pt", \
+    frozen:1
+
+zplug "motemen/ghq", \
+    as:command, \
+    from:gh-r, \
+    rename-to:ghq
+
 # set enhancd filters
 ENHANCD_FILTER=fzf:peco
 export ENHANCD_FILTER
