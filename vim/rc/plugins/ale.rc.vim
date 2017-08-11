@@ -38,3 +38,11 @@ function! LinterStatus() abort
     \)
 endfunction
 set statusline=%{LinterStatus()}
+
+" Prefix key
+nmap [ale] <Nop>
+map <C-k> [ale]
+
+" Keymap
+nmap <silent> [ale]<C-P> <Plug>(ale_previous)
+nmap <silent> [ale]<C-N> <Plug>(ale_next)
