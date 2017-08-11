@@ -1,2 +1,3 @@
-bind-key -t vi-copy y copy-pipe 'xsel -bi'
-bind-key -t vi-copy Enter copy-pipe 'xsel -bi'
+bind-key -T copy-mode-vi v     send-keys -X begin-selection
+bind-key -t copy-mode-vi y     copy-pipe-and-cancel 'xsel -bi'
+bind-key -t copy-mode-vi Enter copy-pipe-and-cancel 'xsel -bi'
