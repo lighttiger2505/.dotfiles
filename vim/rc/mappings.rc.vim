@@ -84,7 +84,7 @@ vnoremap <expr> c* ':s ;\<' . expand('<cword>') . '\>;'
 " Move cousor for search work of center
 nnoremap n nzz
 nnoremap N Nzz
-nnoremap * *zz
+nnoremap * *N
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
