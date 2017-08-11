@@ -124,3 +124,16 @@ hook_add = '''
 
 [[plugins]]
 repo = 'thinca/vim-qfreplace'
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+hook_add = '''
+    nmap <Leader>e <Plug>(ref-keyword)
+
+    " Ref view setting
+    autocmd FileType ref call s:initialize_ref_viewer()
+    function! s:initialize_ref_viewer()
+        nnoremap <buffer> q <C-w>c
+        setlocal nonumber
+    endfunction
+'''
