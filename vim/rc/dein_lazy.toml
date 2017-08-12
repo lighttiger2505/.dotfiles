@@ -97,3 +97,21 @@ depends = ['vim-dispatch']
 hook_add = '''
 let g:test#strategy = 'dispatch'
 '''
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+on_ft = ['python']
+hook_add = '''
+    nmap <Leader>e <Plug>(ref-keyword)
+
+    " Ref view setting
+    autocmd FileType ref call s:initialize_ref_viewer()
+    function! s:initialize_ref_viewer()
+        nnoremap <buffer> q <C-w>c
+        setlocal nonumber
+    endfunction
+'''
+
+[[plugins]]
+on_ft = ['python']
+repo = 'thinca/vim-qfreplace'
