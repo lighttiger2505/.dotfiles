@@ -113,3 +113,6 @@ on_cmd = 'EasyAlign'
 hook_add = '''
     vmap <Enter> <Plug>(EasyAlign)
 '''
+
+[[plugins]]
+repo = 'kana/vim-tabpagecd'
