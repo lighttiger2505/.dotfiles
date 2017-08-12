@@ -107,17 +107,3 @@ on_cmd = 'EasyAlign'
 hook_add = '''
     vmap <Enter> <Plug>(EasyAlign)
 '''
-
-[[plugins]]
-repo = 'lighttiger2505/gtags.vim'
-hook_add = '''
-    " Options
-    let g:Gtags_Auto_Map = 0
-    let g:Gtags_OpenQuickfixWindow = 1
-
-    " Keymap
-    " Show definetion of function cousor word on quickfix
-    nnoremap <silent> K :<C-u>exe("Gtags ".expand('<cword>'))<CR>
-    " Show reference of cousor word on quickfix
-    nnoremap <silent> S :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
-'''
