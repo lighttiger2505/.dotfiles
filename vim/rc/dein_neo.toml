@@ -11,7 +11,7 @@ hook_source = '''
 repo = 'Shougo/denite.nvim'
 if = "has('nvim')"
 on_cmd = 'Denite'
-depends = ['neomru.vim', 'denite-gtags']
+depends = ['neomru.vim', 'denite-gtags', 'vim-denite-ghq']
 hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 hook_add = '''
     " Prefix key
@@ -37,6 +37,8 @@ hook_add = '''
     nmap <silent> [denite]<C-V> :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}]) -highlight-mode-insert=Search=Search<CR>
     " Definetion of Function
     nmap <silent> [denite]<C-D> :Denite -buffer-name=gtags_completion gtags_completion -highlight-mode-insert=Search<cr>
+    " Change directory to Repository of the ghq
+    nmap <silent> [denite]<C-G> :<C-u>Denite ghq -default-action=cd -highlight-mode-insert=Search<CR>
 '''
 
 [[plugins]]
@@ -44,3 +46,6 @@ repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'ozelentok/denite-gtags'
+
+[[plugins]]
+repo = 'Jagua/vim-denite-ghq'
