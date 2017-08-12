@@ -23,19 +23,13 @@ hook_add = '''
     nmap <silent> [denite]<C-P> :<C-u>Denite file_rec -highlight-mode-insert=Search<CR>
     " Buffer files
     nmap <silent> [denite]<C-B> :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
-    " Grep files
-    nmap <silent> [denite]<C-S> :<C-u>Denite grep -buffer-name=grep -highlight-mode-insert=Search<CR>
-    " Grep cursor word
-    nmap <silent> [denite]<C-G> :<C-u>DeniteCursorWord grep -buffer-name=grep -highlight-mode-insert=Search<CR>
-    " Reopen before grep result
-    nmap <silent> [denite]<C-R> :<C-u>Denite file_mru -highlight-mode-insert=Search<CR>
-    " Outline open file
+    " Outline current file
     nmap <silent> [denite]<C-O> :<C-u>Denite outline -highlight-mode-insert=Search<CR>
     " Command history
     nmap <silent> [denite]<C-H> :<C-u>Denite command_history -highlight-mode-insert=Search<CR>
     " Seach dotfiles
     nmap <silent> [denite]<C-V> :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}]) -highlight-mode-insert=Search=Search<CR>
-    " Definetion of Function
+    " Definetion of class/function
     nmap <silent> [denite]<C-D> :Denite -buffer-name=gtags_completion gtags_completion -highlight-mode-insert=Search<cr>
     " Change directory to Repository of the ghq
     nmap <silent> [denite]<C-G> :<C-u>Denite ghq -default-action=cd -highlight-mode-insert=Search<CR>
