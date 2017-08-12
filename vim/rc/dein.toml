@@ -51,6 +51,12 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+    nmap <Space>t :TagbarToggle<CR>
+'''
+
+[[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
     nnoremap [figitive] <Nop>
