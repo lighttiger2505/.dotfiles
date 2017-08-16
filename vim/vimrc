@@ -50,6 +50,10 @@ call s:source_rc('mappings.rc.vim')
 call s:source_rc('options.rc.vim')
 call s:source_rc('filetype.rc.vim')
 
+" help ja
+helptags ~/.cache/dein/repos/github.com/vim-jp/vimdoc-ja/doc
+set helplang=ja,en
+
 " Colors
 set t_Co=256
 set background=dark
