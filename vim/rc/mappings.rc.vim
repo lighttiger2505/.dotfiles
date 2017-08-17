@@ -50,7 +50,7 @@ nnoremap <silent> [tab]p :<C-u>tabprevious<CR>
 
 " The prefix key of window.
 nnoremap [window] <Nop>
-nmap <Space> [window]
+nmap s [window]
 
 " Split window
 nnoremap <silent> [window]s :split<CR>
