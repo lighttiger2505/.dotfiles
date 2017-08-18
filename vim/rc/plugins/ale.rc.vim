@@ -19,6 +19,7 @@ let g:ale_keep_list_window_open = 0
 let g:ale_linters = {
 \   'javascript': ['jslint', 'eslint'],
 \   'python': ['flake8'],
+\   'markdown': ['mdl'],
 \}
 
 " Status line status
