@@ -49,11 +49,13 @@ set autoindent
 
 " Round indent by shiftwidth.
 set shiftwidth=4
+
+" Round indent to multipul of shiftwidth
 set shiftround
 
 " Space insert by autoindent
 set tabstop=4
-set scrolloff=20
+set scrolloff=3
 
 " Splitting a window will put the new window below the current one.
 set splitbelow
