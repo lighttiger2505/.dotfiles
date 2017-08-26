@@ -9,11 +9,11 @@ function! s:check_back_space() abort "{{{
 endfunction"}}}
 
 " <S-TAB>: completion back.
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB>  pumvisible() ? "<C-p>" : "<C-h>"
 
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-h> deoplete#smart_close_popup()."<C-h>"
+inoremap <expr><BS> deoplete#smart_close_popup()."<C-h>"
 inoremap <expr><C-g> deoplete#undo_comcletion()
 
 " <C-l>: redraw candidates
