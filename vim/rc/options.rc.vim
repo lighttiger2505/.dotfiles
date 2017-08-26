@@ -29,9 +29,6 @@ set colorcolumn=120
 set list
 set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$,trail:~
 
-" Round indent to multipul of shiftwidth
-set shiftround
-
 " Don't unload buffer when it is abandones
 set hidden
 
