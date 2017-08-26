@@ -9,7 +9,7 @@ endif
 scriptencoding utf-8
 
 " Don't create swp file
-set nowritebackup
+set writebackup
 set nobackup
 set noswapfile
 set noundofile
