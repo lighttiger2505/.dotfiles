@@ -18,8 +18,26 @@ hook_source = '''
 repo = 'fatih/vim-go'
 on_ft = ['go']
 hook_source = '''
+    let g:go_list_type = "quickfix"
+    let g:go_list_autoclose = 1
+
     let g:go_term_mode = "split"
     let g:go_term_height = 30
     let g:go_term_width = 30
-'''
 
+    let g:go_highlight_operators = 1
+    let g:go_highlight_functions = 1
+    let g:go_highlight_types = 1
+    let g:go_highlight_fields = 1
+
+    " if has('nvim')
+    "     let g:go_term_enabled = 1
+    " endif
+
+    augroup MyGoTermClose
+        au FileType goterm nnoremap <silent><buffer>q :quit<CR>
+    augroup END
+
+    nmap <silent><Leader>r :write<CR>:GoRun<CR>
+    nmap <silent><Leader>b :write<CR>:GoBuild<CR>
+'''
