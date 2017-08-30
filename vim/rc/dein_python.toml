@@ -3,7 +3,11 @@ repo = 'zchee/deoplete-jedi'
 depends = ['deoplete.nvim']
 on_ft = ['python']
 hook_source = '''
-    call deoplete#custom#set('jedi', 'rank', 5)
+    let g:deoplete#sources#jedi#statement_length = 0
+    let g:deoplete#sources#jedi#short_types = 0
+    let g:deoplete#sources#jedi#show_docstring = 1
+    let g:deoplete#sources#jedi#worker_threads = 2
+    let g:deoplete#sources#jedi#python_path = g:python3_host_prog
 '''
 
 

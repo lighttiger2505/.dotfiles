@@ -1,19 +1,17 @@
 " Tab setting for file type
 augroup MyTabStep
     autocmd!
-    autocmd BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.html  set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.js    set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.css   set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.scss  set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.md    set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.scala set tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.rb    set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.erb   set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.c     set tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.cpp   set tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.h     set tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.py    set tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.go    set tabstop=4 shiftwidth=4
-    autocmd BufRead,BufNewFile *.scss  set filetype=scss
+    autocmd BufNewFile,BufRead *.rhtml     setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.html      setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.js        setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.css       setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.scss      setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.md        setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.scala     setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rb        setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.erb       setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.{c,cpp,h} setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.py        setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.go        setlocal tabstop=4 shiftwidth=4
+    autocmd BufRead,BufNewFile *.scss      setlocal filetype=scss
 augroup END

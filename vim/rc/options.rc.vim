@@ -9,7 +9,7 @@ endif
 scriptencoding utf-8
 
 " Don't create swp file
-set nowritebackup
+set writebackup
 set nobackup
 set noswapfile
 set noundofile
@@ -29,9 +29,6 @@ set colorcolumn=120
 set list
 set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$,trail:~
 
-" Round indent to multipul of shiftwidth
-set shiftround
-
 " Don't unload buffer when it is abandones
 set hidden
 
@@ -49,11 +46,13 @@ set autoindent
 
 " Round indent by shiftwidth.
 set shiftwidth=4
+
+" Round indent to multipul of shiftwidth
 set shiftround
 
 " Space insert by autoindent
 set tabstop=4
-set scrolloff=20
+set scrolloff=3
 
 " Splitting a window will put the new window below the current one.
 set splitbelow
@@ -98,7 +97,7 @@ endif
 " Show quickfix after grepcmd
 augroup GrepCmd
     autocmd!
-    autocmd QuickFixCmdPost vim,grep,vimgrep if len(getqflist()) != 0 | cwindow | endif
+    autocmd QuickFixCmdPost vim,grep if len(getqflist()) != 0 | cwindow | endif
 augroup END
 
 " For input multibyte chars

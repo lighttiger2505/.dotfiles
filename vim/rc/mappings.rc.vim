@@ -43,7 +43,7 @@ for n in range(1, 9)
 endfor
 
 " Add new tab
-nnoremap <silent> [tab]c :<C-u>tablast <bar> tabnew<CR>
+nnoremap <silent> [tab]t :<C-u>tablast <bar> tabnew<CR>
 " Move tab
 nnoremap <silent> [tab]n :<C-u>tabnext<CR>
 nnoremap <silent> [tab]p :<C-u>tabprevious<CR>

@@ -6,11 +6,38 @@ depends = ['deoplete.nvim']
 hook_source = '''
     let g:deoplete#sources#go#align_class = 1
     let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-    let g:deoplete#sources#go#package_dot = 1
     let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
-    call deoplete#custom#set('go', 'rank', 5)
+    " let g:deoplete#sources#go#auto_goos = 1
+    " let g:deoplete#sources#go#cgo = 1
+    let g:deoplete#sources#go#cgo#sort_algo = 'priority'
+    let g:deoplete#sources#go#package_dot = 0
+    let g:deoplete#sources#go#pointer = 1
 '''
 
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = ['go']
+hook_source = '''
+    let g:go_list_type = "quickfix"
+    let g:go_list_autoclose = 1
+
+    let g:go_term_mode = "split"
+    let g:go_term_height = 30
+    let g:go_term_width = 30
+
+    let g:go_highlight_operators = 1
+    let g:go_highlight_functions = 1
+    let g:go_highlight_types = 1
+    let g:go_highlight_fields = 1
+
+    " if has('nvim')
+    "     let g:go_term_enabled = 1
+    " endif
+
+    augroup MyGoTermClose
+        au FileType goterm nnoremap <silent><buffer>q :quit<CR>
+    augroup END
+
+    nmap <silent><Leader>r :write<CR>:GoRun<CR>
+    nmap <silent><Leader>b :write<CR>:GoBuild<CR>
+'''
