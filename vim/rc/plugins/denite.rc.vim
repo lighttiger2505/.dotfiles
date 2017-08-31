@@ -10,7 +10,7 @@ call denite#custom#map('insert', '<C-I>', '<denite:do_action:vsplit>')
 call denite#custom#map('insert', '<C-O>', '<denite:do_action:tabopen>')
 
 call denite#custom#source(
-\ 'file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files', 'matcher_ignore_globs'])
+    \ 'file_rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files', 'matcher_ignore_globs'])
 
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
     \ [ '.git/', '.ropeproject/', '__pycache__/',
