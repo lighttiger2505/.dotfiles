@@ -103,3 +103,12 @@ augroup END
 " For input multibyte chars
 set ttimeout
 set ttimeoutlen=50
+
+" Save undo history
+if has('persistent_undo')
+  set undodir=./.vimundo,~/.vimundo
+  augroup vimrc-undofile
+    autocmd!
+    autocmd BufReadPre ~/* setlocal undofile
+  augroup END
+endif
