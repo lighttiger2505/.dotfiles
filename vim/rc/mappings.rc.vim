@@ -1,12 +1,3 @@
-
-" Release keymappings for plug-in.
-nnoremap ; :
-xnoremap : <Nop>
-" nnoremap m <Nop>
-" xnoremap m <Nop>
-nnoremap , <Nop>
-xnoremap , <Nop>
-nnoremap q <Nop>
 " Change leader map
 let g:mapleader = ","
 " nnoremap \ ,
