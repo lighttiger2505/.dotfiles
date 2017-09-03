@@ -41,6 +41,10 @@ nnoremap <silent> [tab]t :<C-u>tablast <bar> tabnew<CR>
 " Move tab
 nnoremap <silent> [tab]n :<C-u>tabnext<CR>
 nnoremap <silent> [tab]p :<C-u>tabprevious<CR>
+nnoremap <silent> [tab]f :<C-u>tabfirst<CR>
+nnoremap <silent> [tab]l :<C-u>tablast<CR>
+nnoremap <silent> [tab]m :<C-u>tabmove<Space>
+nnoremap <silent> [tab]c :<C-u>tabclose<CR>
 
 " The prefix key of window.
 nnoremap [window] <Nop>
