@@ -114,8 +114,8 @@ hook_add = '''
 '''
 
 [[plugins]]
-on_ft = ['python']
 repo = 'thinca/vim-qfreplace'
+on_ft = ['python']
 
 [[plugins]]
 repo = 'lighttiger2505/gtags.vim'
