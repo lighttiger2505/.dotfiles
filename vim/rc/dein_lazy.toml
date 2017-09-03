@@ -103,7 +103,7 @@ let g:test#strategy = 'dispatch'
 repo = 'thinca/vim-ref'
 on_ft = ['python']
 hook_add = '''
-    nmap <Leader>e <Plug>(ref-keyword)
+    nmap <Leader>k <Plug>(ref-keyword)
 
     " Ref view setting
     autocmd FileType ref call s:initialize_ref_viewer()

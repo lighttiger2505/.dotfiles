@@ -7,6 +7,9 @@ xnoremap : <Nop>
 nnoremap , <Nop>
 xnoremap , <Nop>
 nnoremap q <Nop>
+" Change leader map
+let g:mapleader = ","
+" nnoremap \ ,
 
 " Editing .vimrc
 nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
