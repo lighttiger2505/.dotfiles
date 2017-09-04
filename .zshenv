@@ -7,7 +7,7 @@ export LANG=en_US.UTF-8
 # zplug
 export ZPLUG_HOME=$HOME/.zplug
 # golang
-export GOPATH=$HOME/go
+export GOPATH=$HOME/dev
 # pyenv
 export PYENV_PATH=$HOME/.pyenv
 # Google Cloud Platform
