@@ -132,5 +132,12 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'elzr/vim-json'
+on_ft = ['json']
+hook_source = '''
+    let g:vim_json_syntax_conceal = 0
+    let g:indentLine_noConcealCursor = ""
+'''
+
 repo = 'Shougo/neco-vim'
 on_ft = ['vim']
