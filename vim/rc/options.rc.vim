@@ -112,3 +112,14 @@ if has('persistent_undo')
     autocmd BufReadPre ~/* setlocal undofile
   augroup END
 endif
+
+" jq command
+command! -nargs=? Jq call s:Jq(<f-args>)
+function! s:Jq(...)
+    if 0 == a:0
+        let l:arg = "."
+    else
+        let l:arg = a:1
+    endif
+    execute "%! jq \"" . l:arg . "\""
+endfunction

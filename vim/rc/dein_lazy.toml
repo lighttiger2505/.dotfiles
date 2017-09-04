@@ -130,3 +130,11 @@ hook_add = '''
     " Show reference of cousor word on quickfix
     nnoremap <silent> S :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
 '''
+
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = ['json']
+hook_source = '''
+    let g:vim_json_syntax_conceal = 0
+    let g:indentLine_noConcealCursor = ""
+'''
