@@ -103,7 +103,7 @@ let g:test#strategy = 'dispatch'
 repo = 'thinca/vim-ref'
 on_ft = ['python']
 hook_add = '''
-    nmap <Leader>e <Plug>(ref-keyword)
+    nmap <Leader>k <Plug>(ref-keyword)
 
     " Ref view setting
     autocmd FileType ref call s:initialize_ref_viewer()
@@ -114,8 +114,8 @@ hook_add = '''
 '''
 
 [[plugins]]
-on_ft = ['python']
 repo = 'thinca/vim-qfreplace'
+on_ft = ['python']
 
 [[plugins]]
 repo = 'lighttiger2505/gtags.vim'
@@ -138,3 +138,6 @@ hook_source = '''
     let g:vim_json_syntax_conceal = 0
     let g:indentLine_noConcealCursor = ""
 '''
+
+repo = 'Shougo/neco-vim'
+on_ft = ['vim']

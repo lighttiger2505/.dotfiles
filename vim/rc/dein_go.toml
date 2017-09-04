@@ -38,6 +38,12 @@ hook_source = '''
         au FileType goterm nnoremap <silent><buffer>q :quit<CR>
     augroup END
 
-    nmap <silent><Leader>r :write<CR>:GoRun<CR>
-    nmap <silent><Leader>b :write<CR>:GoBuild<CR>
+    augroup MyGoCmd
+        autocmd FileType go nmap <silent><Leader>r <Plug>(go-run)
+        autocmd FileType go nmap <silent><Leader>b <Plug>(go-build)
+        autocmd FileType go nmap <silent><Leader>t <Plug>(go-test)
+        autocmd FileType go nmap <silent><Leader>i <Plug>(go-imports)
+        autocmd FileType go nmap <silent><Leader>k <Plug>(go-doc)
+        autocmd FileType go nmap <silent><Leader>n <Plug>(go-rename)
+    augroup END
 '''
