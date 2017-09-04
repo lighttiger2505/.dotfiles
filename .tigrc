@@ -1,10 +1,10 @@
-# main view の左端にコミットIDを表示する
+# Show commit ID in left of main view
 set main-view = id date author:email-user commit-title:graph=yes,refs=yes
 
-# blame view の行数表示をON、intervalを1に
+# Show line number in blame view
 set blame-view  = date:default author:email-user id:yes,color line-number:yes,interval=1 text
 
-# Pager系の行数表示をON、intervalを1に (default: line-number:no,interval=5)
+# Show line nuber
 set pager-view  = line-number:yes,interval=1 text
 set stage-view  = line-number:yes,interval=1 text
 set log-view    = line-number:yes,interval=1 text
