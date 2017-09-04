@@ -10,3 +10,7 @@ set stage-view  = line-number:yes,interval=1 text
 set log-view    = line-number:yes,interval=1 text
 set blob-view   = line-number:yes,interval=1 text
 set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
+
+# Execute rebase -i on selected commit in main view or diff view.
+bind main R !git rebase -i %(commit)
+bind diff R !git rebase -i %(commit)
