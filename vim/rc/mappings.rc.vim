@@ -1,7 +1,3 @@
-" Change leader map
-let g:mapleader = ","
-" nnoremap \ ,
-
 " Editing .vimrc
 nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
 
