@@ -123,3 +123,6 @@ function! s:Jq(...)
     endif
     execute "%! jq \"" . l:arg . "\""
 endfunction
+
+" Number of characters to apply syntax per line
+set synmaxcol=200
