@@ -64,3 +64,4 @@ set completeopt-=preview
 
 " Order deoplete source
 call deoplete#custom#set('buffer', 'rank', 100)
+call deoplete#custom#set('around', 'rank', 100)
