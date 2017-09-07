@@ -175,7 +175,7 @@ depends = ['vim-fugitive']
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-on_cmd = ['Gstatus', 'Gdiff', 'Gblame', 'Glog']
+on_cmd = ['Git', 'Gstatus', 'Gdiff', 'Gblame', 'Glog']
 hook_add = '''
     nmap [figitive] <Nop>
     map <Leader>g [figitive]
