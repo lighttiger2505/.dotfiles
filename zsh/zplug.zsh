@@ -49,9 +49,6 @@ zplug "motemen/ghq", \
 # Set enhancd filters
 export ENHANCD_FILTER=fzf:peco
 
-# keybind of autosuggest accept
-bindkey '^F' autosuggest-accept
-
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
     printf "Install? [y/N]: "
