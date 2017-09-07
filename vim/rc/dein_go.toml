@@ -43,7 +43,7 @@ hook_source = '''
         autocmd FileType go nmap <silent><Leader>b <Plug>(go-build)
         autocmd FileType go nmap <silent><Leader>t <Plug>(go-test)
         autocmd FileType go nmap <silent><Leader>i <Plug>(go-imports)
-        autocmd FileType go nmap <silent><Leader>k <Plug>(go-doc)
+        autocmd FileType go nmap <silent><Leader>d <Plug>(go-doc)
         autocmd FileType go nmap <silent><Leader>n <Plug>(go-rename)
     augroup END
 '''
