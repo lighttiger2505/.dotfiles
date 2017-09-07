@@ -163,8 +163,9 @@ repo = 'scrooloose/nerdtree'
 on_cmd = ['NERDTreeToggle']
 depends = ['nerdtree-git-plugin']
 hook_add = '''
-    nnoremap <Space>f :<C-u>NERDTreeToggle<CR>
+    let NERDTreeShowHidden=1
     let NERDTreeIgnore=['\.pyc$']
+    nnoremap <Space>f :<C-u>NERDTreeToggle<CR>
 '''
 
 [[plugins]]
