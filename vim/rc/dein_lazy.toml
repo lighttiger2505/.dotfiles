@@ -1,19 +1,6 @@
-[[plugins]]
-repo = 'Shougo/neocomplete.vim'
-if = "!has('nvim')"
-on_i = 1
-hook_source = '''
-    let g:neocomplete#enable_at_startup = 1
-    source ~/.vim/rc/plugins/neocomplete.rc.vim
-'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = ['neosnippet-snippets']
-
+#####################################################################
+# Edit util
+#####################################################################
 [[plugins]]
 repo = 'Shougo/unite.vim'
 if = "!has('nvim')"
@@ -39,24 +26,37 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tpope/vim-markdown'
-on_ft = ['md', 'markdown']
+repo = 'Shougo/neocomplete.vim'
+if = "!has('nvim')"
+on_i = 1
+hook_source = '''
+    let g:neocomplete#enable_at_startup = 1
+    source ~/.vim/rc/plugins/neocomplete.rc.vim
+'''
 
 [[plugins]]
-repo = 'kannokanno/previm'
-on_ft = ['md', 'markdown']
+repo = 'junegunn/vim-easy-align'
+on_map = ['<Plug>(EasyAlign)']
+hook_add = '''
+    vmap <Enter> <Plug>(EasyAlign)
+'''
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = ['toml']
+repo = 'bronson/vim-trailing-whitespace'
+on_cmd = ['FixWhitespace']
+hook_add = '''
+    nnoremap <silent> <Leader>w :FixWhitespace<CR>
+'''
 
-[[plugins]]
-repo = 'IN3D/vim-raml'
-on_ft = ['raml']
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
+#####################################################################
+# Programing util
+#####################################################################
+# [[plugins]]
+# repo = 'Shougo/neosnippet-snippets'
+#
+# [[plugins]]
+# repo = 'Shougo/neosnippet.vim'
+# depends = ['neosnippet-snippets']
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -65,14 +65,6 @@ on_ft = ['python']
 hook_source = '''
   source ~/.vim/rc/plugins/vimquickrun.rc.vim
 '''
-
-# [[plugins]]
-# repo = 'neomake/neomake'
-# on_ft = ['python']
-# hook_source = '''
-#     autocmd! BufEnter,BufWritePost * Neomake
-#     let g:neomake_python_enabled_makers = ['python', 'flake8']
-# '''
 
 [[plugins]]
 repo = 'w0rp/ale'
@@ -90,21 +82,40 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'tpope/vim-dispatch'
+repo = 'thinca/vim-qfreplace'
+on_ft = ['python']
+
+[[plugins]]
+repo = 'lighttiger2505/gtags.vim'
+on_cmd = ['Gtags']
+on_ft = ['python']
+hook_source = '''
+    let g:Gtags_Auto_Map = 0
+    let g:Gtags_OpenQuickfixWindow = 1
+
+    " Show definetion of function cousor word on quickfix
+    nnoremap <silent><Leader>k :<C-u>exe("Gtags ".expand('<cword>'))<CR>
+    " Show reference of cousor word on quickfix
+    nnoremap <silent><Leader>s :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
+'''
 
 [[plugins]]
 repo = 'janko-m/vim-test'
 depends = ['vim-dispatch']
-hook_add = '''
-let g:test#strategy = 'dispatch'
+hook_source = '''
+    let g:test#strategy = 'dispatch'
 '''
 
 [[plugins]]
+repo = 'tpope/vim-dispatch'
+
+[[plugins]]
 repo = 'thinca/vim-ref'
-on_ft = ['python']
+on_map = ['<Plug>(ref-keyword)']
 hook_add = '''
     nmap <Leader>k <Plug>(ref-keyword)
-
+'''
+hook_source = '''
     " Ref view setting
     autocmd FileType ref call s:initialize_ref_viewer()
     function! s:initialize_ref_viewer()
@@ -114,22 +125,88 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'thinca/vim-qfreplace'
-on_ft = ['python']
+repo = 'majutsushi/tagbar'
+on_cmd = ['TagbarToggle']
+hook_add = '''
+    nmap <Space>t :TagbarToggle<CR>
+'''
 
 [[plugins]]
-repo = 'lighttiger2505/gtags.vim'
+repo = 'tyru/caw.vim'
+on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
 hook_add = '''
-    " Options
-    let g:Gtags_Auto_Map = 0
-    let g:Gtags_OpenQuickfixWindow = 1
-
-    " Keymap
-    " Show definetion of function cousor word on quickfix
-    nnoremap <silent> K :<C-u>exe("Gtags ".expand('<cword>'))<CR>
-    " Show reference of cousor word on quickfix
-    nnoremap <silent> S :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
+    " Add comment to beginning line(consider whitespace)
+    nmap <Leader>c <Plug>(caw:hatpos:toggle)
+    vmap <Leader>c <Plug>(caw:hatpos:toggle)
+    " Add comment to beginning line(ignore whitespace)
+    nmap <Leader>, <Plug>(caw:zeropos:toggle)
+    vmap <Leader>, <Plug>(caw:zeropos:toggle)
 '''
+
+repo = 'Shougo/neco-vim'
+on_ft = ['vim']
+
+#####################################################################
+# Other Util
+#####################################################################
+[[plugins]]
+repo = 'kannokanno/previm'
+depends = ['open-browser']
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+on_cmd = ['NERDTreeToggle']
+depends = ['nerdtree-git-plugin']
+hook_add = '''
+    nnoremap <Space>f :<C-u>NERDTreeToggle<CR>
+    let NERDTreeIgnore=['\.pyc$']
+'''
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+depends = ['vim-fugitive']
+
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+on_cmd = ['Gstatus', 'Gdiff', 'Gblame', 'Glog']
+hook_add = '''
+    nmap [figitive] <Nop>
+    map <Leader>g [figitive]
+    nmap <silent> [figitive]s :<C-u>Gstatus<CR>
+    nmap <silent> [figitive]d :<C-u>Gdiff<CR>
+    nmap <silent> [figitive]b :<C-u>Gblame<CR>
+    nmap <silent> [figitive]l :<C-u>Glog<CR>
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_map = ['<Plug>(openbrowser-smart-search)']
+hook_add = '''
+    let g:netrw_nogx = 1 " disable netrw's gx mapping.
+    nmap <Leader>o <Plug>(openbrowser-smart-search)
+    vmap <Leader>o <Plug>(openbrowser-smart-search)
+'''
+
+#####################################################################
+# Syntax
+#####################################################################
+[[plugins]]
+repo = 'tpope/vim-markdown'
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo = 'IN3D/vim-raml'
+on_ft = ['raml']
 
 [[plugins]]
 repo = 'elzr/vim-json'
@@ -139,5 +216,18 @@ hook_source = '''
     let g:indentLine_noConcealCursor = ""
 '''
 
-repo = 'Shougo/neco-vim'
-on_ft = ['vim']
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+on_ft = ['markdown', 'toml', 'help']
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+on_ft = ['markdown', 'toml', 'help']
