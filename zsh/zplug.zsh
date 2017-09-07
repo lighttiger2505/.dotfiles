@@ -9,6 +9,8 @@ source $HOME/.zplug/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting", \
     defer:2
 
+zplug "zsh-users/zsh-autosuggestions"
+
 zplug "b4b4r07/enhancd", \
     use:init.sh
 
@@ -44,9 +46,11 @@ zplug "motemen/ghq", \
     from:gh-r, \
     rename-to:ghq
 
-# set enhancd filters
-ENHANCD_FILTER=fzf:peco
-export ENHANCD_FILTER
+# Set enhancd filters
+export ENHANCD_FILTER=fzf:peco
+
+# keybind of autosuggest accept
+bindkey '^F' autosuggest-accept
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
