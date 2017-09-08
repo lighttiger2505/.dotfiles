@@ -18,18 +18,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tyru/caw.vim'
-on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
-hook_add = '''
-    " Add comment to beginning line(consider whitespace)
-    nmap <Leader>c <Plug>(caw:hatpos:toggle)
-    vmap <Leader>c <Plug>(caw:hatpos:toggle)
-    " Add comment to beginning line(ignore whitespace)
-    nmap <Leader>, <Plug>(caw:zeropos:toggle)
-    vmap <Leader>, <Plug>(caw:zeropos:toggle)
-'''
-
-[[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 hook_add = '''
     set helplang=ja,en
