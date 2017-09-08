@@ -41,6 +41,10 @@ hook_add = '''
     vmap <Enter> <Plug>(EasyAlign)
 '''
 
+[[plugins]]
+repo = 'tpope/vim-surround'
+on_i = 1
+
 #####################################################################
 # Programing util
 #####################################################################
@@ -176,7 +180,6 @@ hook_add = '''
 [[plugins]]
 repo = 'Xuyuanp/nerdtree-git-plugin'
 depends = ['vim-fugitive']
-
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
