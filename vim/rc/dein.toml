@@ -4,18 +4,9 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'michalbachowski/vim-wombat256mod'
 
-# [[plugins]]
-# repo = 'vim-airline/vim-airline'
-# depends = ['vim-airline-themes']
-# hook_add = '''
-#     source ~/.vim/rc/plugins/airline.rc.vim
-# '''
-#
-# [[plugins]]
-# repo = 'vim-airline/vim-airline-themes'
-
 [[plugins]]
 repo = 'tpope/vim-surround'
+repo = 'itchyny/lightline.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
