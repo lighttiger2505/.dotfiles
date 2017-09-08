@@ -41,13 +41,6 @@ hook_add = '''
     vmap <Enter> <Plug>(EasyAlign)
 '''
 
-[[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
-on_cmd = ['FixWhitespace']
-hook_add = '''
-    nnoremap <silent> <Leader>w :FixWhitespace<CR>
-'''
-
 #####################################################################
 # Programing util
 #####################################################################
@@ -131,17 +124,17 @@ hook_add = '''
     nmap <Space>t :TagbarToggle<CR>
 '''
 
-[[plugins]]
-repo = 'tyru/caw.vim'
-on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
-hook_add = '''
-    " Add comment to beginning line(consider whitespace)
-    nmap <Leader>c <Plug>(caw:hatpos:toggle)
-    vmap <Leader>c <Plug>(caw:hatpos:toggle)
-    " Add comment to beginning line(ignore whitespace)
-    nmap <Leader>, <Plug>(caw:zeropos:toggle)
-    vmap <Leader>, <Plug>(caw:zeropos:toggle)
-'''
+# [[plugins]]
+# repo = 'tyru/caw.vim'
+# on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
+# hook_add = '''
+#     " Add comment to beginning line(consider whitespace)
+#     nmap <Leader>c <Plug>(caw:hatpos:toggle)
+#     vmap <Leader>c <Plug>(caw:hatpos:toggle)
+#     " Add comment to beginning line(ignore whitespace)
+#     nmap <Leader>, <Plug>(caw:zeropos:toggle)
+#     vmap <Leader>, <Plug>(caw:zeropos:toggle)
+# '''
 
 repo = 'Shougo/neco-vim'
 on_ft = ['vim']
@@ -151,7 +144,7 @@ on_ft = ['vim']
 #####################################################################
 [[plugins]]
 repo = 'kannokanno/previm'
-depends = ['open-browser']
+depends = ['open-browser.vim']
 on_ft = ['markdown']
 
 [[plugins]]
@@ -224,11 +217,3 @@ on_ft = ['markdown', 'toml', 'help']
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
-depends = ['context_filetype.vim']
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
-on_ft = ['markdown', 'toml', 'help']
