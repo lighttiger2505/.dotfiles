@@ -1,8 +1,8 @@
 " Editing .vimrc
-nnoremap <Space>ev :tabnew $HOME/.vimrc<CR>
+nnoremap <Space>e :tabnew $HOME/.vimrc<CR>
 
 " Reload .vimrc
-nnoremap <Space>rv :source $HOME/.vimrc<CR>
+nnoremap <Space>s :source $HOME/.vimrc<CR>
 
 " Multi line move
 noremap k gk
