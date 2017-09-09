@@ -11,7 +11,7 @@ hook_source = '''
 repo = 'Shougo/denite.nvim'
 if = "has('nvim')"
 on_cmd = 'Denite'
-depends = ['neomru.vim', 'denite-gtags', 'vim-denite-ghq']
+depends = ['neomru.vim', 'neoinclude.vim']
 hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 hook_add = '''
     " Prefix key
@@ -25,6 +25,10 @@ hook_add = '''
     nmap <silent> [denite]<C-B> :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
     " Outline current file
     nmap <silent> [denite]<C-O> :<C-u>Denite outline -highlight-mode-insert=Search<CR>
+    " Ctag simbol
+    nmap <silent> [denite]<C-]> :<C-u>Denite tag -highlight-mode-insert=Search<CR>
+    " Reccent file
+    nmap <silent> [denite]<C-r> :<C-u>Denite file_mru -highlight-mode-insert=Search<CR>
     " Command history
     nmap <silent> [denite]<C-H> :<C-u>Denite command_history -highlight-mode-insert=Search<CR>
     " Seach dotfiles
@@ -39,7 +43,4 @@ hook_add = '''
 repo = 'Shougo/neomru.vim'
 
 [[plugins]]
-repo = 'ozelentok/denite-gtags'
-
-[[plugins]]
-repo = 'Jagua/vim-denite-ghq'
+repo = 'Shougo/neoinclude.vim'
