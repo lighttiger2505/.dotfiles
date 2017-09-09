@@ -114,5 +114,7 @@ function! ToggleQuickfix()
         cclose
     endif
 endfunction
-
 nmap <script> <silent> R :call ToggleQuickfix()<CR>
+
+" Clear search hi
+nnoremap <Space>n :noh<CR>
