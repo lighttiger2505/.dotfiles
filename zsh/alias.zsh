@@ -20,7 +20,10 @@ alias djrun="python manage.py runserver"
 alias djshell="python manage.py shell"
 
 # zshrc source
-alias sourcez="source ~/.zshrc"
+alias zs="source ~/.zshrc"
+
+# zshrc load benchmark
+alias zb="time ( zsh -i -c exit; )"
 
 # Launch markdown diary
 alias dia=open_diary
