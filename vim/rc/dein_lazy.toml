@@ -140,17 +140,17 @@ hook_add = '''
     nmap <Space>t :TagbarToggle<CR>
 '''
 
-# [[plugins]]
-# repo = 'tyru/caw.vim'
-# on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
-# hook_add = '''
-#     " Add comment to beginning line(consider whitespace)
-#     nmap <Leader>c <Plug>(caw:hatpos:toggle)
-#     vmap <Leader>c <Plug>(caw:hatpos:toggle)
-#     " Add comment to beginning line(ignore whitespace)
-#     nmap <Leader>, <Plug>(caw:zeropos:toggle)
-#     vmap <Leader>, <Plug>(caw:zeropos:toggle)
-# '''
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
+hook_add = '''
+    " Add comment to beginning line(consider whitespace)
+    nmap <Leader>c <Plug>(caw:hatpos:toggle)
+    vmap <Leader>c <Plug>(caw:hatpos:toggle)
+    " Add comment to beginning line(ignore whitespace)
+    nmap <Leader>, <Plug>(caw:zeropos:toggle)
+    vmap <Leader>, <Plug>(caw:zeropos:toggle)
+'''
 
 repo = 'Shougo/neco-vim'
 on_ft = ['vim']
