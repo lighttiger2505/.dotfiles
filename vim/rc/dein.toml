@@ -6,6 +6,11 @@ repo = 'michalbachowski/vim-wombat256mod'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = '''
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ }
+'''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
