@@ -15,6 +15,8 @@ let g:ale_set_quickfix = 0
 let g:ale_open_list = 0
 let g:ale_keep_list_window_open = 0
 
+let g:ale_statusline_format = ['%d Error', '%d Warn', 'OK']
+
 " Enable linter
 let g:ale_linters = {
 \   'javascript': ['jslint', 'eslint'],

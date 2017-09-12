@@ -6,6 +6,7 @@ repo = 'michalbachowski/vim-wombat256mod'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = 'source ~/.vim/rc/plugins/lightline.rc.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
