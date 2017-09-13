@@ -2,15 +2,11 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'michalbachowski/vim-wombat256mod'
+repo = 'vim-scripts/wombat256.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-hook_add = '''
-let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \ }
-'''
+hook_add = 'source ~/.vim/rc/plugins/lightline.rc.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
