@@ -1,23 +1,3 @@
-# 実行中のコマンドとユーザ名とホスト名とカレントディレクトリを表示。
-update_title() {
-    local command_line=
-    typeset -a command_line
-    command_line=${(z)2}
-    local command=
-    if [ ${(t)command_line} = "array-local" ]; then
-        command="$command_line[1]"
-    else
-        command="$2"
-    fi
-    print -n -P "\e]2;"
-    echo -n "(${command})"
-    print -n -P " %n@%m:%~\a"
-}
-# X環境上でだけウィンドウタイトルを変える。
-if [ -n "$DISPLAY" ]; then
-    preexec_functions=($preexec_functions update_title)
-fi
-
 # show git status
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
