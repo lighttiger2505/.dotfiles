@@ -1,10 +1,12 @@
-# show git status
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+autoload -Uz colors; colors
+autoload -Uz add-zsh-hook
+autoload -Uz terminfo
 
 setopt prompt_subst
 setopt re_match_pcre
 
-function rprompt-git-current-branch {
+function current-git-branch-status {
     # local name st color
     if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
         return
@@ -26,16 +28,39 @@ function rprompt-git-current-branch {
         color=%F{red}
     fi
 
-    echo "$color($name)%f%b "
+    echo "$color$name%f%b"
 }
 
-local p_git='`rprompt-git-current-branch`'
-local p_dir="%F{yellow}(%~)%f"
-local p_vimjob='$([[ $(jobs|grep -c vim) != 0 ]] && print "vim")'
-local p_mark="%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
+function git-branch() {
+    echo -n "$(git name-rev --name-only HEAD 2> /dev/null)"
+}
 
-local prow_dir=" $p_dir$p_git"$'\n'
-local prow_user=" %F{yellow}[%n@%m]%f%F{green}[$p_vimjob]%f $p_mark "
+terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
+left_down_prompt_preexec() {
+    print -rn -- $terminfo[el]
+}
+add-zsh-hook preexec left_down_prompt_preexec
 
-PROMPT=$prow_dir$prow_user
+function zle-keymap-select zle-line-init zle-line-finish
+{
+    case $KEYMAP in
+        main|viins)
+            vimmode="$fg[blue]-- INSERT --$reset_color"
+            ;;
+        vicmd)
+            vimmode="$fg[green]-- NORMAL --$reset_color"
+            ;;
+    esac
 
+    local p_vimjob="[%F{green}$([[ $(jobs|grep -c vim) != 0 ]] && print "vim")%f]"
+    local p_branch="{$(current-git-branch-status)}"
+    local p_mark="%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
+    PROMPT="%{$terminfo_down_sc$vimmode | %F{white}%~%f$terminfo[rc]%}[%F{yellow}%n%f]$p_branch$p_vimjob $p_mark "
+
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
+zle -N edit-command-line
