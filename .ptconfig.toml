@@ -1,0 +1,1 @@
+ignore = ["tags", "GPATH", "GRTAGS", "GTAGS"]
