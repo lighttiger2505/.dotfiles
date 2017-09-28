@@ -99,5 +99,11 @@ source ~/.zsh/keybind.zsh
 source ~/.zsh/zplug.zsh
 
 # Init pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if [ -e ~/.pyenv ]; then
+    eval "$(pyenv init -)"
+fi
+
+# Init pyenv-virtualenv
+if [ -e ~/.pyenv/plugins/virtualenv ]; then
+    eval "$(pyenv virtualenv-init -)"
+fi
