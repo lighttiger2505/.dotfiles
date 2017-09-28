@@ -59,25 +59,25 @@ SAVEHIST=10000
 # load settings
 #####################################################################
 # auto complete
-source ~/.dotfiles/zsh/completion.zsh
+source ~/.zsh/completion.zsh
 
 # prompt
-source ~/.dotfiles/zsh/prompt.zsh
+source ~/.zsh/prompt.zsh
 
 # peco function
-source ~/.dotfiles/zsh/peco.zsh
+source ~/.zsh/peco.zsh
 
 # fzf functions
-source ~/.dotfiles/zsh/fzf.zsh
+source ~/.zsh/fzf.zsh
 
 # alias
-source ~/.dotfiles/zsh/alias.zsh
+source ~/.zsh/alias.zsh
 
 # keybind
-source ~/.dotfiles/zsh/keybind.zsh
+source ~/.zsh/keybind.zsh
 
 # plugin manager
-source ~/.dotfiles/zsh/zplug.zsh
+source ~/.zsh/zplug.zsh
 
 # Init pyenv
 eval "$(pyenv init -)"
