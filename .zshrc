@@ -43,8 +43,6 @@ $PYENV_PATH/bin(N-/)
 $PYENV_PATH/shims(N-/)
 )
 
-export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
-
 # Sudo path
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
