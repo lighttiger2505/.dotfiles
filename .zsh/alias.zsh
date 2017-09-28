@@ -26,9 +26,25 @@ alias zs="source ~/.zshrc"
 alias zb="time ( zsh -i -c exit; )"
 
 # Launch markdown diary
-alias dia=open_diary
-
 function open_diary() {
   mkdir -p ~/diary/$(date "+%Y/%m")
   vim ~/diary/$(date "+%Y/%m/%d.md")
 }
+alias dia=open_diary
+
+# Vim shotchut
+alias v=vim
+
+# when not exist vim then start up vi
+if type vim > /dev/null 2>&1; then
+    alias vi=vim
+else
+    alias vim=vi
+fi
+
+# when not exist nvim then start up vim
+if type nvim > /dev/null 2>&1; then
+    alias vim=nvim
+else
+    alias nvim=vim
+fi

@@ -36,15 +36,6 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 # defaut editor is vim
 export EDITOR=nvim
 
-# when not exist vim then start up vi
-if ! type vim > /dev/null 2>&1; then
-    alias vim=vi
-fi
-# when not exist nvim then start up vim
-if ! type vim > /dev/null 2>&1; then
-    alias nvim=vim
-fi
-
 #####################################################################
 # Path/Valiables
 #####################################################################
