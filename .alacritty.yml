@@ -1,0 +1,52 @@
+env:
+  TERM: xterm-256color
+
+dpi:
+  x: 96.0
+  y: 96.0
+
+tabspaces: 8
+draw_bold_text_with_bright_colors: true
+render_timer: false
+
+font:
+  use_thin_strokes: true
+  normal:
+    family: Inconsolata-g for Powerline
+    # style: Regular
+  bold:
+    family: Inconsolata-g for Powerline
+    # style: Bold
+  italic:
+    family: Inconsolata-g for Powerline
+    # style: Italic
+  size: 14.0
+  offset:
+    x: 0.0
+    y: 0.0
+
+colors:
+  primary:
+    background: '0x191919'
+    foreground: '0xdee2ea'
+  normal:
+    black:   '0x2a2a2a'
+    red:     '0xfc2d1e'
+    green:   '0x2fcc71'
+    yellow:  '0xf1c40d'
+    blue:    '0x3398db'
+    magenta: '0x6171c4'
+    cyan:    '0x0095de'
+    white:   '0xdee2ea'
+  bright:
+    black:   '0x686868'
+    red:     '0xe74c3c'
+    green:   '0x07d774'
+    yellow:  '0xf6c700'
+    blue:    '0x0095de'
+    magenta: '0x6668c6'
+    cyan:    '0x0092e2'
+    white:   '0xffffff'
+
+visual_bell:
+  duration: 0
