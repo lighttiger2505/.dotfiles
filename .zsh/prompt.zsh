@@ -31,7 +31,7 @@ function current-git-branch-status {
     echo "$color$name%f%b"
 }
 
-function git-branch() {
+function current-git-branch() {
     echo -n "$(git name-rev --name-only HEAD 2> /dev/null)"
 }
 
@@ -53,7 +53,7 @@ function zle-keymap-select zle-line-init zle-line-finish
     esac
 
     local p_vimjob="[%F{green}$([[ $(jobs|grep -c vim) != 0 ]] && print "vim")%f]"
-    local p_branch="{$(current-git-branch-status)}"
+    local p_branch="{%F{blue}$(current-git-branch)%f}"
     local p_mark="%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
     PROMPT="%{$terminfo_down_sc$vimmode | %F{white}%~%f$terminfo[rc]%}[%F{yellow}%n%f]$p_branch$p_vimjob $p_mark "
 
