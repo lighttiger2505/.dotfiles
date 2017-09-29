@@ -1,6 +1,7 @@
 # Default layout
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
+alias -g B='`git branch --all | grep -v HEAD | fzf -m`'
 
 # Checkout git branch (including remote branches)
 fzf-git-branch-checkout() {
