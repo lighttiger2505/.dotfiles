@@ -41,8 +41,11 @@ zplug "stedolan/jq", \
 zplug "monochromegane/the_platinum_searcher", \
     as:command, \
     from:gh-r, \
-    rename-to:"pt", \
+    rename-to:pt, \
     frozen:1
+
+zplug "jonas/tig", \
+    use: "contrib/tig-completion.zsh"
 
 zplug "motemen/ghq", \
     as:command, \

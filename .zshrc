@@ -3,8 +3,6 @@
 #####################################################################
 # init
 #####################################################################
-source ~/.zshenv
-
 # load zshrc for os type
 case ${OSTYPE} in
     darwin*)
@@ -16,7 +14,30 @@ case ${OSTYPE} in
 esac
 
 #####################################################################
-# path/valiables
+# Exports
+#####################################################################
+# LANG
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# zplug
+export ZPLUG_HOME=$HOME/.zplug
+# golang
+export GOPATH=$HOME/dev
+# pyenv
+export PYENV_PATH=$HOME/.pyenv
+# Neovim
+export XDG_CONGIG_HOME=~/.config
+# ls cmd color
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
+# defaut editor is vim
+export EDITOR=nvim
+
+#####################################################################
+# Path/Valiables
 #####################################################################
 typeset -U path
 path=(
@@ -43,8 +64,6 @@ $PYENV_PATH/bin(N-/)
 $PYENV_PATH/shims(N-/)
 )
 
-export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
-
 # Sudo path
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
@@ -59,26 +78,32 @@ SAVEHIST=10000
 # load settings
 #####################################################################
 # auto complete
-source ~/.dotfiles/zsh/completion.zsh
+source ~/.zsh/completion.zsh
 
 # prompt
-source ~/.dotfiles/zsh/prompt.zsh
+source ~/.zsh/prompt.zsh
 
 # peco function
-source ~/.dotfiles/zsh/peco.zsh
+source ~/.zsh/peco.zsh
 
 # fzf functions
-source ~/.dotfiles/zsh/fzf.zsh
+source ~/.zsh/fzf.zsh
 
 # alias
-source ~/.dotfiles/zsh/alias.zsh
+source ~/.zsh/alias.zsh
 
 # keybind
-source ~/.dotfiles/zsh/keybind.zsh
+source ~/.zsh/keybind.zsh
 
 # plugin manager
-source ~/.dotfiles/zsh/zplug.zsh
+source ~/.zsh/zplug.zsh
 
 # Init pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if [ -e ~/.pyenv ]; then
+    eval "$(pyenv init -)"
+fi
+
+# Init pyenv-virtualenv
+if [ -e ~/.pyenv/plugins/virtualenv ]; then
+    eval "$(pyenv virtualenv-init -)"
+fi
