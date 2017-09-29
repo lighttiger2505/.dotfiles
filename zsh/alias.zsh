@@ -25,6 +25,8 @@ alias zs="source ~/.zshrc"
 # zshrc load benchmark
 alias zb="time ( zsh -i -c exit; )"
 
+alias al="alacritty"
+
 # Launch markdown diary
 alias dia=open_diary
 
