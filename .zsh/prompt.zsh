@@ -32,7 +32,7 @@ function current-git-branch-status {
 }
 
 function current-git-branch() {
-    echo -n "$(git name-rev --name-only HEAD 2> /dev/null)"
+    echo -n "$(git rev-parse --abbrev-ref=loose HEAD 2> /dev/null)"
 }
 
 terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
