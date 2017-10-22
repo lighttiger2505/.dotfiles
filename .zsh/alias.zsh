@@ -50,3 +50,12 @@ if type nvim > /dev/null 2>&1; then
 else
     alias nvim=vim
 fi
+
+# Browse selected issue
+alias lbi='lab browse `lab issue | fzf -m | awk '\''{print $1}'\''`'
+
+# Browse selected merge request
+alias lbm='lab browse `lab merge-request | fzf -m | awk '\''{print $1}'\''`'
+
+# Select git branch
+alias -g B='`git branch --all | grep -v HEAD | fzf -m`'
