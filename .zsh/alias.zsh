@@ -1,5 +1,6 @@
 # ls
 alias ll="ls -al"
+alias lr="ls -ltr"
 
 # git status
 alias gs="git status"
@@ -50,6 +51,11 @@ function open_diary() {
   vim ~/diary/$(date "+%Y/%m/%d.md")
 }
 alias dia=open_diary
+
+# lab shortcut
+alias lb='lab browse'
+alias li='lab issue'
+alias lm='lab merge-request'
 
 # Browse selected issue
 alias lbi='lab browse `lab issue | fzf -m | awk '\''{print $1}'\''`'
