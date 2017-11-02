@@ -107,3 +107,6 @@ fi
 if [ -e ~/.pyenv/plugins/virtualenv ]; then
     eval "$(pyenv virtualenv-init -)"
 fi
+
+# added by travis gem
+[ -f /Users/lighttiger2505/.travis/travis.sh ] && source /Users/lighttiger2505/.travis/travis.sh
