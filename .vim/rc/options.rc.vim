@@ -97,7 +97,7 @@ endif
 " Show quickfix after grepcmd
 augroup GrepCmd
     autocmd!
-    autocmd QuickFixCmdPost vim,grep if len(getqflist()) != 0 | cwindow | endif
+    autocmd QuickFixCmdPost vim,grep,make if len(getqflist()) != 0 | cwindow | endif
 augroup END
 
 " For input multibyte chars

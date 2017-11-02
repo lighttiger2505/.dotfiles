@@ -23,6 +23,7 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \   'markdown': ['mdl'],
 \   'go': ['gometalinter'],
+\   'make': ['checkmake'],
 \}
 
 " Prefix key

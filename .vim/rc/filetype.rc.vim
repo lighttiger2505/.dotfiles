@@ -13,5 +13,6 @@ augroup MyTabStep
     autocmd BufNewFile,BufRead *.{c,cpp,h} setlocal tabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.py        setlocal tabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.go        setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead Makefile    setlocal noexpandtab
     autocmd BufRead,BufNewFile *.scss      setlocal filetype=scss
 augroup END
