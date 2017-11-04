@@ -82,14 +82,6 @@ vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<C
 nnoremap <expr> c* ':%s ;\<' . expand('<cword>') . '\>;'
 vnoremap <expr> c* ':s ;\<' . expand('<cword>') . '\>;'
 
-" Move cousor for search work of center
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *N
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
-
 " Auto Escape
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'

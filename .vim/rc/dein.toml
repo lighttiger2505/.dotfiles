@@ -25,3 +25,16 @@ repo = 'vim-jp/vimdoc-ja'
 hook_add = '''
     set helplang=ja,en
 '''
+
+[[plugins]]
+repo = 'haya14busa/vim-asterisk'
+hook_add = '''
+    map *   <Plug>(asterisk-*)
+    map #   <Plug>(asterisk-#)
+    map g*  <Plug>(asterisk-g*)
+    map g#  <Plug>(asterisk-g#)
+    map z*  <Plug>(asterisk-z*)
+    map gz* <Plug>(asterisk-gz*)
+    map z#  <Plug>(asterisk-z#)
+    map gz# <Plug>(asterisk-gz#)
+'''
