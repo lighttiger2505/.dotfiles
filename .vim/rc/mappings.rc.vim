@@ -1,3 +1,6 @@
+" Change leader mapping
+let mapleader = ","
+
 " Editing .vimrc
 nnoremap <Space>e :tabnew $HOME/.vimrc<CR>
 
