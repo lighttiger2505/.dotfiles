@@ -126,3 +126,9 @@ endfunction
 
 " Number of characters to apply syntax per line
 set synmaxcol=200
+
+" Reload change file
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
