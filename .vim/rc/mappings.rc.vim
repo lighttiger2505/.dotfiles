@@ -1,3 +1,6 @@
+" Change leader mapping
+let mapleader = ","
+
 " Editing .vimrc
 nnoremap <Space>e :tabnew $HOME/.vimrc<CR>
 
@@ -81,14 +84,6 @@ vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<C
 " Replace cousor word"
 nnoremap <expr> c* ':%s ;\<' . expand('<cword>') . '\>;'
 vnoremap <expr> c* ':s ;\<' . expand('<cword>') . '\>;'
-
-" Move cousor for search work of center
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *N
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
 
 " Auto Escape
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'

@@ -45,11 +45,10 @@ if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
         \ fnamemodify(s:dein_dir, ':p') , '/$', '', '')
 endif
 
-call s:source_rc('dein.rc.vim')
 call s:source_rc('mappings.rc.vim')
 call s:source_rc('options.rc.vim')
 call s:source_rc('filetype.rc.vim')
-
+call s:source_rc('dein.rc.vim')
 
 " Colors
 set t_Co=256

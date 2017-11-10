@@ -22,7 +22,8 @@ let g:ale_linters = {
 \   'javascript': ['jslint', 'eslint'],
 \   'python': ['flake8'],
 \   'markdown': ['mdl'],
-\   'go': ['gometalinter '],
+\   'go': ['gometalinter'],
+\   'make': ['checkmake'],
 \}
 
 " Prefix key

@@ -97,7 +97,7 @@ endif
 " Show quickfix after grepcmd
 augroup GrepCmd
     autocmd!
-    autocmd QuickFixCmdPost vim,grep if len(getqflist()) != 0 | cwindow | endif
+    autocmd QuickFixCmdPost vim,grep,make if len(getqflist()) != 0 | cwindow | endif
 augroup END
 
 " For input multibyte chars
@@ -126,3 +126,9 @@ endfunction
 
 " Number of characters to apply syntax per line
 set synmaxcol=200
+
+" Reload change file
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
