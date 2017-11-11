@@ -23,7 +23,10 @@ set number
 " Long text
 set wrap
 set textwidth=0
-set colorcolumn=120
+set colorcolumn=256
+
+" Highlight cursor line
+set cursorline
 
 " Invisible stirng
 set list
