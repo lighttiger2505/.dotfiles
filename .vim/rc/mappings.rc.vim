@@ -96,6 +96,8 @@ nnoremap <silent>< <<
 " Not yank is delete operation
 nnoremap <Space>p "0p
 vnoremap <Space>p "0p
+inoremap <C-r> <C-r>0
+nnoremap x "_x
 
 " Move quickfix
 nnoremap <C-p> :cp<CR>
