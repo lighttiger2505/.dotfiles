@@ -7,8 +7,6 @@ hook_source = '''
     let g:deoplete#sources#go#align_class = 1
     let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
     let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
-    " let g:deoplete#sources#go#auto_goos = 1
-    " let g:deoplete#sources#go#cgo = 1
     let g:deoplete#sources#go#cgo#sort_algo = 'priority'
     let g:deoplete#sources#go#package_dot = 0
     let g:deoplete#sources#go#pointer = 1
@@ -18,9 +16,11 @@ hook_source = '''
 repo = 'fatih/vim-go'
 on_ft = ['go']
 hook_source = '''
-    let g:go_list_type = "quickfix"
+    let g:go_list_type = "locationlist"
+    let g:go_list_type_commands = {"GoBuild": "quickfix"}
     let g:go_list_autoclose = 1
-    let g:go_term_enabled = 1
+    let g:go_jump_to_error = 1
+    let g:go_term_enabled = 0
 
     let g:go_term_mode = "split"
     let g:go_term_height = 30
@@ -32,18 +32,15 @@ hook_source = '''
     let g:go_highlight_types = 1
     let g:go_highlight_fields = 1
 
-    augroup MyVimGoWindowClose
-        au FileType goterm nnoremap <silent><buffer>q :quit<CR>
-        au FileType godoc nnoremap <silent><buffer>q :quit<CR>
-    augroup END
-
     augroup MyGoCmd
         autocmd FileType go nmap <silent><Leader>r <Plug>(go-run)
         autocmd FileType go nmap <silent><Leader>b <Plug>(go-build)
         autocmd FileType go nmap <silent><Leader>t <Plug>(go-test)
         autocmd FileType go nmap <silent><Leader>m <Plug>(go-imports)
         autocmd FileType go nmap <silent><Leader>i <Plug>(go-install)
-        autocmd FileType go nmap <silent><Leader>d <Plug>(go-doc)
-        autocmd FileType go nmap <silent><Leader>n <Plug>(go-rename)
+        autocmd FileType go nmap <silent>K         <Plug>(go-doc)
+        autocmd FileType go nmap <silent><Leader>R <Plug>(go-rename)
+        autocmd FileType go nmap <silent><Leader>v <Plug>(go-coverage-toggle)
+        autocmd FileType go nmap <silent><Leader>n <Plug>(go-callees)
     augroup END
 '''
