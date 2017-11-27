@@ -26,7 +26,7 @@ set textwidth=0
 set colorcolumn=256
 
 " Highlight cursor line
-set cursorline
+" set cursorline
 
 " Invisible stirng
 set list
