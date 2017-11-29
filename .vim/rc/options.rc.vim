@@ -85,6 +85,11 @@ set smartcase
 " Search is incremental search
 set incsearch
 
+" Replace incremental
+if !has('inccommand')
+    set inccommand=split
+endif
+
 " Show search result highlight
 set hlsearch
 
