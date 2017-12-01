@@ -101,6 +101,9 @@ source ~/.zsh/zplug.zsh
 # Init pyenv
 if [ -e ~/.pyenv ]; then
     eval "$(pyenv init -)"
+    if type aws > /dev/null 2>&1; then
+        source "$(pyenv which aws_zsh_completer.sh)"
+    fi
 fi
 
 # Init pyenv-virtualenv
