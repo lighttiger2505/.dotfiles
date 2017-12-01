@@ -112,4 +112,6 @@ if [ -e ~/.pyenv/plugins/virtualenv ]; then
 fi
 
 # added by travis gem
-[ -f /Users/lighttiger2505/.travis/travis.sh ] && source /Users/lighttiger2505/.travis/travis.sh
+if [ -f ~/.travis/travis.sh ];then
+    source ~/.travis/travis.sh
+fi
