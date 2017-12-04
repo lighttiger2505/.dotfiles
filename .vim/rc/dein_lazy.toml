@@ -137,20 +137,20 @@ hook_source = '''
 [[plugins]]
 repo = 'tpope/vim-dispatch'
 
-[[plugins]]
-repo = 'thinca/vim-ref'
-on_map = ['<Plug>(ref-keyword)']
-hook_add = '''
-    nmap <Leader>k <Plug>(ref-keyword)
-'''
-hook_source = '''
-    " Ref view setting
-    autocmd FileType ref call s:initialize_ref_viewer()
-    function! s:initialize_ref_viewer()
-        nnoremap <buffer> q <C-w>c
-        setlocal nonumber
-    endfunction
-'''
+# [[plugins]]
+# repo = 'thinca/vim-ref'
+# on_map = ['<Plug>(ref-keyword)']
+# hook_add = '''
+#     nmap <Leader>k <Plug>(ref-keyword)
+# '''
+# hook_source = '''
+#     " Ref view setting
+#     autocmd FileType ref call s:initialize_ref_viewer()
+#     function! s:initialize_ref_viewer()
+#         nnoremap <buffer> q <C-w>c
+#         setlocal nonumber
+#     endfunction
+# '''
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
