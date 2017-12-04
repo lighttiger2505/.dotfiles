@@ -106,26 +106,27 @@ repo = 'jsfaint/gen_tags.vim'
 on_ft = ['python']
 hook_source = '''
     let g:gen_tags#ctags_auto_gen = 1
-    let g:gen_tags#gtags_auto_gen = 1
+    let g:gen_tags#gtags_auto_gen = 0
 '''
 
 [[plugins]]
 repo = 'thinca/vim-qfreplace'
 on_ft = ['python']
 
-[[plugins]]
-repo = 'lighttiger2505/gtags.vim'
-on_cmd = ['Gtags']
-on_ft = ['python']
-hook_source = '''
-    let g:Gtags_Auto_Map = 0
-    let g:Gtags_OpenQuickfixWindow = 1
 
-    " Show definetion of function cousor word on quickfix
-    nnoremap <silent><Leader>k :<C-u>exe("Gtags ".expand('<cword>'))<CR>
-    " Show reference of cousor word on quickfix
-    nnoremap <silent><Leader>s :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
-'''
+# [[plugins]]
+# repo = 'lighttiger2505/gtags.vim'
+# on_cmd = ['Gtags']
+# on_ft = ['python']
+# hook_source = '''
+#     let g:Gtags_Auto_Map = 0
+#     let g:Gtags_OpenQuickfixWindow = 1
+# 
+#     " Show definetion of function cousor word on quickfix
+#     nnoremap <silent><Leader>k :<C-u>exe("Gtags ".expand('<cword>'))<CR>
+#     " Show reference of cousor word on quickfix
+#     nnoremap <silent><Leader>s :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
+# '''
 
 [[plugins]]
 repo = 'janko-m/vim-test'
