@@ -57,8 +57,12 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tpope/vim-surround'
+repo = 'machakann/vim-sandwich'
 on_i = 1
+hook_add = '''
+    nmap s <Nop>
+    xmap s <Nop>
+'''
 
 #####################################################################
 # Programing util
