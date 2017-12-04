@@ -181,6 +181,9 @@ on_ft = ['vim']
 repo = 'kannokanno/previm'
 depends = ['open-browser.vim']
 on_ft = ['markdown']
+hook_add = '''
+    nmap <leader>p :PrevimOpen<CR>
+'''
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
