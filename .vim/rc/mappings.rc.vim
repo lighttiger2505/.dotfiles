@@ -53,22 +53,11 @@ nnoremap <silent> [tab]c :<C-u>tabclose<CR>
 
 " The prefix key of window.
 nnoremap [window] <Nop>
-nnoremap s <Nop>
-nmap s [window]
+nmap <C-w> [window]
 
 " Split window
 nnoremap <silent> [window]s :split<CR>
 nnoremap <silent> [window]i :vsplit<CR>
-" Move window
-noremap [window]h <C-w>h
-noremap [window]l <C-w>l
-noremap [window]j <C-w>j
-noremap [window]k <C-w>k
-" Switch window
-noremap [window]H <C-w>H
-noremap [window]L <C-w>L
-noremap [window]J <C-w>J
-noremap [window]K <C-w>K
 " Resize window
 noremap [window]> 10<C-w>>
 noremap [window]< 10<C-w><
