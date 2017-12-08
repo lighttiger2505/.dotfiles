@@ -51,19 +51,14 @@ nnoremap <silent> [tab]L :<C-u>tablast<CR>
 nnoremap <silent> [tab]m :<C-u>tabmove<Space>
 nnoremap <silent> [tab]c :<C-u>tabclose<CR>
 
-" The prefix key of window.
-nnoremap [window] <Nop>
-nmap <C-w> [window]
-
 " Split window
-nnoremap <silent> [window]s :split<CR>
-nnoremap <silent> [window]i :vsplit<CR>
+nnoremap <silent> <C-w>s :split<CR>
+nnoremap <silent> <C-w>i :vsplit<CR>
 " Resize window
-noremap [window]> 10<C-w>>
-noremap [window]< 10<C-w><
-noremap [window]+ 10<C-w>+
-noremap [window]- 10<C-w>-
-noremap [window]= <C-w>=
+noremap <C-w>> 10<C-w>>
+noremap <C-w>< 10<C-w><
+noremap <C-w>+ 10<C-w>+
+noremap <C-w>- 10<C-w>-
 
 " Search yank string
 nnoremap <Space>sy /<C-r>"<CR>
