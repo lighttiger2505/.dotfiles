@@ -56,14 +56,6 @@ hook_add = '''
     map g# <Plug>(asterisk-gz#)
 '''
 
-[[plugins]]
-repo = 'machakann/vim-sandwich'
-on_i = 1
-hook_add = '''
-    nmap s <Nop>
-    xmap s <Nop>
-'''
-
 #####################################################################
 # Programing util
 #####################################################################
