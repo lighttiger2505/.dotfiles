@@ -24,6 +24,7 @@ let g:ale_linters = {
 \   'markdown': ['mdl'],
 \   'go': ['gometalinter'],
 \   'make': ['checkmake'],
+\   'vim': ['vint'],
 \}
 
 " Prefix key
