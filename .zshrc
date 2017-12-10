@@ -101,6 +101,9 @@ source ~/.zsh/zplug.zsh
 # Init pyenv
 if [ -e ~/.pyenv ]; then
     eval "$(pyenv init -)"
+    if type aws > /dev/null 2>&1; then
+        source "$(pyenv which aws_zsh_completer.sh)"
+    fi
 fi
 
 # Init pyenv-virtualenv
@@ -109,4 +112,6 @@ if [ -e ~/.pyenv/plugins/virtualenv ]; then
 fi
 
 # added by travis gem
-[ -f /Users/lighttiger2505/.travis/travis.sh ] && source /Users/lighttiger2505/.travis/travis.sh
+if [ -f ~/.travis/travis.sh ];then
+    source ~/.travis/travis.sh
+fi

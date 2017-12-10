@@ -56,10 +56,6 @@ hook_add = '''
     map g# <Plug>(asterisk-gz#)
 '''
 
-[[plugins]]
-repo = 'tpope/vim-surround'
-on_i = 1
-
 #####################################################################
 # Programing util
 #####################################################################
@@ -102,26 +98,26 @@ repo = 'jsfaint/gen_tags.vim'
 on_ft = ['python']
 hook_source = '''
     let g:gen_tags#ctags_auto_gen = 1
-    let g:gen_tags#gtags_auto_gen = 1
+    let g:gen_tags#gtags_auto_gen = 0
 '''
 
-[[plugins]]
-repo = 'thinca/vim-qfreplace'
-on_ft = ['python']
+# [[plugins]]
+# repo = 'thinca/vim-qfreplace'
+# on_ft = ['python']
 
-[[plugins]]
-repo = 'lighttiger2505/gtags.vim'
-on_cmd = ['Gtags']
-on_ft = ['python']
-hook_source = '''
-    let g:Gtags_Auto_Map = 0
-    let g:Gtags_OpenQuickfixWindow = 1
-
-    " Show definetion of function cousor word on quickfix
-    nnoremap <silent><Leader>k :<C-u>exe("Gtags ".expand('<cword>'))<CR>
-    " Show reference of cousor word on quickfix
-    nnoremap <silent><Leader>s :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
-'''
+# [[plugins]]
+# repo = 'lighttiger2505/gtags.vim'
+# on_cmd = ['Gtags']
+# on_ft = ['python']
+# hook_source = '''
+#     let g:Gtags_Auto_Map = 0
+#     let g:Gtags_OpenQuickfixWindow = 1
+# 
+#     " Show definetion of function cousor word on quickfix
+#     nnoremap <silent><Leader>k :<C-u>exe("Gtags ".expand('<cword>'))<CR>
+#     " Show reference of cousor word on quickfix
+#     nnoremap <silent><Leader>s :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
+# '''
 
 [[plugins]]
 repo = 'janko-m/vim-test'
@@ -133,20 +129,20 @@ hook_source = '''
 [[plugins]]
 repo = 'tpope/vim-dispatch'
 
-[[plugins]]
-repo = 'thinca/vim-ref'
-on_map = ['<Plug>(ref-keyword)']
-hook_add = '''
-    nmap <Leader>k <Plug>(ref-keyword)
-'''
-hook_source = '''
-    " Ref view setting
-    autocmd FileType ref call s:initialize_ref_viewer()
-    function! s:initialize_ref_viewer()
-        nnoremap <buffer> q <C-w>c
-        setlocal nonumber
-    endfunction
-'''
+# [[plugins]]
+# repo = 'thinca/vim-ref'
+# on_map = ['<Plug>(ref-keyword)']
+# hook_add = '''
+#     nmap <Leader>k <Plug>(ref-keyword)
+# '''
+# hook_source = '''
+#     " Ref view setting
+#     autocmd FileType ref call s:initialize_ref_viewer()
+#     function! s:initialize_ref_viewer()
+#         nnoremap <buffer> q <C-w>c
+#         setlocal nonumber
+#     endfunction
+# '''
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
@@ -177,6 +173,9 @@ on_ft = ['vim']
 repo = 'kannokanno/previm'
 depends = ['open-browser.vim']
 on_ft = ['markdown']
+hook_add = '''
+    nmap <leader>p :PrevimOpen<CR>
+'''
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'

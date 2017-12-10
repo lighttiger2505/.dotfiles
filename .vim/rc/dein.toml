@@ -21,10 +21,10 @@ hook_add = '''
 repo = 'mattn/sonictemplate-vim'
 
 [[plugins]]
-repo = 'machakann/vim-highlightedyank'
+repo = 'machakann/vim-sandwich'
 hook_add = '''
-    let g:highlightedyank_highlight_duration = 200
-    hi HighlightedyankRegion cterm=reverse gui=reverse
+    nmap s <Nop>
+    xmap s <Nop>
 '''
 
 [[plugins]]

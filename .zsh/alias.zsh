@@ -65,3 +65,9 @@ alias lbm='lab browse `lab merge-request | fzf -m | awk '\''{print $1}'\''`'
 
 # Select git branch
 alias -g B='`git branch --all | grep -v HEAD | fzf -m`'
+
+# aws profile select
+alias awsp='export AWS_DEFAULT_PROFILE=`cat ~/.aws/credentials | grep -e "\[\(.*\)\]" | sed -e "s/\[//g" | sed -e "s/\]//g" | sort | fzf`'
+
+# aws ec2 ip list
+alias awse='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | [ .InstanceId, .PublicIpAddress , .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][] ]  | @tsv " | sort -k3'
