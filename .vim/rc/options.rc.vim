@@ -86,7 +86,7 @@ set smartcase
 set incsearch
 
 " Replace incremental
-if !has('inccommand')
+if has('inccommand')
     set inccommand=split
 endif
 
