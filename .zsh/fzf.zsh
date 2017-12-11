@@ -20,7 +20,7 @@ zle -N fzf-git-branch-checkout
 function fzf-cmd-history() {
     local HISTORY=`history -n 1 | tail -r  | awk '!a[$0]++' | fzf +m`
     BUFFER=$HISTORY
-    if [ -n "$BRANCH" ]; then
+    if [ -n "$HISTORY" ]; then
         CURSOR=$#BUFFER
     else
         zle accept-line
