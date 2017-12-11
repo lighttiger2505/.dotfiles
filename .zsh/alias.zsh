@@ -71,3 +71,8 @@ alias awsp='export AWS_DEFAULT_PROFILE=`cat ~/.aws/credentials | grep -e "\[\(.*
 
 # aws ec2 ip list
 alias awse='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | [ .InstanceId, .PublicIpAddress , .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][] ]  | @tsv " | sort -k3'
+
+# todoist
+if type todoist > /dev/null 2>&1; then
+    alias to='todoist'
+fi
