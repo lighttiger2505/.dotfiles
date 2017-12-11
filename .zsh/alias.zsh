@@ -74,5 +74,8 @@ alias awse='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | [ 
 
 # todoist
 if type todoist > /dev/null 2>&1; then
+    # Cmd shutcut
     alias to='todoist'
+    # Select todo key
+    alias -g T='`todoist list | fzf -m | awk '\''{print $1}'\''`'
 fi
