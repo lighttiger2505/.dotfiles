@@ -9,11 +9,8 @@ repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-depends = ['lightline-iceberg']
+depends = ['iceberg.vim']
 hook_add = 'source ~/.vim/rc/plugins/lightline.rc.vim'
-
-[[plugins]]
-repo = 'popkirby/lightline-iceberg'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
