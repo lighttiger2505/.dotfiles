@@ -1,5 +1,6 @@
+let g:lightline = {}
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'iceberg',
     \ 'active': {
     \   'left':  [ ['mode', 'paste'], ['readonly', 'myfilename', 'modified'], ],
     \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'ale_ok', 'ale_warning', 'ale_error', 'char_code', 'fileformat', 'fileencoding', 'filetype' ], ],
