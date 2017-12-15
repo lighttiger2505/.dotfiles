@@ -77,11 +77,20 @@ cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 nnoremap <silent>> >>
 nnoremap <silent>< <<
 
-" Not yank is delete operation
+" Paste explicitly yanked text
 nnoremap <Space>p "0p
 vnoremap <Space>p "0p
-inoremap <C-r> <C-r>0
-nnoremap x "_x
+
+" Paste explicitly yanked text
+nnoremap <Space>p "0p
+vnoremap <Space>p "0p
+
+" Paste clipboard text
+nnoremap <Space>e "*p
+vnoremap <Space>e "*p
+
+" Not yank is delete operation
+noremap x "_x
 
 " Move quickfix
 nnoremap <C-p> :cp<CR>
