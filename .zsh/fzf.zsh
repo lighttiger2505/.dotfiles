@@ -57,3 +57,19 @@ function fzf-ssh-host() {
     zle accept-line
 }
 zle -N fzf-ssh-host
+
+# open file with editor
+fzf-vim-open-file() {
+    local FILE=$(find `pwd` -not \( \
+        -name .svn \
+        -prune -o -name .git \
+        -prune -o -name CVS \
+        -prune \
+    \) | fzf +m)
+    [[ -n "$FILE" ]] && ${EDITOR:-vim} "${files[@]}"
+    if [ -n "$FILE" ]; then
+        BUFFER="${EDITOR:-vim} $FILE"
+    fi
+    zle accept-line
+}
+zle -N fzf-vim-open-file

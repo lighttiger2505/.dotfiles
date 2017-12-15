@@ -15,6 +15,7 @@ bindkey "^N" history-beginning-search-forward-end
 # bindkey '^\' peco-ssh-hosts
 
 # Incrimental search on the fzf
+bindkey '^V' fzf-vim-open-file
 bindkey '^O' fzf-git-branch-checkout
 bindkey '^R' fzf-cmd-history
 bindkey '^G' fzf-ghq=repository
