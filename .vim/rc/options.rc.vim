@@ -140,3 +140,6 @@ augroup vimrc-checktime
   autocmd!
   autocmd WinEnter * checktime
 augroup END
+
+" Disable sql omni complete
+let g:omni_sql_no_default_maps = 1

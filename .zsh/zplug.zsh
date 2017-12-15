@@ -52,6 +52,8 @@ zplug "motemen/ghq", \
     from:gh-r, \
     rename-to:ghq
 
+zplug "greymd/tmux-xpanes"
+
 # Set enhancd filters
 export ENHANCD_FILTER=fzf:peco
 
