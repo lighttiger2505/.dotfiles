@@ -105,3 +105,32 @@ nmap <script> <silent> <Space>r :call ToggleQuickfix()<CR>
 
 " Clear search hi
 nnoremap <Space>n :noh<CR>
+
+" Grep astarisk text
+nnoremap <Space>g :<C-u>grep '<C-r>=<SID>convert_pattern(@/)<CR>'<CR>
+function! s:convert_pattern(pat)
+    let chars = split(a:pat, '\zs')
+    let len = len(chars)
+    let pat = ''
+    let i = 0
+    while i < len
+        let ch = chars[i]
+        if ch ==# '\'
+            let nch = chars[i + 1]
+            if nch =~# '[vVmM<>%]'
+                let i += 1
+            elseif nch ==# 'z'
+                let i += 2
+            elseif nch ==# '%'
+                let i += 2
+                let pat .= chars[i]
+            else
+                let pat .= ch
+            endif
+        else
+            let pat .= ch
+        endif
+        let i += 1
+    endwhile
+    return escape(pat, '\')
+endfunction
