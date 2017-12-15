@@ -1,5 +1,5 @@
 " Change leader mapping
-let mapleader = ","
+let g:mapleader = ','
 
 " Editing .vimrc
 nnoremap <Space>e :tabnew $HOME/.vimrc<CR>
@@ -37,8 +37,8 @@ nnoremap [tab] <Nop>
 nmap t [tab]
 
 " Jump tab '1~9'
-for n in range(1, 9)
-    execute 'nnoremap <silent> [tab]'.n  ':<C-u>tabnext'.n.'<CR>'
+for s:n in range(1, 9)
+    execute 'nnoremap <silent> [tab]'. s:n  ':<C-u>tabnext'. s:n . '<CR>'
 endfor
 
 " Add new tab
@@ -88,16 +88,16 @@ nnoremap <C-p> :cp<CR>
 nnoremap <C-n> :cn<CR>
 
 " Toggle quickfix
-if exists("g:__QUICKFIX_TOGGLE_jfklds__")
+if exists('g:__QUICKFIX_TOGGLE_jfklds__')
     finish
 endif
 let g:__QUICKFIX_TOGGLE_jfklds__ = 1
 
 function! ToggleQuickfix()
-    let nr = winnr("$")
+    let l:nr = winnr('$')
     cwindow
-    let nr2 = winnr("$")
-    if nr == nr2
+    let l:nr2 = winnr('$')
+    if l:nr == l:nr2
         cclose
     endif
 endfunction
