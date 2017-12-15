@@ -20,3 +20,8 @@ augroup MyTabStep
     autocmd BufNewFile,BufRead *.toml      setlocal tabstop=2 shiftwidth=2
     autocmd BufRead,BufNewFile *.scss      setlocal filetype=scss
 augroup END
+
+augroup MyGitSpellCheck
+    autocmd!
+    autocmd FileType gitcommit setlocal spell
+augroup END
