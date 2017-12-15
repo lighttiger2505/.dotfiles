@@ -167,6 +167,34 @@ repo = 'Shougo/neco-vim'
 on_ft = ['vim']
 
 #####################################################################
+# Fuzzy Finder
+#####################################################################
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = ['fzf']
+on_cmd = [
+  'GFiles',
+  'GFiles?',
+  'Buffers',
+  'tags',
+  'Commands',
+  'Helptags'
+]
+hook_add = '''
+    nmap <leader>fg :<C-u>GFiles<CR>
+    nmap <leader>fs :<C-u>GFiles?<CR>
+    nmap <leader>fb  :<C-u>Buffers<CR>
+    nmap <leader>f]  :<C-u>Tags<CR>
+    nmap <leader>fm  :<C-u>Commands<CR>
+    nmap <leader>fh  :<C-u>Helptags<CR>
+'''
+
+#####################################################################
 # Other Util
 #####################################################################
 [[plugins]]
