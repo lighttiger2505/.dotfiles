@@ -26,6 +26,7 @@ inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
+inoremap <C-d> <Del>
 
 " Change tab width
 nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
