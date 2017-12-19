@@ -143,3 +143,12 @@ function! s:convert_pattern(pat)
     endwhile
     return escape(pat, '\')
 endfunction
+
+" Command line mode mapping emacs like
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-d> <Del>
