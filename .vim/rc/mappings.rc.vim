@@ -51,6 +51,9 @@ nnoremap <silent> [tab]L :<C-u>tablast<CR>
 nnoremap <silent> [tab]m :<C-u>tabmove<Space>
 nnoremap <silent> [tab]c :<C-u>tabclose<CR>
 
+" Split window
+nnoremap <silent> <C-w>s :split<CR>
+nnoremap <silent> <C-w>i :vsplit<CR>
 " Resize window
 noremap <C-w>> 10<C-w>>
 noremap <C-w>< 10<C-w><
