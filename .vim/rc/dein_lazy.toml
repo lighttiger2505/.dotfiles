@@ -181,7 +181,7 @@ on_cmd = [
   'GFiles',
   'GFiles?',
   'Buffers',
-  'tags',
+  'Tags',
   'Commands',
   'Helptags'
 ]
