@@ -96,10 +96,13 @@ set hlsearch
 " Share clipborad with system
 set clipboard+=unnamedplus
 
-" Use the_platinum_searcher instead of vimgrep
-if executable('pt')
+" Use extend grep
+if executable('rg')
+    let &grepprg = 'rg --vimgrep --hidden'
+    set grepformat=%f:%l:%c:%m
+elseif executable('pt')
     let &grepprg = 'pt --nocolor --nogroup --column'
-    set grepformat^=%f:%l:%c:%m
+    set grepformat=%f:%l:%c:%m
 endif
 
 " Show quickfix after grepcmd

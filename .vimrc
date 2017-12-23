@@ -55,4 +55,4 @@ set t_Co=256
 set background=dark
 syntax on
 filetype plugin indent on
-colorscheme wombat256mod
+colorscheme iceberg

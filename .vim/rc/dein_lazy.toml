@@ -112,7 +112,7 @@ hook_source = '''
 # hook_source = '''
 #     let g:Gtags_Auto_Map = 0
 #     let g:Gtags_OpenQuickfixWindow = 1
-# 
+#
 #     " Show definetion of function cousor word on quickfix
 #     nnoremap <silent><Leader>k :<C-u>exe("Gtags ".expand('<cword>'))<CR>
 #     " Show reference of cousor word on quickfix
@@ -148,7 +148,7 @@ repo = 'tpope/vim-dispatch'
 repo = 'majutsushi/tagbar'
 on_cmd = ['TagbarToggle']
 hook_add = '''
-    nmap <Space>t :TagbarToggle<CR>
+    nmap <Space>o :TagbarToggle<CR>
 '''
 
 [[plugins]]
@@ -165,6 +165,34 @@ hook_add = '''
 
 repo = 'Shougo/neco-vim'
 on_ft = ['vim']
+
+#####################################################################
+# Fuzzy Finder
+#####################################################################
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = ['fzf']
+on_cmd = [
+  'GFiles',
+  'GFiles?',
+  'Buffers',
+  'Tags',
+  'Commands',
+  'Helptags'
+]
+hook_add = '''
+    nmap <leader>fg :<C-u>GFiles<CR>
+    nmap <leader>fs :<C-u>GFiles?<CR>
+    nmap <leader>fb  :<C-u>Buffers<CR>
+    nmap <leader>f]  :<C-u>Tags<CR>
+    nmap <leader>fm  :<C-u>Commands<CR>
+    nmap <leader>fh  :<C-u>Helptags<CR>
+'''
 
 #####################################################################
 # Other Util
@@ -184,12 +212,18 @@ build = 'make'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 on_cmd = ['NERDTreeToggle']
-depends = ['nerdtree-git-plugin']
+on_map = ['<plug>NERDTreeTabsToggle', '<plug>NERDTreeTabsFind']
+depends = ['nerdtree-git-plugin', 'vim-nerdtree-tabs']
 hook_add = '''
     let NERDTreeShowHidden=1
     let NERDTreeIgnore=['\.pyc$']
-    nnoremap <Space>f :<C-u>NERDTreeToggle<CR>
+    let g:nerdtree_tabs_autofind = 1
+    nmap <Space>f <plug>NERDTreeTabsToggle<CR>
+    nmap <Space>t <plug>NERDTreeTabsFind<CR>
 '''
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
 
 [[plugins]]
 repo = 'Xuyuanp/nerdtree-git-plugin'

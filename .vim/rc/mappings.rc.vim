@@ -1,5 +1,5 @@
 " Change leader mapping
-let mapleader = ","
+let g:mapleader = ','
 
 " Editing .vimrc
 nnoremap <Space>e :tabnew $HOME/.vimrc<CR>
@@ -37,8 +37,8 @@ nnoremap [tab] <Nop>
 nmap t [tab]
 
 " Jump tab '1~9'
-for n in range(1, 9)
-    execute 'nnoremap <silent> [tab]'.n  ':<C-u>tabnext'.n.'<CR>'
+for s:n in range(1, 9)
+    execute 'nnoremap <silent> [tab]'. s:n  ':<C-u>tabnext'. s:n . '<CR>'
 endfor
 
 " Add new tab
@@ -51,9 +51,6 @@ nnoremap <silent> [tab]L :<C-u>tablast<CR>
 nnoremap <silent> [tab]m :<C-u>tabmove<Space>
 nnoremap <silent> [tab]c :<C-u>tabclose<CR>
 
-" Split window
-nnoremap <silent> <C-w>s :split<CR>
-nnoremap <silent> <C-w>i :vsplit<CR>
 " Resize window
 noremap <C-w>> 10<C-w>>
 noremap <C-w>< 10<C-w><
@@ -77,10 +74,19 @@ cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 nnoremap <silent>> >>
 nnoremap <silent>< <<
 
-" Not yank is delete operation
+" Paste explicitly yanked text
 nnoremap <Space>p "0p
 vnoremap <Space>p "0p
-inoremap <C-r> <C-r>0
+
+" Paste explicitly yanked text
+nnoremap <Space>p "0p
+vnoremap <Space>p "0p
+
+" Paste clipboard text
+nnoremap <Space>e "*p
+vnoremap <Space>e "*p
+
+" Not yank is delete operation
 nnoremap x "_x
 
 " Move quickfix
@@ -88,16 +94,16 @@ nnoremap <C-p> :cp<CR>
 nnoremap <C-n> :cn<CR>
 
 " Toggle quickfix
-if exists("g:__QUICKFIX_TOGGLE_jfklds__")
+if exists('g:__QUICKFIX_TOGGLE_jfklds__')
     finish
 endif
 let g:__QUICKFIX_TOGGLE_jfklds__ = 1
 
 function! ToggleQuickfix()
-    let nr = winnr("$")
+    let l:nr = winnr('$')
     cwindow
-    let nr2 = winnr("$")
-    if nr == nr2
+    let l:nr2 = winnr('$')
+    if l:nr == l:nr2
         cclose
     endif
 endfunction
@@ -105,3 +111,32 @@ nmap <script> <silent> <Space>r :call ToggleQuickfix()<CR>
 
 " Clear search hi
 nnoremap <Space>n :noh<CR>
+
+" Grep astarisk text
+nnoremap <Space>g :<C-u>grep '<C-r>=<SID>convert_pattern(@/)<CR>'<CR>
+function! s:convert_pattern(pat)
+    let chars = split(a:pat, '\zs')
+    let len = len(chars)
+    let pat = ''
+    let i = 0
+    while i < len
+        let ch = chars[i]
+        if ch ==# '\'
+            let nch = chars[i + 1]
+            if nch =~# '[vVmM<>%]'
+                let i += 1
+            elseif nch ==# 'z'
+                let i += 2
+            elseif nch ==# '%'
+                let i += 2
+                let pat .= chars[i]
+            else
+                let pat .= ch
+            endif
+        else
+            let pat .= ch
+        endif
+        let i += 1
+    endwhile
+    return escape(pat, '\')
+endfunction

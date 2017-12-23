@@ -21,7 +21,7 @@ augroup MyTabStep
     autocmd BufRead,BufNewFile *.scss      setlocal filetype=scss
 augroup END
 
-augroup MySpellCheck
+augroup MyGitSpellCheck
     autocmd!
-    autocmd filetype gitcommit setlocal spell
+    autocmd FileType gitcommit setlocal spell
 augroup END
