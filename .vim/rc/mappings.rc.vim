@@ -37,20 +37,6 @@ nnoremap <silent> ts8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
 nnoremap [tab] <Nop>
 nmap t [tab]
 
-" Jump tab '1~9'
-for s:n in range(1, 9)
-    execute 'nnoremap <silent> [tab]'. s:n  ':<C-u>tabnext'. s:n . '<CR>'
-endfor
-
-" Add new tab
-nnoremap <silent> [tab]t :<C-u>tablast <bar> tabnew<CR>
-" Move tab
-nnoremap <silent> [tab]h :<C-u>tabprevious<CR>
-nnoremap <silent> [tab]l :<C-u>tabnext<CR>
-nnoremap <silent> [tab]H :<C-u>tabfirst<CR>
-nnoremap <silent> [tab]L :<C-u>tablast<CR>
-nnoremap <silent> [tab]m :<C-u>tabmove<Space>
-nnoremap <silent> [tab]c :<C-u>tabclose<CR>
 
 " Split window
 nnoremap <silent> <C-w>s :split<CR>
