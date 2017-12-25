@@ -37,10 +37,6 @@ nnoremap <silent> ts8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
 nnoremap [tab] <Nop>
 nmap t [tab]
 
-
-" Split window
-nnoremap <silent> <C-w>s :split<CR>
-nnoremap <silent> <C-w>i :vsplit<CR>
 " Resize window
 noremap <C-w>> 10<C-w>>
 noremap <C-w>< 10<C-w><
