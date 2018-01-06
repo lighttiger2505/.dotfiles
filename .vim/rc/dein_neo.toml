@@ -2,6 +2,7 @@
 repo = 'Shougo/deoplete.nvim'
 if = "has('nvim')"
 on_i = 1
+build = ':UpdateRemotePlugins'
 hook_source = '''
     let g:deoplete#enable_at_startup = 1
     source ~/.vim/rc/plugins/deoplete.rc.vim
@@ -12,6 +13,7 @@ repo = 'Shougo/denite.nvim'
 if = "has('nvim')"
 on_cmd = 'Denite'
 depends = ['neomru.vim', 'neoinclude.vim']
+build = ':UpdateRemotePlugins'
 hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 hook_add = '''
     " Prefix key
