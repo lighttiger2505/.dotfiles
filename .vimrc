@@ -1,22 +1,22 @@
 function! s:source_rc(path, ...) abort 
-  let use_global = get(a:000, 0, !has('vim_starting'))
-  let abspath = resolve(expand('~/.vim/rc/' . a:path))
-  if !use_global
-    execute 'source' fnameescape(abspath)
+  let l:use_global = get(a:000, 0, !has('vim_starting'))
+  let l:abspath = resolve(expand('~/.vim/rc/' . a:path))
+  if !l:use_global
+    execute 'source' fnameescape(l:abspath)
     return
   endif
 
   " substitute all 'set' to 'setglobal'
-  let content = map(readfile(abspath),
+  let l:content = map(readfile(l:abspath),
         \ 'substitute(v:val, "^\\W*\\zsset\\ze\\W", "setglobal", "")')
   " create tempfile and source the tempfile
-  let tempfile = tempname()
+  let l:tempfile = tempname()
   try
-    call writefile(content, tempfile)
-    execute 'source' fnameescape(tempfile)
+    call writefile(l:content, l:tempfile)
+    execute 'source' fnameescape(l:tempfile)
   finally
-    if filereadable(tempfile)
-      call delete(tempfile)
+    if filereadable(l:tempfile)
+      call delete(l:tempfile)
     endif
   endtry
 endfunction"}}}
@@ -33,8 +33,8 @@ let g:python3_host_prog = $PYENV_PATH . '/versions/neovim3/bin/python'
 
 " Load dein.
 let s:dein_dir = finddir('dein.vim', '.;')
-if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
-  if s:dein_dir == '' && &runtimepath !~ '/dein.vim'
+if s:dein_dir !=# '' || &runtimepath !~# '/dein.vim'
+  if s:dein_dir ==# '' && &runtimepath !~# '/dein.vim'
     let s:dein_dir = expand('$CACHE/dein')
           \. '/repos/github.com/Shougo/dein.vim'
     if !isdirectory(s:dein_dir)
