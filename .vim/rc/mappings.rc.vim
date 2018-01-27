@@ -135,3 +135,7 @@ cnoremap <C-p> <Up>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-d> <Del>
+
+" Switch to last file
+nnoremap <Space><Space> <c-^>
+
