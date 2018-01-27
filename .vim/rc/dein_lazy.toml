@@ -178,20 +178,18 @@ build = './install --all'
 repo = 'junegunn/fzf.vim'
 depends = ['fzf']
 on_cmd = [
-  'GFiles',
+  'Files',
   'GFiles?',
-  'Buffers',
   'Tags',
-  'Commands',
-  'Helptags'
 ]
 hook_add = '''
-    nmap <leader>fg :<C-u>GFiles<CR>
-    nmap <leader>fs :<C-u>GFiles?<CR>
-    nmap <leader>fb  :<C-u>Buffers<CR>
-    nmap <leader>f]  :<C-u>Tags<CR>
-    nmap <leader>fm  :<C-u>Commands<CR>
-    nmap <leader>fh  :<C-u>Helptags<CR>
+    " Keymap
+    " Git change files
+    nmap <C-j><C-g> :<C-u>GFiles?<CR>
+    " Ctags index
+    nmap <C-j><C-]> :<C-u>Tags<CR>
+    " My cli setting
+    nmap <C-j><C-v> :<C-u>Files ~/.dotfiles<CR>
 '''
 
 #####################################################################
