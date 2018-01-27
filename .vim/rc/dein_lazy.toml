@@ -217,13 +217,15 @@ depends = ['nerdtree-git-plugin', 'vim-nerdtree-tabs']
 hook_add = '''
     let NERDTreeShowHidden=1
     let NERDTreeIgnore=['\.pyc$']
-    let g:nerdtree_tabs_autofind = 1
-    nmap <Space>f <plug>NERDTreeTabsToggle<CR>
-    nmap <Space>t <plug>NERDTreeTabsFind<CR>
 '''
 
 [[plugins]]
 repo = 'jistr/vim-nerdtree-tabs'
+hook_add = '''
+    let g:nerdtree_tabs_autofind = 0
+    nmap <Space>f <plug>NERDTreeTabsToggle<CR>
+    nmap <Space>t <plug>NERDTreeTabsFind<CR>
+'''
 
 [[plugins]]
 repo = 'Xuyuanp/nerdtree-git-plugin'
