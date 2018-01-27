@@ -15,6 +15,7 @@ hook_source = '''
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = ['go']
+build = ':GoUpdateBinaries'
 hook_source = '''
     let g:go_list_type = "locationlist"
     let g:go_list_type_commands = {"GoBuild": "quickfix"}
