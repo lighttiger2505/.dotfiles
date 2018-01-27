@@ -1,4 +1,5 @@
 # Default layout
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 alias -g B='`git branch --all | grep -v HEAD | fzf -m`'
