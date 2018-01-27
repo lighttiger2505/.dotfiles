@@ -25,3 +25,7 @@ augroup MyGitSpellCheck
     autocmd!
     autocmd FileType gitcommit setlocal spell
 augroup END
+
+augroup MyHelpRight
+  autocmd BufWinEnter *.{txt,jax} if &ft == 'help' | wincmd L | endif
+augroup ft_golang
