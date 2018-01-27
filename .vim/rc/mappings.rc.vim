@@ -96,7 +96,7 @@ endfunction
 nmap <script> <silent> <Space>r :call ToggleQuickfix()<CR>
 
 " Clear search hi
-nnoremap <Space>n :noh<CR>
+nnoremap <Space>n :nohlsearch<CR>
 
 " Grep astarisk text
 nnoremap <Space>g :<C-u>grep '<C-r>=<SID>convert_pattern(@/)<CR>'<CR>
