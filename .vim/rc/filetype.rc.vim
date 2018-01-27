@@ -1,5 +1,5 @@
 " Tab setting for file type
-augroup MyTabStep
+augroup MyTabStop
     autocmd!
     autocmd BufNewFile,BufRead *.rhtml     setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.html      setlocal tabstop=2 shiftwidth=2
