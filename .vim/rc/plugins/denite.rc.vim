@@ -39,8 +39,6 @@ elseif executable('ag')
     call denite#custom#var('grep', 'default_opts', [])
     call denite#custom#var('grep', 'recursive_opts', [])
     call denite#custom#var('grep', 'separator', ['--'])
-else
-    echo "Please install [ag] or [pt] "
 endif
 
 " outline source variable
