@@ -12,7 +12,7 @@ hook_source = '''
 repo = 'Shougo/denite.nvim'
 if = "has('nvim')"
 on_cmd = 'Denite'
-depends = ['neomru.vim', 'neoinclude.vim']
+depends = ['neomru.vim', 'neoinclude.vim', 'denite-lab']
 build = ':UpdateRemotePlugins'
 hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 hook_add = '''
@@ -31,6 +31,13 @@ hook_add = '''
     nmap <silent> [denite]<C-r> :<C-u>Denite file_mru -highlight-mode-insert=Search<CR>
     " Help tag
     nmap <silent> [denite]<C-h> :<C-u>Denite help -highlight-mode-insert=Search<CR>
+'''
+
+[[plugins]]
+repo = 'lighttiger2505/denite-lab'
+hook_add = '''
+    nmap <silent> [denite]<C-i> :<C-u>Denite lab_issue -highlight-mode-insert=Search<CR>
+    nmap <silent> [denite]<C-m> :<C-u>Denite lab_merge_request -highlight-mode-insert=Search<CR>
 '''
 
 [[plugins]]
