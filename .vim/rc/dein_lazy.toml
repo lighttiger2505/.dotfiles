@@ -250,6 +250,15 @@ hook_add = '''
     vmap <Leader>o <Plug>(openbrowser-smart-search)
 '''
 
+[[plugins]]
+repo = 'lighttiger2505/lab.vim'
+on_cmd = ['LabBrowse', 'LabIssue', 'LabMergeRequest']
+hook_add = '''
+    nmap <Leader>lb :<C-u>LabBrowse<CR>
+    nmap <Leader>li :<C-u>LabIssue<CR>
+    nmap <Leader>lm :<C-u>LabMergeRequest<CR>
+'''
+
 #####################################################################
 # Syntax
 #####################################################################
