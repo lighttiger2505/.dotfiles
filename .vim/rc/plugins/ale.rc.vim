@@ -1,3 +1,6 @@
+" Disable at startup
+let g:ale_enabled = 0
+
 " Appearance
 let g:ale_sign_error = '!!'
 let g:ale_sign_warning = '=='
@@ -32,6 +35,7 @@ let g:ale_linters = {
 nmap [ale] <Nop>
 map <C-k> [ale]
 
-" Keymap
-nmap <silent> [ale]<C-P> <Plug>(ale_previous)
-nmap <silent> [ale]<C-N> <Plug>(ale_next)
+" Keyma
+nmap <silent> [ale]<C-e> <Plug>(ale_toggle)
+nmap <silent> [ale]<C-p> <Plug>(ale_previous)
+nmap <silent> [ale]<C-n> <Plug>(ale_next)
