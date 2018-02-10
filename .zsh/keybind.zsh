@@ -38,15 +38,15 @@ for m in visual viopp; do
   done
 done
 
-# surround like text object
-autoload -Uz surround
-zle -N delete-surround surround
-zle -N change-surround surround
-zle -N add-surround surround
-bindkey -a cs change-surround
-bindkey -a ds delete-surround
-bindkey -a ys add-surround
-bindkey -M visual S add-surround
+# # surround like text object
+# autoload -Uz surround
+# zle -N delete-surround surround
+# zle -N change-surround surround
+# zle -N add-surround surround
+# bindkey -a cs change-surround
+# bindkey -a ds delete-surround
+# bindkey -a ys add-surround
+# bindkey -M visual S add-surround
 
 # Vim normal mode keybind
 bindkey -M vicmd 'H'  beginning-of-line
