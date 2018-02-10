@@ -113,3 +113,8 @@ fi
 if [ -f ~/.travis/travis.sh ];then
     source ~/.travis/travis.sh
 fi
+
+#####################################################################
+# Benchmark
+#####################################################################
+alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
