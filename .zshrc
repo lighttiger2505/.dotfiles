@@ -83,9 +83,6 @@ source ~/.zsh/completion.zsh
 # prompt
 source ~/.zsh/prompt.zsh
 
-# peco function
-source ~/.zsh/peco.zsh
-
 # fzf functions
 source ~/.zsh/fzf.zsh
 
@@ -95,8 +92,9 @@ source ~/.zsh/alias.zsh
 # keybind
 source ~/.zsh/keybind.zsh
 
-# plugin manager
-source ~/.zsh/zplug.zsh
+# # plugin manager
+# source ~/.zsh/zplug.zsh
+source ~/.zsh/zplugin.zsh
 
 # Init pyenv
 if [ -e ~/.pyenv ]; then
