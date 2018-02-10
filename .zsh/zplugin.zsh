@@ -1,3 +1,9 @@
+# Instaling zplugin
+if [ ! -e $HOME/.zplugin ]; then
+    git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
+fi
+
+# Initialize
 source $HOME/.zplugin/bin/zplugin.zsh
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
