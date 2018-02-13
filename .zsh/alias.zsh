@@ -52,30 +52,42 @@ function open_diary() {
 }
 alias dia=open_diary
 
+
+#####################################################################
+# lab
+#####################################################################
 # lab shortcut
 alias lb='lab browse'
 alias li='lab issue'
 alias lm='lab merge-request'
-
 # Browse selected issue
 alias lbi='lab browse `lab issue | fzf -m | awk '\''{print $1}'\''`'
-
 # Browse selected merge request
 alias lbm='lab browse `lab merge-request | fzf -m | awk '\''{print $1}'\''`'
-
 # Select git branch
 alias -g B='`git branch --all | grep -v HEAD | fzf -m`'
 
-# aws profile select
-alias awsp='export AWS_DEFAULT_PROFILE=`cat ~/.aws/credentials | grep -e "\[\(.*\)\]" | sed -e "s/\[//g" | sed -e "s/\]//g" | sort | fzf`'
+#####################################################################
+# awscli
+#####################################################################
+if type todoist > /dev/null 2>&1; then
+    # aws profile select
+    alias awsp='export AWS_DEFAULT_PROFILE=`cat ~/.aws/credentials | grep -e "\[\(.*\)\]" | sed -e "s/\[//g" | sed -e "s/\]//g" | sort | fzf`'
+    # aws ec2 ip list
+    alias awse='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | [ .InstanceId, .PublicIpAddress , .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][] ]  | @tsv " | sort -k3'
+fi
 
-# aws ec2 ip list
-alias awse='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | [ .InstanceId, .PublicIpAddress , .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][] ]  | @tsv " | sort -k3'
-
+#####################################################################
 # todoist
+#####################################################################
 if type todoist > /dev/null 2>&1; then
     # Cmd shutcut
     alias to='todoist'
     # Select todo key
     alias -g T='`todoist list | fzf -m | awk '\''{print $1}'\''`'
 fi
+
+#####################################################################
+# hub
+#####################################################################
+alias hb='hub browse'
