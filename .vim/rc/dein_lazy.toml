@@ -265,6 +265,9 @@ hook_add = '''
 [[plugins]]
 repo = 'tpope/vim-markdown'
 on_ft = ['markdown']
+hook_add = '''
+    let g:markdown_syntax_conceal = 0
+'''
 
 [[plugins]]
 repo = 'cespare/vim-toml'
