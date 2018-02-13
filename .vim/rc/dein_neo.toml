@@ -45,3 +45,9 @@ repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
+
+[[plugins]]
+
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+on_ft = ['c', 'h']
