@@ -44,11 +44,14 @@ add-zsh-hook preexec left_down_prompt_preexec
 function zle-keymap-select zle-line-init zle-line-finish
 {
     case $KEYMAP in
+        vicmd)
+            vimmode="$fg[white]-- NORMAL --$reset_color"
+            ;;
         main|viins)
             vimmode="$fg[blue]-- INSERT --$reset_color"
             ;;
-        vicmd)
-            vimmode="$fg[green]-- NORMAL --$reset_color"
+        vivis)
+            vimmode="$fg[blue]-- VISUAL --$reset_color"
             ;;
     esac
 

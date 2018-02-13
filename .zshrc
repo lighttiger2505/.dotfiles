@@ -22,16 +22,16 @@ export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# zplug
-export ZPLUG_HOME=$HOME/.zplug
+# # zplug
+# export ZPLUG_HOME=$HOME/.zplug
 # golang
 export GOPATH=$HOME/dev
 # pyenv
 export PYENV_PATH=$HOME/.pyenv
 # Neovim
 export XDG_CONGIG_HOME=~/.config
-# ls cmd color
-export LSCOLORS=gxfxcxdxbxegedabagacad
+# # ls cmd color
+# export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # defaut editor is vim
 export EDITOR=nvim
@@ -69,34 +69,22 @@ typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
 sudo_path=({,/usr/pkg,/usr/local,/usr}/sbin(N-/))
 
-## Limit of history
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-
 #####################################################################
 # load settings
 #####################################################################
 # auto complete
 source ~/.zsh/completion.zsh
-
 # prompt
 source ~/.zsh/prompt.zsh
-
-# peco function
-source ~/.zsh/peco.zsh
-
 # fzf functions
 source ~/.zsh/fzf.zsh
-
 # alias
 source ~/.zsh/alias.zsh
-
 # keybind
 source ~/.zsh/keybind.zsh
-
 # plugin manager
-source ~/.zsh/zplug.zsh
+# source ~/.zsh/zplug.zsh
+source ~/.zsh/zplugin.zsh
 
 # Init pyenv
 if [ -e ~/.pyenv ]; then
@@ -111,7 +99,12 @@ if [ -e ~/.pyenv/plugins/virtualenv ]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-# added by travis gem
-if [ -f ~/.travis/travis.sh ];then
-    source ~/.travis/travis.sh
-fi
+#####################################################################
+# Benchmark
+#####################################################################
+alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
+
+#####################################################################
+# Launch tmux
+#####################################################################
+[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
