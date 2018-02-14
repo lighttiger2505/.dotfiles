@@ -1,5 +1,7 @@
 #!/usr/local/bin/zsh
 
+# zmodload zsh/zprof && zprof
+
 #####################################################################
 # init
 #####################################################################
@@ -108,3 +110,7 @@ alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
 # Launch tmux
 #####################################################################
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+
+if (which zprof > /dev/null 2>&1) ;then
+  zprof
+fi
