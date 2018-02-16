@@ -16,20 +16,14 @@ hook_add = 'source ~/.vim/rc/plugins/lightline.rc.vim'
 repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
-hook_add = '''
-    let g:loaded_indentLine = 1
-'''
-
-[[plugins]]
-repo = 'mattn/sonictemplate-vim'
-
-[[plugins]]
 repo = 'machakann/vim-sandwich'
 hook_add = '''
     nmap s <Nop>
     xmap s <Nop>
 '''
+
+[[plugins]]
+repo = 'mattn/sonictemplate-vim'
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
