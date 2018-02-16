@@ -85,7 +85,6 @@ source ~/.zsh/alias.zsh
 # keybind
 source ~/.zsh/keybind.zsh
 # plugin manager
-# source ~/.zsh/zplug.zsh
 source ~/.zsh/zplugin.zsh
 
 # Init pyenv
