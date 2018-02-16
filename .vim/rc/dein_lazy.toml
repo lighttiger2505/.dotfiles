@@ -26,15 +26,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
-if = "!has('nvim')"
-on_i = 1
-hook_source = '''
-    let g:neocomplete#enable_at_startup = 1
-    source ~/.vim/rc/plugins/neocomplete.rc.vim
-'''
-
-[[plugins]]
 repo = 'junegunn/vim-easy-align'
 on_map = ['<Plug>(EasyAlign)']
 hook_add = '''
