@@ -26,15 +26,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
-if = "!has('nvim')"
-on_i = 1
-hook_source = '''
-    let g:neocomplete#enable_at_startup = 1
-    source ~/.vim/rc/plugins/neocomplete.rc.vim
-'''
-
-[[plugins]]
 repo = 'junegunn/vim-easy-align'
 on_map = ['<Plug>(EasyAlign)']
 hook_add = '''
@@ -54,6 +45,15 @@ hook_add = '''
     map #  <Plug>(asterisk-z#)
     map g* <Plug>(asterisk-gz*)
     map g# <Plug>(asterisk-gz#)
+'''
+
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+on_cmd = ['IndentLinesToggle']
+hook_add = '''
+    let g:loaded_indentLine = 1
+    nmap <Space>i <C-u>:IndentLinesToggle<CR>
 '''
 
 #####################################################################
@@ -267,6 +267,32 @@ repo = 'tpope/vim-markdown'
 on_ft = ['markdown']
 hook_add = '''
     let g:markdown_syntax_conceal = 0
+'''
+
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+on_ft = ['markdown']
+hook_add = '''
+    let g:table_mode_corner = '|'
+    let g:table_mode_always_active = 1
+    let g:table_mode_syntax = 1
+    let g:table_mode_auto_align = 1
+
+    let g:table_mode_motion_up_map = '{<Bar>'
+    let g:table_mode_motion_down_map = '}<Bar>'
+    let g:table_mode_motion_left_map = '[<Bar>'
+    let g:table_mode_motion_right_map = ']<Bar>'
+    let g:table_mode_cell_text_object_a_map = 'a<Bar>'
+    let g:table_mode_cell_text_object_i_map = 'i<Bar>'
+    let g:table_mode_realign_map = '<Leader>tr'
+    let g:table_mode_delete_row_map = '<Leader>tdd'
+    let g:table_mode_delete_column_map = '<Leader>tdc'
+    let g:table_mode_add_formula_map = '<Leader>tfa'
+    let g:table_mode_eval_formula_map = '<Leader>tfe'
+    let g:table_mode_echo_cell_map = '<Leader>t?'
+    let g:table_mode_sort_map = '<Leader>ts'
+    let g:table_mode_tableize_map = '<Leader>tt'
+    let g:table_mode_tableize_d_map = '<Leader>T'
 '''
 
 [[plugins]]
