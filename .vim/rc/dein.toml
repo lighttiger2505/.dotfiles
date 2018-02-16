@@ -31,5 +31,3 @@ hook_add = '''
     set helplang=ja,en
 '''
 
-[[plugins]]
-repo = 'dhruvasagar/vim-table-mode'
