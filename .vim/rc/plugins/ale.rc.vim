@@ -1,5 +1,5 @@
 " Disable at startup
-let g:ale_enabled = 0
+let g:ale_enabled = 1
 
 " Appearance
 let g:ale_sign_error = '!!'
@@ -30,6 +30,8 @@ let g:ale_linters = {
 \   'make': ['checkmake'],
 \   'vim': ['vint'],
 \}
+
+let g:ale_go_gometalinter_options = '--fast --enable=golint --enable=vet --enable=errcheck --enable=staticcheck --enable=gosimple --enable=unused'
 
 " Prefix key
 nmap [ale] <Nop>
