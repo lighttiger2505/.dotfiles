@@ -27,5 +27,7 @@ augroup MyGitSpellCheck
 augroup END
 
 augroup MyHelpRight
-  autocmd BufWinEnter *.{txt,jax} if &ft == 'help' | wincmd L | endif
+    autocmd!
+    autocmd BufWinEnter *.{txt,jax} if &ft == 'help' | wincmd L | endif
 augroup ft_golang
+

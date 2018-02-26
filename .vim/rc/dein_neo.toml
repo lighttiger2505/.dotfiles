@@ -45,3 +45,12 @@ repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
+
+[[plugins]]
+repo = 'kassio/neoterm'
+on_cmd = 'T'
+if = "has('nvim')"
+
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+on_ft = ['c', 'h']
