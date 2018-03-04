@@ -31,7 +31,7 @@ let g:ale_linters = {
 \   'vim': ['vint'],
 \}
 
-let g:ale_go_gometalinter_options = '--fast --enable=golint --enable=vet --enable=errcheck --enable=staticcheck --enable=gosimple --enable=unused'
+let g:ale_go_gometalinter_options = '--fast --enable=vet --enable=errcheck --enable=staticcheck --enable=gosimple --enable=unused'
 
 " Prefix key
 nmap [ale] <Nop>
