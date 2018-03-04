@@ -3,10 +3,18 @@ repo = 'Shougo/deoplete.nvim'
 if = "has('nvim')"
 on_i = 1
 build = ':UpdateRemotePlugins'
+depends = ['neosnippet.vim']
 hook_source = '''
     let g:deoplete#enable_at_startup = 1
     source ~/.vim/rc/plugins/deoplete.rc.vim
 '''
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
@@ -39,6 +47,7 @@ hook_add = '''
     nmap <silent> [denite]<C-i> :<C-u>Denite lab_issue -highlight-mode-insert=Search<CR>
     nmap <silent> [denite]<C-m> :<C-u>Denite lab_merge_request -highlight-mode-insert=Search<CR>
 '''
+
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
