@@ -4,12 +4,12 @@ set main-view = id date author:email-user commit-title:graph=yes,refs=yes
 # Show line number in blame view
 set blame-view  = date:default author:email-user id:yes,color line-number:yes,interval=1 text
 
-# Show line nuber
-set pager-view  = line-number:yes,interval=1 text
-set stage-view  = line-number:yes,interval=1 text
-set log-view    = line-number:yes,interval=1 text
-set blob-view   = line-number:yes,interval=1 text
-set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
+# # Show line nuber
+# set pager-view  = line-number:yes,interval=1 text
+# set stage-view  = line-number:yes,interval=1 text
+# set log-view    = line-number:yes,interval=1 text
+# set blob-view   = line-number:yes,interval=1 text
+# set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
 
 # Execute rebase -i on selected commit in main view or diff view.
 bind main R !git rebase -i %(commit)
