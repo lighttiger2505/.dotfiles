@@ -82,21 +82,21 @@ on_cmd = 'T'
 on_ft = ['python']
 if = "has('nvim')"
 hook_add = '''
+" escape on terminal mode
+tnoremap <silent> <ESC> <C-\><C-n>
+" launch tig on terminal emurater
+nnoremap <silent> <Leader>tg :T tig status<CR>
+" repl on terminal
+nnoremap <silent> <Leader>tl :TREPLSendLine<CR>
+nnoremap <silent> <Leader>tv :TREPLSendSelection<CR>
+'''
+hook_source = '''
 " neoterm options
 let g:neoterm_autojump = 1
 let g:neoterm_autoinsert = 1
 let g:neoterm_autoscroll = 1
+let g:neoterm_keep_term_open = 1
 let g:neoterm_position = 'horizontal'
-
-" escape on terminal mode
-tnoremap <silent> <ESC> <C-\><C-n>
-
-" launch tig on terminal emurater
-nnoremap <silent> <Leader>tg :T tig status<CR>
-
-" repl on terminal
-nnoremap <silent> <Leader>tl :TREPLSendLine<CR>
-nnoremap <silent> <Leader>tv :TREPLSendSelection<CR>
 '''
 
 [[plugins]]
