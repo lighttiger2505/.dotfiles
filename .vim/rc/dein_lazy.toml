@@ -88,7 +88,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'jsfaint/gen_tags.vim'
-on_ft = ['python', 'go', 'vim']
+on_ft = ['python', 'go']
 hook_source = '''
     let g:gen_tags#ctags_auto_gen = 1
     let g:gen_tags#gtags_auto_gen = 0
