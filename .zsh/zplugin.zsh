@@ -11,9 +11,9 @@ autoload -Uz _zplugin
 # Load zsh plugins
 zplugin light zsh-users/zsh-syntax-highlighting
 zplugin light zsh-users/zsh-autosuggestions
+zplugin light b4b4r07/enhancd
 
 # Lazy load zsh plugins
-zplugin ice wait'!1'; zplugin light b4b4r07/enhancd
 zplugin ice wait'!1'; zplugin light greymd/tmux-xpanes
 zplugin ice wait'!1'; zplugin light mollifier/cd-gitroot
 zplugin ice wait'!1'; zplugin light b4b4r07/emoji-cli
