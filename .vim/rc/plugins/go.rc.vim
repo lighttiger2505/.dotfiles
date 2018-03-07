@@ -8,7 +8,7 @@ let g:go_list_height = 10
 let g:go_jump_to_error = 0
 
 " disable running build and test command in terminal
-let g:go_term_enabled = 1
+let g:go_term_enabled = 0
 let g:go_term_mode = "split"
 let g:go_term_height = 10
 " let g:go_term_width = 30
@@ -27,7 +27,7 @@ let g:go_highlight_types = 1
 let g:go_auto_sameids = 0
 
 " description of the identifer under the cursor.
-let g:go_auto_type_info = 1
+let g:go_auto_type_info = 0
 
 augroup GoCommands
     autocmd!
