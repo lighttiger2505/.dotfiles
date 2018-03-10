@@ -74,7 +74,7 @@ hook_add = '''
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 depends = ['vimproc.vim']
-on_ft = ['python']
+on_ft = ['python', 'go']
 hook_source = '''
   source ~/.vim/rc/plugins/vimquickrun.rc.vim
 '''

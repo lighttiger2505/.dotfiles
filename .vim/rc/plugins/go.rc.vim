@@ -31,7 +31,7 @@ let g:go_auto_type_info = 0
 
 augroup GoCommands
     autocmd!
-    autocmd FileType go nmap <silent><Leader>r  <Plug>(go-run)
+    " autocmd FileType go nmap <silent><Leader>r  <Plug>(go-run)
     autocmd FileType go nmap <silent><Leader>b  <Plug>(go-build)
     autocmd FileType go nmap <silent><Leader>tt <Plug>(go-test)
     autocmd FileType go nmap <silent><Leader>tf <Plug>(go-test-func)
