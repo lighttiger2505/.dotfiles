@@ -76,6 +76,8 @@ sudo_path=({,/usr/pkg,/usr/local,/usr}/sbin(N-/))
 #####################################################################
 # auto complete
 source ~/.zsh/completion.zsh
+# option set
+source ~/.zsh/setopt.zsh
 # prompt
 source ~/.zsh/prompt.zsh
 # fzf functions
