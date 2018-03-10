@@ -60,10 +60,50 @@ alias dia=open_diary
 alias lb='lab browse'
 alias li='lab issue'
 alias lm='lab merge-request'
+alias lia='lab issue --line=100 --all-repository --opened --assigned-me'
+alias lma='lab merge-request --line=100 --all-repository --opened --assigned-me'
+
 # Browse selected issue
-alias lbi='lab browse `lab issue | fzf -m | awk '\''{print $1}'\''`'
+lab_browse_issue() {
+    LAB_ISSUE=`lab issue --line=100 | fzf -m | awk '{print $1}'`
+    if [ -n "${LAB_ISSUE}" ]; then
+        lab browse ${LAB_ISSUE}
+    fi
+}
+alias lbi=lab_browse_issue
+
+# Browse selected issue all repository
+lab_browse_issue_all() {
+    LAB_ISSUE=`lab issue --line=100 --all-repository --opened --assigned-me | fzf -m | awk '{print $1,$2}'`
+    if [ -n "${LAB_ISSUE}" ]; then
+        NO=`echo ${LAB_ISSUE} | awk '{print $1}'`
+        PRJ=`echo ${LAB_ISSUE} | awk '{print $2}'`
+        lab browse -p ${PRJ} ${NO}
+    fi
+}
+alias lbia=lab_browse_issue_all
+
 # Browse selected merge request
-alias lbm='lab browse `lab merge-request | fzf -m | awk '\''{print $1}'\''`'
+lab_browse_merge_request() {
+    LAB_MR=`lab merge-request --line=100 | fzf -m | awk '{print $1}'`
+    if [ -n "${LAB_MR}" ]; then
+        lab browse ${LAB_MR}
+    fi
+}
+alias lbm=lab_browse_issue
+
+# Browse selected issue all repository
+lab_browse_merge_request_all() {
+    LAB_ISSUE=`lab merge-request --line=100 --all-repository --opened --assigned-me | fzf -m | awk '{print $1,$2}'`
+    if [ -n "${LAB_ISSUE}" ]; then
+        NO=`echo ${LAB_ISSUE} | awk '{print $1}'`
+        PRJ=`echo ${LAB_ISSUE} | awk '{print $2}'`
+        lab browse -p ${PRJ} ${NO}
+    fi
+}
+alias lbma=lab_browse_merge_request_all
+
+
 # Select git branch
 alias -g B='`git branch --all | grep -v HEAD | fzf -m`'
 
