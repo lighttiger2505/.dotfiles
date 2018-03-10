@@ -4,6 +4,11 @@ set main-view = id date author:email-user commit-title:graph=yes,refs=yes
 # Show line number in blame view
 set blame-view  = date:default author:email-user id:yes,color line-number:yes,interval=1 text
 
+# bind generic G none
+# # alias vim-like behavior
+bind main g move-first-line
+bind main G move-last-line
+
 # # Show line nuber
 # set pager-view  = line-number:yes,interval=1 text
 # set stage-view  = line-number:yes,interval=1 text
