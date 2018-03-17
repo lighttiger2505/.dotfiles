@@ -48,9 +48,9 @@ hook_source = '''
 
     " Custom keymap
     let g:jedi#goto_command = "<C-]>"
-    let g:jedi#goto_assignments_command = "<leader>g"
+    let g:jedi#goto_assignments_command = "<Localleader>g"
     let g:jedi#goto_definitions_command = ""
     let g:jedi#documentation_command = "K"
-    let g:jedi#usages_command = "<leader>n"
-    let g:jedi#rename_command = "<leader>R"
+    let g:jedi#usages_command = "<Localleader>n"
+    let g:jedi#rename_command = "<Localleader>R"
 '''
