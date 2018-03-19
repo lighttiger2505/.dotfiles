@@ -21,22 +21,22 @@ bindkey '^R' fzf-cmd-history
 bindkey '^G' fzf-ghq=repository
 bindkey '^\' fzf-ssh-host
 
-# vim line text object
-autoload -U select-bracketed
-zle -N select-bracketed
-for m in visual viopp; do
-  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
-    bindkey -M $m $c select-bracketed
-  done
-done
-
-autoload -U select-quoted
-zle -N select-quoted
-for m in visual viopp; do
-  for c in {a,i}{\',\",\`}; do
-    bindkey -M $m $c select-quoted
-  done
-done
+# # vim line text object
+# autoload -U select-bracketed
+# zle -N select-bracketed
+# for m in visual viopp; do
+#   for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+#     bindkey -M $m $c select-bracketed
+#   done
+# done
+#
+# autoload -U select-quoted
+# zle -N select-quoted
+# for m in visual viopp; do
+#   for c in {a,i}{\',\",\`}; do
+#     bindkey -M $m $c select-quoted
+#   done
+# done
 
 # # surround like text object
 # autoload -Uz surround
