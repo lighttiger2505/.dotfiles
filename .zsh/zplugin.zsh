@@ -16,7 +16,6 @@ zplugin light b4b4r07/enhancd
 # Lazy load zsh plugins
 zplugin ice wait'!1'; zplugin light greymd/tmux-xpanes
 zplugin ice wait'!1'; zplugin light mollifier/cd-gitroot
-zplugin ice wait'!1'; zplugin light b4b4r07/emoji-cli
 zplugin ice wait'!1'; zplugin light b4b4r07/zsh-vimode-visual
 zplugin ice wait'!1'; zplugin light hchbaw/opp.zsh
 
