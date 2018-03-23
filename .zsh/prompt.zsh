@@ -6,33 +6,17 @@ autoload -Uz terminfo
 setopt prompt_subst
 setopt re_match_pcre
 
-function current-git-branch-status {
-    # local name st color
-    if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
-        return
-    fi
-
-    name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
-    if [[ -z $name ]]; then
-        return
-    fi
-
-    st=`git status 2> /dev/null`
-    if [[ "$st" =~ "(?m)^nothing to" ]]; then
-        color=%F{green}
-    elif [[ "$st" =~ "(?m)^nothing added" ]]; then
-        color=%F{yellow}
-    elif [[ "$st" =~ "(?m)^# Untracked" ]]; then
-        color=%B%F{red}
-    else
-        color=%F{red}
-    fi
-
-    echo "$color$name%f%b"
-}
-
 function current-git-branch() {
     echo -n "$(git rev-parse --abbrev-ref=loose HEAD 2> /dev/null)"
+}
+
+function python-version() {
+    pv="PV:$(pyenv version-name) "
+    vv=""
+    if [ -n "$VIRTUAL_ENV" ]; then
+        vv="VV:$(basename ${VIRTUAL_ENV})"
+    fi
+    echo "${pv}${vv}"
 }
 
 terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
