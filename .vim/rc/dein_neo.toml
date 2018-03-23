@@ -102,3 +102,7 @@ let g:neoterm_position = 'horizontal'
 [[plugins]]
 repo = 'zchee/deoplete-clang'
 on_ft = ['c', 'h']
+
+[[plugins]]
+repo = 'zchee/deoplete-zsh'
+on_ft = ['zsh']
