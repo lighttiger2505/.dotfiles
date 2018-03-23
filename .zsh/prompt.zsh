@@ -35,14 +35,17 @@ function zle-keymap-select zle-line-init zle-line-finish
             vimmode="$fg[blue]-- INSERT --$reset_color"
             ;;
         vivis)
-            vimmode="$fg[blue]-- VISUAL --$reset_color"
+            vimmode="$fg[green]-- VISUAL --$reset_color"
             ;;
     esac
 
+    local p_user="[%F{yellow}%n%f]"
+    local p_cdr="%F{cyan}%~%f"
     local p_vimjob="[%F{green}$([[ $(jobs|grep -c vim) != 0 ]] && print "vim")%f]"
-    local p_branch="{%F{blue}$(current-git-branch)%f}"
+    local p_branch="{%F{magenta}$(current-git-branch)%f}"
     local p_mark="%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
-    PROMPT="%{$terminfo_down_sc$vimmode | %F{white}%~%f$terminfo[rc]%}[%F{yellow}%n%f]$p_branch$p_vimjob $p_mark "
+    local p_pversion="%F{red}$(python-version)%f"
+    PROMPT="%{$terminfo_down_sc${vimmode} | ${p_cdr} | ${p_pversion} $terminfo[rc]%}${p_user}${p_branch}${p_vimjob} ${p_mark} "
 
     zle reset-prompt
 }
