@@ -1,7 +1,7 @@
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 if = "has('nvim')"
-on_i = 1
+on_event = 'InsertCharPre'
 build = ':UpdateRemotePlugins'
 depends = ['neosnippet.vim']
 hook_source = '''
