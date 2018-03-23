@@ -238,8 +238,11 @@ hook_add = '''
     let g:table_mode_auto_align = 1
     let g:table_mode_map_prefix = '<LocalLeader>t'
 
-    nmap <silent><LocalLeader>a :<C-u>TableModeRealign<CR>
-    nmap <silent><LocalLeader>t :<C-u>Tableize<CR>
+    augroup TableCommands
+        autocmd!
+        autocmd FileType markdown nmap <silent><LocalLeader>a :<C-u>TableModeRealign<CR>
+        autocmd FileType markdown nmap <silent><LocalLeader>t :<C-u>Tableize<CR>
+    augroup END
 '''
 
 [[plugins]]
