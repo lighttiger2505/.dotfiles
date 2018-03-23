@@ -2,7 +2,6 @@
 repo = 'zchee/deoplete-jedi'
 depends = ['deoplete.nvim', 'vim-pyenv', 'vim-virtualenv']
 on_ft = ['python']
-on_event = 'InsertCharPre'
 hook_source = '''
     let g:deoplete#sources#jedi#statement_length = 0
     let g:deoplete#sources#jedi#short_types = 0
@@ -25,7 +24,6 @@ on_ft = ['python']
 
 [[plugins]]
 repo = 'Vimjas/vim-python-pep8-indent'
-on_event = 'InsertCharPre'
 on_ft = ['python']
 
 [[plugins]]
