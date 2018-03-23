@@ -115,3 +115,10 @@ alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
 if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
+
+function precmd() {
+  if [ ! -z $TMUX ]; then
+    tmux refresh-client -S
+  fi
+}
+
