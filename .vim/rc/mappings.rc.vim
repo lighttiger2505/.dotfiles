@@ -151,3 +151,13 @@ function! RenameFile() abort
   endif
 endfunction
 noremap <Space>R :call RenameFile()<cr>
+
+" Toggle relativenumber or norelativenumber
+function! ToggleRelativenumber() abort
+  if &relativenumber == 1
+     setlocal norelativenumber
+  else
+     setlocal relativenumber
+  endif
+endfunction
+nnoremap <silent> <Space>l :call ToggleRelativenumber()<cr>
