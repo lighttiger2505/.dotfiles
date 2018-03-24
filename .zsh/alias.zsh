@@ -1,6 +1,7 @@
 # ls
 alias ll="ls -al"
 alias lr="ls -ltr"
+alias dot="cd ~/.dotfiles"
 
 # git status
 alias gs="git status"
