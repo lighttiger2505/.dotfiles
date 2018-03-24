@@ -136,3 +136,12 @@ alias hb='hub browse'
 # ripgrep
 #####################################################################
 alias rg='rg --hidden'
+
+#####################################################################
+# tmux
+#####################################################################
+alias tl="tmux ls"
+alias ta="tmux attach -t "
+alias tk="tmux kill-session -t "
+alias tn="tmux new -s "
+alias td="tmux detach"
