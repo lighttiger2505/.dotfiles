@@ -3,6 +3,9 @@ alias ll="ls -al"
 alias lr="ls -ltr"
 alias dot="cd ~/.dotfiles"
 
+#####################################################################
+# Git
+#####################################################################
 # git status
 alias gs="git status"
 
@@ -17,10 +20,9 @@ alias glogn="git log --oneline --graph -n10"
 # tig status
 alias ts="tig status"
 
-# Django manage.py
-alias djrun="python manage.py runserver"
-alias djshell="python manage.py shell"
-
+#####################################################################
+# Zsh
+#####################################################################
 # zshrc source
 alias zs="source ~/.zshrc"
 
@@ -29,6 +31,9 @@ alias zb="time ( zsh -i -c exit; )"
 
 alias al="alacritty"
 
+#####################################################################
+# Vim
+#####################################################################
 # Vim shotchut
 alias v=vim
 
