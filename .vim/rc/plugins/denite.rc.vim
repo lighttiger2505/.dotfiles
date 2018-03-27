@@ -14,7 +14,7 @@ call denite#custom#source(
 
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
     \ [ '.git/', '.ropeproject/', '__pycache__/',
-    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/'])
+    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules/'])
 
 " Matcher use cpsm
 " if has('python3')
@@ -42,4 +42,4 @@ elseif executable('ag')
 endif
 
 " outline source variable
-call denite#custom#var('outline', 'ignore_types', ['v'])
+" call denite#custom#var('outline', 'ignore_types', ['v'])
