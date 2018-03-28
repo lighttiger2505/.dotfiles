@@ -10,14 +10,14 @@ function current-git-branch() {
     echo -n "$(git rev-parse --abbrev-ref=loose HEAD 2> /dev/null)"
 }
 
-function python-version() {
-    pv="PV:$(pyenv version-name) "
-    vv=""
-    if [ -n "$VIRTUAL_ENV" ]; then
-        vv="VV:$(basename ${VIRTUAL_ENV})"
-    fi
-    echo "${pv}${vv}"
-}
+# function python-version() {
+#     pv="PV:$(pyenv version-name) "
+#     vv=""
+#     if [ -n "$VIRTUAL_ENV" ]; then
+#         vv="VV:$(basename ${VIRTUAL_ENV})"
+#     fi
+#     echo "${pv}${vv}"
+# }
 
 terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
 left_down_prompt_preexec() {
@@ -44,8 +44,8 @@ function zle-keymap-select zle-line-init zle-line-finish
     local p_vimjob="(%F{green}$([[ $(jobs|grep -c vim) != 0 ]] && print "vim:$(jobs|grep -c vim)")%f)"
     local p_branch="{%F{magenta}$(current-git-branch)%f}"
     local p_mark="%B%(?,%F{green},%F{red})%(!,#,>)%f%b"
-    local p_pversion="%F{red}$(python-version)%f"
-    PROMPT="%{$terminfo_down_sc${vimmode} | ${p_cdr} | ${p_pversion} $terminfo[rc]%}${p_user}${p_branch}${p_vimjob} ${p_mark} "
+    # local p_pversion="%F{red}$(python-version)%f"
+    PROMPT="%{$terminfo_down_sc${vimmode} | ${p_cdr}  $terminfo[rc]%}${p_user}${p_branch}${p_vimjob} ${p_mark} "
 
     zle reset-prompt
 }
