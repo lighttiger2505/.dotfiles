@@ -101,6 +101,28 @@ function! ToggleQuickfix()
 endfunction
 nmap <script> <silent> <Space>r :call ToggleQuickfix()<CR>
 
+" Jump locationlist
+nnoremap [t :<C-u>lprevious<CR>
+nnoremap ]t :<C-u>lnext<CR>
+nnoremap [T :<C-u>lprevious<CR>
+nnoremap ]T :<C-u>lnext<CR>
+
+" Toggle locationlist
+if exists('g:__LOCATIONLIST_TOGGLE_jfklds__')
+    finish
+endif
+let g:__LOCATIONLIST_TOGGLE_jfklds__ = 1
+
+function! ToggleLocationlist()
+    let l:nr = winnr('$')
+    lwindow
+    let l:nr2 = winnr('$')
+    if l:nr == l:nr2
+        lclose
+    endif
+endfunction
+nmap <script> <silent> <Space>t :call ToggleLocationlist()<CR>
+
 " Clear search hi
 nnoremap <Space>n :nohlsearch<CR>
 
