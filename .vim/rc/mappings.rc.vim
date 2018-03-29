@@ -76,9 +76,11 @@ vnoremap <Space>e "*p
 " Not yank is delete operation
 nnoremap x "_x
 
-" Move quickfix
-nnoremap <C-p> :cp<CR>
-nnoremap <C-n> :cn<CR>
+" Jump quickfix
+nnoremap [r :<C-u>cprevious<CR>
+nnoremap ]r :<C-u>cnext<CR>
+nnoremap [R :<C-u>cprevious<CR>
+nnoremap ]R :<C-u>cnext<CR>
 
 " Toggle quickfix
 if exists('g:__QUICKFIX_TOGGLE_jfklds__')
