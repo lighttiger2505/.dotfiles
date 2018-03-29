@@ -39,6 +39,7 @@ set helplang=ja,en
 [[plugins]]
 repo = 'urbainvaes/vim-remembrall'
 hook_add = '''
+let g:remembrall_window = 'topleft 30new'
 " Show ',' normal mode mappings when key ',' is pressed
 nnoremap <silent> , :call remembrall#remind('n', ',')<cr>
 " Show ',' normal mode mappings when the key combination ',?' is pressed,
