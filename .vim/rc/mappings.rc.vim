@@ -38,6 +38,9 @@ nnoremap <silent> ts8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
 nnoremap [tab] <Nop>
 nmap t [tab]
 
+" Disable close window
+nnoremap <C-w>c <Nop>
+
 " Resize window
 noremap <C-w>> 10<C-w>>
 noremap <C-w>< 10<C-w><
