@@ -124,7 +124,7 @@ endfunction
 nmap <script> <silent> <Space>t :call ToggleLocationlist()<CR>
 
 " Clear search hi
-nnoremap <Space>n :nohlsearch<CR>
+nnoremap <Space>h :nohlsearch<CR>
 
 " Grep astarisk text
 nnoremap <Space>g :<C-u>grep '<C-r>=<SID>convert_pattern(@/)<CR>'<CR>
