@@ -187,4 +187,4 @@ function! ToggleRelativenumber() abort
      setlocal relativenumber
   endif
 endfunction
-nnoremap <silent> <Space>l :call ToggleRelativenumber()<cr>
+nnoremap <silent> <Space>n :call ToggleRelativenumber()<cr>
