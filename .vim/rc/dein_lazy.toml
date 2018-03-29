@@ -104,17 +104,6 @@ hook_source = '''
 [[plugins]]
 repo = 'tpope/vim-dispatch'
 
-[[plugins]]
-repo = 'majutsushi/tagbar'
-on_cmd = ['TagbarToggle']
-hook_add = '''
-    nmap <Space>o :<C-u>TagbarToggle<CR>
-
-    let g:tagbar_sort = 0
-    let g:tagbar_case_insensitive = 1
-    let g:tagbar_compact = 1
-'''
-
 repo = 'Shougo/neco-vim'
 on_ft = ['vim']
 
