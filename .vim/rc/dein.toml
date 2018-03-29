@@ -31,3 +31,15 @@ hook_add = '''
     set helplang=ja,en
 '''
 
+[[plugins]]
+repo = 'urbainvaes/vim-remembrall'
+hook_add = '''
+" Show ',' normal mode mappings when key ',' is pressed
+nnoremap <silent> , :call remembrall#remind('n', ',')<cr>
+" Show ',' normal mode mappings when the key combination ',?' is pressed,
+" so we don't have to wait for the timeout.
+nnoremap <silent> ,? :call remembrall#remind('n', ',')<cr>
+" Show visual mode mappings
+vnoremap <silent> ? :call remembrall#remind('n', '')<cr>
+'''
+
