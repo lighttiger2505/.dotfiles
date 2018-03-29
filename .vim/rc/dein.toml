@@ -23,8 +23,8 @@ nmap ]g <Plug>GitGutterNextHunk
 [[plugins]]
 repo = 'machakann/vim-sandwich'
 hook_add = '''
-    nmap s <Nop>
-    xmap s <Nop>
+nmap s <Nop>
+xmap s <Nop>
 '''
 
 [[plugins]]
@@ -33,7 +33,7 @@ repo = 'mattn/sonictemplate-vim'
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 hook_add = '''
-    set helplang=ja,en
+set helplang=ja,en
 '''
 
 [[plugins]]
