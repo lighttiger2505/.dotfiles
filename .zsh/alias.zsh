@@ -17,6 +17,11 @@ alias gdc="git diff --cached "
 alias gl="git log"
 alias glogn="git log --oneline --graph -n10"
 
+# remove merged branch
+alias rm-branch="git branch --merged | grep -v \\* | xargs -I % git branch -d %"
+alias gf="git fetch -p && rm-branch"
+alias gp="git pull -p && rm-branch"
+
 # tig status
 alias ts="tig status"
 
