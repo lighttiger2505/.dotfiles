@@ -188,3 +188,7 @@ function! ToggleRelativenumber() abort
   endif
 endfunction
 nnoremap <silent> <Space>n :call ToggleRelativenumber()<cr>
+
+" Move buffer
+nnoremap <silent> <C-n> :<C-u>bnext<CR>
+nnoremap <silent> <C-p> :<C-u>bprevious<CR>
