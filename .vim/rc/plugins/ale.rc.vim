@@ -37,7 +37,7 @@ let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=goli
 nmap [ale] <Nop>
 map <C-k> [ale]
 
-" Keyma
+" mapping
 nmap <silent> [ale]<C-e> <Plug>(ale_toggle)
-nmap <silent> [ale]<C-p> <Plug>(ale_previous)
-nmap <silent> [ale]<C-n> <Plug>(ale_next)
+nmap <silent> [a <Plug>(ale_previous)
+nmap <silent> ]a <Plug>(ale_next)
