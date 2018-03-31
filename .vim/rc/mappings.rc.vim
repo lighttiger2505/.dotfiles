@@ -80,8 +80,8 @@ vnoremap <Space>e "*p
 nnoremap x "_x
 
 " Jump quickfix
-nnoremap [r :<C-u>cprevious<CR>
-nnoremap ]r :<C-u>cnext<CR>
+nnoremap [f :<C-u>cprevious<CR>
+nnoremap ]f :<C-u>cnext<CR>
 nnoremap [R :<C-u>cprevious<CR>
 nnoremap ]R :<C-u>cnext<CR>
 
@@ -99,7 +99,7 @@ function! ToggleQuickfix()
         cclose
     endif
 endfunction
-nmap <script> <silent> <Space>r :call ToggleQuickfix()<CR>
+nmap <script> <silent> <Space>f :call ToggleQuickfix()<CR>
 
 " Jump locationlist
 nnoremap [t :<C-u>lprevious<CR>
