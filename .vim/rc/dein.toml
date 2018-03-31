@@ -49,12 +49,3 @@ nnoremap <silent> ,? :call remembrall#remind('n', ',')<cr>
 vnoremap <silent> ? :call remembrall#remind('n', '')<cr>
 '''
 
-[[plugins]]
-repo = 'majutsushi/tagbar'
-on_cmd = ['TagbarToggle']
-hook_add = '''
-nmap <Leader>o :<C-u>TagbarToggle<CR>
-let g:tagbar_sort = 0
-let g:tagbar_case_insensitive = 1
-let g:tagbar_compact = 1
-'''

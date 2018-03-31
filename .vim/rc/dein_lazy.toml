@@ -104,8 +104,15 @@ hook_source = '''
 [[plugins]]
 repo = 'tpope/vim-dispatch'
 
-repo = 'Shougo/neco-vim'
-on_ft = ['vim']
+[[plugins]]
+repo = 'majutsushi/tagbar'
+on_cmd = ['TagbarToggle']
+hook_add = '''
+nmap <Leader>o :<C-u>TagbarToggle<CR>
+let g:tagbar_sort = 0
+let g:tagbar_case_insensitive = 1
+let g:tagbar_compact = 1
+'''
 
 #####################################################################
 # Fuzzy Finder
