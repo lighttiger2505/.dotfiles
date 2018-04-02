@@ -102,7 +102,13 @@ repo = 'Shougo/neoinclude.vim'
 [[plugins]]
 repo = 'zchee/deoplete-clang'
 on_ft = ['c', 'h']
+depends = ['deoplete.nvim']
 
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
 on_ft = ['zsh']
+depends = ['deoplete.nvim']
+
+repo = 'Shougo/neco-vim'
+on_ft = ['vim']
+depends = ['deoplete.nvim']
