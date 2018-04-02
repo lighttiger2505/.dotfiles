@@ -39,13 +39,10 @@ set helplang=ja,en
 [[plugins]]
 repo = 'urbainvaes/vim-remembrall'
 hook_add = '''
+let g:remembrall_normal_keys = ["[", "]"]
 let g:remembrall_window = 'topleft 30new'
-" Show ',' normal mode mappings when key ',' is pressed
+
 nnoremap <silent> , :call remembrall#remind('n', ',')<cr>
-" Show ',' normal mode mappings when the key combination ',?' is pressed,
-" so we don't have to wait for the timeout.
 nnoremap <silent> ,? :call remembrall#remind('n', ',')<cr>
-" Show visual mode mappings
 vnoremap <silent> ? :call remembrall#remind('n', '')<cr>
 '''
-
