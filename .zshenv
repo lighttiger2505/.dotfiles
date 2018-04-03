@@ -42,6 +42,9 @@ $PYENV_PATH/bin(N-/)
 $PYENV_PATH/shims(N-/)
 )
 
+# Go root
+export GOROOT=$(go env GOROOT)
+
 # Sudo path
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
