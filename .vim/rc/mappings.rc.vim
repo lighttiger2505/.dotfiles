@@ -8,6 +8,10 @@ nnoremap <Space>e :tabnew $HOME/.vimrc<CR>
 " Reload .vimrc
 nnoremap <Space>s :source $HOME/.vimrc<CR>
 
+" Switch colon and semicolon
+noremap ; :
+noremap : ;
+
 " Multi line move
 noremap k gk
 noremap j gj
