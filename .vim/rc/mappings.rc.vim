@@ -84,10 +84,12 @@ vnoremap <Space>e "*p
 nnoremap x "_x
 
 " Jump quickfix
-nnoremap [f :<C-u>cprevious<CR>
-nnoremap ]f :<C-u>cnext<CR>
-nnoremap [R :<C-u>cprevious<CR>
-nnoremap ]R :<C-u>cnext<CR>
+nnoremap <silent> <C-p> :<C-u>cp<CR>
+nnoremap <silent> <C-n> :<C-u>cn<CR>
+nnoremap <silent> [f :<C-u>cp<CR>
+nnoremap <silent> ]f :<C-u>cn<CR>
+nnoremap <silent> [F :<C-u>cfirst<CR>
+nnoremap <silent> ]F :<C-u>clast<CR>
 
 " Toggle quickfix
 if exists('g:__QUICKFIX_TOGGLE_jfklds__')
@@ -106,10 +108,10 @@ endfunction
 nmap <script> <silent> <Space>f :call ToggleQuickfix()<CR>
 
 " Jump locationlist
-nnoremap [t :<C-u>lprevious<CR>
-nnoremap ]t :<C-u>lnext<CR>
-nnoremap [T :<C-u>lprevious<CR>
-nnoremap ]T :<C-u>lnext<CR>
+nnoremap [t :<C-u>lp<CR>
+nnoremap ]t :<C-u>ln<CR>
+nnoremap [T :<C-u>lfirst<CR>
+nnoremap ]T :<C-u>llast<CR>
 
 " Toggle locationlist
 if exists('g:__LOCATIONLIST_TOGGLE_jfklds__')
@@ -194,6 +196,3 @@ function! ToggleRelativenumber() abort
 endfunction
 nnoremap <silent> <Space>n :call ToggleRelativenumber()<cr>
 
-" Move buffer
-nnoremap <silent> <C-n> :<C-u>bnext<CR>
-nnoremap <silent> <C-p> :<C-u>bprevious<CR>
