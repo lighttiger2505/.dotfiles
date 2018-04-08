@@ -158,5 +158,5 @@ alias td="tmux detach"
 if [ "Linux" = "$(uname -s)" ]; then
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
-    alias open=xdgopen
+    alias open=xdg-open
 fi
