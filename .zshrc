@@ -54,3 +54,6 @@ if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
 
+if [ -f ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+fi
