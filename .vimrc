@@ -28,8 +28,14 @@ if !isdirectory(expand($CACHE))
 endif
 
 " Load python3
-let g:python_host_prog = $PYENV_PATH . '/versions/neovim2/bin/python'
-let g:python3_host_prog = $PYENV_PATH . '/versions/neovim3/bin/python'
+if isdirectory(expand($PYENV_PATH))
+    let g:python_host_prog = $PYENV_PATH . '/versions/neovim2/bin/python'
+    let g:python3_host_prog = $PYENV_PATH . '/versions/neovim3/bin/python'
+endif
+if isdirectory(expand($ANYENV_PATH))
+    let g:python_host_prog = $ANYENV_PATH . '/envs/pyenv/versions/neovim2/bin/python'
+    let g:python3_host_prog = $ANYENV_PATH . '/envs/pyenv/versions/neovim3/bin/python'
+endif
 
 " Load dein.
 let s:dein_dir = finddir('dein.vim', '.;')

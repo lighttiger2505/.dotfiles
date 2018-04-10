@@ -36,6 +36,16 @@ if [ -e ~/.pyenv/plugins/virtualenv ]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+# Init anyenv
+if [ -e ~/.anyenv ]; then
+    eval "$(anyenv init -)"
+
+    # Load awsclid complation
+    if type aws > /dev/null 2>&1; then
+        source "$(pyenv which aws_zsh_completer.sh)"
+    fi
+fi
+
 # Benchmark
 alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
 
@@ -44,3 +54,6 @@ if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
 
+if [ -f ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+fi

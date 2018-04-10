@@ -9,8 +9,12 @@ export LANG=en_US.UTF-8
 export GOPATH=$HOME/dev
 # pyenv
 export PYENV_PATH=$HOME/.pyenv
-# java
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+# anyenv
+export ANYENV_PATH=$HOME/.anyenv
+# # java
+if [ -e /usr/libexec/java_home ]; then
+    export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+fi
 # Neovim
 export XDG_CONGIG_HOME=~/.config
 # defaut editor is vim
@@ -39,7 +43,10 @@ $HOME/.rvm/bin(N-/)
 $GOPATH/bin(N-/)
 # pyenv
 $PYENV_PATH/bin(N-/)
-$PYENV_PATH/shims(N-/)
+# $PYENV_PATH/shims(N-/)
+# anyenv
+$ANYENV_PATH/bin(N-/)
+# $ANYENV_PATH/shims(N-/)
 )
 
 # Go root
