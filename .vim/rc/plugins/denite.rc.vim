@@ -14,7 +14,7 @@ call denite#custom#source(
 
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
     \ [ '.git/', '.ropeproject/', '__pycache__/',
-    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules/'])
+    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules/', '*.pyc'])
 
 " Matcher use cpsm
 " if has('python3')
