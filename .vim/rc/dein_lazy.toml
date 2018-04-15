@@ -53,7 +53,7 @@ repo = 'Yggdroot/indentLine'
 on_cmd = ['IndentLinesToggle']
 hook_add = '''
     let g:loaded_indentLine = 1
-    nmap <Space>i <C-u>:IndentLinesToggle<CR>
+    nnoremap <Space>i <C-u>:IndentLinesToggle<CR>
 '''
 
 #####################################################################
@@ -148,7 +148,7 @@ repo = 'kannokanno/previm'
 depends = ['open-browser.vim']
 on_ft = ['markdown']
 hook_add = '''
-    nmap <leader>p :PrevimOpen<CR>
+    nnoremap <leader>p :PrevimOpen<CR>
 '''
 
 [[plugins]]
@@ -190,10 +190,10 @@ on_cmd = [
 hook_add = '''
     nmap [figitive] <Nop>
     map <Leader>g [figitive]
-    nmap <silent> [figitive]c :<C-u>Gcommit<CR>
-    nmap <silent> [figitive]d :<C-u>Gdiff<CR>
-    nmap <silent> [figitive]b :<C-u>Gblame<CR>
-    nmap <silent> [figitive]l :<C-u>Glog<CR>
+    nnoremap <silent> [figitive]c :<C-u>Gcommit<CR>
+    nnoremap <silent> [figitive]d :<C-u>Gdiff<CR>
+    nnoremap <silent> [figitive]b :<C-u>Gblame<CR>
+    nnoremap <silent> [figitive]l :<C-u>Glog<CR>
 '''
 
 [[plugins]]
@@ -209,9 +209,9 @@ hook_add = '''
 repo = 'lighttiger2505/lab.vim'
 on_cmd = ['LabBrowse', 'LabIssue', 'LabMergeRequest']
 hook_add = '''
-    nmap <Leader>lb :<C-u>LabBrowse<CR>
-    nmap <Leader>li :<C-u>LabIssue<CR>
-    nmap <Leader>lm :<C-u>LabMergeRequest<CR>
+    nnoremap <Leader>lb :<C-u>LabBrowse<CR>
+    nnoremap <Leader>li :<C-u>LabIssue<CR>
+    nnoremap <Leader>lm :<C-u>LabMergeRequest<CR>
 '''
 
 #####################################################################
@@ -236,8 +236,8 @@ hook_add = '''
 
     augroup TableCommands
         autocmd!
-        autocmd FileType markdown nmap <silent><LocalLeader>a :<C-u>TableModeRealign<CR>
-        autocmd FileType markdown nmap <silent><LocalLeader>t :<C-u>Tableize<CR>
+        autocmd FileType markdown nnoremap <silent><LocalLeader>a :<C-u>TableModeRealign<CR>
+        autocmd FileType markdown nnoremap <silent><LocalLeader>t :<C-u>Tableize<CR>
     augroup END
 '''
 

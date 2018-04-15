@@ -65,8 +65,8 @@ hook_add = '''
 [[plugins]]
 repo = 'lighttiger2505/denite-lab'
 hook_add = '''
-    nmap <silent> [denite]<C-i> :<C-u>Denite lab_issue -highlight-mode-insert=Search<CR>
-    nmap <silent> [denite]<C-m> :<C-u>Denite lab_merge_request -highlight-mode-insert=Search<CR>
+    nnoremap <silent> [denite]<C-i> :<C-u>Denite lab_issue -highlight-mode-insert=Search<CR>
+    nnoremap <silent> [denite]<C-m> :<C-u>Denite lab_merge_request -highlight-mode-insert=Search<CR>
 '''
 
 

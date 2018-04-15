@@ -38,9 +38,9 @@ nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
 nnoremap <silent> ts4 :<C-u>setl shiftwidth=4 softtabstop=4<CR>
 nnoremap <silent> ts8 :<C-u>setl shiftwidth=8 softtabstop=8<CR>
 
-" The prefix key of tab.
-nnoremap [tab] <Nop>
-nmap t [tab]
+" " The prefix key of tab.
+" nnoremap [tab] <Nop>
+" nmap t [tab]
 
 " Disable close window
 nnoremap <C-w>c <Nop>
@@ -105,7 +105,7 @@ function! ToggleQuickfix()
         cclose
     endif
 endfunction
-nmap <script> <silent> <Space>f :call ToggleQuickfix()<CR>
+nnoremap <script> <silent> <Space>f :call ToggleQuickfix()<CR>
 
 " Jump locationlist
 nnoremap [t :<C-u>lp<CR>
@@ -127,7 +127,7 @@ function! ToggleLocationlist()
         lclose
     endif
 endfunction
-nmap <script> <silent> <Space>t :call ToggleLocationlist()<CR>
+nnoremap <script> <silent> <Space>t :call ToggleLocationlist()<CR>
 
 " Clear search hi
 nnoremap <silent> <Space>h :noh<CR>

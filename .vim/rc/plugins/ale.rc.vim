@@ -33,11 +33,11 @@ let g:ale_linters = {
 
 let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=gofmt --enable=errcheck --enable=goconst --enable=goimports --enable=megacheck'
 
-" Prefix key
-nmap [ale] <Nop>
-map <C-k> [ale]
-
-" mapping
-nmap <silent> [ale]<C-e> <Plug>(ale_toggle)
-nmap <silent> [a <Plug>(ale_previous)
-nmap <silent> ]a <Plug>(ale_next)
+" " Prefix key
+" nmap [ale] <Nop>
+" map <C-k> [ale]
+"
+" " mapping
+" nmap <silent> [ale]<C-e> <Plug>(ale_toggle)
+nnoremap <silent> [a <Plug>(ale_previous)
+nnoremap <silent> ]a <Plug>(ale_next)
