@@ -39,12 +39,12 @@ set helplang=ja,en
 [[plugins]]
 repo = 'urbainvaes/vim-remembrall'
 hook_add = '''
-let g:remembrall_normal_keys = ["[", "]"]
-let g:remembrall_window = 'topleft 30new'
+    let g:remembrall_normal_keys = ["[", "]"]
+    let g:remembrall_window = 'topleft 30new'
 
-nnoremap <silent> , :call remembrall#remind('n', ',')<cr>
-nnoremap <silent> ,? :call remembrall#remind('n', ',')<cr>
-vnoremap <silent> ? :call remembrall#remind('n', '')<cr>
+    nnoremap <silent> , :call remembrall#remind('n', ',')<cr>
+    nnoremap <silent> ,? :call remembrall#remind('n', ',')<cr>
+    vnoremap <silent> ? :call remembrall#remind('n', '')<cr>
 '''
 
 [[plugins]]
