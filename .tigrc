@@ -8,6 +8,11 @@ set blame-view  = date:default author:email-user id:yes,color line-number:yes,in
 # # alias vim-like behavior
 bind main g move-first-line
 bind main G move-last-line
+bind diff g move-first-line
+bind diff G move-last-line
+bind generic S view-stash
+bind generic y none
+bind main y !@sh -c "echo -n %(commit) | xclip -selection c"
 
 # # Show line nuber
 # set pager-view  = line-number:yes,interval=1 text
