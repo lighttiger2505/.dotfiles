@@ -16,6 +16,9 @@ call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
     \ [ '.git/', '.ropeproject/', '__pycache__/',
     \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules/', '*.pyc'])
 
+call denite#custom#source(
+    \ 'file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+
 " Matcher use cpsm
 " if has('python3')
 "     call denite#custom#source(
