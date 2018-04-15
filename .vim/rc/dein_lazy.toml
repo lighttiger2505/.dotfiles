@@ -133,11 +133,11 @@ on_cmd = [
 hook_add = '''
     " Keymap
     " Git change files
-    nmap <C-j><C-g> :<C-u>GFiles?<CR>
+    nnoremap <C-j><C-g> :<C-u>GFiles?<CR>
     " Ctags index
-    nmap <C-j><C-]> :<C-u>Tags<CR>
+    nnoremap <C-j><C-]> :<C-u>Tags<CR>
     " My cli setting
-    nmap <C-j><C-v> :<C-u>Files ~/.dotfiles<CR>
+    nnoremap <C-j><C-v> :<C-u>Files ~/.dotfiles<CR>
 '''
 
 #####################################################################
