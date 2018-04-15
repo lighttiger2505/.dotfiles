@@ -20,8 +20,8 @@ zplugin ice wait'!1'; zplugin light b4b4r07/zsh-vimode-visual
 zplugin ice wait'!1'; zplugin light hchbaw/opp.zsh
 
 # Load completions
-zplugin ice wait'!1'; zplugin light zsh-users/zsh-completions
-zplugin ice wait'!1'; zplugin light felixr/docker-zsh-completion
+zplugin ice blockf; zplugin light zsh-users/zsh-completions
+zplugin ice blockf; zplugin light felixr/docker-zsh-completion
 
 # Load commands
 zplugin ice from"gh-r" as"program"; zplugin load junegunn/fzf-bin
