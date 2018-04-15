@@ -264,3 +264,7 @@ on_ft = ['markdown', 'toml', 'help']
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'chase/vim-ansible-yaml'
+on_ft = ['yaml']
