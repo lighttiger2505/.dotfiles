@@ -114,6 +114,12 @@ hook_add = '''
     let g:tagbar_compact = 1
 '''
 
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+hook_add = '''
+    nmap <silent> <Leader>w :<C-u>StripWhitespace<CR>
+'''
+
 #####################################################################
 # Fuzzy Finder
 #####################################################################
