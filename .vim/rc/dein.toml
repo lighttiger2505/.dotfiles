@@ -36,30 +36,34 @@ hook_add = '''
 set helplang=ja,en
 '''
 
-[[plugins]]
-repo = 'urbainvaes/vim-remembrall'
-hook_add = '''
-    let g:remembrall_normal_keys = ["[", "]"]
-    let g:remembrall_window = 'topleft 30new'
+# [[plugins]]
+# repo = 'urbainvaes/vim-remembrall'
+# hook_add = '''
+#     let g:remembrall_normal_keys = ["[", "]"]
+#     let g:remembrall_window = 'topleft 30new'
+#
+#     nnoremap <silent> , :call remembrall#remind('n', ',')<cr>
+#     nnoremap <silent> ,? :call remembrall#remind('n', ',')<cr>
+#     vnoremap <silent> ? :call remembrall#remind('n', '')<cr>
+# '''
 
-    nnoremap <silent> , :call remembrall#remind('n', ',')<cr>
-    nnoremap <silent> ,? :call remembrall#remind('n', ',')<cr>
-    vnoremap <silent> ? :call remembrall#remind('n', '')<cr>
-'''
+# [[plugins]]
+# repo = 'xolox/vim-session'
+# depends = ['xolox/vim-misc']
+# hook_add = '''
+#     " Specific directory for save the session
+#     let g:session_directory = xolox#misc#path#merge(getcwd(), '.vimsession')
+#     " Auto save the session when close vim
+#     let g:session_autosave = 'yes'
+#     " Auto load the session when open vim
+#     let g:session_autoload = 'no'
+#     " Cycle for auto save minute
+#     let g:session_autosave_periodic = 1
+#
+#     nmap <silent> <Leader>so :<C-u>OpenSession<CR>
+#     nmap <silent> <Leader>ss :<C-u>OpenSession<CR>
+# '''
+#
+# [[plugins]]
+# repo = 'xolox/vim-misc'
 
-[[plugins]]
-repo = 'xolox/vim-session'
-depends = ['xolox/vim-misc']
-hook_add = '''
-    " Specific directory for save the session
-    let g:session_directory = xolox#misc#path#merge(getcwd(), '.vimsession')
-    " Auto save the session when close vim
-    let g:session_autosave = 'yes'
-    " Auto load the session when open vim
-    let g:session_autoload = 'yes'
-    " Cycle for auto save minute
-    let g:session_autosave_periodic = 1
-'''
-
-[[plugins]]
-repo = 'xolox/vim-misc'

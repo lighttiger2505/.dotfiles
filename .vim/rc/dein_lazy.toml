@@ -108,10 +108,16 @@ repo = 'tpope/vim-dispatch'
 repo = 'majutsushi/tagbar'
 on_cmd = ['TagbarToggle']
 hook_add = '''
-nmap <Leader>o :<C-u>TagbarToggle<CR>
-let g:tagbar_sort = 0
-let g:tagbar_case_insensitive = 1
-let g:tagbar_compact = 1
+    nnoremap <Leader>o :<C-u>TagbarToggle<CR>
+    let g:tagbar_sort = 0
+    let g:tagbar_case_insensitive = 1
+    let g:tagbar_compact = 1
+'''
+
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+hook_add = '''
+    nmap <silent> <Leader>w :<C-u>StripWhitespace<CR>
 '''
 
 #####################################################################
