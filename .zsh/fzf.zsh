@@ -32,9 +32,10 @@ zle -N fzf-cmd-history
 
 # Move repository dir of ghq managenemt
 function fzf-ghq=repository() {
-    local REPO=`ghq list -p | fzf +m`
-    if [ -n "$REPO" ]; then
-        BUFFER="cd $REPO"
+    local GHQ_ROOT=`ghq root`
+    local REPO=`ghq list -p | sed -e 's;'${GHQ_ROOT}/';;g' |fzf +m`
+    if [ -n "${REPO}" ]; then
+        BUFFER="cd ${GHQ_ROOT}/${REPO}"
     fi
     zle accept-line
 }
