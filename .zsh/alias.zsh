@@ -160,3 +160,15 @@ if [ "Linux" = "$(uname -s)" ]; then
     alias pbpaste='xsel --clipboard --output'
     alias open=xdg-open
 fi
+
+#####################################################################
+# liary
+#####################################################################
+
+liary_file_open() {
+    LIARY=`liary -l | sort --reverse | fzf -m`
+    if [ -n "${LIARY}" ]; then
+        vim ${LIARY}
+    fi
+}
+alias ryo=liary_file_open
