@@ -160,3 +160,12 @@ if [ "Linux" = "$(uname -s)" ]; then
     alias pbpaste='xsel --clipboard --output'
     alias open=xdg-open
 fi
+
+#####################################################################
+# Docker
+#####################################################################
+# Display continer environment
+alias denv="docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' "
+
+# Display continer IP
+alias dip="docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "
