@@ -56,7 +56,7 @@ set shiftround
 
 " Space insert by autoindent
 set tabstop=4
-set scrolloff=3
+set scrolloff=15
 
 " Splitting a window will put the new window below the current one.
 set splitbelow
@@ -137,7 +137,7 @@ function! s:Jq(...)
 endfunction
 
 " Number of characters to apply syntax per line
-set synmaxcol=200
+set synmaxcol=512
 
 " Reload change file
 augroup vimrc-checktime
