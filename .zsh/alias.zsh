@@ -169,3 +169,14 @@ alias denv="docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' 
 
 # Display continer IP
 alias dip="docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "
+
+#####################################################################
+# liary
+#####################################################################
+liary_file_open() {
+    LIARY=`liary -l | sort --reverse | fzf -m`
+    if [ -n "${LIARY}" ]; then
+        vim ${LIARY}
+    fi
+}
+alias ryo=liary_file_open
