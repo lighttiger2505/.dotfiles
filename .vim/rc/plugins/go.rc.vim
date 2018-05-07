@@ -1,6 +1,6 @@
 " Specifies the type of list to use for command outputs
 let g:go_list_type = "locationlist"
-" let g:go_list_type_commands = {"GoInstall": "quickfix", "GoBuild": "quickfix", "GoTest": "quickfix"}
+let g:go_list_type_commands = {"GoInstall": "quickfix", "GoBuild": "quickfix", "GoTest": "quickfix"}
 let g:go_list_autoclose = 1
 let g:go_list_height = 10
 
