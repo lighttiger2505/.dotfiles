@@ -119,12 +119,10 @@ alias -g B='`git branch --all | grep -v HEAD | fzf -m`'
 #####################################################################
 # awscli
 #####################################################################
-if type todoist > /dev/null 2>&1; then
-    # aws profile select
-    alias awsp='export AWS_DEFAULT_PROFILE=`cat ~/.aws/credentials | grep -e "\[\(.*\)\]" | sed -e "s/\[//g" | sed -e "s/\]//g" | sort | fzf`'
-    # aws ec2 ip list
-    alias awse='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | [ .InstanceId, .PublicIpAddress , .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][] ]  | @tsv " | sort -k3'
-fi
+# aws profile select
+alias awsprof='export AWS_DEFAULT_PROFILE=`cat ~/.aws/credentials | grep -e "\[\(.*\)\]" | sed -e "s/\[//g" | sed -e "s/\]//g" | sort | fzf`'
+# aws ec2 ip list
+alias ec2='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | select(.Tags!=null) | [.InstanceId, .PublicIpAddress, .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][]]  | @tsv " | sort -k3'
 
 #####################################################################
 # todoist
