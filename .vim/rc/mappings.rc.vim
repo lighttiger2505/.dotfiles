@@ -30,7 +30,7 @@ noremap L $
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-a> <C-o>^
-inoremap <C-e> <C-o>$
+inoremap <C-e> <End>
 inoremap <C-d> <Del>
 
 " Change tab width
