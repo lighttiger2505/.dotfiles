@@ -46,8 +46,6 @@ if [ -e ~/.anyenv ]; then
     fi
 fi
 
-# Benchmark
-alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
 
 # zprof end
 if (which zprof > /dev/null 2>&1) ;then

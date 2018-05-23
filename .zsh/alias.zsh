@@ -181,3 +181,6 @@ liary_file_open() {
     fi
 }
 alias ryo=liary_file_open
+
+# Benchmark
+alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
