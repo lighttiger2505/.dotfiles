@@ -46,6 +46,8 @@ if [ -e ~/.anyenv ]; then
     fi
 fi
 
+eval $(ssh-agent) > /dev/null
+ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
 
 # zprof end
 if (which zprof > /dev/null 2>&1) ;then
