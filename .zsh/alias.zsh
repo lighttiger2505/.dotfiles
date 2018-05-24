@@ -128,7 +128,24 @@ if type aws > /dev/null 2>&1; then
 fi
 
 #####################################################################
+# awslogs
 #####################################################################
+awslogs-select() {
+    LOG_GROUP=`awslogs groups | fzf -m`
+    if [ -n "${LOG_GROUP}" ]; then
+        awslogs get ${LOG_GROUP}
+    fi
+}
+alias logs=awslogs-select
+
+awslogs-select-tail() {
+    LOG_GROUP=`awslogs groups | fzf -m`
+    if [ -n "${LOG_GROUP}" ]; then
+        awslogs get ${LOG_GROUP} --watch
+    fi
+}
+alias logst=awslogs-select-tail
+
 #####################################################################
 # ecscli
 #####################################################################
