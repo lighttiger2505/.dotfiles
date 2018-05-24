@@ -128,6 +128,38 @@ if type aws > /dev/null 2>&1; then
 fi
 
 #####################################################################
+#####################################################################
+#####################################################################
+# ecscli
+#####################################################################
+alias ecs='ecs-cli'
+
+ecs-cluster-select() {
+    ECS_CLUSTER=`cat ~/.ecs/config | yq -r '."clusters" | keys[]' | fzf -m`
+    if [ -n "${ECS_CLUSTER}" ]; then
+        ecs-cli configure default --config-name ${ECS_CLUSTER}
+    fi
+}
+alias ecsc=ecs-cluster-select
+
+ecs-log-running() {
+    TASK_HASH=$(ecs-cli ps | grep "RUNNING" | fzf -m | awk '{print $1}')
+    if [ -n "${TASK_HASH}" ]; then
+        ecs-cli logs --task-id ${TASK_HASH%/*} --follow
+    fi
+}
+alias ecslr=ecs-log-running
+
+ecs-log-stopped() {
+    TASK_HASH=$(ecs-cli ps | grep "STOPPED" | fzf -m | awk '{print $1}')
+    if [ -n "${TASK_HASH}" ]; then
+        ecs-cli logs --task-id ${TASK_HASH%/*}
+    fi
+}
+alias ecsls=ecs-log-stopped
+
+
+#####################################################################
 # todoist
 #####################################################################
 if type todoist > /dev/null 2>&1; then
