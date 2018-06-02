@@ -196,3 +196,15 @@ function! ToggleRelativenumber() abort
 endfunction
 nnoremap <silent> <Space>n :call ToggleRelativenumber()<cr>
 
+let g:toggle_window_size = 0
+function! ToggleWindowFullSize()
+  if g:toggle_window_size == 1
+    exec "normal \<C-w>="
+    let g:toggle_window_size = 0
+  else
+    exec ':resize'
+    exec ':vertical resize'
+    let g:toggle_window_size = 1
+  endif
+endfunction
+nnoremap <silent> <Space>w :<C-u>call ToggleWindowFullSize()<CR>
