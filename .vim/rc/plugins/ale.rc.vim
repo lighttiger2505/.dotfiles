@@ -29,6 +29,7 @@ let g:ale_linters = {
 \   'go': ['gometalinter'],
 \   'make': ['checkmake'],
 \   'vim': ['vint'],
+\   'shell': ['shellcheck'],
 \}
 
 let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=gofmt --enable=errcheck --enable=goconst --enable=goimports --enable=megacheck'
