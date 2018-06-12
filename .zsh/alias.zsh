@@ -76,7 +76,7 @@ alias lm='lab merge-request'
 lab_browse_issue() {
     LAB_ISSUE=`lab issue --num=20 | fzf -m | awk '{print $1}'`
     if [ -n "${LAB_ISSUE}" ]; then
-        lab browse ${LAB_ISSUE}
+        lab browse -s issues/${LAB_ISSUE}
     fi
 }
 alias lbi=lab_browse_issue
@@ -87,7 +87,7 @@ lab_browse_issue_all() {
     if [ -n "${LAB_ISSUE}" ]; then
         PRJ=`echo ${LAB_ISSUE} | awk '{print $1}'`
         NO=`echo ${LAB_ISSUE} | awk '{print $2}'`
-        lab browse -p ${PRJ} ${NO}
+        lab browse -p ${PRJ} -s issues/${NO}
     fi
 }
 alias lbia=lab_browse_issue_all
@@ -96,7 +96,7 @@ alias lbia=lab_browse_issue_all
 lab_browse_merge_request() {
     LAB_MR=`lab merge-request --num=20 | fzf -m | awk '{print $1}'`
     if [ -n "${LAB_MR}" ]; then
-        lab browse ${LAB_MR}
+        lab browse -s merge_requests/${LAB_MR}
     fi
 }
 alias lbm=lab_browse_merge_request
@@ -107,7 +107,7 @@ lab_browse_merge_request_all() {
     if [ -n "${LAB_ISSUE}" ]; then
         PRJ=`echo ${LAB_ISSUE} | awk '{print $1}'`
         NO=`echo ${LAB_ISSUE} | awk '{print $2}'`
-        lab browse -p ${PRJ} ${NO}
+        lab browse -p ${PRJ} -s merge_requests/${NO}
     fi
 }
 alias lbma=lab_browse_merge_request_all
