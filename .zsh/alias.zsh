@@ -158,7 +158,7 @@ ecs-cluster-select() {
 alias ecsc=ecs-cluster-select
 
 ecs-log-running() {
-    TASK_HASH=$(ecs-cli ps | grep "RUNNING" | fzf -m | awk '{print $1}')
+    TASK_HASH=$(ecs-cli ps | grep -v "STOPPED" | fzf -m | awk '{print $1}')
     if [ -n "${TASK_HASH}" ]; then
         ecs-cli logs --task-id ${TASK_HASH%/*} --follow
     fi
