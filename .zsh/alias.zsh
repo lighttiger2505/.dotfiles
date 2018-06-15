@@ -231,3 +231,19 @@ alias ryo=liary_file_open
 
 # Benchmark
 alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
+
+browser-history() {
+    HISTORY=`bhb history | fzf -m | sed 's#.*\(https*://\)#\1#'`
+    if [ -n "${HISTORY}" ]; then
+        open ${HISTORY}
+    fi
+}
+alias bh=browser-history
+
+browser-bookmark() {
+    BOOKMARK=`bhb bookmark | fzf -m | sed 's#.*\(https*://\)#\1#'`
+    if [ -n "${BOOKMARK}" ]; then
+        open ${BOOKMARK}
+    fi
+}
+alias bb=browser-bookmark
