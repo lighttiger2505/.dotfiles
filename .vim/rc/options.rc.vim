@@ -112,10 +112,6 @@ augroup GrepCmd
     autocmd QuickFixCmdPost vim,grep,make if len(getqflist()) != 0 | cwindow | endif
 augroup END
 
-" For input multibyte chars
-set ttimeout
-set ttimeoutlen=50
-
 " Save undo history
 if has('persistent_undo')
   set undodir=./.vimundo,~/.vimundo
