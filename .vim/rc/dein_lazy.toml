@@ -242,8 +242,9 @@ hook_add = '''
 
     augroup TableCommands
         autocmd!
-        autocmd FileType markdown nnoremap <silent><LocalLeader>a :<C-u>TableModeRealign<CR>
+        autocmd FileType markdown nnoremap <silent><LocalLeader><Enter> :<C-u>TableModeRealign<CR>
         autocmd FileType markdown nnoremap <silent><LocalLeader>t :<C-u>Tableize<CR>
+        autocmd FileType markdown vnoremap <silent><LocalLeader>t :<C-u>'<,'>Tableize<CR>
     augroup END
 '''
 
