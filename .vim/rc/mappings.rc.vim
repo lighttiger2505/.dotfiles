@@ -83,6 +83,9 @@ vnoremap <Space>e "*p
 " Not yank is delete operation
 nnoremap x "_x
 
+" Shortcut of write
+nnoremap <silent> <Space>w :<C-u>w<CR>
+
 " Jump quickfix
 nnoremap <silent> <C-p> :<C-u>cp<CR>
 nnoremap <silent> <C-n> :<C-u>cn<CR>
