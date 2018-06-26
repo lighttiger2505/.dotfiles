@@ -15,55 +15,52 @@ hook_add = 'source ~/.vim/rc/plugins/lightline.rc.vim'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
-let g:gitgutter_map_keys = 0
-nmap [g <Plug>GitGutterPrevHunk
-nmap ]g <Plug>GitGutterNextHunk
+    let g:gitgutter_map_keys = 0
+    nmap [g <Plug>GitGutterPrevHunk
+    nmap ]g <Plug>GitGutterNextHunk
 '''
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
 hook_add = '''
-nmap s <Nop>
-xmap s <Nop>
+    nmap s <Nop>
+    xmap s <Nop>
 '''
 
 [[plugins]]
 repo = 'mattn/sonictemplate-vim'
 
 [[plugins]]
-repo = 'vim-jp/vimdoc-ja'
+repo = 'airblade/vim-rooter'
 hook_add = '''
-set helplang=ja,en
+    let g:rooter_patterns = ['.git/']
+    let g:rooter_change_directory_for_non_project_files = 'current'
+    let g:rooter_use_lcd = 1
 '''
 
-# [[plugins]]
-# repo = 'urbainvaes/vim-remembrall'
-# hook_add = '''
-#     let g:remembrall_normal_keys = ["[", "]"]
-#     let g:remembrall_window = 'topleft 30new'
-#
-#     nnoremap <silent> , :call remembrall#remind('n', ',')<cr>
-#     nnoremap <silent> ,? :call remembrall#remind('n', ',')<cr>
-#     vnoremap <silent> ? :call remembrall#remind('n', '')<cr>
-# '''
+[[plugins]]
+repo = 'rhysd/committia.vim'
+depends = ['vim-fugitive']
+hook_add = '''
+    let g:committia_hooks = {}
+    function! g:committia_hooks.edit_open(info)
+        " Additional settings
+        setlocal spell
 
-# [[plugins]]
-# repo = 'xolox/vim-session'
-# depends = ['xolox/vim-misc']
-# hook_add = '''
-#     " Specific directory for save the session
-#     let g:session_directory = xolox#misc#path#merge(getcwd(), '.vimsession')
-#     " Auto save the session when close vim
-#     let g:session_autosave = 'yes'
-#     " Auto load the session when open vim
-#     let g:session_autoload = 'no'
-#     " Cycle for auto save minute
-#     let g:session_autosave_periodic = 1
-#
-#     nmap <silent> <Leader>so :<C-u>OpenSession<CR>
-#     nmap <silent> <Leader>ss :<C-u>OpenSession<CR>
-# '''
-#
-# [[plugins]]
-# repo = 'xolox/vim-misc'
+        " If no commit message, start with insert mode
+        if a:info.vcs ==# 'git' && getline(1) ==# ''
+            startinsert
+        end
 
+        " Scroll the diff window from insert mode
+        " Map <C-n> and <C-p>
+        imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+        imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+    endfunction
+'''
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+hook_add = '''
+    set helplang=ja,en
+'''

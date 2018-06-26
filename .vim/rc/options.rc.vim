@@ -106,25 +106,6 @@ elseif executable('pt')
     set grepformat=%f:%l:%c:%m
 endif
 
-" Show quickfix after grepcmd
-augroup GrepCmd
-    autocmd!
-    autocmd QuickFixCmdPost vim,grep,make if len(getqflist()) != 0 | cwindow | endif
-augroup END
-
-" For input multibyte chars
-set ttimeout
-set ttimeoutlen=50
-
-" Save undo history
-if has('persistent_undo')
-  set undodir=./.vimundo,~/.vimundo
-  augroup vimrc-undofile
-    autocmd!
-    autocmd BufReadPre ~/* setlocal undofile
-  augroup END
-endif
-
 " jq command
 command! -nargs=? Jq call s:Jq(<f-args>)
 function! s:Jq(...)
@@ -139,40 +120,5 @@ endfunction
 " Number of characters to apply syntax per line
 set synmaxcol=512
 
-" Reload change file
-augroup vimrc-checktime
-  autocmd!
-  autocmd WinEnter * checktime
-augroup END
-
 " Disable sql omni complete
 let g:omni_sql_no_default_maps = 1
-
-" IME control for fcitx
-if has('unix') && executable('fcitx-remote')
-    let g:input_toggle = 0
-
-    function! Fcitx2en()
-        let s:input_status = system("fcitx-remote")
-        if s:input_status == 2
-            let g:input_toggle = 1
-            let l:a = system("fcitx-remote -c")
-        endif
-    endfunction
-
-    function! Fcitx2zh()
-        let s:input_status = system("fcitx-remote")
-        if s:input_status != 2 && g:input_toggle == 1
-            let l:a = system("fcitx-remote -o")
-            let g:input_toggle = 0
-        endif
-    endfunction
-
-    augroup FixtxIMEControl
-        autocmd!
-        "Leave Insert mode
-        autocmd InsertLeave * call Fcitx2en()
-        "Enter Insert mode
-        autocmd InsertEnter * call Fcitx2zh()
-    augroup END
-endif
