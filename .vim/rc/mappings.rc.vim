@@ -210,4 +210,4 @@ function! ToggleWindowFullSize()
     let g:toggle_window_size = 1
   endif
 endfunction
-nnoremap <silent> <Space>w :<C-u>call ToggleWindowFullSize()<CR>
+nnoremap <silent> <Space>u :<C-u>call ToggleWindowFullSize()<CR>
