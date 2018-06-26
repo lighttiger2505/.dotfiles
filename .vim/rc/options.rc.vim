@@ -77,6 +77,9 @@ set helpheight=12
 " show tab line
 set showtabline=2
 
+" multi byte symbol width is double
+set ambiwidth=double
+
 " Ignore case is search patterns
 set ignorecase
 
