@@ -69,8 +69,11 @@ alias dia=open_diary
 #####################################################################
 # lab shortcut
 alias lb='lab browse'
+alias lbi='lab browse -s issues'
+alias lbm='lab browse -s merge_requests'
+alias lbp='lab browse -s pipelines'
 alias li='lab issue'
-alias lm='lab merge-request'
+alias lm='lab mr'
 
 # Browse selected issue
 lab_browse_issue() {
@@ -79,7 +82,7 @@ lab_browse_issue() {
         lab browse -s issues/${LAB_ISSUE}
     fi
 }
-alias lbi=lab_browse_issue
+alias lbif=lab_browse_issue
 
 # Browse selected issue all repository
 lab_browse_issue_all() {
@@ -90,7 +93,7 @@ lab_browse_issue_all() {
         lab browse -p ${PRJ} -s issues/${NO}
     fi
 }
-alias lbia=lab_browse_issue_all
+alias lbifa=lab_browse_issue_all
 
 # Browse selected merge request
 lab_browse_merge_request() {
@@ -99,7 +102,7 @@ lab_browse_merge_request() {
         lab browse -s merge_requests/${LAB_MR}
     fi
 }
-alias lbm=lab_browse_merge_request
+alias lbmf=lab_browse_merge_request
 
 # Browse selected issue all repository
 lab_browse_merge_request_all() {
@@ -110,7 +113,7 @@ lab_browse_merge_request_all() {
         lab browse -p ${PRJ} -s merge_requests/${NO}
     fi
 }
-alias lbma=lab_browse_merge_request_all
+alias lbmfa=lab_browse_merge_request_all
 
 
 # Select git branch
