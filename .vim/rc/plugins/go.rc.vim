@@ -38,7 +38,7 @@ augroup GoCommands
     autocmd FileType go nmap <silent><LocalLeader>m  <Plug>(go-imports)
     autocmd FileType go nmap <silent><LocalLeader>i  <Plug>(go-install)
     autocmd FileType go nmap <silent>K               <Plug>(go-doc)
-    autocmd FileType go nmap <silent><LocalLeader>w  <Plug>(go-doc-browser)
+    autocmd FileType go nmap <silent><LocalLeader>k  <Plug>(go-doc-browser)
     autocmd FileType go nmap <silent><LocalLeader>R  <Plug>(go-rename)
     autocmd FileType go nmap <silent><LocalLeader>c  <Plug>(go-coverage)
     autocmd FileType go nmap <silent><LocalLeader>n  <Plug>(go-callees)
