@@ -74,8 +74,8 @@ nnoremap <Space>p "0p
 vnoremap <Space>p "0p
 
 " Paste clipboard text
-nnoremap <Space>e "*p
-vnoremap <Space>e "*p
+nnoremap <Space>c "*p
+vnoremap <Space>c "*p
 
 " Not yank is delete operation
 nnoremap x "_x
