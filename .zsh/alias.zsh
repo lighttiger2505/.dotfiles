@@ -6,6 +6,16 @@ alias lr="ls -ltr"
 alias dot="cd ~/.dotfiles"
 alias pd="pwd | pbcopy"
 
+fzf-cd() {
+    local dir
+    dir=$(find ${1:-.} -path '*/\.*' -prune \
+        -o -type d -print 2> /dev/null | fzf +m) &&
+    if [ -n "$dir" ]; then
+        cd $dir
+    fi
+}
+alias fd=fzf-cd
+
 #####################################################################
 # Git
 #####################################################################
