@@ -224,10 +224,22 @@ hook_add = '''
 # Syntax
 #####################################################################
 [[plugins]]
-repo = 'tpope/vim-markdown'
+repo = 'plasticboy/vim-markdown'
 on_ft = ['markdown']
 hook_add = '''
-    let g:markdown_syntax_conceal = 0
+let g:vim_markdown_folding_disabled = 0
+let g:vim_markdown_folding_level = 6
+let g:vim_markdown_no_default_key_mappings = 0
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_math = 1
+let g:vim_markdown_autowrite = 0
+let g:vim_markdown_edit_url_in = 'hsplit'
+
+augroup MarkdownCommands
+    autocmd!
+    autocmd FileType markdown nnoremap <silent><LocalLeader>o :<C-u>Toc<CR>
+augroup END
 '''
 
 [[plugins]]
@@ -238,11 +250,10 @@ hook_add = '''
     let g:table_mode_always_active = 1
     let g:table_mode_syntax = 1
     let g:table_mode_auto_align = 1
-    let g:table_mode_map_prefix = '<LocalLeader>t'
 
     augroup TableCommands
         autocmd!
-        autocmd FileType markdown nnoremap <silent><LocalLeader><Enter> :<C-u>TableModeRealign<CR>
+        autocmd FileType markdown nnoremap <silent><LocalLeader>a :<C-u>TableModeRealign<CR>
         autocmd FileType markdown nnoremap <silent><LocalLeader>t :<C-u>Tableize<CR>
         autocmd FileType markdown vnoremap <silent><LocalLeader>t :<C-u>'<,'>Tableize<CR>
     augroup END
