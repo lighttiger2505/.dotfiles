@@ -57,13 +57,19 @@ else
     alias nvim=vim
 fi
 
-# Launch markdown diary
-function open_diary() {
-  mkdir -p ~/diary/$(date "+%Y/%m")
-  vim ~/diary/$(date "+%Y/%m/%d.md")
+# Open fzf filter file
+fzf-vim-open-file() {
+    local FILE=$(find `pwd` -not \( \
+        -name .svn \
+        -prune -o -name .git \
+        -prune -o -name CVS \
+        -prune \
+    \) | fzf +m)
+    if [ -n "$FILE" ]; then
+        ${EDITOR:-vim} $FILE
+    fi
 }
-alias dia=open_diary
-
+alias vf=fzf-vim-open-file
 
 #####################################################################
 # lab
