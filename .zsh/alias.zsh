@@ -2,6 +2,7 @@
 alias ll="ls -al"
 alias lr="ls -ltr"
 alias dot="cd ~/.dotfiles"
+alias cpd="pwd | pbcopy"
 
 #####################################################################
 # Git
