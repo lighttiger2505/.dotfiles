@@ -81,7 +81,7 @@ fzf-vim-open-file() {
         ${EDITOR:-vim} $FILE
     fi
 }
-alias vf=fzf-vim-open-file
+alias fv=fzf-vim-open-file
 
 #####################################################################
 # lab
