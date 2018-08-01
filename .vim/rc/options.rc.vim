@@ -97,6 +97,9 @@ set hlsearch
 " Share clipborad with system
 set clipboard+=unnamedplus
 
+" Disable fold
+set nofoldenable
+
 " Use extend grep
 if executable('rg')
     let &grepprg = 'rg --vimgrep --hidden'
