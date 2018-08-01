@@ -2,9 +2,6 @@
 let g:mapleader = ','
 let g:maplocalleader = '\'
 
-" Editing .vimrc
-nnoremap <Space>e :tabnew $HOME/.vimrc<CR>
-
 " Reload .vimrc
 nnoremap <Space>s :source $HOME/.vimrc<CR>
 
