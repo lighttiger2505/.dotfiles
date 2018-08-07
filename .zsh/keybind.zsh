@@ -9,7 +9,6 @@ bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
 # Incrimental search on the fzf
-bindkey '^V' fzf-vim-open-file
 bindkey '^O' fzf-git-branch-checkout
 bindkey '^R' fzf-cmd-history
 bindkey '^G' fzf-ghq=repository
