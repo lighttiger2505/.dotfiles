@@ -23,22 +23,32 @@ let g:ale_statusline_format = ['%d Error', '%d Warn', 'OK']
 
 " Enable linter
 let g:ale_linters = {
-\   'javascript': ['jslint', 'eslint'],
-\   'python': ['flake8'],
-\   'markdown': ['mdl'],
-\   'go': ['gometalinter'],
-\   'make': ['checkmake'],
-\   'vim': ['vint'],
-\   'shell': ['shellcheck'],
-\}
+    \ 'javascript': ['jslint', 'eslint'],
+    \ 'python': ['flake8'],
+    \ 'markdown': ['mdl'],
+    \ 'go': ['gometalinter'],
+    \ 'make': ['checkmake'],
+    \ 'vim': ['vint'],
+    \ 'shell': ['shellcheck'],
+    \ }
 
+let g:ale_fixers = {
+    \ 'python': ['autopep8', 'yapf', 'isort'],
+    \ }
+
+" gometalinter
 let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=gofmt --enable=errcheck --enable=goconst --enable=goimports --enable=megacheck'
 
-" " Prefix key
-" nmap [ale] <Nop>
-" map <C-k> [ale]
-"
-" " mapping
-" nmap <silent> [ale]<C-e> <Plug>(ale_toggle)
+" flake8
+let g:ale_python_flake8_executable = g:python3_host_prog
+let g:ale_python_flake8_options = '-m flake8'
+let g:ale_python_autopep8_executable = g:python3_host_prog
+let g:ale_python_autopep8_options = '-m autopep8'
+let g:ale_python_isort_executable = g:python3_host_prog
+let g:ale_python_isort_options = '-m isort'
+" let g:ale_python_yapf_executable = g:python3_host_prog
+" let g:ale_python_yapf_options = '-m yapf'
+
+" mapping
 nmap <silent> [a <Plug>(ale_previous)
 nmap <silent> ]a <Plug>(ale_next)
