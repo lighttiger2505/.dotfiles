@@ -146,6 +146,7 @@ alias awsprof='export AWS_DEFAULT_PROFILE=`cat ~/.aws/credentials | grep -e "\[\
 # aws ec2 ip list
 alias ec2='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | select(.Tags!=null) | [.InstanceId, .PublicIpAddress, .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][]] | @tsv " | sort -k3'
 alias ec2desc='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | select(.InstanceId==\"i-017b9946a248a7679\")"'
+alias elb='aws elb describe-load-balancers | jq -r ".LoadBalancerDescriptions[].LoadBalancerName"'
 
 #####################################################################
 # awslogs
