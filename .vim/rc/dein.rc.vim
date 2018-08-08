@@ -11,6 +11,7 @@ endif
 call dein#begin(s:dein_dir)
 call dein#load_toml('~/.vim/rc/dein.toml',          {'lazy': 0})
 call dein#load_toml('~/.vim/rc/dein_lazy.toml',     {'lazy': 1})
+call dein#load_toml('~/.vim/rc/dein_syntax.toml',   {'lazy': 1})
 call dein#load_toml('~/.vim/rc/dein_neo.toml',      {'lazy': 1})
 call dein#load_toml('~/.vim/rc/dein_python.toml',   {'lazy': 1})
 call dein#load_toml('~/.vim/rc/dein_go.toml',       {'lazy': 1})
