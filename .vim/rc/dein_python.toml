@@ -24,9 +24,9 @@ repo = 'jmcantrell/vim-virtualenv'
 repo = 'Vimjas/vim-python-pep8-indent'
 on_ft = ['python']
 
-[[plugins]]
-repo = 'aliev/vim-compiler-python'
-on_ft = ['python']
+# [[plugins]]
+# repo = 'aliev/vim-compiler-python'
+# on_ft = ['python']
 
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
