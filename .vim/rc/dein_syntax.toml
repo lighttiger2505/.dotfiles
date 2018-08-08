@@ -65,3 +65,7 @@ on_ft = ['yaml']
 [[plugins]]
 repo = 'hashivim/vim-terraform'
 on_ft = ['tf', 'tfvars', 'tfstate']
+
+[[plugins]]
+repo = 'ekalinin/Dockerfile.vim'
+on_ft = ['dockerfile']
