@@ -60,7 +60,7 @@ repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'chase/vim-ansible-yaml'
-on_ft = ['yaml']
+on_ft = ['yml', 'yaml']
 
 [[plugins]]
 repo = 'hashivim/vim-terraform'
