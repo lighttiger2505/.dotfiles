@@ -82,6 +82,7 @@ fzf-vim-open-file() {
     fi
 }
 alias fv=fzf-vim-open-file
+alias vimdiff='vim -d'
 
 #####################################################################
 # lab
