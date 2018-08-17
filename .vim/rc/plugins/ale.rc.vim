@@ -33,7 +33,7 @@ let g:ale_linters = {
     \ }
 
 let g:ale_fixers = {
-    \ 'python': ['autopep8', 'yapf', 'isort'],
+    \ 'python': ['autopep8', 'black', 'isort'],
     \ }
 
 " gometalinter
@@ -46,9 +46,10 @@ let g:ale_python_autopep8_executable = g:python3_host_prog
 let g:ale_python_autopep8_options = '-m autopep8'
 let g:ale_python_isort_executable = g:python3_host_prog
 let g:ale_python_isort_options = '-m isort'
-" let g:ale_python_yapf_executable = g:python3_host_prog
-" let g:ale_python_yapf_options = '-m yapf'
+let g:ale_python_black_executable = g:python3_host_prog
+let g:ale_python_black_options = '-m black'
 
 " mapping
 nmap <silent> [a <Plug>(ale_previous)
 nmap <silent> ]a <Plug>(ale_next)
+nmap <silent> <Leader>x <Plug>(ale_fix)
