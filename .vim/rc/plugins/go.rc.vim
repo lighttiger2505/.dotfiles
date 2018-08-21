@@ -43,7 +43,7 @@ augroup GoCommands
     autocmd FileType go nmap <silent><LocalLeader>k  <Plug>(go-doc-browser)
     autocmd FileType go nmap <silent><LocalLeader>R  <Plug>(go-rename)
     autocmd FileType go nmap <silent><LocalLeader>c  <Plug>(go-coverage)
-    autocmd FileType go nmap <silent><LocalLeader>n  <Plug>(go-callees)
+    autocmd FileType go nmap <silent><LocalLeader>n  <Plug>(go-referrers)
     autocmd FileType go nmap <silent><LocalLeader>aa <Plug>(go-alternate-edit)
     autocmd FileType go nmap <silent><LocalLeader>as <Plug>(go-alternate-split)
     autocmd FileType go nmap <silent><LocalLeader>av <Plug>(go-alternate-vertical)
