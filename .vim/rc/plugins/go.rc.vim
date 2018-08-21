@@ -35,6 +35,8 @@ augroup GoCommands
     autocmd FileType go nmap <silent><LocalLeader>b  <Plug>(go-build)
     autocmd FileType go nmap <silent><LocalLeader>tt <Plug>(go-test)
     autocmd FileType go nmap <silent><LocalLeader>tf <Plug>(go-test-func)
+    autocmd FileType go nmap <silent><LocalLeader>tg :<C-u>GoTests
+    autocmd FileType go nmap <silent><LocalLeader>ta :<C-u>GoTestsAll
     autocmd FileType go nmap <silent><LocalLeader>m  <Plug>(go-imports)
     autocmd FileType go nmap <silent><LocalLeader>i  <Plug>(go-install)
     autocmd FileType go nmap <silent>K               <Plug>(go-doc)
