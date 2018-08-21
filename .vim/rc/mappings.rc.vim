@@ -69,10 +69,6 @@ nnoremap <silent>< <<
 nnoremap <Space>p "0p
 vnoremap <Space>p "0p
 
-" Paste explicitly yanked text
-nnoremap <Space>p "0p
-vnoremap <Space>p "0p
-
 " Paste clipboard text
 nnoremap <Space>c "*p
 vnoremap <Space>c "*p
