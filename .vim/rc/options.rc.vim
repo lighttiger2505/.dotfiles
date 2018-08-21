@@ -31,7 +31,7 @@ set colorcolumn=256
 
 " Invisible stirng
 set list
-set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:$,trail:~
+set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:↲,trail:~
 
 " Don't unload buffer when it is abandones
 set hidden
