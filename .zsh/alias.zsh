@@ -35,8 +35,14 @@ alias rm-branch="git branch --merged | grep -v \\* | xargs -I % git branch -d %"
 alias gf="git fetch -p && rm-branch"
 alias gp="git pull -p && rm-branch"
 
+# Select git branch
+alias -g B='`git branch --all | grep -v HEAD | fzf -m`'
+
 # tig status
 alias ts="tig status"
+
+# Setting git local config
+alias gitlocal='git config --local user.name "lighttiger2505";git config --local user.email "lighttiger2505@gmail.com"'
 
 #####################################################################
 # Zsh
@@ -134,10 +140,6 @@ lab_browse_merge_request_all() {
     fi
 }
 alias lbmfa=lab_browse_merge_request_all
-
-
-# Select git branch
-alias -g B='`git branch --all | grep -v HEAD | fzf -m`'
 
 #####################################################################
 # awscli
