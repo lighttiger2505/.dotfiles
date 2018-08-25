@@ -256,6 +256,10 @@ alias ryo=liary_file_open
 # Benchmark
 alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
 
+#####################################################################
+# browser-hb
+#####################################################################
+
 browser-history() {
     HISTORY=`bhb history | fzf -m | sed 's#.*\(https*://\)#\1#'`
     if [ -n "${HISTORY}" ]; then
