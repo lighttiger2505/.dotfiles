@@ -271,3 +271,21 @@ browser-bookmark() {
     fi
 }
 alias bb=browser-bookmark
+
+#####################################################################
+# zsh-marks
+#####################################################################
+
+alias g="jump"
+alias s="bookmark"
+alias d="deletemark"
+alias p="showmarks"
+alias l="showmarks"
+
+fzf-jump-bookmark() {
+    BOOKMARK=`showmarks | fzf -m | awk '{print $1}'`
+    if [ -n "${BOOKMARK}" ]; then
+        jump ${BOOKMARK}
+    fi
+}
+alias cb=fzf-jump-bookmark
