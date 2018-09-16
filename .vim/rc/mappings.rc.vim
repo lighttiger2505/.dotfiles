@@ -170,18 +170,6 @@ cnoremap <C-d> <Del>
 " Switch to last file
 nnoremap <Space><Space> <c-^>
 
-" Rename current file
-function! RenameFile() abort
-  let old_name = expand('%')
-  let new_name = input('New file name: ', expand('%'))
-  if new_name !=# '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
-    redraw!
-  endif
-endfunction
-noremap <Space>R :call RenameFile()<cr>
-
 " Toggle relativenumber or norelativenumber
 function! ToggleRelativenumber() abort
   if &relativenumber == 1
