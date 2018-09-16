@@ -213,9 +213,15 @@ hook_add = '''
 
 [[plugins]]
 repo = 'lighttiger2505/lab.vim'
-on_cmd = ['LabBrowse', 'LabIssue', 'LabMergeRequest']
+on_cmd = [
+    'LabBrowse',
+    'LabBrowseFile',
+    'LabIssue',
+    'LabMergeRequest',
+]
 hook_add = '''
     nnoremap <Leader>lb :<C-u>LabBrowse<CR>
+    nnoremap <Leader>lf :<C-u>LabBrowseFile<CR>
     nnoremap <Leader>li :<C-u>LabIssue<CR>
     nnoremap <Leader>lm :<C-u>LabMergeRequest<CR>
 '''
