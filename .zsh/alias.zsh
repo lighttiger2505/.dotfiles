@@ -93,22 +93,21 @@ alias vimdiff='vim -d'
 #####################################################################
 # lab
 #####################################################################
-# lab shortcut
-alias lb='lab browse'
-alias lbi='lab browse -s issues'
-alias lbm='lab browse -s merge_requests'
-alias lbp='lab browse -s pipelines'
-alias li='lab issue'
-alias lm='lab mr'
-
 # Browse selected issue
 lab_browse_issue() {
-    LAB_ISSUE=`lab issue --num=20 | fzf -m | awk '{print $1}'`
+    LAB_ISSUE=`lab issue --num=100 | fzf -m | awk '{print $1}'`
     if [ -n "${LAB_ISSUE}" ]; then
         lab browse -s issues/${LAB_ISSUE}
     fi
 }
-alias lbif=lab_browse_issue
+
+# Browse selected issue
+lab_browse_issue_me() {
+    LAB_ISSUE=`lab issue --num=20 --assigned-me | fzf -m | awk '{print $1}'`
+    if [ -n "${LAB_ISSUE}" ]; then
+        lab browse -s issues/${LAB_ISSUE}
+    fi
+}
 
 # Browse selected issue all repository
 lab_browse_issue_all() {
@@ -119,16 +118,21 @@ lab_browse_issue_all() {
         lab browse -p ${PRJ} -s issues/${NO}
     fi
 }
-alias lbifa=lab_browse_issue_all
 
 # Browse selected merge request
 lab_browse_merge_request() {
-    LAB_MR=`lab merge-request --num=20 | fzf -m | awk '{print $1}'`
+    LAB_MR=`lab merge-request --num=100 | fzf -m | awk '{print $1}'`
     if [ -n "${LAB_MR}" ]; then
         lab browse -s merge_requests/${LAB_MR}
     fi
 }
-alias lbmf=lab_browse_merge_request
+
+lab_browse_merge_request_me() {
+    LAB_MR=`lab merge-request --num=20 --assigned-me | fzf -m | awk '{print $1}'`
+    if [ -n "${LAB_MR}" ]; then
+        lab browse -s merge_requests/${LAB_MR}
+    fi
+}
 
 # Browse selected issue all repository
 lab_browse_merge_request_all() {
@@ -139,6 +143,19 @@ lab_browse_merge_request_all() {
         lab browse -p ${PRJ} -s merge_requests/${NO}
     fi
 }
+
+# lab shortcut
+alias lb='lab browse'
+alias lbi='lab browse -s issues'
+alias lbm='lab browse -s merge_requests'
+alias lbp='lab browse -s pipelines'
+alias li='lab issue'
+alias lm='lab mr'
+alias lbif=lab_browse_issue
+alias lbifm=lab_browse_issue_me
+alias lbifa=lab_browse_issue_all
+alias lbmf=lab_browse_merge_request
+alias lbmfm=lab_browse_merge_request_me
 alias lbmfa=lab_browse_merge_request_all
 
 #####################################################################
