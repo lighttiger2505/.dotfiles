@@ -227,6 +227,15 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'lighttiger2505/liary.vim'
+on_cmd = [
+    'Liary',
+    'LiarySplit',
+    'LiaryVSplit',
+    'LiaryTab',
+]
+
+[[plugins]]
 repo = 'echuraev/translate-shell.vim'
 on_cmd = ['Trans', 'TransVisual']
 hook_add = '''
