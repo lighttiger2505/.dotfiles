@@ -315,3 +315,25 @@ fzf-jump-bookmark() {
     fi
 }
 alias cb=fzf-jump-bookmark
+
+#####################################################################
+# gcloud
+#####################################################################
+
+gcloud-change-project() {
+    PROJECT=`gcloud projects list | fzf -m | awk '{print $1}'`
+    if [ -n "${PROJECT}" ]; then
+        gcloud config set project ${PROJECT}
+    fi
+}
+alias gccp=gcloud-change-project
+
+gcloud-compute-ssh() {
+    CHOICE_LINE=`gcloud compute instances list | fzf -m`
+    if [ -n "${CHOICE_LINE}" ]; then
+        NAME=`echo ${CHOICE_LINE} | awk '{print $1}'`
+        ZONE=`echo ${CHOICE_LINE} | awk '{print $2}'`
+        gcloud compute ssh --zone ${ZONE} ${NAME}
+    fi
+}
+alias gcssh=gcloud-compute-ssh
