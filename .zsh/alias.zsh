@@ -128,7 +128,7 @@ lab_browse_merge_request() {
 }
 
 lab_browse_merge_request_me() {
-    LAB_MR=`lab merge-request --num=20 --assigned-me | fzf -m | awk '{print $1}'`
+    LAB_MR=`lab merge-request --num=20 --assigned-me --opened | fzf -m | awk '{print $1}'`
     if [ -n "${LAB_MR}" ]; then
         lab browse -s merge_requests/${LAB_MR}
     fi
