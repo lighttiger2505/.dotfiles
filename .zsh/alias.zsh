@@ -5,6 +5,8 @@ alias ll="ls -al"
 alias lr="ls -ltr"
 alias dot="cd ~/.dotfiles"
 alias pd="pwd | pbcopy"
+alias c='clear'
+alias untar='tar -zxvf'
 
 fzf-cd() {
     local dir
