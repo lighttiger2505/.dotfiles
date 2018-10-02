@@ -35,16 +35,16 @@ augroup GoCommands
     autocmd FileType go nmap <silent><LocalLeader>b  <Plug>(go-build)
     autocmd FileType go nmap <silent><LocalLeader>tt <Plug>(go-test)
     autocmd FileType go nmap <silent><LocalLeader>tf <Plug>(go-test-func)
-    autocmd FileType go nmap <silent><LocalLeader>tg :<C-u>GoTests
+    autocmd FileType go nmap <silent><LocalLeader>ts :<C-u>GoTests
     autocmd FileType go nmap <silent><LocalLeader>ta :<C-u>GoTestsAll
     autocmd FileType go nmap <silent><LocalLeader>m  <Plug>(go-imports)
     autocmd FileType go nmap <silent><LocalLeader>i  <Plug>(go-install)
     autocmd FileType go nmap <silent>K               <Plug>(go-doc)
-    autocmd FileType go nmap <silent><LocalLeader>k  <Plug>(go-doc-browser)
+    autocmd FileType go nmap <silent><LocalLeader>d  <Plug>(go-doc-browser)
     autocmd FileType go nmap <silent><LocalLeader>R  <Plug>(go-rename)
     autocmd FileType go nmap <silent><LocalLeader>c  <Plug>(go-coverage)
     autocmd FileType go nmap <silent><LocalLeader>n  <Plug>(go-referrers)
     autocmd FileType go nmap <silent><LocalLeader>a  <Plug>(go-alternate-edit)
-    " autocmd FileType go nmap <silent><LocalLeader>as <Plug>(go-alternate-split)
-    " autocmd FileType go nmap <silent><LocalLeader>av <Plug>(go-alternate-vertical)
+    autocmd FileType go nmap <silent><LocalLeader>e  <Plug>(go-iferr)
+    autocmd FileType go nmap <silent><LocalLeader>p  <Plug>(go-implements)
 augroup END
