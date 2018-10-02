@@ -87,12 +87,6 @@ nnoremap <silent> ]f :<C-u>cn<CR>
 nnoremap <silent> [F :<C-u>cfirst<CR>
 nnoremap <silent> ]F :<C-u>clast<CR>
 
-" Toggle quickfix
-if exists('g:__QUICKFIX_TOGGLE_jfklds__')
-    finish
-endif
-let g:__QUICKFIX_TOGGLE_jfklds__ = 1
-
 function! ToggleQuickfix()
     let l:nr = winnr('$')
     cwindow
