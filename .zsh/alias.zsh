@@ -92,6 +92,21 @@ fzf-vim-open-file() {
 alias fv=fzf-vim-open-file
 alias vimdiff='vim -d'
 
+# Open fzf filter file
+fzf-vim-open-file-with-rg() {
+    local FILE_AND_ROW=$(find `pwd` -not \( \
+        -name .svn \
+        -prune -o -name .git \
+        -prune -o -name CVS \
+        -prune \
+    \) | fzf +m)
+    if [ -n "$FILE" ]; then
+        ${EDITOR:-vim} $FILE
+    fi
+}
+alias fv=fzf-vim-open-file
+alias vimdiff='vim -d'
+
 #####################################################################
 # lab
 #####################################################################
