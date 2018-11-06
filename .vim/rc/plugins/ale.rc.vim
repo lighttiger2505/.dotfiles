@@ -40,13 +40,13 @@ let g:ale_fixers = {
 let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=gofmt --enable=errcheck --enable=goconst --enable=goimports --enable=megacheck'
 
 " flake8
-let g:ale_python_flake8_executable = g:python3_host_prog
+let g:ale_python_flake8_executable = g:python_host_prog
 let g:ale_python_flake8_options = '-m flake8'
-let g:ale_python_autopep8_executable = g:python3_host_prog
+let g:ale_python_autopep8_executable = g:python_host_prog
 let g:ale_python_autopep8_options = '-m autopep8'
-let g:ale_python_isort_executable = g:python3_host_prog
+let g:ale_python_isort_executable = g:python_host_prog
 let g:ale_python_isort_options = '-m isort'
-let g:ale_python_black_executable = g:python3_host_prog
+let g:ale_python_black_executable = g:python_host_prog
 let g:ale_python_black_options = '-m black'
 
 " mapping
