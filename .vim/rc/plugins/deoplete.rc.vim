@@ -42,26 +42,32 @@ call deoplete#custom#source('_', 'converters', [
 
 " Prams of deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#enable_camel_case = 0
-let g:deoplete#enable_ignore_case = 0
 
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_refresh_delay = 100
+call deoplete#custom#option({
+\ 'auto_complete_delay': 10,
+\ 'auto_refresh_delay': 10,
+\ 'smart_case': v:true,
+\ 'camel_case': v:true,
+\ })
 
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
-let g:deoplete#keyword_patterns.tex = '[^\w|\s][a-zA-Z_]\w*'
+call deoplete#custom#option('keyword_patterns', {
+\ '_': '[a-zA-Z_]\k*',
+\ 'tex': '\\?[a-zA-Z_]\w*',
+\ 'ruby': '[a-zA-Z_]\w*[!?]?',
+\})
 
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.python = ''
-let g:deoplete#omni#functions = {}
 
-let g:deoplete#skip_chars = ['(', ')']
+call deoplete#custom#source('omni', 'functions', {
+\ 'ruby':  'rubycomplete#Complete',
+\ 'javascript': ['tern#Complete', 'jspc#omni']
+\})
 
 " Hidden autocomplete preview
 set completeopt-=preview
 
 " Order deoplete source
-call deoplete#custom#source('buffer', 'rank', 100)
-call deoplete#custom#source('around', 'rank', 100)
+call deoplete#custom#source('buffer', 'rank', 1)
+call deoplete#custom#source('around', 'rank', 2)
+" call deoplete#custom#source('tag', 'rank', 1)
+" call deoplete#custom#source('file', 'rank', 1)
+" call deoplete#custom#source('dictionary', 'rank', 1)
