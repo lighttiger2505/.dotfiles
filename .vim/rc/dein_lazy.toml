@@ -222,6 +222,7 @@ on_cmd = [
 hook_add = '''
     nnoremap <Leader>lb :<C-u>LabBrowse<CR>
     nnoremap <Leader>lf :<C-u>LabBrowseFile<CR>
+    vnoremap <Leader>lf :<C-u>LabBrowseFile<CR>
     nnoremap <Leader>li :<C-u>LabIssue<CR>
     nnoremap <Leader>lm :<C-u>LabMergeRequest<CR>
 '''
