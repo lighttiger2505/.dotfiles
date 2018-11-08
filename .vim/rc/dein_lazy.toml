@@ -56,6 +56,16 @@ hook_add = '''
     nnoremap <Space>i <C-u>:IndentLinesToggle<CR>
 '''
 
+[[plugins]]
+repo = 'mattn/vim-sqlfmt'
+on_ft = ['sql']
+on_map = ['<Plug>(sqlfmt)']
+on_cmd = ['SQLFmt']
+hook_add = '''
+let sqlfmt_bin = fnamemodify(g:python3_host_prog, ':h') . '/' . '/sqlformat'
+let g:sqlfmt_program = sqlfmt_bin . ' -r -k upper -o %s -'
+'''
+
 #####################################################################
 # Programing util
 #####################################################################
