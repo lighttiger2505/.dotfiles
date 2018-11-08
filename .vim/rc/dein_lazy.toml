@@ -175,7 +175,7 @@ hook_add = '''
 [[plugins]]
 repo = 'kannokanno/previm'
 depends = ['open-browser.vim']
-on_ft = ['markdown']
+on_cmd = ['PrevimOpen']
 hook_add = '''
     nnoremap <leader>p :PrevimOpen<CR>
 '''
@@ -186,7 +186,6 @@ build = 'make'
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
-on_cmd = ['NERDTreeToggle']
 on_map = ['<plug>NERDTreeTabsToggle', '<plug>NERDTreeTabsFind']
 depends = ['nerdtree-git-plugin', 'vim-nerdtree-tabs']
 hook_add = '''
