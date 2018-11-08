@@ -320,19 +320,17 @@ alias bb=browser-bookmark
 # zsh-marks
 #####################################################################
 
-alias g="jump"
-alias s="bookmark"
-alias d="deletemark"
-alias p="showmarks"
-alias l="showmarks"
+alias bs="bookmark"
+alias bd="deletemark"
+alias bl="showmarks"
 
 fzf-jump-bookmark() {
-    BOOKMARK=`showmarks | fzf -m | awk '{print $1}'`
+    BOOKMARK=`showmarks | sort | fzf -m | awk '{print $1}'`
     if [ -n "${BOOKMARK}" ]; then
         jump ${BOOKMARK}
     fi
 }
-alias cb=fzf-jump-bookmark
+alias b=fzf-jump-bookmark
 
 #####################################################################
 # gcloud
