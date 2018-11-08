@@ -7,6 +7,8 @@ alias dot="cd ~/.dotfiles"
 alias pd="pwd | pbcopy"
 alias c='clear'
 alias untar='tar -zxvf'
+alias gip='curl inet-ip.info'
+alias pass='cat ~/.dotiridge/password/passwd'
 
 fzf-cd() {
     local dir
