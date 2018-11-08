@@ -81,7 +81,20 @@ hook_source = '''
 
 [[plugins]]
 repo = 'w0rp/ale'
-on_ft = ['go', 'python', 'javascript', 'html', 'css', 'markdown', 'make', 'vim']
+on_ft = [
+    'go',
+    'python',
+    'javascript',
+    'html',
+    'css',
+    'markdown',
+    'make',
+    'vim',
+    'terraform',
+    'zsh',
+    'sh',
+    'ansible',
+]
 hook_source = '''
     source ~/.vim/rc/plugins/ale.rc.vim
 '''

@@ -30,24 +30,23 @@ let g:ale_linters = {
     \ 'make': ['checkmake'],
     \ 'vim': ['vint'],
     \ 'shell': ['shellcheck'],
+    \ 'terraform': ['fmt', 'tflint'],
+    \ 'ansible': ['ansible-lint'],
     \ }
 
 let g:ale_fixers = {
-    \ 'python': ['autopep8', 'black', 'isort'],
+    \ 'python': ['autopep8', 'yapf', 'isort'],
     \ }
 
 " gometalinter
 let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=gofmt --enable=errcheck --enable=goconst --enable=goimports --enable=megacheck'
 
-" flake8
-let g:ale_python_flake8_executable = g:python_host_prog
-let g:ale_python_flake8_options = '-m flake8'
-let g:ale_python_autopep8_executable = g:python_host_prog
-let g:ale_python_autopep8_options = '-m autopep8'
-let g:ale_python_isort_executable = g:python_host_prog
-let g:ale_python_isort_options = '-m isort'
-let g:ale_python_black_executable = g:python_host_prog
-let g:ale_python_black_options = '-m black'
+" Python fixer
+let g:ale_python_flake8_executable = fnamemodify(g:python_host_prog, ':h') . '/' . 'flake8'
+let g:ale_python_autopep8_executable = fnamemodify(g:python_host_prog, ':h') . '/'. 'autopep8'
+let g:ale_python_isort_executable = fnamemodify(g:python_host_prog, ':h') . '/'. 'isort'
+let g:ale_python_yapf_executable = fnamemodify(g:python_host_prog, ':h') . '/'. 'yapf'
+let g:ale_ansible_ansible_lint_executable = fnamemodify(g:python3_host_prog, ':h') . '/'. 'ansible-lint'
 
 " mapping
 nmap <silent> [a <Plug>(ale_previous)
