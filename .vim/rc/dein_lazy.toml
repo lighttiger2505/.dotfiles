@@ -185,27 +185,6 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
-on_map = ['<plug>NERDTreeTabsToggle', '<plug>NERDTreeTabsFind']
-depends = ['nerdtree-git-plugin', 'vim-nerdtree-tabs']
-hook_add = '''
-    let NERDTreeShowHidden=1
-    let NERDTreeIgnore=['\.pyc$', '__pycache__']
-    nmap <Leader>t <plug>NERDTreeTabsToggle<CR>
-'''
-
-[[plugins]]
-repo = 'jistr/vim-nerdtree-tabs'
-hook_add = '''
-    let g:nerdtree_tabs_autofind = 0
-    nmap <Leader>f <plug>NERDTreeTabsFind<CR>
-'''
-
-[[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
-depends = ['vim-fugitive']
-
-[[plugins]]
 repo = 'tpope/vim-fugitive'
 on_cmd = [
   'Git',
