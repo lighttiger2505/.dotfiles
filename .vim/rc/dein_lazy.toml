@@ -90,6 +90,19 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.pyc$', '__pycache__']
+nnoremap <silent> <Leader>t :<C-u>NERDTreeToggle<CR>
+nnoremap <silent> <Leader>f :<C-u>NERDTreeFind %<CR>
+'''
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+depends = ['vim-fugitive']
+
+[[plugins]]
 repo = 'w0rp/ale'
 on_ft = [
     'go',
