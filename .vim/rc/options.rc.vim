@@ -8,14 +8,18 @@ if !exists ('g:encoding_set') || !has('nvim')
 endif
 scriptencoding utf-8
 
+" guitter size fix
+set signcolumn=yes
+
+" more fast drawing
+set lazyredraw
+set ttyfast
+
 " Don't create swp file
 set writebackup
 set nobackup
 set noswapfile
 set noundofile
-
-" set modifiable
-" set write
 
 " Show column number
 set number
@@ -95,7 +99,11 @@ endif
 set hlsearch
 
 " Share clipborad with system
-set clipboard+=unnamedplus
+if !has('nvim')
+    set clipboard+=unnamedplus
+else
+    set clipboard=unnamed
+endif
 
 " Disable fold
 set nofoldenable

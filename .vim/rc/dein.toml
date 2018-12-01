@@ -46,6 +46,7 @@ hook_add = '''
     function! g:committia_hooks.edit_open(info)
         " Additional settings
         setlocal spell
+        setlocal spelllang+=cjk
 
         " If no commit message, start with insert mode
         if a:info.vcs ==# 'git' && getline(1) ==# ''
