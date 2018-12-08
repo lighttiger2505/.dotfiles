@@ -93,6 +93,7 @@ on_ft = [
     'zsh',
     'sh',
     'ansible',
+    'json',
 ]
 hook_source = '''
     source ~/.vim/rc/plugins/ale.rc.vim
