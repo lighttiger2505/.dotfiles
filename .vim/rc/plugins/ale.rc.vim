@@ -32,10 +32,12 @@ let g:ale_linters = {
     \ 'shell': ['shellcheck'],
     \ 'terraform': ['fmt', 'tflint'],
     \ 'ansible': ['ansible-lint'],
+    \ 'json': ['jq'],
     \ }
 
 let g:ale_fixers = {
     \ 'python': ['autopep8', 'yapf', 'isort'],
+    \ 'json': ['jq'],
     \ }
 
 " gometalinter
