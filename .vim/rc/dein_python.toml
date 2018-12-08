@@ -13,9 +13,6 @@ hook_source = '''
 repo = 'lambdalisue/vim-django-support'
 on_ft = ['python', 'djangohtml']
 
-# [[plugins]]
-# repo = 'lambdalisue/vim-pyenv'
-
 [[plugins]]
 repo = 'jmcantrell/vim-virtualenv'
 on_ft = ['python']
@@ -24,30 +21,37 @@ on_ft = ['python']
 repo = 'Vimjas/vim-python-pep8-indent'
 on_ft = ['python']
 
-# [[plugins]]
-# repo = 'aliev/vim-compiler-python'
-# on_ft = ['python']
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
 
 [[plugins]]
-repo = 'davidhalter/jedi-vim'
+repo = 'prabirshrestha/vim-lsp'
 on_ft = ['python']
-depends = ['vim-virtualenv']
-hook_source = '''
-    " Disable auto init
-    let g:jedi#auto_initialization = 1
-    let g:jedi#auto_vim_configuration = 0
+depends = ['async.vim', 'vim-virtualenv']
+hook_add = '''
+" registar pyls to vim-lsp
+let s:pyls_path = fnamemodify(g:python_host_prog, ':h') . '/'. 'pyls'
+if (executable('pyls'))
+    au User lsp_setup call lsp#register_server({
+  \ 'name': 'pyls',
+  \ 'cmd': {server_info->[expand(s:pyls_path)]},
+  \ 'whitelist': ['python']
+  \ })
+endif
 
-    " Disable auto complesions
-    let g:jedi#completions_enabled = 0
-    let g:jedi#popup_on_dot = 0
-    let g:jedi#smart_auto_mappings = 0
-    let g:jedi#show_call_signatures = 0
+augroup PylsCommands
+    autocmd!
+    " TODO 
+    " start pyls when enter python file
+    autocmd BufWinEnter *.py :call lsp#enable()
+    " local key mapping
+    autocmd FileType python nnoremap <C-]> :<C-u>LspDefinition<CR>
+    autocmd FileType python nnoremap K :<C-u>LspHover<CR>
+    autocmd FileType python nnoremap <LocalLeader>R :<C-u>LspRename<CR>
+    autocmd FileType python nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
+augroup END
 
-    " Custom keymap
-    let g:jedi#goto_command = "<C-]>"
-    let g:jedi#goto_assignments_command = "<Localleader>g"
-    let g:jedi#goto_definitions_command = ""
-    let g:jedi#documentation_command = "K"
-    let g:jedi#usages_command = "<Localleader>n"
-    let g:jedi#rename_command = "<Localleader>R"
+" vim-lsp debuging
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
 '''
