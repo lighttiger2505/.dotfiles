@@ -1,3 +1,8 @@
+" magic word before
+filetype off
+filetype plugin indent off
+
+" other vimrc source util
 function! s:source_rc(path, ...) abort 
   let l:use_global = get(a:000, 0, !has('vim_starting'))
   let l:abspath = resolve(expand('~/.vim/rc/' . a:path))
@@ -69,6 +74,8 @@ call s:source_rc('dein.rc.vim')
 " Colors
 set t_Co=256
 set background=dark
-syntax on
-filetype plugin indent on
 colorscheme iceberg
+
+" magic word after
+filetype plugin indent on
+syntax enable
