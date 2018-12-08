@@ -99,7 +99,7 @@ endif
 set hlsearch
 
 " Share clipborad with system
-if !has('nvim')
+if has('nvim')
     set clipboard+=unnamedplus
 else
     set clipboard=unnamed
