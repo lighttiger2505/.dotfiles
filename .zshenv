@@ -7,10 +7,11 @@ export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
 # golang
 export GOPATH=$HOME/dev
-# pyenv
-export PYENV_PATH=$HOME/.pyenv
 # anyenv
 export ANYENV_PATH=$HOME/.anyenv
+# pyenv
+export PYENV_PATH=$HOME/.pyenv
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 # # java
 if [ -e /usr/libexec/java_home ]; then
     export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
