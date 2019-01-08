@@ -10,15 +10,22 @@ alias untar='tar -zxvf'
 alias gip='curl inet-ip.info'
 alias pass='cat ~/.dotiridge/password/passwd'
 
-fzf-cd() {
+cd-fzf-find() {
     local dir
-    dir=$(find ${1:-.} -path '*/\.*' -prune \
-        -o -type d -print 2> /dev/null | fzf +m) &&
-    if [ -n "$dir" ]; then
-        cd $dir
+    DIR=$(find ./ -path '*/\.*' -name .git -prune -o -type d -print 2> /dev/null | fzf +m)
+    if [ -n "$DIR" ]; then
+        cd $DIR
     fi
 }
-alias fd=fzf-cd
+alias fd=cd-fzf-find
+
+vim-fzf-find() {
+    local FILE=$(find ./ -path '*/\.*' -name .git -prune -o -type f -print 2> /dev/null | fzf +m)
+    if [ -n "$FILE" ]; then
+        ${EDITOR:-vim} $FILE
+    fi
+}
+alias fv=vim-fzf-find
 
 #####################################################################
 # Git
@@ -40,7 +47,7 @@ alias gf="git fetch -p && rm-branch"
 alias gp="git pull -p && rm-branch"
 
 # Select git branch
-alias -g B='`git branch --all | grep -v HEAD | fzf -m`'
+alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
 
 # tig status
 alias ts="tig status"
@@ -79,34 +86,6 @@ else
     alias nvim=vim
 fi
 
-# Open fzf filter file
-fzf-vim-open-file() {
-    local FILE=$(find `pwd` -not \( \
-        -name .svn \
-        -prune -o -name .git \
-        -prune -o -name CVS \
-        -prune \
-    \) | fzf +m)
-    if [ -n "$FILE" ]; then
-        ${EDITOR:-vim} $FILE
-    fi
-}
-alias fv=fzf-vim-open-file
-alias vimdiff='vim -d'
-
-# Open fzf filter file
-fzf-vim-open-file-with-rg() {
-    local FILE_AND_ROW=$(find `pwd` -not \( \
-        -name .svn \
-        -prune -o -name .git \
-        -prune -o -name CVS \
-        -prune \
-    \) | fzf +m)
-    if [ -n "$FILE" ]; then
-        ${EDITOR:-vim} $FILE
-    fi
-}
-alias fv=fzf-vim-open-file
 alias vimdiff='vim -d'
 
 #####################################################################

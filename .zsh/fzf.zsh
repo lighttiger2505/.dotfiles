@@ -1,37 +1,9 @@
 # Default layout
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
-
-alias -g B='`git branch --all | grep -v HEAD | fzf -m`'
-
-# Checkout git branch (including remote branches)
-fzf-git-branch-checkout() {
-    local BRANCHES BRANCH
-    BRANCHES=`git branch --all | grep -v HEAD`
-    BRANCH=`echo "$BRANCHES" | fzf -d $(( 2 + $(wc -l <<< "$BRANCHES") )) +m`
-    if [ -n "$BRANCH" ]; then
-        git checkout $(echo "$BRANCH" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-    fi
-    zle accept-line
-}
-zle -N fzf-git-branch-checkout
-
-
-# Set prompt command history
-function fzf-cmd-history() {
-    local HISTORY=`history -n 1 | tail -r  | awk '!a[$0]++' | fzf +m`
-    BUFFER=$HISTORY
-    if [ -n "$HISTORY" ]; then
-        CURSOR=$#BUFFER
-    else
-        zle accept-line
-    fi
-}
-zle -N fzf-cmd-history
-
+export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 
 # Move repository dir of ghq managenemt
-function fzf-ghq=repository() {
+function cd-fzf-ghqlist() {
     local GHQ_ROOT=`ghq root`
     local REPO=`ghq list -p | sed -e 's;'${GHQ_ROOT}/';;g' |fzf +m`
     if [ -n "${REPO}" ]; then
@@ -39,11 +11,36 @@ function fzf-ghq=repository() {
     fi
     zle accept-line
 }
-zle -N fzf-ghq=repository
+zle -N cd-fzf-ghqlist
+bindkey '^G' cd-fzf-ghqlist
+
+# Checkout git branch (including remote branches)
+function checkout-fzf-gitbranch() {
+    local GIT_BRANCH=$(git branch --all | grep -v HEAD | fzf +m)
+    if [ -n "$GIT_BRANCH" ]; then
+        git checkout $(echo "$GIT_BRANCH" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+    fi
+    zle accept-line
+}
+zle -N checkout-fzf-gitbranch
+bindkey '^O' checkout-fzf-gitbranch
+
+# Set prompt command history
+function buffer-fzf-history() {
+    local HISTORY=$(history -n -r 1 | fzf +m)
+    BUFFER=$HISTORY
+    if [ -n "$HISTORY" ]; then
+        CURSOR=$#BUFFER
+    else
+        zle accept-line
+    fi
+}
+zle -N buffer-fzf-history
+bindkey '^R' buffer-fzf-history
 
 
 # ssh selected host
-function fzf-ssh-host() {
+function ssh-fzf-sshconfig() {
     local SSH_HOST=$(awk '
         tolower($1)=="host" {
             for (i=2; i<=NF; i++) {
@@ -58,4 +55,5 @@ function fzf-ssh-host() {
     fi
     zle accept-line
 }
-zle -N fzf-ssh-host
+zle -N ssh-fzf-sshconfig
+bindkey '^\' ssh-fzf-sshconfig
