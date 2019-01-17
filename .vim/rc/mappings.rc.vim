@@ -193,3 +193,6 @@ function! ToggleWindowFullSize()
   endif
 endfunction
 nnoremap <silent> <Space>u :<C-u>call ToggleWindowFullSize()<CR>
+
+" Trailing whitespace
+nnoremap <silent> <Space>w :<C-u>%s/\s\+$//e<CR>
