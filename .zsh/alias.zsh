@@ -113,7 +113,7 @@ lab_browse_issue_all() {
     if [ -n "${LAB_ISSUE}" ]; then
         PRJ=`echo ${LAB_ISSUE} | awk '{print $1}'`
         NO=`echo ${LAB_ISSUE} | awk '{print $2}'`
-        lab browse -p ${PRJ} -s issues/${NO}
+        lab browse --project ${PRJ} -s issues/${NO}
     fi
 }
 
@@ -134,11 +134,11 @@ lab_browse_merge_request_me() {
 
 # Browse selected issue all repository
 lab_browse_merge_request_all() {
-    LAB_ISSUE=`lab merge-request --num=20 --all-project --opened --assigned-me | fzf -m | awk '{print $1,$2}'`
+    LAB_ISSUE=`lab merge-request --all-project --assigned-me --opened | fzf -m | awk '{print $1,$2}'`
     if [ -n "${LAB_ISSUE}" ]; then
         PRJ=`echo ${LAB_ISSUE} | awk '{print $1}'`
         NO=`echo ${LAB_ISSUE} | awk '{print $2}'`
-        lab browse -p ${PRJ} -s merge_requests/${NO}
+        lab browse --project ${PRJ} -s merge_requests/${NO}
     fi
 }
 
