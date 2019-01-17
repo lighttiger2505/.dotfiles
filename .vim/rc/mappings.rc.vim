@@ -79,10 +79,6 @@ xnoremap p "_dP
 " Not yank is delete operation
 nnoremap x "_x
 
-" leave spaces when concatenating multiple lines
-noremap J gJ
-noremap gJ J
-
 " Shortcut of write
 nnoremap <silent> <Space>w :<C-u>w<CR>
 
