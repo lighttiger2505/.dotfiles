@@ -21,6 +21,11 @@ augroup MyTabStop
     autocmd BufRead,BufNewFile *.scss      setlocal filetype=scss
 augroup END
 
+augroup DisableMarkdownConceal
+    autocmd!
+    autocmd FileType markdown setlocal conceallevel=0
+augroup END
+
 augroup MyGitSpellCheck
     autocmd!
     autocmd FileType gitcommit setlocal spell
