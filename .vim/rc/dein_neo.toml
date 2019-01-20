@@ -41,7 +41,6 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'Shougo/denite.nvim'
 if = "has('nvim')"
 on_cmd = 'Denite'
-depends = ['neomru.vim', 'neoinclude.vim', 'denite-lab']
 build = ':UpdateRemotePlugins'
 hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 hook_add = '''
@@ -60,43 +59,6 @@ hook_add = '''
     " Help tag
     nnoremap <silent> [denite]<C-h> :<C-u>Denite help -highlight-mode-insert=Search<CR>
 '''
-
-[[plugins]]
-repo = 'lighttiger2505/denite-lab'
-hook_add = '''
-    nnoremap <silent> [denite]<C-i> :<C-u>Denite lab_issue -highlight-mode-insert=Search<CR>
-    nnoremap <silent> [denite]<C-m> :<C-u>Denite lab_merge_request -highlight-mode-insert=Search<CR>
-'''
-
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-
-[[plugins]]
-repo = 'Shougo/neoinclude.vim'
-
-# [[plugins]]
-# repo = 'kassio/neoterm'
-# on_cmd = 'T'
-# on_ft = ['python']
-# if = "has('nvim')"
-# hook_add = '''
-# " escape on terminal mode
-# tnoremap <silent> <ESC> <C-\><C-n>
-# " launch tig on terminal emurater
-# nnoremap <silent> <Leader>tg :T tig status<CR>
-# " repl on terminal
-# nnoremap <silent> <Leader>tl :TREPLSendLine<CR>
-# nnoremap <silent> <Leader>tv :TREPLSendSelection<CR>
-# '''
-# hook_source = '''
-# " neoterm options
-# let g:neoterm_autojump = 1
-# let g:neoterm_autoinsert = 1
-# let g:neoterm_autoscroll = 1
-# let g:neoterm_keep_term_open = 0
-# " let g:neoterm_position = 'horizontal'
-# '''
 
 [[plugins]]
 repo = 'zchee/deoplete-clang'
