@@ -1,0 +1,10 @@
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+on_ft = ['python', 'go']
+depends = ['async.vim', 'vim-virtualenv']
+hook_source = '''
+source ~/.vim/rc/plugins/lsp.rc.vim
+'''

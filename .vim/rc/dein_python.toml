@@ -20,38 +20,3 @@ on_ft = ['python']
 [[plugins]]
 repo = 'Vimjas/vim-python-pep8-indent'
 on_ft = ['python']
-
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-on_ft = ['python']
-depends = ['async.vim', 'vim-virtualenv']
-hook_add = '''
-" registar pyls to vim-lsp
-let s:pyls_path = fnamemodify(g:python_host_prog, ':h') . '/'. 'pyls'
-if (executable('pyls'))
-    au User lsp_setup call lsp#register_server({
-  \ 'name': 'pyls',
-  \ 'cmd': {server_info->[expand(s:pyls_path)]},
-  \ 'whitelist': ['python']
-  \ })
-endif
-
-augroup PylsCommands
-    autocmd!
-    " TODO 
-    " start pyls when enter python file
-    autocmd BufWinEnter *.py :call lsp#enable()
-    " local key mapping
-    autocmd FileType python nnoremap <C-]> :<C-u>LspDefinition<CR>
-    autocmd FileType python nnoremap K :<C-u>LspHover<CR>
-    autocmd FileType python nnoremap <LocalLeader>R :<C-u>LspRename<CR>
-    autocmd FileType python nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
-augroup END
-
-" vim-lsp debuging
-" let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('~/vim-lsp.log')
-'''

@@ -4,7 +4,11 @@ let g:go_list_type_commands = {"GoInstall": "quickfix", "GoBuild": "quickfix", "
 let g:go_list_autoclose = 1
 let g:go_list_height = 10
 
-    " disable it will jump to the first error automatically
+" disable vim-go default mapping for use vim-lsp
+let g:go_def_mapping_enabled = 0
+let g:go_doc_keywordprg_enabled = 0
+
+" disable it will jump to the first error automatically
 let g:go_jump_to_error = 0
 
 " disable running build and test command in terminal
@@ -39,11 +43,8 @@ augroup GoCommands
     autocmd FileType go nmap <silent><LocalLeader>ta :<C-u>GoTestsAll
     autocmd FileType go nmap <silent><LocalLeader>m  <Plug>(go-imports)
     autocmd FileType go nmap <silent><LocalLeader>i  <Plug>(go-install)
-    autocmd FileType go nmap <silent>K               <Plug>(go-doc)
-    autocmd FileType go nmap <silent><LocalLeader>d  <Plug>(go-doc-browser)
-    autocmd FileType go nmap <silent><LocalLeader>R  <Plug>(go-rename)
+    autocmd FileType go nmap <silent><LocalLeader>k  <Plug>(go-doc-browser)
     autocmd FileType go nmap <silent><LocalLeader>c  <Plug>(go-coverage-toggle)
-    autocmd FileType go nmap <silent><LocalLeader>n  <Plug>(go-referrers)
     autocmd FileType go nmap <silent><LocalLeader>a  <Plug>(go-alternate-edit)
     autocmd FileType go nmap <silent><LocalLeader>e  <Plug>(go-iferr)
     autocmd FileType go nmap <silent><LocalLeader>p  <Plug>(go-implements)
