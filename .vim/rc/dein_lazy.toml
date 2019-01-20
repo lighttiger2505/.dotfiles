@@ -139,7 +139,7 @@ repo = 'junegunn/fzf.vim'
 depends = ['fzf']
 on_cmd = [
   'Files',
-  'GFiles?',
+  'GFiles',
   'Tags',
 ]
 hook_add = '''
