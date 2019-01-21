@@ -101,8 +101,8 @@ endfunction
 nnoremap <script> <silent> <Space>f :call ToggleQuickfix()<CR>
 
 " Jump locationlist
-nnoremap [t :<C-u>lp<CR>
-nnoremap ]t :<C-u>ln<CR>
+nnoremap [[ :<C-u>lp<CR>
+nnoremap ]] :<C-u>lne<CR>
 nnoremap [T :<C-u>lfirst<CR>
 nnoremap ]T :<C-u>llast<CR>
 
