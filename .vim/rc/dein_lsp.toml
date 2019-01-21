@@ -1,10 +1,42 @@
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
+# [[plugins]]
+# repo = 'prabirshrestha/async.vim'
+#
+# [[plugins]]
+# repo = 'prabirshrestha/vim-lsp'
+# on_ft = ['python', 'go']
+# depends = ['async.vim']
+# hook_source = '''
+# source ~/.vim/rc/plugins/lsp.rc.vim
+# '''
+
+# [[plugins]]
+# repo = 'lighttiger2505/deoplete-lsp'
+# depends = ['vim-lsp']
+# on_ft = ['go']
+
+# [[plugins]]
+# repo = 'prabirshrestha/asyncomplete.vim'
+# on_ft = ['go']
+# depends = ['vim-lsp']
+# hook_source = '''
+# let g:asyncomplete_smart_completion = 1
+# let g:asyncomplete_auto_popup = 1
+# inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+# imap <c-space> <Plug>(asyncomplete_force_refresh)
+# '''
+
+# [[plugins]]
+# repo = 'prabirshrestha/asyncomplete-lsp.vim'
+# on_ft = ['go']
+# depends = ['vim-lsp']
 
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-on_ft = ['python', 'go']
-depends = ['async.vim', 'vim-virtualenv']
-hook_source = '''
-source ~/.vim/rc/plugins/lsp.rc.vim
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+on_ft = ['go']
+hook_add = '''
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {}
 '''
+hook_source = 'source ~/.vim/rc/plugins/lsp.rc.vim'

@@ -4,10 +4,10 @@ if = "has('nvim')"
 on_event = 'InsertCharPre'
 build = ':UpdateRemotePlugins'
 depends = ['neosnippet.vim']
-hook_source = '''
-    let g:deoplete#enable_at_startup = 1
-    source ~/.vim/rc/plugins/deoplete.rc.vim
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
 '''
+hook_source = 'source ~/.vim/rc/plugins/deoplete.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -42,7 +42,6 @@ repo = 'Shougo/denite.nvim'
 if = "has('nvim')"
 on_cmd = 'Denite'
 build = ':UpdateRemotePlugins'
-hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 hook_add = '''
     " Key Mapping Prefix key
     nmap [denite] <Nop>
@@ -59,6 +58,7 @@ hook_add = '''
     " Help tag
     nnoremap <silent> [denite]<C-h> :<C-u>Denite help -highlight-mode-insert=Search<CR>
 '''
+hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 
 [[plugins]]
 repo = 'zchee/deoplete-clang'
