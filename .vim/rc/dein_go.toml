@@ -1,18 +1,18 @@
-[[plugins]]
-repo = 'zchee/deoplete-go'
-build = 'make'
-on_ft = ['go']
-depends = ['deoplete.nvim']
-hook_source = '''
-    let g:deoplete#sources#go#align_class = 1
-    let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-    let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
-    let g:deoplete#sources#go#cgo#sort_algo = 'priority'
-    let g:deoplete#sources#go#package_dot = 0
-    let g:deoplete#sources#go#pointer = 1
-    " let g:deoplete#sources#go#source_importer = 1
-    " call deoplete#enable_logging('DEBUG', 'deoplete_debug.log')
-'''
+# [[plugins]]
+# repo = 'zchee/deoplete-go'
+# build = 'make'
+# on_ft = ['go']
+# depends = ['deoplete.nvim']
+# hook_source = '''
+#     let g:deoplete#sources#go#align_class = 1
+#     let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+#     let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
+#     let g:deoplete#sources#go#cgo#sort_algo = 'priority'
+#     let g:deoplete#sources#go#package_dot = 0
+#     let g:deoplete#sources#go#pointer = 1
+#     " let g:deoplete#sources#go#source_importer = 1
+#     " call deoplete#enable_logging('DEBUG', 'deoplete_debug.log')
+# '''
 
 [[plugins]]
 repo = 'fatih/vim-go'
