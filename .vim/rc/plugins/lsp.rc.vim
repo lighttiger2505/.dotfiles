@@ -57,10 +57,15 @@ let g:LanguageClient_serverCommands = {
     \ 'python': [expand(s:pyls_path)],
     \ }
 
+" Disable showing gutter icons
+let g:LanguageClient_diagnosticsEnable = 0
+
 augroup GoLspCommands
     autocmd!
     autocmd FileType go nnoremap K :<C-u>call LanguageClient#textDocument_hover()<CR> 
     autocmd FileType go nnoremap <C-]> :<C-u>call LanguageClient#textDocument_definition()<CR> 
+    autocmd FileType go nnoremap <LocalLeader>R :<C-u>call LanguageClient#textDocument_rename()<CR>
+    autocmd FileType go nnoremap <LocalLeader>n :<C-u>call LanguageClient#textDocument_references()<CR>
 augroup END
 
 augroup PythonLspCommands
