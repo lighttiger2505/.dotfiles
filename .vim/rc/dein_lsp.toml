@@ -34,7 +34,7 @@
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 build = 'bash install.sh'
-on_ft = ['go']
+on_ft = ['go', 'python']
 hook_add = '''
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {}
