@@ -44,8 +44,9 @@ call deoplete#custom#source('_', 'converters', [
 let g:deoplete#enable_at_startup = 1
 
 call deoplete#custom#option({
-\ 'auto_complete_delay': 10,
-\ 'auto_refresh_delay': 10,
+\ 'auto_complete_delay': 20,
+\ 'auto_refresh_delay': 20,
+\ 'refresh_always': v:true,
 \ 'smart_case': v:true,
 \ 'camel_case': v:true,
 \ })
@@ -73,7 +74,7 @@ call deoplete#custom#source('around', 'rank', 2)
 " call deoplete#custom#source('dictionary', 'rank', 1)
 
 " Custom deoplete source for LanguageClient-neovim
-call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
+call deoplete#custom#source('LanguageClient', 'min_pattern_length', 1)
 
 " Debugging deoplete
 " call deoplete#enable_logging('DEBUG', 'deoplete.log')
