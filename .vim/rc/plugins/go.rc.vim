@@ -7,6 +7,7 @@ let g:go_list_height = 10
 " disable vim-go default mapping for use vim-lsp
 let g:go_def_mapping_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
+let g:go_textobj_enabled = 0
 
 " disable it will jump to the first error automatically
 let g:go_jump_to_error = 0
