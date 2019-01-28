@@ -1,22 +1,23 @@
-" registar pyls to vim-lsp
 if (executable('pyls'))
     let s:pyls_path = fnamemodify(g:python_host_prog, ':h') . '/'. 'pyls'
     augroup LspPython
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
-      \ 'name': 'pyls',
-      \ 'cmd': {server_info->[expand(s:pyls_path)]},
-      \ 'whitelist': ['python']
-      \ })
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->[expand(s:pyls_path)]},
+        \ 'whitelist': ['python']
+        \ })
     augroup END
+endif
 
+if (executable('bingo'))
     augroup LspGo
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
-     \ 'name': 'go-lang',
-     \ 'cmd': {server_info->['bingo', '-disable-func-snippet', '-mode', 'stdio']},
-     \ 'whitelist': ['go'],
-     \ })
+        \ 'name': 'go-lang',
+        \ 'cmd': {server_info->['bingo', '-disable-func-snippet', '-mode', 'stdio']},
+        \ 'whitelist': ['go'],
+        \ })
     augroup END
 endif
 
