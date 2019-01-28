@@ -1,29 +1,29 @@
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
-on_ft = ['markdown']
-hook_add = '''
-" Disable plugin default keymap
-let g:vim_markdown_no_default_key_mappings = 0
-
-" Disable folding
-let g:vim_markdown_folding_disabled = 0
-let g:vim_markdown_folding_level = 6
-
-" Disable conceal
-let g:vim_markdown_conceal = 0
-
-" Disable Latex conceal
-let g:tex_conceal = ""
-let g:vim_markdown_math = 1
-
-let g:vim_markdown_toc_autofit = 1
-let g:vim_markdown_autowrite = 0
-
-augroup MarkdownCommands
-    autocmd!
-    autocmd FileType markdown nnoremap <silent><LocalLeader>o :<C-u>Toc<CR>
-augroup END
-'''
+# [[plugins]]
+# repo = 'plasticboy/vim-markdown'
+# on_ft = ['markdown']
+# hook_add = '''
+# " Disable plugin default keymap
+# let g:vim_markdown_no_default_key_mappings = 0
+#
+# " Disable folding
+# let g:vim_markdown_folding_disabled = 0
+# let g:vim_markdown_folding_level = 6
+#
+# " Disable conceal
+# let g:vim_markdown_conceal = 0
+#
+# " Disable Latex conceal
+# let g:tex_conceal = ""
+# let g:vim_markdown_math = 1
+#
+# let g:vim_markdown_toc_autofit = 1
+# let g:vim_markdown_autowrite = 0
+#
+# augroup MarkdownCommands
+#     autocmd!
+#     autocmd FileType markdown nnoremap <silent><LocalLeader>o :<C-u>Toc<CR>
+# augroup END
+# '''
 
 [[plugins]]
 repo = 'dhruvasagar/vim-table-mode'
