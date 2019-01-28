@@ -73,8 +73,5 @@ call deoplete#custom#source('around', 'rank', 2)
 " call deoplete#custom#source('file', 'rank', 1)
 " call deoplete#custom#source('dictionary', 'rank', 1)
 
-" Custom deoplete source for LanguageClient-neovim
-call deoplete#custom#source('LanguageClient', 'min_pattern_length', 1)
-
 " Debugging deoplete
 " call deoplete#enable_logging('DEBUG', 'deoplete.log')
