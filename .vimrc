@@ -24,7 +24,7 @@ function! s:source_rc(path, ...) abort
       call delete(l:tempfile)
     endif
   endtry
-endfunction"}}}
+endfunction
 
 " echo message vim start up time
 if has('vim_starting') && has('reltime')
