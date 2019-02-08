@@ -5,6 +5,9 @@ let g:maplocalleader = '\'
 " Reload .vimrc
 nnoremap <Space>s :source $HOME/.vimrc<CR>
 
+" Ctrl + c = ESC for rectangle selection
+inoremap <C-c> <ESC>
+
 " Switch colon and semicolon
 noremap ; :
 noremap : ;
