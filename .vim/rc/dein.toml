@@ -73,3 +73,6 @@ nnoremap <silent> <Space>       :WhichKey '<Space>'<CR>
 nnoremap <silent> <Leader>      :WhichKey '<Leader>'<CR>
 nnoremap <silent> <LocalLeader> :WhichKey '<LocalLeader>'<CR>
 '''
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
