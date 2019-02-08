@@ -85,6 +85,9 @@ call deoplete#custom#option({
 
 " Hidden autocomplete preview
 set completeopt-=preview
+
+" Debugging deoplete
+call deoplete#enable_logging('INFO', 'deoplete.log')
 " }}}
 
 " vim-lsp {{{
