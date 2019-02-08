@@ -23,7 +23,6 @@ hook_add = '''
     map g# <Plug>(asterisk-gz#)
 '''
 
-
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 on_cmd = ['IndentLinesToggle']
@@ -105,16 +104,6 @@ on_ft = ['python', 'go', 'vim']
 hook_source = '''
 let g:gen_tags#ctags_auto_gen = 1
 '''
-
-[[plugins]]
-repo = 'janko-m/vim-test'
-depends = ['vim-dispatch']
-hook_source = '''
-    let g:test#strategy = 'dispatch'
-'''
-
-[[plugins]]
-repo = 'tpope/vim-dispatch'
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
