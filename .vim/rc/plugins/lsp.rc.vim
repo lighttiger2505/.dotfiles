@@ -44,7 +44,3 @@ augroup PylsCommands
     autocmd FileType python nnoremap <LocalLeader>R :<C-u>LspRename<CR>
     autocmd FileType python nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
 augroup END
-
-" vim-lsp debuging
-let g:lsp_log_verbose = 1
-let g:lsp_log_file = expand('~/vim-lsp.log')
