@@ -71,6 +71,9 @@ call s:source_rc('filetype.rc.vim')
 call s:source_rc('autocmd.rc.vim')
 call s:source_rc('dein.rc.vim')
 
+" Reload .vimrc
+nnoremap <Space>s :source $HOME/.vimrc<CR>
+
 " Colors
 set t_Co=256
 set background=dark

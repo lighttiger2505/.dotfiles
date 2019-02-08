@@ -2,9 +2,6 @@
 let g:mapleader = ','
 let g:maplocalleader = '\'
 
-" Reload .vimrc
-nnoremap <Space>s :source $HOME/.vimrc<CR>
-
 " Ctrl + c = ESC for rectangle selection
 inoremap <C-c> <ESC>
 
