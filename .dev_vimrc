@@ -1,0 +1,167 @@
+" Plugins {{{
+call plug#begin('~/.local/share/nvim/plugged')
+
+" Color Schemes
+Plug 'tomasr/molokai'
+
+" Utility
+Plug 'scrooloose/nerdtree'
+Plug 'Shougo/denite.nvim'
+
+" LSP
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'Shougo/deoplete.nvim'
+Plug 'lighttiger2505/deoplete-vim-lsp'
+
+" Syntax
+Plug 'sheerun/vim-polyglot'
+" }}}
+
+call plug#end()
+
+" Plugins {{{
+
+" NERDTree {{{
+nnoremap <silent> <Leader>t :<C-u>NERDTreeToggle<CR>
+nnoremap <silent> <Leader>f :<C-u>NERDTreeFind %<CR>
+" }}}
+
+" Denite {{{
+nmap [denite] <Nop>
+map <C-j> [denite]
+nnoremap <silent> [denite]<C-p> :<C-u>Denite file/rec/git -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]<C-b> :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]<C-o> :<C-u>Denite outline -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]<C-r> :<C-u>Denite file_old -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]<C-h> :<C-u>Denite help -highlight-mode-insert=Search<CR>
+" }}}
+
+" Deoplete {{{
+" <TAB>: completion.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#manual_complete()
+function! s:check_back_space() abort "{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+inoremap <expr><S-TAB>  pumvisible() ? "<C-p>" : "<C-h>"
+inoremap <expr><C-h> deoplete#smart_close_popup()."<C-h>"
+inoremap <expr><BS> deoplete#smart_close_popup()."<C-h>"
+inoremap <expr><C-g> deoplete#undo_comcletion()
+inoremap <expr><CR>  pumvisible() ? deoplete#close_popup() : "<CR>"
+inoremap <expr> '  pumvisible() ? deoplete#close_popup() : "'"
+inoremap <expr><C-l> deoplete#refresh()
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return deoplete#cancel_popup() . "\<CR>"
+endfunction
+
+
+call deoplete#custom#source('ghc', 'sorters', ['sorter_word'])
+
+" Use auto delimiter
+call deoplete#custom#source('_', 'converters', [
+      \ 'converter_remove_paren',
+      \ 'converter_remove_overlap',
+      \ 'converter_truncate_abbr',
+      \ 'converter_truncate_menu',
+      \ 'converter_auto_delimiter',
+      \ ])
+
+" Prams of deoplete
+let g:deoplete#enable_at_startup = 1
+
+call deoplete#custom#option({
+\ 'auto_complete_delay': 0,
+\ 'auto_refresh_delay': 20,
+\ 'refresh_always': v:true,
+\ 'smart_case': v:true,
+\ 'camel_case': v:true,
+\ })
+
+" Hidden autocomplete preview
+set completeopt-=preview
+" }}}
+
+" vim-lsp {{{
+if (executable('bingo'))
+    augroup LspGo
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'go-lang',
+        \ 'cmd': {server_info->['bingo', '-disable-func-snippet', '-mode', 'stdio']},
+        \ 'whitelist': ['go'],
+        \ })
+    augroup END
+endif
+
+augroup GoLspCommands
+    autocmd!
+    " TODO 
+    " start golsp when enter python file
+    autocmd BufWinEnter *.go :call lsp#enable()
+    " local key mapping
+    autocmd FileType go nnoremap <C-]> :<C-u>LspDefinition<CR>
+    autocmd FileType go nnoremap K :<C-u>LspHover<CR>
+    autocmd FileType go nnoremap <LocalLeader>R :<C-u>LspRename<CR>
+    autocmd FileType go nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
+augroup END
+
+" vim-lsp debuging
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+" }}}
+
+" }}}
+
+" Load python
+if isdirectory(expand($PYENV_PATH))
+    let g:python_host_prog = $PYENV_PATH . '/versions/neovim2/bin/python'
+    let g:python3_host_prog = $PYENV_PATH . '/versions/neovim3/bin/python'
+endif
+if isdirectory(expand($ANYENV_PATH))
+    let g:python_host_prog = $ANYENV_PATH . '/envs/pyenv/versions/neovim2/bin/python'
+    let g:python3_host_prog = $ANYENV_PATH . '/envs/pyenv/versions/neovim3/bin/python'
+endif
+
+" other vimrc source util
+function! s:source_rc(path, ...) abort 
+  let l:use_global = get(a:000, 0, !has('vim_starting'))
+  let l:abspath = resolve(expand('~/.vim/rc/' . a:path))
+  if !l:use_global
+    execute 'source' fnameescape(l:abspath)
+    return
+  endif
+
+  " substitute all 'set' to 'setglobal'
+  let l:content = map(readfile(l:abspath),
+        \ 'substitute(v:val, "^\\W*\\zsset\\ze\\W", "setglobal", "")')
+  " create tempfile and source the tempfile
+  let l:tempfile = tempname()
+  try
+    call writefile(l:content, l:tempfile)
+    execute 'source' fnameescape(l:tempfile)
+  finally
+    if filereadable(l:tempfile)
+      call delete(l:tempfile)
+    endif
+  endtry
+endfunction
+
+call s:source_rc('mappings.rc.vim')
+call s:source_rc('options.rc.vim')
+call s:source_rc('filetype.rc.vim')
+call s:source_rc('autocmd.rc.vim')
+
+" Reload .vimrc
+nnoremap <Space>s :source $HOME/.dev_vimrc<CR>
+
+colorscheme molokai
+
+" magic word after
+filetype plugin indent on
+syntax enable

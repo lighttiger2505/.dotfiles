@@ -87,6 +87,7 @@ else
 fi
 
 alias vimdiff='vim -d'
+alias vimdev='vim -u ~/.dev_vimrc'
 
 #####################################################################
 # lab
