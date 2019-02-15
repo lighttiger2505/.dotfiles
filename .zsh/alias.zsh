@@ -263,12 +263,13 @@ alias dc="docker-compose"
 # liary
 #####################################################################
 liary_file_open() {
-    LIARY=`liary -l | sort --reverse | fzf -m`
-    if [ -n "${LIARY}" ]; then
-        vim ${LIARY}
+    local FILE=`liary list --range=14d | sort --reverse | fzf -m --height=100% --preview 'cat {}'`
+    if [ -n "${FILE}" ]; then
+        vim ${FILE}
     fi
 }
-alias ryo=liary_file_open
+alias lif=liary_file_open
+alias li="liary"
 
 # Benchmark
 alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
