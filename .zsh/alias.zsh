@@ -145,11 +145,6 @@ lab_browse_merge_request_all() {
 
 # lab shortcut
 alias lb='lab browse'
-alias lbi='lab browse -s issues'
-alias lbm='lab browse -s merge_requests'
-alias lbp='lab browse -s pipelines'
-alias li='lab issue'
-alias lm='lab mr'
 alias lbif=lab_browse_issue
 alias lbifm=lab_browse_issue_me
 alias lbifa=lab_browse_issue_all
