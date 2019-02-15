@@ -257,6 +257,8 @@ alias denv="docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' 
 # Display continer IP
 alias dip="docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "
 
+alias dc="docker-compose"
+
 #####################################################################
 # liary
 #####################################################################
