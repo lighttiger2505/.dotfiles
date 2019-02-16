@@ -263,9 +263,10 @@ alias dc="docker-compose"
 # liary
 #####################################################################
 liary_file_open() {
-    local FILE=`liary list --range=14d | sort --reverse | fzf -m --height=100% --preview 'cat {}'`
+    local LIARY_HOME=$(liary config --get diarydir)
+    local FILE=`liary list --range=14d | sort --reverse | fzf -m --height=100% --preview-window=right:75% --preview 'cat $(liary config --get diarydir)/{}'`
     if [ -n "${FILE}" ]; then
-        vim ${FILE}
+        vim "${LIARY_HOME}/${FILE}"
     fi
 }
 alias lif=liary_file_open
