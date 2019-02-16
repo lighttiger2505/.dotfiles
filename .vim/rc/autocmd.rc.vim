@@ -52,3 +52,9 @@ if has('unix') && executable('fcitx-remote')
         autocmd InsertEnter * call Fcitx2zh()
     augroup END
 endif
+
+augroup ClearNeoSnippetMarker
+    autocmd!
+    autocmd InsertLeave * NeoSnippetClearMarkers
+augroup END
+
