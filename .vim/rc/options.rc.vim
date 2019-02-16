@@ -133,6 +133,3 @@ set synmaxcol=512
 
 " Disable sql omni complete
 let g:omni_sql_no_default_maps = 1
-
-" Disable conceal for visible markdown decoration
-set conceallevel=0
