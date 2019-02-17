@@ -34,6 +34,9 @@ let g:go_auto_sameids = 0
 " description of the identifer under the cursor.
 let g:go_auto_type_info = 0
 
+" disable auto go fmt
+let g:go_fmt_autosave = 0
+
 augroup GoCommands
     autocmd!
     autocmd FileType go nmap <silent><LocalLeader>r  <Plug>(go-run)
@@ -42,7 +45,6 @@ augroup GoCommands
     autocmd FileType go nmap <silent><LocalLeader>tf <Plug>(go-test-func)
     autocmd FileType go nmap <silent><LocalLeader>ts :<C-u>GoTests
     autocmd FileType go nmap <silent><LocalLeader>ta :<C-u>GoTestsAll
-    autocmd FileType go nmap <silent><LocalLeader>m  <Plug>(go-imports)
     autocmd FileType go nmap <silent><LocalLeader>i  <Plug>(go-install)
     autocmd FileType go nmap <silent><LocalLeader>k  <Plug>(go-doc-browser)
     autocmd FileType go nmap <silent><LocalLeader>c  <Plug>(go-coverage-toggle)

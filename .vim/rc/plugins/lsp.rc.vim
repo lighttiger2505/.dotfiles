@@ -1,3 +1,10 @@
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_signs_error = {'text': '!!'}
+let g:lsp_signs_warning = {'text': '=='}
+let g:lsp_signs_hint = {'text': '??'}
+
 if (executable('pyls'))
     let s:pyls_path = fnamemodify(g:python_host_prog, ':h') . '/'. 'pyls'
     augroup LspPython
@@ -15,7 +22,7 @@ if (executable('bingo'))
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'go-lang',
-        \ 'cmd': {server_info->['bingo', '-disable-func-snippet', '-mode', 'stdio']},
+        \ 'cmd': {server_info->['bingo', '-disable-func-snippet', '-mode', 'stdio', '--format-style', 'goimports']},
         \ 'whitelist': ['go'],
         \ })
     augroup END
@@ -26,11 +33,15 @@ augroup GoLspCommands
     " TODO 
     " start golsp when enter python file
     autocmd BufWinEnter *.go :call lsp#enable()
+    " auto formatting before save
+    autocmd BufWritePre *.go LspDocumentFormatSync
+    " show diagnostics before save
     " local key mapping
     autocmd FileType go nnoremap <C-]> :<C-u>LspDefinition<CR>
     autocmd FileType go nnoremap K :<C-u>LspHover<CR>
     autocmd FileType go nnoremap <LocalLeader>R :<C-u>LspRename<CR>
     autocmd FileType go nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
+    autocmd FileType go nnoremap <LocalLeader>d :<C-u>LspDocumentDiagnostics<CR>
 augroup END
 
 augroup PylsCommands
@@ -43,4 +54,5 @@ augroup PylsCommands
     autocmd FileType python nnoremap K :<C-u>LspHover<CR>
     autocmd FileType python nnoremap <LocalLeader>R :<C-u>LspRename<CR>
     autocmd FileType python nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
+    autocmd FileType python nnoremap <LocalLeader>d :<C-u>LspDocumentDiagnostics<CR>
 augroup END
