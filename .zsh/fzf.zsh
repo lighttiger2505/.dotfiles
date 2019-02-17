@@ -1,6 +1,6 @@
 # Default layout
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_OPTS='--height 50% --border'
+export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 
 # Move repository dir of ghq managenemt
 function cd-fzf-ghqlist() {
