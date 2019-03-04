@@ -68,13 +68,12 @@ hook_source = '''
 repo = 'scrooloose/nerdtree'
 hook_add = '''
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.pyc$', '__pycache__']
 nnoremap <silent> <Leader>t :<C-u>NERDTreeToggle<CR>
 nnoremap <silent> <Leader>f :<C-u>NERDTreeFind %<CR>
 '''
 
 [[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
+repo = 'albfan/nerdtree-git-plugin'
 depends = ['vim-fugitive']
 
 [[plugins]]
