@@ -69,9 +69,6 @@ alias al="alacritty"
 #####################################################################
 # Vim
 #####################################################################
-# Vim shotchut
-alias v=vim
-
 # when not exist vim then start up vi
 if type vim > /dev/null 2>&1; then
     alias vi=vim
@@ -87,7 +84,7 @@ else
 fi
 
 alias vimdiff='vim -d'
-alias vimdev='vim -u ~/.dev_vimrc'
+alias dim='vim -u ~/.dev_vimrc'
 
 #####################################################################
 # lab
