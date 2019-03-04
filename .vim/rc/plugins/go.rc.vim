@@ -35,7 +35,7 @@ let g:go_auto_sameids = 0
 let g:go_auto_type_info = 0
 
 " disable auto go fmt
-let g:go_fmt_autosave = 0
+let g:go_fmt_autosave = 1
 
 augroup GoCommands
     autocmd!
@@ -43,6 +43,7 @@ augroup GoCommands
     autocmd FileType go nmap <silent><LocalLeader>b  <Plug>(go-build)
     autocmd FileType go nmap <silent><LocalLeader>tt <Plug>(go-test)
     autocmd FileType go nmap <silent><LocalLeader>tf <Plug>(go-test-func)
+    autocmd FileType go nmap <silent><LocalLeader>m  <Plug>(go-imports)
     autocmd FileType go nmap <silent><LocalLeader>ts :<C-u>GoTests
     autocmd FileType go nmap <silent><LocalLeader>ta :<C-u>GoTestsAll
     autocmd FileType go nmap <silent><LocalLeader>i  <Plug>(go-install)
