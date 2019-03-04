@@ -4,23 +4,35 @@ set main-view = id date author:email-user commit-title:graph=yes,refs=yes
 # Show line number in blame view
 set blame-view  = date:default author:email-user id:yes,color line-number:yes,interval=1 text
 
-# bind generic G none
-# # alias vim-like behavior
+# Alias vim-like behavior
+bind generic g move-first-line
+bind generic G move-last-line
 bind main g move-first-line
 bind main G move-last-line
 bind diff g move-first-line
 bind diff G move-last-line
 bind generic S view-stash
 bind generic y none
+
+# Yank commit hash
 bind main y !@sh -c "echo -n %(commit) | xclip -selection c"
 
-# # Show line nuber
-# set pager-view  = line-number:yes,interval=1 text
-# set stage-view  = line-number:yes,interval=1 text
-# set log-view    = line-number:yes,interval=1 text
-# set blob-view   = line-number:yes,interval=1 text
-# set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
+# Show line nuber
+set pager-view  = line-number:yes,interval=1 text
+set stage-view  = line-number:yes,interval=1 text
+set log-view    = line-number:yes,interval=1 text
+set blob-view   = line-number:yes,interval=1 text
+set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
 
-# Execute rebase -i on selected commit in main view or diff view.
+# Execute rebase -i on selected commit
 bind main R !git rebase -i %(commit)
 bind diff R !git rebase -i %(commit)
+
+# Change commit diff color
+color diff-header default magenta
+color diff-chunk black   white
+
+# Execute git difftool on selected commit or branch
+bind main D !sh -c "git difftool %(commit)~ %(commit)"
+bind diff D !sh -c "git difftool %(commit)~ %(commit)"
+bind refs D !sh -c "git difftool %(branch)"
