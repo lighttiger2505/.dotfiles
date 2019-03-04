@@ -26,3 +26,9 @@ call deoplete#custom#option({
 
 " Hidden autocomplete preview
 set completeopt-=preview
+
+let b:deoplete_ignore_sources = ['around']
+
+call deoplete#custom#option('sources', {
+\ 'go': ['buffer', 'dictionary', 'file', 'lsp', 'neosnippet'],
+\})
