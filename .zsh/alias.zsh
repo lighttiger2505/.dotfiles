@@ -97,17 +97,19 @@ lab_browse_issue() {
     fi
 }
 
-# Browse selected issue
-lab_browse_issue_me() {
-    LAB_ISSUE=`lab issue --num=20 --assigned-me | fzf -m | awk '{print $1}'`
+# Browse selected issue all repository
+lab_browse_issue_all_assinee_me() {
+    LAB_ISSUE=`lab issue --num=20 --all-project --opened --assigned-me | fzf -m | awk '{print $1,$2}'`
     if [ -n "${LAB_ISSUE}" ]; then
-        lab browse -s issues/${LAB_ISSUE}
+        PRJ=`echo ${LAB_ISSUE} | awk '{print $1}'`
+        NO=`echo ${LAB_ISSUE} | awk '{print $2}'`
+        lab browse --project ${PRJ} -s issues/${NO}
     fi
 }
 
 # Browse selected issue all repository
-lab_browse_issue_all() {
-    LAB_ISSUE=`lab issue --num=20 --all-project --opened --assigned-me | fzf -m | awk '{print $1,$2}'`
+lab_browse_issue_all_created_me() {
+    LAB_ISSUE=`lab issue --num=20 --all-project --opened --created-me | fzf -m | awk '{print $1,$2}'`
     if [ -n "${LAB_ISSUE}" ]; then
         PRJ=`echo ${LAB_ISSUE} | awk '{print $1}'`
         NO=`echo ${LAB_ISSUE} | awk '{print $2}'`
@@ -123,16 +125,19 @@ lab_browse_merge_request() {
     fi
 }
 
-lab_browse_merge_request_me() {
-    LAB_MR=`lab merge-request --num=20 --assigned-me --opened | fzf -m | awk '{print $1}'`
-    if [ -n "${LAB_MR}" ]; then
-        lab browse -s merge_requests/${LAB_MR}
+# Browse selected issue all repository
+lab_browse_merge_request_all_assinee_me() {
+    LAB_ISSUE=`lab merge-request --all-project --assigned-me --opened | fzf -m | awk '{print $1,$2}'`
+    if [ -n "${LAB_ISSUE}" ]; then
+        PRJ=`echo ${LAB_ISSUE} | awk '{print $1}'`
+        NO=`echo ${LAB_ISSUE} | awk '{print $2}'`
+        lab browse --project ${PRJ} -s merge_requests/${NO}
     fi
 }
 
 # Browse selected issue all repository
-lab_browse_merge_request_all() {
-    LAB_ISSUE=`lab merge-request --all-project --assigned-me --opened | fzf -m | awk '{print $1,$2}'`
+lab_browse_merge_request_all_created_me() {
+    LAB_ISSUE=`lab merge-request --all-project --created-me --opened | fzf -m | awk '{print $1,$2}'`
     if [ -n "${LAB_ISSUE}" ]; then
         PRJ=`echo ${LAB_ISSUE} | awk '{print $1}'`
         NO=`echo ${LAB_ISSUE} | awk '{print $2}'`
@@ -143,11 +148,11 @@ lab_browse_merge_request_all() {
 # lab shortcut
 alias lb='lab browse'
 alias lbif=lab_browse_issue
-alias lbifm=lab_browse_issue_me
-alias lbifa=lab_browse_issue_all
+alias lbifa=lab_browse_issue_all_assinee_me
+alias lbifc=lab_browse_issue_all_created_me
 alias lbmf=lab_browse_merge_request
-alias lbmfm=lab_browse_merge_request_me
-alias lbmfa=lab_browse_merge_request_all
+alias lbmfa=lab_browse_merge_request_all_assinee_me
+alias lbmfc=lab_browse_merge_request_all_created_me
 
 #####################################################################
 # awscli
