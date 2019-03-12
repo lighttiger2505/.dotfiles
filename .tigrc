@@ -12,9 +12,9 @@ bind main G move-last-line
 bind diff g move-first-line
 bind diff G move-last-line
 bind generic S view-stash
-bind generic y none
 
 # Yank commit hash
+bind generic y none
 bind main y !@sh -c "echo -n %(commit) | xclip -selection c"
 
 # Show line nuber
@@ -29,10 +29,15 @@ bind main R !git rebase -i %(commit)
 bind diff R !git rebase -i %(commit)
 
 # Change commit diff color
-color diff-header default magenta
-color diff-chunk black   white
+color diff-header white cyan
+color diff-chunk white magenta
 
 # Execute git difftool on selected commit or branch
+bind generic D none
+bind generic . none
 bind main D !sh -c "git difftool %(commit)~ %(commit)"
 bind diff D !sh -c "git difftool %(commit)~ %(commit)"
 bind refs D !sh -c "git difftool %(branch)"
+bind main . !sh -c "git diff --name-only %(commit)~ %(commit)"
+bind diff . !sh -c "git diff --name-only %(commit)~ %(commit)"
+bind refs . !sh -c "git diff --name-only %(branch)"
