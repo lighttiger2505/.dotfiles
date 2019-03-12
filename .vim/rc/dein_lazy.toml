@@ -66,6 +66,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
+depends = ['nerdtree-git-plugin']
 hook_add = '''
 let NERDTreeShowHidden=1
 nnoremap <silent> <Leader>t :<C-u>NERDTreeToggle<CR>
@@ -74,7 +75,6 @@ nnoremap <silent> <Leader>f :<C-u>NERDTreeFind %<CR>
 
 [[plugins]]
 repo = 'albfan/nerdtree-git-plugin'
-depends = ['vim-fugitive']
 
 [[plugins]]
 repo = 'w0rp/ale'
