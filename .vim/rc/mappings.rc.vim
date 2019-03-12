@@ -126,8 +126,8 @@ nnoremap <script> <silent> <Space>t :call ToggleLocationlist()<CR>
 nnoremap <silent> <Space>h :noh<CR>
 
 " Grep astarisk text
-nnoremap <Space>gg :<C-u>grep '<C-r>=<SID>convert_pattern(@/)<CR>'<CR>
-nnoremap <Space>gl :<C-u>grep '<C-r>=<SID>convert_pattern(@/)<CR>' %<CR>
+nnoremap <Space>gg :<C-u>silent grep '<C-r>=<SID>convert_pattern(@/)<CR>'<CR>
+nnoremap <Space>gl :<C-u>silent grep '<C-r>=<SID>convert_pattern(@/)<CR>' %<CR>
 function! s:convert_pattern(pat)
     let chars = split(a:pat, '\zs')
     let len = len(chars)
