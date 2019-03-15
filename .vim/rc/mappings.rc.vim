@@ -192,3 +192,6 @@ nnoremap <silent> <Space>u :<C-u>call ToggleWindowFullSize()<CR>
 
 " Trailing whitespace
 nnoremap <silent> <Space>w :<C-u>%s/\s\+$//e<CR>
+
+" Escape normal mode on terminal
+tnoremap <silent> <ESC> <C-\><C-n>
