@@ -73,12 +73,6 @@ vnoremap <Space>p "0p
 nnoremap <Space>c "*p
 vnoremap <Space>c "*p
 
-" force replace from yank register text
-xnoremap p "_dP
-
-" Not yank is delete operation
-nnoremap x "_x
-
 " Shortcut of write
 nnoremap <silent> <Space>w :<C-u>w<CR>
 
