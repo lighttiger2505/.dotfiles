@@ -225,3 +225,11 @@ vnoremap <silent> <leader>se :Trans :en+ja<CR>
 nnoremap <silent> <leader>sj :Trans :ja+en<CR>
 vnoremap <silent> <leader>sj :Trans :ja+en<CR>
 '''
+
+
+[[plugins]]
+repo = 'iberianpig/tig-explorer.vim'
+on_cmd = ['TigOpenProjectRootDir']
+hook_add = '''
+nnoremap <silent> <leader>g :<C-u>TigOpenProjectRootDir<CR>
+'''
