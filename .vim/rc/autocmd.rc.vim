@@ -53,8 +53,4 @@ if has('unix') && executable('fcitx-remote')
     augroup END
 endif
 
-augroup ClearNeoSnippetMarker
-    autocmd!
-    autocmd InsertLeave * NeoSnippetClearMarkers
-augroup END
 
