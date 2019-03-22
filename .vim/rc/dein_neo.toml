@@ -41,11 +41,6 @@ hook_add = '''
 hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 
 [[plugins]]
-repo = 'zchee/deoplete-clang'
-on_ft = ['c', 'h']
-depends = ['deoplete.nvim']
-
-[[plugins]]
 repo = 'zchee/deoplete-zsh'
 on_ft = ['zsh']
 depends = ['deoplete.nvim']
