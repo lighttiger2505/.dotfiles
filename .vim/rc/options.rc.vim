@@ -92,7 +92,11 @@ set incsearch
 
 " Replace incremental
 if exists('&inccommand')
-  set inccommand=split
+    set inccommand=split
+endif
+
+if exists('&wildoptions')
+    set wildoptions+=pum
 endif
 
 " Show search result highlight
