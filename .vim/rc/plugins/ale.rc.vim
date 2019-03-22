@@ -49,6 +49,7 @@ let g:ale_python_autopep8_executable = fnamemodify(g:python_host_prog, ':h') . '
 let g:ale_python_isort_executable = fnamemodify(g:python_host_prog, ':h') . '/'. 'isort'
 let g:ale_python_yapf_executable = fnamemodify(g:python_host_prog, ':h') . '/'. 'yapf'
 let g:ale_ansible_ansible_lint_executable = fnamemodify(g:python3_host_prog, ':h') . '/'. 'ansible-lint'
+let g:ale_vim_vint_executable = fnamemodify(g:python3_host_prog, ':h') . '/'. 'vint'
 
 " mapping
 nmap <silent> [a <Plug>(ale_previous)
