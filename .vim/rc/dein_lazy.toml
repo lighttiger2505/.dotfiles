@@ -177,13 +177,21 @@ on_cmd = [
   'Gblame',
   'Glog'
 ]
+
+[[plugins]]
+repo = 'iberianpig/tig-explorer.vim'
+on_cmd = ['TigOpenProjectRootDir']
 hook_add = '''
-    nmap [figitive] <Nop>
-    map <Leader>g [figitive]
-    nnoremap <silent> [figitive]c :<C-u>Gcommit<CR>
-    nnoremap <silent> [figitive]d :<C-u>Gdiff<CR>
-    nnoremap <silent> [figitive]b :<C-u>Gblame<CR>
-    nnoremap <silent> [figitive]l :<C-u>Glog<CR>
+nnoremap <silent> <leader>i :<C-u>TigOpenProjectRootDir<CR>
+'''
+
+[[plugins]]
+repo = 'rhysd/git-messenger.vim'
+on_cmd = ['GitMessenger']
+hook_add = '''
+let g:git_messenger_no_default_mappings = v:false
+" let g:git_messenger_always_into_popup = v:true
+nnoremap <silent> <leader>g :<C-u>GitMessenger<CR>
 '''
 
 [[plugins]]
@@ -228,12 +236,4 @@ nnoremap <silent> <leader>se :Trans :en+ja<CR>
 vnoremap <silent> <leader>se :Trans :en+ja<CR>
 nnoremap <silent> <leader>sj :Trans :ja+en<CR>
 vnoremap <silent> <leader>sj :Trans :ja+en<CR>
-'''
-
-
-[[plugins]]
-repo = 'iberianpig/tig-explorer.vim'
-on_cmd = ['TigOpenProjectRootDir']
-hook_add = '''
-nnoremap <silent> <leader>g :<C-u>TigOpenProjectRootDir<CR>
 '''
