@@ -2,6 +2,9 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'haya14busa/dein-command.vim'
+
+[[plugins]]
 repo = 'vim-scripts/wombat256.vim'
 
 [[plugins]]
