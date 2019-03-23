@@ -139,7 +139,6 @@ depends = ['fzf']
 on_cmd = [
   'Files',
   'GFiles',
-  'Tags',
 ]
 hook_add = '''
 " Appearance
@@ -149,8 +148,6 @@ let g:fzf_layout = {'down': '~50%'}
 nnoremap <silent> <C-j><C-j> :<C-u>Files<CR>
 " Git Status
 nnoremap <silent> <C-j><C-g> :<C-u>GFiles?<CR>
-" Ctags index project
-nnoremap <silent> <C-j><C-]> :<C-u>Tags<CR>
 " My cli setting
 nnoremap <silent> <C-j><C-v> :<C-u>Files ~/.dotfiles<CR>
 '''
