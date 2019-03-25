@@ -11,4 +11,5 @@ source ~/.vim/rc/plugins/lsp.rc.vim
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
+depends = 'deoplete.nvim'
 on_ft = ['python', 'go']
