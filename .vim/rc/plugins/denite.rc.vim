@@ -13,5 +13,17 @@ call denite#custom#map('insert', '<C-o>', '<denite:do_action:tabopen>', 'noremap
 call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
 " change file/old source scope
-call denite#custom#source('file_old', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
+call denite#custom#source('file/old', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 call denite#custom#source('file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+
+let s:denite_win_width_percent = 0.8
+let s:denite_win_height_percent = 0.6
+
+" Change denite default options
+call denite#custom#option('default', {
+    \ 'split': 'floating',
+    \ 'winwidth': &columns * s:denite_win_width_percent,
+    \ 'wincol': (&columns - (&columns * s:denite_win_width_percent)) / 2,
+    \ 'winheight': &lines * s:denite_win_height_percent,
+    \ 'winrow': (&lines - (&lines * s:denite_win_height_percent)) / 2,
+    \ })
