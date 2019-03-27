@@ -275,7 +275,8 @@ liary_file_open() {
     fi
 }
 alias lif=liary_file_open
-alias li="liary"
+alias li='liary'
+alias cdl='cd `liary config --get diarydir`'
 
 # Benchmark
 alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
