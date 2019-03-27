@@ -36,7 +36,7 @@ hook_add = '''
     " Outline project files
     nnoremap <silent> [denite]<C-]> :<C-u>Denite tag -highlight-mode-insert=Search<CR>
     " Reccent file
-    nnoremap <silent> [denite]<C-r> :<C-u>Denite file_old -highlight-mode-insert=Search<CR>
+    nnoremap <silent> [denite]<C-r> :<C-u>Denite file/old -highlight-mode-insert=Search<CR>
     " Help tag
     nnoremap <silent> [denite]<C-h> :<C-u>Denite help -highlight-mode-insert=Search<CR>
 '''
