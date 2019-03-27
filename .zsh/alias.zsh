@@ -164,8 +164,8 @@ alias ec2='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | sel
 alias ec2ac='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | select(.State.Name == \"running\") | select(.Tags!=null) | [.InstanceId, .PublicIpAddress, .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][]] | @tsv " | sort -k3'
 alias ec2st='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | select(.State.Name == \"stopped\") | select(.Tags!=null) | [.InstanceId, .PublicIpAddress, .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][]] | @tsv " | sort -k3'
 alias ec2desc='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | select(.InstanceId==\"i-017b9946a248a7679\")"'
-alias lbs='aws elb describe-load-balancers | jq -r ".LoadBalancerDescriptions[].LoadBalancerArn"'
-alias lbv2s='aws elbv2 describe-load-balancers | jq -r ".LoadBalancers[].LoadBalancerName"'
+alias elbs='aws elb describe-load-balancers | jq -r ".LoadBalancerDescriptions[].LoadBalancerArn"'
+alias albs='aws elbv2 describe-load-balancers | jq -r ".LoadBalancers[].LoadBalancerName"'
 alias tgs='aws elbv2 describe-target-groups | jq -r ".TargetGroups[].TargetGroupName"'
 alias ags='aws autoscaling describe-auto-scaling-groups | jq -r ".AutoScalingGroups[].AutoScalingGroupName"'
 
