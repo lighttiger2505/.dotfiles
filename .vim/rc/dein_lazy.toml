@@ -243,3 +243,7 @@ vnoremap <silent> <leader>se :Trans :en+ja<CR>
 nnoremap <silent> <leader>sj :Trans :ja+en<CR>
 vnoremap <silent> <leader>sj :Trans :ja+en<CR>
 '''
+
+[[plugins]]
+repo = 'rhysd/vim-grammarous'
+on_cmd = ['GrammarousCheck']
