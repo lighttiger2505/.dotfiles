@@ -50,3 +50,7 @@ depends = ['deoplete.nvim']
 repo = 'Shougo/neco-vim'
 on_ft = ['vim']
 depends = ['deoplete.nvim']
+
+repo = 'ujihisa/neco-look'
+on_ft = ['gitcommit', 'markdown']
+depends = ['deoplete.nvim']
