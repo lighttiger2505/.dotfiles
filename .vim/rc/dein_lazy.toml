@@ -172,7 +172,7 @@ on_cmd = [
 
 [[plugins]]
 repo = 'iberianpig/tig-explorer.vim'
-on_cmd = ['TigOpenProjectRootDir']
+on_cmd = ['TigOpenProjectRootDir', 'TigOpenCurrentFile']
 hook_add = '''
 nnoremap <silent> <leader>i :<C-u>TigOpenProjectRootDir<CR>
 '''
