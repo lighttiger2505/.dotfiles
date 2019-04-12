@@ -41,13 +41,6 @@ let sqlfmt_bin = fnamemodify(g:python3_host_prog, ':h') . '/' . '/sqlformat'
 let g:sqlfmt_program = sqlfmt_bin . ' -r -k upper -o %s -'
 '''
 
-[[plugins]]
-repo = 'cohama/lexima.vim'
-on_event = 'InsertCharPre'
-hook_source = '''
-let g:lexima_enable_basic_rules = 1
-'''
-
 #####################################################################
 # Programing util
 #####################################################################
@@ -104,13 +97,6 @@ on_ft = [
 ]
 hook_source = '''
     source ~/.vim/rc/plugins/ale.rc.vim
-'''
-
-[[plugins]]
-repo = 'jsfaint/gen_tags.vim'
-on_ft = ['python', 'go', 'vim']
-hook_source = '''
-let g:gen_tags#ctags_auto_gen = 1
 '''
 
 [[plugins]]
