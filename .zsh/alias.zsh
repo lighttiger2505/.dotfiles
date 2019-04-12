@@ -1,9 +1,17 @@
 #####################################################################
 # Utils
 #####################################################################
+# ls util
 alias ll="ls -al"
 alias lr="ls -ltr"
-alias dot="cd ~/.dotfiles"
+
+# cd util
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias d="cd ~/.dotfiles"
+alias ed="vim ~/.vimrc"
+
 alias pd="pwd | pbcopy"
 alias c='clear'
 alias untar='tar -zxvf'
@@ -83,6 +91,8 @@ else
     alias nvim=vim
 fi
 
+alias v='vim'
+alias vi='vim'
 alias vimdiff='vim -d'
 alias dim='vim -u ~/.dev_vimrc'
 
