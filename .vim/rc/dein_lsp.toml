@@ -24,3 +24,9 @@ on_ft = ['python', 'go']
 # let g:LanguageClient_serverCommands = {}
 # '''
 # hook_source = 'source ~/.vim/rc/plugins/neolsp.rc.vim'
+#
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# on_ft = ['go', 'python']
+# build = 'coc#util#install()'
+# hook_add = 'source ~/.vim/rc/plugins/coc.rc.vim'
