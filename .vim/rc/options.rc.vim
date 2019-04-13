@@ -95,8 +95,10 @@ if exists('&inccommand')
     set inccommand=split
 endif
 
-if exists('&wildoptions')
-    set wildoptions+=pum
+if has('nvim')
+    if exists('&wildoptions')
+        set wildoptions+=pum
+    endif
 endif
 
 " Show search result highlight

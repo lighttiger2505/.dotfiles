@@ -53,8 +53,10 @@ if has('unix') && executable('fcitx-remote')
     augroup END
 endif
 
-augroup DisableTeminalNumber
-    autocmd!
-    autocmd TermOpen * setlocal norelativenumber
-    autocmd TermOpen * setlocal nonumber
-augroup END
+if has('nvim')
+    augroup DisableTeminalNumber
+        autocmd!
+        autocmd TermOpen * setlocal norelativenumber
+        autocmd TermOpen * setlocal nonumber
+    augroup END
+endif
