@@ -13,3 +13,14 @@ source ~/.vim/rc/plugins/lsp.rc.vim
 repo = 'lighttiger2505/deoplete-vim-lsp'
 depends = 'deoplete.nvim'
 on_ft = ['python', 'go']
+
+# [[plugins]]
+# repo = 'autozimu/LanguageClient-neovim'
+# rev = 'next'
+# build = 'bash install.sh'
+# on_ft = ['go', 'python']
+# hook_add = '''
+# let g:LanguageClient_autoStart = 1
+# let g:LanguageClient_serverCommands = {}
+# '''
+# hook_source = 'source ~/.vim/rc/plugins/neolsp.rc.vim'

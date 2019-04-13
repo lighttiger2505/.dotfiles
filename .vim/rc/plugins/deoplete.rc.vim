@@ -30,7 +30,9 @@ set completeopt-=preview
 
 let b:deoplete_ignore_sources = ['around']
 
+ call deoplete#custom#source('LanguageClient', 'sorters', [])
+
 call deoplete#custom#option('sources', {
-\ 'go': ['buffer', 'dictionary', 'file', 'lsp', 'neosnippet'],
-\ 'python': ['buffer', 'dictionary', 'file', 'lsp', 'neosnippet'],
+\ 'go': ['buffer', 'dictionary', 'file', 'lsp', 'LanguageClient', 'neosnippet'],
+\ 'python': ['buffer', 'dictionary', 'file', 'lsp', 'LanguageClient', 'neosnippet'],
 \})
