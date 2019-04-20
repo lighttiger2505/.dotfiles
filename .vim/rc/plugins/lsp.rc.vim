@@ -17,16 +17,27 @@ if (executable('pyls'))
     augroup END
 endif
 
-if (executable('bingo'))
+if executable('gopls')
     augroup LspGo
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
-       \ 'name': 'go-lang',
-       \ 'cmd': {server_info->['bingo', '-disable-func-snippet', '-mode', 'stdio']},
-       \ 'whitelist': ['go'],
-       \ })
+           \ 'name': 'gopls',
+           \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+           \ 'whitelist': ['go'],
+           \ })
     augroup END
 endif
+
+" if (executable('bingo'))
+"     augroup LspGo
+"         autocmd!
+"         autocmd User lsp_setup call lsp#register_server({
+"      \ 'name': 'go-lang',
+"      \ 'cmd': {server_info->['bingo', '-disable-func-snippet', '-mode', 'stdio']},
+"      \ 'whitelist': ['go'],
+"      \ })
+"     augroup END
+" endif
 
 augroup GoLspCommands
     autocmd!
