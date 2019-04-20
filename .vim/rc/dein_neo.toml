@@ -40,6 +40,20 @@ hook_add = '''
 '''
 hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 
+# [[plugins]]
+# repo = 'Shougo/defx.nvim'
+# build = ':UpdateRemotePlugins'
+# depends = ['defx-git']
+# on_cmd = 'Defx'
+# hook_add = '''
+# " Show defx project explorer style
+# nnoremap <silent> <Leader>t :Defx -split=vertical -winwidth=50 -direction=topleft -toggle -ignored-files={} <CR>
+# '''
+# hook_source = 'source ~/.vim/rc/plugins/defx.rc.vim'
+#
+# [[plugins]]
+# repo = 'kristijanhusak/defx-git'
+
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
 on_ft = ['zsh']
