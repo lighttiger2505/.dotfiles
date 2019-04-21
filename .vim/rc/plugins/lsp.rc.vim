@@ -1,5 +1,5 @@
 let g:lsp_signs_enabled = 0
-let g:lsp_diagnostics_enabled = 0
+let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 0
 let g:lsp_signs_error = {'text': '!!'}
 let g:lsp_signs_warning = {'text': '=='}
@@ -45,14 +45,15 @@ augroup GoLspCommands
     " TODO 
     " start golsp when enter python file
     autocmd BufWinEnter *.go :call lsp#enable()
-    " " auto formatting before save
-    " autocmd BufWritePre *.go LspDocumentFormatSync
+    " auto formatting before save
+    autocmd BufWritePre *.go LspDocumentFormatSync
     " local key mapping
     autocmd FileType go nnoremap <C-]> :<C-u>LspDefinition<CR>
     autocmd FileType go nnoremap K :<C-u>LspHover<CR>
     autocmd FileType go nnoremap <LocalLeader>R :<C-u>LspRename<CR>
     autocmd FileType go nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
     autocmd FileType go nnoremap <LocalLeader>d :<C-u>LspDocumentDiagnostics<CR>
+    autocmd FileType go setlocal omnifunc=lsp#complete
 augroup END
 
 augroup PylsCommands
@@ -66,6 +67,9 @@ augroup PylsCommands
     autocmd FileType python nnoremap <LocalLeader>R :<C-u>LspRename<CR>
     autocmd FileType python nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
     autocmd FileType python nnoremap <LocalLeader>d :<C-u>LspDocumentDiagnostics<CR>
+    autocmd FileType go setlocal omnifunc=lsp#complete
+augroup END
+
 augroup TypescriptLspCommands
     autocmd!
     " TODO 
