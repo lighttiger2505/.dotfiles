@@ -35,7 +35,12 @@ let g:go_auto_sameids = 0
 let g:go_auto_type_info = 0
 
 " disable auto go fmt
-let g:go_fmt_autosave = 1
+let g:go_fmt_autosave = 0
+let g:go_mod_fmt_autosave = 0
+
+" Use sonictempate
+let g:go_template_autocreate = 0
+let g:sonictemplate_enable_pattern = 1
 
 augroup GoCommands
     autocmd!
