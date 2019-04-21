@@ -28,16 +28,17 @@ if executable('gopls')
     augroup END
 endif
 
-" if (executable('bingo'))
-"     augroup LspGo
-"         autocmd!
-"         autocmd User lsp_setup call lsp#register_server({
-"      \ 'name': 'go-lang',
-"      \ 'cmd': {server_info->['bingo', '-disable-func-snippet', '-mode', 'stdio']},
-"      \ 'whitelist': ['go'],
-"      \ })
-"     augroup END
-" endif
+if executable('typescript-language-server')
+    augroup LspGo
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'typescript-language-server',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+            \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+            \ 'whitelist': ['typescript', 'typescript.tsx'],
+            \ })
+        augroup END
+endif
 
 augroup GoLspCommands
     autocmd!
@@ -65,4 +66,18 @@ augroup PylsCommands
     autocmd FileType python nnoremap <LocalLeader>R :<C-u>LspRename<CR>
     autocmd FileType python nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
     autocmd FileType python nnoremap <LocalLeader>d :<C-u>LspDocumentDiagnostics<CR>
+augroup TypescriptLspCommands
+    autocmd!
+    " TODO 
+    " start golsp when enter python file
+    autocmd BufWinEnter *.ts :call lsp#enable()
+    " auto formatting before save
+    autocmd BufWritePre *.ts LspDocumentFormatSync
+    " local key mapping
+    autocmd FileType typescript nnoremap <C-]> :<C-u>LspDefinition<CR>
+    autocmd FileType typescript nnoremap K :<C-u>LspHover<CR>
+    autocmd FileType typescript nnoremap <LocalLeader>R :<C-u>LspRename<CR>
+    autocmd FileType typescript nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
+    autocmd FileType typescript nnoremap <LocalLeader>d :<C-u>LspDocumentDiagnostics<CR>
+    autocmd FileType typescript setlocal omnifunc=lsp#complete
 augroup END

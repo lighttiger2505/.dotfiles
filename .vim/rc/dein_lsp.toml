@@ -3,16 +3,19 @@ repo = 'prabirshrestha/async.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
-on_ft = ['python', 'go']
-depends = ['async.vim']
+on_ft = ['python', 'go', 'typescript']
+depends = ['async.vim', 'deoplete-vim-lsp']
 hook_source = '''
 source ~/.vim/rc/plugins/lsp.rc.vim
 '''
 
 [[plugins]]
+repo = 'ryanolsonx/vim-lsp-typescript'
+on_ft = ['typescript']
+
+[[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
 depends = 'deoplete.nvim'
-on_ft = ['python', 'go']
 
 # [[plugins]]
 # repo = 'autozimu/LanguageClient-neovim'
