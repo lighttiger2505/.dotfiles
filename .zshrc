@@ -1,6 +1,6 @@
 #!/usr/local/bin/zsh
 
-# zprof start
+# # zprof start
 # zmodload zsh/zprof && zprof
 
 # OS Type
@@ -36,11 +36,13 @@ fi
 eval $(ssh-agent) > /dev/null
 ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
 
-# zprof end
-if (which zprof > /dev/null 2>&1) ;then
-  zprof
-fi
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/lighttiger2505/google-cloud-sdk/path.zsh.inc' ]; then . '/home/lighttiger2505/google-cloud-sdk/path.zsh.inc'; fi
 
-if [ -f ~/.fzf.zsh ]; then
-    source ~/.fzf.zsh
-fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/lighttiger2505/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/lighttiger2505/google-cloud-sdk/completion.zsh.inc'; fi
+
+# # zprof end
+# if (which zprof > /dev/null 2>&1) ;then
+#   zprof
+# fi
