@@ -29,7 +29,7 @@ if executable('gopls')
 endif
 
 if executable('typescript-language-server')
-    augroup LspGo
+    augroup LspTypeScript
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
             \ 'name': 'typescript-language-server',
