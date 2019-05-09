@@ -24,15 +24,14 @@ source ~/.zsh/zplugin.zsh
 
 # Init anyenv
 if [ -e ~/.anyenv ]; then
-    eval "$(anyenv init -)"
+    eval "$(anyenv lazyload)"
 fi
 
-# Init pyenv
-if [ -e ~/.pyenv ]; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
+# # Init pyenv
+# if [ -e ~/.pyenv ]; then
+#     eval "$(pyenv init -)"
+#     eval "$(pyenv virtualenv-init -)"
+# fi
 
 eval $(ssh-agent) > /dev/null
 ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
