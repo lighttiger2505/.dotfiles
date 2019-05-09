@@ -10,10 +10,10 @@ if (executable('pyls'))
     augroup LspPython
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->[expand(s:pyls_path)]},
-        \ 'whitelist': ['python']
-        \ })
+            \ 'name': 'pyls',
+            \ 'cmd': {server_info->[expand(s:pyls_path)]},
+            \ 'whitelist': ['python']
+            \ })
     augroup END
 endif
 
@@ -21,10 +21,10 @@ if executable('gopls')
     augroup LspGo
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
-           \ 'name': 'gopls',
-           \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-           \ 'whitelist': ['go'],
-           \ })
+            \ 'name': 'gopls',
+            \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+            \ 'whitelist': ['go'],
+            \ })
     augroup END
 endif
 
