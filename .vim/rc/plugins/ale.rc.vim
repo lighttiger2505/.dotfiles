@@ -2,11 +2,11 @@
 let g:ale_enabled = 1
 
 " Appearance
-let g:ale_sign_error = 'xx'
-let g:ale_sign_warning = 'vv'
+let g:ale_sign_error = 'E>'
+let g:ale_sign_warning = 'W>'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_sign_column_always = 1
-let g:ale_set_highlights = 0
+let g:ale_set_highlights = 1
 
 " Event of lint enter
 let g:ale_lint_on_enter = 1
@@ -26,7 +26,7 @@ let g:ale_linters = {
     \ 'javascript': ['jslint', 'eslint'],
     \ 'python': ['flake8'],
     \ 'markdown': ['mdl'],
-    \ 'go': ['gometalinter'],
+    \ 'go': ['golangci-lint'],
     \ 'make': ['checkmake'],
     \ 'vim': ['vint'],
     \ 'shell': ['shellcheck'],
@@ -40,8 +40,9 @@ let g:ale_fixers = {
     \ 'json': ['jq'],
     \ }
 
-" gometalinter
-let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=gofmt --enable=errcheck --enable=goconst --enable=goimports --enable=megacheck'
+" " gometalinter
+" let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=gofmt --enable=errcheck --enable=goconst --enable=goimports --enable=megacheck'
+let g:ale_go_golangci_lint_options = '--disable-all --presets=bugs'
 
 " Python fixer
 let g:ale_python_flake8_executable = fnamemodify(g:python_host_prog, ':h') . '/' . 'flake8'
