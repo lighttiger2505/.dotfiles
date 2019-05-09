@@ -4,15 +4,12 @@ augroup DefxSettings
     autocmd FileType defx call s:defx_my_settings()
 augroup END
 
-" call defx#custom#option('_', {
-"     \ 'ignored-files': {},
-"     \ })
 call defx#custom#option('_', {
-    \ 'columns': 'mark:indent:git:icon:filename',
+    \ 'columns': 'indent:git:icons:filename',
     \ })
 call defx#custom#column('indent', {
-    \ 'indent': '  |',
-    \ })
+   \ 'indent': '  ',
+   \ })
 call defx#custom#column('icon', {
     \ 'directory_icon': '▸',
     \ 'opened_icon': '▾',
@@ -64,10 +61,12 @@ function! s:defx_my_settings() abort
     \ defx#do_action('yank_path')
     nnoremap <silent><buffer><expr> .
     \ defx#do_action('toggle_ignored_files')
-    nnoremap <silent><buffer><expr> ;
-    \ defx#do_action('repeat')
+    " nnoremap <silent><buffer><expr> ;
+    "\ defx#do_action('repeat')
     nnoremap <silent><buffer><expr> h
     \ defx#do_action('cd', ['..'])
+    " nnoremap <silent><buffer><expr> H
+    "\ defx#do_action('cd', [''])
     nnoremap <silent><buffer><expr> ~
     \ defx#do_action('cd')
     nnoremap <silent><buffer><expr> q
@@ -112,3 +111,17 @@ hi Defx_git_Modified ctermfg=214 guifg=#fabd2f
 hi Defx_git_Unmerged ctermfg=167 guifg=#fb4934
 hi Defx_git_Deleted ctermfg=167 guifg=#fb4934
 hi Defx_git_Staged ctermfg=142 guifg=#b8bb26
+
+" DevIcon integrations
+let g:defx_icons_enable_syntax_highlight = 1
+let g:defx_icons_column_length = 1
+let g:defx_icons_directory_icon = ''
+let g:defx_icons_mark_icon = '*'
+let g:defx_icons_parent_icon = ''
+let g:defx_icons_default_icon = ''
+let g:defx_icons_directory_symlink_icon = ''
+
+" Options below are applicable only when using "tree" feature
+let g:defx_icons_root_opened_tree_icon = ''
+let g:defx_icons_nested_opened_tree_icon = ''
+let g:defx_icons_nested_closed_tree_icon = ''
