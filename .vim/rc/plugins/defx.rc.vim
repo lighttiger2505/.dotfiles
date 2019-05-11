@@ -2,6 +2,7 @@
 augroup DefxSettings
     autocmd!
     autocmd FileType defx call s:defx_my_settings()
+    autocmd FileType defx setlocal cursorline
 augroup END
 
 call defx#custom#option('_', {
@@ -113,7 +114,7 @@ hi Defx_git_Deleted ctermfg=167 guifg=#fb4934
 hi Defx_git_Staged ctermfg=142 guifg=#b8bb26
 
 " DevIcon integrations
-let g:defx_icons_enable_syntax_highlight = 1
+let g:defx_icons_enable_syntax_highlight = 0
 let g:defx_icons_column_length = 1
 let g:defx_icons_directory_icon = ''
 let g:defx_icons_mark_icon = '*'
