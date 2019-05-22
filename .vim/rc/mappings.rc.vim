@@ -171,6 +171,16 @@ function! ToggleRelativenumber() abort
 endfunction
 nnoremap <silent> <Space>n :call ToggleRelativenumber()<cr>
 
+" Toggle wrap or nowrap
+function! ToggleWrap() abort
+  if &wrap == 1
+     setlocal nowrap
+  else
+     setlocal wrap
+  endif
+endfunction
+nnoremap <silent> <Space>r :call ToggleWrap()<cr>
+
 let g:toggle_window_size = 0
 function! ToggleWindowFullSize()
   if g:toggle_window_size == 1
