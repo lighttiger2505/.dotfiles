@@ -16,8 +16,7 @@ URxvt.saveLines:            3000
 URxvt.fading:               40
 
 !! Font list and Spacing
-URxvt.font:                 xft:Dejavu Sans Mono-13,\
-                            xft:IPAGothic
+URxvt.font:                 xft:Hack Nerd Font Mono:pixelsize=16, xft:IPAGothic
 URxvt.letterSpace:          -1
 !URxvt.lineSpace:            0
 
