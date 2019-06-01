@@ -1,4 +1,4 @@
-#!/usr/local/bin/zsh
+#!/usr/bin/zsh
 
 # # zprof start
 # zmodload zsh/zprof && zprof
