@@ -7,11 +7,11 @@
 URxvt.geometry:             96x32
 URxvt.scrollBar_right:      true
 URxvt.scrollBar_floating:   true
-URxvt.scrollstyle:          plain
+URxvt.scrollstyle:          none
 URxvt.cursorBlink:          true
-URxvt.cursorUnderline:      true
-URxvt.pointerBlank:         true
-URxvt.visualBell:           true
+URxvt.cursorUnderline:      false
+URxvt.pointerBlank:         false
+URxvt.visualBell:           false
 URxvt.saveLines:            3000
 URxvt.fading:               40
 
