@@ -46,3 +46,7 @@ URxvt.colorBD:              [90]#d5c4a1
 URxvt.colorUL:              [90]#83a598
 URxvt.scrollColor:          [90]#504945
 !URxvt.troughColor:          [90]#3C3836
+
+urxvt.perl-ext: xim-onthespot
+urxvt.inputMethod: fcitx
+urxvt.preeditType: OnTheSpot
