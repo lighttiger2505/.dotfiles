@@ -1,0 +1,30 @@
+[user]
+	email = toshikazu.ohashi@iridge.jp
+	name = toshikazu.ohashi
+[ghq]
+	root = ~/dev/src
+[core]
+	excludesfile = /home/lighttiger2505/.gitignore_global
+[merge]
+	tool = vimdiff
+[diff]
+	tool = vimdiff
+[difftool "vimdiff"]
+	cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+[mergetool "vimdiff"]
+	cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
+[difftool]
+	prompt = true
+[mergetool]
+	prompt = true
+[pull]
+	ff = only
+	rebase = true
+[branch "master"]
+	rebase = true
+[branch "develop"]
+	rebase = true
+[includeIf "gitdir:~/dev/src/github.com/"]
+	path = ~/.gitconfig-private
+[includeIf "gitdir:~/dev/src/gitlab.ssl.iridge.jp/"]
+	path = ~/.gitconfig-work
