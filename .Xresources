@@ -47,7 +47,7 @@ URxvt.scrollColor:          [90]#504945
 !URxvt.troughColor:          [90]#3C3836
 
 urxvt.perl-ext: xim-onthespot
-urxvt.perl-ext-common: resize-font
+urxvt.perl-ext-common: resize-font,clipboard
 urxvt.inputMethod: fcitx
 urxvt.preeditType: OnTheSpot
 
