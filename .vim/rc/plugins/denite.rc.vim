@@ -30,7 +30,14 @@ call denite#custom#var('file/rec/git', 'command', ['git', 'ls-files', '-co', '--
 call denite#custom#source('file/old', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
 call denite#custom#source('file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
 
+let s:denite_win_width_percent = 0.85
+let s:denite_win_height_percent = 0.7
+
 " Change denite default options
 call denite#custom#option('default', {
-    \ 'start-filter': 'true',
+    \ 'split': 'floating',
+    \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+    \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
+    \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+    \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
     \ })
