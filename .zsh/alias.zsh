@@ -9,6 +9,7 @@ alias lr="ls -ltr"
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias h="cd ~/"
 alias d="cd ~/.dotfiles"
 alias ed="vim ~/.vimrc"
 
