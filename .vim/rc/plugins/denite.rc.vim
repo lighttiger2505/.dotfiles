@@ -17,6 +17,26 @@ function! s:denite_my_settings() abort
     \ denite#do_map('toggle_select').'j'
 endfunction
 
+augroup DeniteFilterSettings
+    autocmd!
+    autocmd FileType denite-filter call s:denite_filter_my_settings()
+augroup END
+
+function! s:denite_filter_my_settings() abort
+    inoremap <silent><buffer> <C-j>
+        \ <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+    inoremap <silent><buffer> <C-k>
+        \ <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+    inoremap <silent><buffer><expr> <C-c>
+        \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> <C-c>
+        \ denite#do_map('quit')
+    inoremap <silent><buffer><expr> <C-[>
+        \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> <C-[>
+        \ denite#do_map('quit')
+endfunction
+
 " Change file/rec command.
 call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
 
