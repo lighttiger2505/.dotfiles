@@ -35,4 +35,5 @@ let b:deoplete_ignore_sources = ['around']
 call deoplete#custom#option('sources', {
 \ 'go': ['buffer', 'dictionary', 'file', 'lsp', 'LanguageClient', 'neosnippet'],
 \ 'python': ['buffer', 'dictionary', 'file', 'lsp', 'LanguageClient', 'neosnippet'],
+\ 'denite-filter': ['denite'],
 \})
