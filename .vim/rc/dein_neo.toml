@@ -26,9 +26,9 @@ hook_add = '''
     map <C-j> [denite]
 
     " Current direcotry files
-    nnoremap <silent> [denite]<C-p> :<C-u>Denite -start-filter=true file/rec/git<CR>
+    nnoremap <silent> [denite]<C-p> :<C-u>Denite file/rec/git<CR>
     " Buffer files
-    nnoremap <silent> [denite]<C-b> :<C-u>Denite -start-filter=true line<CR>
+    nnoremap <silent> [denite]<C-b> :<C-u>Denite line<CR>
     " Buffer lines
     nnoremap <silent> [denite]<C-b> :<C-u>Denite buffer<CR>
     " Snippets
