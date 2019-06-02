@@ -44,6 +44,11 @@ call denite#custom#option('_', {
 let s:denite_win_width_percent = 0.85
 let s:denite_win_height_percent = 0.7
 
+augroup DeniteDetectSize
+    autocmd!
+    autocmd VimResized * call <SID>denite_detect_size()
+augroup END
+
 function! s:denite_detect_size() abort
     call denite#custom#option('_', {
         \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
@@ -53,8 +58,3 @@ function! s:denite_detect_size() abort
         \ })
 endfunction
 call s:denite_detect_size()
-
-augroup denite-detect-size
-    autocmd!
-    autocmd VimResized * call <SID>denite_detect_size()
-augroup END
