@@ -5,9 +5,10 @@
 !!
 
 URxvt.geometry:             96x32
+URxvt.scrollBar:            false
 URxvt.scrollBar_right:      true
 URxvt.scrollBar_floating:   true
-URxvt.scrollstyle:          none
+URxvt.scrollstyle:          plane
 URxvt.cursorBlink:          true
 URxvt.cursorUnderline:      false
 URxvt.pointerBlank:         false
