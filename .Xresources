@@ -55,3 +55,10 @@ urxvt.preeditType: OnTheSpot
 URxvt.resize-font.step: 1
 URxvt.keysym.C-Down: resize-font:smaller
 URxvt.keysym.C-Up: resize-font:bigger
+
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
