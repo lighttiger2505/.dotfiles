@@ -108,7 +108,6 @@ on_cmd = ['Repl', 'ReplAuto']
 #####################################################################
 # Fuzzy Finder
 #####################################################################
-
 [[plugins]]
 repo = 'junegunn/fzf'
 build = './install --all'
@@ -121,16 +120,23 @@ on_cmd = [
   'GFiles',
 ]
 hook_add = '''
-" Appearance
-let g:fzf_layout = {'down': '~50%'}
-
-" Gather files recursive and nominates all file names under the search directory
-nnoremap <silent> <C-j><C-j> :<C-u>Files<CR>
-" Git Status
-nnoremap <silent> <C-j><C-g> :<C-u>GFiles?<CR>
-" My cli setting
-nnoremap <silent> <C-j><C-v> :<C-u>Files ~/.dotfiles<CR>
+" " Key Mapping Prefix key
+" nmap [fzf] <Nop>
+" map <C-j> [fzf]
+"
+" " Gather files recursive and nominates all file names under the search directory
+" nnoremap <silent> [fzf]<C-p> :<C-u>Files<CR>
+" nnoremap <silent> [fzf]<C-b> :<C-u>Buffers<CR>
+" nnoremap <silent> [fzf]<C-f> :<C-u>BLines<CR>
+" nnoremap <silent> [fzf]<C-r> :<C-u>History<CR>
+" nnoremap <silent> [fzf]<C-]> :<C-u>Tags<CR>
+" nnoremap <silent> [fzf]<C-o> :<C-u>BTags<CR>
+" " Git Status
+" nnoremap <silent> [fzf]<C-g> :<C-u>GFiles?<CR>
+" " My cli setting
+" nnoremap <silent> [fzf]<C-v> :<C-u>Files ~/.dotfiles<CR>
 '''
+hook_source = 'source ~/.vim/rc/plugins/fzf.rc.vim'
 
 #####################################################################
 # Other Util
