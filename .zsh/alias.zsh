@@ -9,12 +9,12 @@ alias lr="ls -ltr"
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias h="cd ~/"
+alias c="cd ~/"
 alias d="cd ~/.dotfiles"
 alias ed="vim ~/.vimrc"
+alias ran="ranger"
 
 alias pd="pwd | pbcopy"
-alias c='clear'
 alias untar='tar -zxvf'
 alias gip='curl inet-ip.info'
 alias pass='cat ~/.dotiridge/password/passwd'
