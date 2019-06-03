@@ -1,0 +1,49 @@
+[date]
+label=Date:
+command=date +'%m/%d %H:%M'
+color=#8fa1b3
+interval=1
+
+[uptime]
+label=Uptime:
+command=uptime | sed 's/.*up \([^,]*\),.*/\1/'
+color=#8fa1b3
+interval=60
+
+[cpu]
+label=CPU:
+command=sensors | awk '/Core 0/ {print $3}'
+color=#8fa1b3
+interval=1
+
+[memory]
+label=Mem:
+command=free -h | awk '/^Mem:/ {print $3 "/" $2}'
+color=#8fa1b3
+interval=1
+
+[network]
+label=Net:
+command=~/.config/i3blocks/network.sh
+color=#8fa1b3
+interval=1
+
+[lightness]
+label=Light:
+command=xbacklight -get | xargs printf '%.0f%%'
+color=#8fa1b3
+interval=1
+signal=2
+
+[volume]
+label=Vol:
+command=~/.config/i3blocks/volume.sh
+color=#8fa1b3
+interval=1
+signal=1
+
+[battery]
+label=Bat:
+command=~/.config/i3blocks/battery.sh BAT0
+color=#8fa1b3
+interval=5
