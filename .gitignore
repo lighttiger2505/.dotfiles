@@ -2,3 +2,4 @@
 .vim/dein/
 .netrwhist
 .vim/bundle/neobundle.vim
+*.pyc
