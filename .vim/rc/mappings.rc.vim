@@ -199,3 +199,9 @@ nnoremap <silent> <Space>w :<C-u>%s/\s\+$//e<CR>
 
 " Escape normal mode on terminal
 tnoremap <silent> <ESC> <C-\><C-n>
+
+" Current file tab open
+noremap t <Nop>
+nnoremap t <C-w>T
+noremap T <Nop>
+nnoremap T <C-w>v<C-w>T
