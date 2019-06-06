@@ -19,5 +19,6 @@ if [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]]; then
 fi
 
 QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
+QUALITY=$(printf "%3d" ${QUALITY})
 
 echo "${SSID_NAME} ${QUALITY}%"
