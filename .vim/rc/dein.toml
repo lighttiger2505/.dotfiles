@@ -16,10 +16,13 @@ hook_add = 'source ~/.vim/rc/plugins/lightline.rc.vim'
 
 [[plugins]]
 repo = 'mhinz/vim-signify'
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
 hook_add = '''
-    let g:gitgutter_map_keys = 0
-    nmap [g <Plug>GitGutterPrevHunk
-    nmap ]g <Plug>GitGutterNextHunk
+    nnoremap <silent> <leader>g :<C-u>Gina status --opener=vsplit<CR>
+    nnoremap <silent> <leader>d :<C-u>Gina compare --opener=vsplit<CR>
+    nnoremap <silent> <leader>l :<C-u>Gina blame --opener=tab<CR>
 '''
 
 [[plugins]]
@@ -42,7 +45,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'rhysd/committia.vim'
-depends = ['vim-fugitive']
 hook_add = '''
     let g:committia_hooks = {}
     function! g:committia_hooks.edit_open(info)

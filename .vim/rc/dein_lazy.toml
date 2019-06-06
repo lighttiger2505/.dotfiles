@@ -154,17 +154,6 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-on_cmd = [
-  'Git',
-  'Gcommit',
-  'Gstatus',
-  'Gdiff',
-  'Gblame',
-  'Glog'
-]
-
-[[plugins]]
 repo = 'iberianpig/tig-explorer.vim'
 on_cmd = ['TigOpenProjectRootDir', 'TigOpenCurrentFile']
 hook_add = '''
