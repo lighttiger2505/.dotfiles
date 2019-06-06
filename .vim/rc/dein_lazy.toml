@@ -116,25 +116,45 @@ build = './install --all'
 repo = 'junegunn/fzf.vim'
 depends = ['fzf']
 on_cmd = [
-  'Files',
-  'GFiles',
+    'Files',
+    'Buffers',
+    'BLines',
+    'Tags',
+    'BTags',
+    'GFiles',
 ]
 hook_add = '''
-" " Key Mapping Prefix key
-" nmap [fzf] <Nop>
-" map <C-j> [fzf]
-"
-" " Gather files recursive and nominates all file names under the search directory
-" nnoremap <silent> [fzf]<C-p> :<C-u>Files<CR>
-" nnoremap <silent> [fzf]<C-b> :<C-u>Buffers<CR>
-" nnoremap <silent> [fzf]<C-f> :<C-u>BLines<CR>
-" nnoremap <silent> [fzf]<C-r> :<C-u>History<CR>
-" nnoremap <silent> [fzf]<C-]> :<C-u>Tags<CR>
-" nnoremap <silent> [fzf]<C-o> :<C-u>BTags<CR>
-" " Git Status
-" nnoremap <silent> [fzf]<C-g> :<C-u>GFiles?<CR>
-" " My cli setting
-" nnoremap <silent> [fzf]<C-v> :<C-u>Files ~/.dotfiles<CR>
+" Key Mapping Prefix key
+nmap [fuzzyf] <Nop>
+map <C-j> [fuzzyf]
+
+let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-x': 'split',
+    \ 'ctrl-v': 'vsplit' 
+    \ }
+
+let g:fzf_colors = {
+    \ 'fg':      ['fg', 'Normal'],
+    \ 'hl':      ['fg', 'Comment'],
+    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+    \ 'hl+':     ['fg', 'Statement'],
+    \ 'info':    ['fg', 'PreProc'],
+    \ 'border':  ['fg', 'Ignore'],
+    \ 'prompt':  ['fg', 'Conditional'],
+    \ 'pointer': ['fg', 'Exception'],
+    \ 'marker':  ['fg', 'Keyword'],
+    \ 'spinner': ['fg', 'Label'],
+    \ 'header':  ['fg', 'Comment']
+    \ }
+
+nnoremap <silent> [fuzzyf]<C-p> :<C-u>Files<CR>
+nnoremap <silent> [fuzzyf]<C-b> :<C-u>Buffers<CR>
+nnoremap <silent> [fuzzyf]<C-l> :<C-u>BLines<CR>
+nnoremap <silent> [fuzzyf]<C-]> :<C-u>Tags<CR>
+nnoremap <silent> [fuzzyf]<C-o> :<C-u>BTags<CR>
+nnoremap <silent> [fuzzyf]<C-g> :<C-u>GFiles?<CR>
 '''
 hook_source = 'source ~/.vim/rc/plugins/fzf.rc.vim'
 
