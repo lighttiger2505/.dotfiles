@@ -161,15 +161,6 @@ nnoremap <silent> <leader>i :<C-u>TigOpenProjectRootDir<CR>
 '''
 
 [[plugins]]
-repo = 'rhysd/git-messenger.vim'
-on_cmd = ['GitMessenger']
-hook_add = '''
-let g:git_messenger_no_default_mappings = v:false
-" let g:git_messenger_always_into_popup = v:true
-nnoremap <silent> <leader>g :<C-u>GitMessenger<CR>
-'''
-
-[[plugins]]
 repo = 'tyru/open-browser.vim'
 on_map = ['<Plug>(openbrowser-smart-search)']
 hook_add = '''
