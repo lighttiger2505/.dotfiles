@@ -9,9 +9,9 @@ URxvt.scrollBar:            false
 URxvt.scrollBar_right:      true
 URxvt.scrollBar_floating:   true
 URxvt.scrollstyle:          plane
-URxvt.cursorBlink:          true
+URxvt.cursorBlink:          false
 URxvt.cursorUnderline:      false
-URxvt.pointerBlank:         false
+URxvt.pointerBlank:         true
 URxvt.visualBell:           false
 URxvt.saveLines:            3000
 URxvt.fading:               40
