@@ -9,9 +9,9 @@ do
     if [ "${st_prev}" != "${st_next}" ]; then
         st_prev=$st_next
         if [ "${st_next}" = "${display}" ]; then
-            xrandr --output eDP1 --mode 1920x1080 --output ${display} --auto --above eDP1
+            xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output ${display} --mode 1920x1080 --pos 0x0 --rotate normal
         else
-            xrandr --output eDP1 --mode 1920x1080 --output ${display} --off
+            xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output ${display} --off
         fi
     fi
     sleep 1
