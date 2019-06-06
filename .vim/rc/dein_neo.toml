@@ -22,25 +22,25 @@ on_cmd = 'Denite'
 build = ':UpdateRemotePlugins'
 hook_add = '''
     " Key Mapping Prefix key
-    nmap [denite] <Nop>
-    map <C-j> [denite]
+    nmap [fuzzyf] <Nop>
+    map <C-j> [fuzzyf]
 
-    " Current direcotry files
-    nnoremap <silent> [denite]<C-p> :<C-u>Denite file/rec/git<CR>
-    " Buffer files
-    nnoremap <silent> [denite]<C-b> :<C-u>Denite line<CR>
+    " " Current direcotry files
+    " nnoremap <silent> [fuzzyf]<C-p> :<C-u>Denite file/rec/git<CR>
+    " " Buffer files
+    " nnoremap <silent> [fuzzyf]<C-f> :<C-u>Denite line<CR>
     " Buffer lines
-    nnoremap <silent> [denite]<C-b> :<C-u>Denite buffer<CR>
+    nnoremap <silent> [fuzzyf]<C-b> :<C-u>Denite buffer<CR>
     " Snippets
-    nnoremap <silent> [denite]<C-b> :<C-u>Denite neosnippet<CR>
-    " Outline current file
-    nnoremap <silent> [denite]<C-o> :<C-u>Denite outline<CR>
-    " Outline project files
-    nnoremap <silent> [denite]<C-]> :<C-u>Denite tag<CR>
+    nnoremap <silent> [fuzzyf]<C-s> :<C-u>Denite neosnippet<CR>
+    " " Outline current file
+    " nnoremap <silent> [fuzzyf]<C-o> :<C-u>Denite outline<CR>
+    " " Outline project files
+    " nnoremap <silent> [fuzzyf]<C-]> :<C-u>Denite tag<CR>
     " Reccent file
-    nnoremap <silent> [denite]<C-r> :<C-u>Denite file/old<CR>
+    nnoremap <silent> [fuzzyf]<C-r> :<C-u>Denite file/old<CR>
     " Help tag
-    nnoremap <silent> [denite]<C-h> :<C-u>Denite help<CR>
+    nnoremap <silent> [fuzzyf]<C-h> :<C-u>Denite help<CR>
 '''
 hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 
