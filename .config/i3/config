@@ -84,9 +84,8 @@ exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
 exec --no-startup-id dropbox
-exec --no-startup-id slack
-
 exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
+# exec --no-startup-id slack
 
 # Set wall paper randomize
 exec --no-startup-id ~/.config/i3/random_wallpaper.sh
