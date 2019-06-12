@@ -289,6 +289,9 @@ alias lif=liary_file_open
 alias li='liary'
 alias cdl='cd `liary config --get diarydir`'
 
+# Open todo file
+alias todo='vim ~/.config/todo/todo.md'
+
 # Benchmark
 alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
 
