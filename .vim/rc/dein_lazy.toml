@@ -129,7 +129,7 @@ nmap [fuzzyf] <Nop>
 map <C-j> [fuzzyf]
 
 let g:fzf_action = {
-    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-o': 'tab split',
     \ 'ctrl-x': 'split',
     \ 'ctrl-v': 'vsplit' 
     \ }
@@ -148,6 +148,8 @@ let g:fzf_colors = {
     \ 'spinner': ['fg', 'Label'],
     \ 'header':  ['fg', 'Comment']
     \ }
+
+let g:fzf_layout = {}
 
 nnoremap <silent> [fuzzyf]<C-p> :<C-u>Files<CR>
 nnoremap <silent> [fuzzyf]<C-b> :<C-u>Buffers<CR>
