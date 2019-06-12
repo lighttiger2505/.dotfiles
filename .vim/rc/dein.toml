@@ -20,9 +20,12 @@ repo = 'mhinz/vim-signify'
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
 hook_add = '''
-    nnoremap <silent> <leader>g :<C-u>Gina status --opener=vsplit<CR>
-    nnoremap <silent> <leader>d :<C-u>Gina compare --opener=vsplit<CR>
-    nnoremap <silent> <leader>l :<C-u>Gina blame --opener=tab<CR>
+    nmap [gina] <Nop>
+    map <leader>g [gina]
+
+    nnoremap <silent> [gina]s :<C-u>Gina status --opener=vsplit<CR>
+    nnoremap <silent> [gina]d :<C-u>Gina compare --opener=vsplit<CR>
+    nnoremap <silent> [gina]l :<C-u>Gina blame<CR>
 '''
 
 [[plugins]]
