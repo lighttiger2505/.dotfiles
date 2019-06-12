@@ -54,7 +54,6 @@ call denite#custom#option('_', {
     \ 'cached_filter': v:true,
     \ 'cursor_shape': v:true,
     \ 'cursor_wrap': v:true,
-    \ 'start_filter': v:true,
     \ 'statusline': v:false,
     \ 'highlight_filter_background': 'DeniteFilter',
     \ 'highlight_matched_char': 'Underlined',
