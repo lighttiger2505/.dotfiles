@@ -175,9 +175,20 @@ build = 'make'
 
 [[plugins]]
 repo = 'iberianpig/tig-explorer.vim'
-on_cmd = ['TigOpenProjectRootDir', 'TigOpenCurrentFile']
+on_cmd = [
+    'Tig', 
+    'TigOpenProjectRootDir', 
+    'TigOpenCurrentFile', 
+    'TigBlame', 
+]
 hook_add = '''
-nnoremap <silent> <leader>i :<C-u>TigOpenProjectRootDir<CR>
+    nmap [tig] <Nop>
+    map <leader>i [tig]
+
+    nnoremap <silent> [tig]s :<C-u>Tig status<CR>
+    nnoremap <silent> [tig]t :<C-u>TigOpenProjectRootDir<CR>
+    nnoremap <silent> [tig]f :<C-u>TigOpenCurrentFile<CR>
+    nnoremap <silent> [tig]b :<C-u>TigBlame<CR>
 '''
 
 [[plugins]]
