@@ -27,3 +27,5 @@ setopt hist_ignore_dups
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_no_store
+# Disable Ctrl-D logout
+setopt IGNOREEOF
