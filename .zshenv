@@ -21,6 +21,8 @@ fi
 export XDG_CONGIG_HOME=~/.config
 # defaut editor is vim
 export EDITOR=nvim
+# enhancd disable fzf-tmux
+export ENHANCD_FILTER=fzf
 
 # Path/Valiables
 typeset -U path
