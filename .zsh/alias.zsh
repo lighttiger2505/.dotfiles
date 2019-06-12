@@ -180,6 +180,8 @@ alias albs='aws elbv2 describe-load-balancers | jq -r ".LoadBalancers[].LoadBala
 alias tgs='aws elbv2 describe-target-groups | jq -r ".TargetGroups[].TargetGroupName"'
 alias ags='aws autoscaling describe-auto-scaling-groups | jq -r ".AutoScalingGroups[].AutoScalingGroupName"'
 
+alias amis='aws ec2 describe-images --owners self amazon | jq -r ".Images[] | [.ImageId, .CreationDate, .Name, .Architecture] | @tsv"'
+
 #####################################################################
 # awslogs
 #####################################################################
