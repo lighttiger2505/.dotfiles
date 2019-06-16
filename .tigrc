@@ -15,7 +15,7 @@ bind generic S view-stash
 
 # Yank commit hash
 bind generic y none
-bind main y !@sh -c "echo -n %(commit) | xclip -selection c"
+bind generic y !@sh -c "echo -n %(commit) | xsel --clipboard --input"
 
 # Show line nuber
 set pager-view  = line-number:yes,interval=1 text
