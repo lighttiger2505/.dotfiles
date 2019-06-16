@@ -6,19 +6,19 @@
 dirpath=${1}
 cmd=${2}
 
-cd ${dirpath}
-
 spcmd=("zsh" "bash" "vim" "nvim");
 if ! `echo ${spcmd[@]} | grep -q "$cmd"` ; then
-    echo " ${cmd}"
-    return
+    echo " ${cmd}"
+    exit 0
 fi
 
-gitdir=$(git rev-parse --abbrev-ref=loose HEAD 2> /dev/null)
-if [ -n "${gitdir}" ]; then
-    echo " $(basename ${dirpath})"
+cd ${dirpath}
+echostr=""
+gitdir=$(git rev-parse --show-toplevel 2> /dev/null)
+if [ "0" -eq "${?}" ]; then
+    echostr="${echostr} $(basename ${gitdir})"
 else
-    echo " $(basename ${dirpath})"
+    echostr="${echostr} $(basename ${dirpath})"
 fi
 
-
+echo ${echostr}
