@@ -42,7 +42,7 @@ let g:ale_fixers = {
 
 " " gometalinter
 " let g:ale_go_gometalinter_options = '--fast --vendor --disable-all --enable=golint --enable=vet --enable=gofmt --enable=errcheck --enable=goconst --enable=goimports --enable=megacheck'
-let g:ale_go_golangci_lint_options = '--disable-all --presets=bugs'
+let g:ale_go_golangci_lint_options = '--disable-all --presets=bugs --disable typecheck'
 
 " Python fixer
 let g:ale_python_flake8_executable = fnamemodify(g:python_host_prog, ':h') . '/' . 'flake8'
