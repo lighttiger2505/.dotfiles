@@ -203,17 +203,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'lighttiger2505/lab.vim'
-on_cmd = [
-    'LabBrowse',
-    'LabBrowseFile',
-]
-hook_add = '''
-    nnoremap <Leader>ab :<C-u>LabBrowse<CR>
-    nnoremap <Leader>af :<C-u>LabBrowseFile<CR>
-'''
-
-[[plugins]]
 repo = 'lighttiger2505/liary.vim'
 on_cmd = [
     'Liary',
@@ -221,16 +210,6 @@ on_cmd = [
     'LiaryVSplit',
     'LiaryTab',
 ]
-
-[[plugins]]
-repo = 'echuraev/translate-shell.vim'
-on_cmd = ['Trans', 'TransVisual']
-hook_add = '''
-nnoremap <silent> <leader>se :Trans :en+ja<CR>
-vnoremap <silent> <leader>se :Trans :en+ja<CR>
-nnoremap <silent> <leader>sj :Trans :ja+en<CR>
-vnoremap <silent> <leader>sj :Trans :ja+en<CR>
-'''
 
 [[plugins]]
 repo = 'rhysd/vim-grammarous'
