@@ -46,8 +46,8 @@ augroup GoLspCommands
     " TODO 
     " start golsp when enter python file
     autocmd BufWinEnter *.go :call lsp#enable()
-    " auto formatting before save
-    autocmd BufWritePre *.go LspDocumentFormatSync
+    " " auto formatting before save
+    " autocmd BufWritePre *.go LspDocumentFormatSync
     " local key mapping
     autocmd FileType go nnoremap <C-]> :<C-u>LspDefinition<CR>
     autocmd FileType go nnoremap K :<C-u>LspHover<CR>
