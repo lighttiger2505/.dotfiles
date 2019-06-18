@@ -22,14 +22,7 @@ repo = 'mhinz/vim-signify'
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
-hook_add = '''
-    nmap [gina] <Nop>
-    map <leader>g [gina]
-
-    nnoremap <silent> [gina]s :<C-u>Gina status --opener=vsplit<CR>
-    nnoremap <silent> [gina]d :<C-u>Gina compare --opener=vsplit<CR>
-    nnoremap <silent> [gina]l :<C-u>Gina blame<CR>
-'''
+hook_add = 'source ~/.vim/rc/plugins/gina.rc.vim'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
