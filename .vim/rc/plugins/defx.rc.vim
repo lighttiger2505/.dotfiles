@@ -25,6 +25,8 @@ call defx#custom#column('mark', {
 function! s:defx_my_settings() abort
     " Define mappings
     nnoremap <silent><buffer><expr> <CR>
+    \ defx#is_directory() ?
+    \ defx#do_action('open_or_close_tree') :
     \ defx#do_action('drop')
     nnoremap <silent><buffer><expr> c
     \ defx#do_action('copy')
@@ -33,11 +35,13 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> p
     \ defx#do_action('paste')
     nnoremap <silent><buffer><expr> l
+    \ defx#is_directory() ?
+    \ defx#do_action('open_or_close_tree') :
     \ defx#do_action('drop')
-    nnoremap <silent><buffer><expr> E
-    \ defx#do_action('open', 'vsplit')
-    nnoremap <silent><buffer><expr> P
-    \ defx#do_action('open', 'pedit')
+    " nnoremap <silent><buffer><expr> E
+    "\ defx#do_action('open', 'vsplit')
+    " nnoremap <silent><buffer><expr> P
+    "\ defx#do_action('open', 'pedit')
     nnoremap <silent><buffer><expr> o
     \ defx#do_action('open_or_close_tree')
     nnoremap <silent><buffer><expr> K

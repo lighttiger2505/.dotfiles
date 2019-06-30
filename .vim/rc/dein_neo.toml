@@ -53,7 +53,7 @@ on_cmd = 'Defx'
 hook_add = '''
 " Show defx project explorer style
 nnoremap <silent> <Leader>t :<C-u>Defx -split=vertical -winwidth=50 -direction=topleft -ignored-files='.git' -toggle -resume<CR>
-nnoremap <silent> <Leader>f :<C-u>Defx -ignored-files='.git' `expand("%:h")`<CR>
+nnoremap <silent> <Leader>f :<C-u>Defx -ignored-files='.git' -new -search=`expand('%:p')` `expand('%:p:h')`<CR>
 '''
 hook_source = 'source ~/.vim/rc/plugins/defx.rc.vim'
 
