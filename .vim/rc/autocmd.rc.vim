@@ -61,6 +61,11 @@ if has('nvim')
     augroup END
 endif
 
+augroup OpenLargeFile
+    autocmd!
+    autocmd BufReadPre * if getfsize(expand("%")) > 10000000 | syntax off | endif
+augroup END
+
 " augroup TransparentBG
 "     autocmd!
 "     autocmd Colorscheme * highlight Normal ctermbg=none
