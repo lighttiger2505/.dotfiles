@@ -1,8 +1,12 @@
-g:LanguageClient_diagnosticsDisplay = {}
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_selectionUI = "fzf"
+let g:LanguageClient_diagnosticsList = "Disabled"
+let g:LanguageClient_useVirtualText = 1
+let g:LanguageClient_useFloatingHover = 1
 
-let s:pyls_path = fnamemodify(g:python_host_prog, ':h') . '/'. 'pyls'
+let s:pyls_path = fnamemodify(g:python3_host_prog, ':h') . '/'. 'pyls'
 let g:LanguageClient_serverCommands = {
-    \ 'go': ['bingo', '-disable-func-snippet', '-mode', 'stdio'],
+    \ 'go': ['gopls', '-mode', 'stdio'],
     \ 'python': [s:pyls_path],
     \ }
 
@@ -12,5 +16,12 @@ augroup GoLspCommands
     autocmd FileType go nnoremap K :<C-u>call LanguageClient#textDocument_hover()<CR>
     autocmd FileType go nnoremap <LocalLeader>R :<C-u>LanguageClient#textDocument_rename()<CR>
     autocmd FileType go nnoremap <LocalLeader>n :<C-u>LanguageClient#textDocument_references()<CR>
-    " autocmd FileType go nnoremap <LocalLeader>d :<C-u>LspDocumentDiagnostics<CR>
+augroup END
+
+augroup PythonLspCommands
+    autocmd!
+    autocmd FileType python nnoremap <C-]> :<C-u>call LanguageClient#textDocument_definition()<CR>
+    autocmd FileType python nnoremap K :<C-u>call LanguageClient#textDocument_hover()<CR>
+    autocmd FileType python nnoremap <LocalLeader>R :<C-u>LanguageClient#textDocument_rename()<CR>
+    autocmd FileType python nnoremap <LocalLeader>n :<C-u>LanguageClient#textDocument_references()<CR>
 augroup END
