@@ -27,7 +27,7 @@ floating_modifier $sup
 bindsym $sup+Return exec i3-sensible-terminal
 
 # start a browser
-bindsym $sup+Shift+Return exec google-chrome-stable
+bindsym $sup+Shift+Return exec google-chrome-stable --disable-gpu --disable-software-rasterizer
 
 bindsym $sup+Ctrl+l exec dm-tool lock
 
