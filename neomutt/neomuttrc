@@ -1,0 +1,173 @@
+#------------------------------------------------------------
+# Account Settings
+#------------------------------------------------------------
+
+# Folder hooks
+folder-hook 'work' 'source $HOME/.config/neomutt/work'
+folder-hook 'personal' 'source $HOME/.config/neomutt/personal'
+
+# Default account
+source $HOME/.config/neomutt/work
+
+# Macros for switching accounts
+bind  index 1 noop
+bind  index 2 noop
+macro index 1 '<sync-mailbox><enter-command>source $HOME/.config/neomutt/work<enter><change-folder>!<enter>'
+macro index 2 '<sync-mailbox><enter-command>source $HOME/.config/neomutt/personal<enter><change-folder>!<enter>'
+
+#------------------------------------------------------------
+# Options
+#------------------------------------------------------------
+
+# set sidebar_visible
+# set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+# set mail_check_stats
+
+set use_from = yes
+
+set sort = 'threads'
+set sort_aux = 'reverse-last-date-received'
+
+set pager_stop = yes
+set auto_tag = yes
+set pager_index_lines=8
+
+set ssl_force_tls = yes
+set ssl_starttls = yes
+
+set editor="vim"
+# set move = no
+# set include
+
+#------------------------------------------------------------
+# Vim Key Bindings
+#------------------------------------------------------------
+
+# Moving around
+bind attach,browser,index       g   noop
+bind attach,browser,index       gg  first-entry
+bind attach,browser,index       G   last-entry
+bind pager                      g   noop
+bind pager                      gg  top
+bind pager                      G   bottom
+bind pager                      k   previous-line
+bind pager                      j   next-line
+
+# Scrolling
+bind attach,browser,pager,index \cf next-page
+bind attach,browser,pager,index \cb previous-page
+bind attach,browser,pager,index \cu half-up
+bind attach,browser,pager,index \cd half-down
+
+# Delete
+bind index                      J   toggle-new
+bind pager,index                d   noop
+bind pager,index                dd  delete-message
+bind pager,index                u   undelete-message
+
+# Threads
+bind browser,pager,index        N   search-opposite
+# bind pager,index                dT  delete-thread
+# bind pager,index                dt  delete-subthread
+bind pager,index                gt  next-thread
+bind pager,index                gT  previous-thread
+# bind index                      za  collapse-thread
+# bind index                      zA  collapse-all # Missing :folddisable/foldenable
+
+macro pager b <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+
+# REGEXP (((http|https|ftp|gopher)|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]
+# COMMAND <your-browser> %s
+
+#------------------------------------------------------------
+# Color
+#------------------------------------------------------------
+
+# basic colors ---------------------------------------------------------
+
+color normal        color241        color234
+color error         color160        color234
+color tilde         color235        color234
+color message       color37         color234
+color markers       color160        color254
+color attachment    color254        color234
+color search        color61         color234
+color status        color241        color235
+color indicator     color255        color13
+color tree          color13        color255
+
+# basic monocolor screen
+mono  bold          bold
+mono  underline     underline
+mono  indicator     reverse
+mono  error         bold
+
+# index ----------------------------------------------------------------
+color index         color160        color234        "~A"                        # all messages
+color index         color166        color234        "~E"                        # expired messages
+color index         color33         color234        "~N"                        # new messages
+color index         color33         color234        "~O"                        # old messages
+color index         color61         color234        "~Q"                        # messages that have been replied to
+color index         color240        color234        "~R"                        # read messages
+color index         color33         color234        "~U"                        # unread messages
+color index         color33         color234        "~U~$"                      # unread, unreferenced messages
+color index         color241        color234        "~v"                        # messages part of a collapsed thread
+color index         color241        color234        "~P"                        # messages from me
+color index         color37         color234        "~p!~F"                     # messages to me
+color index         color37         color234        "~N~p!~F"                   # new messages to me
+color index         color37         color234        "~U~p!~F"                   # unread messages to me
+color index         color240        color234        "~R~p!~F"                   # messages to me
+color index         color160        color234        "~F"                        # flagged messages
+color index         color160        color234        "~F~p"                      # flagged messages to me
+color index         color160        color234        "~N~F"                      # new flagged messages
+color index         color160        color234        "~N~F~p"                    # new flagged messages to me
+color index         color160        color234        "~U~F~p"                    # new flagged messages to me
+color index         color235        color160        "~D"                        # deleted messages
+color index         color245        color234        "~v~(!~N)"                  # collapsed thread with no unread
+color index         color136        color234        "~v~(~N)"                   # collapsed thread with some unread
+color index         color64         color234        "~N~v~(~N)"                 # collapsed thread with unread parent
+
+# statusbg used to indicated flagged when foreground color shows other status
+# for collapsed thread
+color index         color160        color235        "~v~(~F)!~N"                # collapsed thread with flagged, no unread
+color index         color136        color235        "~v~(~F~N)"                 # collapsed thread with some unread & flagged
+color index         color64         color235        "~N~v~(~F~N)"               # collapsed thread with unread parent & flagged
+color index         color64         color235        "~N~v~(~F)"                 # collapsed thread with unread parent, no unread inside, but some flagged
+color index         color37         color235        "~v~(~p)"                   # collapsed thread with unread parent, no unread inside, some to me directly
+color index         color136        color160        "~v~(~D)"                   # thread with deleted (doesn't differentiate between all or partial)
+
+# message headers ------------------------------------------------------
+
+color hdrdefault    color240        color234
+color header        color241        color234        "^(From)"
+color header        color33         color234        "^(Subject)"
+
+# body -----------------------------------------------------------------
+
+color quoted        color33         color234
+color quoted1       color37         color234
+color quoted2       color136        color234
+color quoted3       color160        color234
+color quoted4       color166        color234
+
+color signature     color240        color234
+color bold          color235        color234
+color underline     color235        color234
+color normal        color255        color234
+#
+color body          color245        color234        "[;:][-o][)/(|]"    # emoticons
+color body          color245        color234        "[;:][)(|]"         # emoticons
+color body          color245        color234        "[*]?((N)?ACK|CU|LOL|SCNR|BRB|BTW|CWYL|\
+                                                     |FWIW|vbg|GD&R|HTH|HTHBE|IMHO|IMNSHO|\
+                                                     |IRL|RTFM|ROTFL|ROFL|YMMV)[*]?"
+color body          color245        color234        "[ ][*][^*]*[*][ ]?" # more emoticon?
+color body          color245        color234        "[ ]?[*][^*]*[*][ ]" # more emoticon?
+
+## pgp
+color body          color160        color234        "(BAD signature)"
+color body          color37         color234        "(Good signature)"
+color body          color234        color234        "^gpg: Good signature .*"
+color body          color241        color234        "^gpg: "
+color body          color241        color160        "^gpg: BAD signature from.*"
+mono  body          bold                            "^gpg: Good signature"
+mono  body          bold                            "^gpg: BAD signature from.*"
