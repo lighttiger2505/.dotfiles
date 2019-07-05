@@ -292,7 +292,10 @@ alias li='liary'
 alias cdl='cd `liary config --get diarydir`'
 
 # Open todo file
-alias todo='vim ~/.config/todo/todo.md'
+WORK_TODO_PATH="${HOME}/.config/todo/work"
+alias todow='vim -o ${WORK_TODO_PATH}/front_burner.md ${WORK_TODO_PATH}/back_burner.md ${WORK_TODO_PATH}/kitchen_sink.md -c "wincmd H"'
+WORK_PRIVATE_PATH="${HOME}/.config/todo/personal/"
+alias todop='vim -o ${WORK_PRIVATE_PATH}/front_burner.md ${WORK_PRIVATE_PATH}/back_burner.md ${WORK_PRIVATE_PATH}/kitchen_sink.md -c "wincmd H"'
 
 # Benchmark
 alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
