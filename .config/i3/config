@@ -217,7 +217,8 @@ bindsym $sup+n workspace next
 
 # move workspace up and down to monitor
 bindsym $sup+m move workspace to output up
-bindsym $sup+shift+m move workspace to output down
+# bindsym $sup+shift+m move workspace to output down
+bindsym $sup+Shift+m exec --no-startup-id arandr
 
 # switch between the current and the previously focused one
 bindsym $sup+Tab workspace back_and_forth
