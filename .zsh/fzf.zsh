@@ -12,7 +12,6 @@ function cd-fzf-ghqlist() {
     zle accept-line
 }
 zle -N cd-fzf-ghqlist
-bindkey '^G' cd-fzf-ghqlist
 
 # Checkout git branch (including remote branches)
 function checkout-fzf-gitbranch() {
@@ -23,7 +22,6 @@ function checkout-fzf-gitbranch() {
     zle accept-line
 }
 zle -N checkout-fzf-gitbranch
-bindkey '^O' checkout-fzf-gitbranch
 
 # Set prompt command history
 function buffer-fzf-history() {
@@ -36,8 +34,6 @@ function buffer-fzf-history() {
     fi
 }
 zle -N buffer-fzf-history
-bindkey '^R' buffer-fzf-history
-
 
 # ssh selected host
 function ssh-fzf-sshconfig() {
@@ -56,4 +52,3 @@ function ssh-fzf-sshconfig() {
     zle accept-line
 }
 zle -N ssh-fzf-sshconfig
-bindkey '^\' ssh-fzf-sshconfig
