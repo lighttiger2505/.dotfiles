@@ -12,7 +12,6 @@ alias ....='cd ../../..'
 alias c="cd ~/"
 alias d="cd ~/.dotfiles"
 alias ed="vim ~/.vimrc"
-alias ran="ranger"
 
 alias pd="pwd | pbcopy"
 alias untar='tar -zxvf'
@@ -357,3 +356,20 @@ gcloud-compute-ssh() {
     fi
 }
 alias gcssh=gcloud-compute-ssh
+
+#####################################################################
+# ranger
+#####################################################################
+
+# Move directory when exiting with ranger
+function ranger-cd {
+    tempfile="$(mktemp -t tmp.XXXXXX)"
+    ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" &&
+    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        cd -- "$(cat "$tempfile")"
+    fi
+    rm -f -- "$tempfile"
+}
+alias ranger=ranger-cd
+alias ran=ranger
