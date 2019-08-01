@@ -81,6 +81,9 @@ nnoremap <silent> <LocalLeader> :WhichKey '<LocalLeader>'<CR>
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 hook_add = '''
+let g:polyglot_disabled = ['csv']
+
+" markdown https://github.com/plasticboy/vim-markdown
 let g:vim_markdown_conceal = 0
 '''
 
