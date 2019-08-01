@@ -85,6 +85,11 @@ let g:polyglot_disabled = ['csv']
 
 " markdown https://github.com/plasticboy/vim-markdown
 let g:vim_markdown_conceal = 0
+
+" terraform https://github.com/hashivim/vim-terraform
+let g:terraform_align=0
+let g:terraform_fold_sections=0
+let g:terraform_fmt_on_save=0
 '''
 
 [[plugins]]
