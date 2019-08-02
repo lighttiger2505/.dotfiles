@@ -83,19 +83,7 @@ on_ft = [
     'ansible',
     'json',
 ]
-hook_source = '''
-    source ~/.vim/rc/plugins/ale.rc.vim
-'''
-
-[[plugins]]
-repo = 'majutsushi/tagbar'
-on_cmd = ['TagbarToggle']
-hook_add = '''
-    nnoremap <Leader>o :<C-u>TagbarToggle<CR>
-    let g:tagbar_sort = 0
-    let g:tagbar_case_insensitive = 1
-    let g:tagbar_compact = 1
-'''
+hook_source = 'source ~/.vim/rc/plugins/ale.rc.vim'
 
 [[plugins]]
 repo = 'liuchengxu/vista.vim'
