@@ -4,6 +4,7 @@ let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_diagnosticsList = "Disabled"
 let g:LanguageClient_useVirtualText = 0
 let g:LanguageClient_useFloatingHover = 1
+let g:LanguageClient_settingsPath = $HOME . '/.vim/files/lssettings.json'
 
 let s:pyls_path = fnamemodify(g:python3_host_prog, ':h') . '/'. 'pyls'
 let g:LanguageClient_serverCommands = {
