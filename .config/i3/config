@@ -288,5 +288,5 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym XF86Sleep exec --no-startup-id systemctl suspend
 
 # Screen Shot
-# bindsym Print exec --no-startup-id import -window root ~/screenshot/`date "+%y-%m-%d-%H%M%S"`.jpg
-bindsym Print exec --no-startup-id deepin-screenshot -s ~/screenshot/`date "+%y-%m-%d-%H%M%S"`.jpg
+bindsym Print exec --no-startup-id deepin-screenshot --fullscreen -s ~/screenshot/`date "+%y-%m-%d-%H%M%S"`.jpg
+bindsym Ctrl+Print exec --no-startup-id deepin-screenshot -s ~/screenshot/`date "+%y-%m-%d-%H%M%S"`.jpg
