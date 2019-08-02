@@ -373,3 +373,16 @@ function ranger-cd {
 }
 alias ranger=ranger-cd
 alias ran=ranger
+
+#####################################################################
+# go module
+#####################################################################
+
+# Move directory when exiting with ranger
+function change_go_module {
+    local GOMOD=$(echo "on\noff\nauto" | fzf +m)
+    if [ -n "${GOMOD}" ]; then
+        export export GO111MODULE=${GOMOD}
+    fi
+}
+alias cgom=change_go_module
