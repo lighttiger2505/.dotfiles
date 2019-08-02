@@ -1,7 +1,8 @@
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_selectionUI = "fzf"
+let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_diagnosticsList = "Disabled"
-let g:LanguageClient_useVirtualText = 1
+let g:LanguageClient_useVirtualText = 0
 let g:LanguageClient_useFloatingHover = 1
 
 let s:pyls_path = fnamemodify(g:python3_host_prog, ':h') . '/'. 'pyls'
