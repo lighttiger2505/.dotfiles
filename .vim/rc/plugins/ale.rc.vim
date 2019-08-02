@@ -24,7 +24,7 @@ let g:ale_statusline_format = ['%d Error', '%d Warn', 'OK']
 " Enable linter
 let g:ale_linters = {
     \ 'go': [],
-    \ 'python': [],
+    \ 'python': ['flake8'],
     \ 'javascript': ['jslint', 'eslint'],
     \ 'markdown': ['mdl'],
     \ 'make': ['checkmake'],
@@ -35,14 +35,18 @@ let g:ale_linters = {
     \ 'json': ['jq'],
     \ }
 
+let g:ale_fixers = {
+    \ 'python': ['autopep8', 'yapf', 'isort'],
+    \ }
+
 " gometalinter
 let g:ale_go_golangci_lint_options = '--disable-all --presets=bugs --disable typecheck'
 
 " Python fixer
-let g:ale_python_flake8_executable = fnamemodify(g:python_host_prog, ':h') . '/' . 'flake8'
-let g:ale_python_autopep8_executable = fnamemodify(g:python_host_prog, ':h') . '/'. 'autopep8'
-let g:ale_python_isort_executable = fnamemodify(g:python_host_prog, ':h') . '/'. 'isort'
-let g:ale_python_yapf_executable = fnamemodify(g:python_host_prog, ':h') . '/'. 'yapf'
+let g:ale_python_flake8_executable = fnamemodify(g:python3_host_prog, ':h') . '/' . 'flake8'
+let g:ale_python_autopep8_executable = fnamemodify(g:python3_host_prog, ':h') . '/'. 'autopep8'
+let g:ale_python_isort_executable = fnamemodify(g:python3_host_prog, ':h') . '/'. 'isort'
+let g:ale_python_yapf_executable = fnamemodify(g:python3_host_prog, ':h') . '/'. 'yapf'
 let g:ale_ansible_ansible_lint_executable = fnamemodify(g:python3_host_prog, ':h') . '/'. 'ansible-lint'
 
 " vint
