@@ -87,8 +87,7 @@ exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
 exec --no-startup-id dropbox
-exec --no-startup-id compton -CGb --config ~/.config/compton.conf
-
+exec --no-startup-id compton -CGb --config ~/.config/compton/compton.conf
 
 # Set wall paper randomize
 exec --no-startup-id ~/.config/i3/random_wallpaper.sh
