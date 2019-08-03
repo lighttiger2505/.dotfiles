@@ -1,10 +1,13 @@
 #####################################################################
+# Utility functions
+#####################################################################
+executable() {
+    type "$1" &> /dev/null ;
+}
+
+#####################################################################
 # Utils
 #####################################################################
-# ls util
-alias ll="ls -al"
-alias lr="ls -ltr"
-
 # cd util
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -18,22 +21,49 @@ alias untar='tar -zxvf'
 alias gip='curl inet-ip.info'
 alias pass='cat ~/.dotiridge/password/passwd'
 
+# Move to the selected directory from the results of find
 cd-fzf-find() {
     local dir
-    DIR=$(find ./ -path '*/\.*' -name .git -prune -o -type d -print 2> /dev/null | fzf +m)
+    DIR=$(find ./ -path '*/\.*' -name .git -prune -o -type d -print 2> /dev/null | fzf +m --preview 'ls -al {}')
     if [ -n "$DIR" ]; then
         cd $DIR
     fi
 }
 alias fd=cd-fzf-find
 
+# Open the selected file from the result of find in Vim
 vim-fzf-find() {
-    local FILE=$(find ./ -path '*/\.*' -name .git -prune -o -type f -print 2> /dev/null | fzf +m)
+    local FILE=$(find ./ -path '*/\.*' -name .git -prune -o -type f -print 2> /dev/null | fzf +m --preview 'cat {}')
     if [ -n "$FILE" ]; then
         ${EDITOR:-vim} $FILE
     fi
 }
 alias fv=vim-fzf-find
+
+#####################################################################
+# Replace lagasy command
+#####################################################################
+
+# cat to bat
+if executable bat; then
+    alias cat=bat
+fi
+
+# ls to exa
+if executable exa; then
+    alias ls=exa
+    # show list all files
+    alias ll="ls --long --all"
+    # show list order by newer files
+    alias lr="ls --long --all --sort=modified"
+    # show tree all files
+    alias lt="ls --long --all --tree"
+else
+    # show list all files
+    alias ll="ls -al"
+    # show list order by newer files
+    alias lr="ls -ltr"
+fi
 
 #####################################################################
 # Git
