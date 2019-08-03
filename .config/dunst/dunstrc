@@ -3,16 +3,16 @@
 [global]
     monitor = 0
     follow = keyboard
-    geometry = "350x5-0+24"
+    geometry = "350x50-15+49"
     indicate_hidden = yes
     shrink = yes
-    transparency = 20
+    transparency = 5
     notification_height = 0
     separator_height = 2
-    padding = 0
-    horizontal_padding = 8
+    padding = 6
+    horizontal_padding = 6
     frame_width = 3
-    frame_color = "#282828"
+    frame_color = "#8EC07C"
 
     # Define a color for the separator.
     # possible values are:
@@ -29,6 +29,7 @@
     font = Monospace 14
     line_height = 0
     markup = full
+    plain_text = no
 
     # The format of the message.  Possible variables are:
     #   %a  appname
@@ -69,27 +70,38 @@
     per_monitor_dpi = false
 
 [shortcuts]
+    # Close notification.
     close = ctrl+space
+
+    # Close all notifications.
     close_all = ctrl+shift+space
+
+    # Redisplay last message(s).
+    # On the US keyboard layout "grave" is normally above TAB and left
+    # of "1".
     history = ctrl+grave
+
+    # Context menu.
     context = ctrl+shift+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#282828"
-    foreground = "#928374"
+    frame_color = "#3B7C87"
+    foreground = "#3B7C87"
+    background = "#191311"
     timeout = 30
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#458588"
-    foreground = "#ebdbb2"
+    frame_color = "#5B8234"
+    foreground = "#5B8234"
+    background = "#191311"
     timeout = 60
 
 [urgency_critical]
-    background = "#cc2421"
-    foreground = "#ebdbb2"
-    frame_color = "#fabd2f"
+    frame_color = "#B7472A"
+    foreground = "#B7472A"
+    background = "#191311"
     timeout = 0
