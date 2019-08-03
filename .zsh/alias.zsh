@@ -8,6 +8,10 @@ executable() {
 #####################################################################
 # Utils
 #####################################################################
+
+# Alias reminder
+alias fal='alias| sed "s/=/\t/" | fzf'
+
 # cd util
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -112,8 +116,6 @@ alias zs="source ~/.zshrc"
 
 # zshrc load benchmark
 alias zb="time ( zsh -i -c exit; )"
-
-alias al="alacritty"
 
 #####################################################################
 # Vim
