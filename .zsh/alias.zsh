@@ -24,7 +24,7 @@ alias pass='cat ~/.dotiridge/password/passwd'
 # Move to the selected directory from the results of find
 cd-fzf-find() {
     local dir
-    DIR=$(find ./ -path '*/\.*' -name .git -prune -o -type d -print 2> /dev/null | fzf +m --preview 'ls -al {}')
+    DIR=$(find ./ -path '*/\.*' -name .git -prune -o -type d -print 2> /dev/null | fzf +m --ansi --preview 'ls -al --color=always {}')
     if [ -n "$DIR" ]; then
         cd $DIR
     fi
@@ -33,7 +33,7 @@ alias fd=cd-fzf-find
 
 # Open the selected file from the result of find in Vim
 vim-fzf-find() {
-    local FILE=$(find ./ -path '*/\.*' -name .git -prune -o -type f -print 2> /dev/null | fzf +m --preview 'cat {}')
+    local FILE=$(find ./ -path '*/\.*' -name .git -prune -o -type f -print 2> /dev/null | fzf +m --ansi --preview 'cat {}')
     if [ -n "$FILE" ]; then
         ${EDITOR:-vim} $FILE
     fi
@@ -68,7 +68,7 @@ if executable exa; then
     # show list order by newer files
     alias lr="ls --long --all --sort=modified"
     # show tree all files
-    alias lt="ls --long --all --tree"
+    alias lt="ls --long --all --tree --color=always | less"
 else
     # show list all files
     alias ll="ls -al"
