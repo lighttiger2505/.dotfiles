@@ -1,3 +1,20 @@
+# Appearance options
+set id-width = 8
+set blame-options = -C -C -C
+# set horizontal-scroll = 33%
+set show-notes = yes
+set show-changes = yes
+set vertical-split = no
+set split-view-height = 80%
+set status-show-untracked-dirs = yes
+set tab-size = 2
+set diff-context = 3
+set ignore-space = some
+set commit-order = topo
+set ignore-case = yes
+set wrap-lines = yes
+set focus-child = yes
+
 # Show commit ID in left of main view
 set main-view = id date author:email-user commit-title:graph=yes,refs=yes
 
