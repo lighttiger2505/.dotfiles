@@ -53,7 +53,7 @@ augroup GoLspCommands
     autocmd FileType go nnoremap K :<C-u>LspHover<CR>
     autocmd FileType go nnoremap <LocalLeader>R :<C-u>LspRename<CR>
     autocmd FileType go nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
-    autocmd FileType go nnoremap <LocalLeader>d :<C-u>LspDocumentDiagnostics<CR>
+    autocmd FileType go nnoremap <LocalLeader>f :<C-u>LspDocumentDiagnostics<CR>
     autocmd FileType go setlocal omnifunc=lsp#complete
 augroup END
 
@@ -67,7 +67,7 @@ augroup PylsCommands
     autocmd FileType python nnoremap K :<C-u>LspHover<CR>
     autocmd FileType python nnoremap <LocalLeader>R :<C-u>LspRename<CR>
     autocmd FileType python nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
-    autocmd FileType python nnoremap <LocalLeader>d :<C-u>LspDocumentDiagnostics<CR>
+    autocmd FileType python nnoremap <LocalLeader>f :<C-u>LspDocumentDiagnostics<CR>
     autocmd FileType go setlocal omnifunc=lsp#complete
 augroup END
 
@@ -83,6 +83,6 @@ augroup TypescriptLspCommands
     autocmd FileType typescript nnoremap K :<C-u>LspHover<CR>
     autocmd FileType typescript nnoremap <LocalLeader>R :<C-u>LspRename<CR>
     autocmd FileType typescript nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
-    autocmd FileType typescript nnoremap <LocalLeader>d :<C-u>LspDocumentDiagnostics<CR>
+    autocmd FileType typescript nnoremap <LocalLeader>f :<C-u>LspDocumentDiagnostics<CR>
     autocmd FileType typescript setlocal omnifunc=lsp#complete
 augroup END
