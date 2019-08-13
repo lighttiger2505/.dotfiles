@@ -7,14 +7,23 @@ let g:lsp_signs_warning = {'text': '=='}
 let g:lsp_signs_hint = {'text': '??'}
 
 if (executable('pyls'))
-    let s:pyls_path = fnamemodify(g:python_host_prog, ':h') . '/'. 'pyls'
+    let s:pyls_path = fnamemodify(g:python3_host_prog, ':h') . '/'. 'pyls'
+    let s:pyls_config = {'pyls': {'plugins': {
+    \   'pycodestyle': {'enabled': v:false},
+    \   'pydocstyle': {'enabled': v:false},
+    \   'jedi_definition': {
+    \     'follow_imports': v:true,
+    \     'follow_builtin_imports': v:true,
+    \   },
+    \ }}}
     augroup LspPython
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
             \ 'name': 'pyls',
-            \ 'cmd': {server_info->[expand(s:pyls_path)]},
-            \ 'whitelist': ['python']
-            \ })
+            \ 'cmd': { server_info -> [s:pyls_path] },
+            \ 'whitelist': ['python'],
+            \ 'workspace_config': s:pyls_config
+            \})
     augroup END
 endif
 
