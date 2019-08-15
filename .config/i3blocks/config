@@ -30,7 +30,7 @@ interval=1
 
 [lightness]
 label= Light:
-command=xbacklight -get | xargs printf '%.0f%%'
+command=light -G | xargs printf '%.0f%%'
 color=#e2a478
 interval=1
 signal=2
