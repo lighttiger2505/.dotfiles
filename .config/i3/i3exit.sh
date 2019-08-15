@@ -6,7 +6,7 @@
 
 case "$1" in
     lock)
-        dm-tool lock
+        ~/.config/i3/i3lock.sh
         ;;
     logout)
         i3-msg exit

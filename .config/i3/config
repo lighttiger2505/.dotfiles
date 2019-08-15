@@ -29,8 +29,6 @@ bindsym $sup+Return exec i3-sensible-terminal
 # start a browser
 bindsym $sup+Shift+Return exec google-chrome-stable
 
-bindsym $sup+Ctrl+l exec dm-tool lock
-
 # kill focused window
 bindsym $sup+q kill
 
@@ -71,6 +69,9 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $sup+Ctrl+i mode "$mode_system"
+
+# Lock screen shortcut
+bindsym $sup+Ctrl+l exec ~/.config/i3/i3lock.sh
 
 # ------------------------------------------------------------
 # Dropdown Windows
