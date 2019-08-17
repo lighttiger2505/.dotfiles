@@ -1,4 +1,4 @@
 #!/bin/sh
 # /usr/bin/i3lock
 
-i3lock -i ~/.config/wallpapers/black-and-white-eagle-arch.png
+i3lock -t -i ~/.config/i3/lock-cat.png -c 282828
