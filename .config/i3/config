@@ -93,6 +93,9 @@ exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 # Set wall paper randomize
 exec --no-startup-id ~/.config/i3/random_wallpaper.sh
 
+# Autolock
+exec --no-startup-id xautolock -detectsleep -time 30 -locker ~/.config/i3/i3lock.sh
+
 # ------------------------------------------------------------
 # Status Bar Bettings
 # ------------------------------------------------------------
