@@ -1,4 +1,4 @@
-#!/usr/bin/bash -x
+#!/usr/bin/bash
 
 # SSID
 SSID_NAME=$(iwgetid -r)
