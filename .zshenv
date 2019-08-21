@@ -23,6 +23,8 @@ export XDG_CONGIG_HOME=~/.config
 export EDITOR=nvim
 # enhancd disable fzf-tmux
 export ENHANCD_FILTER=fzf
+# defaut terminal is alacritty
+export TERMINAL=alacritty
 
 # Path/Valiables
 typeset -U path
