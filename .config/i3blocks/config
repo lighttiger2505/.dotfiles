@@ -1,3 +1,9 @@
+[focused window]
+command=xtitle -s
+interval=persist
+align=left
+min_width=500
+
 [date]
 label= Date:
 command=date +'%m/%d %H:%M'
