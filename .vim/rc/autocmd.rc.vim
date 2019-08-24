@@ -86,6 +86,6 @@ if has('nvim')
         autocmd!
         autocmd TermOpen * setlocal norelativenumber
         autocmd TermOpen * setlocal nonumber
-        autocmd TermClose * call timer_start(20, { -> s:afterTermClose() })
+        " autocmd TermClose * call timer_start(20, { -> s:afterTermClose() })
     augroup END
 endif
