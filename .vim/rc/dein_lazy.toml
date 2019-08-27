@@ -69,8 +69,8 @@ hook_source = 'source ~/.vim/rc/plugins/vimquickrun.rc.vim'
 [[plugins]]
 repo = 'w0rp/ale'
 on_ft = [
-    'go',
-    'python',
+    # 'go',
+    # 'python',
     'javascript',
     'html',
     'css',
