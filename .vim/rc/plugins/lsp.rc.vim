@@ -10,6 +10,7 @@ if (executable('pyls'))
     let s:pyls_config = {'pyls': {'plugins': {
     \   'pycodestyle': {'enabled': v:false},
     \   'pydocstyle': {'enabled': v:false},
+    \   'pylint': {'enabled': v:true},
     \   'jedi_definition': {
     \     'follow_imports': v:true,
     \     'follow_builtin_imports': v:true,
