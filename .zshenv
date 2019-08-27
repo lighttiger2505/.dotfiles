@@ -7,7 +7,7 @@ export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
 # golang
 export GOPATH=$HOME/dev
-export GO111MODULE=on
+export GO111MODULE=auto
 # anyenv
 export ANYENV_PATH=$HOME/.anyenv
 # pyenv
@@ -25,6 +25,10 @@ export EDITOR=nvim
 export ENHANCD_FILTER=fzf
 # defaut terminal is alacritty
 export TERMINAL=alacritty
+# # dolphin file explorer icon setting
+# [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
+# AWS profile
+AWS_DEFAULT_PROFILE=default
 
 # Path/Valiables
 typeset -U path
