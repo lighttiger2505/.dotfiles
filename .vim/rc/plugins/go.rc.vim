@@ -56,5 +56,4 @@ augroup GoCommands
     autocmd FileType go nmap <silent><LocalLeader>c  <Plug>(go-coverage-toggle)
     autocmd FileType go nmap <silent><LocalLeader>a  <Plug>(go-alternate-edit)
     autocmd FileType go nmap <silent><LocalLeader>e  <Plug>(go-iferr)
-    autocmd FileType go nmap <silent><LocalLeader>p  <Plug>(go-implements)
 augroup END

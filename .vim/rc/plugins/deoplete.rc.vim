@@ -17,7 +17,7 @@ call deoplete#custom#source('_', 'converters', [
 let g:deoplete#enable_at_startup = 1
 
 call deoplete#custom#option({
-\ 'min_pattern_length': 2,
+\ 'min_pattern_length': 1,
 \ 'auto_complete_delay': 0,
 \ 'auto_refresh_delay': 20,
 \ 'refresh_always': v:true,
