@@ -213,7 +213,7 @@ alias lbmfc=lab_browse_merge_request_all_created_me
 # aws profile select
 alias ap='export AWS_DEFAULT_PROFILE=`cat ~/.aws/credentials | grep -e "\[\(.*\)\]" | sed -e "s/\[//g" | sed -e "s/\]//g" | sort | fzf`'
 # aws ec2 ip list
-alias ec2='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | select(.Tags!=null) | [.InstanceId, .PublicIpAddress, .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][]] | @tsv " | sort -k3'
+alias ec2='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | select(.Tags!=null) | [.InstanceId, .InstanceType, .PublicIpAddress, .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][]] | @tsv " | sort -k3'
 alias ec2ac='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | select(.State.Name == \"running\") | select(.Tags!=null) | [.InstanceId, .PublicIpAddress, .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][]] | @tsv " | sort -k3'
 alias ec2st='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | select(.State.Name == \"stopped\") | select(.Tags!=null) | [.InstanceId, .PublicIpAddress, .PrivateIpAddress, [.Tags[] | select(.Key == \"Name\").Value][]] | @tsv " | sort -k3'
 alias ec2desc='aws ec2 describe-instances | jq -r ".Reservations[].Instances[] | select(.InstanceId==\"i-017b9946a248a7679\")"'
@@ -227,21 +227,14 @@ alias amis='aws ec2 describe-images --owners self amazon | jq -r ".Images[] | [.
 #####################################################################
 # awslogs
 #####################################################################
-awslogs-select() {
-    LOG_GROUP=`awslogs groups | fzf -m`
-    if [ -n "${LOG_GROUP}" ]; then
-        awslogs get ${LOG_GROUP}
-    fi
-}
-alias logs=awslogs-select
 
-awslogs-select-tail() {
-    LOG_GROUP=`awslogs groups | fzf -m`
+awslogs-select-and-tail() {
+    local LOG_GROUP=`awslogs groups | fzf -m`
     if [ -n "${LOG_GROUP}" ]; then
-        awslogs get ${LOG_GROUP} --watch
+        print -z "utern ${LOG_GROUP}"
     fi
 }
-alias logst=awslogs-select-tail
+alias logs=awslogs-select-and-tail
 
 #####################################################################
 # ecscli
