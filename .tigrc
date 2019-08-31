@@ -45,6 +45,9 @@ set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
 bind main R !git rebase -i %(commit)
 bind diff R !git rebase -i %(commit)
 
+# Refresh draw
+bind generic Ctrl-l refresh
+
 # Change commit diff color
 color diff-header white cyan
 color diff-chunk white magenta
