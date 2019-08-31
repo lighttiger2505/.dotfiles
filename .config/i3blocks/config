@@ -1,49 +1,49 @@
 [date]
-label= Date:
+label= 
 command=date +'%m/%d %H:%M'
 color=#d2d4de
 interval=1
 
 [uptime]
-label= Uptime:
+label= 
 command=uptime | sed 's/.*up \([^,]*\),.*/\1/'
 color=#d2d4de
 interval=60
 
 [cpu]
-label= CPU:
+label= 
 command=sensors | awk '/Core 0/ {print $3}'
 color=#e27878
 interval=1
 
 [memory]
-label= Mem:
+label= 
 command=free -h | awk '/^Mem:/ {print $3 "/" $2}'
 color=#e27878
 interval=1
 
 [network]
-label= Net:
+label= 
 command=~/.config/i3blocks/network.sh
 color=#b4be82
 interval=1
 
 [lightness]
-label= Light:
+label= 
 command=light -G | xargs printf '%.0f%%'
 color=#e2a478
 interval=1
 signal=2
 
 [volume]
-label= Vol:
+label= 
 command=~/.config/i3blocks/volume.sh
 color=#e2a478
 interval=1
 signal=1
 
 [battery]
-label= Bat:
+label= 
 command=~/.config/i3blocks/battery.sh BAT0
 color=#84a0c6
 interval=5
