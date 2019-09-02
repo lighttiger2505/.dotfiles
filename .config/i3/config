@@ -123,14 +123,12 @@ bar {
         background #282828
         statusline #ebdbb2
         separator #d5c4a1
-
         # bg4 blue bg
         focused_workspace  #7c6f63 #83a598 #282828
         # bg4 blue bg
-        active_workspace   #7c6f63 #83a598 #282828
+        active_workspace   #7c6f63 #928374 #282828
         # fg4 bg1 fg1
         inactive_workspace #a89984 #3c3836 #ebdbb2
-
         # bg4 yellow bg
         urgent_workspace   #7c6f63 #fabd2f #282828
         binding_mode       #7c6f63 #fabd2f #282828
