@@ -23,13 +23,13 @@ hook_add = '''
     map g# <Plug>(asterisk-gz#)
 '''
 
-[[plugins]]
-repo = 'Yggdroot/indentLine'
-on_cmd = ['IndentLinesToggle']
-hook_add = '''
-    let g:loaded_indentLine = 1
-    nnoremap <Space>i <C-u>:IndentLinesToggle<CR>
-'''
+# [[plugins]]
+# repo = 'Yggdroot/indentLine'
+# on_cmd = ['IndentLinesToggle']
+# hook_add = '''
+#     let g:loaded_indentLine = 1
+#     nnoremap <Space>i <C-u>:IndentLinesToggle<CR>
+# '''
 
 [[plugins]]
 repo = 'mattn/vim-sqlfmt'
