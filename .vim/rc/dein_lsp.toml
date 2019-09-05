@@ -4,7 +4,7 @@ repo = 'prabirshrestha/async.vim'
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 # if = "!has('nvim')"
-on_ft = ['python', 'go', 'typescript']
+on_ft = ['python', 'go', 'typescript', 'c', 'cpp']
 depends = ['async.vim', 'deoplete-vim-lsp']
 hook_source = '''
 source ~/.vim/rc/plugins/lsp.rc.vim

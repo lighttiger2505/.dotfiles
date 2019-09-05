@@ -56,11 +56,25 @@ if executable('typescript-language-server')
         augroup END
 endif
 
+if executable('clangd')
+    augroup LspClangd
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'clangd',
+            \ 'cmd': {server_info->['clangd', '-background-index']},
+            \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+            \ })
+        augroup END
+endif
+
 augroup LspEnable
     autocmd!
-    autocmd BufWinEnter *.go :call lsp#enable()
-    autocmd BufWinEnter *.py :call lsp#enable()
-    autocmd BufWinEnter *.ts :call lsp#enable()
+    autocmd BufWinEnter *.go  :call lsp#enable()
+    autocmd BufWinEnter *.py  :call lsp#enable()
+    autocmd BufWinEnter *.ts  :call lsp#enable()
+    autocmd BufWinEnter *.c   :call lsp#enable()
+    autocmd BufWinEnter *.h   :call lsp#enable()
+    autocmd BufWinEnter *.cpp :call lsp#enable()
 augroup END
 
 augroup LspAutoFormatting
@@ -77,3 +91,6 @@ nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
 nnoremap <LocalLeader>f :<C-u>LspDocumentDiagnostics<CR>
 nnoremap <LocalLeader>i :<C-u>LspImplementation<CR>
 set omnifunc=lsp#complete
+
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
