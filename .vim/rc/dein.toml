@@ -72,7 +72,8 @@ hook_add = '''
 [[plugins]]
 repo = 'liuchengxu/vim-which-key'
 hook_add = '''
-set timeoutlen=750
+set timeoutlen=500
+let g:which_key_vertical = 1
 nnoremap <silent> <Space>       :WhichKey '<Space>'<CR>
 nnoremap <silent> <Leader>      :WhichKey '<Leader>'<CR>
 nnoremap <silent> <LocalLeader> :WhichKey '<LocalLeader>'<CR>
