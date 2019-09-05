@@ -103,9 +103,9 @@ if = "!has('nvim')"
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
 hook_add = '''
-let g:suda_smart_edit = 1
-let g:suda#prefix = 'suda://'
-let g:suda#prefix = ['suda://', 'sudo://', '_://']
+" let g:suda_smart_edit = 1
+" let g:suda#prefix = 'suda://'
+" let g:suda#prefix = ['suda://', 'sudo://', '_://']
 '''
 
 [[plugins]]
