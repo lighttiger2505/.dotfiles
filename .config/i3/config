@@ -295,19 +295,19 @@ bindsym $sup+r mode "resize"
 # Volume Control
 # ------------------------------------------------------------
 # Mute
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+2 i3blocks
 # Volume up
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+2 i3blocks
 # Volume down
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+2 i3blocks
 
 # ------------------------------------------------------------
 # Brightness Control
 # ------------------------------------------------------------
 # increase screen brightness
-bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessUp exec light -A 5 && pkill -RTMIN+1 i3blocks
 # decrease screen brightness
-bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessDown exec light -U 5 && pkill -RTMIN+1 i3blocks
 
 # Sleep key
 bindsym XF86Sleep exec --no-startup-id systemctl suspend

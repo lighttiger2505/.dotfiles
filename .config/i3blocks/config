@@ -30,17 +30,17 @@ interval=1
 
 [lightness]
 label= 
-command=light -G | xargs printf '%.0f%%'
+command=light -G | xargs printf '%.0f%%\n'
 color=#e2a478
-interval=1
-signal=2
+interval=once
+signal=1
 
 [volume]
 label= 
 command=~/.config/i3blocks/volume.sh
 color=#e2a478
-interval=1
-signal=1
+interval=once
+signal=2
 
 [battery]
 label= 
