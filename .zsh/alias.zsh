@@ -45,8 +45,8 @@ vim-fzf-find() {
 alias fv=vim-fzf-find
 
 # less
-export PAGER=less
-export LESS='--hilite-search --ignore-case --LONG-PROMPT --RAW-CONTROL-CHARS --chop-long-lines --HILITE-UNREAD'
+# export PAGER=less
+# export LESS='--hilite-search --ignore-case --LONG-PROMPT --RAW-CONTROL-CHARS --chop-long-lines --HILITE-UNREAD'
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
 export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
