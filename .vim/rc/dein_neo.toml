@@ -68,10 +68,12 @@ repo = 'zchee/deoplete-zsh'
 on_ft = ['zsh']
 depends = ['deoplete.nvim']
 
+[[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = ['vim']
 depends = ['deoplete.nvim']
 
+[[plugins]]
 repo = 'ujihisa/neco-look'
 on_ft = ['gitcommit', 'markdown']
 depends = ['deoplete.nvim']
