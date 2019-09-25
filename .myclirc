@@ -70,7 +70,7 @@ auto_vertical_output = False
 keyword_casing = auto
 
 # Enable the pager on startup.
-enable_pager = True
+enable_pager = False
 
 # Custom colors for the completion menu, toolbar, etc.
 [colors]
