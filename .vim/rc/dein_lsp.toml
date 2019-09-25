@@ -17,6 +17,9 @@ on_ft = ['typescript']
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
 depends = 'deoplete.nvim'
+hook_source = '''
+    let g:deoplete#sources#vim_lsp#show_info = 1
+'''
 
 # [[plugins]]
 # repo = 'autozimu/LanguageClient-neovim'
