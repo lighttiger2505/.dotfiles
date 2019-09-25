@@ -1,11 +1,12 @@
 let g:lightline = {
     \ 'colorscheme': 'iceberg',
     \ 'active': {
-    \   'left':  [ ['mode', 'paste'], ['readonly', 'myfilename', 'modified'], ],
+    \   'left':  [ ['mode', 'paste'], ['readonly', 'myfilename', 'method', 'modified'], ],
     \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'ale_ok', 'ale_warning', 'ale_error', 'char_code', 'fileformat', 'fileencoding', 'filetype' ], ],
     \ },
     \ 'component_function': {
     \   'myfilename': 'LightlineFilename',
+    \   'method': 'NearestMethodOrFunction',
     \ },
     \ 'component_expand': {
     \   'ale_error':   'LightlineAleError',
@@ -56,6 +57,19 @@ function! s:ale_string(mode)
 
   return l:counts.total ? '' : l:no_errors
 endfunction
+
+function! NearestMethodOrFunction() abort
+    let l:func_name = get(b:, 'vista_nearest_method_or_function', '')
+    if l:func_name != ''
+        return ' ' . l:func_name
+    endif
+    return ''
+endfunction
+
+augroup LightLineOnVista
+    autocmd!
+    autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+augroup END
 
 augroup LightLineOnALE
   autocmd!
