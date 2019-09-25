@@ -69,15 +69,15 @@ hook_add = '''
     set helplang=ja,en
 '''
 
-[[plugins]]
-repo = 'liuchengxu/vim-which-key'
-hook_add = '''
-set timeoutlen=500
-let g:which_key_vertical = 1
-nnoremap <silent> <Space>       :WhichKey '<Space>'<CR>
-nnoremap <silent> <Leader>      :WhichKey '<Leader>'<CR>
-nnoremap <silent> <LocalLeader> :WhichKey '<LocalLeader>'<CR>
-'''
+# [[plugins]]
+# repo = 'liuchengxu/vim-which-key'
+# hook_add = '''
+# set timeoutlen=500
+# let g:which_key_vertical = 1
+# nnoremap <silent> <Space>       :WhichKey '<Space>'<CR>
+# nnoremap <silent> <Leader>      :WhichKey '<Leader>'<CR>
+# nnoremap <silent> <LocalLeader> :WhichKey '<LocalLeader>'<CR>
+# '''
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
@@ -130,19 +130,19 @@ hook_add = '''
     vnoremap <silent> <leader>sj :Trans :ja+en<CR>
 '''
 
-[[plugins]]
-repo = 'RRethy/vim-hexokinase'
-hook_ad = '''
-    " All possible highlighters
-    let g:Hexokinase_highlighters = [
-    \   'virtual',
-    \   'sign_column',
-    \   'background',
-    \   'backgroundfull',
-    \   'foreground',
-    \   'foregroundfull'
-    \ ]
-
-    " Sample value, to keep default behaviour don't define this variable
-    let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
-'''
+# [[plugins]]
+# repo = 'RRethy/vim-hexokinase'
+# hook_ad = '''
+#     " All possible highlighters
+#     let g:Hexokinase_highlighters = [
+#     \   'virtual',
+#     \   'sign_column',
+#     \   'background',
+#     \   'backgroundfull',
+#     \   'foreground',
+#     \   'foregroundfull'
+#     \ ]
+#
+#     " Sample value, to keep default behaviour don't define this variable
+#     let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
+# '''
