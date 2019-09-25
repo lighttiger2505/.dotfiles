@@ -17,6 +17,7 @@ call deoplete#custom#source('_', 'converters', [
 let g:deoplete#enable_at_startup = 1
 
 call deoplete#custom#option({
+\ 'auto_complete': v:true,
 \ 'min_pattern_length': 1,
 \ 'auto_complete_delay': 0,
 \ 'auto_refresh_delay': 20,
@@ -25,17 +26,28 @@ call deoplete#custom#option({
 \ 'camel_case': v:true,
 \ })
 
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ deoplete#manual_complete()
+function! s:check_back_space() abort "{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
 " Hidden autocomplete preview
 set completeopt-=preview
 
-let b:deoplete_ignore_sources = ['around']
+" Disable sources
+call deoplete#custom#option('ignore_sources', {'_': ['buffer', 'around']})
 
- call deoplete#custom#source('LanguageClient', 'sorters', [])
-
+" Setting sources for using lsp per filetype
+call deoplete#custom#source('LanguageClient', 'sorters', [])
+let s:use_lsp_sources = ['dictionary', 'file', 'lsp', 'LanguageClient', 'neosnippet']
 call deoplete#custom#option('sources', {
-\ 'go': ['buffer', 'dictionary', 'file', 'lsp', 'LanguageClient', 'neosnippet'],
-\ 'python': ['buffer', 'dictionary', 'file', 'lsp', 'LanguageClient', 'neosnippet'],
-\ 'c': ['buffer', 'dictionary', 'file', 'lsp', 'LanguageClient', 'neosnippet'],
-\ 'cpp': ['buffer', 'dictionary', 'file', 'lsp', 'LanguageClient', 'neosnippet'],
-\ 'denite-filter': ['denite'],
+\ 'go': s:use_lsp_sources,
+\ 'python': s:use_lsp_sources,
+\ 'c': s:use_lsp_sources,
+\ 'cpp': s:use_lsp_sources,
+\ 'denite-filter': s:use_lsp_sources,
 \})
