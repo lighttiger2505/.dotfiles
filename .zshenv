@@ -53,10 +53,10 @@ $HOME/.rvm/bin(N-/)
 $GOPATH/bin(N-/)
 # pyenv
 $PYENV_PATH/bin(N-/)
-# $PYENV_PATH/shims(N-/)
 # anyenv
 $ANYENV_PATH/bin(N-/)
-# $ANYENV_PATH/shims(N-/)
+# npm bin
+$HOME/.npm-global/bin(N-/)
 )
 
 # Go root
