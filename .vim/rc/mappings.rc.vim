@@ -196,7 +196,7 @@ nnoremap <silent> <Space>w :<C-u>%s/\s\+$//e<CR>
 tnoremap <silent> <ESC> <C-\><C-n>
 
 " Current file tab open
-nnoremap <Space>t <C-w>T
+nnoremap <C-w>t <C-w>T
 
 " Move tab
 nnoremap t <nop>
