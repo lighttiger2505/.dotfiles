@@ -104,11 +104,11 @@ endif
 " Show search result highlight
 set hlsearch
 
-" Share clipborad with system
+" Sharing to clipborad of OS
 if has('nvim')
     set clipboard+=unnamedplus
 else
-    set clipboard=unnamed
+    set clipboard=unnamedplus,autoselect
 endif
 
 " Disable fold
