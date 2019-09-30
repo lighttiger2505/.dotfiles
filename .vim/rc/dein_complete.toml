@@ -1,0 +1,54 @@
+###############################################################
+# For Vim
+###############################################################
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+if = "!has('nvim')"
+depends = ['asyncomplete-lsp.vim', 'asyncomplete-buffer.vim']
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-buffer.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+###############################################################
+# For NeoVim
+###############################################################
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = "has('nvim')"
+build = ':UpdateRemotePlugins'
+depends = ['neosnippet.vim']
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+'''
+hook_source = 'source ~/.vim/rc/plugins/deoplete.rc.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets']
+hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'zchee/deoplete-zsh'
+if = "has('nvim')"
+on_ft = ['zsh']
+depends = ['deoplete.nvim']
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+if = "has('nvim')"
+on_ft = ['vim']
+depends = ['deoplete.nvim']
+
+[[plugins]]
+repo = 'ujihisa/neco-look'
+if = "has('nvim')"
+on_ft = ['gitcommit', 'markdown']
+depends = ['deoplete.nvim']

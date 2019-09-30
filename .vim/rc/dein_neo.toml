@@ -1,23 +1,6 @@
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-on_event = 'InsertCharPre'
-build = ':UpdateRemotePlugins'
-depends = ['neosnippet.vim']
-hook_add = '''
-let g:deoplete#enable_at_startup = 1
-'''
-hook_source = 'source ~/.vim/rc/plugins/deoplete.rc.vim'
-
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = ['neosnippet-snippets']
-hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
 repo = 'Shougo/denite.nvim'
+if = "has('nvim')"
 on_cmd = 'Denite'
 build = ':UpdateRemotePlugins'
 hook_add = '''
@@ -47,6 +30,7 @@ hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
+if = "has('nvim')"
 build = ':UpdateRemotePlugins'
 depends = ['defx-git', 'defx-icons']
 on_cmd = 'Defx'
@@ -62,18 +46,3 @@ repo = 'kristijanhusak/defx-git'
 
 [[plugins]]
 repo = 'kristijanhusak/defx-icons'
-
-[[plugins]]
-repo = 'zchee/deoplete-zsh'
-on_ft = ['zsh']
-depends = ['deoplete.nvim']
-
-[[plugins]]
-repo = 'Shougo/neco-vim'
-on_ft = ['vim']
-depends = ['deoplete.nvim']
-
-[[plugins]]
-repo = 'ujihisa/neco-look'
-on_ft = ['gitcommit', 'markdown']
-depends = ['deoplete.nvim']
