@@ -315,26 +315,11 @@ alias dc="docker-compose"
 #####################################################################
 # liary
 #####################################################################
-liary_file_open() {
-    local LIARY_HOME=$(liary config --get diarydir)
-    local FILE=`liary list --range=14d | sort --reverse | fzf -m --height=100% --preview-window=right:75% --preview 'cat $(liary config --get diarydir)/{}'`
-    if [ -n "${FILE}" ]; then
-        vim "${LIARY_HOME}/${FILE}"
-    fi
-}
-alias lif=liary_file_open
 alias li='liary'
 alias cdl='cd `liary config --get diarydir`'
 
-# Open todo file
-WORK_TODO_PATH="${HOME}/.config/todo/work"
-alias todow='vim -o ${WORK_TODO_PATH}/front_burner.md ${WORK_TODO_PATH}/back_burner.md ${WORK_TODO_PATH}/kitchen_sink.md -c "wincmd H"'
-WORK_PRIVATE_PATH="${HOME}/.config/todo/personal/"
-alias todop='vim -o ${WORK_PRIVATE_PATH}/front_burner.md ${WORK_PRIVATE_PATH}/back_burner.md ${WORK_PRIVATE_PATH}/kitchen_sink.md -c "wincmd H"'
-
 # Benchmark
 alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
-
 #####################################################################
 # browser-hb
 #####################################################################
