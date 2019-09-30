@@ -84,8 +84,8 @@ augroup END
 
 " Key bindings
 nnoremap <C-]> :<C-u>LspDefinition<CR>
-nnoremap K :<C-u>LspPeekDefinition<CR>
-" nnoremap <LocalLeader>p :<C-u>LspPeekDefinition<CR>
+nnoremap K :<C-u>LspHover<CR>
+nnoremap <LocalLeader>K :<C-u>LspPeekDefinition<CR>
 nnoremap <LocalLeader>R :<C-u>LspRename<CR>
 nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
 nnoremap <LocalLeader>f :<C-u>LspDocumentDiagnostics<CR>
