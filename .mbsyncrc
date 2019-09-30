@@ -1,0 +1,140 @@
+# vim: ft=cfg
+
+# Save the synchronization state files in the relevant directory
+SyncState *
+
+##################################
+# Account work
+##################################
+
+IMAPAccount work
+Host imap.gmail.com
+User toshikazu.ohashi@iridge.jp
+Pass # pass
+# PassCmd "security find-internet-password -s 'imap.mailbox.org' -a 's.rademacker@mailbox.org' -w"
+SSLType IMAPS
+# SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+# Remote storage
+IMAPStore work-remote
+Account work
+
+# Local storage
+MaildirStore work-local
+Path ~/.mail/work/
+Inbox ~/.mail/work/INBOX
+
+Channel work-inbox
+Master :work-remote:"INBOX"
+Slave :work-local:INBOX
+Create Both
+Expunge Both
+
+# Channel work-archive
+# Master :work-remote:"Archiv"
+# Slave :work-local:archive
+# Create Both
+# Expunge Both
+#
+# Channel work-drafts
+# Master :work-remote:"Entw&APw-rfe"
+# Slave :work-local:drafts
+# Create Both
+# Expunge Both
+#
+# Channel work-sent
+# Master :work-remote:"Gesendete Objekte"
+# Slave :work-local:sent
+# Create Both
+# Expunge Both
+#
+# Channel work-trash
+# Master :work-remote:"Papierkorb"
+# Slave :work-local:trash
+# Create Both
+# Expunge Both
+#
+# Channel work-junk
+# Master :work-remote:"Spam"
+# Slave :work-local:junk
+# Create Both
+# Expunge Both
+
+Group work
+Channel work-inbox
+Channel work-archive
+Channel work-drafts
+Channel work-sent
+Channel work-trash
+Channel work-junk
+
+##################################
+# Account private
+##################################
+
+IMAPAccount private
+Host imap.gmail.com
+User lighttiger2505@gmail.com
+Pass # pass
+# PassCmd "security find-internet-password -s 'imap.mailbox.org' -a 's.rademacker@mailbox.org' -w"
+SSLType IMAPS
+# SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+# Remote storage
+IMAPStore private-remote
+Account private
+
+# Local storage
+MaildirStore private-local
+Path ~/.mail/private/
+Inbox ~/.mail/private/INBOX
+
+Channel private-inbox
+Master :private-remote:"INBOX"
+Slave :private-local:INBOX
+Create Both
+Expunge Both
+
+# Channel private-archive
+# Master :private-remote:"Archiv"
+# Slave :private-local:archive
+# Create Both
+# Expunge Both
+#
+# Channel private-drafts
+# Master :private-remote:"Entw&APw-rfe"
+# Slave :private-local:drafts
+# Create Both
+# Expunge Both
+#
+# Channel private-sent
+# Master :private-remote:"Gesendete Objekte"
+# Slave :private-local:sent
+# Create Both
+# Expunge Both
+#
+# Channel private-trash
+# Master :private-remote:"Papierkorb"
+# Slave :private-local:trash
+# Create Both
+# Expunge Both
+#
+# Channel private-junk
+# Master :private-remote:"Spam"
+# Slave :private-local:junk
+# Create Both
+# Expunge Both
+
+Group private
+Channel private-inbox
+Channel private-archive
+Channel private-drafts
+Channel private-sent
+Channel private-trash
+Channel private-junk

@@ -1,24 +1,8 @@
 # vim: ft=neomuttrc
 
-set my_user = "toshikazu.ohashi@iridge.jp"
-# Load password `set my_pass = "hogehoge"`
-source "gpg2 -dq $HOME/.config/neomutt/work_passwd.gpg |"
-
-set imap_user = $my_user
-set imap_pass = $my_pass
-set smtp_url = "smtps://$my_user:$my_pass@smtp.gmail.com/"
-set smtp_pass = $my_pass
-set from = $my_user
-set realname = "Toshikazu Ohashi"
-set folder = "imaps://$my_user@imap.gmail.com:993"
-set spoolfile = +INBOX
-set postponed = +[Imap]/Drafts
-set record = +[Gmail]/sent
-set header_cache = $HOME/.mutt/work/header
-set message_cachedir = $HOME/.mutt/work/bodies
-set certificate_file = $HOME/.mutt/work/certificates
-
-# If smtp_authenticators is ``unset'' (the default)
-# NeoMutt will try all available methods,
-# in order from most-secure to least-secure.
-unset smtp_authenticators
+# Set folders
+set spoolfile = "+work/INBOX"
+set mbox = "+work/archive"
+set postponed = "+work/drafts"
+set record = "+work/sent"
+set trash = "+work/trash"

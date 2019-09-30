@@ -1,19 +1,44 @@
+# vim: ft=neomuttrc
+
 #------------------------------------------------------------
 # Account Settings
 #------------------------------------------------------------
 
+# paths
+set folder = ~/.mail
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+# set certificate_file = ~/dotfiles/office/certificates.crt
+set mailcap_path = ~/.mutt/mailcap
+set tmpdir = ~/.mutt/tmp
+
 # Folder hooks
 folder-hook 'work' 'source $HOME/.config/neomutt/work'
-folder-hook 'personal' 'source $HOME/.config/neomutt/personal'
-
-# Default account
+folder-hook 'private' 'source $HOME/.config/neomutt/private'
 source $HOME/.config/neomutt/work
 
 # Macros for switching accounts
 bind  index 1 noop
 bind  index 2 noop
 macro index 1 '<sync-mailbox><enter-command>source $HOME/.config/neomutt/work<enter><change-folder>!<enter>'
-macro index 2 '<sync-mailbox><enter-command>source $HOME/.config/neomutt/personal<enter><change-folder>!<enter>'
+macro index 2 '<sync-mailbox><enter-command>source $HOME/.config/neomutt/private<enter><change-folder>!<enter>'
+
+# # Virtual mailbox
+# set virtual_spoolfile=yes
+# virtual-mailboxes "inbox" "notmuch://?query=tag:inbox"
+# virtual-mailboxes "archive" "notmuch://?query=tag:archive"
+# virtual-mailboxes "sent" "notmuch://?query=tag:sent"
+# virtual-mailboxes "newsletters" "notmuch://?query=tag:newsletters"
+
+# Performance Tuning
+
+# Interval of update read count
+set read_inc=100
+
+# Speed up the folder switch
+set sleep_time = 0
+
+auto_view text/x-vcard text/html text/enriched
 
 #------------------------------------------------------------
 # Options
@@ -35,8 +60,8 @@ set pager_index_lines=8
 set ssl_force_tls = yes
 set ssl_starttls = yes
 
-set editor="vim"
-# set move = no
+set editor=`echo \$EDITOR`
+set move = no
 # set include
 
 #------------------------------------------------------------
