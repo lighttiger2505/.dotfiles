@@ -73,4 +73,4 @@ map('H', 'S');
 map('L', 'D');
 
 // Disable emoji popup window
-settings.startToShowEmoji = 0;
+iunmap(":");
