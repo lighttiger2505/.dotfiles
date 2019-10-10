@@ -17,8 +17,8 @@ call defx#custom#column('icon', {
     \ 'root_icon': ' ',
     \ })
 call defx#custom#column('filename', {
-    \ 'min_width': 40,
-    \ 'max_width': 40,
+    \ 'min_width': 64,
+    \ 'max_width': 128,
     \ })
 call defx#custom#column('mark', {
     \ 'readonly_icon': '✗',
@@ -108,9 +108,10 @@ let g:defx_git#indicators = {
   \ 'Unknown'   : '?'
   \ }
 
-let g:defx_git#show_ignored = 0
-let g:defx_git#column_length = 1
-let g:defx_git#raw_mode = 0
+call defx#custom#column('git', 'column_length', 1)
+call defx#custom#column('git', 'show_ignored', 0)
+call defx#custom#column('git', 'raw_mode', 0)
+call defx#custom#column('git', 'max_indicator_width', 1)
 
 hi Defx_git_Untracked guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
 hi Defx_git_Ignored guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
