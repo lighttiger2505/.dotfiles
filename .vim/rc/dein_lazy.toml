@@ -182,8 +182,7 @@ on_cmd = [
     'TigBlame',
 ]
 hook_add = '''
-    nnoremap <silent> <Leader>j :<C-u>Tig status<CR>
-    " nnoremap <silent> [tig]t :<C-u>TigOpenProjectRootDir<CR>
+    nnoremap <silent> <Leader>j :<C-u>TigOpenProjectRootDir<CR>
     nnoremap <silent> <Leader>k :<C-u>TigOpenCurrentFile<CR>
     nnoremap <silent> <Leader>l :<C-u>TigBlame<CR>
 '''
