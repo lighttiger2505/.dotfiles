@@ -10,8 +10,7 @@ SyncState *
 IMAPAccount work
 Host imap.gmail.com
 User toshikazu.ohashi@iridge.jp
-Pass # pass
-# PassCmd "security find-internet-password -s 'imap.mailbox.org' -a 's.rademacker@mailbox.org' -w"
+PassCmd "gpg -d $HOME/.mail/.pass/toshikazu.ohashi@iridge.jp.gpg"
 SSLType IMAPS
 # SSLVersions TLSv1.2
 CertificateFile /etc/ssl/certs/ca-certificates.crt
@@ -78,8 +77,7 @@ Channel work-junk
 IMAPAccount private
 Host imap.gmail.com
 User lighttiger2505@gmail.com
-Pass # pass
-# PassCmd "security find-internet-password -s 'imap.mailbox.org' -a 's.rademacker@mailbox.org' -w"
+PassCmd "gpg -d $HOME/.mail/.pass/lighttiger2505@gmail.com.gpg"
 SSLType IMAPS
 # SSLVersions TLSv1.2
 CertificateFile /etc/ssl/certs/ca-certificates.crt
