@@ -26,9 +26,6 @@ floating_modifier $sup
 # start a terminal
 bindsym $sup+Return exec i3-sensible-terminal
 
-# start a browser
-bindsym $sup+Shift+Return exec google-chrome-stable
-
 # kill focused window
 bindsym $sup+q kill
 
@@ -242,7 +239,6 @@ bindsym $sup+n workspace next
 
 # move workspace up and down to monitor
 bindsym $sup+m move workspace to output up
-# bindsym $sup+shift+m move workspace to output down
 bindsym $sup+Shift+m exec --no-startup-id arandr
 
 # switch between the current and the previously focused one
@@ -332,3 +328,8 @@ mode "$mode_display" {
 }
 # Declare here the shortcut to bring the display selection menu
 bindsym $sup+Ctrl+o mode "$mode_display"
+
+# ------------------------------------------------------------
+# Application and Window Switcher
+# ------------------------------------------------------------
+bindsym $sup+i exec rofi -modi combi -show combi
