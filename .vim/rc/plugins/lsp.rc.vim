@@ -14,9 +14,10 @@ let g:lsp_preview_float = 1
 if (executable('pyls'))
     let s:pyls_path = fnamemodify(g:python3_host_prog, ':h') . '/'. 'pyls'
     let s:pyls_config = {'pyls': {'plugins': {
-    \   'pycodestyle': {'enabled': v:false},
+    \   'pycodestyle': {'enabled': v:true},
     \   'pydocstyle': {'enabled': v:false},
-    \   'pylint': {'enabled': v:true},
+    \   'pylint': {'enabled': v:false},
+    \   'flake8': {'enabled': v:true},
     \   'jedi_definition': {
     \     'follow_imports': v:true,
     \     'follow_builtin_imports': v:true,
