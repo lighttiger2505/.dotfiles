@@ -137,3 +137,9 @@ hook_add = '''
     nnoremap <silent> <leader>sj :Trans :ja+en<CR>
     vnoremap <silent> <leader>sj :Trans :ja+en<CR>
 '''
+
+[[plugins]]
+repo = 'andymass/vim-matchup'
+hook_add = '''
+    let g:loaded_matchit = 1
+'''
