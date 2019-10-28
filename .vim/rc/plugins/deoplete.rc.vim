@@ -55,5 +55,5 @@ call deoplete#custom#option('sources', {
 \ 'c': s:use_lsp_sources,
 \ 'cpp': s:use_lsp_sources,
 \ 'denite-filter': ['denite'],
-\ 'vim': ['neosnippet', 'vim', 'dictionary', 'file'],
+\ 'vim': ['neosnippet', 'vim', 'buffer', 'dictionary', 'file'],
 \})
