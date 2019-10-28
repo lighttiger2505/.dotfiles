@@ -70,8 +70,8 @@ nnoremap <Space>p "0p
 vnoremap <Space>p "0p
 
 " Paste clipboard text
-nnoremap <Space>c "*p
-vnoremap <Space>c "*p
+nnoremap <Space>b "*p
+vnoremap <Space>b "*p
 
 " Shortcut of write
 nnoremap <silent> <Space>w :<C-u>w<CR>
@@ -202,3 +202,17 @@ nnoremap <C-w>t <C-w>T
 nnoremap t <nop>
 nnoremap tn gt
 nnoremap tp gT
+
+" Copy current file path to clipboard
+function! CopyPathToClip() abort
+    if executable('xclip')
+        let l:cmd = "echo '" . expand('%') . "' | xclip -selection c"
+        execute system(l:cmd)
+    elseif executable('pbcopy')
+        let l:cmd = "echo '" . expand('%') . "' | xclip -selection c"
+        execute system(l:cmd)
+    else
+        echo 'Please install `xclip`'
+    endif
+endfunction
+nnoremap <silent> <Space>p :<C-u>call CopyPathToClip()<CR>
