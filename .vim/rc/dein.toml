@@ -34,12 +34,20 @@ hook_add = '''
 [[plugins]]
 repo = 'mattn/sonictemplate-vim'
 
+
 [[plugins]]
-repo = 'airblade/vim-rooter'
+repo = 'mattn/vim-findroot'
 hook_add = '''
-    let g:rooter_patterns = ['.git/']
-    let g:rooter_change_directory_for_non_project_files = 'current'
-    let g:rooter_use_lcd = 1
+let g:findroot_patterns = [
+\ '.git/',
+\ '.bzr/',
+\ '.gitignore',
+\ 'Rakefile',
+\ 'pom.xml',
+\ 'project.clj',
+\ '*.csproj',
+\ '*.sln',
+\]
 '''
 
 [[plugins]]
