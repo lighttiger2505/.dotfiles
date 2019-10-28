@@ -137,20 +137,3 @@ hook_add = '''
     nnoremap <silent> <leader>sj :Trans :ja+en<CR>
     vnoremap <silent> <leader>sj :Trans :ja+en<CR>
 '''
-
-# [[plugins]]
-# repo = 'RRethy/vim-hexokinase'
-# hook_ad = '''
-#     " All possible highlighters
-#     let g:Hexokinase_highlighters = [
-#     \   'virtual',
-#     \   'sign_column',
-#     \   'background',
-#     \   'backgroundfull',
-#     \   'foreground',
-#     \   'foregroundfull'
-#     \ ]
-#
-#     " Sample value, to keep default behaviour don't define this variable
-#     let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
-# '''
