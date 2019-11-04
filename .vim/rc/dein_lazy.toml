@@ -60,12 +60,16 @@ hook_add = '''
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 on_cmd = ['QuickRun']
-depends = ['vimproc.vim']
+depends = ['vim-quickrun-neovim-job']
 hook_add = '''
     nnoremap <Leader>r :<C-U>QuickRun<CR>
     xnoremap <Leader>r gv:<C-U>QuickRun<CR>
 '''
 hook_source = 'source ~/.vim/rc/plugins/vimquickrun.rc.vim'
+
+[[plugins]]
+repo = 'lambdalisue/vim-quickrun-neovim-job'
+
 
 [[plugins]]
 repo = 'w0rp/ale'
@@ -168,10 +172,6 @@ on_cmd = ['PrevimOpen']
 hook_add = '''
     nnoremap <leader>p :PrevimOpen<CR>
 '''
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
 
 [[plugins]]
 repo = 'iberianpig/tig-explorer.vim'

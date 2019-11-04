@@ -2,14 +2,21 @@
 " Showing success is buffer and error is quickfix
 let g:quickrun_config = {
     \ '_' : {
-        \ 'runner' : 'vimproc',
-        \ 'runner/vimproc/updatetime' : 40,
         \ 'outputter' : 'error',
         \ 'outputter/error/success' : 'buffer',
         \ 'outputter/error/error'   : 'quickfix',
         \ 'outputter/buffer/split' : ':botright 8sp',
     \ }
 \}
+
+" Set runner
+if has('nvim')
+  " Use 'neovim_job' in Neovim
+  let g:quickrun_config._.runner = 'neovim_job'
+elseif exists('*ch_close_in')
+  " Use 'job' in Vim which support job feature
+  let g:quickrun_config._.runner = 'job'
+endif
 
 " Close quickfix is [q]
 
