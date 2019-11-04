@@ -407,3 +407,10 @@ function change_go_module {
     fi
 }
 alias cgom=change_go_module
+
+#####################################################################
+# Pomodoro
+#####################################################################
+
+alias worktime='~/.tmux/timer.sh 25'
+alias breaktime='~/.tmux/timer.sh 5'
