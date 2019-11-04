@@ -1,6 +1,6 @@
 [date]
 label= 
-command=date +'%m/%d %H:%M'
+command=date '+%y/%m/%d %a %H:%M'
 color=#d2d4de
 interval=1
 
