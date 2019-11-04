@@ -199,15 +199,15 @@ bindsym $sup+x [urgent=latest] focus
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1 term"
-set $ws2 "2 memo"
-set $ws3 "3 tasklist"
-set $ws4 "4 browser"
-set $ws5 "5 slack"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws2 "2 subterm"
+set $ws3 "3 browser"
+set $ws4 "4 slack"
+set $ws5 "5 temp"
+set $ws6 "6 temp"
+set $ws7 "7 temp"
+set $ws8 "8 temp"
+set $ws9 "9 temp"
+set $ws10 "10 temp"
 
 # switch to workspace
 bindsym $sup+1 workspace $ws1
