@@ -42,6 +42,15 @@ if executable('gopls')
             \ 'name': 'gopls',
             \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
             \ 'whitelist': ['go'],
+            \ 'workspace_config': {'gopls': {
+            \     'staticcheck': v:true,
+            \     'completeUnimported': v:false,
+            \     'caseSensitiveCompletion': v:false,
+            \     'usePlaceholders': v:true,
+            \     'completionDocumentation': v:true,
+            \     'watchFileChanges': v:true,
+            \     'hoverKind': 'SingleLine',
+            \   }},
             \ })
     augroup END
 endif
