@@ -6,6 +6,7 @@ let g:lsp_signs_error = {'text': '✗'}
 let g:lsp_signs_warning = {'text': '‼'}
 let g:lsp_signs_information = {'text': 'i'}
 let g:lsp_signs_hint = {'text': '?'}
+let g:lsp_virtual_text_prefix = " ‣ "
 
 let g:lsp_highlight_references_enabled = 0
 
@@ -59,14 +60,27 @@ endif
 
 if executable('clangd')
     augroup LspClangd
-        autocmd!
+      autocmd!
         autocmd User lsp_setup call lsp#register_server({
-            \ 'name': 'clangd',
-            \ 'cmd': {server_info->['clangd', '-background-index']},
-            \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-            \ })
+         \ 'name': 'clangd',
+         \ 'cmd': {server_info->['clangd', '-background-index']},
+         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+         \ })
         augroup END
 endif
+
+" if executable('ccls')
+"     augroup CCLS
+"         autocmd!
+"         autocmd User lsp_setup call lsp#register_server({
+"           \ 'name': 'ccls',
+"           \ 'cmd': {server_info->['ccls']},
+"           \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+"           \ 'initialization_options': {'cache': {'directory': '/tmp/ccls/cache' }},
+"           \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+"           \ })
+"     augroup END
+" endif
 
 augroup LspEnable
     autocmd!
@@ -80,7 +94,7 @@ augroup END
 
 augroup LspAutoFormatting
     autocmd!
-    " autocmd BufWritePre *.go LspDocumentFormatSync
+    autocmd BufWritePre *.go LspDocumentFormatSync
 augroup END
 
 " Key bindings
@@ -90,5 +104,6 @@ nnoremap <LocalLeader>K :<C-u>LspPeekDefinition<CR>
 nnoremap <LocalLeader>R :<C-u>LspRename<CR>
 nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
 nnoremap <LocalLeader>f :<C-u>LspDocumentDiagnostics<CR>
+nnoremap <LocalLeader>s :<C-u>LspDocumentFormat<CR>
 nnoremap <LocalLeader>i :<C-u>LspImplementation<CR>
 set omnifunc=lsp#complete
