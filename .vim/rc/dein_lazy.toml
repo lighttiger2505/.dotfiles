@@ -131,8 +131,8 @@ nmap [fuzzyf] <Nop>
 map <C-j> [fuzzyf]
 
 let g:fzf_action = {
-    \ 'ctrl-o': 'tab split',
-    \ 'ctrl-x': 'split',
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-s': 'split',
     \ 'ctrl-v': 'vsplit'
     \ }
 
