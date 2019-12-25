@@ -10,12 +10,10 @@ noremap ; :
 noremap : ;
 
 " Multi line move
-noremap k gk
-noremap j gj
-noremap gk k
-noremap gj j
-noremap <Down> gj
-noremap <Up> gk
+noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> gk k
+noremap <silent> gj j
 
 " Skip move
 noremap H <Nop>
