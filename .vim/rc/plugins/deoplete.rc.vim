@@ -1,3 +1,5 @@
+let g:deoplete#enable_at_startup = 1
+
 " key mappings
 inoremap <expr><C-h> deoplete#smart_close_popup()."<C-h>"
 inoremap <expr><BS> deoplete#smart_close_popup()."<C-h>"
@@ -14,8 +16,6 @@ call deoplete#custom#source('_', 'converters', [
       \ ])
 
 " Prams of deoplete
-let g:deoplete#enable_at_startup = 1
-
 call deoplete#custom#option({
 \ 'auto_complete': v:true,
 \ 'min_pattern_length': 2,
@@ -27,13 +27,14 @@ call deoplete#custom#option({
 \ })
 
 inoremap <silent><expr> <TAB>
-\ pumvisible() ? "\<C-n>" :
-\ <SID>check_back_space() ? "\<TAB>" :
-\ deoplete#manual_complete()
-function! s:check_back_space() abort "{{{
-let col = col('.') - 1
-return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ deoplete#manual_complete()
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
 " Hidden autocomplete preview
 set completeopt-=preview
