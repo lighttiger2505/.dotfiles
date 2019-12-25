@@ -78,6 +78,17 @@ if executable('clangd')
         augroup END
 endif
 
+if executable('sqls')
+    augroup LspClangd
+      autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+         \ 'name': 'sqls',
+         \ 'cmd': {server_info->['sqls', '-log', 'sqls.log']},
+         \ 'whitelist': ['sql'],
+         \ })
+        augroup END
+endif
+
 " if executable('ccls')
 "     augroup CCLS
 "         autocmd!
@@ -109,10 +120,10 @@ augroup END
 " Key bindings
 nnoremap <C-]> :<C-u>LspDefinition<CR>
 nnoremap K :<C-u>LspHover<CR>
-nnoremap <LocalLeader>K :<C-u>LspPeekDefinition<CR>
-nnoremap <LocalLeader>R :<C-u>LspRename<CR>
-nnoremap <LocalLeader>n :<C-u>LspReferences<CR>
-nnoremap <LocalLeader>f :<C-u>LspDocumentDiagnostics<CR>
-nnoremap <LocalLeader>s :<C-u>LspDocumentFormat<CR>
-nnoremap <LocalLeader>i :<C-u>LspImplementation<CR>
+nnoremap <silent> <LocalLeader>K :<C-u>LspPeekDefinition<CR>
+nnoremap <silent> <LocalLeader>R :<C-u>LspRename<CR>
+nnoremap <silent> <LocalLeader>n :<C-u>LspReferences<CR>
+nnoremap <silent> <LocalLeader>f :<C-u>LspDocumentDiagnostics<CR>
+nnoremap <silent> <LocalLeader>s :<C-u>LspDocumentFormat<CR>
+nnoremap <silent> <LocalLeader>i :<C-u>LspImplementation<CR>
 set omnifunc=lsp#complete
