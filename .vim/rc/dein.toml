@@ -19,6 +19,9 @@ hook_add = 'source ~/.vim/rc/plugins/lightline.rc.vim'
 
 [[plugins]]
 repo = 'mhinz/vim-signify'
+hook_add = '''
+    set updatetime=100
+'''
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
