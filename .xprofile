@@ -7,8 +7,8 @@ export XMODIFIERS="@im=fcitx"
 # please check your device `xinput list` and `xinput list-props {ID}`
 
 # disable wheel button paste
-xinput set-button-map "TPPS/2 Elan TrackPoint" 1 0 3 4 5 6 7
+# xinput set-button-map 'ETPS/2 Elantech TrackPoint' 1 0 3 4 5 6 7
 # cursor speed more faster
-xinput --set-prop 'TPPS/2 Elan TrackPoint' 'libinput Accel Speed' 0.6
+xinput --set-prop 'ETPS/2 Elantech TrackPoint' 'libinput Accel Speed' 0.1
 # disable track pad
-xinput --set-prop 'SynPS/2 Synaptics TouchPad' 'Device Enabled' 0
+xinput --set-prop 'ETPS/2 Elantech Touchpad' 'Device Enabled' 0
