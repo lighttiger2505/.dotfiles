@@ -199,7 +199,7 @@ bindsym $sup+x [urgent=latest] focus
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1 term"
-set $ws2 "2 subterm"
+set $ws2 "2 editor"
 set $ws3 "3 browser"
 set $ws4 "4 slack"
 set $ws5 "5 temp"
@@ -244,6 +244,12 @@ bindsym $sup+Shift+m exec --no-startup-id arandr
 # switch between the current and the previously focused one
 bindsym $sup+Tab workspace back_and_forth
 bindsym $sup+Shift+Tab move container to workspace back_and_forth
+
+# application assign to workspace
+assign [class="Alacritty"] $ws1
+assign [class="Gvim"] $ws2
+assign [class="firefox"] $ws3
+assign [class="Slack"] $ws4
 
 # ------------------------------------------------------------
 # Keybind for Reload Config
