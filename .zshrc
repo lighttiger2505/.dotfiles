@@ -27,14 +27,10 @@ if [ -e ~/.anyenv ]; then
     eval "$(anyenv lazyload)"
 fi
 
-# # Init pyenv
-# if [ -e ~/.pyenv ]; then
-#     eval "$(pyenv init -)"
-#     eval "$(pyenv virtualenv-init -)"
-# fi
-
-eval $(ssh-agent) > /dev/null
-ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
+if [ "$(pgrep ssh-agent 2> /dev/null)" = "" ]; then
+    eval $(ssh-agent) > /dev/null
+    ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/lighttiger2505/google-cloud-sdk/path.zsh.inc' ]; then . '/home/lighttiger2505/google-cloud-sdk/path.zsh.inc'; fi
