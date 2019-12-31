@@ -12,7 +12,7 @@ interval=60
 
 [cpu]
 label= 
-command=sensors | awk '/Core 0/ {print $3}'
+command=echo "$(uptime | sed 's/.*load average: \(.*\)/\1/' | cut -d, -f1)/$(grep 'processor' /proc/cpuinfo | wc -l)"
 color=#e27878
 interval=1
 
@@ -24,7 +24,7 @@ interval=1
 
 [network]
 label= 
-command=~/.config/i3blocks/network.sh
+command=network
 color=#b4be82
 interval=1
 
@@ -37,13 +37,13 @@ signal=1
 
 [volume]
 label= 
-command=~/.config/i3blocks/volume.sh
+command=volume
 color=#e2a478
 interval=once
 signal=2
 
 [battery]
 label= 
-command=~/.config/i3blocks/battery.sh BAT0
+command=battery BAT0
 color=#84a0c6
 interval=5

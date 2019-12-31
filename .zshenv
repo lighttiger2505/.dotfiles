@@ -57,6 +57,8 @@ $PYENV_PATH/bin(N-/)
 $ANYENV_PATH/bin(N-/)
 # npm bin
 $HOME/.npm-global/bin(N-/)
+# my scripts
+$HOME/scripts(N-/)
 )
 
 # Go root

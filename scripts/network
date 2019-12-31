@@ -1,4 +1,5 @@
-#!/usr/bin/bash
+# vim: ft=sh
+#!/bin/sh
 
 # SSID
 SSID_NAME=$(iwgetid -r)
@@ -6,7 +7,7 @@ SSID_NAME=$(iwgetid -r)
 # Network Quality
 
 if [[ -z "$INTERFACE" ]] ; then
-    INTERFACE="${BLOCK_INSTANCE:-wlp2s0}"
+    INTERFACE="${BLOCK_INSTANCE:-wlp1s0}"
 fi
 
 [[ ! -d /sys/class/net/${INTERFACE}/wireless ]] && exit

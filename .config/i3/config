@@ -54,12 +54,12 @@ bindsym $sup+d exec dmenu_run
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.config/i3/i3exit.sh lock, mode "default"
-    bindsym e exec --no-startup-id ~/.config/i3/i3exit.sh logout, mode "default"
-    bindsym s exec --no-startup-id ~/.config/i3/i3exit.sh suspend, mode "default"
-    bindsym h exec --no-startup-id ~/.config/i3/i3exit.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.config/i3/i3exit.sh reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id i3_exit lock, mode "default"
+    bindsym e exec --no-startup-id i3_exit logout, mode "default"
+    bindsym s exec --no-startup-id i3_exit suspend, mode "default"
+    bindsym h exec --no-startup-id i3_exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3_exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3_exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -68,7 +68,7 @@ mode "$mode_system" {
 bindsym $sup+Ctrl+i mode "$mode_system"
 
 # Lock screen shortcut
-bindsym $sup+Ctrl+l exec ~/.config/i3/i3lock.sh
+bindsym $sup+Ctrl+l exec ~/.config/i3/i3_lock
 
 # ------------------------------------------------------------
 # Dropdown Windows
