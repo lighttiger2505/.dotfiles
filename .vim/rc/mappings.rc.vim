@@ -70,6 +70,7 @@ vnoremap <Space>p "0p
 " Paste clipboard text
 nnoremap <Space>b "*p
 vnoremap <Space>b "*p
+inoremap <C-r><C-r> <C-r>0
 
 " Shortcut of write
 nnoremap <silent> <Space>w :<C-u>w<CR>
