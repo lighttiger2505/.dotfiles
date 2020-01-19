@@ -4,7 +4,7 @@
 [ghq]
 	root = ~/dev/src
 [core]
-	excludesfile = /home/lighttiger2505/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [merge]
 	tool = vimdiff
 [diff]
