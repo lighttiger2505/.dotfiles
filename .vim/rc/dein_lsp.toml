@@ -4,8 +4,22 @@ repo = 'prabirshrestha/async.vim'
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 # if = "!has('nvim')"
-on_ft = ['python', 'go', 'typescript', 'c', 'cpp']
-depends = ['async.vim', 'deoplete-vim-lsp', 'vista.vim']
+on_ft = [
+    'python',
+    'go',
+    'typescript',
+    'javascript', 
+    'c',
+    'cpp',
+    'vue',
+]
+depen'ds = [
+    'async.vim',
+    'deoplete-vim-lsp',
+    'vista.vim',
+    'vim-lsp-typescript',
+    'vim-lsp-javascript',
+]
 hook_source = '''
     source ~/.vim/rc/plugins/lsp.rc.vim
 '''
@@ -13,6 +27,10 @@ hook_source = '''
 [[plugins]]
 repo = 'ryanolsonx/vim-lsp-typescript'
 on_ft = ['typescript']
+
+[[plugins]]
+repo = 'ryanolsonx/vim-lsp-javascript'
+on_ft = ['javascript']
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
