@@ -68,7 +68,7 @@ mode "$mode_system" {
 bindsym $sup+Ctrl+i mode "$mode_system"
 
 # Lock screen shortcut
-bindsym $sup+Ctrl+l exec ~/.config/i3/i3_lock
+bindsym $sup+Ctrl+l exec i3_lock
 
 # ------------------------------------------------------------
 # Dropdown Windows
@@ -88,10 +88,10 @@ exec --no-startup-id dropbox
 exec --no-startup-id compton -b --config ~/.config/compton/compton.conf
 
 # Set wall paper randomize
-exec --no-startup-id ~/.config/i3/random_wallpaper.sh
+exec --no-startup-id random_wallpaper
 
 # Autolock
-exec --no-startup-id xautolock -detectsleep -time 30 -locker ~/.config/i3/i3lock.sh
+exec --no-startup-id xautolock -detectsleep -time 30 -locker i3_lock
 
 # ------------------------------------------------------------
 # Status Bar Bettings
