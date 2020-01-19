@@ -137,7 +137,8 @@ fi
 alias v='vim'
 alias vi='vim'
 alias vimdiff='vim -d'
-alias dim='vim -u ~/.dev_vimrc'
+alias dvim='/usr/bin/vim -u ~/.dev_vimrc'
+alias dnvim='/usr/bin/nvim -u ~/.dev_vimrc'
 
 #####################################################################
 # lab
