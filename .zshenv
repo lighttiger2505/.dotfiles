@@ -13,10 +13,6 @@ export ANYENV_PATH=$HOME/.anyenv
 # pyenv
 export PYENV_PATH=$HOME/.pyenv
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-# # java
-if [ -e /usr/libexec/java_home ]; then
-    export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-fi
 # Neovim
 export XDG_CONGIG_HOME=~/.config
 # defaut editor is vim
