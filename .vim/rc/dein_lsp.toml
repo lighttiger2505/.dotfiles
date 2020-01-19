@@ -13,7 +13,7 @@ on_ft = [
     'cpp',
     'vue',
 ]
-depen'ds = [
+depends = [
     'async.vim',
     'deoplete-vim-lsp',
     'vista.vim',
@@ -34,7 +34,7 @@ on_ft = ['javascript']
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
-depends = 'deoplete.nvim'
+depends = ['deoplete.nvim']
 hook_source = '''
     let g:deoplete#sources#vim_lsp#show_info = 1
 '''
