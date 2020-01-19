@@ -39,8 +39,6 @@ path=(
 /sbin(N-/)
 #gnubin
 /usr/local/opt/coreutils/libexec/gnubin(N-/)
-# Java
-$JAVA_HOME/bin(N-/)
 # Cabal
 $HOME/.cabal/bin(N-/)
 # rvm(ruby version control)
