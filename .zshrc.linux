@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 
 # Color support
 if [ "$TERM" = "xterm" ]
