@@ -1,10 +1,4 @@
 [[plugins]]
-repo = 'Shougo/dein.vim'
-
-[[plugins]]
-repo = 'haya14busa/dein-command.vim'
-
-[[plugins]]
 repo = 'vim-scripts/wombat256.vim'
 
 [[plugins]]
@@ -16,12 +10,6 @@ repo = 'morhetz/gruvbox'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/plugins/lightline.rc.vim'
-
-[[plugins]]
-repo = 'mhinz/vim-signify'
-hook_add = '''
-    set updatetime=100
-'''
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
@@ -41,16 +29,16 @@ repo = 'mattn/sonictemplate-vim'
 [[plugins]]
 repo = 'mattn/vim-findroot'
 hook_add = '''
-let g:findroot_patterns = [
-\ '.git/',
-\ '.bzr/',
-\ '.gitignore',
-\ 'Rakefile',
-\ 'pom.xml',
-\ 'project.clj',
-\ '*.csproj',
-\ '*.sln',
-\]
+    let g:findroot_patterns = [
+    \ '.git/',
+    \ '.bzr/',
+    \ '.gitignore',
+    \ 'Rakefile',
+    \ 'pom.xml',
+    \ 'project.clj',
+    \ '*.csproj',
+    \ '*.sln',
+    \]
 '''
 
 [[plugins]]
@@ -80,70 +68,38 @@ hook_add = '''
     set helplang=ja,en
 '''
 
-# [[plugins]]
-# repo = 'liuchengxu/vim-which-key'
-# hook_add = '''
-# set timeoutlen=500
-# let g:which_key_vertical = 1
-# nnoremap <silent> <Space>       :WhichKey '<Space>'<CR>
-# nnoremap <silent> <Leader>      :WhichKey '<Leader>'<CR>
-# nnoremap <silent> <LocalLeader> :WhichKey '<LocalLeader>'<CR>
-# '''
-
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 hook_add = '''
-let g:polyglot_disabled = ['csv']
+    let g:polyglot_disabled = ['csv']
 
-" markdown https://github.com/plasticboy/vim-markdown
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
+    " markdown https://github.com/plasticboy/vim-markdown
+    let g:vim_markdown_conceal = 0
+    let g:vim_markdown_conceal_code_blocks = 0
 
-" terraform https://github.com/hashivim/vim-terraform
-let g:terraform_align=0
-let g:terraform_fold_sections=0
-let g:terraform_fmt_on_save=0
+    " terraform https://github.com/hashivim/vim-terraform
+    let g:terraform_align=0
+    let g:terraform_fold_sections=0
+    let g:terraform_fmt_on_save=0
 '''
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if = "!has('nvim')"
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-if = "!has('nvim')"
 
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
 hook_add = '''
-" let g:suda_smart_edit = 1
-" let g:suda#prefix = 'suda://'
-" let g:suda#prefix = ['suda://', 'sudo://', '_://']
+    " let g:suda_smart_edit = 1
+    " let g:suda#prefix = 'suda://'
+    " let g:suda#prefix = ['suda://', 'sudo://', '_://']
 '''
 
 [[plugins]]
-repo = 'lighttiger2505/lab.vim'
-on_cmd = [
-    'LabBrowse',
-    'LabBrowseFile',
-]
+repo = 'liuchengxu/vista.vim'
+# on_cmd = ['Vista']
 hook_add = '''
-    nnoremap <Leader>ab :<C-u>LabBrowse<CR>
-    nnoremap <Leader>af :<C-u>LabBrowseFile<CR>
+    nnoremap <silent> <Leader>o :<C-u>Vista!!<CR>
+    let g:vista_sidebar_width = 40
+    let g:vista_echo_cursor = 0
+    " let g:vista_executive_for = {
+    "    \ 'go': 'lcn',
+    "    \ 'python': 'lcn',
+    "    \ }
 '''
-
-[[plugins]]
-repo = 'echuraev/translate-shell.vim'
-on_cmd = ['Trans', 'TransVisual']
-hook_add = '''
-    nnoremap <silent> <leader>se :Trans :en+ja<CR>
-    vnoremap <silent> <leader>se :Trans :en+ja<CR>
-    nnoremap <silent> <leader>sj :Trans :ja+en<CR>
-    vnoremap <silent> <leader>sj :Trans :ja+en<CR>
-'''
-
-[[plugins]]
-repo = 'cohama/lexima.vim'
-
-[[plugins]]
-repo = 'junegunn/goyo.vim'
