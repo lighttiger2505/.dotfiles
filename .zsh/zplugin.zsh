@@ -19,4 +19,3 @@ zplugin ice wait'!1'; zplugin light b4b4r07/zsh-vimode-visual
 
 # Load completions
 zplugin ice blockf; zplugin light zsh-users/zsh-completions
-zplugin ice blockf; zplugin light felixr/docker-zsh-completion
