@@ -8,7 +8,7 @@ let g:lsp_signs_information = {'text': 'i'}
 let g:lsp_signs_hint = {'text': '?'}
 let g:lsp_virtual_text_prefix = " ‣ "
 let g:lsp_highlight_references_enabled = 0
-let g:lsp_preview_float = 1
+let g:lsp_preview_float = 0
 
 if (executable('pyls'))
     let s:pyls_path = fnamemodify(g:python3_host_prog, ':h') . '/'. 'pyls'
