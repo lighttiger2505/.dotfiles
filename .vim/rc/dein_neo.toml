@@ -1,34 +1,4 @@
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-if = "has('nvim')"
-on_cmd = 'Denite'
-build = ':UpdateRemotePlugins'
-hook_add = '''
-    " Key Mapping Prefix key
-    nmap [fuzzyf] <Nop>
-    map <C-j> [fuzzyf]
-
-    " " Current direcotry files
-    " nnoremap <silent> [fuzzyf]<C-p> :<C-u>Denite file/rec/git -start-filter<CR>
-    " " Buffer files
-    " nnoremap <silent> [fuzzyf]<C-f> :<C-u>Denite line -start-filter<CR>
-    " Buffer lines
-    nnoremap <silent> [fuzzyf]<C-b> :<C-u>Denite buffer<CR>
-    " Snippets
-    nnoremap <silent> [fuzzyf]<C-s> :<C-u>Denite neosnippet -start-filter<CR>
-    " " Outline current file
-    " nnoremap <silent> [fuzzyf]<C-o> :<C-u>Denite outline -start-filter<CR>
-    " " Outline project files
-    " nnoremap <silent> [fuzzyf]<C-]> :<C-u>Denite tag -start-filter<CR>
-    " Reccent file
-    nnoremap <silent> [fuzzyf]<C-r> :<C-u>Denite file/old<CR>
-    nnoremap <silent> [fuzzyf]<C-h> :<C-u>Denite help -start-filter<CR>
-    nnoremap <silent> [fuzzyf]<C-d> :<C-u>Denite command -start-filter<CR>
-    nnoremap <silent> [fuzzyf]<C-c> :<C-u>Denite command_history -start-filter<CR>
-'''
-hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
-
-[[plugins]]
 repo = 'Shougo/defx.nvim'
 if = "has('nvim')"
 build = ':UpdateRemotePlugins'
