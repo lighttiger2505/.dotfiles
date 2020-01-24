@@ -26,7 +26,5 @@
 	rebase = true
 [includeIf "gitdir:~/dev/src/github.com/"]
 	path = ~/.gitconfig-private
-[includeIf "gitdir:~/dev/src/github.dena.jp"]
+[includeIf "gitdir:~/dev/src/github.dena.jp/"]
 	path = ~/.gitconfig-work
-[hub]
-	host = github.dena.jp

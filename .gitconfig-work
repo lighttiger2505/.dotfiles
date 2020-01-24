@@ -1,3 +1,5 @@
 [user]
 	email = toshikazu.ohashi@dena.com
 	name = toshikazu.ohashi
+[hub]
+	host = github.dena.jp
