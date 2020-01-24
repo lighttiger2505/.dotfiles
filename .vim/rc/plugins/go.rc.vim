@@ -19,7 +19,7 @@ let g:go_term_height = 10
 " let g:go_term_width = 30
 
 " Disable gopls
-let g:go_gopls_enabled = 1
+let g:go_gopls_enabled = 0
 
 " highlight all uses of the identifier under the cursor. |:GoSameIds| automatically
 let g:go_auto_sameids = 0
