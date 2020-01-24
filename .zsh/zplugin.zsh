@@ -1,21 +1,22 @@
-# Instaling zplugin
-if [ ! -e $HOME/.zplugin ]; then
-    git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
+# Instaling zinit
+if [ ! -e $HOME/.zinit ]; then
+    git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 fi
 
 # Initialize
-source $HOME/.zplugin/bin/zplugin.zsh
+source $HOME/.zinit/bin/zinit.zsh
 autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+(( ${+_comps} )) && _comps[zinit]=_zplugin
 
 # Load zsh plugins
-zplugin light zdharma/fast-syntax-highlighting
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light b4b4r07/enhancd
-zplugin light jocelynmallon/zshmarks
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light b4b4r07/enhancd
+zinit light jocelynmallon/zshmarks
 
 # Lazy load zsh plugins
-zplugin ice wait'!1'; zplugin light b4b4r07/zsh-vimode-visual
+zinit ice wait'!1'; zinit light b4b4r07/zsh-vimode-visual
 
 # Load completions
-zplugin ice blockf; zplugin light zsh-users/zsh-completions
+zinit ice blockf; zinit light zsh-users/zsh-completions
+zinit ice blockf; zinit light felixr/docker-zsh-completion
