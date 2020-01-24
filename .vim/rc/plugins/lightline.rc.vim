@@ -13,11 +13,7 @@ let g:lightline = {
     \ }
 
 function! LightlineFilename()
-    let l:p = expand('%:t')
-    if '' !=# l:p
-        return l:p
-    endif
-    return '[No Name]'
+    return ('' != expand('%') ? expand('%') : '[No Name]')
 endfunction
 
 function! NearestMethodOrFunction() abort
