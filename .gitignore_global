@@ -5,5 +5,5 @@ GPATH
 GRTAGS
 GTAGS
 .vimsession/
-docker/
+.docker/
 .python-version
