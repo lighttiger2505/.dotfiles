@@ -37,8 +37,6 @@ path=(
 /usr/local/sbin(N-/)
 /usr/sbin(N-/)
 /sbin(N-/)
-#gnubin
-/usr/local/opt/coreutils/libexec/gnubin(N-/)
 # Cabal
 $HOME/.cabal/bin(N-/)
 # rvm(ruby version control)
@@ -53,6 +51,37 @@ $ANYENV_PATH/bin(N-/)
 $HOME/.npm-global/bin(N-/)
 # my scripts
 $HOME/scripts(N-/)
+
+# GNU utils for mac
+# coreutils
+/usr/local/opt/coreutils/libexec/gnubin(N-/)
+# ed
+/usr/local/opt/ed/libexec/gnubin(N-/)
+# findutils
+/usr/local/opt/findutils/libexec/gnubin(N-/)
+# sed
+/usr/local/opt/gnu-sed/libexec/gnubin(N-/)
+# tar
+/usr/local/opt/gnu-tar/libexec/gnubin(N-/)
+# grep
+/usr/local/opt/grep/libexec/gnubin(N-/)
+${path}
+)
+
+manpath=(
+# coreutils
+/usr/local/opt/coreutils/libexec/gnubin(N-/)
+# ed
+/usr/local/opt/ed/libexec/gnubin(N-/)
+# findutils
+/usr/local/opt/findutils/libexec/gnubin(N-/)
+# sed
+/usr/local/opt/gnu-sed/libexec/gnubin(N-/)
+# tar
+/usr/local/opt/gnu-tar/libexec/gnubin(N-/)
+# grep
+/usr/local/opt/grep/libexec/gnubin(N-/)
+${manpath}
 )
 
 # Go root
