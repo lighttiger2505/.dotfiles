@@ -11,7 +11,8 @@ autoload -Uz _zplugin
 # Load zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
-zinit light b4b4r07/enhancd
+# very slow cd
+# zinit light b4b4r07/enhancd
 zinit light jocelynmallon/zshmarks
 
 # Lazy load zsh plugins
