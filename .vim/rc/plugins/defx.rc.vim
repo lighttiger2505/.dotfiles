@@ -31,7 +31,7 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> <CR>
     \ defx#is_directory() ?
     \ defx#do_action('open_or_close_tree') :
-    \ defx#do_action('drop')
+    \ defx#do_action('open')
     nnoremap <silent><buffer><expr> c
     \ defx#do_action('copy')
     nnoremap <silent><buffer><expr> m
@@ -47,7 +47,7 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> o
     \ defx#is_directory() ?
     \ defx#do_action('open_or_close_tree') :
-    \ defx#do_action('drop')
+    \ defx#do_action('open')
     nnoremap <silent><buffer><expr> K
     \ defx#do_action('new_directory')
     nnoremap <silent><buffer><expr> N
