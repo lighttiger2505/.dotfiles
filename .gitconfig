@@ -28,3 +28,5 @@
 	path = ~/.gitconfig-private
 [includeIf "gitdir:~/dev/src/github.dena.jp/"]
 	path = ~/.gitconfig-work
+[commit]
+	template = ~/.gitmessage.txt
