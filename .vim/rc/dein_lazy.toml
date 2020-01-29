@@ -163,5 +163,6 @@ hook_add = '''
 repo = 'rhysd/git-messenger.vim'
 on_cmd = ['GitMessenger']
 hook_add = '''
+    let g:git_messenger_no_default_mappings = v:true
     nnoremap <Leader>g :<C-u>GitMessenger<CR>
 '''
