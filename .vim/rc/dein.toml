@@ -16,6 +16,9 @@ repo = 'lambdalisue/gina.vim'
 hook_add = 'source ~/.vim/rc/plugins/gina.rc.vim'
 
 [[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
 repo = 'machakann/vim-sandwich'
 hook_add = '''
     nmap s <Nop>
