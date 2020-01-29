@@ -121,6 +121,7 @@ augroup END
 augroup LspAutoFormatting
     autocmd!
     autocmd BufWritePre *.go LspDocumentFormatSync
+    autocmd BufWritePre *.go LspDocumentDiagnostics
 augroup END
 
 " Key bindings
