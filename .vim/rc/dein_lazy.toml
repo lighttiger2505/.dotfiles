@@ -147,3 +147,14 @@ hook_add = '''
     nmap <Leader>b <Plug>(openbrowser-smart-search)
     vmap <Leader>b <Plug>(openbrowser-smart-search)
 '''
+
+[[plugins]]
+repo = 'iberianpig/tig-explorer.vim'
+on_cmd = [
+    'TigOpenProjectRootDir',
+    'TigOpenCurrentFile',
+]
+hook_add = '''
+    nnoremap <silent> <Leader>j :<C-u>TigOpenProjectRootDir<CR>
+    nnoremap <silent> <Leader>k :<C-u>TigOpenCurrentFile<CR>
+'''
