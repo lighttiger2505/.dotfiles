@@ -158,3 +158,10 @@ hook_add = '''
     nnoremap <silent> <Leader>j :<C-u>TigOpenProjectRootDir<CR>
     nnoremap <silent> <Leader>k :<C-u>TigOpenCurrentFile<CR>
 '''
+
+[[plugins]]
+repo = 'rhysd/git-messenger.vim'
+on_cmd = ['GitMessenger']
+hook_add = '''
+    nnoremap <Leader>g :<C-u>GitMessenger<CR>
+'''
