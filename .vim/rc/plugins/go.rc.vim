@@ -44,7 +44,6 @@ augroup GoCommands
     autocmd FileType go nmap <silent><LocalLeader>m  <Plug>(go-imports)
     autocmd FileType go nmap <silent><LocalLeader>ts :<C-u>GoTests
     autocmd FileType go nmap <silent><LocalLeader>ta :<C-u>GoTestsAll
-    autocmd FileType go nmap <silent><LocalLeader>i  <Plug>(go-install)
     autocmd FileType go nmap <silent><LocalLeader>k  <Plug>(go-doc-browser)
     autocmd FileType go nmap <silent><LocalLeader>c  <Plug>(go-coverage-toggle)
     autocmd FileType go nmap <silent><LocalLeader>a  <Plug>(go-alternate-edit)
