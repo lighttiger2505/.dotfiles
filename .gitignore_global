@@ -7,3 +7,4 @@ GTAGS
 .vimsession/
 .docker/
 .python-version
+.mypy_cache/
