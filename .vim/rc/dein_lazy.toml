@@ -126,8 +126,17 @@ repo = 'tyru/open-browser.vim'
 on_map = ['<Plug>(openbrowser-smart-search)']
 hook_add = '''
     let g:netrw_nogx = 1 " disable netrw's gx mapping.
-    nmap <Leader>b <Plug>(openbrowser-smart-search)
-    vmap <Leader>b <Plug>(openbrowser-smart-search)
+    nmap <Leader>bb <Plug>(openbrowser-smart-search)
+    vmap <Leader>bb <Plug>(openbrowser-smart-search)
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser-github.vim'
+depends = ['open-browser.vim']
+on_cmd = ['OpenGithubFile']
+hook_add = '''
+    nmap <Leader>bh :<C-u>OpenGithubFile<CR>
+    vmap <Leader>bh :<C-u>OpenGithubFile<CR>
 '''
 
 [[plugins]]
