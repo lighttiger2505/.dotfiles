@@ -80,7 +80,7 @@ build = './install --all'
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
-depends = ['fzf']
+depends = ['fzf', 'fzf-mru.vim']
 on_cmd = [
     'Files',
     'Buffers',
@@ -88,36 +88,12 @@ on_cmd = [
     'Tags',
     'BTags',
     'GFiles',
-    'History',
+    'FZFMru',
 ]
 hook_add = '''
     " Key Mapping Prefix key
     nmap [fuzzyf] <Nop>
     map <C-j> [fuzzyf]
-
-    let g:fzf_action = {
-        \ 'ctrl-t': 'tab split',
-        \ 'ctrl-o': 'tab split',
-        \ 'ctrl-s': 'split',
-        \ 'ctrl-v': 'vsplit'
-        \ }
-
-    let g:fzf_colors = {
-        \ 'fg':      ['fg', 'Normal'],
-        \ 'hl':      ['fg', 'Comment'],
-        \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-        \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-        \ 'hl+':     ['fg', 'Statement'],
-        \ 'info':    ['fg', 'PreProc'],
-        \ 'border':  ['fg', 'Ignore'],
-        \ 'prompt':  ['fg', 'Conditional'],
-        \ 'pointer': ['fg', 'Exception'],
-        \ 'marker':  ['fg', 'Keyword'],
-        \ 'spinner': ['fg', 'Label'],
-        \ 'header':  ['fg', 'Comment']
-        \ }
-
-    let g:fzf_layout = {}
 
     nnoremap <silent> [fuzzyf]<C-p> :<C-u>Files<CR>
     nnoremap <silent> [fuzzyf]<C-s> :<C-u>GFiles?<CR>
@@ -125,9 +101,13 @@ hook_add = '''
     nnoremap <silent> [fuzzyf]<C-l> :<C-u>BLines<CR>
     nnoremap <silent> [fuzzyf]<C-]> :<C-u>Tags<CR>
     nnoremap <silent> [fuzzyf]<C-o> :<C-u>BTags<CR>
-    nnoremap <silent> [fuzzyf]<C-r> :<C-u>History<CR>
+    nnoremap <silent> [fuzzyf]<C-r> :<C-u>FZFMru<CR>
 '''
 hook_source = 'source ~/.vim/rc/plugins/fzf.rc.vim'
+
+[[plugins]]
+repo = 'pbogut/fzf-mru.vim'
+
 
 #####################################################################
 # Other Util
