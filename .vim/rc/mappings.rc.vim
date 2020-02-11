@@ -24,6 +24,8 @@ noremap L $
 " Insert mode move
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
 
 " Change tab width
 nnoremap <silent> ts2 :<C-u>setl shiftwidth=2 softtabstop=2<CR>
@@ -146,6 +148,8 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 
 " Switch to last file
 nnoremap <Space><Space> <c-^>
