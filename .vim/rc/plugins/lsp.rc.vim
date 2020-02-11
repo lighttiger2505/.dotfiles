@@ -118,10 +118,10 @@ augroup LspEnable
     autocmd BufWinEnter *.cpp  :call lsp#enable()
 augroup END
 
-augroup LspAutoFormatting
-    autocmd!
-    autocmd BufWritePre *.go silent! LspDocumentFormatSync
-augroup END
+" augroup LspAutoFormatting
+"     autocmd!
+"     autocmd BufWritePre *.go silent! LspDocumentFormatSync
+" augroup END
 
 " Key bindings
 nnoremap <C-]> :<C-u>LspDefinition<CR>
