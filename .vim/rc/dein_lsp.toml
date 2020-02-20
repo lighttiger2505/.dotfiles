@@ -11,6 +11,7 @@ on_ft = [
     'javascript', 
     'c',
     'cpp',
+    'sql',
     'vue',
 ]
 depends = [
