@@ -8,3 +8,4 @@ GTAGS
 .docker/
 .python-version
 .mypy_cache/
+vendor/
