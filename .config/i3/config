@@ -292,6 +292,24 @@ mode "resize" {
 bindsym $sup+r mode "resize"
 
 # ------------------------------------------------------------
+# Keybind for Move Window
+# ------------------------------------------------------------
+
+bindsym $sup+o mode "move" focus floating
+mode "move" {
+    bindsym $sup+Tab focus right
+
+    bindsym h     move left
+    bindsym j     move down
+    bindsym k     move up
+    bindsym l     move right
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# ------------------------------------------------------------
 # Volume Control
 # ------------------------------------------------------------
 # Mute
