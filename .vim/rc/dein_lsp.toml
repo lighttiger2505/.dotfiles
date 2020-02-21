@@ -3,7 +3,6 @@ repo = 'prabirshrestha/async.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
-# if = "!has('nvim')"
 on_ft = [
     'python',
     'go',
@@ -40,17 +39,3 @@ depends = ['deoplete.nvim']
 hook_source = '''
     let g:deoplete#sources#vim_lsp#show_info = 1
 '''
-
-# [[plugins]]
-# repo = 'autozimu/LanguageClient-neovim'
-# rev = 'next'
-# if = "has('nvim')"
-# build = 'install.sh'
-# on_ft = ['go', 'python']
-# hook_source = 'source ~/.vim/rc/plugins/neolsp.rc.vim'
-
-# [[plugins]]
-# repo = 'neoclide/coc.nvim'
-# on_ft = ['go', 'python']
-# build = 'coc#util#install()'
-# hook_add = 'source ~/.vim/rc/plugins/coc.rc.vim'
