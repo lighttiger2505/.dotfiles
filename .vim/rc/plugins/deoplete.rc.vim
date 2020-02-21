@@ -18,7 +18,7 @@ call deoplete#custom#source('_', 'converters', [
 " Prams of deoplete
 call deoplete#custom#option({
 \ 'auto_complete': v:true,
-\ 'min_pattern_length': 2,
+\ 'min_pattern_length': 2, 
 \ 'auto_complete_delay': 0,
 \ 'auto_refresh_delay': 20,
 \ 'refresh_always': v:true,
@@ -50,14 +50,15 @@ call deoplete#custom#source('neosnippet', 'rank', 9999)
 
 " Set lsp complete sources
 let s:use_lsp_sources = ['neosnippet', 'lsp', 'LanguageClient', 'dictionary', 'file']
+let s:use_lsp_sources_without_snip = ['lsp', 'LanguageClient', 'dictionary', 'file']
 call deoplete#custom#option('sources', {
 \ 'go': s:use_lsp_sources,
 \ 'python': s:use_lsp_sources,
 \ 'c': s:use_lsp_sources,
 \ 'cpp': s:use_lsp_sources,
-\ 'sql': s:use_lsp_sources,
 \ 'vue': s:use_lsp_sources,
 \ 'typescript': s:use_lsp_sources,
+\ 'sql': s:use_lsp_sources_without_snip,
 \ 'denite-filter': ['denite'],
 \ 'vim': ['neosnippet', 'vim', 'buffer', 'dictionary', 'file'],
 \ 'markdown': ['buffer', 'dictionary', 'file', 'look'],
