@@ -60,4 +60,5 @@ call deoplete#custom#option('sources', {
 \ 'typescript': s:use_lsp_sources,
 \ 'denite-filter': ['denite'],
 \ 'vim': ['neosnippet', 'vim', 'buffer', 'dictionary', 'file'],
+\ 'markdown': ['buffer', 'dictionary', 'file', 'look'],
 \})
