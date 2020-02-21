@@ -42,7 +42,7 @@ if executable('gopls')
            \ 'whitelist': ['go'],
            \ 'workspace_config': {'gopls': {
            \     'staticcheck': v:true,
-           \     'completeUnimported': v:false,
+           \     'completeUnimported': v:true,
            \     'caseSensitiveCompletion': v:false,
            \     'usePlaceholders': v:true,
            \     'completionDocumentation': v:true,
