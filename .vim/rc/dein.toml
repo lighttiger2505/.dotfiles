@@ -90,3 +90,9 @@ hook_add = '''
     " let g:suda#prefix = 'suda://'
     " let g:suda#prefix = ['suda://', 'sudo://', '_://']
 '''
+
+[[plugins]]
+repo = 'nicwest/vim-camelsnek'
+
+[[plugins]]
+repo = 'AndrewRadev/splitjoin.vim'
