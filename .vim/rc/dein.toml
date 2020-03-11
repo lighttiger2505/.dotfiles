@@ -77,6 +77,8 @@ hook_add = '''
     let g:terraform_fold_sections=0
     let g:terraform_fmt_on_save=0
 
+    " vue https://github.com/posva/vim-vue
+    let g:vue_pre_processors = 'detect_on_enter'
     augroup VueSyntax
         autocmd!
         autocmd FileType vue syntax sync fromstart
