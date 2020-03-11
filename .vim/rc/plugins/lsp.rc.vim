@@ -79,13 +79,13 @@ endif
 
 if executable('sqls')
     augroup LspClangd
-      autocmd!
+        autocmd!
         autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'sqls',
-        \ 'cmd': {server_info->['sqls', '-log', 'sqls.log']},
-        \ 'whitelist': ['sql'],
+        \   'name': 'sqls',
+        \   'cmd': {server_info->['sqls', '-log', 'sqls.log']},
+        \   'whitelist': ['sql'],
         \ })
-        augroup END
+    augroup END
 endif
 
 if executable('vls')
@@ -95,14 +95,15 @@ if executable('vls')
        \ 'name': 'vue-language-server',
        \ 'cmd': {server_info->['vls']},
        \ 'whitelist': ['vue'],
+       \ 'blacklist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx'],
        \ 'initialization_options': {
-       \         'config': {
-       \             'html': {},
-       \              'vetur': {
-       \                  'validation': {}
-       \              }
-       \         }
+       \     'config': {
+       \         'html': {},
+       \          'vetur': {
+       \              'validation': {}
+       \          }
        \     }
+       \ },
        \ })
     augroup END
 endif
