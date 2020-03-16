@@ -214,3 +214,13 @@ function! CopyPathToClip() abort
     endif
 endfunction
 nnoremap <silent> <Space>p :<C-u>call CopyPathToClip()<CR>
+
+" Open terminal buffer to current dir path
+if has('nvim')
+    function! OpenTerminal() abort
+        let l:curdir = expand('%:p:h')
+        execute 'split | terminal ' . 'cd '. l:curdir . ' && zsh'
+        execute 'startinsert'
+    endfunction
+    nnoremap <silent> <Space>l :<C-u>call OpenTerminal()<CR>
+endif
