@@ -77,13 +77,32 @@ if executable('clangd')
         augroup END
 endif
 
+let s:sqls_config_mysql = {
+\   'driver': 'mysql',
+\   'data_source_name': 'root:root@tcp(127.0.0.1:13306)/world',
+\ }
+let s:sqls_config_postgres = {
+\   'driver': 'postgresql',
+\   'data_source_name': 'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
+\ }
+let s:sqls_config_sqlite = {
+\   'driver': 'sqlite3',
+\   'data_source_name': 'file:chinook.db',
+\ }
+
 if executable('sqls')
-    augroup LspClangd
+    augroup LspSqls
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
         \   'name': 'sqls',
-        \   'cmd': {server_info->['sqls', '-log', 'sqls.log']},
+        \   'cmd': {server_info->['sqls', '-log', expand('~/sqls.log'), '-trace']},
         \   'whitelist': ['sql'],
+        \   'workspace_config': {
+        \     'sqls': {
+        \       'driver': 'mysql',
+        \       'dataSourceName': 'root:root@tcp(127.0.0.1:13306)/world',
+        \     },
+        \   },
         \ })
     augroup END
 endif
