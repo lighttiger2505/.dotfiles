@@ -26,6 +26,11 @@ call deoplete#custom#option({
 \ 'camel_case': v:true,
 \ })
 
+augroup SQLMinPatturnLengthZero
+    autocmd!
+    autocmd FileType sql call deoplete#custom#source('lsp', 'min_pattern_length', 0)
+augroup END
+
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
@@ -50,7 +55,7 @@ call deoplete#custom#source('neosnippet', 'rank', 9999)
 
 " Set lsp complete sources
 let s:use_lsp_sources = ['neosnippet', 'lsp', 'buffer', 'dictionary', 'file']
-let s:use_lsp_sources_without_snip = ['lsp', 'buffer', 'dictionary', 'file']
+let s:use_lsp_sources_without_snip = ['lsp', 'buffer']
 call deoplete#custom#option('sources', {
 \ 'go': s:use_lsp_sources,
 \ 'python': s:use_lsp_sources,
