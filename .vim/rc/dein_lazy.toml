@@ -70,6 +70,18 @@ hook_add = '''
     "   \ }
 '''
 
+[[plugins]]
+repo = 'nicwest/vim-camelsnek'
+on_cmd = ['Camel', 'CamelB', 'Snek']
+
+[[plugins]]
+repo = 'AndrewRadev/splitjoin.vim'
+on_cmd = ['SplitjoinSplit', 'SplitjoinJoin']
+hook_add = '''
+    nnoremap <silent> <Leader>ss :<C-u>SplitjoinSplit<CR>
+    nnoremap <silent> <Leader>sj :<C-u>SplitjoinJoin<CR>
+'''
+
 #####################################################################
 # Fuzzy Finder
 #####################################################################

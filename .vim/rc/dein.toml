@@ -94,7 +94,3 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'nicwest/vim-camelsnek'
-
-[[plugins]]
-repo = 'AndrewRadev/splitjoin.vim'
