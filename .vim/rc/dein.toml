@@ -8,6 +8,9 @@ repo = 'cocopon/iceberg.vim'
 repo = 'morhetz/gruvbox'
 
 [[plugins]]
+repo = 'ayu-theme/ayu-vim'
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/plugins/lightline.rc.vim'
 
