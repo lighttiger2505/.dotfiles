@@ -39,3 +39,7 @@ depends = ['deoplete.nvim']
 hook_source = '''
     let g:deoplete#sources#vim_lsp#show_info = 1
 '''
+
+[[plugins]]
+repo = 'lighttiger2505/sqls.vim'
+on_ft = ['sql']
