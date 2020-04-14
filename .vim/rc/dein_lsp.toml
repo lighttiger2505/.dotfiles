@@ -43,3 +43,10 @@ hook_source = '''
 [[plugins]]
 repo = 'lighttiger2505/sqls.vim'
 on_ft = ['sql']
+hook_add = '''
+    augroup SqlsCommands
+        autocmd!
+        autocmd FileType sql nmap <silent><LocalLeader>r <Plug>(sqls-execute-query)
+        autocmd FileType sql nmap <silent><LocalLeader>s <Plug>(sqls-switch-database)
+    augroup END
+'''
