@@ -248,7 +248,9 @@ bindsym $sup+Shift+Tab move container to workspace back_and_forth
 # application assign to workspace
 assign [class="Alacritty"] $ws1
 assign [class="Gvim"] $ws2
+assign [class="code-oss"] $ws2
 assign [class="firefox"] $ws3
+assign [class="Google-chrome"] $ws3
 assign [class="Slack"] $ws4
 
 # ------------------------------------------------------------
