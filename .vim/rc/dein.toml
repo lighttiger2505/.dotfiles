@@ -97,3 +97,4 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'junegunn/goyo.vim.git'
