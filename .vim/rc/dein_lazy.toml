@@ -82,6 +82,13 @@ hook_add = '''
     nnoremap <silent> <Leader>sj :<C-u>SplitjoinJoin<CR>
 '''
 
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+on_cmd = ['IndentLinesToggle']
+hook_add = '''
+    nnoremap <silent> <Leader>i :<C-u>IndentLinesToggle<CR>
+'''
+
 #####################################################################
 # Fuzzy Finder
 #####################################################################
