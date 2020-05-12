@@ -46,7 +46,11 @@ on_ft = ['sql']
 hook_add = '''
     augroup SqlsCommands
         autocmd!
-        autocmd FileType sql nmap <silent><LocalLeader>r <Plug>(sqls-execute-query)
-        autocmd FileType sql nmap <silent><LocalLeader>s <Plug>(sqls-switch-database)
+        autocmd FileType sql nmap <silent><LocalLeader>rr <Plug>(sqls-execute-query)
+        autocmd FileType sql vmap <silent><LocalLeader>rr <Plug>(sqls-execute-query)
+        autocmd FileType sql nmap <silent><LocalLeader>rv <Plug>(sqls-execute-query-vertical)
+        autocmd FileType sql vmap <silent><LocalLeader>rv <Plug>(sqls-execute-query-vertical)
+        autocmd FileType sql nmap <silent><LocalLeader>sd <Plug>(sqls-switch-database)
+        autocmd FileType sql nmap <silent><LocalLeader>sc <Plug>(sqls-switch-connection)
     augroup END
 '''
