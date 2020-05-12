@@ -33,6 +33,7 @@ if (executable('pyls'))
     augroup END
 endif
 
+" see also: https://github.com/golang/tools/blob/master/internal/lsp/source/options.go
 if executable('gopls')
     augroup LspGo
         autocmd!
@@ -41,13 +42,15 @@ if executable('gopls')
            \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
            \ 'whitelist': ['go'],
            \ 'workspace_config': {'gopls': {
-           \     'staticcheck': v:true,
-           \     'completeUnimported': v:true,
-           \     'caseSensitiveCompletion': v:false,
-           \     'usePlaceholders': v:true,
            \     'completionDocumentation': v:true,
+           \     'usePlaceholders': v:true,
+           \     'deepCompletion': v:true,
+           \     'fuzzyMatching': v:true,
+           \     'caseSensitiveCompletion': v:false,
+           \     'completeUnimported': v:true,
+           \     'staticcheck': v:true,
            \     'watchFileChanges': v:true,
-           \     'hoverKind': 'SingleLine',
+           \     'hoverKind': 'FullDocumentation',
            \   }},
            \ })
     augroup END
