@@ -54,7 +54,7 @@ call deoplete#custom#source('LanguageClient', 'sorters', [])
 call deoplete#custom#source('neosnippet', 'rank', 9999)
 
 " Set lsp complete sources
-let s:use_lsp_sources = ['neosnippet', 'lsp', 'buffer', 'dictionary', 'file']
+let s:use_lsp_sources = ['neosnippet', 'lsp', 'dictionary', 'file']
 let s:use_lsp_sources_without_snip = ['lsp', 'buffer']
 call deoplete#custom#option('sources', {
 \ 'go': s:use_lsp_sources,
