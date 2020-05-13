@@ -65,12 +65,12 @@ nnoremap <silent>< <<
 " Paste explicitly yanked text
 nnoremap <Space>p "0p
 vnoremap <Space>p "0p
-inoremap <C-r><C-r> <C-r>0
-cnoremap <C-r><C-r> <C-r>0
 
 " Paste clipboard text
 nnoremap <Space>b "*p
 vnoremap <Space>b "*p
+inoremap <C-r><C-r> <C-r>*
+cnoremap <C-r><C-r> <C-r>*
 
 " Shortcut of write
 nnoremap <silent> <Space>w :<C-u>w<CR>
