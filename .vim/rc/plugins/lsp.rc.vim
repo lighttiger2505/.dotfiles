@@ -1,3 +1,4 @@
+" Diagnostics
 let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
@@ -7,8 +8,20 @@ let g:lsp_signs_warning = {'text': '‼'}
 let g:lsp_signs_information = {'text': 'i'}
 let g:lsp_signs_hint = {'text': '?'}
 let g:lsp_virtual_text_prefix = " ‣ "
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_echo_delay = 200
+
+" Highlight
+let g:lsp_highlights_enabled = 0
 let g:lsp_highlight_references_enabled = 0
+
+" Floating window
 let g:lsp_preview_float = 1
+augroup LspFloatMapping
+    autocmd!
+    autocmd User lsp_float_opened nmap <buffer> <silent> <esc> <Plug>(lsp-preview-close)
+    autocmd User lsp_float_closed nunmap <buffer> <esc>
+augroup END
 
 if (executable('pyls'))
     let s:pyls_path = fnamemodify(g:python3_host_prog, ':h') . '/'. 'pyls'
@@ -140,6 +153,8 @@ augroup END
 
 " Key bindings
 nnoremap <C-]> :<C-u>LspDefinition<CR>
+nnoremap <C-w><C-]> :<C-u>vertical LspDefinition<CR>
+nnoremap t<C-]> :<C-u>tab LspDefinition<CR>
 nnoremap K :<C-u>LspHover<CR>
 nnoremap <silent> <LocalLeader>K :<C-u>LspPeekDefinition<CR>
 nnoremap <silent> <LocalLeader>R :<C-u>LspRename<CR>
