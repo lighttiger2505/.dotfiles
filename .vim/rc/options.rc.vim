@@ -95,9 +95,15 @@ if exists('&inccommand')
     set inccommand=split
 endif
 
+" Enable 24bit color
+set termguicolors
+
 if has('nvim')
     if exists('&wildoptions')
         set wildoptions+=pum
+    endif
+    if exists('&pumblend')
+        set pumblend=10
     endif
 endif
 
