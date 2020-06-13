@@ -8,12 +8,12 @@ let g:lsp_signs_warning = {'text': '‼'}
 let g:lsp_signs_information = {'text': 'i'}
 let g:lsp_signs_hint = {'text': '?'}
 let g:lsp_virtual_text_prefix = " ‣ "
-let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_float_cursor = 0
 let g:lsp_diagnostics_echo_delay = 200
 
 " Highlight
 let g:lsp_highlights_enabled = 0
-let g:lsp_highlight_references_enabled = 0
+let g:lsp_highlight_references_enabled = 1
 
 " Floating window
 let g:lsp_preview_float = 1
