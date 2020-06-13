@@ -18,7 +18,8 @@ hook_add = '''
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
-on_ft = ['markdown', 'toml', 'help']
+on_ft = ['toml']
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+on_ft = ['markdown', 'toml', 'help']
