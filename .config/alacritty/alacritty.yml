@@ -497,6 +497,7 @@ debug:
 key_bindings:
   # (Windows/Linux only)
   - { key: V,        mods: Alt,           action: Paste            }
+  - { key: V,        mods: Super,         action: Paste            }
   - { key: C,        mods: Alt,           action: Copy             }
   - { key: Insert,   mods: Shift,         action: PasteSelection   }
   - { key: Key0,     mods: Control,       action: ResetFontSize    }
