@@ -124,9 +124,6 @@ set nofoldenable
 if executable('rg')
     let &grepprg = 'rg --vimgrep --hidden'
     set grepformat=%f:%l:%c:%m
-elseif executable('pt')
-    let &grepprg = 'pt --nocolor --nogroup --column'
-    set grepformat=%f:%l:%c:%m
 endif
 
 " jq command
