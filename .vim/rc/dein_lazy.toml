@@ -127,7 +127,6 @@ hook_source = 'source ~/.vim/rc/plugins/fzf.rc.vim'
 [[plugins]]
 repo = 'pbogut/fzf-mru.vim'
 
-
 #####################################################################
 # Other Util
 #####################################################################
@@ -176,3 +175,42 @@ hook_add = '''
     let g:git_messenger_no_default_mappings = v:true
     nnoremap <Leader>g :<C-u>GitMessenger<CR>
 '''
+
+[[plugins]]
+repo = 'junegunn/goyo.vim.git'
+on_ft = ['markdown']
+depends = ['limelight.vim']
+hook_add = '''
+    function! s:goyo_enter()
+        " if executable('tmux') && strlen($TMUX)
+        "     silent !tmux set status off
+        "     silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+        " endif
+        set noshowmode
+        set noshowcmd
+        set scrolloff=999
+        Limelight
+        " ...
+    endfunction
+
+    function! s:goyo_leave()
+        " if executable('tmux') && strlen($TMUX)
+        "     silent !tmux set status on
+        "     silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+        " endif
+        set showmode
+        set showcmd
+        set scrolloff=5
+        Limelight!
+        " ...
+    endfunction
+
+    augroup GoyoVisual
+        autocmd!
+        autocmd User GoyoEnter nested call <SID>goyo_enter()
+        autocmd User GoyoLeave nested call <SID>goyo_leave()
+    augroup END
+'''
+
+[[plugins]]
+repo = 'junegunn/limelight.vim'
