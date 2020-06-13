@@ -224,3 +224,9 @@ if has('nvim')
     endfunction
     nnoremap <silent> <Space>l :<C-u>call OpenTerminal()<CR>
 endif
+
+function! WordCount() abort
+    let l:wc = wordcount()
+    echo l:wc
+endfunction
+nnoremap <silent> <Space>c :<C-u>call WordCount()<CR>
