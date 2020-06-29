@@ -44,6 +44,9 @@ vim-fzf-find() {
 }
 alias fv=vim-fzf-find
 
+# Update vim plugins use vim
+vim -c 'call dein#update()' -c 'q!'
+
 # less
 export LESS='--RAW-CONTROL-CHARS'
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
