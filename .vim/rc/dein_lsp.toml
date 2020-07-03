@@ -1,7 +1,4 @@
 [[plugins]]
-repo = 'prabirshrestha/async.vim'
-
-[[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 on_ft = [
     'python',
@@ -15,7 +12,6 @@ on_ft = [
     'sql',
 ]
 depends = [
-    'async.vim',
     'deoplete-vim-lsp',
     'vista.vim',
     'vim-lsp-typescript',
