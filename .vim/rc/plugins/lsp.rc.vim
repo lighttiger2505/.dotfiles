@@ -40,7 +40,7 @@ if (executable('pyls'))
         autocmd User lsp_setup call lsp#register_server({
            \ 'name': 'pyls',
            \ 'cmd': { server_info -> [s:pyls_path] },
-           \ 'whitelist': ['python'],
+           \ 'allowlist': ['python'],
            \ 'workspace_config': s:pyls_config
            \})
     augroup END
@@ -53,7 +53,7 @@ if executable('gopls')
         autocmd User lsp_setup call lsp#register_server({
            \ 'name': 'gopls',
            \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-           \ 'whitelist': ['go'],
+           \ 'allowlist': ['go'],
            \ 'workspace_config': {'gopls': {
            \     'completionDocumentation': v:true,
            \     'usePlaceholders': v:true,
@@ -76,8 +76,8 @@ if executable('typescript-language-server')
        \ 'name': 'javascript support using typescript-language-server',
        \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
        \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-       \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx'],
-       \ 'blacklist': ['vue'],
+       \ 'allowlist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx'],
+       \ 'blocklist': ['vue'],
        \ })
         augroup END
 endif
@@ -88,7 +88,7 @@ if executable('clangd')
         autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'clangd',
         \ 'cmd': {server_info->['clangd', '-background-index']},
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
         \ })
         augroup END
 endif
@@ -99,7 +99,7 @@ if executable('sqls')
         autocmd User lsp_setup call lsp#register_server({
         \   'name': 'sqls',
         \   'cmd': {server_info->['sqls', '-log', expand('~/sqls.log'), '-trace', '-config', expand('~/.config/sqls/config.yml')]},
-        \   'whitelist': ['sql'],
+        \   'allowlist': ['sql'],
         \   'workspace_config': {
         \     'sqls': {
         \       'connections': [
@@ -120,8 +120,8 @@ if executable('vls')
         autocmd User lsp_setup call lsp#register_server({
        \ 'name': 'vue-language-server',
        \ 'cmd': {server_info->['vls']},
-       \ 'whitelist': ['vue'],
-       \ 'blacklist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx'],
+       \ 'allowlist': ['vue'],
+       \ 'blocklist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx'],
        \ 'initialization_options': {
        \     'config': {
        \         'html': {},
