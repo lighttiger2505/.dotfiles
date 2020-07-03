@@ -13,7 +13,7 @@ let g:lsp_diagnostics_echo_delay = 200
 
 " Highlight
 let g:lsp_highlights_enabled = 0
-let g:lsp_highlight_references_enabled = 1
+let g:lsp_highlight_references_enabled = 0
 
 " Floating window
 let g:lsp_preview_float = 1
