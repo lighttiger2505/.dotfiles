@@ -136,11 +136,16 @@ else
     alias nvim=vim
 fi
 
+# Launch Vim shortcuts
 alias v='vim'
 alias vi='vim'
 alias vimdiff='vim -d'
 alias dvim='/usr/bin/vim -u ~/.dev_vimrc'
 alias dnvim='/usr/bin/nvim -u ~/.dev_vimrc'
+alias coc='/usr/bin/nvim -u ~/.coc_nvimrc'
+
+# Update vim plugins use vim
+alias upvplug='vim -c "call dein#update()" -c "q!"'
 
 #####################################################################
 # lab
@@ -417,7 +422,3 @@ alias cgom=change_go_module
 
 alias worktime='~/.tmux/timer.sh 25'
 alias breaktime='~/.tmux/timer.sh 5'
-
-alias sdlvim='vim -u /home/lighttiger2505/dev/src/github.com/mattn/sd202008/.vimrc'
-alias sdavim='vim -u /home/lighttiger2505/dev/src/github.com/mattn/sd202008/lambdalisue/.vimrc'
-alias sdmvim='vim -u /home/lighttiger2505/dev/src/github.com/mattn/sd202008/mattn/.vimrc'
