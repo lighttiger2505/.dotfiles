@@ -16,6 +16,7 @@ augroup MyTabStop
     autocmd BufNewFile,BufRead *.vim       setlocal tabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead Makefile    setlocal noexpandtab
     autocmd BufNewFile,BufRead *.yml       setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.json      setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.yaml      setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.toml      setlocal tabstop=4 shiftwidth=4
     autocmd BufRead,BufNewFile *.scss      setlocal filetype=scss
