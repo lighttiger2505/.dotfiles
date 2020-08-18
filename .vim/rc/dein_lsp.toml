@@ -50,3 +50,16 @@ hook_add = '''
         autocmd FileType sql nmap <silent><LocalLeader>sc <Plug>(sqls-switch-connection)
     augroup END
 '''
+
+[[plugins]]
+repo = 'liuchengxu/vista.vim'
+on_cmd = ['Vista']
+hook_add = '''
+    nnoremap <silent> <Leader>o :<C-u>Vista!!<CR>
+    let g:vista_sidebar_width = 40
+    let g:vista_echo_cursor = 0
+    " let g:vista_executive_for = {
+    "   \ 'go': 'lcn',
+    "   \ 'python': 'lcn',
+    "   \ }
+'''
