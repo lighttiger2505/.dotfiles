@@ -3,6 +3,8 @@ augroup DefxSettings
     autocmd!
     autocmd FileType defx call s:defx_my_settings()
     autocmd FileType defx setlocal cursorline
+    autocmd FileType defx setlocal nonumber
+    autocmd FileType defx setlocal norelativenumber
 augroup END
 
 call defx#custom#option('_', {
@@ -31,15 +33,17 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> <CR>
     \ defx#is_directory() ?
     \ defx#do_action('open_or_close_tree') :
-    \ defx#do_action('open')
-    nnoremap <silent><buffer><expr> c
+    \ defx#do_action('drop')
+    nnoremap <silent><buffer><expr> yy
     \ defx#do_action('copy')
     nnoremap <silent><buffer><expr> m
     \ defx#do_action('move')
     nnoremap <silent><buffer><expr> p
     \ defx#do_action('paste')
+    nnoremap <silent><buffer><expr> P
+    \ defx#do_action('preview')
     nnoremap <silent><buffer><expr> l
-    \ defx#do_action('open')
+    \ defx#do_action('drop')
     " nnoremap <silent><buffer><expr> E
     "\ defx#do_action('open', 'vsplit')
     " nnoremap <silent><buffer><expr> P
@@ -47,7 +51,9 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> o
     \ defx#is_directory() ?
     \ defx#do_action('open_or_close_tree') :
-    \ defx#do_action('open')
+    \ defx#do_action('drop')
+    nnoremap <silent><buffer><expr> O
+    \ defx#do_action('open_tree_recursive')
     nnoremap <silent><buffer><expr> K
     \ defx#do_action('new_directory')
     nnoremap <silent><buffer><expr> N
@@ -58,7 +64,7 @@ function! s:defx_my_settings() abort
     \ defx#do_action('toggle_columns', 'mark:indent:icon:filename:type:size:time')
     nnoremap <silent><buffer><expr> S
     \ defx#do_action('toggle_sort', 'time')
-    nnoremap <silent><buffer><expr> d
+    nnoremap <silent><buffer><expr> dd
     \ defx#do_action('remove')
     nnoremap <silent><buffer><expr> r
     \ defx#do_action('rename')
@@ -66,7 +72,7 @@ function! s:defx_my_settings() abort
     \ defx#do_action('execute_command')
     nnoremap <silent><buffer><expr> x
     \ defx#do_action('execute_system')
-    nnoremap <silent><buffer><expr> yy
+    nnoremap <silent><buffer><expr> yp
     \ defx#do_action('yank_path')
     nnoremap <silent><buffer><expr> .
     \ defx#do_action('toggle_ignored_files')

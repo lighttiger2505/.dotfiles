@@ -6,8 +6,8 @@ depends = ['defx-git', 'defx-icons']
 on_cmd = 'Defx'
 hook_add = '''
 " Show defx project explorer style
-nnoremap <silent> <Leader>t :<C-u>Defx -ignored-files='.git' -resume<CR>
-nnoremap <silent> <Leader>f :<C-u>Defx -ignored-files='.git' -new `expand('%:p:h')`<CR>
+nnoremap <silent> <Leader>t :<C-u>Defx -ignored-files='.git' -resume -split=vertical -winwidth=40 -direction=topleft<CR>
+nnoremap <silent> <Leader>f :<C-u>Defx -ignored-files='.git' -new -split=vertical -winwidth=40 -direction=rightbelow `expand('%:p:h')`<CR>
 '''
 hook_source = 'source ~/.vim/rc/plugins/defx.rc.vim'
 
