@@ -20,6 +20,10 @@ hook_add = 'source ~/.vim/rc/plugins/gina.rc.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+    nmap ]g <Plug>(GitGutterNextHunk)
+    nmap [g <Plug>(GitGutterPrevHunk)
+'''
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
