@@ -68,6 +68,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
+rev = 'v4.10.2'
 hook_add = '''
     let g:polyglot_disabled = ['csv']
 
