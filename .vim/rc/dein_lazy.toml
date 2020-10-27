@@ -28,6 +28,10 @@ hook_add = '''
     let g:sqlfmt_program = sqlfmt_bin . ' -r -k upper -o %s -'
 '''
 
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html', 'djangohtml']
+
 #####################################################################
 # Programing util
 #####################################################################
