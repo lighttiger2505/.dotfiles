@@ -21,19 +21,23 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 repo = 'Shougo/deoplete.nvim'
 if = "has('nvim')"
 build = ':UpdateRemotePlugins'
-depends = ['neosnippet.vim']
+depends = ['ultisnips']
 hook_add = '''
 let g:deoplete#enable_at_startup = 1
 '''
 hook_source = 'source ~/.vim/rc/plugins/deoplete.rc.vim'
 
 [[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = ['neosnippet-snippets']
-hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
+repo = 'SirVer/ultisnips'
+depends = ['honza/vim-snippets']
+hook_add = '''
+    let g:UltiSnipsExpandTrigger="<c-k>"
+    let g:UltiSnipsJumpForwardTrigger="<c-k>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+'''
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'honza/vim-snippets'
 
 [[plugins]]
 repo = 'zchee/deoplete-zsh'

@@ -50,11 +50,11 @@ set completeopt-=preview
 " Setting sources for using lsp per filetype
 call deoplete#custom#source('LanguageClient', 'sorters', [])
 
-" Change neosnippet sort order
-call deoplete#custom#source('neosnippet', 'rank', 9999)
+" Change snippet sort order
+call deoplete#custom#source('ultisnips', 'rank', 9999)
 
 " Set lsp complete sources
-let s:use_lsp_sources = ['neosnippet', 'lsp', 'dictionary', 'file']
+let s:use_lsp_sources = ['ultisnips', 'lsp', 'dictionary', 'file']
 let s:use_lsp_sources_without_snip = ['lsp', 'buffer']
 call deoplete#custom#option('sources', {
 \ 'go': s:use_lsp_sources,
@@ -65,6 +65,6 @@ call deoplete#custom#option('sources', {
 \ 'typescript': s:use_lsp_sources,
 \ 'sql': s:use_lsp_sources_without_snip,
 \ 'denite-filter': ['denite'],
-\ 'vim': ['neosnippet', 'vim', 'buffer', 'dictionary', 'file'],
+\ 'vim': ['ultisnips', 'vim', 'buffer', 'dictionary', 'file'],
 \ 'markdown': ['buffer', 'dictionary', 'file', 'look'],
 \})
