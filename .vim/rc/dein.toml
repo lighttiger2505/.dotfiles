@@ -88,14 +88,3 @@ hook_add = '''
         autocmd FileType vue syntax sync fromstart
     augroup END
 '''
-
-[[plugins]]
-repo = 'lambdalisue/suda.vim'
-hook_add = '''
-    " let g:suda_smart_edit = 1
-    " let g:suda#prefix = 'suda://'
-    " let g:suda#prefix = ['suda://', 'sudo://', '_://']
-'''
-
-[[plugins]]
-repo = 'mattn/vim-lexiv'
