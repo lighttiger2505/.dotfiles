@@ -40,12 +40,6 @@ hook_add = '''
 repo = 'honza/vim-snippets'
 
 [[plugins]]
-repo = 'zchee/deoplete-zsh'
-if = "has('nvim')"
-on_ft = ['zsh']
-depends = ['deoplete.nvim']
-
-[[plugins]]
 repo = 'Shougo/neco-vim'
 if = "has('nvim')"
 on_ft = ['vim']
