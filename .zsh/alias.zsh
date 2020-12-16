@@ -14,8 +14,8 @@ alias fal='alias| sed "s/=/\t/" | fzf'
 
 # cd util
 alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
+alias ....='cd ../..'
+alias ......='cd ../../..'
 alias c="cd ~/"
 alias d="cd ~/.dotfiles"
 alias ed="vim ~/.vimrc"
@@ -369,13 +369,34 @@ alias b=fzf-jump-bookmark
 # gcloud
 #####################################################################
 
-gcloud-change-project() {
-    PROJECT=`gcloud projects list | fzf -m | awk '{print $1}'`
-    if [ -n "${PROJECT}" ]; then
-        gcloud config set project ${PROJECT}
+gcloud-change-config() {
+    local CONFIG=`gcloud config configurations list | awk 'NR > 1 {print}' | awk '{print $1}' | fzf -m`
+    if [ -n "${CONFIG}" ]; then
+        gcloud config configurations activate ${CONFIG}
     fi
 }
-alias gccp=gcloud-change-project
+alias gccc=gcloud-change-config
+
+gcloud-browse-app-version() {
+    local CHOICE_LINE=`gcloud app versions list -s ope | awk 'NR > 1 {print}' | awk '{print $1, $2}' | fzf -m`
+    if [ -n "${CHOICE_LINE}" ]; then
+        local APP=`echo ${CHOICE_LINE} | awk '{print $1}'`
+        local VERSION=`echo ${CHOICE_LINE} | awk '{print $2}'`
+        gcloud app browse --service=${APP} --version=${VERSION}
+    fi
+}
+alias gcab=gcloud-browse-app-version
+
+gcloud-logs-app-version() {
+    local CHOICE_LINE=`gcloud app versions list -s ope | awk 'NR > 1 {print}' | awk '{print $1, $2}' | fzf -m`
+    if [ -n "${CHOICE_LINE}" ]; then
+        local APP=`echo ${CHOICE_LINE} | awk '{print $1}'`
+        local VERSION=`echo ${CHOICE_LINE} | awk '{print $2}'`
+        gcloud app logs tail --service=${APP} --version=${VERSION}
+    fi
+}
+alias gcal=gcloud-logs-app-version
+
 
 gcloud-compute-ssh() {
     CHOICE_LINE=`gcloud compute instances list | fzf -m`
