@@ -92,3 +92,9 @@ hook_add = '''
         autocmd FileType vue syntax sync fromstart
     augroup END
 '''
+
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
+hook_add = '''
+    let g:highlightedyank_highlight_duration = 200
+'''
