@@ -467,15 +467,16 @@ debug:
 #   - AppKeypad
 key_bindings:
   # (Windows/Linux only)
-  - { key: V,        mods: Alt,           action: Paste            }
-  - { key: V,        mods: Super,         action: Paste            }
-  - { key: C,        mods: Alt,           action: Copy             }
-  - { key: Insert,   mods: Shift,         action: PasteSelection   }
-  - { key: Key0,     mods: Control,       action: ResetFontSize    }
-  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  - { key: Add,      mods: Control,       action: IncreaseFontSize }
-  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
-  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  - { key: V,              mods: Alt,     action: Paste            }
+  - { key: V,              mods: Super,   action: Paste            }
+  - { key: C,              mods: Alt,     action: Copy             }
+  - { key: Insert,         mods: Shift,   action: PasteSelection   }
+  - { key: Key0,           mods: Control, action: ResetFontSize    }
+  - { key: Equals,         mods: Control, action: IncreaseFontSize }
+  - { key: Plus,           mods: Control, action: IncreaseFontSize }
+  - { key: NumpadAdd,      mods: Control, action: IncreaseFontSize }
+  - { key: Minus,          mods: Control, action: DecreaseFontSize }
+  - { key: NumpadSubtract, mods: Control, action: DecreaseFontSize }
 
   # # (macOS only)
   # # for tmux meta key
