@@ -8,6 +8,7 @@ export LANG=en_US.UTF-8
 # golang
 export GOPATH=$HOME/dev
 export GO111MODULE=auto
+export GOPRIVATE="github.com/MobilityTechnologies"
 # anyenv
 export ANYENV_PATH=$HOME/.anyenv
 # pyenv
