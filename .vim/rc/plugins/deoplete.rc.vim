@@ -45,13 +45,17 @@ endfunction
 set completeopt-=preview
 
 " Disable sources
-" call deoplete#custom#option('ignore_sources', {'_': ['buffer', 'around']})
+call deoplete#custom#option('ignore_sources', {'_': ['look', 'around']})
 
 " Setting sources for using lsp per filetype
 call deoplete#custom#source('LanguageClient', 'sorters', [])
 
 " Change snippet sort order
 call deoplete#custom#source('ultisnips', 'rank', 9999)
+
+call deoplete#custom#option('keyword_patterns', {
+\ 'sql': '[a-zA-Z_`]\k*',
+\})
 
 " Set lsp complete sources
 let s:use_lsp_sources = ['ultisnips', 'lsp', 'dictionary', 'file']
