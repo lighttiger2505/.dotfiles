@@ -97,3 +97,10 @@ repo = 'machakann/vim-highlightedyank'
 hook_add = '''
     let g:highlightedyank_highlight_duration = 200
 '''
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+rev = '3c07232'
+if = "has('nvim-0.5')"
+if = "g:dot_tree_sitter"
+
