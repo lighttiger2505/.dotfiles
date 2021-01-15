@@ -104,3 +104,9 @@ rev = '3c07232'
 if = "has('nvim-0.5')"
 if = "g:dot_tree_sitter"
 
+[[plugins]]
+repo = 'bfredl/nvim-miniyank'
+hook_add = '''
+    map p <Plug>(miniyank-autoput)
+    map P <Plug>(miniyank-autoPut)
+'''
