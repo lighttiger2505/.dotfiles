@@ -1,10 +1,15 @@
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+if = "g:dot_deoplete"
 on_ft = [
     'python',
     'go',
+    'javascript',
+    'javascript.jsx',
+    'javascriptreact',
     'typescript',
-    'javascript', 
+    'typescript.tsx',
+    'typescriptreact',
     'c',
     'cpp',
     'sql',
@@ -23,11 +28,19 @@ hook_source = '''
 
 [[plugins]]
 repo = 'ryanolsonx/vim-lsp-typescript'
-on_ft = ['typescript']
+on_ft = [
+    'typescript',
+    'typescript.tsx',
+    'typescriptreact',
+]
 
 [[plugins]]
 repo = 'ryanolsonx/vim-lsp-javascript'
-on_ft = ['javascript']
+on_ft = [
+    'javascript',
+    'javascript.jsx',
+    'javascriptreact',
+]
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
@@ -62,4 +75,26 @@ hook_add = '''
     "   \ 'go': 'lcn',
     "   \ 'python': 'lcn',
     "   \ }
+'''
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+if = "!g:dot_deoplete"
+on_ft = [
+    'python',
+    'go',
+    'javascript',
+    'javascript.jsx',
+    'javascriptreact',
+    'typescript',
+    'typescript.tsx',
+    'typescriptreact',
+    'c',
+    'cpp',
+    'sql',
+    'vue',
+    'sql',
+]
+hook_source = '''
+    source ~/.vim/rc/plugins/coc.rc.vim
 '''

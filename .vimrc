@@ -65,11 +65,17 @@ if s:dein_dir !=# '' || &runtimepath !~# '/dein.vim'
         \ fnamemodify(s:dein_dir, ':p') , '/$', '', '')
 endif
 
+let g:dot_tree_sitter = 1
+let g:dot_deoplete = 1
+
 call s:source_rc('mappings.rc.vim')
 call s:source_rc('options.rc.vim')
 call s:source_rc('filetype.rc.vim')
 call s:source_rc('autocmd.rc.vim')
 call s:source_rc('dein.rc.vim')
+if has('nvim-0.5') && g:dot_tree_sitter
+  call s:source_rc('lua.rc.vim')
+endif
 
 " Reload .vimrc
 nnoremap <Space>s :source $HOME/.vimrc<CR>

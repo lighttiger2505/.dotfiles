@@ -20,6 +20,7 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 if = "has('nvim')"
+if = "g:dot_deoplete"
 build = ':UpdateRemotePlugins'
 depends = ['ultisnips']
 hook_add = '''

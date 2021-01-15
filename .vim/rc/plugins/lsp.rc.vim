@@ -70,12 +70,12 @@ if executable('typescript-language-server')
     augroup LspTypeScript
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
-       \ 'name': 'javascript support using typescript-language-server',
-       \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-       \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-       \ 'allowlist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx'],
-       \ 'blocklist': ['vue'],
-       \ })
+            \ 'name': 'typescript-language-server',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+            \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+            \ 'allowlist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact'],
+            \ 'blocklist': ['vue'],
+            \ })
         augroup END
 endif
 
@@ -95,7 +95,7 @@ if executable('sqls')
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
         \   'name': 'sqls',
-        \   'cmd': {server_info->['sqls', '-log', expand('~/sqls.log'), '-trace', '-config', expand('~/.config/sqls/config.yml')]},
+        \   'cmd': {server_info->['sqls', '-log', expand('~/sqls.log'), '-config', expand('~/.config/sqls/config.yml')]},
         \   'allowlist': ['sql'],
         \   'workspace_config': {
         \     'sqls': {
@@ -141,6 +141,7 @@ augroup LspEnable
     autocmd BufWinEnter *.c    :call lsp#enable()
     autocmd BufWinEnter *.h    :call lsp#enable()
     autocmd BufWinEnter *.cpp  :call lsp#enable()
+    autocmd BufWinEnter *.tsx  :call lsp#enable()
 augroup END
 
 " augroup LspAutoFormatting
