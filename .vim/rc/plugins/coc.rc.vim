@@ -23,6 +23,7 @@ nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
+nmap <silent> <C-]> <Plug>(coc-definition)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -43,11 +44,11 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+nmap <LocalLeader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+vmap <LocalLeader>f  <Plug>(coc-format-selected)
+nmap <LocalLeader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -58,13 +59,13 @@ augroup mygroup
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+vmap <LocalLeader>a  <Plug>(coc-codeaction-selected)
+nmap <LocalLeader>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <LocalLeader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <LocalLeader>qf  <Plug>(coc-fix-current)
 
 " Use `:Format` for format current buffer
 command! -nargs=0 Format :call CocAction('format')
