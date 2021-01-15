@@ -94,6 +94,21 @@ hook_add = '''
 [[plugins]]
 repo = 'tpope/vim-dispatch'
 
+[[plugins]]
+repo = 'prettier/vim-prettier'
+build = 'yarn install'
+on_ft = [
+    'javascript',
+    'javascript.jsx',
+    'javascriptreact',
+    'typescript',
+    'typescript.tsx',
+    'typescriptreact',
+]
+hook_add = '''
+    nmap <Leader>py <Plug>(Prettier)
+'''
+
 #####################################################################
 # Fuzzy Finder
 #####################################################################
