@@ -23,4 +23,3 @@ ${p_vimjob}${p_mark} "
 
 zle -N zle-line-init
 zle -N zle-line-finish
-zle -N edit-command-line

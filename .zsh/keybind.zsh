@@ -29,3 +29,8 @@ bindkey '^L' cd-fzf-ghqlist
 bindkey '^O' checkout-fzf-gitbranch
 bindkey '^R' buffer-fzf-history
 bindkey '^\' ssh-fzf-sshconfig
+
+# Open editor
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^V' edit-command-line
