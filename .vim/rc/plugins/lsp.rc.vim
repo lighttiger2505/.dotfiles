@@ -161,3 +161,6 @@ nnoremap <silent> <LocalLeader>f :<C-u>LspDocumentDiagnostics<CR>
 nnoremap <silent> <LocalLeader>s :<C-u>LspDocumentFormat<CR>
 nnoremap <silent> <LocalLeader>i :<C-u>LspImplementation<CR>
 set omnifunc=lsp#complete
+
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
