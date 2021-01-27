@@ -45,7 +45,7 @@ endfunction
 set completeopt-=preview
 
 " Disable sources
-call deoplete#custom#option('ignore_sources', {'_': ['look', 'around']})
+call deoplete#custom#option('ignore_sources', {'_': ['around']})
 
 " Setting sources for using lsp per filetype
 call deoplete#custom#source('LanguageClient', 'sorters', [])
