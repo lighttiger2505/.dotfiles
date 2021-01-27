@@ -22,7 +22,7 @@ depends = [
     'vim-lsp-typescript',
     'vim-lsp-javascript',
 ]
-hook_source = '''
+hook_add = '''
     source ~/.vim/rc/plugins/lsp.rc.vim
 '''
 
