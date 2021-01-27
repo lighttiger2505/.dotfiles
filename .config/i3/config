@@ -329,9 +329,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% &&
 # Brightness Control
 # ------------------------------------------------------------
 # increase screen brightness
-bindsym XF86MonBrightnessUp exec light -A 5 && pkill -RTMIN+1 i3blocks
+bindsym XF86MonBrightnessUp exec light -A 2 && pkill -RTMIN+1 i3blocks
 # decrease screen brightness
-bindsym XF86MonBrightnessDown exec light -U 5 && pkill -RTMIN+1 i3blocks
+bindsym XF86MonBrightnessDown exec light -U 2 && pkill -RTMIN+1 i3blocks
 
 # Sleep key
 bindsym XF86Sleep exec --no-startup-id systemctl suspend
