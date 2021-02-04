@@ -1,0 +1,5 @@
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+hook_source = '''
+    source ~/.vim/rc/plugins/coc.rc.vim
+'''
