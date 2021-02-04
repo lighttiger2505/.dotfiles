@@ -30,9 +30,6 @@ set wrap
 set textwidth=0
 set colorcolumn=256
 
-" Highlight cursor line
-" set cursorline
-
 " Invisible stirng
 set list
 set listchars=tab:»-,extends:»,precedes:«,nbsp:%,eol:↲,trail:~
