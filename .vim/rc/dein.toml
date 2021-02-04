@@ -116,3 +116,12 @@ hook_add = '''
     map p <Plug>(miniyank-autoput)
     map P <Plug>(miniyank-autoPut)
 '''
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+
+[[plugins]]
+repo = 'yuki-yano/fzf-preview.vim'
+rev = 'release/rpc'
+hook_add = 'source ~/.vim/rc/plugins/fzf.rc.vim'

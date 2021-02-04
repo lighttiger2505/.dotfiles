@@ -113,39 +113,35 @@ hook_add = '''
 # Fuzzy Finder
 #####################################################################
 
-[[plugins]]
-repo = 'junegunn/fzf'
-build = './install --all'
-
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-depends = ['fzf', 'fzf-mru.vim']
-on_cmd = [
-    'Files',
-    'Buffers',
-    'BLines',
-    'Tags',
-    'BTags',
-    'GFiles',
-    'FZFMru',
-]
-hook_add = '''
-    " Key Mapping Prefix key
-    nmap [fuzzyf] <Nop>
-    map <C-j> [fuzzyf]
-
-    nnoremap <silent> [fuzzyf]<C-p> :<C-u>Files<CR>
-    nnoremap <silent> [fuzzyf]<C-s> :<C-u>GFiles?<CR>
-    nnoremap <silent> [fuzzyf]<C-b> :<C-u>Buffers<CR>
-    nnoremap <silent> [fuzzyf]<C-l> :<C-u>BLines<CR>
-    nnoremap <silent> [fuzzyf]<C-]> :<C-u>Tags<CR>
-    nnoremap <silent> [fuzzyf]<C-o> :<C-u>BTags<CR>
-    nnoremap <silent> [fuzzyf]<C-r> :<C-u>FZFMru<CR>
-'''
-hook_source = 'source ~/.vim/rc/plugins/fzf.rc.vim'
-
-[[plugins]]
-repo = 'pbogut/fzf-mru.vim'
+# [[plugins]]
+# repo = 'junegunn/fzf.vim'
+# depends = ['fzf', 'fzf-mru.vim']
+# on_cmd = [
+#     'Files',
+#     'Buffers',
+#     'BLines',
+#     'Tags',
+#     'BTags',
+#     'GFiles',
+#     'FZFMru',
+# ]
+# hook_add = '''
+#     " Key Mapping Prefix key
+#     nmap [fuzzyf] <Nop>
+#     map <C-j> [fuzzyf]
+# 
+#     nnoremap <silent> [fuzzyf]<C-p> :<C-u>Files<CR>
+#     nnoremap <silent> [fuzzyf]<C-s> :<C-u>GFiles?<CR>
+#     nnoremap <silent> [fuzzyf]<C-b> :<C-u>Buffers<CR>
+#     nnoremap <silent> [fuzzyf]<C-l> :<C-u>BLines<CR>
+#     nnoremap <silent> [fuzzyf]<C-]> :<C-u>Tags<CR>
+#     nnoremap <silent> [fuzzyf]<C-o> :<C-u>BTags<CR>
+#     nnoremap <silent> [fuzzyf]<C-r> :<C-u>FZFMru<CR>
+# '''
+# hook_source = 'source ~/.vim/rc/plugins/fzf.rc.vim'
+# 
+# [[plugins]]
+# repo = 'pbogut/fzf-mru.vim'
 
 #####################################################################
 # Other Util
