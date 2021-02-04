@@ -20,16 +20,3 @@ let g:lightline = {
 function! LightlineFilename()
     return ('' != expand('%') ? expand('%') : '[No Name]')
 endfunction
-
-function! NearestMethodOrFunction() abort
-    let l:func_name = get(b:, 'vista_nearest_method_or_function', '')
-    if l:func_name != ''
-        return ' ' . l:func_name
-    endif
-    return ''
-endfunction
-
-augroup LightLineOnVista
-    autocmd!
-    autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-augroup END

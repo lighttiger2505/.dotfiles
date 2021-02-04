@@ -15,6 +15,7 @@ let g:lsp_format_sync_timeout = 1000
 " Highlight
 let g:lsp_highlights_enabled = 0
 let g:lsp_highlight_references_enabled = 0
+let g:lsp_document_highlight_enabled = 0
 let g:lsp_diagnostics_highlights_enabled = 0
 let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
 
