@@ -66,9 +66,10 @@ if s:dein_dir !=# '' || &runtimepath !~# '/dein.vim'
 endif
 
 let g:dot_tree_sitter = v:true
-let g:dot_deoplete = v:false
-let g:dot_vim_lsp = v:false
-let g:dot_coc = v:true
+let g:dot_deoplete = v:true
+let g:dot_vim_lsp = v:true
+let g:dot_coc = v:false
+let g:dot_compe = v:false
 
 call s:source_rc('mappings.rc.vim')
 call s:source_rc('options.rc.vim')

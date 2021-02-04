@@ -31,6 +31,9 @@ endif
 if g:dot_coc
     call dein#load_toml('~/.vim/rc/dein_coc.toml', {'lazy': 0})
 endif
+if g:dot_compe
+    call dein#load_toml('~/.vim/rc/dein_compe.toml', {'lazy': 0})
+endif
 
 call dein#end()
 call dein#save_state()
