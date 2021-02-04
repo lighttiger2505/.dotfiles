@@ -86,7 +86,7 @@ nnoremap <Space>s :source $HOME/.vimrc<CR>
 " Colors
 set t_Co=256
 set background=dark
-colorscheme iceberg
+colorscheme nightfly
 
 " magic word after
 filetype plugin indent on
