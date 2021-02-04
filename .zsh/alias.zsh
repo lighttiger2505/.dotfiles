@@ -141,8 +141,9 @@ alias v='vim'
 alias vi='vim'
 alias vimdiff='vim -d'
 alias dvim='/usr/bin/vim -u ~/.dev_vimrc'
-alias dnvim='/usr/bin/nvim -u ~/.dev_vimrc'
-alias coc='/usr/bin/nvim -u ~/.coc_nvimrc'
+alias dvim-lsp-deoplete='nvim -u ~/.vim/dev/vim-lsp-deoplete.vim'
+alias dvim-lsp-asyncomplete='nvim -u ~/.vim/dev/vim-lsp-asyncomplete.vim'
+alias coc='nvim -u ~/.vim/dev/coc.vim'
 
 # Update vim plugins use vim
 alias upvplug='vim -c "call dein#update()" -c "q!"'
