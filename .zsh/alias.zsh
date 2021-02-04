@@ -146,7 +146,8 @@ alias dvim-lsp-asyncomplete='nvim -u ~/.vim/dev/vim-lsp-asyncomplete.vim'
 alias coc='nvim -u ~/.vim/dev/coc.vim'
 
 # Update vim plugins use vim
-alias upvplug='vim -c "call dein#update()" -c "q!"'
+#dein#update()
+alias upvplug='vim -c "call dein#check_update(v:true)" -c "q!"'
 
 #####################################################################
 # lab

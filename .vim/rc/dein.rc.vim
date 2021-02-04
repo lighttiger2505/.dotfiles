@@ -2,7 +2,12 @@ if &compatible
   set nocompatible
 endif
 
-let s:dein_dir = expand('$CACHE/dein')
+let s:dein_dir = expand("$CACHE/dein")
+
+let s:token_file = expand("$HOME/.vim/secrets/dein_token.vim")
+if filereadable(s:token_file)
+    execute 'source ' . s:token_file
+endif
 
 if !dein#load_state(s:dein_dir)
   finish
@@ -31,5 +36,5 @@ call dein#end()
 call dein#save_state()
 
 if dein#check_install()
-  call dein#install()
+    call dein#install()
 endif
