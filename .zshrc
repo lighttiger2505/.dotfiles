@@ -44,6 +44,8 @@ if [ "$(pgrep ssh-agent 2> /dev/null)" = "" ]; then
     esac
 fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/lighttiger2505/google-cloud-sdk/path.zsh.inc' ]; then . '/home/lighttiger2505/google-cloud-sdk/path.zsh.inc'; fi
 
