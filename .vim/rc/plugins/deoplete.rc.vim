@@ -18,7 +18,7 @@ call deoplete#custom#source('_', 'converters', [
 " Prams of deoplete
 call deoplete#custom#option({
 \ 'auto_complete': v:true,
-\ 'min_pattern_length': 2, 
+\ 'min_pattern_length': 2,
 \ 'auto_complete_delay': 0,
 \ 'auto_refresh_delay': 20,
 \ 'refresh_always': v:true,
@@ -45,7 +45,9 @@ endfunction
 set completeopt-=preview
 
 " Disable sources
-call deoplete#custom#option('ignore_sources', {'_': ['around']})
+call deoplete#custom#option('ignore_sources', {
+\ '_': ['around', 'look']
+})
 
 " Setting sources for using lsp per filetype
 call deoplete#custom#source('LanguageClient', 'sorters', [])

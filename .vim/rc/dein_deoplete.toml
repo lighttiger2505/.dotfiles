@@ -1,32 +1,10 @@
 ###############################################################
-# asyncomplete
-###############################################################
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-if = "!has('nvim') && !g:dot_deoplete"
-depends = [
-    'asyncomplete-lsp.vim',
-    'asyncomplete-buffer.vim',
-]
-
-[[plugins]]
-if = "!has('nvim') && !g:dot_deoplete"
-repo = 'prabirshrestha/asyncomplete-buffer.vim'
-
-[[plugins]]
-if = "!has('nvim') && !g:dot_deoplete"
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
-
-###############################################################
 # deoplete and sources
 ###############################################################
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-if = "has('nvim') && g:dot_deoplete"
 build = ':UpdateRemotePlugins'
-depends = ['ultisnips']
 hook_add = '''
 let g:deoplete#enable_at_startup = 1
 '''
@@ -34,19 +12,15 @@ hook_source = 'source ~/.vim/rc/plugins/deoplete.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
-if = "has('nvim') && g:dot_deoplete"
-on_ft = ['vim']
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
-if = "has('nvim') && g:dot_deoplete"
-on_ft = ['gitcommit', 'markdown']
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
-hook_source = '''
-    let g:deoplete#sources#vim_lsp#show_info = 1
-'''
+# hook_source = '''
+#    let g:deoplete#sources#vim_lsp#show_info = 1
+# '''
 
 ###############################################################
 # snippets
