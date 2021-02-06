@@ -42,7 +42,7 @@ if g:dot_vim_lsp
     call dein#load_toml('~/.vim/rc/dein_vim_lsp.toml', {'lazy': 0})
 endif
 if g:dot_deoplete
-    call dein#load_toml('~/.vim/rc/dein_deoplete.toml', {'lazy': 1})
+    call dein#load_toml('~/.vim/rc/dein_deoplete.toml', {'lazy': 0})
 endif
 if g:dot_coc
     call dein#load_toml('~/.vim/rc/dein_coc.toml', {'lazy': 0})
@@ -53,3 +53,5 @@ endif
 
 call dein#end()
 call dein#save_state()
+
+autocmd VimEnter * call dein#call_hook('post_source')

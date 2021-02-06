@@ -1,33 +1,26 @@
-###############################################################
-# deoplete and sources
-###############################################################
-
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-build = ':UpdateRemotePlugins'
 hook_add = '''
-let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_at_startup = 1
 '''
-hook_source = 'source ~/.vim/rc/plugins/deoplete.rc.vim'
+hook_post_source = '''
+    source ~/.vim/rc/plugins/deoplete.rc.vim
+'''
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
+on_ft = ['vim']
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
+on_ft = ['markdown', 'gitcommit']
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
-# hook_source = '''
-#    let g:deoplete#sources#vim_lsp#show_info = 1
-# '''
-
-###############################################################
-# snippets
-###############################################################
 
 [[plugins]]
 repo = 'SirVer/ultisnips'
+depend = ['vim-snippets']
 hook_add = '''
     let g:UltiSnipsExpandTrigger="<c-k>"
     let g:UltiSnipsJumpForwardTrigger="<c-k>"
