@@ -72,27 +72,27 @@ hook_add = '''
     nnoremap <silent> <Leader>i :<C-u>IndentLinesToggle<CR>
 '''
 
-[[plugins]]
-repo = 'vim-test/vim-test'
-on_cmd = [
-    'TestNearest',
-    'TestFile',
-    'TestSuite',
-    'TestLast',
-    'TestVisit',
-]
-depends = ['tpope/vim-dispatch']
-hook_add = '''
-    let g:test#strategy = "dispatch"
-    nnoremap <silent> <Leader>tt :TestNearest<CR>
-    nnoremap <silent> <Leader>tf :TestFile<CR>
-    nnoremap <silent> <Leader>ts :TestSuite<CR>
-    nnoremap <silent> <Leader>tl :TestLast<CR>
-    nnoremap <silent> <Leader>tv :TestVisit<CR>
-'''
-
-[[plugins]]
-repo = 'tpope/vim-dispatch'
+# [[plugins]]
+# repo = 'vim-test/vim-test'
+# on_cmd = [
+#     'TestNearest',
+#     'TestFile',
+#     'TestSuite',
+#     'TestLast',
+#     'TestVisit',
+# ]
+# depends = ['tpope/vim-dispatch']
+# hook_add = '''
+#     let g:test#strategy = "dispatch"
+#     nnoremap <silent> <Leader>tt :TestNearest<CR>
+#     nnoremap <silent> <Leader>tf :TestFile<CR>
+#     nnoremap <silent> <Leader>ts :TestSuite<CR>
+#     nnoremap <silent> <Leader>tl :TestLast<CR>
+#     nnoremap <silent> <Leader>tv :TestVisit<CR>
+# '''
+# 
+# [[plugins]]
+# repo = 'tpope/vim-dispatch'
 
 [[plugins]]
 repo = 'prettier/vim-prettier'
