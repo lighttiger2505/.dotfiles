@@ -5,6 +5,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
 repo = 'lighttiger2505/sqls.vim'
 on_ft = ['sql']
 hook_add = '''

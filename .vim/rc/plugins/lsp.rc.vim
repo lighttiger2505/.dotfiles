@@ -22,98 +22,29 @@ let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
 " Floating window
 let g:lsp_preview_float = 1
 
-if executable('pyls')
-    let s:pyls_path = fnamemodify(g:python3_host_prog, ':h') . '/'. 'pyls'
-    let s:pyls_config = {'pyls': {'plugins': {
-    \   'pycodestyle': {'enabled': v:true},
-    \   'pydocstyle': {'enabled': v:false},
-    \   'pylint': {'enabled': v:false},
-    \   'flake8': {'enabled': v:true},
-    \   'jedi_definition': {
-    \     'follow_imports': v:true,
-    \     'follow_builtin_imports': v:true,
-    \   },
-    \ }}}
-    au User lsp_setup call lsp#register_server({
-    \ 'name': 'pyls',
-    \ 'cmd': { server_info -> [s:pyls_path] },
-    \ 'allowlist': ['python'],
-    \ 'workspace_config': s:pyls_config
-    \})
-endif
+let g:lsp_settings = {
+\  'sqls': {
+\    'cmd': ['sqls', '-log', expand('~/sqls.log'), '-config', expand('~/.config/sqls/config.yml')],
+\    'workspace_config': {
+\      'sqls': {
+\        'connections': [
+\          {
+\            'driver': 'mysql',
+\            'dataSourceName': 'root:root@tcp(127.0.0.1:3306)/world',
+\          },
+\        ],
+\      },
+\    },
+\  },
+\}
 
-" see also: https://github.com/golang/tools/blob/master/internal/lsp/source/options.go
-if executable('gopls')
-    au User lsp_setup call lsp#register_server({
-    \ 'name': 'gopls',
-    \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-    \ 'allowlist': ['go'],
-    \ 'workspace_config': {'gopls': {
-    \     'completionDocumentation': v:true,
-    \     'usePlaceholders': v:true,
-    \     'deepCompletion': v:true,
-    \     'fuzzyMatching': v:true,
-    \     'caseSensitiveCompletion': v:false,
-    \     'completeUnimported': v:true,
-    \     'staticcheck': v:true,
-    \     'watchFileChanges': v:true,
-    \     'hoverKind': 'FullDocumentation',
-    \   }},
-    \ })
-endif
-
-if executable('typescript-language-server')
-    au User lsp_setup call lsp#register_server({
-    \ 'name': 'typescript-language-server',
-    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-    \ 'allowlist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact'],
-    \ 'blocklist': ['vue'],
-    \ })
-endif
-
-if executable('clangd')
-    au User lsp_setup call lsp#register_server({
-    \ 'name': 'clangd',
-    \ 'cmd': {server_info->['clangd', '-background-index']},
-    \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
-    \ })
-endif
-
-if executable('sqls')
-    au User lsp_setup call lsp#register_server({
-    \   'name': 'sqls',
-    \   'cmd': {server_info->['sqls', '-log', expand('~/sqls.log'), '-config', expand('~/.config/sqls/config.yml')]},
-    \   'allowlist': ['sql'],
-    \   'workspace_config': {
-    \     'sqls': {
-    \       'connections': [
-    \         {
-    \           'driver': 'mysql',
-    \           'dataSourceName': 'root:root@tcp(127.0.0.1:3306)/world',
-    \         },
-    \       ],
-    \     },
-    \   },
-    \ })
-endif
-
-if executable('vls')
-    au User lsp_setup call lsp#register_server({
-    \ 'name': 'vue-language-server',
-    \ 'cmd': {server_info->['vls']},
-    \ 'allowlist': ['vue'],
-    \ 'blocklist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx'],
-    \ 'initialization_options': {
-    \     'config': {
-    \         'html': {},
-    \          'vetur': {
-    \              'validation': {}
-    \          }
-    \     }
-    \ },
-    \ })
-endif
+let g:lsp_settings_root_markers = [
+\  '.git',
+\  '.git/',
+\  '.svn',
+\  '.hg',
+\  '.bzr'
+\]
 
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
