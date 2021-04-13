@@ -3,9 +3,11 @@ let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_virtual_text_enabled = 1
-let g:lsp_signs_error = {'text': '✗'}
-let g:lsp_signs_warning = {'text': '‼'}
-let g:lsp_signs_information = {'text': 'i'}
+
+let g:lsp_diagnostics_signs_error = {'text': '✗'}
+let g:lsp_diagnostics_signs_warning = {'text': '‼'}
+let g:lsp_diagnostics_signs_hint = {'text': 'i'}
+let g:lsp_document_code_action_signs_hint = {'text': 'A'}
 let g:lsp_signs_hint = {'text': '?'}
 let g:lsp_virtual_text_prefix = " ‣ "
 let g:lsp_diagnostics_float_cursor = 0
@@ -22,6 +24,28 @@ let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
 " Floating window
 let g:lsp_preview_float = 1
 
+let s:completion_item_kinds_with_icons = {
+\ '1':  ' text',
+\ '2':  'ƒ method',
+\ '3':  ' function',
+\ '4':  ' constructor',
+\ '6':  ' variable',
+\ '7':  ' class',
+\ '8':  'ﰮ interface',
+\ '9':  ' module',
+\ '10': ' property',
+\ '11': ' unit',
+\ '12': ' value',
+\ '14': ' keyword',
+\ '15': '﬌ snippet',
+\ '16': ' color',
+\ '17': ' file',
+\ '19': ' folder',
+\ '20': ' enum member',
+\ '21': ' constant',
+\ '22': ' struct',
+\ }
+
 let g:lsp_settings = {
 \  'sqls': {
 \    'cmd': ['sqls', '-log', expand('~/sqls.log'), '-config', expand('~/.config/sqls/config.yml')],
@@ -35,6 +59,10 @@ let g:lsp_settings = {
 \        ],
 \      },
 \    },
+\    'config': {'completion_item_kinds': s:completion_item_kinds_with_icons},
+\  },
+\  'gopls': {
+\    'config': {'completion_item_kinds': s:completion_item_kinds_with_icons},
 \  },
 \}
 
