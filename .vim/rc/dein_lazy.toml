@@ -118,9 +118,12 @@ repo = 'junegunn/fzf'
 build = './install --all'
 
 [[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
 repo = 'yuki-yano/fzf-preview.vim'
 rev = 'release/rpc'
-depends = ['fzf']
+depends = ['fzf', 'vim-devicons']
 on_cmd = [
     'FzfPreviewFromResourcesRpc',
     'FzfPreviewGitStatusRpc',
