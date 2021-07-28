@@ -48,23 +48,64 @@ let s:completion_item_kinds_with_icons = {
 
 let g:lsp_settings = {
 \  'sqls': {
-\    'cmd': ['sqls', '-log', expand('~/sqls.log'), '-config', expand('~/.config/sqls/config.yml')],
-\    'workspace_config': {
-\      'sqls': {
-\        'connections': [
-\          {
-\            'driver': 'mysql',
-\            'dataSourceName': 'root:root@tcp(127.0.0.1:3306)/world',
-\          },
-\        ],
-\      },
-\    },
 \    'config': {'completion_item_kinds': s:completion_item_kinds_with_icons},
 \  },
 \  'gopls': {
 \    'config': {'completion_item_kinds': s:completion_item_kinds_with_icons},
 \  },
 \}
+
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'allowlist': ['typescript', 'typescript.tsx', 'typescriptreact'],
+        \ })
+endif
+
+if executable('gopls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'gopls',
+        \ 'cmd': {server_info->['gopls']},
+        \ 'allowlist': ['go'],
+        \ })
+endif
+
+if executable('vls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'vls',
+        \ 'cmd': {server_info->['vls']},
+        \ 'allowlist': ['vue'],
+        \ 'blocklist': ['javascript', 'javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx'],
+        \ 'initialization_options': {
+        \     'config': {
+        \         'html': {},
+        \          'vetur': {
+        \              'validation': {}
+        \          }
+        \     }
+        \ },
+        \ })
+endif
+
+if executable('sqls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'sqls',
+        \ 'cmd': ['sqls', '-log', expand('~/sqls.log'), '-config', expand('~/.config/sqls/config.yml')],
+        \ 'allowlist': ['sql'],
+        \ 'workspace_config': {
+        \   'sqls': {
+        \     'connections': [
+        \       {
+        \         'driver': 'mysql',
+        \         'dataSourceName': 'root:root@tcp(127.0.0.1:3306)/world',
+        \       },
+        \     ],
+        \   },
+        \ },
+        \ })
+endif
 
 let g:lsp_settings_root_markers = [
 \  '.git',
@@ -75,6 +116,7 @@ let g:lsp_settings_root_markers = [
 \]
 
 function! s:on_lsp_buffer_enabled() abort
+    call lsp#enable()
     setlocal omnifunc=lsp#complete
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
 
@@ -107,6 +149,20 @@ endfunction
 augroup lsp_install
     au!
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+augroup LspEnable
+    autocmd!
+    autocmd BufWinEnter *.go   :call lsp#enable()
+    autocmd BufWinEnter *.py   :call lsp#enable()
+    autocmd BufWinEnter *.ts   :call lsp#enable()
+    autocmd BufWinEnter *.js   :call lsp#enable()
+    autocmd BufWinEnter *.vue  :call lsp#enable()
+    autocmd BufWinEnter *.c    :call lsp#enable()
+    autocmd BufWinEnter *.h    :call lsp#enable()
+    autocmd BufWinEnter *.cpp  :call lsp#enable()
+    autocmd BufWinEnter *.tsx  :call lsp#enable()
+    autocmd BufWinEnter *.sql  :call lsp#enable()
 augroup END
 
 let g:lsp_log_verbose = 1

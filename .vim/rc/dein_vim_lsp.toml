@@ -1,11 +1,24 @@
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+depends = [
+    'vim-lsp-settings',
+    'vista.vim'
+]
+on_ft = [
+    'sql',
+    'go',
+    'typescript',
+    'typescriptreact',
+    'javascript',
+    'javascriptreact',
+    'vue',
+]
 hook_add = '''
     source ~/.vim/rc/plugins/lsp.rc.vim
 '''
 
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
+# [[plugins]]
+# repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
 repo = 'lighttiger2505/sqls.vim'

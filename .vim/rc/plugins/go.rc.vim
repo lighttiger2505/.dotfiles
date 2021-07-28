@@ -59,3 +59,9 @@ augroup GoCommands
     autocmd FileType go nmap <silent><LocalLeader>a  <Plug>(go-alternate-edit)
     autocmd FileType go nmap <silent><LocalLeader>e  <Plug>(go-iferr)
 augroup END
+
+
+let g:go_fmt_options = {
+\ 'gofmt': '-s',
+\ 'goimports': '-local github.com/MobilityTechnologies',
+\ }

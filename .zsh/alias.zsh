@@ -23,7 +23,7 @@ alias ed="vim ~/.vimrc"
 alias pd="pwd | pbcopy"
 alias untar='tar -zxvf'
 alias gip='curl inet-ip.info'
-alias pass='cat ~/.dotiridge/password/passwd'
+alias pass='vim ~/secrets/pass.md'
 
 # Move to the selected directory from the results of find
 cd-fzf-find() {
@@ -436,6 +436,7 @@ function change_go_module {
     fi
 }
 alias cgom=change_go_module
+alias upgopls='GO111MODULE=on go get golang.org/x/tools/gopls@latest'
 
 #####################################################################
 # Pomodoro

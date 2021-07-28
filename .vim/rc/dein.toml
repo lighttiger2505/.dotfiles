@@ -1,5 +1,6 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
+
 [[plugins]]
 repo = 'vim-scripts/wombat256.vim'
 
@@ -128,14 +129,6 @@ hook_add = '''
     map P <Plug>(miniyank-autoPut)
 '''
 
-[[plugins]]
-repo = 'junegunn/fzf'
-build = './install --all'
-
-[[plugins]]
-repo = 'yuki-yano/fzf-preview.vim'
-rev = 'release/rpc'
-hook_add = 'source ~/.vim/rc/plugins/fzf.rc.vim'
 
 [[plugins]]
 repo = 'lambdalisue/fern.vim'

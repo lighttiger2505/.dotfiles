@@ -39,7 +39,7 @@ call dein#load_toml('~/.vim/rc/dein_python.toml',   {'lazy': 1})
 call dein#load_toml('~/.vim/rc/dein_go.toml',       {'lazy': 1})
 
 if g:dot_vim_lsp
-    call dein#load_toml('~/.vim/rc/dein_vim_lsp.toml', {'lazy': 0})
+    call dein#load_toml('~/.vim/rc/dein_vim_lsp.toml', {'lazy': 1})
 endif
 if g:dot_deoplete
     call dein#load_toml('~/.vim/rc/dein_deoplete.toml', {'lazy': 0})

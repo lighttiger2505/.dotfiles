@@ -22,6 +22,7 @@ augroup MyTabStop
     autocmd BufNewFile,BufRead *.tmpl      setlocal tabstop=4 shiftwidth=4
     autocmd BufRead,BufNewFile *.scss      setlocal filetype=scss
     autocmd BufRead,BufNewFile *.tf        setlocal tabstop=2 shiftwidth=2
+    autocmd BufRead,BufNewFile .envrc      setlocal filetype=sh
 augroup END
 
 augroup DisableMarkdownConceal
