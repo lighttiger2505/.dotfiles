@@ -120,6 +120,7 @@ build = './install --all'
 [[plugins]]
 repo = 'yuki-yano/fzf-preview.vim'
 rev = 'release/rpc'
+depends = ['fzf']
 on_cmd = [
     'FzfPreviewFromResourcesRpc',
     'FzfPreviewGitStatusRpc',
