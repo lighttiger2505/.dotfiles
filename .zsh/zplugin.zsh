@@ -11,7 +11,6 @@ autoload -Uz _zplugin
 # Load zsh plugins
 zinit light zdharma/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
-zinit light jocelynmallon/zshmarks
 
 # Load completions
 zinit ice blockf; zinit light zsh-users/zsh-completions
