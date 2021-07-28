@@ -19,6 +19,9 @@ repo = 'sainnhe/sonokai'
 repo = 'bluz71/vim-nightfly-guicolors'
 
 [[plugins]]
+repo = 'christianchiarulli/nvcode-color-schemes.vim'
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/rc/plugins/lightline.rc.vim'
 

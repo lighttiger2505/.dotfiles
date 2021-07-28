@@ -52,7 +52,8 @@ command! -nargs=0 DeinCleanUpdate :call s:dein_clean_update()
 " Colors
 set t_Co=256
 set background=dark
-colorscheme iceberg
+let g:nvcode_termcolors=256
+colorscheme nvcode
 
 " magic word after
 filetype plugin indent on

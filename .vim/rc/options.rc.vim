@@ -92,8 +92,12 @@ if exists('&inccommand')
     set inccommand=split
 endif
 
-" Enable 24bit color
-set termguicolors
+" checks if your terminal has 24-bit color support
+if (has("termguicolors"))
+    set termguicolors
+    hi LineNr ctermbg=NONE guibg=NONE
+endif
+
 
 if has('nvim')
     if exists('&wildoptions')
