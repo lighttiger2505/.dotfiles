@@ -141,6 +141,7 @@ alias dvim='/usr/bin/vim -u ~/.dev_vimrc'
 alias dvim-lsp-deoplete='nvim -u ~/.vim/dev/vim-lsp-deoplete.vim'
 alias dvim-lsp-asyncomplete='nvim -u ~/.vim/dev/vim-lsp-asyncomplete.vim'
 alias coc='nvim -u ~/.vim/dev/coc.vim'
+alias nvimlsp='nvim -u ~/.vim/dev/nvim-lsp.vim'
 
 # Update vim plugins use vim
 #dein#update()
