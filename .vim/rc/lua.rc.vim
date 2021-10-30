@@ -4,7 +4,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
   highlight = {
     enable = true,
-    disable = {"typescript", "typescriptreact", "python"},
+    disable = {"typescript", "typescriptreact", "python", "vim"},
   },
   incremental_selection = {
     enable = true,
