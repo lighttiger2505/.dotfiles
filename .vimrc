@@ -27,7 +27,6 @@ if isdirectory(expand($ANYENV_PATH))
     let g:python3_host_prog = $ANYENV_PATH . '/envs/pyenv/versions/neovim3/bin/python'
 endif
 
-let g:dot_tree_sitter = v:true
 let g:dot_deoplete = v:true
 let g:dot_vim_lsp = v:true
 let g:dot_coc = v:false
@@ -38,13 +37,10 @@ call s:source_rc('options.rc.vim')
 call s:source_rc('filetype.rc.vim')
 call s:source_rc('autocmd.rc.vim')
 call s:source_rc('dein.rc.vim')
-if has('nvim-0.5') && g:dot_tree_sitter
-  call s:source_rc('lua.rc.vim')
-endif
+call s:source_rc('lua.rc.vim')
 
 function! s:dein_clean_update() abort
     call map(dein#check_clean(), "delete(v:val, 'rf')")
-    call dein#recache_runtimepath()
     call dein#check_update(v:true)
 endfunction
 command! -nargs=0 DeinCleanUpdate :call s:dein_clean_update()

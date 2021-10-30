@@ -3,6 +3,7 @@ let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_virtual_text_enabled = 1
+let g:lsp_signature_help_enabled = 1
 
 let g:lsp_diagnostics_signs_error = {'text': '✗'}
 let g:lsp_diagnostics_signs_warning = {'text': '‼'}
@@ -107,6 +108,14 @@ if executable('sqls')
         \ })
 endif
 
+" if executable('efm-langserver')
+"     au User lsp_setup call lsp#register_server({
+"        \ 'name': 'efm-langserver',
+"        \ 'cmd': {server_info->['efm-langserver', '-c', expand('~/.config/efm-langserver/config.yml')]},
+"        \ 'allowlist': ['markdown'],
+"        \ })
+" endif
+
 let g:lsp_settings_root_markers = [
 \  '.git',
 \  '.git/',
@@ -143,7 +152,7 @@ function! s:on_lsp_buffer_enabled() abort
     vmap <buffer> <LocalLeader>s <plug>(lsp-document-format)
     nmap <buffer> <LocalLeader>i <plug>(lsp-implementation)
 
-    " autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install

@@ -20,11 +20,6 @@ call deoplete#custom#option({
 \ 'camel_case': v:true,
 \ })
 
-augroup SQLMinPatturnLengthZero
-    autocmd!
-    autocmd FileType sql call deoplete#custom#source('lsp', 'min_pattern_length', 0)
-augroup END
-
 " Hidden autocomplete preview
 set completeopt-=preview
 

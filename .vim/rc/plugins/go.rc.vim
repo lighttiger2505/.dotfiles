@@ -22,14 +22,14 @@ let g:go_term_height = 10
 let g:go_gopls_enabled = 0
 
 " go highlights
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
+let g:go_highlight_build_constraints = 0
+let g:go_highlight_extra_types = 0
+let g:go_highlight_fields = 0
+let g:go_highlight_functions = 0
+let g:go_highlight_methods = 0
+let g:go_highlight_operators = 0
+let g:go_highlight_structs = 0
+let g:go_highlight_types = 0
 
 " highlight all uses of the identifier under the cursor. |:GoSameIds| automatically
 let g:go_auto_sameids = 0
@@ -38,7 +38,7 @@ let g:go_auto_sameids = 0
 let g:go_auto_type_info = 0
 
 " disable auto go fmt
-let g:go_fmt_autosave = 1
+let g:go_fmt_autosave = 0
 let g:go_mod_fmt_autosave = 0
 
 " Use sonictempate
