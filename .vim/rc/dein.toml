@@ -137,3 +137,6 @@ repo = 'lambdalisue/fern-git-status.vim'
 
 [[plugins]]
 repo = 'yuki-yano/fern-preview.vim'
+
+[[plugins]]
+repo = 'kevinhwang91/nvim-bqf'
