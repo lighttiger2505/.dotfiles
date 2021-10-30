@@ -112,23 +112,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-if = "has('nvim-0.5') && g:dot_tree_sitter"
 
 [[plugins]]
 repo = 'nvim-treesitter/playground'
-if = "has('nvim-0.5') && g:dot_tree_sitter"
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
-if = "has('nvim-0.5') && g:dot_tree_sitter"
-
-[[plugins]]
-repo = 'bfredl/nvim-miniyank'
-hook_add = '''
-    map p <Plug>(miniyank-autoput)
-    map P <Plug>(miniyank-autoPut)
-'''
-
 
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
