@@ -20,7 +20,18 @@ source ~/.zsh/prompt.zsh
 source ~/.zsh/fzf.zsh
 source ~/.zsh/alias.zsh
 source ~/.zsh/keybind.zsh
-source ~/.zsh/zplugin.zsh
+
+# load plugins
+if [ -e ~/.zsh-plugins/zsh-autosuggestions ]; then
+    source ~/.zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh-plugins/zsh-autosuggestions
+fi
+if [ -e ~/.zsh-plugins/zsh-syntax-highlighting ]; then
+    source ~/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh-plugins/zsh-syntax-highlighting
+fi
 
 # Init anyenv
 if [ -e ~/.anyenv ]; then
