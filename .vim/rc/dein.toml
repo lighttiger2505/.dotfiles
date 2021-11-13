@@ -111,13 +111,14 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-
-[[plugins]]
 repo = 'nvim-treesitter/playground'
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_add = 'source ~/.vim/rc/plugins/nvim-treesitter.rc.vim'
 
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
@@ -140,3 +141,23 @@ repo = 'yuki-yano/fern-preview.vim'
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+hook_add = 'source ~/.vim/rc/plugins/nvim-lsp.rc.vim'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-path'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-cmdline'
+
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'
+hook_add = 'source ~/.vim/rc/plugins/nvim-cmp.rc.vim'
