@@ -30,7 +30,7 @@ if !dein#load_state(s:cache_dein_dir)
   finish
 endif
 
-call dein#begin(s:dein_plugin_dir)
+call dein#begin(s:cache_dein_dir)
 
 call dein#load_toml('~/.vim/rc/dein.toml',          {'lazy': 0})
 call dein#load_toml('~/.vim/rc/dein_lazy.toml',     {'lazy': 1})
