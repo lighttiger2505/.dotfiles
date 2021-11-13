@@ -8,15 +8,16 @@ if filereadable(s:token_file)
 endif
 
 let $CACHE = expand('~/.cache')
-if !isdirectory(expand($CACHE))
-    call mkdir(expand($CACHE), 'p')
+if !isdirectory($CACHE)
+    call mkdir($CACHE, 'p')
 endif
 
 let s:dein_runtime_dir = finddir('dein.vim', '.;')
+let s:cache_dein_dir = expand('$CACHE/dein')
+
 if s:dein_runtime_dir !=# '' || &runtimepath !~# '/dein.vim'
   if s:dein_runtime_dir ==# '' && &runtimepath !~# '/dein.vim'
-    let s:dein_runtime_dir = expand('$CACHE/dein')
-          \. '/repos/github.com/Shougo/dein.vim'
+    let s:dein_runtime_dir = s:cache_dein_dir . '/repos/github.com/Shougo/dein.vim'
     if !isdirectory(s:dein_runtime_dir)
       execute '!git clone https://github.com/Shougo/dein.vim' s:dein_runtime_dir
     endif
@@ -25,8 +26,7 @@ if s:dein_runtime_dir !=# '' || &runtimepath !~# '/dein.vim'
         \ fnamemodify(s:dein_runtime_dir, ':p') , '/$', '', '')
 endif
 
-let s:dein_plugin_dir = expand("$CACHE/dein")
-if !dein#load_state(s:dein_plugin_dir)
+if !dein#load_state(s:cache_dein_dir)
   finish
 endif
 
