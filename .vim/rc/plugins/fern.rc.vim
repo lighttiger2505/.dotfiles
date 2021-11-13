@@ -6,6 +6,7 @@ nnoremap <silent> <Leader>ff :<C-u>Fern %:p:h<CR>
 let g:fern#renderer = "nerdfont"
 let g:fern#drawer_width = 40
 let g:fern#drawer_keep = v:true
+let g:fern#default_hidden = 1
 
 function! s:fern_settings() abort
     nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
