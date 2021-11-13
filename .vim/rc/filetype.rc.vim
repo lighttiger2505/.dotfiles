@@ -1,28 +1,23 @@
 " Tab setting for file type
-augroup MyTabStop
+augroup FileTabStop
     autocmd!
-    autocmd BufNewFile,BufRead *.rhtml     setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.html      setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.js        setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.css       setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.scss      setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.md        setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.scala     setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.rb        setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.erb       setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.{c,cpp,h} setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.py        setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.go        setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.vim       setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead Makefile    setlocal noexpandtab
-    autocmd BufNewFile,BufRead *.yml       setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.json      setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.yaml      setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.toml      setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.tmpl      setlocal tabstop=4 shiftwidth=4
-    autocmd BufRead,BufNewFile *.scss      setlocal filetype=scss
-    autocmd BufRead,BufNewFile *.tf        setlocal tabstop=2 shiftwidth=2
-    autocmd BufRead,BufNewFile .envrc      setlocal filetype=sh
+    autocmd FileType html setlocal tabstop=2 shiftwidth=2
+    autocmd FileType javascript setlocal tabstop=2 shiftwidth=2
+    autocmd FileType css setlocal tabstop=2 shiftwidth=2
+    autocmd FileType scss setlocal tabstop=2 shiftwidth=2
+    autocmd FileType markdown setlocal tabstop=4 shiftwidth=4
+    autocmd FileType scala setlocal tabstop=4 shiftwidth=4
+    autocmd FileType vim setlocal tabstop=4 shiftwidth=4
+    autocmd FileType make setlocal noexpandtab
+    autocmd FileType yaml setlocal tabstop=2 shiftwidth=2
+    autocmd FileType json setlocal tabstop=2 shiftwidth=2
+    autocmd FileType toml setlocal tabstop=4 shiftwidth=4
+    autocmd FileType template setlocal tabstop=4 shiftwidth=4
+    autocmd FileType terraform setlocal tabstop=2 shiftwidth=2
+augroup END
+
+augroup TransFileType
+    autocmd BufRead,BufNewFile .envrc setlocal filetype=sh
 augroup END
 
 augroup DisableMarkdownConceal
