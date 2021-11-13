@@ -45,4 +45,24 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+nvim_lsp.sqls.setup{
+  on_attach = on_attach,
+  settings = {
+    sqls = {
+      cmd = { 'sqls -log ~/sqls.log -config ~/.config/sqls/config.yml' },
+      connections = {
+        {
+          driver = 'mysql',
+          dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
+        },
+        {
+          driver = 'postgresql',
+          dataSourceName = 'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
+        },
+      },
+    },
+  },
+}
+
 EOF
