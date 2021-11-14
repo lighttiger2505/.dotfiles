@@ -54,9 +54,9 @@ end
 
 nvim_lsp.sqls.setup{
   on_attach = on_attach,
+  cmd = { 'sqls', '-log', os.getenv("HOME")..'/sqls.log', '-config', os.getenv("HOME")..'/.config/sqls/config.yml' },
   settings = {
     sqls = {
-      cmd = { 'sqls -log ~/sqls.log -config ~/.config/sqls/config.yml' },
       connections = {
         {
           driver = 'mysql',
