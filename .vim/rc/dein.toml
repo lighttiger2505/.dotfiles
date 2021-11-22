@@ -141,37 +141,3 @@ repo = 'yuki-yano/fern-preview.vim'
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
-
-[[plugins]]
-repo = 'neovim/nvim-lspconfig'
-hook_add = 'source ~/.vim/rc/plugins/nvim-lsp.rc.vim'
-
-# [[plugins]]
-# repo = 'ray-x/guihua.lua'
-# build = 'cd lua/fzy && make'
-
-# [[plugins]]
-# repo = 'ray-x/navigator.lua'
-# depends = ['nvim-lspconfig', 'guihua.lua']
-# hook_add = 'source ~/.vim/rc/plugins/navigator.rc.vim'
-
-# [[plugins]]
-# repo = 'ray-x/lsp_signature.nvim'
-# depends = ['nvim-lspconfig']
-# hook_add = 'source ~/.vim/rc/plugins/lsp_signature.rc.vim'
-
-[[plugins]]
-repo = 'hrsh7th/cmp-nvim-lsp'
-
-[[plugins]]
-repo = 'hrsh7th/cmp-buffer'
-
-[[plugins]]
-repo = 'hrsh7th/cmp-path'
-
-[[plugins]]
-repo = 'hrsh7th/cmp-cmdline'
-
-[[plugins]]
-repo = 'hrsh7th/nvim-cmp'
-hook_add = 'source ~/.vim/rc/plugins/nvim-cmp.rc.vim'

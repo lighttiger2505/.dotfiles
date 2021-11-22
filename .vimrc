@@ -30,7 +30,8 @@ endif
 let g:dot_deoplete = v:false
 let g:dot_vim_lsp = v:false
 let g:dot_coc = v:false
-let g:dot_compe = v:false
+let g:dot_cmp = v:true
+let g:dot_nvim_lsp = v:true
 
 call s:source_rc('mappings.rc.vim')
 call s:source_rc('options.rc.vim')

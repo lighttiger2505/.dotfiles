@@ -47,8 +47,11 @@ endif
 if g:dot_coc
     call dein#load_toml('~/.vim/rc/dein_coc.toml', {'lazy': 0})
 endif
-if g:dot_compe
-    call dein#load_toml('~/.vim/rc/dein_compe.toml', {'lazy': 0})
+if g:dot_cmp
+    call dein#load_toml('~/.vim/rc/dein_nvim_lsp.toml', {'lazy': 0})
+endif
+if g:dot_nvim_lsp
+    call dein#load_toml('~/.vim/rc/dein_cmp.toml', {'lazy': 0})
 endif
 
 call dein#end()
