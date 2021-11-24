@@ -38,20 +38,23 @@ call dein#load_toml('~/.vim/rc/dein_syntax.toml',   {'lazy': 1})
 call dein#load_toml('~/.vim/rc/dein_python.toml',   {'lazy': 1})
 call dein#load_toml('~/.vim/rc/dein_go.toml',       {'lazy': 1})
 
-if g:dot_vim_lsp
-    call dein#load_toml('~/.vim/rc/dein_vim_lsp.toml', {'lazy': 1})
-endif
 if g:dot_deoplete
     call dein#load_toml('~/.vim/rc/dein_deoplete.toml', {'lazy': 0})
+endif
+if g:dot_vim_lsp
+    call dein#load_toml('~/.vim/rc/dein_vim_lsp.toml', {'lazy': 0})
 endif
 if g:dot_coc
     call dein#load_toml('~/.vim/rc/dein_coc.toml', {'lazy': 0})
 endif
 if g:dot_cmp
-    call dein#load_toml('~/.vim/rc/dein_nvim_lsp.toml', {'lazy': 0})
+    call dein#load_toml('~/.vim/rc/dein_cmp.toml', {'lazy': 0})
 endif
 if g:dot_nvim_lsp
-    call dein#load_toml('~/.vim/rc/dein_cmp.toml', {'lazy': 0})
+    call dein#load_toml('~/.vim/rc/dein_nvim_lsp.toml', {'lazy': 0})
+endif
+if g:dot_dcc
+    call dein#load_toml('~/.vim/rc/dein_dcc.toml', {'lazy': 0})
 endif
 
 call dein#end()

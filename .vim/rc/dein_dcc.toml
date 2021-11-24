@@ -1,0 +1,30 @@
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+hook_add = 'source ~/.vim/rc/plugins/dcc.rc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-nvim-lsp'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+depend = ['vim-snippets']
+hook_add = '''
+    let g:UltiSnipsExpandTrigger="<c-k>"
+    let g:UltiSnipsJumpForwardTrigger="<c-k>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+'''
+
+[[plugins]]
+repo = 'honza/vim-snippets'
