@@ -1,17 +1,3 @@
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 hook_add = 'source ~/.vim/rc/plugins/nvim-lsp.rc.vim'
-
-# [[plugins]]
-# repo = 'ray-x/guihua.lua'
-# build = 'cd lua/fzy && make'
-
-# [[plugins]]
-# repo = 'ray-x/navigator.lua'
-# depends = ['nvim-lspconfig', 'guihua.lua']
-# hook_add = 'source ~/.vim/rc/plugins/navigator.rc.vim'
-
-# [[plugins]]
-# repo = 'ray-x/lsp_signature.nvim'
-# depends = ['nvim-lspconfig']
-# hook_add = 'source ~/.vim/rc/plugins/lsp_signature.rc.vim'
