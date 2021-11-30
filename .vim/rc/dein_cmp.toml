@@ -1,11 +1,18 @@
 [[plugins]]
-repo = 'hrsh7th/vim-vsnip'
+repo = 'honza/vim-snippets'
 
 [[plugins]]
-repo = 'hrsh7th/vim-vsnip-integ'
+repo = 'SirVer/ultisnips'
+depend = ['vim-snippets']
+hook_add = '''
+    let g:UltiSnipsExpandTrigger="<c-k>"
+    let g:UltiSnipsJumpForwardTrigger="<c-k>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+'''
 
 [[plugins]]
-repo = 'hrsh7th/cmp-vsnip'
+repo = 'quangnguyen30192/cmp-nvim-ultisnips'
+depend = ['vim-snippets']
 
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp'
@@ -15,9 +22,6 @@ repo = 'hrsh7th/cmp-buffer'
 
 [[plugins]]
 repo = 'hrsh7th/cmp-path'
-
-[[plugins]]
-repo = 'hrsh7th/cmp-cmdline'
 
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp'
