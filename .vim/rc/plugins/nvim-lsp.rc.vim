@@ -33,6 +33,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<LocalLeader>d', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<LocalLeader>s', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   buf_set_keymap('n', '<LocalLeader>c', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+
+  buf_set_keymap('n', '<LocalLeader>o', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', opts)
+  buf_set_keymap('n', '<LocalLeader>w', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -65,5 +68,17 @@ nvim_lsp.sqls.setup{
     },
   },
 }
+
+local fzf_lsp = require('fzf_lsp')
+vim.lsp.handlers["textDocument/codeAction"] = fzf_lsp.code_action_handler
+-- vim.lsp.handlers["textDocument/definition"] = fzf_lsp.definition_handler
+-- vim.lsp.handlers["textDocument/declaration"] = fzf_lsp.declaration_handler
+-- vim.lsp.handlers["textDocument/typeDefinition"] = fzf_lsp.type_definition_handler
+-- vim.lsp.handlers["textDocument/implementation"] = fzf_lsp.implementation_handler
+-- vim.lsp.handlers["textDocument/references"] = fzf_lsp.references_handler
+vim.lsp.handlers["textDocument/documentSymbol"] = fzf_lsp.document_symbol_handler
+vim.lsp.handlers["workspace/symbol"] = fzf_lsp.workspace_symbol_handler
+-- vim.lsp.handlers["callHierarchy/incomingCalls"] = fzf_lsp.incoming_calls_handler
+-- vim.lsp.handlers["callHierarchy/outgoingCalls"] = fzf_lsp.outgoing_calls_handler
 
 EOF
