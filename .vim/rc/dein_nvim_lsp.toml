@@ -1,3 +1,9 @@
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 hook_add = 'source ~/.vim/rc/plugins/nvim-lsp.rc.vim'
+
+[[plugins]]
+repo = 'josa42/nvim-lightline-lsp'
+hook_add = '''
+    call lightline#lsp#register()
+'''

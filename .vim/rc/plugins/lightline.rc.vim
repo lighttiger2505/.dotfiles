@@ -1,8 +1,17 @@
 let g:lightline = {
     \ 'colorscheme': 'iceberg',
     \ 'active': {
-    \   'left':  [ ['mode', 'paste'], ['readonly', 'myfilename', 'method', 'modified'], ],
-    \   'right': [ [ 'lineinfo' ], [ 'percent' ], ['char_code', 'fileformat', 'fileencoding', 'filetype' ], ],
+    \   'left':  [
+    \      ['mode', 'paste'],
+    \      ['readonly', 'myfilename', 'method', 'modified'],
+    \      ['lsp_info', 'lsp_hints', 'lsp_errors', 'lsp_warnings', 'lsp_ok'],
+    \      ['lsp_status'],
+    \   ],
+    \   'right': [
+    \      ['lineinfo'],
+    \      ['percent'],
+    \      ['char_code', 'fileformat', 'fileencoding', 'filetype' ],
+    \   ],
     \ },
     \ 'tabline': {
     \   'left':  [ ['cwd'], ['tabs'] ],
