@@ -29,3 +29,8 @@ augroup MyGitSpellCheck
     autocmd!
     autocmd FileType gitcommit setlocal spell
 augroup END
+
+augroup MarkdownErrSyntax
+  autocmd!
+  autocmd FileType markdown syntax match markdownError '\w\@<=\w\@='
+augroup END
