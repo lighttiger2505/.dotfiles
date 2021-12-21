@@ -1,3 +1,5 @@
+autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open = false})
+
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
@@ -80,5 +82,13 @@ vim.lsp.handlers["textDocument/documentSymbol"] = fzf_lsp.document_symbol_handle
 vim.lsp.handlers["workspace/symbol"] = fzf_lsp.workspace_symbol_handler
 -- vim.lsp.handlers["callHierarchy/incomingCalls"] = fzf_lsp.incoming_calls_handler
 -- vim.lsp.handlers["callHierarchy/outgoingCalls"] = fzf_lsp.outgoing_calls_handler
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
 
 EOF
