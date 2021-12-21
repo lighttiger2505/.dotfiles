@@ -55,8 +55,7 @@ command! -nargs=0 DeinCleanUpdate :call s:dein_clean_update()
 " Colors
 set t_Co=256
 set background=dark
-let g:nvcode_termcolors=256
-colorscheme nvcode
+colorscheme gruvbox-material
 
 " magic word after
 filetype plugin indent on

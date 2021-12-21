@@ -21,6 +21,12 @@ repo = 'bluz71/vim-nightfly-guicolors'
 
 [[plugins]]
 repo = 'christianchiarulli/nvcode-color-schemes.vim'
+hook_add = '''
+    let g:nvcode_termcolors=256
+'''
+
+[[plugins]]
+repo = 'sainnhe/gruvbox-material'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
