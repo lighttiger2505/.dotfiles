@@ -37,18 +37,6 @@ on_ft = ['html', 'djangohtml']
 #####################################################################
 
 [[plugins]]
-repo = 'tyru/caw.vim'
-on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
-hook_add = '''
-    " Add comment to beginning line(consider whitespace)
-    nmap <Leader>c <Plug>(caw:hatpos:toggle)
-    vmap <Leader>c <Plug>(caw:hatpos:toggle)
-    " Add comment to beginning line(ignore whitespace)
-    nmap <Leader>, <Plug>(caw:zeropos:toggle)
-    vmap <Leader>, <Plug>(caw:zeropos:toggle)
-'''
-
-[[plugins]]
 repo = 'thinca/vim-quickrun'
 on_cmd = ['QuickRun']
 depends = ['vim-quickrun-neovim-job']
@@ -64,35 +52,6 @@ repo = 'lambdalisue/vim-quickrun-neovim-job'
 [[plugins]]
 repo = 'nicwest/vim-camelsnek'
 on_cmd = ['Camel', 'CamelB', 'Snek']
-
-[[plugins]]
-repo = 'Yggdroot/indentLine'
-on_cmd = ['IndentLinesToggle']
-hook_add = '''
-    nnoremap <silent> <Leader>i :<C-u>IndentLinesToggle<CR>
-'''
-
-# [[plugins]]
-# repo = 'vim-test/vim-test'
-# on_cmd = [
-#     'TestNearest',
-#     'TestFile',
-#     'TestSuite',
-#     'TestLast',
-#     'TestVisit',
-# ]
-# depends = ['tpope/vim-dispatch']
-# hook_add = '''
-#     let g:test#strategy = "dispatch"
-#     nnoremap <silent> <Leader>tt :TestNearest<CR>
-#     nnoremap <silent> <Leader>tf :TestFile<CR>
-#     nnoremap <silent> <Leader>ts :TestSuite<CR>
-#     nnoremap <silent> <Leader>tl :TestLast<CR>
-#     nnoremap <silent> <Leader>tv :TestVisit<CR>
-# '''
-# 
-# [[plugins]]
-# repo = 'tpope/vim-dispatch'
 
 [[plugins]]
 repo = 'prettier/vim-prettier'
@@ -185,14 +144,6 @@ on_cmd = [
 hook_add = '''
     nnoremap <silent> <Leader>s :<C-u>TigStatus<CR>
     nnoremap <silent> <Leader>k :<C-u>TigOpenCurrentFile<CR>
-'''
-
-[[plugins]]
-repo = 'rhysd/git-messenger.vim'
-on_cmd = ['GitMessenger']
-hook_add = '''
-    let g:git_messenger_no_default_mappings = v:true
-    nnoremap <Leader>g :<C-u>GitMessenger<CR>
 '''
 
 [[plugins]]

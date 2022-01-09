@@ -21,6 +21,12 @@ repo = 'bluz71/vim-nightfly-guicolors'
 
 [[plugins]]
 repo = 'christianchiarulli/nvcode-color-schemes.vim'
+hook_add = '''
+    let g:nvcode_termcolors=256
+'''
+
+[[plugins]]
+repo = 'sainnhe/gruvbox-material'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -111,13 +117,14 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-
-[[plugins]]
 repo = 'nvim-treesitter/playground'
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_add = 'source ~/.vim/rc/plugins/nvim-treesitter.rc.vim'
 
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
@@ -140,3 +147,14 @@ repo = 'yuki-yano/fern-preview.vim'
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
+
+[[plugins]]
+repo = 'JoosepAlviste/nvim-ts-context-commentstring'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+hook_add = 'source ~/.vim/rc/plugins/caw.rc.vim'
+
+[[plugins]]
+repo = 'lukas-reineke/indent-blankline.nvim'
+hook_add = 'source ~/.vim/rc/plugins/indent-blankline.rc.vim'

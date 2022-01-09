@@ -27,29 +27,35 @@ if isdirectory(expand($ANYENV_PATH))
     let g:python3_host_prog = $ANYENV_PATH . '/envs/pyenv/versions/neovim3/bin/python'
 endif
 
-let g:dot_deoplete = v:true
-let g:dot_vim_lsp = v:true
+let g:dot_deoplete = v:false
+let g:dot_vim_lsp = v:false
 let g:dot_coc = v:false
-let g:dot_compe = v:false
+let g:dot_cmp = v:true
+let g:dot_nvim_lsp = v:true
+let g:dot_dcc = v:false
 
 call s:source_rc('mappings.rc.vim')
 call s:source_rc('options.rc.vim')
 call s:source_rc('filetype.rc.vim')
 call s:source_rc('autocmd.rc.vim')
 call s:source_rc('dein.rc.vim')
-call s:source_rc('lua.rc.vim')
 
-function! s:dein_clean_update() abort
+function! s:dein_update() abort
     call map(dein#check_clean(), "delete(v:val, 'rf')")
     call dein#check_update(v:true)
+endfunction
+command! -nargs=0 DeinUpdate :call s:dein_update()
+
+function! s:dein_clean_update() abort
+    call dein#recache_runtimepath()
+    call dein#update()
 endfunction
 command! -nargs=0 DeinCleanUpdate :call s:dein_clean_update()
 
 " Colors
 set t_Co=256
 set background=dark
-let g:nvcode_termcolors=256
-colorscheme nvcode
+colorscheme gruvbox-material
 
 " magic word after
 filetype plugin indent on
