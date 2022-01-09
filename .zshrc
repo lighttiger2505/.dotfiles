@@ -33,14 +33,13 @@ else
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh-plugins/zsh-syntax-highlighting
 fi
 
-# Init anyenv
-if [ -e ~/.anyenv ]; then
-    eval "$(anyenv lazyload)"
-fi
-
 # Init direnv
 if executable direnv; then
     eval "$(direnv hook zsh)"
+fi
+
+if [ -e $HOME/.asdf ]; then
+    . $HOME/.asdf/asdf.sh
 fi
 
 if [ "$(pgrep ssh-agent 2> /dev/null)" = "" ]; then
