@@ -172,7 +172,8 @@ augroup LspEnable
     autocmd BufWinEnter *.cpp  :call lsp#enable()
     autocmd BufWinEnter *.tsx  :call lsp#enable()
     autocmd BufWinEnter *.sql  :call lsp#enable()
+    autocmd BufWinEnter *.md   :call lsp#enable()
 augroup END
 
-let g:lsp_log_verbose = 1
-let g:lsp_log_file = expand('~/vim-lsp.log')
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
