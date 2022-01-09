@@ -2,5 +2,9 @@
 repo = 'gfanto/fzf-lsp.nvim'
 
 [[plugins]]
+repo = 'simrat39/symbols-outline.nvim'
+hook_add = 'source ~/.vim/rc/plugins/symbols-outline.rc.vim'
+
+[[plugins]]
 repo = 'neovim/nvim-lspconfig'
 hook_add = 'source ~/.vim/rc/plugins/nvim-lsp.rc.vim'
