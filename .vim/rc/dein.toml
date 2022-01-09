@@ -153,6 +153,8 @@ repo = 'JoosepAlviste/nvim-ts-context-commentstring'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
-# on_map = ['<Plug>(caw:hatpos:toggle)', '<Plug>(caw:zeropos:toggle)']
-# depends = ['nvim-ts-context-commentstring']
 hook_add = 'source ~/.vim/rc/plugins/caw.rc.vim'
+
+[[plugins]]
+repo = 'lukas-reineke/indent-blankline.nvim'
+hook_add = 'source ~/.vim/rc/plugins/indent-blankline.rc.vim'
