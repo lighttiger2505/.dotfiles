@@ -3,6 +3,8 @@ augroup FileTabStop
     autocmd!
     autocmd FileType html setlocal tabstop=2 shiftwidth=2
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2
+    autocmd FileType typescript setlocal tabstop=2 shiftwidth=2
+    autocmd FileType typescriptreact setlocal tabstop=2 shiftwidth=2
     autocmd FileType css setlocal tabstop=2 shiftwidth=2
     autocmd FileType scss setlocal tabstop=2 shiftwidth=2
     autocmd FileType markdown setlocal tabstop=4 shiftwidth=4
