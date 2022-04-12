@@ -1,18 +1,12 @@
 [[plugins]]
-repo = 'honza/vim-snippets'
-
-[[plugins]]
-repo = 'SirVer/ultisnips'
-depend = ['vim-snippets']
-hook_add = '''
-    let g:UltiSnipsExpandTrigger="<c-k>"
-    let g:UltiSnipsJumpForwardTrigger="<c-k>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-'''
-
-[[plugins]]
-repo = 'quangnguyen30192/cmp-nvim-ultisnips'
-depend = ['vim-snippets']
+repo = 'hrsh7th/nvim-cmp'
+depend = [
+    'cmp-nvim-lsp',
+    'cmp-buffer',
+    'cmp-path',
+]
+on_event = 'InsertEnter'
+hook_add = 'source ~/.vim/rc/plugins/nvim-cmp.rc.vim'
 
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp'
@@ -24,5 +18,17 @@ repo = 'hrsh7th/cmp-buffer'
 repo = 'hrsh7th/cmp-path'
 
 [[plugins]]
-repo = 'hrsh7th/nvim-cmp'
-hook_add = 'source ~/.vim/rc/plugins/nvim-cmp.rc.vim'
+repo = 'quangnguyen30192/cmp-nvim-ultisnips'
+depend = ['ultisnips']
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+depend = ['vim-snippets']
+hook_add = '''
+    let g:UltiSnipsExpandTrigger="<c-k>"
+    let g:UltiSnipsJumpForwardTrigger="<c-k>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+'''
+
+[[plugins]]
+repo = 'honza/vim-snippets'
