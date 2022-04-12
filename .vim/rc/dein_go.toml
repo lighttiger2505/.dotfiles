@@ -1,11 +1,22 @@
 [[plugins]]
 repo = 'fatih/vim-go'
-on_ft = ['go']
-build = ':GoUpdateBinaries'
-hook_source = '''
+on_map = [
+    '<Plug>(go-run)',
+    '<Plug>(go-build)',
+    '<Plug>(go-test)',
+    '<Plug>(go-test-func)',
+    '<Plug>(go-imports)',
+    '<Plug>(go-doc-browser)',
+    '<Plug>(go-coverage-toggle)',
+    '<Plug>(go-alternate-edit)',
+]
+hook_add = '''
   source ~/.vim/rc/plugins/go.rc.vim
 '''
 
 [[plugins]]
 repo = 'buoto/gotests-vim'
-on_ft = ['go']
+on_cmd = [
+    'GoTests',
+    'GoTestsAll',
+]
