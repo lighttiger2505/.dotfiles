@@ -117,16 +117,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'nvim-treesitter/playground'
-
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter-textobjects'
-
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-hook_add = 'source ~/.vim/rc/plugins/nvim-treesitter.rc.vim'
-
-[[plugins]]
 repo = 'lambdalisue/fern.vim'
 hook_add = 'source ~/.vim/rc/plugins/fern.rc.vim'
 
@@ -146,7 +136,11 @@ repo = 'lambdalisue/fern-git-status.vim'
 repo = 'yuki-yano/fern-preview.vim'
 
 [[plugins]]
-repo = 'kevinhwang91/nvim-bqf'
+repo = 'nvim-treesitter/nvim-treesitter-textobjects'
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_add = 'source ~/.vim/rc/plugins/nvim-treesitter.rc.vim'
 
 [[plugins]]
 repo = 'JoosepAlviste/nvim-ts-context-commentstring'
