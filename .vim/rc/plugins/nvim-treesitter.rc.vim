@@ -1,7 +1,21 @@
 lua << EOF
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
+  ensure_installed = {
+      "c",
+      "cpp",
+      "css",
+      "dockerfile",
+      "go",
+      "javascript",
+      "lua",
+      "make",
+      "toml",
+      "tsx",
+      "typescript",
+      "vim",
+      "yaml",
+  },
   highlight = {
     enable = true,
     -- disable = {"typescript", "typescriptreact", "python", "vim"},
