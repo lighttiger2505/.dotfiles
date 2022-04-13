@@ -152,3 +152,6 @@ hook_add = 'source ~/.vim/rc/plugins/caw.rc.vim'
 [[plugins]]
 repo = 'lukas-reineke/indent-blankline.nvim'
 hook_add = 'source ~/.vim/rc/plugins/indent-blankline.rc.vim'
+
+[[plugins]]
+repo = 'kevinhwang91/nvim-hlslens'
