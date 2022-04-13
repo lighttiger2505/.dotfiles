@@ -139,6 +139,9 @@ repo = 'yuki-yano/fern-preview.vim'
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 
 [[plugins]]
+repo = 'romgrk/nvim-treesitter-context'
+
+[[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 hook_add = 'source ~/.vim/rc/plugins/nvim-treesitter.rc.vim'
 
