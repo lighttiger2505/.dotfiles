@@ -4,6 +4,7 @@ depend = [
     'cmp-nvim-lsp',
     'cmp-buffer',
     'cmp-path',
+    'cmp-nvim-lsp-signature-help',
 ]
 on_event = 'InsertEnter'
 hook_add = 'source ~/.vim/rc/plugins/nvim-cmp.rc.vim'
@@ -16,6 +17,9 @@ repo = 'hrsh7th/cmp-buffer'
 
 [[plugins]]
 repo = 'hrsh7th/cmp-path'
+
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp-signature-help'
 
 [[plugins]]
 repo = 'quangnguyen30192/cmp-nvim-ultisnips'
