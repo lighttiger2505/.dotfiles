@@ -3,8 +3,8 @@ repo = 'gfanto/fzf-lsp.nvim'
 
 [[plugins]]
 repo = 'simrat39/symbols-outline.nvim'
-hook_add = 'source ~/.vim/rc/plugins/symbols-outline.rc.vim'
+hook_add = 'source ~/.vim/rc/plugins/symbols-outline.rc.lua'
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-hook_add = 'source ~/.vim/rc/plugins/nvim-lsp.rc.vim'
+hook_add = 'source ~/.vim/rc/plugins/nvim-lsp.rc.lua'

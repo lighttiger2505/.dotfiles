@@ -1,7 +1,11 @@
-autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open = false})
-autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
+vim.api.nvim_exec(
+  [[
+    autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open = false})
+    autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
+  ]],
+  false
+)
 
-lua << EOF
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -91,5 +95,3 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
-
-EOF

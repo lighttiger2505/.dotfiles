@@ -1,6 +1,3 @@
-nnoremap <silent> <Leader>o :<C-u>SymbolsOutline<CR>
-
-lua << EOF
 vim.g.symbols_outline = {
     highlight_hovered_item = true,
     show_guides = true,
@@ -53,4 +50,6 @@ vim.g.symbols_outline = {
         TypeParameter = {icon = "𝙏", hl = "TSParameter"}
     }
 }
-EOF
+
+local kopts = {noremap = true, silent = true}
+vim.api.nvim_set_keymap('n', '<Leader>o', ':SymbolsOutline<CR>', kopts)

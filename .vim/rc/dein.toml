@@ -102,7 +102,7 @@ repo = 'romgrk/nvim-treesitter-context'
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-hook_add = 'source ~/.vim/rc/plugins/nvim-treesitter.rc.vim'
+hook_add = 'luafile ~/.vim/rc/plugins/nvim-treesitter.rc.lua'
 
 [[plugins]]
 repo = 'JoosepAlviste/nvim-ts-context-commentstring'
@@ -113,11 +113,11 @@ hook_add = 'source ~/.vim/rc/plugins/caw.rc.vim'
 
 [[plugins]]
 repo = 'lukas-reineke/indent-blankline.nvim'
-hook_add = 'source ~/.vim/rc/plugins/indent-blankline.rc.vim'
+hook_add = 'luafile ~/.vim/rc/plugins/indent-blankline.rc.lua'
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-hlslens'
-hook_add = 'source ~/.vim/rc/plugins/hlslens.rc.vim'
+hook_add = 'luafile ~/.vim/rc/plugins/hlslens.rc.lua'
 
 [[plugins]]
 repo = 'nvim-lua/plenary.nvim'
@@ -130,12 +130,12 @@ repo = 'MunifTanjim/nui.nvim'
 
 [[plugins]]
 repo = 'nvim-neo-tree/neo-tree.nvim'
-hook_add = 'source ~/.vim/rc/plugins/neo-tree.rc.vim'
+hook_add = 'luafile ~/.vim/rc/plugins/neo-tree.rc.lua'
 
 [[plugins]]
 repo = 'TimUntersberger/neogit'
-hook_add = 'source ~/.vim/rc/plugins/neogit.rc.vim'
+hook_add = 'luafile ~/.vim/rc/plugins/neogit.rc.lua'
 
 [[plugins]]
 repo = 'sindrets/diffview.nvim'
-hook_add = 'source ~/.vim/rc/plugins/diffview.rc.vim'
+hook_add = 'luafile ~/.vim/rc/plugins/diffview.rc.lua'
