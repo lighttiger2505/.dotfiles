@@ -95,25 +95,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'lambdalisue/fern.vim'
-hook_add = 'source ~/.vim/rc/plugins/fern.rc.vim'
-
-[[plugins]]
-repo = 'lambdalisue/nerdfont.vim'
-
-[[plugins]]
-repo = 'lambdalisue/glyph-palette.vim'
-
-[[plugins]]
-repo = 'lambdalisue/fern-renderer-nerdfont.vim'
-
-[[plugins]]
-repo = 'lambdalisue/fern-git-status.vim'
-
-[[plugins]]
-repo = 'yuki-yano/fern-preview.vim'
-
-[[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 
 [[plugins]]
@@ -137,3 +118,16 @@ hook_add = 'source ~/.vim/rc/plugins/indent-blankline.rc.vim'
 [[plugins]]
 repo = 'kevinhwang91/nvim-hlslens'
 hook_add = 'source ~/.vim/rc/plugins/hlslens.rc.vim'
+
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+[[plugins]]
+repo = 'MunifTanjim/nui.nvim'
+
+[[plugins]]
+repo = 'nvim-neo-tree/neo-tree.nvim'
+hook_add = 'source ~/.vim/rc/plugins/neo-tree.rc.vim'
