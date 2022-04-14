@@ -131,3 +131,11 @@ repo = 'MunifTanjim/nui.nvim'
 [[plugins]]
 repo = 'nvim-neo-tree/neo-tree.nvim'
 hook_add = 'source ~/.vim/rc/plugins/neo-tree.rc.vim'
+
+[[plugins]]
+repo = 'TimUntersberger/neogit'
+hook_add = 'source ~/.vim/rc/plugins/neogit.rc.vim'
+
+[[plugins]]
+repo = 'sindrets/diffview.nvim'
+hook_add = 'source ~/.vim/rc/plugins/diffview.rc.vim'
