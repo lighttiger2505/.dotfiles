@@ -1,3 +1,5 @@
+nnoremap <silent> <Leader>t :<C-u>Neotree reveal<CR>
+
 lua << EOF
 
 require("neo-tree").setup({
