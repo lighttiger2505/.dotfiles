@@ -33,10 +33,6 @@ repo = 'nvim-lualine/lualine.nvim'
 hook_add = 'source ~/.vim/rc/plugins/lualine.rc.vim'
 
 [[plugins]]
-repo = 'lambdalisue/gina.vim'
-hook_add = 'source ~/.vim/rc/plugins/gina.rc.vim'
-
-[[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
     nmap ]g <Plug>(GitGutterNextHunk)
@@ -114,6 +110,19 @@ hook_add = 'source ~/.vim/rc/plugins/caw.rc.vim'
 [[plugins]]
 repo = 'lukas-reineke/indent-blankline.nvim'
 hook_add = 'luafile ~/.vim/rc/plugins/indent-blankline.rc.lua'
+
+[[plugins]]
+repo = 'haya14busa/vim-asterisk'
+hook_add = '''
+    map *   <Plug>(asterisk-*)
+    map #   <Plug>(asterisk-#)
+    map g*  <Plug>(asterisk-g*)
+    map g#  <Plug>(asterisk-g#)
+    map z*  <Plug>(asterisk-z*)
+    map gz* <Plug>(asterisk-gz*)
+    map z#  <Plug>(asterisk-z#)
+    map gz# <Plug>(asterisk-gz#)
+'''
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-hlslens'
