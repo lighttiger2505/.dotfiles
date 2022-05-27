@@ -61,7 +61,8 @@ end
 
 nvim_lsp.sqls.setup {
     on_attach = on_attach,
-    cmd = { 'sqls', '-log', os.getenv("HOME") .. '/sqls.log', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
+    -- cmd = { 'sqls', '-log', os.getenv("HOME") .. '/sqls.log', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
+    cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
     settings = {
         sqls = {
             connections = {
@@ -97,3 +98,5 @@ vim.diagnostic.config({
     update_in_insert = false,
     severity_sort = true,
 })
+
+require "fidget".setup {}
