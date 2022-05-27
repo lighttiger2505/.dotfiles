@@ -327,44 +327,6 @@ alias dc="docker-compose"
 alias li='liary'
 alias cdl='cd `liary config --get diarydir`'
 
-# Benchmark
-alias zbench='for i in $(seq 1 10); do time zsh -i -c exit; done'
-#####################################################################
-# browser-hb
-#####################################################################
-
-browser-history() {
-    HISTORY=`bhb history | fzf -m | sed 's#.*\(https*://\)#\1#'`
-    if [ -n "${HISTORY}" ]; then
-        open ${HISTORY}
-    fi
-}
-alias bh=browser-history
-
-browser-bookmark() {
-    BOOKMARK=`bhb bookmark | fzf -m | sed 's#.*\(https*://\)#\1#'`
-    if [ -n "${BOOKMARK}" ]; then
-        open ${BOOKMARK}
-    fi
-}
-alias bb=browser-bookmark
-
-#####################################################################
-# zsh-marks
-#####################################################################
-
-alias bs="bookmark"
-alias bd="deletemark"
-alias bl="showmarks"
-
-fzf-jump-bookmark() {
-    BOOKMARK=`showmarks | sort | fzf -m | awk '{print $1}'`
-    if [ -n "${BOOKMARK}" ]; then
-        jump ${BOOKMARK}
-    fi
-}
-alias b=fzf-jump-bookmark
-
 #####################################################################
 # gcloud
 #####################################################################
@@ -397,7 +359,6 @@ gcloud-logs-app-version() {
 }
 alias gcal=gcloud-logs-app-version
 
-
 gcloud-compute-ssh() {
     CHOICE_LINE=`gcloud compute instances list | fzf -m`
     if [ -n "${CHOICE_LINE}" ]; then
@@ -409,35 +370,10 @@ gcloud-compute-ssh() {
 alias gcssh=gcloud-compute-ssh
 
 #####################################################################
-# ranger
-#####################################################################
-
-# Move directory when exiting with ranger
-function ranger-cd {
-    tempfile="$(mktemp -t tmp.XXXXXX)"
-    ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-    test -f "$tempfile" &&
-    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
-        cd -- "$(cat "$tempfile")"
-    fi
-    rm -f -- "$tempfile"
-}
-alias ranger=ranger-cd
-alias ran=ranger
-
-#####################################################################
 # go module
 #####################################################################
 
-# Move directory when exiting with ranger
-function change_go_module {
-    local GOMOD=$(echo "on\noff\nauto" | fzf +m)
-    if [ -n "${GOMOD}" ]; then
-        export export GO111MODULE=${GOMOD}
-    fi
-}
-alias cgom=change_go_module
-alias upgopls='GO111MODULE=on go get golang.org/x/tools/gopls@latest'
+alias goplsup='go install golang.org/x/tools/gopls@latest'
 
 #####################################################################
 # Pomodoro
@@ -445,3 +381,57 @@ alias upgopls='GO111MODULE=on go get golang.org/x/tools/gopls@latest'
 
 alias worktime='~/.tmux/timer.sh 25'
 alias breaktime='~/.tmux/timer.sh 5'
+
+#####################################################################
+# Benchmarks
+#####################################################################
+# zsh benchmark
+function zsh-startuptime() {
+  local total_msec=0
+  local msec
+  local i
+  for i in $(seq 1 10); do
+    msec=$(TIMEFMT='%mE'; time zsh -i -c exit)
+    msec=$(echo $msec | tr -d "ms")
+    echo "${(l:2:)i}: ${msec} [ms]"
+    total_msec=$(( $total_msec + $msec ))
+  done
+  local average_msec
+  average_msec=$(( ${total_msec} / 10 ))
+  echo "\naverage: ${average_msec} [ms]"
+}
+alias zbench=zsh-startuptime
+
+# zsh profiling
+function zsh-profiler() {
+  ZSHRC_PROFILE=1 zsh -i -c zprof
+}
+alias zprofile=zsh-profiler
+
+function nvim-startuptime() {
+  local file=$1
+  local total_msec=0
+  local msec
+  local i
+  for i in $(seq 1 10); do
+    msec=$({(TIMEFMT='%mE'; time nvim --headless -c q $file ) 2>&3;} 3>/dev/stdout >/dev/null)
+    msec=$(echo $msec | tr -d "ms")
+    echo "${(l:2:)i}: ${msec} [ms]"
+    total_msec=$(( $total_msec + $msec ))
+  done
+  local average_msec
+  average_msec=$(( ${total_msec} / 10 ))
+  echo "\naverage: ${average_msec} [ms]"
+}
+alias vbench=nvim-startuptime
+
+function nvim-profiler() {
+  local file=$1
+  local time_file
+  time_file=$(mktemp --suffix "_nvim_startuptime.txt")
+  echo "output: $time_file"
+  time nvim --headless --startuptime $time_file -c q $file
+  tail -n 1 $time_file | cut -d " " -f1 | tr -d "\n" && echo " [ms]\n"
+  cat $time_file | sort -n -k 2 | tail -n 20
+}
+alias vprofile=nvim-profiler
