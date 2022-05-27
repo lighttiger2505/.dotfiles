@@ -23,18 +23,6 @@ neogit.setup {
         hunk = { "", "" },
     },
     integrations = {
-        -- Neogit only provides inline diffs. If you want a more traditional way to look at diffs, you can use `sindrets/diffview.nvim`.
-        -- The diffview integration enables the diff popup, which is a wrapper around `sindrets/diffview.nvim`.
-        --
-        -- Requires you to have `sindrets/diffview.nvim` installed.
-        -- use {
-        --   'TimUntersberger/neogit',
-        --   requires = {
-        --     'nvim-lua/plenary.nvim',
-        --     'sindrets/diffview.nvim'
-        --   }
-        -- }
-        --
         diffview = true
     },
     -- Setting any section to `false` will make the section not render at all
@@ -73,3 +61,4 @@ neogit.setup {
 
 local kopts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap('n', '<Leader>gg', ':Neogit<CR>', kopts)
+vim.api.nvim_set_keymap('n', '<Leader>gd', ':DiffviewOpen<CR>', kopts)
