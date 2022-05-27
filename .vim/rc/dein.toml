@@ -94,9 +94,6 @@ hook_add = '''
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 
 [[plugins]]
-repo = 'romgrk/nvim-treesitter-context'
-
-[[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 hook_add = 'luafile ~/.vim/rc/plugins/nvim-treesitter.rc.lua'
 
@@ -114,14 +111,10 @@ hook_add = 'luafile ~/.vim/rc/plugins/indent-blankline.rc.lua'
 [[plugins]]
 repo = 'haya14busa/vim-asterisk'
 hook_add = '''
-    map *   <Plug>(asterisk-*)
-    map #   <Plug>(asterisk-#)
-    map g*  <Plug>(asterisk-g*)
-    map g#  <Plug>(asterisk-g#)
-    map z*  <Plug>(asterisk-z*)
-    map gz* <Plug>(asterisk-gz*)
-    map z#  <Plug>(asterisk-z#)
-    map gz# <Plug>(asterisk-gz#)
+    map *  <Plug>(asterisk-z*)
+    map #  <Plug>(asterisk-z#)
+    map g* <Plug>(asterisk-gz*)
+    map g# <Plug>(asterisk-gz#)
 '''
 
 [[plugins]]
@@ -148,3 +141,28 @@ hook_add = 'luafile ~/.vim/rc/plugins/neogit.rc.lua'
 [[plugins]]
 repo = 'sindrets/diffview.nvim'
 hook_add = 'luafile ~/.vim/rc/plugins/diffview.rc.lua'
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+hook_add = '''
+    let g:polyglot_disabled = ['csv']
+
+    " markdown https://github.com/plasticboy/vim-markdown
+    let g:vim_markdown_conceal = 0
+    let g:vim_markdown_conceal_code_blocks = 0
+
+    " terraform https://github.com/hashivim/vim-terraform
+    let g:terraform_align=0
+    let g:terraform_fold_sections=0
+    let g:terraform_fmt_on_save=0
+
+    " vue https://github.com/posva/vim-vue
+    let g:vue_pre_processors = 'detect_on_enter'
+    augroup VueSyntax
+        autocmd!
+        autocmd FileType vue syntax sync fromstart
+    augroup END
+'''
+
+[[plugins]]
+repo = 'nathom/filetype.nvim'
