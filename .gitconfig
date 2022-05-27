@@ -30,3 +30,5 @@
 	path = ~/.gitconfig-work
 [commit]
 	template = ~/.gitmessage.txt
+[push]
+	default = current
