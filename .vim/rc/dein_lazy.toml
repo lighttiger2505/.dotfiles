@@ -3,21 +3,6 @@
 #####################################################################
 
 [[plugins]]
-repo = 'haya14busa/vim-asterisk'
-on_map = [
-    '<Plug>(asterisk-z*)',
-    '<Plug>(asterisk-z#)',
-    '<Plug>(asterisk-gz*)',
-    '<Plug>(asterisk-gz#)',
-]
-hook_add = '''
-    map *  <Plug>(asterisk-z*)
-    map #  <Plug>(asterisk-z#)
-    map g* <Plug>(asterisk-gz*)
-    map g# <Plug>(asterisk-gz#)
-'''
-
-[[plugins]]
 repo = 'mattn/vim-sqlfmt'
 on_ft = ['sql']
 on_map = ['<Plug>(sqlfmt)']
