@@ -98,7 +98,7 @@ require("neo-tree").setup({
                 --"thumbs.db"
             },
         },
-        follow_current_file = true, -- This will find and focus the file in the active buffer every
+        follow_current_file = false, -- This will find and focus the file in the active buffer every
         -- time the current file is changed while the tree is open.
         hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
         -- in whatever position is specified in window.position
@@ -145,4 +145,5 @@ require("neo-tree").setup({
 })
 
 local kopts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<Leader>tt', ':Neotree reveal<CR>', kopts)
+vim.api.nvim_set_keymap('n', '<Leader>tt', ':Neotree toggle<CR>', kopts)
+vim.api.nvim_set_keymap('n', '<Leader>tf', ':Neotree reveal<CR>', kopts)

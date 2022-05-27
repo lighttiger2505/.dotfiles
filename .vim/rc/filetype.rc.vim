@@ -30,6 +30,7 @@ augroup END
 augroup MyGitSpellCheck
     autocmd!
     autocmd FileType gitcommit setlocal spell
+    autocmd FileType NeogitCommitMessage setlocal spell
 augroup END
 
 augroup MarkdownErrSyntax
