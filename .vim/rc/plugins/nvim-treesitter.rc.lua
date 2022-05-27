@@ -55,34 +55,21 @@ require 'nvim-treesitter.configs'.setup {
             enable = true,
             set_jumps = true,
             goto_next_start = {
-                ["]m"] = "@function.outer",
-                ["]]"] = "@class.outer",
+                ["]]"] = "@function.outer",
+                ["]c"] = "@class.outer",
             },
             goto_next_end = {
-                ["]M"] = "@function.outer",
-                ["]["] = "@class.outer",
+                ["]["] = "@function.outer",
+                ["]C"] = "@class.outer",
             },
             goto_previous_start = {
-                ["[m"] = "@function.outer",
-                ["[["] = "@class.outer",
+                ["[["] = "@function.outer",
+                ["[c"] = "@class.outer",
             },
             goto_previous_end = {
-                ["[M"] = "@function.outer",
-                ["[]"] = "@class.outer",
+                ["[]"] = "@function.outer",
+                ["[C"] = "@class.outer",
             },
-        },
-    },
-}
-
-require('treesitter-context').setup {
-    enable = true,
-    throttle = true,
-    max_lines = 0,
-    patterns = {
-        default = {
-            'class',
-            'function',
-            'method',
         },
     },
 }
