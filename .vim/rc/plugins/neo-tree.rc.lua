@@ -145,5 +145,5 @@ require("neo-tree").setup({
 })
 
 local kopts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<Leader>tt', ':Neotree toggle<CR>', kopts)
-vim.api.nvim_set_keymap('n', '<Leader>tf', ':Neotree reveal<CR>', kopts)
+vim.api.nvim_set_keymap('n', '<Leader>t', ':Neotree toggle<CR>', kopts)
+vim.api.nvim_set_keymap('n', '<Leader>f', ':Neotree reveal<CR>', kopts)
