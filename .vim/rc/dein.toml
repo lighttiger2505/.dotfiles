@@ -121,6 +121,7 @@ hook_add = '''
 [[plugins]]
 repo = 'kevinhwang91/nvim-hlslens'
 hook_add = 'luafile ~/.vim/rc/plugins/hlslens.rc.lua'
+depends = ['vim-asterisk']
 
 [[plugins]]
 repo = 'nvim-lua/plenary.nvim'
