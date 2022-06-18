@@ -157,3 +157,7 @@ lua require'colorizer'.setup()
 [[plugins]]
 repo = 'jose-elias-alvarez/null-ls.nvim'
 hook_add = 'luafile ~/.vim/rc/plugins/null-ls.rc.lua'
+
+[[plugins]]
+repo = 'akinsho/toggleterm.nvim'
+hook_add = 'luafile ~/.vim/rc/plugins/toggleterm.rc.lua'
