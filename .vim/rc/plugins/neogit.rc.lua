@@ -2,7 +2,7 @@ local neogit = require("neogit")
 
 neogit.setup {
     disable_signs = false,
-    disable_hint = false,
+    disable_hint = true,
     disable_context_highlighting = false,
     disable_commit_confirmation = false,
     -- Neogit refreshes its internal state after specific events, which can be expensive depending on the repository size.
@@ -55,10 +55,10 @@ neogit.setup {
         status = {
             ["<enter>"] = "Toggle",
             ["e"] = "GoToFile",
+            ["!"] = "Discard",
         }
     }
 }
 
 local kopts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<Leader>gg', ':Neogit<CR>', kopts)
-vim.api.nvim_set_keymap('n', '<Leader>gd', ':DiffviewOpen<CR>', kopts)
+vim.api.nvim_set_keymap('n', '<Leader>g', ':Neogit<CR>', kopts)
