@@ -13,10 +13,6 @@ hook_add = '''
     let g:sqlfmt_program = sqlfmt_bin . ' -r -k upper -o %s -'
 '''
 
-[[plugins]]
-repo = 'mattn/emmet-vim'
-on_ft = ['html', 'djangohtml']
-
 #####################################################################
 # Programing util
 #####################################################################
@@ -118,17 +114,6 @@ on_cmd = ['OpenGithubFile']
 hook_add = '''
     nmap <Leader>bh :<C-u>OpenGithubFile<CR>
     vmap <Leader>bh :<C-u>OpenGithubFile<CR>
-'''
-
-[[plugins]]
-repo = 'iberianpig/tig-explorer.vim'
-on_cmd = [
-    'TigStatus',
-    'TigOpenCurrentFile',
-]
-hook_add = '''
-    nnoremap <silent> <Leader>s :<C-u>TigStatus<CR>
-    nnoremap <silent> <Leader>k :<C-u>TigOpenCurrentFile<CR>
 '''
 
 [[plugins]]
