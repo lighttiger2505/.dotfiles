@@ -147,3 +147,13 @@ hook_add = '''
 
 [[plugins]]
 repo = 'nathom/filetype.nvim'
+
+[[plugins]]
+repo = 'norcalli/nvim-colorizer.lua'
+hook_add = '''
+lua require'colorizer'.setup()
+'''
+
+[[plugins]]
+repo = 'jose-elias-alvarez/null-ls.nvim'
+hook_add = 'luafile ~/.vim/rc/plugins/null-ls.rc.lua'
