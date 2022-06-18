@@ -94,15 +94,16 @@ hook_add = '''
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 
 [[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-hook_add = 'luafile ~/.vim/rc/plugins/nvim-treesitter.rc.lua'
-
-[[plugins]]
 repo = 'JoosepAlviste/nvim-ts-context-commentstring'
 
 [[plugins]]
-repo = 'tyru/caw.vim'
-hook_add = 'source ~/.vim/rc/plugins/caw.rc.vim'
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_add = 'luafile ~/.vim/rc/plugins/nvim-treesitter.rc.lua'
+depends = ['nvim-treesitter-textobjects', 'nvim-ts-context-commentstring']
+
+[[plugins]]
+repo = 'numToStr/Comment.nvim'
+hook_add = 'luafile ~/.vim/rc/plugins/Comment.rc.lua'
 
 [[plugins]]
 repo = 'lukas-reineke/indent-blankline.nvim'
