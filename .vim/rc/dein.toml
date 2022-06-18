@@ -2,31 +2,10 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'vim-scripts/wombat256.vim'
-
-[[plugins]]
-repo = 'cocopon/iceberg.vim'
-
-[[plugins]]
-repo = 'morhetz/gruvbox'
-
-[[plugins]]
-repo = 'ayu-theme/ayu-vim'
-
-[[plugins]]
-repo = 'sainnhe/sonokai'
-
-[[plugins]]
-repo = 'bluz71/vim-nightfly-guicolors'
-
-[[plugins]]
 repo = 'christianchiarulli/nvcode-color-schemes.vim'
 hook_add = '''
     let g:nvcode_termcolors=256
 '''
-
-[[plugins]]
-repo = 'sainnhe/gruvbox-material'
 
 [[plugins]]
 repo = 'nvim-lualine/lualine.nvim'
