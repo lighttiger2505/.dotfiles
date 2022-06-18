@@ -4,6 +4,7 @@ depend = [
     'cmp-nvim-lsp',
     'cmp-buffer',
     'cmp-path',
+    'cmp-spell',
     'cmp-nvim-lsp-signature-help',
 ]
 on_event = 'InsertEnter'
@@ -17,6 +18,9 @@ repo = 'hrsh7th/cmp-buffer'
 
 [[plugins]]
 repo = 'hrsh7th/cmp-path'
+
+[[plugins]]
+repo = 'f3fora/cmp-spell'
 
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp-signature-help'

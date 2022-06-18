@@ -40,13 +40,12 @@ cmp.setup({
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-vim.api.nvim_exec(
-    [[
-        autocmd FileType markdown lua require'cmp'.setup.buffer {
-        \   sources = {
-        \     { name = 'buffer' },
-        \   },
-        \ }
-  ]] ,
-    false
-)
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+        { name = 'spell' },
+    }, {
+        { name = 'buffer' },
+    })
+})
+
