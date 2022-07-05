@@ -116,6 +116,10 @@ repo = 'nvim-neo-tree/neo-tree.nvim'
 hook_add = 'luafile ~/.vim/rc/plugins/neo-tree.rc.lua'
 
 [[plugins]]
+repo = 'TimUntersberger/neogit'
+hook_add = 'luafile ~/.vim/rc/plugins/neogit.rc.lua'
+
+[[plugins]]
 repo = 'sindrets/diffview.nvim'
 hook_add = 'luafile ~/.vim/rc/plugins/diffview.rc.lua'
 
