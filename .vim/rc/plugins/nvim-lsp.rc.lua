@@ -49,7 +49,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'gopls', 'pyright', 'rust_analyzer', 'tsserver', 'sumneko_lua' }
+local servers = { 'gopls', 'pyright', 'rust_analyzer', 'tsserver', 'sumneko_lua', 'metals' }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
         on_attach = on_attach,
@@ -61,8 +61,8 @@ end
 
 nvim_lsp.sqls.setup {
     on_attach = on_attach,
-    -- cmd = { 'sqls', '-log', os.getenv("HOME") .. '/sqls.log', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
-    cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
+    cmd = { 'sqls', '-log', os.getenv("HOME") .. '/sqls.log', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
+    -- cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
     settings = {
         sqls = {
             connections = {
@@ -97,6 +97,19 @@ vim.diagnostic.config({
     underline = true,
     update_in_insert = false,
     severity_sort = true,
+})
+
+-- nvim metals config
+local metals_config = require("metals").bare_config()
+metals_config.init_options.statusBarProvider = "on"
+
+local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "scala", "sbt", "java" },
+    callback = function()
+        require("metals").initialize_or_attach({})
+    end,
+    group = nvim_metals_group,
 })
 
 require "fidget".setup {}

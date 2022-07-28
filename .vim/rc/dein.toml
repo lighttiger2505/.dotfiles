@@ -161,3 +161,10 @@ hook_add = 'luafile ~/.vim/rc/plugins/null-ls.rc.lua'
 [[plugins]]
 repo = 'akinsho/toggleterm.nvim'
 hook_add = 'luafile ~/.vim/rc/plugins/toggleterm.rc.lua'
+
+[[plugins]]
+repo = 'scalameta/nvim-metals'
+
+[[plugins]]
+repo = 'nanotee/sqls.nvim'
+depends = ['plenary.nvim']

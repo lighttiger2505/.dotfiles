@@ -26,6 +26,8 @@ export TERMINAL=alacritty
 # [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 # AWS profile
 AWS_DEFAULT_PROFILE=default
+# goenv
+GOENV_ROOT="$HOME/.goenv"
 
 # Path/Valiables
 typeset -U path
@@ -52,6 +54,10 @@ $ANYENV_PATH/bin(N-/)
 $HOME/.npm-global/bin(N-/)
 # my scripts
 $HOME/scripts(N-/)
+# krew
+${KREW_ROOT:-$HOME/.krew}/bin
+# goenv
+$GOENV_ROOT/bin(N-/)
 
 # GNU utils for mac
 # coreutils

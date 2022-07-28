@@ -27,11 +27,6 @@ if [ -e ~/.zsh-plugins/zsh-autosuggestions ]; then
 else
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh-plugins/zsh-autosuggestions
 fi
-if [ -e ~/.zsh-plugins/zsh-syntax-highlighting ]; then
-    source ~/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh-plugins/zsh-syntax-highlighting
-fi
 
 # Init direnv
 if executable direnv; then
