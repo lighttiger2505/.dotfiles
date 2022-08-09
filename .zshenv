@@ -22,12 +22,12 @@ export EDITOR=nvim
 export ENHANCD_FILTER=fzf
 # defaut terminal is alacritty
 export TERMINAL=alacritty
-# # dolphin file explorer icon setting
-# [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 # AWS profile
 AWS_DEFAULT_PROFILE=default
 # goenv
 GOENV_ROOT="$HOME/.goenv"
+# volta
+export VOLTA_HOME="$HOME/.volta"
 
 # Path/Valiables
 typeset -U path
@@ -58,6 +58,8 @@ $HOME/scripts(N-/)
 ${KREW_ROOT:-$HOME/.krew}/bin
 # goenv
 $GOENV_ROOT/bin(N-/)
+# volta
+$VOLTA_HOME/bin(N-/)
 
 # GNU utils for mac
 # coreutils
@@ -94,7 +96,13 @@ ${manpath}
 # Go root
 export GOROOT=$(go env GOROOT)
 
+# Mac
+ZSH_DISABLE_COMPFIX="true"
+
 # Sudo path
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
 sudo_path=({,/usr/pkg,/usr/local,/usr}/sbin(N-/))
+
+FZF_PREVIEW_PREVIEW_BAT_THEME='gruvbox'
+. "$HOME/.cargo/env"
