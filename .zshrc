@@ -1,7 +1,9 @@
 #!/usr/bin/zsh
 
-# # zprof start
-# zmodload zsh/zprof && zprof
+# zprof start
+if [ "$ZSHRC_PROFILE" != "" ]; then
+  zmodload zsh/zprof && zprof > /dev/null
+fi
 
 # OS Type
 case ${OSTYPE} in
@@ -33,10 +35,6 @@ if executable direnv; then
     eval "$(direnv hook zsh)"
 fi
 
-if [ -e $HOME/.asdf ]; then
-    . $HOME/.asdf/asdf.sh
-fi
-
 if [ "$(pgrep ssh-agent 2> /dev/null)" = "" ]; then
     eval $(ssh-agent) > /dev/null
     case ${OSTYPE} in
@@ -52,12 +50,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/lighttiger2505/google-cloud-sdk/path.zsh.inc' ]; then . '/home/lighttiger2505/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/usr/local/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/lighttiger2505/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/lighttiger2505/google-cloud-sdk/completion.zsh.inc'; fi
-
-# # zprof end
-# if (which zprof > /dev/null 2>&1) ;then
-#   zprof
-# fi
+if [ -f '/usr/local/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/bin/google-cloud-sdk/completion.zsh.inc'; fi
