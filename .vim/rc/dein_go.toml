@@ -20,3 +20,6 @@ on_cmd = [
     'GoTests',
     'GoTestsAll',
 ]
+hook_add = '''
+  let g:gotests_template = ""
+'''

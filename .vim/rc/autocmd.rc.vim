@@ -61,11 +61,11 @@ if has('nvim')
     augroup END
 endif
 
-" augroup TransparentBG
-"     autocmd!
-"     autocmd Colorscheme * highlight Normal ctermbg=none
-"     autocmd Colorscheme * highlight NonText ctermbg=none
-"     autocmd Colorscheme * highlight LineNr ctermbg=none
-"     autocmd Colorscheme * highlight Folded ctermbg=none
-"     autocmd Colorscheme * highlight EndOfBuffer ctermbg=none 
-" augroup END
+" echo message vim start up time
+if has('vim_starting') && has('reltime')
+    augroup VimStart
+        autocmd!
+        let g:startuptime = reltime()
+        autocmd VimEnter * let g:startuptime = reltime(g:startuptime) | redraw | echomsg 'startuptime: ' . reltimestr(g:startuptime)
+    augroup END
+endif

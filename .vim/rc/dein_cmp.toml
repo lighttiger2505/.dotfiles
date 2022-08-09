@@ -6,7 +6,6 @@ depend = [
     'cmp-path',
     'cmp-spell',
     'cmp-nvim-lsp-signature-help',
-    'cmp-nvim-ultisnips',
 ]
 on_event = 'InsertEnter'
 hook_source = 'luafile ~/.vim/rc/plugins/nvim-cmp.rc.lua'
@@ -30,21 +29,6 @@ on_event = 'InsertEnter'
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp-signature-help'
 on_event = 'InsertEnter'
-
-[[plugins]]
-repo = 'quangnguyen30192/cmp-nvim-ultisnips'
-on_event = 'InsertEnter'
-depend = ['ultisnips']
-
-[[plugins]]
-repo = 'SirVer/ultisnips'
-on_event = 'InsertEnter'
-depend = ['vim-snippets']
-hook_source = '''
-    let g:UltiSnipsExpandTrigger="<c-k>"
-    let g:UltiSnipsJumpForwardTrigger="<c-k>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-'''
 
 [[plugins]]
 on_event = 'InsertEnter'

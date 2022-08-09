@@ -9,7 +9,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'nvim-lualine/lualine.nvim'
-hook_add = 'source ~/.vim/rc/plugins/lualine.rc.vim'
+hook_add = 'source ~/.vim/rc/plugins/lualine.rc.lua'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'

@@ -79,17 +79,15 @@ nvim_lsp.sqls.setup {
     },
 }
 
-local fzf_lsp = require('fzf_lsp')
-vim.lsp.handlers["textDocument/codeAction"] = fzf_lsp.code_action_handler
--- vim.lsp.handlers["textDocument/definition"] = fzf_lsp.definition_handler
--- vim.lsp.handlers["textDocument/declaration"] = fzf_lsp.declaration_handler
--- vim.lsp.handlers["textDocument/typeDefinition"] = fzf_lsp.type_definition_handler
--- vim.lsp.handlers["textDocument/implementation"] = fzf_lsp.implementation_handler
--- vim.lsp.handlers["textDocument/references"] = fzf_lsp.references_handler
-vim.lsp.handlers["textDocument/documentSymbol"] = fzf_lsp.document_symbol_handler
-vim.lsp.handlers["workspace/symbol"] = fzf_lsp.workspace_symbol_handler
--- vim.lsp.handlers["callHierarchy/incomingCalls"] = fzf_lsp.incoming_calls_handler
--- vim.lsp.handlers["callHierarchy/outgoingCalls"] = fzf_lsp.outgoing_calls_handler
+nvim_lsp.sumneko_lua.setup {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' },
+            },
+        },
+    },
+}
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -99,17 +97,15 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
--- nvim metals config
-local metals_config = require("metals").bare_config()
-metals_config.init_options.statusBarProvider = "on"
-
-local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "scala", "sbt", "java" },
-    callback = function()
-        require("metals").initialize_or_attach({})
-    end,
-    group = nvim_metals_group,
-})
-
-require "fidget".setup {}
+-- -- nvim metals config
+-- local metals_config = require("metals").bare_config()
+-- metals_config.init_options.statusBarProvider = "on"
+--
+-- local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = { "scala", "sbt", "java" },
+--     callback = function()
+--         require("metals").initialize_or_attach({})
+--     end,
+--     group = nvim_metals_group,
+-- })
