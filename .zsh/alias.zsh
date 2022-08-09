@@ -435,3 +435,10 @@ function nvim-profiler() {
   cat $time_file | sort -n -k 2 | tail -n 20
 }
 alias vprofile=nvim-profiler
+
+function open-tmp-drawfile() {
+  local tmpfile="${HOME}/vscode/drawmemo/$(date +'%Y%m%d').drawio"
+  touch ${tmpfile}
+  code ${tmpfile}
+}
+alias drawio=open-tmp-drawfile
