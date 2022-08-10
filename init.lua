@@ -12,7 +12,6 @@ vim.cmd("source " .. os.getenv("HOME") .. "/.vim/rc/filetype.rc.vim")
 vim.cmd("source " .. os.getenv("HOME") .. "/.vim/rc/autocmd.rc.vim")
 
 function _G.ReloadConfig()
-    local hls_status = vim.v.hlsearch
     for name, _ in pairs(package.loaded) do
         if name:match('^cnull') then
             package.loaded[name] = nil
@@ -20,9 +19,6 @@ function _G.ReloadConfig()
     end
 
     dofile(os.getenv("HOME") .. "/.dotfiles/init.lua")
-    if hls_status == 0 then
-        vim.opt.hlsearch = false
-    end
 end
 
 function _G.LoadPluginConfig(file)
@@ -153,8 +149,8 @@ return require('packer').startup(function(use)
     }
     use {
         "j-hui/fidget.nvim",
-        config = function() require('gitsigns').setup() end,
         requires = { "neovim/nvim-lspconfig" },
+        config = function() LoadPluginConfig("gitsigns.rc.lua") end,
     }
     use {
         "simrat39/symbols-outline.nvim",
@@ -174,12 +170,80 @@ return require('packer').startup(function(use)
             vim.api.nvim_set_keymap('n', '<C-j><C-o>', '<Cmd>Telescope lsp_document_symbols<CR>', fzfopts)
             vim.api.nvim_set_keymap('n', '<C-j><C-r>', '<Cmd>Telescope oldfiles<CR>', fzfopts)
         end,
+        config = function() LoadPluginConfig("telescope.rc.lua") end,
+
+    }
+
+    -- vim-quickrun
+    use "lambdalisue/vim-quickrun-neovim-job"
+    use {
+        'thinca/vim-quickrun',
+        requires = { "lambdalisue/vim-quickrun-neovim-job" },
+        config = function() LoadVimPluginConfig("vimquickrun.rc.vim") end,
+        setup = function()
+            vim.api.nvim_set_keymap('n', '<Leader>r', '<Cmd>QuickRun<CR>', { noremap = true, silent = true })
+            vim.api.nvim_set_keymap('x', '<Leader>r', '<Cmd>QuickRun<CR>', { noremap = true, silent = true })
+        end,
+    }
+
+    use "nicwest/vim-camelsnek"
+
+    use {
+        'prettier/vim-prettier',
+        ft = {
+            'javascript',
+            'javascript.jsx',
+            'javascriptreact',
+            'typescript',
+            'typescript.tsx',
+            'typescriptreact',
+        },
+    }
+
+    -- open-browser.vim
+    use {
+        'tyru/open-browser.vim',
+        setup = function()
+            vim.api.nvim_set_keymap('n', '<Leader>bb', '<Plug>(openbrowser-smart-search)<CR>', { noremap = true, silent = true })
+            vim.api.nvim_set_keymap('x', '<Leader>bb', '<Plug>(openbrowser-smart-search)<CR>', { noremap = true, silent = true })
+        end,
+    }
+    use {
+        'tyru/open-browser-github.vim',
+        after = { "open-browser.vim" },
+        setup = function()
+            vim.api.nvim_set_keymap('n', '<Leader>bh', '<Cmd>OpenGithubFile<CR>', { noremap = true, silent = true })
+            vim.api.nvim_set_keymap('x', '<Leader>bh', '<Cmd>OpenGithubFile<CR>', { noremap = true, silent = true })
+        end,
+    }
+    use {
+        'kannokanno/previm',
+        after = { "open-browser.vim" },
+        setup = function()
+            vim.api.nvim_set_keymap('n', '<Leader>p', '<Cmd>PrevimOpen<CR>', { noremap = true, silent = true })
+        end,
     }
 
     use {
-        'akinsho/toggleterm.nvim',
-        config = function() LoadPluginConfig("toggleterm.rc.lua") end,
+        'machakann/vim-sandwich',
+        setup = function()
+            vim.api.nvim_set_keymap('n', 's', '<Nop>', { noremap = false, silent = true })
+            vim.api.nvim_set_keymap('x', 's', '<Nop>', { noremap = false, silent = true })
+        end,
     }
+
+    use {
+        'machakann/vim-highlightedyank',
+        setup = function()
+            vim.g.highlightedyank_highlight_duration = 200
+        end,
+    }
+
+    use {
+        'fatih/vim-go',
+        config = function() LoadVimPluginConfig("go.rc.vim") end,
+    }
+    use { 'buoto/gotests-vim' }
 
     if Packer_bootstrap then
         require('packer').sync()
