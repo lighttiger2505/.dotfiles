@@ -17,8 +17,10 @@ alias ..='cd ..'
 alias ....='cd ../..'
 alias ......='cd ../../..'
 alias c="cd ~/"
-alias d="cd ~/.dotfiles"
-alias ed="vim ~/.vimrc"
+alias dot="cd ~/.dotfiles"
+alias pack="cd ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
+
+alias vimrc="vim ~/init.lua"
 
 alias pd="pwd | pbcopy"
 alias untar='tar -zxvf'

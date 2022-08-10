@@ -130,8 +130,27 @@ return require('packer').startup(function(use)
         requires = { "nvim-lua/plenary.nvim" },
     }
 
+    -- LuaSnip
+    use {
+        "rafamadriz/friendly-snippets",
+        opt = true,
+    }
+    use {
+        "L3MON4D3/LuaSnip",
+        event = "VimEnter",
+        config = function() LoadPluginConfig("LuaSnip.rc.lua") end,
+    }
+    use {
+        "benfowler/telescope-luasnip.nvim",
+        after = { "telescope.nvim", "LuaSnip" },
+        config = function()
+            require("telescope").load_extension("luasnip")
+        end,
+    }
+
     -- nvim-cmp
     use { "hrsh7th/cmp-nvim-lsp", module = "cmp_nvim_lsp" }
+    use { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" }
     use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
     use { "hrsh7th/cmp-path", after = "nvim-cmp" }
     use { "f3fora/cmp-spell", after = "nvim-cmp" }
@@ -140,6 +159,9 @@ return require('packer').startup(function(use)
         'hrsh7th/nvim-cmp',
         config = function() LoadPluginConfig("nvim-cmp.rc.lua") end,
         event = 'InsertEnter',
+        requires = {
+            { "L3MON4D3/LuaSnip", opt = true, event = "VimEnter" },
+        },
     }
 
     -- nvim-lsp
