@@ -60,12 +60,3 @@ if has('nvim')
         autocmd TermOpen * setlocal nonumber
     augroup END
 endif
-
-" echo message vim start up time
-if has('vim_starting') && has('reltime')
-    augroup VimStart
-        autocmd!
-        let g:startuptime = reltime()
-        autocmd VimEnter * let g:startuptime = reltime(g:startuptime) | redraw | echomsg 'startuptime: ' . reltimestr(g:startuptime)
-    augroup END
-endif

@@ -4,3 +4,4 @@
 .vim/bundle/neobundle.vim
 *.pyc
 .vim/secrets/dein_token.vim
+.config/nvim/plugin
