@@ -15,4 +15,3 @@ deploy:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 	@$(foreach val, $(CONFIGDIRS), ln -sfnv $(abspath $(val)) $(HOME)/.config/$(notdir $(val));)
 	ln -sfnv $(abspath scripts) $(HOME)/scripts
-	ln -sfnv $(abspath init.lua) $(HOME)/.config/nvim/init.lua
