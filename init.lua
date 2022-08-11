@@ -37,7 +37,15 @@ vim.api.nvim_set_keymap('n', '<Leader>sp', '<Cmd>:PackerSync<CR>', kopts)
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
 
-return require('packer').startup(function(use)
+local packer = require('packer')
+
+packer.init {
+    display = {
+        open_fn = require 'packer.util'.float,
+    },
+}
+
+return packer.startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- colorschema
@@ -55,7 +63,13 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-neo-tree/neo-tree.nvim',
+        opt = true,
+        cmd = { "Neotree" },
         config = function() LoadPluginConfig("neo-tree.rc.lua") end,
+        setup = function()
+            vim.api.nvim_set_keymap('n', '<Leader>t', ':Neotree toggle<CR>', { noremap = true, silent = true })
+            vim.api.nvim_set_keymap('n', '<Leader>f', ':Neotree reveal<CR>', { noremap = true, silent = true })
+        end,
         requires = {
             "nvim-lua/plenary.nvim",
             "kyazdani42/nvim-web-devicons",
@@ -108,6 +122,11 @@ return require('packer').startup(function(use)
 
     use {
         'sindrets/diffview.nvim',
+        opt = true,
+        cmd = { "DiffviewOpen" },
+        setup = function()
+            vim.api.nvim_set_keymap('n', '<Leader>d', ':DiffviewOpen<CR>', { noremap = true, silent = true })
+        end,
         config = function() LoadPluginConfig("diffview.rc.lua") end,
     }
 
@@ -116,6 +135,15 @@ return require('packer').startup(function(use)
 
     use {
         'jose-elias-alvarez/null-ls.nvim',
+        opt = true,
+        ft = {
+            'javascript',
+            'javascript.jsx',
+            'javascriptreact',
+            'typescript',
+            'typescript.tsx',
+            'typescriptreact',
+        },
         config = function() LoadPluginConfig("null-ls.rc.lua") end,
     }
 
@@ -126,6 +154,7 @@ return require('packer').startup(function(use)
 
     use {
         'nanotee/sqls.nvim',
+        opt = true,
         ft = { "sql" },
         requires = { "nvim-lua/plenary.nvim" },
     }
@@ -149,14 +178,15 @@ return require('packer').startup(function(use)
     }
 
     -- nvim-cmp
-    use { "hrsh7th/cmp-nvim-lsp", module = "cmp_nvim_lsp" }
-    use { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-path", after = "nvim-cmp" }
-    use { "f3fora/cmp-spell", after = "nvim-cmp" }
+    use { "hrsh7th/cmp-nvim-lsp", opt = true, module = "cmp_nvim_lsp" }
+    use { "saadparwaiz1/cmp_luasnip", opt = true, after = "nvim-cmp" }
+    use { "hrsh7th/cmp-buffer", opt = true, after = "nvim-cmp" }
+    use { "hrsh7th/cmp-path", opt = true, after = "nvim-cmp" }
+    use { "f3fora/cmp-spell", opt = true, after = "nvim-cmp" }
     use { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" }
     use {
         'hrsh7th/nvim-cmp',
+        opt = true,
         config = function() LoadPluginConfig("nvim-cmp.rc.lua") end,
         event = 'InsertEnter',
         requires = {
@@ -176,13 +206,20 @@ return require('packer').startup(function(use)
     }
     use {
         "simrat39/symbols-outline.nvim",
-        config = function() LoadPluginConfig("symbols-outline.rc.lua") end,
+        opt = true,
+        cmd = { "SymbolsOutline" },
         requires = { "neovim/nvim-lspconfig" },
+        setup = function()
+            vim.api.nvim_set_keymap('n', '<Leader>o', ':SymbolsOutline<CR>', { noremap = true, silent = true })
+        end,
+        config = function() LoadPluginConfig("symbols-outline.rc.lua") end,
     }
 
     use {
         "nvim-telescope/telescope.nvim",
         requires = { "nvim-lua/plenary.nvim" },
+        opt = true,
+        cmd = { "Telescope" },
         setup = function()
             local fzfopts = { noremap = true, silent = true }
             vim.api.nvim_set_keymap('n', '<C-j><C-p>', '<Cmd>Telescope git_files<CR>', fzfopts)
@@ -197,9 +234,11 @@ return require('packer').startup(function(use)
     }
 
     -- vim-quickrun
-    use "lambdalisue/vim-quickrun-neovim-job"
+    use { "lambdalisue/vim-quickrun-neovim-job", opt = true }
     use {
         'thinca/vim-quickrun',
+        opt = true,
+        cmd = { "QuickRun" },
         requires = { "lambdalisue/vim-quickrun-neovim-job" },
         config = function() LoadVimPluginConfig("vimquickrun.rc.vim") end,
         setup = function()
@@ -212,6 +251,7 @@ return require('packer').startup(function(use)
 
     use {
         'prettier/vim-prettier',
+        opt = true,
         ft = {
             'javascript',
             'javascript.jsx',
@@ -263,9 +303,11 @@ return require('packer').startup(function(use)
 
     use {
         'fatih/vim-go',
+        opt = true,
+        ft = { 'go' },
         config = function() LoadVimPluginConfig("go.rc.vim") end,
     }
-    use { 'buoto/gotests-vim' }
+    use { 'buoto/gotests-vim', opt = true, ft = { 'go' } }
 
     if Packer_bootstrap then
         require('packer').sync()
