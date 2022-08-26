@@ -5,17 +5,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
-function _G.LoadPluginConfig(file)
-    dofile(os.getenv("HOME") .. "/.dotfiles/.vim/rc/plugins/" .. file)
-end
-
-function _G.LoadVimPluginConfig(file)
-    local p = os.getenv("HOME") .. "/.dotfiles/.vim/rc/plugins/" .. file
-    vim.cmd("source " .. p)
-end
-
-vim.cmd [[autocmd BufWritePost plugins.lua PackerSync]]
-
 local packer = require('packer')
 packer.init {
     display = {
@@ -28,6 +17,8 @@ packer.init {
 }
 return packer.startup(function(use)
     use 'wbthomason/packer.nvim'
+
+    use 'lewis6991/impatient.nvim'
 
     -- colorschema
     use { 'ellisonleao/gruvbox.nvim' }
@@ -44,7 +35,6 @@ return packer.startup(function(use)
 
     use {
         'nvim-neo-tree/neo-tree.nvim',
-        opt = true,
         cmd = { "Neotree" },
         config = function() LoadPluginConfig("neo-tree.rc.lua") end,
         setup = function()
@@ -59,17 +49,37 @@ return packer.startup(function(use)
     }
 
     -- tree-sitter
-    use { "nvim-treesitter/nvim-treesitter-textobjects" }
-    use { "JoosepAlviste/nvim-ts-context-commentstring" }
     use {
         "nvim-treesitter/nvim-treesitter",
         config = function() LoadPluginConfig("nvim-treesitter.rc.lua") end,
-        requires = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-            'JoosepAlviste/nvim-ts-context-commentstring',
-        },
+        run = ':TSUpdate',
+    }
+    use {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        config = function() LoadPluginConfig("nvim-treesitter-textobjects.rc.lua") end,
+        after = { "nvim-treesitter" },
+    }
+    use {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        config = function() LoadPluginConfig("nvim-ts-context-commentstring.rc.lua") end,
+        after = { "nvim-treesitter" },
+    }
+    use {
+        'RRethy/nvim-treesitter-endwise',
+        after = { "nvim-treesitter" },
+        config = function()
+            require('nvim-treesitter.configs').setup {
+                endwise = {
+                    enable = true,
+                },
+            }
+        end,
     }
 
+    -- Profiling
+    use { 'dstein64/vim-startuptime', cmd = 'StartupTime', config = [[vim.g.startuptime_tries = 10]] }
+
+    -- Comment
     use {
         'numToStr/Comment.nvim',
         config = function() LoadPluginConfig("Comment.rc.lua") end, requires = {
@@ -77,33 +87,47 @@ return packer.startup(function(use)
         }
     }
 
+    -- Indent
     use {
         'lukas-reineke/indent-blankline.nvim',
         config = function() LoadPluginConfig("indent-blankline.rc.lua") end,
     }
 
+    -- Git Hunk
     use {
         'lewis6991/gitsigns.nvim',
         requires = { 'nvim-lua/plenary.nvim' },
         config = function() require('gitsigns').setup() end,
     }
 
-    -- asterisk
-    use "haya14busa/vim-asterisk"
+    -- Search
+    use {
+        "haya14busa/vim-asterisk",
+        setup = function()
+            vim.cmd [[map *  <Plug>(asterisk-z*)]]
+            vim.cmd [[map #  <Plug>(asterisk-z#)]]
+            vim.cmd [[map g* <Plug>(asterisk-gz*)]]
+            vim.cmd [[map g# <Plug>(asterisk-gz#)]]
+        end,
+    }
     use {
         'kevinhwang91/nvim-hlslens',
         config = function() LoadPluginConfig("hlslens.rc.lua") end,
         requires = { 'haya14busa/vim-asterisk' }
     }
 
+    use {
+        'ethanholz/nvim-lastplace',
+        config = function() require('nvim-lastplace').setup {} end,
+    }
+
     -- use {
     --     'TimUntersberger/neogit',
     --     config = function() LoadPluginConfig("neogit.rc.lua") end,
     -- }
-
+    --
     use {
         'sindrets/diffview.nvim',
-        opt = true,
         cmd = { "DiffviewOpen" },
         setup = function()
             vim.api.nvim_set_keymap('n', '<Leader>d', ':DiffviewOpen<CR>', { noremap = true, silent = true })
@@ -116,7 +140,6 @@ return packer.startup(function(use)
 
     use {
         'jose-elias-alvarez/null-ls.nvim',
-        opt = true,
         ft = {
             'javascript',
             'javascript.jsx',
@@ -135,7 +158,6 @@ return packer.startup(function(use)
 
     use {
         'nanotee/sqls.nvim',
-        opt = true,
         ft = { "sql" },
         requires = { "nvim-lua/plenary.nvim" },
     }
@@ -147,7 +169,7 @@ return packer.startup(function(use)
     }
     use {
         "L3MON4D3/LuaSnip",
-        event = "VimEnter",
+        event = 'InsertEnter',
         config = function() LoadPluginConfig("LuaSnip.rc.lua") end,
     }
     use {
@@ -159,20 +181,20 @@ return packer.startup(function(use)
     }
 
     -- nvim-cmp
-    use { "hrsh7th/cmp-nvim-lsp", opt = true, module = "cmp_nvim_lsp" }
-    use { "saadparwaiz1/cmp_luasnip", opt = true, after = "nvim-cmp" }
-    use { "hrsh7th/cmp-buffer", opt = true, after = "nvim-cmp" }
-    use { "hrsh7th/cmp-path", opt = true, after = "nvim-cmp" }
-    use { "f3fora/cmp-spell", opt = true, after = "nvim-cmp" }
-    use { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" }
     use {
         'hrsh7th/nvim-cmp',
-        opt = true,
-        config = function() LoadPluginConfig("nvim-cmp.rc.lua") end,
         event = 'InsertEnter',
         requires = {
-            { "L3MON4D3/LuaSnip", opt = true, event = "VimEnter" },
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+            { "hrsh7th/cmp-path", after = "nvim-cmp" },
+            { "f3fora/cmp-spell", after = "nvim-cmp" },
+            { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
+            { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+            { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
         },
+        after = 'LuaSnip',
+        config = function() LoadPluginConfig("nvim-cmp.rc.lua") end,
     }
 
     -- nvim-lsp
@@ -183,11 +205,10 @@ return packer.startup(function(use)
     use {
         "j-hui/fidget.nvim",
         requires = { "neovim/nvim-lspconfig" },
-        config = function() LoadPluginConfig("gitsigns.rc.lua") end,
+        config = function() require('fidget').setup() end,
     }
     use {
         "simrat39/symbols-outline.nvim",
-        opt = true,
         cmd = { "SymbolsOutline" },
         requires = { "neovim/nvim-lspconfig" },
         setup = function()
@@ -198,9 +219,12 @@ return packer.startup(function(use)
 
     use {
         "nvim-telescope/telescope.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
-        opt = true,
-        cmd = { "Telescope" },
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope-frecency.nvim',
+            'nvim-telescope/telescope-fzf-native.nvim',
+        },
+        cmd = 'Telescope',
         setup = function()
             local fzfopts = { noremap = true, silent = true }
             vim.api.nvim_set_keymap('n', '<C-j><C-p>', '<Cmd>Telescope git_files<CR>', fzfopts)
@@ -208,19 +232,24 @@ return packer.startup(function(use)
             vim.api.nvim_set_keymap('n', '<C-j><C-b>', '<Cmd>Telescope buffers<CR>', fzfopts)
             vim.api.nvim_set_keymap('n', '<C-j><C-]>', '<Cmd>Telescope lsp_workspace_symbols<CR>', fzfopts)
             vim.api.nvim_set_keymap('n', '<C-j><C-o>', '<Cmd>Telescope lsp_document_symbols<CR>', fzfopts)
-            vim.api.nvim_set_keymap('n', '<C-j><C-r>', '<Cmd>Telescope oldfiles<CR>', fzfopts)
+            vim.api.nvim_set_keymap('n', '<C-j><C-r>', '<Cmd>Telescope frecency workspace=CWD<CR>', fzfopts)
         end,
         config = function() LoadPluginConfig("telescope.rc.lua") end,
-
+    }
+    use {
+        "nvim-telescope/telescope-frecency.nvim",
+        requires = { "tami5/sqlite.lua" }
+    }
+    use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make',
     }
 
     -- vim-quickrun
-    use { "lambdalisue/vim-quickrun-neovim-job", opt = true }
     use {
         'thinca/vim-quickrun',
-        opt = true,
         cmd = { "QuickRun" },
-        requires = { "lambdalisue/vim-quickrun-neovim-job" },
+        requires = { "lambdalisue/vim-quickrun-neovim-job", after = 'vim-quickrun' },
         config = function() LoadVimPluginConfig("vimquickrun.rc.vim") end,
         setup = function()
             vim.api.nvim_set_keymap('n', '<Leader>r', '<Cmd>QuickRun<CR>', { noremap = true, silent = true })
@@ -283,12 +312,12 @@ return packer.startup(function(use)
     }
 
     use {
-        'fatih/vim-go',
-        opt = true,
-        ft = { 'go' },
-        config = function() LoadVimPluginConfig("go.rc.vim") end,
+        'ray-x/go.nvim',
+        requires = "ray-x/guihua.lua",
+        config = function()
+            require('go').setup()
+        end,
     }
-    use { 'buoto/gotests-vim', opt = true, ft = { 'go' } }
 
     if Packer_bootstrap then
         require('packer').sync()
