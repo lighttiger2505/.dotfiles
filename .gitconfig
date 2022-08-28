@@ -35,4 +35,4 @@
 [url "ssh://git@github.com/MobilityTechnologies/"]
 	insteadOf = https://github.com/MobilityTechnologies/
 [push]
-	default = current
+	autoSetupRemote = true
