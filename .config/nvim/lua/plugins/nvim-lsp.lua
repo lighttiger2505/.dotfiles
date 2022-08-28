@@ -1,6 +1,3 @@
-local map = vim.keymap.set
-local bmap = vim.api.nvim_buf_set_keymap
-
 local autocmd = vim.api.nvim_create_autocmd
 local group_name = "MyLspConfig"
 vim.api.nvim_create_augroup(group_name, { clear = true })
@@ -29,28 +26,28 @@ local nvim_lsp = require('lspconfig')
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
-    bmap(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    map('n', 'K', vim.lsp.buf.hover, bufopts)
-    map('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    map('n', 'gd', vim.lsp.buf.definition, bufopts)
-    map('n', '<C-]>', vim.lsp.buf.definition, bufopts)
-    map('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    map('n', '<LocalLeader>n', vim.lsp.buf.references, bufopts)
-    map('n', '<LocalLeader>R', vim.lsp.buf.rename, bufopts)
-    map('n', '<LocalLeader>i', vim.lsp.buf.implementation, bufopts)
-    map('n', '<C-l>', vim.lsp.buf.signature_help, bufopts)
-    map('i', '<C-l>', vim.lsp.buf.signature_help, bufopts)
-    map('n', '[d', vim.diagnostic.goto_prev, bufopts)
-    map('n', ']d', vim.diagnostic.goto_next, bufopts)
-    map('n', '<LocalLeader>e', vim.diagnostic.open_float, bufopts)
-    map('n', '<LocalLeader>d', vim.diagnostic.setloclist, bufopts)
-    map('n', '<LocalLeader>f', vim.lsp.buf.formatting, bufopts)
-    map('n', '<LocalLeader>c', vim.lsp.buf.code_action, bufopts)
-    map('n', '<LocalLeader>o', vim.lsp.buf.document_symbol, bufopts)
-    map('n', '<LocalLeader>w', vim.lsp.buf.workspace_symbol, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<LocalLeader>n', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<LocalLeader>R', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<LocalLeader>i', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<C-l>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('i', '<C-l>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
+    vim.keymap.set('n', '<LocalLeader>e', vim.diagnostic.open_float, bufopts)
+    vim.keymap.set('n', '<LocalLeader>d', vim.diagnostic.setloclist, bufopts)
+    vim.keymap.set('n', '<LocalLeader>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<LocalLeader>c', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<LocalLeader>o', vim.lsp.buf.document_symbol, bufopts)
+    vim.keymap.set('n', '<LocalLeader>w', vim.lsp.buf.workspace_symbol, bufopts)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

@@ -5,7 +5,7 @@ local group_name = "MyConfig"
 vim.api.nvim_create_augroup(group_name, { clear = true })
 
 -- envrc filetype
-autocmd({'BufRead', 'BufNewFile'}, {
+autocmd({ 'BufRead', 'BufNewFile' }, {
   group = group_name,
   pattern = { ".envrc" },
   callback = function()
@@ -52,4 +52,11 @@ autocmd('TermOpen', {
     l.relativenumber = false
     l.number = false
   end,
+})
+
+-- Auto packer compile
+autocmd('BufWritePost', {
+  group = group_name,
+  pattern = { 'plugins.lua' },
+  command = [[source <afile> | PackerCompile]],
 })
