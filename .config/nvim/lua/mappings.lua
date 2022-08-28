@@ -1,8 +1,8 @@
 local g = vim.g
 
 -- Change leader mapping
-g.mapleader = [[ ]]
-g.maplocalleader = [[,]]
+g.mapleader = [[,]]
+g.maplocalleader = [[\]]
 
 local map = vim.api.nvim_set_keymap
 local opts = { silent = false, noremap = true }
@@ -52,7 +52,7 @@ map('n', '[t', '<Cmd>lp<CR>', opts)
 map('n', ']t', '<Cmd>lne<CR>', opts)
 
 -- Clear search hi
-map('n', '<Leader>h', '<Cmd>noh<CR>', opts)
+map('n', '<Space>h', '<Cmd>noh<CR>', opts)
 
 -- Command line mode mapping emacs like
 map('c', '<C-b>', '<Left>', opts)
@@ -63,7 +63,7 @@ map('c', '<C-a>', '<Home>', opts)
 map('c', '<C-e>', '<End>', opts)
 
 -- Switch to last file
-map('n', '<Leader><Leader>', '<c-^>', opts)
+map('n', '<Space><Space>', '<c-^>', opts)
 
 -- Escape normal mode on terminal
 map('t', '<ESC>', '<C-\\><C-n>', opts)
