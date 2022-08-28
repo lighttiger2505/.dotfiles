@@ -1,4 +1,5 @@
 local fn = vim.fn
+
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
     Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
@@ -315,6 +316,13 @@ return packer.startup(function(use)
         requires = "ray-x/guihua.lua",
         config = function()
             require('go').setup()
+        end,
+        setup = function()
+            vim.api.nvim_set_keymap('n', '<LocalLeader>b', 'GoBuild', { noremap = false, silent = true })
+            vim.api.nvim_set_keymap('n', '<LocalLeader>tt', 'GoTestFile', { noremap = false, silent = true })
+            vim.api.nvim_set_keymap('n', '<LocalLeader>tf', 'GoTestFunc', { noremap = false, silent = true })
+            vim.api.nvim_set_keymap('n', '<LocalLeader>m', 'GoImport', { noremap = false, silent = true })
+            vim.api.nvim_set_keymap('n', '<LocalLeader>a', 'GoAlt', { noremap = false, silent = true })
         end,
     }
 

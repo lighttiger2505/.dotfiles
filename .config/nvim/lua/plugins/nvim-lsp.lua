@@ -1,13 +1,27 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
+local bmap = vim.api.nvim_buf_set_keymap
 
-vim.api.nvim_exec(
-    [[
-    autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open = false})
-    autocmd BufWritePre <buffer> go vim.lsp.buf.formatting_sync()
-    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-  ]] ,
-    false
-)
+local autocmd = vim.api.nvim_create_autocmd
+local group_name = "MyLspConfig"
+vim.api.nvim_create_augroup(group_name, { clear = true })
+
+-- Set diagnostics to location list
+autocmd({ "DiagnosticChanged" }, {
+    group = group_name,
+    pattern = '*',
+    callback = function()
+        vim.diagnostic.setloclist({ open = false })
+    end,
+})
+
+-- Format on save
+autocmd({ "BufWritePre" }, {
+    group = group_name,
+    pattern = { '*.go', '*.lua' },
+    callback = function()
+        vim.lsp.buf.formatting_sync()
+    end,
+})
 
 local nvim_lsp = require('lspconfig')
 
@@ -15,7 +29,7 @@ local nvim_lsp = require('lspconfig')
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    bmap(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -23,22 +37,18 @@ local on_attach = function(client, bufnr)
     map('n', 'gD', vim.lsp.buf.declaration, bufopts)
     map('n', 'gd', vim.lsp.buf.definition, bufopts)
     map('n', '<C-]>', vim.lsp.buf.definition, bufopts)
-
     map('n', 'gi', vim.lsp.buf.implementation, bufopts)
     map('n', '<LocalLeader>n', vim.lsp.buf.references, bufopts)
     map('n', '<LocalLeader>R', vim.lsp.buf.rename, bufopts)
     map('n', '<LocalLeader>i', vim.lsp.buf.implementation, bufopts)
-
     map('n', '<C-l>', vim.lsp.buf.signature_help, bufopts)
     map('i', '<C-l>', vim.lsp.buf.signature_help, bufopts)
-
     map('n', '[d', vim.diagnostic.goto_prev, bufopts)
     map('n', ']d', vim.diagnostic.goto_next, bufopts)
     map('n', '<LocalLeader>e', vim.diagnostic.open_float, bufopts)
     map('n', '<LocalLeader>d', vim.diagnostic.setloclist, bufopts)
     map('n', '<LocalLeader>f', vim.lsp.buf.formatting, bufopts)
     map('n', '<LocalLeader>c', vim.lsp.buf.code_action, bufopts)
-
     map('n', '<LocalLeader>o', vim.lsp.buf.document_symbol, bufopts)
     map('n', '<LocalLeader>w', vim.lsp.buf.workspace_symbol, bufopts)
 end
@@ -110,16 +120,3 @@ vim.diagnostic.config({
     update_in_insert = false,
     severity_sort = true,
 })
-
--- -- nvim metals config
--- local metals_config = require("metals").bare_config()
--- metals_config.init_options.statusBarProvider = "on"
---
--- local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
--- vim.api.nvim_create_autocmd("FileType", {
---     pattern = { "scala", "sbt", "java" },
---     callback = function()
---         require("metals").initialize_or_attach({})
---     end,
---     group = nvim_metals_group,
--- })
