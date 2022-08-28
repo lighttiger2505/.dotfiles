@@ -33,7 +33,6 @@ create_cmd('PackerCompile', function()
     cmd [[packadd packer.nvim]]
     require('plugins').compile()
 end, {})
-vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 
 vim.cmd("source " .. os.getenv("HOME") .. "/.vim/rc/mappings.rc.vim")
 vim.cmd("source " .. os.getenv("HOME") .. "/.vim/rc/options.rc.vim")

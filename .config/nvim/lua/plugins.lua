@@ -30,13 +30,13 @@ return packer.startup(function(use)
 
     use {
         'nvim-lualine/lualine.nvim',
-        config = function() LoadPluginConfig("lualine.rc.lua") end,
+        config = function() require("plugins.lualine") end,
     }
 
     use {
         'nvim-neo-tree/neo-tree.nvim',
         cmd = { "Neotree" },
-        config = function() LoadPluginConfig("neo-tree.rc.lua") end,
+        config = function() require("plugins.neo-tree") end,
         setup = function()
             vim.api.nvim_set_keymap('n', '<Leader>t', ':Neotree toggle<CR>', { noremap = true, silent = true })
             vim.api.nvim_set_keymap('n', '<Leader>f', ':Neotree reveal<CR>', { noremap = true, silent = true })
@@ -51,17 +51,17 @@ return packer.startup(function(use)
     -- tree-sitter
     use {
         "nvim-treesitter/nvim-treesitter",
-        config = function() LoadPluginConfig("nvim-treesitter.rc.lua") end,
+        config = function() require("plugins.nvim-treesitter") end,
         run = ':TSUpdate',
     }
     use {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        config = function() LoadPluginConfig("nvim-treesitter-textobjects.rc.lua") end,
+        config = function() require("plugins.nvim-treesitter-textobjects") end,
         after = { "nvim-treesitter" },
     }
     use {
         "JoosepAlviste/nvim-ts-context-commentstring",
-        config = function() LoadPluginConfig("nvim-ts-context-commentstring.rc.lua") end,
+        config = function() require("plugins.nvim-ts-context-commentstring") end,
         after = { "nvim-treesitter" },
     }
     use {
@@ -82,7 +82,8 @@ return packer.startup(function(use)
     -- Comment
     use {
         'numToStr/Comment.nvim',
-        config = function() LoadPluginConfig("Comment.rc.lua") end, requires = {
+        config = function() require("plugins.Comment") end,
+        requires = {
             { 'JoosepAlviste/nvim-ts-context-commentstring' },
         }
     }
@@ -90,7 +91,7 @@ return packer.startup(function(use)
     -- Indent
     use {
         'lukas-reineke/indent-blankline.nvim',
-        config = function() LoadPluginConfig("indent-blankline.rc.lua") end,
+        config = function() require("plugins.indent-blankline") end,
     }
 
     -- Git Hunk
@@ -112,14 +113,14 @@ return packer.startup(function(use)
     }
     use {
         'kevinhwang91/nvim-hlslens',
-        config = function() LoadPluginConfig("hlslens.rc.lua") end,
+        config = function() require("plugins.hlslens") end,
         requires = { 'haya14busa/vim-asterisk' }
     }
 
-    use {
-        'ethanholz/nvim-lastplace',
-        config = function() require('nvim-lastplace').setup {} end,
-    }
+    -- use {
+    --     'ethanholz/nvim-lastplace',
+    --     config = function() require('nvim-lastplace').setup {} end,
+    -- }
 
     -- use {
     --     'TimUntersberger/neogit',
@@ -132,10 +133,14 @@ return packer.startup(function(use)
         setup = function()
             vim.api.nvim_set_keymap('n', '<Leader>d', ':DiffviewOpen<CR>', { noremap = true, silent = true })
         end,
-        config = function() LoadPluginConfig("diffview.rc.lua") end,
+        config = function() require("plugins.diffview") end,
     }
 
+    -- Syntax
+    use "sheerun/vim-polyglot"
     use "nathom/filetype.nvim"
+
+    -- Template
     use "mattn/sonictemplate-vim"
 
     use {
@@ -148,12 +153,12 @@ return packer.startup(function(use)
             'typescript.tsx',
             'typescriptreact',
         },
-        config = function() LoadPluginConfig("null-ls.rc.lua") end,
+        config = function() require("plugins.null-ls") end,
     }
 
     use {
         'akinsho/toggleterm.nvim',
-        config = function() LoadPluginConfig("toggleterm.rc.lua") end,
+        config = function() require("plugins.toggleterm") end,
     }
 
     use {
@@ -170,7 +175,7 @@ return packer.startup(function(use)
     use {
         "L3MON4D3/LuaSnip",
         event = 'InsertEnter',
-        config = function() LoadPluginConfig("LuaSnip.rc.lua") end,
+        config = function() require("plugins.LuaSnip") end,
     }
     use {
         "benfowler/telescope-luasnip.nvim",
@@ -194,13 +199,13 @@ return packer.startup(function(use)
             { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
         },
         after = 'LuaSnip',
-        config = function() LoadPluginConfig("nvim-cmp.rc.lua") end,
+        config = function() require("plugins.nvim-cmp") end,
     }
 
     -- nvim-lsp
     use {
         'neovim/nvim-lspconfig',
-        config = function() LoadPluginConfig("nvim-lsp.rc.lua") end,
+        config = function() require("plugins.nvim-lsp") end,
     }
     use {
         "j-hui/fidget.nvim",
@@ -214,14 +219,23 @@ return packer.startup(function(use)
         setup = function()
             vim.api.nvim_set_keymap('n', '<Leader>o', ':SymbolsOutline<CR>', { noremap = true, silent = true })
         end,
-        config = function() LoadPluginConfig("symbols-outline.rc.lua") end,
+        config = function() require("plugins.symbols-outline") end,
+    }
+    use {
+        "folke/lsp-trouble.nvim",
+        cmd = "Trouble",
+        config = function()
+            require("trouble").setup {
+                auto_preview = false,
+                auto_fold = true,
+            }
+        end,
     }
 
     use {
         "nvim-telescope/telescope.nvim",
         requires = {
             'nvim-lua/plenary.nvim',
-            'nvim-telescope/telescope-frecency.nvim',
             'nvim-telescope/telescope-fzf-native.nvim',
         },
         cmd = 'Telescope',
@@ -232,13 +246,9 @@ return packer.startup(function(use)
             vim.api.nvim_set_keymap('n', '<C-j><C-b>', '<Cmd>Telescope buffers<CR>', fzfopts)
             vim.api.nvim_set_keymap('n', '<C-j><C-]>', '<Cmd>Telescope lsp_workspace_symbols<CR>', fzfopts)
             vim.api.nvim_set_keymap('n', '<C-j><C-o>', '<Cmd>Telescope lsp_document_symbols<CR>', fzfopts)
-            vim.api.nvim_set_keymap('n', '<C-j><C-r>', '<Cmd>Telescope frecency workspace=CWD<CR>', fzfopts)
+            vim.api.nvim_set_keymap('n', '<C-j><C-r>', '<Cmd>Telescope oldfiles<CR>', fzfopts)
         end,
-        config = function() LoadPluginConfig("telescope.rc.lua") end,
-    }
-    use {
-        "nvim-telescope/telescope-frecency.nvim",
-        requires = { "tami5/sqlite.lua" }
+        config = function() require("plugins.telescope") end,
     }
     use {
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -316,6 +326,13 @@ return packer.startup(function(use)
         requires = "ray-x/guihua.lua",
         config = function()
             require('go').setup()
+        end,
+    }
+
+    use {
+        "AckslD/nvim-neoclip.lua",
+        config = function()
+            require("neoclip").setup()
         end,
     }
 
