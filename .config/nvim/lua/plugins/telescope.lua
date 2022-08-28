@@ -3,7 +3,7 @@ require('telescope').setup {
         sorting_strategy = "ascending",
         layout_config = {
             width = 0.8,
-            height = 0.80,
+            height = 0.6,
             prompt_position = 'top',
             horizontal = {
                 mirror = false,

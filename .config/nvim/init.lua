@@ -2,10 +2,6 @@ require 'impatient'
 local cmd = vim.cmd
 
 -- Utils
-function _G.LoadPluginConfig(file)
-    dofile(os.getenv("HOME") .. "/.dotfiles/.vim/rc/plugins/" .. file)
-end
-
 function _G.LoadVimPluginConfig(file)
     local p = os.getenv("HOME") .. "/.dotfiles/.vim/rc/plugins/" .. file
     vim.cmd("source " .. p)
@@ -34,10 +30,9 @@ create_cmd('PackerCompile', function()
     require('plugins').compile()
 end, {})
 
-vim.cmd("source " .. os.getenv("HOME") .. "/.vim/rc/mappings.rc.vim")
-vim.cmd("source " .. os.getenv("HOME") .. "/.vim/rc/options.rc.vim")
-vim.cmd("source " .. os.getenv("HOME") .. "/.vim/rc/filetype.rc.vim")
-vim.cmd("source " .. os.getenv("HOME") .. "/.vim/rc/autocmd.rc.vim")
+require('mappings')
+require('options')
+require('autocmds')
 
 local function exists(file)
     local ok, err, code = os.rename(file, file)

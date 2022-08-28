@@ -1,4 +1,3 @@
-
 " File encoding
 if !exists ('g:encoding_set') || !has('nvim')
     set encoding=utf-8

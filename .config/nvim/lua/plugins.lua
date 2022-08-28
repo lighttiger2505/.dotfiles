@@ -64,17 +64,6 @@ return packer.startup(function(use)
         config = function() require("plugins.nvim-ts-context-commentstring") end,
         after = { "nvim-treesitter" },
     }
-    use {
-        'RRethy/nvim-treesitter-endwise',
-        after = { "nvim-treesitter" },
-        config = function()
-            require('nvim-treesitter.configs').setup {
-                endwise = {
-                    enable = true,
-                },
-            }
-        end,
-    }
 
     -- Profiling
     use { 'dstein64/vim-startuptime', cmd = 'StartupTime', config = [[vim.g.startuptime_tries = 10]] }
@@ -326,13 +315,6 @@ return packer.startup(function(use)
         requires = "ray-x/guihua.lua",
         config = function()
             require('go').setup()
-        end,
-    }
-
-    use {
-        "AckslD/nvim-neoclip.lua",
-        config = function()
-            require("neoclip").setup()
         end,
     }
 
