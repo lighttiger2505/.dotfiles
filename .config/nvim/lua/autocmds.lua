@@ -55,8 +55,9 @@ autocmd('TermOpen', {
 })
 
 -- Auto packer compile
-autocmd('BufWritePost', {
-  group = group_name,
-  pattern = { 'plugins.lua' },
-  command = [[source <afile> | PackerCompile]],
-})
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])

@@ -198,6 +198,23 @@ return packer.startup(function(use)
         config = function() require("plugins.nvim-lsp") end,
     }
     use {
+        'williamboman/mason.nvim',
+        config = function() require("mason").setup() end,
+    }
+    use {
+        'williamboman/mason-lspconfig.nvim',
+        config = function()
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    'gopls',
+                    'tsserver',
+                    'sumneko_lua',
+                    'metals',
+                }
+            })
+        end,
+    }
+    use {
         "j-hui/fidget.nvim",
         requires = { "neovim/nvim-lspconfig" },
         config = function() require('fidget').setup() end,
@@ -222,6 +239,7 @@ return packer.startup(function(use)
         end,
     }
 
+    -- Fuzzy Finder
     use {
         "nvim-telescope/telescope.nvim",
         requires = {

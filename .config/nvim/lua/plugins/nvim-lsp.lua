@@ -70,7 +70,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'gopls', 'pyright', 'rust_analyzer', 'tsserver', 'sumneko_lua', 'metals' }
+local servers = { 'gopls', 'rust_analyzer', 'tsserver', 'sumneko_lua', 'metals' }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
         on_attach = on_attach,
