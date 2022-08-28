@@ -2,7 +2,8 @@ local fn = vim.fn
 
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-    Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+    Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+        install_path })
     vim.cmd [[packadd packer.nvim]]
 end
 
@@ -116,7 +117,8 @@ return packer.startup(function(use)
     --     'TimUntersberger/neogit',
     --     config = function() LoadPluginConfig("neogit.rc.lua") end,
     -- }
-    --
+
+    -- Code diff view
     use {
         'sindrets/diffview.nvim',
         cmd = { "DiffviewOpen" },
@@ -133,6 +135,7 @@ return packer.startup(function(use)
     -- Template
     use "mattn/sonictemplate-vim"
 
+    -- General language server
     use {
         'jose-elias-alvarez/null-ls.nvim',
         ft = {
@@ -146,11 +149,13 @@ return packer.startup(function(use)
         config = function() require("plugins.null-ls") end,
     }
 
+    -- Toggle terminal
     use {
         'akinsho/toggleterm.nvim',
         config = function() require("plugins.toggleterm") end,
     }
 
+    -- SQL language server extension
     use {
         'nanotee/sqls.nvim',
         ft = { "sql" },
@@ -228,16 +233,6 @@ return packer.startup(function(use)
         end,
         config = function() require("plugins.symbols-outline") end,
     }
-    use {
-        "folke/lsp-trouble.nvim",
-        cmd = "Trouble",
-        config = function()
-            require("trouble").setup {
-                auto_preview = false,
-                auto_fold = true,
-            }
-        end,
-    }
 
     -- Fuzzy Finder
     use {
@@ -275,6 +270,7 @@ return packer.startup(function(use)
         end,
     }
 
+    -- Translate sneak and camel
     use "nicwest/vim-camelsnek"
 
     use {
@@ -290,12 +286,14 @@ return packer.startup(function(use)
         },
     }
 
-    -- open-browser.vim
+    -- Browser
     use {
         'tyru/open-browser.vim',
         setup = function()
-            vim.api.nvim_set_keymap('n', '<Leader>bb', '<Plug>(openbrowser-smart-search)<CR>', { noremap = true, silent = true })
-            vim.api.nvim_set_keymap('x', '<Leader>bb', '<Plug>(openbrowser-smart-search)<CR>', { noremap = true, silent = true })
+            vim.api.nvim_set_keymap('n', '<Leader>bb', '<Plug>(openbrowser-smart-search)<CR>',
+                { noremap = true, silent = true })
+            vim.api.nvim_set_keymap('x', '<Leader>bb', '<Plug>(openbrowser-smart-search)<CR>',
+                { noremap = true, silent = true })
         end,
     }
     use {
@@ -306,6 +304,8 @@ return packer.startup(function(use)
             vim.api.nvim_set_keymap('x', '<Leader>bh', '<Cmd>OpenGithubFile<CR>', { noremap = true, silent = true })
         end,
     }
+
+    -- Markdown preview
     use {
         'kannokanno/previm',
         after = { "open-browser.vim" },
@@ -314,6 +314,7 @@ return packer.startup(function(use)
         end,
     }
 
+    -- Text object extension
     use {
         'machakann/vim-sandwich',
         setup = function()
@@ -322,6 +323,7 @@ return packer.startup(function(use)
         end,
     }
 
+    -- Highlight yank
     use {
         'machakann/vim-highlightedyank',
         setup = function()
@@ -329,6 +331,22 @@ return packer.startup(function(use)
         end,
     }
 
+    -- Project management
+    use {
+        "ahmedkhalf/project.nvim",
+        config = function()
+            require("project_nvim").setup {
+                manual_mode = false,
+                detection_methods = { "lsp", "pattern" },
+                patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+                show_hidden = false,
+                silent_chdir = true,
+                datapath = vim.fn.stdpath("data"),
+            }
+        end
+    }
+
+    -- Golang extensions
     use {
         'ray-x/go.nvim',
         requires = "ray-x/guihua.lua",
@@ -341,6 +359,15 @@ return packer.startup(function(use)
             vim.api.nvim_set_keymap('n', '<LocalLeader>tf', 'GoTestFunc', { noremap = false, silent = true })
             vim.api.nvim_set_keymap('n', '<LocalLeader>m', 'GoImport', { noremap = false, silent = true })
             vim.api.nvim_set_keymap('n', '<LocalLeader>a', 'GoAlt', { noremap = false, silent = true })
+        end,
+    }
+
+    -- Register
+    use {
+        'tversteeg/registers.nvim',
+        cmd = 'Registers',
+        setup = function()
+            vim.api.nvim_set_keymap('n', '<C-r>', '<Cmd>Registers<CR>', { noremap = false, silent = true })
         end,
     }
 
