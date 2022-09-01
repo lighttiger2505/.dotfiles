@@ -23,7 +23,9 @@ return packer.startup(function(use)
     use 'lewis6991/impatient.nvim'
 
     -- colorschema
-    use { 'ellisonleao/gruvbox.nvim' }
+    use 'ellisonleao/gruvbox.nvim'
+    use 'navarasu/onedark.nvim'
+    use 'ChristianChiarulli/nvcode-color-schemes.vim'
 
     -- libs
     use 'nvim-lua/plenary.nvim'
