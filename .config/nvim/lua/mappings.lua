@@ -13,6 +13,8 @@ map('i', '<C-c>', '<ESC>', opts)
 -- Switch colon and semicolon
 map('n', ';', ':', opts)
 map('n', ':', ';', opts)
+map('v', ';', ':', opts)
+map('v', ':', ';', opts)
 
 -- Multi line move
 map('n', 'k', 'gk', opts)
@@ -72,9 +74,9 @@ map('t', '<ESC>', '<C-\\><C-n>', opts)
 map('t', '<C-w>t', '<C-w>T', opts)
 
 -- Move tab
-map('t', 't', '<Nop>', opts)
-map('t', 'tn', 'gt', opts)
-map('t', 'tp', 'gT', opts)
+map('n', 't', '<Nop>', opts)
+map('n', 'tn', 'gt', opts)
+map('n', 'tp', 'gT', opts)
 
 -- Update packer
 map('n', '<Space>o', '<Cmd>PackerCompile<CR>', opts)
