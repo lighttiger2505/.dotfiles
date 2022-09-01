@@ -68,6 +68,30 @@ return packer.startup(function(use)
         config = function() require("plugins.nvim-ts-context-commentstring") end,
         after = { "nvim-treesitter" },
     }
+    use {
+        "windwp/nvim-ts-autotag",
+        config = function()
+            require("nvim-treesitter.configs").setup {
+                autotag = {
+                    enable = true,
+                }
+            }
+        end,
+        after = { "nvim-treesitter" },
+    }
+    use {
+        "p00f/nvim-ts-rainbow",
+        config = function()
+            require("nvim-treesitter.configs").setup {
+                rainbow = {
+                    enable = true,
+                    extended_mode = true,
+                    max_file_lines = nil,
+                }
+            }
+        end,
+        after = { "nvim-treesitter" },
+    }
 
     -- Profiling
     use { 'dstein64/vim-startuptime', cmd = 'StartupTime', config = [[vim.g.startuptime_tries = 10]] }
