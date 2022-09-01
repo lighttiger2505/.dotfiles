@@ -393,7 +393,7 @@ return packer.startup(function(use)
         'tversteeg/registers.nvim',
         cmd = 'Registers',
         setup = function()
-            vim.api.nvim_set_keymap('n', '<C-r>', '<Cmd>Registers<CR>', { noremap = false, silent = true })
+            vim.api.nvim_set_keymap('i', '<C-r>', '<Cmd>Registers<CR>', { noremap = false, silent = true })
         end,
     }
 
