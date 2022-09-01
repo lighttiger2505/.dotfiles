@@ -356,11 +356,11 @@ return packer.startup(function(use)
             require('go').setup()
         end,
         setup = function()
-            vim.api.nvim_set_keymap('n', '<LocalLeader>b', 'GoBuild', { noremap = false, silent = true })
-            vim.api.nvim_set_keymap('n', '<LocalLeader>tt', 'GoTestFile', { noremap = false, silent = true })
-            vim.api.nvim_set_keymap('n', '<LocalLeader>tf', 'GoTestFunc', { noremap = false, silent = true })
-            vim.api.nvim_set_keymap('n', '<LocalLeader>m', 'GoImport', { noremap = false, silent = true })
-            vim.api.nvim_set_keymap('n', '<LocalLeader>a', 'GoAlt', { noremap = false, silent = true })
+            vim.api.nvim_set_keymap('n', '<LocalLeader>b', '<Cmd>GoBuild<CR>', { noremap = false, silent = true })
+            vim.api.nvim_set_keymap('n', '<LocalLeader>tt', '<Cmd>GoTestFile<CR>', { noremap = false, silent = true })
+            vim.api.nvim_set_keymap('n', '<LocalLeader>tf', '<Cmd>GoTestFunc<CR>', { noremap = false, silent = true })
+            vim.api.nvim_set_keymap('n', '<LocalLeader>m', '<Cmd>GoImport<CR>', { noremap = false, silent = true })
+            vim.api.nvim_set_keymap('n', '<LocalLeader>a', '<Cmd>GoAlt<CR>', { noremap = false, silent = true })
         end,
     }
 
