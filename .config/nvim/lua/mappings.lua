@@ -71,7 +71,7 @@ map('n', '<Space><Space>', '<c-^>', opts)
 map('t', '<ESC>', '<C-\\><C-n>', opts)
 
 -- Current file tab open
-map('t', '<C-w>t', '<C-w>T', opts)
+map('n', '<C-w>t', '<C-w>T', opts)
 
 -- Move tab
 map('n', 't', '<Nop>', opts)
