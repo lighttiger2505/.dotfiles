@@ -35,6 +35,10 @@ if executable direnv; then
     eval "$(direnv hook zsh)"
 fi
 
+ if [ -e $HOME/.asdf ]; then
+    . $HOME/.asdf/asdf.sh
+ fi
+
 if [ "$(pgrep ssh-agent 2> /dev/null)" = "" ]; then
     eval $(ssh-agent) > /dev/null
     case ${OSTYPE} in
