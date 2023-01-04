@@ -1,4 +1,4 @@
-vim.g.symbols_outline = {
+require("symbols-outline").setup {
     highlight_hovered_item = true,
     show_guides = true,
     auto_preview = true,
@@ -10,7 +10,7 @@ vim.g.symbols_outline = {
     show_relative_numbers = false,
     show_symbol_details = true,
     preview_bg_highlight = 'Pmenu',
-    keymaps = { -- These keymaps can be a string or a table for multiple keys
+    keymaps = {
         close = { "<Esc>", "q" },
         goto_location = "<Cr>",
         focus_location = "o",
@@ -50,6 +50,3 @@ vim.g.symbols_outline = {
         TypeParameter = { icon = "𝙏", hl = "TSParameter" }
     }
 }
-
-local kopts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<Leader>o', ':SymbolsOutline<CR>', kopts)
