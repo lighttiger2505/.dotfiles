@@ -75,6 +75,8 @@ $VOLTA_HOME/bin(N-/)
 # grep
 /usr/local/opt/grep/libexec/gnubin(N-/)
 ${path}
+# brew
+/opt/homebrew/bin(N-/)
 )
 
 manpath=(
