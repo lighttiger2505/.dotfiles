@@ -280,13 +280,21 @@ return packer.startup(function(use)
             vim.api.nvim_set_keymap('n', '<C-j><C-b>', '<Cmd>Telescope buffers<CR>', fzfopts)
             vim.api.nvim_set_keymap('n', '<C-j><C-]>', '<Cmd>Telescope lsp_workspace_symbols<CR>', fzfopts)
             vim.api.nvim_set_keymap('n', '<C-j><C-o>', '<Cmd>Telescope lsp_document_symbols<CR>', fzfopts)
-            vim.api.nvim_set_keymap('n', '<C-j><C-r>', '<Cmd>Telescope oldfiles<CR>', fzfopts)
+            vim.api.nvim_set_keymap('n', '<C-j><C-r>', '<Cmd>Telescope old_files<CR>', fzfopts)
         end,
         config = function() require("plugins.telescope") end,
     }
     use {
         'nvim-telescope/telescope-fzf-native.nvim',
         run = 'make',
+    }
+    use {
+        "kkharji/sqlite.lua",
+    }
+    use {
+        "nvim-telescope/telescope-frecency.nvim",
+        config = function() require "telescope".load_extension("frecency") end,
+        requires = { "kkharji/sqlite.lua" }
     }
 
     -- vim-quickrun
