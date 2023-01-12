@@ -47,7 +47,7 @@ end
 
 vim.o.background = "dark"
 if exists(vim.fn.stdpath("data") .. "/site/pack/packer/start/gruvbox.nvim") then
-    vim.cmd([[colorscheme gruvbox]])
+    vim.cmd([[colorscheme nvcode]])
 else
     vim.cmd([[colorscheme desert]])
 end
