@@ -315,6 +315,7 @@ return packer.startup(function(use)
         'prettier/vim-prettier',
         opt = true,
         ft = {
+            'json',
             'javascript',
             'javascript.jsx',
             'javascriptreact',
@@ -352,6 +353,25 @@ return packer.startup(function(use)
         end,
     }
 
+    -- Markdown edit
+    use {
+        'dhruvasagar/vim-table-mode',
+        ft = { "markdown" },
+        setup = function()
+            vim.g.table_mode_map_prefix = '<LocalLeader>t'
+        end,
+    }
+
+    use {
+        'mzlogin/vim-markdown-toc',
+        ft = { "markdown" },
+    }
+
+    use {
+        "folke/zen-mode.nvim",
+        config = function() require("zen-mode").setup {} end
+    }
+
     -- Text object extension
     use {
         'machakann/vim-sandwich',
@@ -376,9 +396,9 @@ return packer.startup(function(use)
             require("project_nvim").setup {
                 manual_mode = false,
                 detection_methods = { "lsp", "pattern" },
-                patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+                patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn" },
                 show_hidden = false,
-                silent_chdir = true,
+                silent_chdir = false,
                 datapath = vim.fn.stdpath("data"),
             }
         end
@@ -397,15 +417,6 @@ return packer.startup(function(use)
             vim.api.nvim_set_keymap('n', '<LocalLeader>tf', '<Cmd>GoTestFunc<CR>', { noremap = false, silent = true })
             vim.api.nvim_set_keymap('n', '<LocalLeader>m', '<Cmd>GoImport<CR>', { noremap = false, silent = true })
             vim.api.nvim_set_keymap('n', '<LocalLeader>a', '<Cmd>GoAlt<CR>', { noremap = false, silent = true })
-        end,
-    }
-
-    -- Register
-    use {
-        'tversteeg/registers.nvim',
-        cmd = 'Registers',
-        setup = function()
-            vim.api.nvim_set_keymap('i', '<C-r>', '<Cmd>Registers<CR>', { noremap = false, silent = true })
         end,
     }
 
