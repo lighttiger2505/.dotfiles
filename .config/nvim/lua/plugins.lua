@@ -187,6 +187,11 @@ return packer.startup(function(use)
         ft = { "sql" },
         requires = { "nvim-lua/plenary.nvim" },
     }
+    use {
+        'mattn/vim-sqlfmt',
+        ft = { "sql" },
+    }
+
 
     -- LuaSnip
     use {
