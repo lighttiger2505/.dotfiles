@@ -245,7 +245,6 @@ return packer.startup(function(use)
                     'gopls',
                     'tsserver',
                     'sumneko_lua',
-                    'metals',
                 }
             })
         end,
