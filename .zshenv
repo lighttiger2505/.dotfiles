@@ -32,6 +32,9 @@ export VOLTA_HOME="$HOME/.volta"
 # Path/Valiables
 typeset -U path
 path=(
+# brew
+/opt/homebrew/bin(N-/)
+/opt/homebrew/sbin(N-/)
 # bin
 /usr/local/bin(N-/)
 /usr/bin(N-/)
@@ -75,8 +78,6 @@ $VOLTA_HOME/bin(N-/)
 # grep
 /usr/local/opt/grep/libexec/gnubin(N-/)
 ${path}
-# brew
-/opt/homebrew/bin(N-/)
 )
 
 manpath=(
