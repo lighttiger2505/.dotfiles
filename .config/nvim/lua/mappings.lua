@@ -77,7 +77,3 @@ map('n', '<C-w>t', '<C-w>T', opts)
 map('n', 't', '<Nop>', opts)
 map('n', 'tn', 'gt', opts)
 map('n', 'tp', 'gT', opts)
-
--- Update packer
-map('n', '<Space>o', '<Cmd>PackerCompile<CR>', opts)
-map('n', '<Space>p', '<Cmd>PackerSync<CR>', opts)
