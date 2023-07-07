@@ -111,12 +111,21 @@ return packer.startup(function(use)
         config = function() require("plugins.indent-blankline") end,
     }
 
-    -- Git Hunk
+    -- Git
     use {
         'lewis6991/gitsigns.nvim',
         requires = { 'nvim-lua/plenary.nvim' },
         config = function() require('gitsigns').setup() end,
+        setup = function()
+            local opts = { noremap = true, silent = true }
+            vim.api.nvim_set_keymap('n', ']g', '<Cmd>Gitsigns next_hunk<CR>', opts)
+            vim.api.nvim_set_keymap('n', '[g', '<Cmd>Gitsigns prev_hunk<CR>', opts)
+        end,
     }
+    -- use {
+    --     'dinhhuy258/git.nvim',
+    --     config = function() require("plugins.git") end,
+    -- }
 
     -- Search
     use {
@@ -217,11 +226,11 @@ return packer.startup(function(use)
         event = 'InsertEnter',
         requires = {
             { "hrsh7th/cmp-nvim-lsp" },
-            { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-            { "hrsh7th/cmp-path", after = "nvim-cmp" },
-            { "f3fora/cmp-spell", after = "nvim-cmp" },
-            { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
-            { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+            { "hrsh7th/cmp-buffer",                   after = "nvim-cmp" },
+            { "hrsh7th/cmp-path",                     after = "nvim-cmp" },
+            { "f3fora/cmp-spell",                     after = "nvim-cmp" },
+            { "hrsh7th/cmp-nvim-lsp-signature-help",  after = "nvim-cmp" },
+            { "saadparwaiz1/cmp_luasnip",             after = "nvim-cmp" },
             { 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' },
         },
         after = 'LuaSnip',
@@ -231,26 +240,26 @@ return packer.startup(function(use)
     -- nvim-lsp
     use {
         'neovim/nvim-lspconfig',
+        requires = {
+            { "williamboman/mason.nvim" },
+            { "williamboman/mason-lspconfig.nvim" },
+        },
         config = function() require("plugins.nvim-lsp") end,
     }
     use {
         'williamboman/mason.nvim',
-        config = function() require("mason").setup() end,
+        -- config = function() require("mason").setup() end,
+        run = ":MasonUpdate",
     }
     use {
         'williamboman/mason-lspconfig.nvim',
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    'gopls',
-                    'tsserver',
-                    'sumneko_lua',
-                }
-            })
-        end,
+        -- config = function()
+        --     require("mason-lspconfig").setup()
+        -- end,
     }
     use {
         "j-hui/fidget.nvim",
+        tag = "legacy",
         requires = { "neovim/nvim-lspconfig" },
         config = function() require('fidget').setup() end,
     }
@@ -279,7 +288,7 @@ return packer.startup(function(use)
             vim.api.nvim_set_keymap('n', '<C-j><C-b>', '<Cmd>Telescope buffers<CR>', fzfopts)
             vim.api.nvim_set_keymap('n', '<C-j><C-]>', '<Cmd>Telescope lsp_workspace_symbols<CR>', fzfopts)
             vim.api.nvim_set_keymap('n', '<C-j><C-o>', '<Cmd>Telescope lsp_document_symbols<CR>', fzfopts)
-            vim.api.nvim_set_keymap('n', '<C-j><C-r>', '<Cmd>Telescope old_files<CR>', fzfopts)
+            vim.api.nvim_set_keymap('n', '<C-j><C-r>', '<Cmd>Telescope oldfiles<CR>', fzfopts)
         end,
         config = function() require("plugins.telescope") end,
     }
@@ -323,6 +332,11 @@ return packer.startup(function(use)
             'typescript.tsx',
             'typescriptreact',
         },
+    }
+
+    use {
+        'gennaro-tedesco/nvim-jqx',
+        ft = { 'json' },
     }
 
     -- Browser
@@ -413,8 +427,8 @@ return packer.startup(function(use)
         end,
         setup = function()
             vim.api.nvim_set_keymap('n', '<LocalLeader>b', '<Cmd>GoBuild<CR>', { noremap = false, silent = true })
-            vim.api.nvim_set_keymap('n', '<LocalLeader>tt', '<Cmd>GoTestFile<CR>', { noremap = false, silent = true })
-            vim.api.nvim_set_keymap('n', '<LocalLeader>tf', '<Cmd>GoTestFunc<CR>', { noremap = false, silent = true })
+            -- vim.api.nvim_set_keymap('n', '<LocalLeader>tt', '<Cmd>GoTestFile<CR>', { noremap = false, silent = true })
+            -- vim.api.nvim_set_keymap('n', '<LocalLeader>tf', '<Cmd>GoTestFunc<CR>', { noremap = false, silent = true })
             vim.api.nvim_set_keymap('n', '<LocalLeader>m', '<Cmd>GoImport<CR>', { noremap = false, silent = true })
             vim.api.nvim_set_keymap('n', '<LocalLeader>a', '<Cmd>GoAlt<CR>', { noremap = false, silent = true })
         end,

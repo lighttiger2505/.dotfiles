@@ -16,7 +16,7 @@ autocmd({ "BufWritePre" }, {
     group = group_name,
     pattern = { '*.go', '*.lua' },
     callback = function()
-        vim.lsp.buf.formatting_sync()
+        vim.lsp.buf.format { async = false }
     end,
 })
 
@@ -46,31 +46,31 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<LocalLeader>d', vim.diagnostic.setloclist, bufopts)
     vim.keymap.set('n', '<LocalLeader>f', vim.lsp.buf.formatting, bufopts)
     vim.keymap.set('n', '<LocalLeader>c', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', '<LocalLeader>o', vim.lsp.buf.document_symbol, bufopts)
-    vim.keymap.set('n', '<LocalLeader>w', vim.lsp.buf.workspace_symbol, bufopts)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- Enable underline, use default values
-    underline = true,
-    -- Enable virtual text, override spacing to 4
-    virtual_text = {
-        spacing = 4,
-    },
-    -- Use a function to dynamically turn signs off
-    -- and on, using buffer local variables
-    signs = function(namespace, bufnr)
-        return vim.b[bufnr].show_signs == true
-    end,
-    -- Disable a feature
-    update_in_insert = false,
-}
+        -- Enable underline, use default values
+        underline = true,
+        -- Enable virtual text, override spacing to 4
+        virtual_text = {
+            spacing = 4,
+        },
+        -- Use a function to dynamically turn signs off
+        -- and on, using buffer local variables
+        signs = function(namespace, bufnr)
+            return vim.b[bufnr].show_signs == true
+        end,
+        -- Disable a feature
+        update_in_insert = false,
+    }
 )
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'gopls', 'rust_analyzer', 'tsserver', 'sumneko_lua' }
+require("mason").setup()
+require("mason-lspconfig").setup()
+local servers = { 'gopls', 'rust_analyzer', 'tsserver', 'lua_ls' }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
         on_attach = on_attach,
@@ -80,35 +80,35 @@ for _, lsp in ipairs(servers) do
     }
 end
 
-nvim_lsp.sqls.setup {
-    on_attach = on_attach,
-    cmd = { 'sqls', '-log', os.getenv("HOME") .. '/sqls.log', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
-    -- cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            formatting = {
-                ["local"] = 'github.com/MobilityTechnologies',
-            },
-        },
-        sqls = {
-            connections = {
-                {
-                    driver = 'mysql',
-                    dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
-                },
-                {
-                    driver = 'postgresql',
-                    dataSourceName = 'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
-                },
-            },
-        },
-    },
-}
+-- nvim_lsp.sqls.setup {
+--     on_attach = on_attach,
+--     cmd = { 'sqls', '-log', os.getenv("HOME") .. '/sqls.log', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
+--     -- cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
+--     settings = {
+--         gopls = {
+--             analyses = {
+--                 unusedparams = true,
+--             },
+--             formatting = {
+--                 ["local"] = 'github.com/MobilityTechnologies',
+--             },
+--         },
+--         sqls = {
+--             connections = {
+--                 {
+--                     driver = 'mysql',
+--                     dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
+--                 },
+--                 {
+--                     driver = 'postgresql',
+--                     dataSourceName = 'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
+--                 },
+--             },
+--         },
+--     },
+-- }
 
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.lua_ls.setup {
     settings = {
         Lua = {
             diagnostics = {

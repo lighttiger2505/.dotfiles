@@ -30,7 +30,7 @@ require'navigator'.setup({
         virtual_text = true
     },
     format_on_save = false,
-    disable_format_cap = {"sqls", "sumneko_lua", "gopls"}, 
+    disable_format_cap = {"sqls", "lua_ls", "gopls"}, 
     disable_lsp = {'pylsd', 'sqlls'},
     diagnostic_scroll_bar_sign = {'▃', '▆', '█'},
     diagnostic_virtual_text = true,
