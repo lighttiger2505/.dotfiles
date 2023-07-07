@@ -12,5 +12,17 @@ return {
 			mods = 'ALT',
 			action = wezterm.action.DisableDefaultAssignment,
 		},
+		-- Turn off the new tab by MacOS
+		{
+			key = 't',
+			mods = 'CMD',
+			action = wezterm.action.DisableDefaultAssignment,
+		},
+		-- Turn off the new window by MacOS
+		{
+			key = 'n',
+			mods = 'CMD',
+			action = wezterm.action.DisableDefaultAssignment,
+		},
 	},
 }
