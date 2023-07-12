@@ -16,6 +16,7 @@ case ${OSTYPE} in
 esac
 
 # load settings
+source ~/.zsh/path.zsh
 source ~/.zsh/completion.zsh
 source ~/.zsh/setopt.zsh
 source ~/.zsh/prompt.zsh
