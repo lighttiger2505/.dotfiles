@@ -247,6 +247,24 @@ return packer.startup(function(use)
         config = function() require("plugins.nvim-lsp") end,
     }
     use {
+        'nvimdev/lspsaga.nvim',
+        after = 'nvim-lspconfig',
+        config = function()
+            require('lspsaga').setup({
+                symbol_in_winbar = {
+                    enable = false
+                }
+            })
+        end,
+        setup = function()
+            local opts = { noremap = true, silent = true }
+            vim.api.nvim_set_keymap('n', '<LocalLeader>c', '<cmd>Lspsaga code_action<CR>', opts)
+            vim.api.nvim_set_keymap('i', '<LocalLeader>c', '<cmd>Lspsaga code_action<CR>', opts)
+            vim.api.nvim_set_keymap('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
+            vim.api.nvim_set_keymap('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<CR>', opts)
+        end,
+    }
+    use {
         'williamboman/mason.nvim',
         -- config = function() require("mason").setup() end,
         run = ":MasonUpdate",

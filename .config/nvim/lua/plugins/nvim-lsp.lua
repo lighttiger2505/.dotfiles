@@ -40,12 +40,14 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<LocalLeader>i', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', '<C-l>', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set('i', '<C-l>', vim.lsp.buf.signature_help, bufopts)
+    -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
+    -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
     vim.keymap.set('n', '<LocalLeader>e', vim.diagnostic.open_float, bufopts)
     vim.keymap.set('n', '<LocalLeader>d', vim.diagnostic.setloclist, bufopts)
     vim.keymap.set('n', '<LocalLeader>f', vim.lsp.buf.formatting, bufopts)
-    vim.keymap.set('n', '<LocalLeader>c', vim.lsp.buf.code_action, bufopts)
+    -- vim.keymap.set('n', '<LocalLeader>c', vim.lsp.buf.code_action, bufopts)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
