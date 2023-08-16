@@ -1,4 +1,3 @@
-require 'impatient'
 local cmd = vim.cmd
 
 -- Utils

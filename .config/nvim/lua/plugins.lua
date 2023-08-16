@@ -20,8 +20,6 @@ packer.init {
 return packer.startup(function(use)
     use 'wbthomason/packer.nvim'
 
-    use 'lewis6991/impatient.nvim'
-
     -- colorschema
     use 'ellisonleao/gruvbox.nvim'
     use 'navarasu/onedark.nvim'
