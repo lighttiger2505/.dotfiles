@@ -18,11 +18,7 @@ bindkey -M viins '^B'  backward-char
 bindkey -M viins '^D'  delete-char-or-list
 bindkey -M viins '^E'  end-of-line
 bindkey -M viins '^F'  forward-char
-bindkey -M viins '^J'  send-break
 bindkey -M viins '^H'  backward-delete-char
-bindkey -M viins '^K'  kill-line
-bindkey -M viins '^U'  backward-kill-line
-bindkey -M viins '^W'  backward-kill-word
 
 # Fuzzy finder command
 bindkey '^L' cd-fzf-ghqlist
@@ -33,4 +29,4 @@ bindkey '^\' ssh-fzf-sshconfig
 # Open editor
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^V' edit-command-line
+bindkey '^J' edit-command-line
