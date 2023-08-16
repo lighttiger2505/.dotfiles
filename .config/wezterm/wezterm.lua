@@ -1,6 +1,7 @@
 local wezterm = require('wezterm')
 return {
 	use_ime = true,
+	enable_wayland = true,
 	color_scheme = "Gruvbox dark, medium (base16)",
 	-- Show font list `wezterm ls-fonts --list-system`
 	font = wezterm.font("HackGen Console NF", { weight = "Regular", stretch = "Normal", style = "Normal" }),
@@ -23,6 +24,12 @@ return {
 			key = 'n',
 			mods = 'CMD',
 			action = wezterm.action.DisableDefaultAssignment,
+		},
+		-- paste from the primary selection
+		{
+			key = 'V',
+			mods = 'CTRL',
+			action = wezterm.action.PasteFrom 'Clipboard',
 		},
 	},
 }
