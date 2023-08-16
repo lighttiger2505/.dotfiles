@@ -36,5 +36,3 @@ ZSH_DISABLE_COMPFIX="true"
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
 sudo_path=({,/usr/pkg,/usr/local,/usr}/sbin(N-/))
-
-FZF_PREVIEW_PREVIEW_BAT_THEME='gruvbox'
