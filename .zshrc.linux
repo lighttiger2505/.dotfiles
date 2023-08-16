@@ -8,5 +8,3 @@ fi
 
 # ls color
 alias ls='ls --color=auto'
-
-export WINDOWID=$(xdotool getwindowfocus)
