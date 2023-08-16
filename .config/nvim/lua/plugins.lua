@@ -317,6 +317,7 @@ return packer.startup(function(use)
     }
     use {
         "nvim-telescope/telescope-frecency.nvim",
+        after = { "telescope.nvim" },
         config = function() require "telescope".load_extension("frecency") end,
         requires = { "kkharji/sqlite.lua" }
     }
