@@ -6,7 +6,7 @@ require 'nvim-treesitter.configs'.setup {
         -- "javascript",
         "lua",
         "make",
-        "scala",
+        -- "scala",
         "toml",
         "tsx",
         "typescript",
