@@ -1,5 +1,6 @@
 local map = vim.api.nvim_set_keymap
 local kopts = { noremap = true, silent = true }
+local mapopts = { noremap = false, silent = true }
 
 function _G.LoadVimPluginConfig(file)
     local p = os.getenv("HOME").."/.dotfiles/.vim/rc/plugins/"..file
@@ -114,7 +115,11 @@ return {
     },
 
     -- Syntax
-    { "sheerun/vim-polyglot" },
+    {
+        "sheerun/vim-polyglot",
+        lazy = false,
+        priority = 1000,
+    },
 
     -- Template
     {
@@ -291,7 +296,16 @@ return {
     },
 
     -- Translate sneak and camel
-    { "nicwest/vim-camelsnek" },
+    {
+        "nicwest/vim-camelsnek",
+        cmd = {
+            "Snek",
+            "Camel",
+            "CamelB",
+            "Kebab",
+            "Screm",
+        },
+    },
 
     {
         "prettier/vim-prettier",
@@ -306,60 +320,31 @@ return {
         },
     },
 
-    {
-        "gennaro-tedesco/nvim-jqx",
-        ft = { "json" },
-    },
-
     -- Browser
     {
         "tyru/open-browser.vim",
-        -- lazy = false,
-        -- cmd = {
-        --     "OpenBrowserSmartSearch",
-        --     "OpenGithubFile",
-        --     "OpenGithubIssue",
-        --     "OpenGithubProject",
-        --     "OpenGithubPullReq",
-        -- },
+        event = { "BufReadPost" },
         config = function ()
-            map("n", "<Leader>b", "<cmd>call openbrowser#_keymap_smart_search('n')<CR>", kopts)
-            map("x", "<Leader>b", "<cmd>call openbrowser#_keymap_smart_search('v')<CR>", kopts)
-        end,
-        dependencies = {
-            "tyru/open-browser-github.vim",
-        },
-        keys = {
-            { "<Leader>b" },
-        },
-    },
-
-
-    -- Markdown preview
-    {
-        "kannokanno/previm",
-        dependencies = { "open-browser.vim" },
-        init = function ()
-            map("n", "<Leader>p", "<Cmd>PrevimOpen<CR>", kopts)
+            map("n", "<Leader>bb", "<Plug>(openbrowser-smart-search)", mapopts)
+            map("x", "<Leader>bb", "<Plug>(openbrowser-smart-search)", mapopts)
+            map("n", "<Leader>bh", "<Cmd>OpenGithubFile<CR>", kopts)
+            map("x", "<Leader>bh", "<Cmd>OpenGithubFile<CR>", kopts)
         end,
     },
+
 
     -- Markdown edit
     {
         "dhruvasagar/vim-table-mode",
         ft = { "markdown" },
-        init = function ()
-            vim.g.table_mode_map_prefix = "<LocalLeader>t"
-        end,
     },
-
     {
         "mzlogin/vim-markdown-toc",
         ft = { "markdown" },
     },
-
     {
         "folke/zen-mode.nvim",
+        ft = { "markdown" },
         config = function () require("zen-mode").setup {} end
     },
 
@@ -379,6 +364,7 @@ return {
         init = function ()
             vim.g.highlightedyank_highlight_duration = 200
         end,
+        event = { "TextYankPost" },
     },
 
     -- Project management
@@ -393,7 +379,8 @@ return {
                 silent_chdir = false,
                 datapath = vim.fn.stdpath("data"),
             }
-        end
+        end,
+        event = { "BufReadPost" },
     },
 
     -- Golang extensions
