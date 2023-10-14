@@ -47,16 +47,18 @@ return {
         config = function () require("plugins.nvim-treesitter") end,
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        config = function () require("plugins.nvim-treesitter-textobjects") end,
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-    },
-    {
-        "JoosepAlviste/nvim-ts-context-commentstring",
-        config = function () require("plugins.nvim-ts-context-commentstring") end,
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        dependencies = {
+            {
+                "nvim-treesitter/nvim-treesitter-textobjects",
+                config = function () require("plugins.nvim-treesitter-textobjects") end,
+            },
+            {
+                "JoosepAlviste/nvim-ts-context-commentstring",
+                config = function () require("plugins.nvim-ts-context-commentstring") end,
+            },
+            { "RRethy/nvim-treesitter-textsubjects" },
+            { "RRethy/nvim-treesitter-endwise" },
+        },
     },
 
     -- Comment
@@ -176,14 +178,15 @@ return {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
-            { "hrsh7th/cmp-nvim-lsp" },
-            { "onsails/lspkind.nvim" },
-            { "hrsh7th/cmp-buffer" },
-            { "hrsh7th/cmp-path" },
             { "f3fora/cmp-spell" },
-            { "hrsh7th/cmp-nvim-lsp-signature-help" },
-            { "saadparwaiz1/cmp_luasnip" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-cmdline" },
+            { "hrsh7th/cmp-nvim-lsp" },
             { "hrsh7th/cmp-nvim-lsp-document-symbol" },
+            { "hrsh7th/cmp-nvim-lsp-signature-help" },
+            { "hrsh7th/cmp-path" },
+            { "onsails/lspkind.nvim" },
+            { "saadparwaiz1/cmp_luasnip" },
             {
                 "L3MON4D3/LuaSnip",
                 version = "v2.*",
@@ -205,27 +208,41 @@ return {
         dependencies = {
             { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" },
+            {
+                "lewis6991/hover.nvim",
+                event = "BufReadPost",
+                config = function ()
+                    require("hover").setup {
+                        init = function ()
+                            require "hover.providers.lsp"
+                        end,
+                    }
+
+                    vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
+                    vim.keymap.set("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
+                end,
+            },
+            {
+                "nvimdev/lspsaga.nvim",
+                dependencies = {
+                    { "nvim-lspconfig" },
+                },
+                config = function ()
+                    require("lspsaga").setup({
+                        symbol_in_winbar = {
+                            enable = false
+                        }
+                    })
+                end,
+                init = function ()
+                    map("n", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", kopts)
+                    map("i", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", kopts)
+                    map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", kopts)
+                    map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", kopts)
+                end,
+            },
         },
         config = function () require("plugins.nvim-lsp") end,
-    },
-    {
-        "nvimdev/lspsaga.nvim",
-        dependencies = {
-            { "nvim-lspconfig" },
-        },
-        config = function ()
-            require("lspsaga").setup({
-                symbol_in_winbar = {
-                    enable = false
-                }
-            })
-        end,
-        init = function ()
-            map("n", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", kopts)
-            map("i", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", kopts)
-            map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", kopts)
-            map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", kopts)
-        end,
     },
     {
         "williamboman/mason.nvim",
@@ -418,8 +435,6 @@ return {
         end,
         init = function ()
             map("n", "<LocalLeader>b", "<Cmd>GoBuild<CR>", kopts)
-            -- map('n', '<LocalLeader>tt', '<Cmd>GoTestFile<CR>', { noremap = false, silent = true })
-            -- map('n', '<LocalLeader>tf', '<Cmd>GoTestFunc<CR>', { noremap = false, silent = true })
             map("n", "<LocalLeader>m", "<Cmd>GoImport<CR>", kopts)
             map("n", "<LocalLeader>a", "<Cmd>GoAlt<CR>", kopts)
         end,
@@ -435,7 +450,7 @@ return {
         keys = {
             { "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
         },
-        opts = { use_default_keymaps = false, max_join_length = 150 },
+        opts = { use_default_keymaps = false, max_join_length = 1500 },
     },
     {
         "monaqa/dial.nvim",
@@ -450,4 +465,11 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         event = { "BufReadPost" },
     },
+
+    {
+        "akinsho/git-conflict.nvim",
+        version = "*",
+        config = true,
+    },
+
 }
