@@ -15,7 +15,7 @@ require("mappings")
 require("options")
 require("autocmds")
 
-local plugins = require("lazyplugins")
+local plugins = require("plugins")
 require("lazy").setup(plugins, {
     defaults = { lazy = true },
     performance = {
