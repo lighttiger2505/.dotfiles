@@ -1,0 +1,440 @@
+local map = vim.api.nvim_set_keymap
+local kopts = { noremap = true, silent = true }
+
+function _G.LoadVimPluginConfig(file)
+    local p = os.getenv("HOME").."/.dotfiles/.vim/rc/plugins/"..file
+    vim.cmd("source "..p)
+end
+
+return {
+    -- colorschema
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function ()
+            vim.cmd([[colorscheme tokyonight]])
+        end,
+    },
+
+    {
+        "nvim-lualine/lualine.nvim",
+        lazy = false,
+        config = function () require("plugins.lualine") end,
+    },
+
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        cmd = "Neotree",
+        init = function ()
+            map("n", "<Leader>t", "<cmd>Neotree toggle<CR>", kopts)
+            map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
+        end,
+        config = function ()
+            require("plugins.neo-tree")
+        end,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+    },
+
+    -- tree-sitter
+    {
+        "nvim-treesitter/nvim-treesitter",
+        config = function () require("plugins.nvim-treesitter") end,
+        build = ":TSUpdate",
+        event = { "BufReadPost", "BufNewFile" },
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        config = function () require("plugins.nvim-treesitter-textobjects") end,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
+    {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        config = function () require("plugins.nvim-ts-context-commentstring") end,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
+
+    -- Comment
+    {
+        "numToStr/Comment.nvim",
+        config = function () require("plugins.Comment") end,
+        dependencies = {
+            { "JoosepAlviste/nvim-ts-context-commentstring" },
+        },
+        keys = { "gc" },
+    },
+
+    -- Indent
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function () require("ibl").setup() end,
+        event = { "BufReadPre", "BufNewFile" },
+    },
+
+    -- Git
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function ()
+            require("gitsigns").setup()
+            map("n", "]g", "<Cmd>Gitsigns next_hunk<CR>", kopts)
+            map("n", "[g", "<Cmd>Gitsigns prev_hunk<CR>", kopts)
+        end,
+        dependencies = { "nvim-lua/plenary.nvim" },
+        event = { "BufReadPre", "BufNewFile" },
+    },
+
+    -- Search
+    {
+        "kevinhwang91/nvim-hlslens",
+        init = function () require("plugins.hlslens") end,
+        dependencies = {
+            "haya14busa/vim-asterisk",
+            init = function ()
+                vim.cmd [[map *  <Plug>(asterisk-z*)]]
+                vim.cmd [[map #  <Plug>(asterisk-z#)]]
+                vim.cmd [[map g* <Plug>(asterisk-gz*)]]
+                vim.cmd [[map g# <Plug>(asterisk-gz#)]]
+            end,
+        },
+        keys = { "BufReadPost" },
+    },
+
+    -- Code diff view
+    {
+        "sindrets/diffview.nvim",
+        cmd = { "DiffviewOpen" },
+        init = function ()
+            map("n", "<Leader>d", ":DiffviewOpen<CR>", kopts)
+        end,
+        config = function () require("plugins.diffview") end,
+    },
+
+    -- Syntax
+    { "sheerun/vim-polyglot" },
+
+    -- Template
+    {
+        "mattn/sonictemplate-vim",
+        cmd = { "Template" },
+    },
+
+    -- General language server
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        ft = {
+            "javascript",
+            "javascript.jsx",
+            "javascriptreact",
+            "typescript",
+            "typescript.tsx",
+            "typescriptreact",
+        },
+        config = function () require("plugins.null-ls") end,
+    },
+
+    -- Toggle terminal
+    {
+        "akinsho/toggleterm.nvim",
+        config = function () require("plugins.toggleterm") end,
+        keys = { "<Leader>g" },
+    },
+
+    -- SQL language server extension
+    {
+        "nanotee/sqls.nvim",
+        ft = { "sql" },
+        dependencies = { "nvim-lua/plenary.nvim" },
+    },
+    {
+        "mattn/vim-sqlfmt",
+        ft = { "sql" },
+    },
+
+    -- LuaSnip
+    {
+        "benfowler/telescope-luasnip.nvim",
+        config = function ()
+            require("telescope").load_extension("luasnip")
+        end,
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "L3MON4D3/LuaSnip",
+        },
+    },
+
+    -- nvim-cmp
+    {
+        "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
+        dependencies = {
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "onsails/lspkind.nvim" },
+            { "hrsh7th/cmp-buffer" },
+            { "hrsh7th/cmp-path" },
+            { "f3fora/cmp-spell" },
+            { "hrsh7th/cmp-nvim-lsp-signature-help" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "hrsh7th/cmp-nvim-lsp-document-symbol" },
+            {
+                "L3MON4D3/LuaSnip",
+                version = "v2.*",
+                event = "InsertEnter",
+                config = function () require("plugins.LuaSnip") end,
+                dependencies = {
+                    "rafamadriz/friendly-snippets"
+                },
+            },
+        },
+        config = function () require("plugins.nvim-cmp") end,
+    },
+
+    -- nvim-lsp
+    {
+        "neovim/nvim-lspconfig",
+        event = { "BufReadPost", "BufNewFile" },
+        cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+        dependencies = {
+            { "williamboman/mason.nvim" },
+            { "williamboman/mason-lspconfig.nvim" },
+        },
+        config = function () require("plugins.nvim-lsp") end,
+    },
+    {
+        "nvimdev/lspsaga.nvim",
+        dependencies = {
+            { "nvim-lspconfig" },
+        },
+        config = function ()
+            require("lspsaga").setup({
+                symbol_in_winbar = {
+                    enable = false
+                }
+            })
+        end,
+        init = function ()
+            map("n", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", kopts)
+            map("i", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", kopts)
+            map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", kopts)
+            map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", kopts)
+        end,
+    },
+    {
+        "williamboman/mason.nvim",
+        build = ":MasonUpdate",
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+    },
+    {
+        "j-hui/fidget.nvim",
+        tag          = "legacy",
+        dependencies = { "neovim/nvim-lspconfig" },
+        event        = "LspAttach",
+        config       = function () require("fidget").setup() end,
+    },
+    {
+        "simrat39/symbols-outline.nvim",
+        cmd = { "SymbolsOutline" },
+        dependencies = { "neovim/nvim-lspconfig" },
+        init = function ()
+            map("n", "<Leader>o", ":SymbolsOutline<CR>", kopts)
+        end,
+        config = function () require("plugins.symbols-outline") end,
+    },
+
+    -- Fuzzy Finder
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-fzf-native.nvim",
+        },
+        cmd = "Telescope",
+        init = function ()
+            map("n", "<C-j><C-p>", "<Cmd>Telescope git_files<CR>", kopts)
+            map("n", "<C-j><C-s>", "<Cmd>Telescope git_status<CR>", kopts)
+            map("n", "<C-j><C-b>", "<Cmd>Telescope buffers<CR>", kopts)
+            map("n", "<C-j><C-]>", "<Cmd>Telescope lsp_workspace_symbols<CR>", kopts)
+            map("n", "<C-j><C-o>", "<Cmd>Telescope lsp_document_symbols<CR>", kopts)
+            map("n", "<C-j><C-r>", "<Cmd>Telescope oldfiles<CR>", kopts)
+        end,
+        config = function () require("plugins.telescope") end,
+    },
+    {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+    },
+    { "kkharji/sqlite.lua" },
+    {
+        "nvim-telescope/telescope-frecency.nvim",
+        dependencies = {
+            "telescope.nvim",
+            "kkharji/sqlite.lua",
+        },
+        config = function () require "telescope".load_extension("frecency") end,
+    },
+
+    -- vim-quickrun
+    {
+        "thinca/vim-quickrun",
+        cmd = { "QuickRun" },
+        dependencies = { "lambdalisue/vim-quickrun-neovim-job" },
+        config = function () LoadVimPluginConfig("vimquickrun.rc.vim") end,
+        init = function ()
+            map("n", "<Leader>r", "<Cmd>QuickRun<CR>", { noremap = true, silent = true })
+            map("x", "<Leader>r", "<Cmd>QuickRun<CR>", { noremap = true, silent = true })
+        end,
+    },
+
+    -- Translate sneak and camel
+    { "nicwest/vim-camelsnek" },
+
+    {
+        "prettier/vim-prettier",
+        ft = {
+            "json",
+            "javascript",
+            "javascript.jsx",
+            "javascriptreact",
+            "typescript",
+            "typescript.tsx",
+            "typescriptreact",
+        },
+    },
+
+    {
+        "gennaro-tedesco/nvim-jqx",
+        ft = { "json" },
+    },
+
+    -- Browser
+    {
+        "tyru/open-browser.vim",
+        -- lazy = false,
+        -- cmd = {
+        --     "OpenBrowserSmartSearch",
+        --     "OpenGithubFile",
+        --     "OpenGithubIssue",
+        --     "OpenGithubProject",
+        --     "OpenGithubPullReq",
+        -- },
+        config = function ()
+            map("n", "<Leader>b", "<cmd>call openbrowser#_keymap_smart_search('n')<CR>", kopts)
+            map("x", "<Leader>b", "<cmd>call openbrowser#_keymap_smart_search('v')<CR>", kopts)
+        end,
+        dependencies = {
+            "tyru/open-browser-github.vim",
+        },
+        keys = {
+            { "<Leader>b" },
+        },
+    },
+
+
+    -- Markdown preview
+    {
+        "kannokanno/previm",
+        dependencies = { "open-browser.vim" },
+        init = function ()
+            map("n", "<Leader>p", "<Cmd>PrevimOpen<CR>", kopts)
+        end,
+    },
+
+    -- Markdown edit
+    {
+        "dhruvasagar/vim-table-mode",
+        ft = { "markdown" },
+        init = function ()
+            vim.g.table_mode_map_prefix = "<LocalLeader>t"
+        end,
+    },
+
+    {
+        "mzlogin/vim-markdown-toc",
+        ft = { "markdown" },
+    },
+
+    {
+        "folke/zen-mode.nvim",
+        config = function () require("zen-mode").setup {} end
+    },
+
+    -- Text object extension
+    {
+        "machakann/vim-sandwich",
+        init = function ()
+            map("n", "s", "<Nop>", kopts)
+            map("x", "s", "<Nop>", kopts)
+        end,
+        event = "InsertEnter",
+    },
+
+    -- Highlight yank
+    {
+        "machakann/vim-highlightedyank",
+        init = function ()
+            vim.g.highlightedyank_highlight_duration = 200
+        end,
+    },
+
+    -- Project management
+    {
+        "ahmedkhalf/project.nvim",
+        config = function ()
+            require("project_nvim").setup {
+                manual_mode = false,
+                detection_methods = { "lsp", "pattern" },
+                patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn" },
+                show_hidden = false,
+                silent_chdir = false,
+                datapath = vim.fn.stdpath("data"),
+            }
+        end
+    },
+
+    -- Golang extensions
+    {
+        "ray-x/go.nvim",
+        requires = "ray-x/guihua.lua",
+        config = function ()
+            require("go").setup()
+        end,
+        init = function ()
+            map("n", "<LocalLeader>b", "<Cmd>GoBuild<CR>", kopts)
+            -- map('n', '<LocalLeader>tt', '<Cmd>GoTestFile<CR>', { noremap = false, silent = true })
+            -- map('n', '<LocalLeader>tf', '<Cmd>GoTestFunc<CR>', { noremap = false, silent = true })
+            map("n", "<LocalLeader>m", "<Cmd>GoImport<CR>", kopts)
+            map("n", "<LocalLeader>a", "<Cmd>GoAlt<CR>", kopts)
+        end,
+        ft = "go",
+    },
+
+    {
+        "kevinhwang91/nvim-bqf",
+        ft = "qf",
+    },
+    {
+        "Wansmer/treesj",
+        keys = {
+            { "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
+        },
+        opts = { use_default_keymaps = false, max_join_length = 150 },
+    },
+    {
+        "monaqa/dial.nvim",
+        keys = {
+            { "<C-a>", mode = "n" },
+            { "<C-x>", mode = "n" },
+        },
+    },
+
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        event = { "BufReadPost" },
+    },
+}

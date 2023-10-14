@@ -5,8 +5,8 @@ vim.api.nvim_create_augroup(group_name, { clear = true })
 -- Set diagnostics to location list
 autocmd({ "DiagnosticChanged" }, {
     group = group_name,
-    pattern = '*',
-    callback = function()
+    pattern = "*",
+    callback = function ()
         vim.diagnostic.setloclist({ open = false })
     end,
 })
@@ -14,39 +14,39 @@ autocmd({ "DiagnosticChanged" }, {
 -- Format on save
 autocmd({ "BufWritePre" }, {
     group = group_name,
-    pattern = { '*.go', '*.lua' },
-    callback = function()
+    pattern = { "*.go", "*.lua" },
+    callback = function ()
         vim.lsp.buf.format { async = false }
     end,
 })
 
-local nvim_lsp = require('lspconfig')
+local nvim_lsp = require("lspconfig")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function (client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<LocalLeader>n', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<LocalLeader>R', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<LocalLeader>i', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<C-l>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('i', '<C-l>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+    vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, bufopts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, bufopts)
+    vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
+    vim.keymap.set("n", "<LocalLeader>i", vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set("n", "<C-l>", vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
     -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
     -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
-    vim.keymap.set('n', '<LocalLeader>e', vim.diagnostic.open_float, bufopts)
-    vim.keymap.set('n', '<LocalLeader>d', vim.diagnostic.setloclist, bufopts)
-    vim.keymap.set('n', '<LocalLeader>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
+    vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
+    vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, bufopts)
+    vim.keymap.set("n", "<LocalLeader>f", vim.lsp.buf.formatting, bufopts)
     -- vim.keymap.set('n', '<LocalLeader>c', vim.lsp.buf.code_action, bufopts)
 end
 
@@ -60,7 +60,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         },
         -- Use a function to dynamically turn signs off
         -- and on, using buffer local variables
-        signs = function(namespace, bufnr)
+        signs = function (namespace, bufnr)
             return vim.b[bufnr].show_signs == true
         end,
         -- Disable a feature
@@ -72,7 +72,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- map buffer local keybindings when the language server attaches
 require("mason").setup()
 require("mason-lspconfig").setup()
-local servers = { 'gopls', 'rust_analyzer', 'tsserver', 'lua_ls' }
+local servers = { "gopls", "rust_analyzer", "tsserver", "lua_ls" }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
         on_attach = on_attach,
@@ -114,7 +114,14 @@ nvim_lsp.lua_ls.setup {
     settings = {
         Lua = {
             diagnostics = {
-                globals = { 'vim' },
+                globals = { "vim" },
+            },
+            format = {
+                enable = true,
+                defaultConfig = {
+                    indent_style = "space",
+                    indent_size = "4",
+                }
             },
         },
     },

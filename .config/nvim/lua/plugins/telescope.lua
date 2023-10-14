@@ -1,10 +1,10 @@
-require('telescope').setup {
+require("telescope").setup {
     defaults = {
         sorting_strategy = "ascending",
         layout_config = {
-            width = 0.8,
-            height = 0.6,
-            prompt_position = 'top',
+            width = 0.9,
+            height = 0.9,
+            prompt_position = "top",
             horizontal = {
                 mirror = false,
                 prompt_position = "top",
@@ -32,4 +32,4 @@ require('telescope').setup {
         }
     }
 }
-require('telescope').load_extension('fzf')
+require("telescope").load_extension("fzf")

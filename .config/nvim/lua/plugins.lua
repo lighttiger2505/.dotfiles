@@ -69,9 +69,6 @@ return packer.startup(function(use)
                 after = { "nvim-treesitter" },
         }
 
-        -- Profiling
-        use { 'dstein64/vim-startuptime', cmd = 'StartupTime', config = [[vim.g.startuptime_tries = 10]] }
-
         -- Comment
         use {
                 'numToStr/Comment.nvim',
@@ -84,7 +81,7 @@ return packer.startup(function(use)
         -- Indent
         use {
                 'lukas-reineke/indent-blankline.nvim',
-                config = function() require("plugins.indent-blankline") end,
+                config = function() require("ibl").setup() end,
         }
 
         -- Git
