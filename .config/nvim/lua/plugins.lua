@@ -74,8 +74,9 @@ return {
     -- Indent
     {
         "lukas-reineke/indent-blankline.nvim",
-        config = function () require("ibl").setup() end,
         event = { "BufReadPre", "BufNewFile" },
+        main = "ibl",
+        opts = {},
     },
 
     -- Git
@@ -449,7 +450,7 @@ return {
     {
         "Wansmer/treesj",
         keys = {
-            { "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
+            { "<Leader>j", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
         },
         opts = { use_default_keymaps = false, max_join_length = 1500 },
     },
