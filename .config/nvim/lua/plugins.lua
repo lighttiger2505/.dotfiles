@@ -373,6 +373,7 @@ return {
             map("n", "<Leader>bh", "<Cmd>OpenGithubFile<CR>", kopts)
             map("x", "<Leader>bh", "<Cmd>OpenGithubFile<CR>", kopts)
         end,
+        dependencies = { "tyru/open-browser-github.vim" },
     },
 
 
