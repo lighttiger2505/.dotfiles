@@ -1,5 +1,6 @@
 require "nvim-treesitter.configs".setup {
     ensure_installed = {
+        "bash",
         "css",
         "dockerfile",
         "go",
@@ -8,6 +9,7 @@ require "nvim-treesitter.configs".setup {
         "lua",
         "make",
         "markdown",
+        "markdown_inline",
         "toml",
         "tsx",
         "typescript",
