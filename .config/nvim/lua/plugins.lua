@@ -75,6 +75,15 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPre", "BufNewFile" },
+        config = function ()
+            local ibl = require("ibl")
+            ibl.setup()
+            ibl.overwrite {
+                exclude = {
+                    filetypes = { "go" },
+                }
+            }
+        end,
         main = "ibl",
         opts = {},
     },
