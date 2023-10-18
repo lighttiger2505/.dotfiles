@@ -46,7 +46,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         config = function () require("plugins.nvim-treesitter") end,
         build = ":TSUpdate",
-        event = { "BufReadPost", "BufNewFile" },
+        event = "VeryLazy",
         dependencies = {
             {
                 "nvim-treesitter/nvim-treesitter-textobjects",
@@ -129,8 +129,7 @@ return {
     -- Syntax
     {
         "sheerun/vim-polyglot",
-        lazy = false,
-        priority = 1000,
+        event = "VeryLazy",
     },
 
     -- Template
@@ -486,6 +485,7 @@ return {
         "akinsho/git-conflict.nvim",
         version = "*",
         config = true,
+        event = "VeryLazy",
     },
 
 }
