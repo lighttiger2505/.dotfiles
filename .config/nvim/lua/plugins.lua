@@ -440,7 +440,11 @@ return {
     -- Golang extensions
     {
         "ray-x/go.nvim",
-        requires = "ray-x/guihua.lua",
+        dependencies = {
+            "ray-x/guihua.lua",
+            "neovim/nvim-lspconfig",
+            "nvim-treesitter/nvim-treesitter",
+        },
         config = function ()
             require("go").setup()
         end,
@@ -449,7 +453,8 @@ return {
             map("n", "<LocalLeader>m", "<Cmd>GoImport<CR>", kopts)
             map("n", "<LocalLeader>a", "<Cmd>GoAlt<CR>", kopts)
         end,
-        ft = "go",
+        ft = { "go", "gomod" },
+        build = ':lua require("go.install").update_all_sync()',
     },
 
     {
