@@ -28,6 +28,8 @@ AWS_DEFAULT_PROFILE=default
 GOENV_ROOT="$HOME/.goenv"
 # volta
 export VOLTA_HOME="$HOME/.volta"
+# asdf go
+export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 
 # Mac
 ZSH_DISABLE_COMPFIX="true"
