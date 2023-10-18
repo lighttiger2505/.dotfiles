@@ -410,33 +410,9 @@ function zsh-profiler() {
 }
 alias zprofile=zsh-profiler
 
-function nvim-startuptime() {
-  local file=$1
-  local total_msec=0
-  local msec
-  local i
-  for i in $(seq 1 10); do
-    msec=$({(TIMEFMT='%mE'; time nvim --headless -c q $file ) 2>&3;} 3>/dev/stdout >/dev/null)
-    msec=$(echo $msec | tr -d "ms")
-    echo "${(l:2:)i}: ${msec} [ms]"
-    total_msec=$(( $total_msec + $msec ))
-  done
-  local average_msec
-  average_msec=$(( ${total_msec} / 10 ))
-  echo "\naverage: ${average_msec} [ms]"
-}
-alias vbench=nvim-startuptime
-
-function nvim-profiler() {
-  local file=$1
-  local time_file
-  time_file=$(mktemp --suffix "_nvim_startuptime.txt")
-  echo "output: $time_file"
-  time nvim --headless --startuptime $time_file -c q $file
-  tail -n 1 $time_file | cut -d " " -f1 | tr -d "\n" && echo " [ms]\n"
-  cat $time_file | sort -n -k 2 | tail -n 20
-}
-alias vprofile=nvim-profiler
+#####################################################################
+# Draw.io
+#####################################################################
 
 function open-tmp-drawfile() {
   local tmpfile="${HOME}/vscode/drawmemo/$(date +'%Y%m%d').drawio"
@@ -444,3 +420,24 @@ function open-tmp-drawfile() {
   code ${tmpfile}
 }
 alias drawio=open-tmp-drawfile
+
+#####################################################################
+# Util
+#####################################################################
+
+function draw-fibonacci() {
+    m=0
+    n=1
+    num=8
+
+    (( num +=2 ))
+
+    for i in $(seq 1 $num)
+    do
+        (( o = $m + $n ))
+        echo $o
+        m=$n
+        n=$o
+    done
+}
+alias fib=draw-fibonacci

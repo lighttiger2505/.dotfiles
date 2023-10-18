@@ -6,3 +6,4 @@
 .vim/secrets/dein_token.vim
 .config/nvim/plugin
 .config/nvim/lazy-lock.json
+workalias.sh
