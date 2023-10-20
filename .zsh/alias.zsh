@@ -69,11 +69,11 @@ fi
 if executable exa; then
     alias ls=exa
     # show list all files
-    alias ll="ls --long --all"
+    alias ll="ls --long --all --icons"
     # show list order by newer files
-    alias lr="ls --long --all --sort=modified"
+    alias lr="ls --long --all --sort=modified --icons"
     # show tree all files
-    alias lt="ls --long --all --tree --color=always | less"
+    alias lt="ls --long --all --tree --color=always | less --icons"
 else
     # show list all files
     alias ll="ls -al"
