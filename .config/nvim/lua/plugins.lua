@@ -10,17 +10,18 @@ end
 return {
     -- colorschema
     {
-        "folke/tokyonight.nvim",
+        "EdenEast/nightfox.nvim",
         lazy = false,
         priority = 1000,
         config = function ()
-            vim.cmd([[colorscheme tokyonight]])
+            vim.cmd([[colorscheme nightfox]])
         end,
     },
+    { "folke/tokyonight.nvim" },
 
     {
         "nvim-lualine/lualine.nvim",
-        lazy = false,
+        event = { "BufReadPre", "BufNewFile" },
         config = function () require("plugins.lualine") end,
     },
 
@@ -113,7 +114,7 @@ return {
                 vim.cmd [[map g# <Plug>(asterisk-gz#)]]
             end,
         },
-        keys = { "BufReadPost" },
+        keys = { "*", "#" },
     },
 
     -- Code diff view
@@ -488,4 +489,63 @@ return {
         event = "VeryLazy",
     },
 
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        config = function ()
+            local function ignoreNotice(event, pattern, kind)
+                kind = kind or ""
+                return {
+                    filter = {
+                        event = event,
+                        kind = kind,
+                        find = pattern,
+                    },
+                    opts = { skip = true },
+                }
+            end
+            local function ignoreMessage(pattern, kind)
+                return ignoreNotice("msg_show", pattern, kind)
+            end
+            local function ignoreNotify(pattern, kind)
+                return ignoreNotice("notify", pattern, kind)
+            end
+            require("noice").setup({
+                presets = {
+                    bottom_search = false,         -- use a classic bottom cmdline for search
+                    command_palette = false,       -- position the cmdline and popupmenu together
+                    long_message_to_split = false, -- long messages will be sent to a split
+                    inc_rename = false,            -- enables an input dialog for inc-rename.nvim
+                },
+                commands = {
+                    all = {
+                        view = "split",
+                        opts = { enter = true, format = "details" },
+                        filter = {},
+                    },
+                },
+                messages = {
+                    enabled = false,
+                    view = "notify",
+                    view_error = "notify",
+                    view_warn = "notify",
+                    view_history = "messages",
+                    view_search = false,
+                },
+                routes = {
+                    ignoreNotify("No information available"),
+                    ignoreNotify("Set CWD to"),
+                    ignoreMessage("written"),
+                    ignoreMessage("search_count"),
+                    ignoreMessage("lines yanked"),
+                    ignoreMessage("fewer lines"),
+                    ignoreMessage("!rg --vimgrep --hidden"),
+                },
+            })
+        end,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    }
 }
