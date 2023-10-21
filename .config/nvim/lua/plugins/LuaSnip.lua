@@ -9,14 +9,14 @@ luasnip.config.set_config({
     ext_base_prio = 300,
     ext_prio_increase = 1,
     enable_autosnippets = true,
-    ft_func = function()
+    ft_func = function ()
         return vim.split(vim.bo.filetype, ".", true)
     end,
 })
 
 require("luasnip.loaders.from_lua").lazy_load()
 require("luasnip.loaders.from_vscode").lazy_load({
-    paths = { vim.fn.stdpath("data") .. "/site/pack/packer/opt/friendly-snippets" },
+    paths = { vim.fn.stdpath("data").."/lazy/friendly-snippets" },
 })
 
 vim.cmd([[imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>']])

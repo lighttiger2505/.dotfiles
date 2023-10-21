@@ -5,3 +5,7 @@
 *.pyc
 .vim/secrets/dein_token.vim
 .config/nvim/plugin
+.config/nvim/lazy-lock.json
+.config/pgcli/history
+.config/pgcli/log
+.zsh/workalias.sh

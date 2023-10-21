@@ -9,25 +9,25 @@ g.loaded_ruby_provider = 0
 
 -- Disable some built-in plugins we don't want
 local disabled_built_ins = {
-  'gzip',
-  'man',
-  'matchit',
-  'matchparen',
-  'shada_plugin',
-  'tarPlugin',
-  'tar',
-  'zipPlugin',
-  'zip',
-  'netrwPlugin',
+  "gzip",
+  "man",
+  "matchit",
+  "matchparen",
+  "shada_plugin",
+  "tarPlugin",
+  "tar",
+  "zipPlugin",
+  "zip",
+  "netrwPlugin",
 }
 
 for i = 1, 10 do
-  g['loaded_' .. disabled_built_ins[i]] = 1
+  g["loaded_"..disabled_built_ins[i]] = 1
 end
 
 
 -- Fix guitter size
-opt.signcolumn = 'yes:1'
+opt.signcolumn = "yes:1"
 
 -- Drawing speed more fast
 opt.lazyredraw = true
@@ -92,7 +92,7 @@ opt.winwidth = 30
 -- Set minimal height for current window.
 opt.winheight = 1
 -- Set maximam maximam command line window.
-opt.cmdwinheight=5
+opt.cmdwinheight = 5
 -- No equal window size.
 opt.equalalways = false
 -- Adjust window size of preview and help.
@@ -119,20 +119,20 @@ opt.termguicolors = true
 
 -- Pum options
 opt.wildoptions = "pum"
-opt.pumblend=10
+opt.pumblend = 10
 
 -- Show search result highlight
 opt.hlsearch = true
 
 -- Sharing to clipborad of OS
-vim.cmd[[set clipboard+=unnamedplus]]
+vim.cmd [[set clipboard+=unnamedplus]]
 
 -- Disable fold
 opt.foldenable = false
 
 -- Use ripgrep
-opt.grepprg = 'rg --vimgrep --hidden'
-opt.grepformat = '%f:%l:%c:%m'
+opt.grepprg = "rg --vimgrep --hidden"
+opt.grepformat = "%f:%l:%c:%m"
 
 -- Number of characters to apply syntax per line
 opt.synmaxcol = 512

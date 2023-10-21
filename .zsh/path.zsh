@@ -14,22 +14,10 @@ path=(
 /usr/local/sbin(N-/)
 /usr/sbin(N-/)
 /sbin(N-/)
-# Cabal
-$HOME/.cabal/bin(N-/)
-# rvm(ruby version control)
-$HOME/.rvm/bin(N-/)
 # Go lang
 $GOPATH/bin(N-/)
-# pyenv
-$PYENV_PATH/bin(N-/)
-# anyenv
-$ANYENV_PATH/bin(N-/)
 # npm bin
 $HOME/.npm-global/bin(N-/)
-# my scripts
-$HOME/scripts(N-/)
-# krew
-${KREW_ROOT:-$HOME/.krew}/bin
 # goenv
 $GOENV_ROOT/bin(N-/)
 # volta
