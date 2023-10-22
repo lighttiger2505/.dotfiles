@@ -63,7 +63,7 @@ cmp.setup({
             mode = "symbol_text",
             maxwidth = 50,
             ellipsis_char = "...",
-            before = function (entry, vim_item)
+            before = function (_, vim_item)
                 return vim_item
             end
         })
@@ -76,12 +76,18 @@ cmp.setup({
 })
 
 cmp.setup.cmdline("/", {
+    completion = {
+        completeopt = "menu,menuone,noselect",
+    },
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = "buffer" }
     }
 })
 cmp.setup.cmdline(":", {
+    completion = {
+        completeopt = "menu,menuone,noselect",
+    },
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
         { name = "path" }
