@@ -15,6 +15,7 @@ return {
         priority = 1000,
         config = function ()
             vim.cmd([[colorscheme nightfox]])
+            vim.cmd([[hi VertSplit guifg=#928374]])
         end,
     },
     { "folke/tokyonight.nvim" },
