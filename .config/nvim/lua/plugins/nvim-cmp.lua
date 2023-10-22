@@ -80,9 +80,11 @@ cmp.setup.cmdline("/", {
         completeopt = "menu,menuone,noselect",
     },
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {
+    sources = cmp.config.sources({
+        { name = "nvim_lsp_document_symbol" }
+    }, {
         { name = "buffer" }
-    }
+    })
 })
 cmp.setup.cmdline(":", {
     completion = {
