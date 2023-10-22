@@ -225,20 +225,6 @@ return {
             { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" },
             {
-                "lewis6991/hover.nvim",
-                event = "BufReadPost",
-                config = function ()
-                    require("hover").setup {
-                        init = function ()
-                            require "hover.providers.lsp"
-                        end,
-                    }
-
-                    vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
-                    vim.keymap.set("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
-                end,
-            },
-            {
                 "nvimdev/lspsaga.nvim",
                 dependencies = {
                     { "nvim-lspconfig" },
@@ -282,6 +268,21 @@ return {
             map("n", "<Leader>o", ":SymbolsOutline<CR>", kopts)
         end,
         config = function () require("plugins.symbols-outline") end,
+    },
+    {
+        "lewis6991/hover.nvim",
+        config = function ()
+            require("hover").setup {
+                init = function ()
+                    require "hover.providers.lsp"
+                end,
+            }
+        end,
+        init = function ()
+            vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
+            vim.keymap.set("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
+        end,
+        keys = { "K", "gK" }
     },
 
     -- Fuzzy Finder
