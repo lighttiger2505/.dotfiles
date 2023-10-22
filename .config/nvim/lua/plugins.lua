@@ -387,20 +387,7 @@ return {
         },
     },
 
-    {
-        "prettier/vim-prettier",
-        ft = {
-            "json",
-            "javascript",
-            "javascript.jsx",
-            "javascriptreact",
-            "typescript",
-            "typescript.tsx",
-            "typescriptreact",
-        },
-    },
-
-    -- Browser
+   -- Browser
     {
         "tyru/open-browser.vim",
         event = { "BufReadPost" },
@@ -436,7 +423,10 @@ return {
             map("n", "s", "<Nop>", kopts)
             map("x", "s", "<Nop>", kopts)
         end,
-        event = "InsertEnter",
+        keys = {
+            { "s", mode = "n" },
+            { "s", mode = "x" },
+        },
     },
 
     -- Highlight yank
