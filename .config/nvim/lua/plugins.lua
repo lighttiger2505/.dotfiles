@@ -250,7 +250,7 @@ return {
                     local ft = require("guard.filetype")
                     ft("lua"):fmt("lsp")
                     ft("typescript,javascript,typescriptreact"):fmt("prettier")
-                    ft("go"):fmt("lsp"):lint("golangci")
+                    ft("go"):fmt("lsp")
 
                     -- Call setup() LAST!
                     require("guard").setup({
