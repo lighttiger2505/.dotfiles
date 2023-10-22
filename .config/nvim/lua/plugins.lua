@@ -2,11 +2,6 @@ local map = vim.api.nvim_set_keymap
 local kopts = { noremap = true, silent = true }
 local mapopts = { noremap = false, silent = true }
 
-function _G.LoadVimPluginConfig(file)
-    local p = os.getenv("HOME").."/.dotfiles/.vim/rc/plugins/"..file
-    vim.cmd("source "..p)
-end
-
 return {
     -- colorschema
     {
