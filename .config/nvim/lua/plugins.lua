@@ -419,7 +419,7 @@ return {
     -- Text object extension
     {
         "machakann/vim-sandwich",
-        init = function ()
+        config = function ()
             map("n", "s", "<Nop>", kopts)
             map("x", "s", "<Nop>", kopts)
         end,
