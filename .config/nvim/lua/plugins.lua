@@ -387,7 +387,7 @@ return {
         },
     },
 
-   -- Browser
+    -- Browser
     {
         "tyru/open-browser.vim",
         event = { "BufReadPost" },
@@ -505,4 +505,20 @@ return {
         config = true,
         event = "VeryLazy",
     },
+
+    {
+        "tversteeg/registers.nvim",
+        cmd = { "Registers" },
+        init = function ()
+            map("n", "R", "<Nop>", kopts)
+            map("n", "R", "<Cmd>Registers<CR>", kopts)
+        end,
+        config = function ()
+            require("registers").setup()
+        end,
+        keys = {
+            { "R",     mode = { "n", "v" } },
+            { "<C-r>", mode = "i" }
+        },
+    }
 }
