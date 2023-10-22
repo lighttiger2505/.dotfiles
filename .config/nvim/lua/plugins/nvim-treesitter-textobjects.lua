@@ -1,4 +1,4 @@
-require 'nvim-treesitter.configs'.setup {
+require "nvim-treesitter.configs".setup {
     textobjects = {
         swap = {
             enable = true,
@@ -23,21 +23,22 @@ require 'nvim-treesitter.configs'.setup {
             enable = true,
             set_jumps = true,
             goto_next_start = {
-                ["]]"] = "@function.outer",
-                ["]c"] = "@class.outer",
-            },
-            goto_next_end = {
-                ["]["] = "@function.outer",
-                ["]C"] = "@class.outer",
+                ["]]"] = "@block.outer",
+                ["]f"] = "@function.outer",
+                ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+                ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
             },
             goto_previous_start = {
-                ["[["] = "@function.outer",
-                ["[c"] = "@class.outer",
+                ["[f"] = "@block.outer",
+                ["[s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+                ["[z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
             },
-            goto_previous_end = {
-                ["[]"] = "@function.outer",
-                ["[C"] = "@class.outer",
+            goto_next = {
+                ["]c"] = "@conditional.outer",
             },
+            goto_previous = {
+                ["[c"] = "@conditional.outer",
+            }
         },
     },
 }
