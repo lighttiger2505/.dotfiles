@@ -314,8 +314,15 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope-fzf-native.nvim",
+            { "nvim-lua/plenary.nvim" },
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "make",
+            },
+            {
+                "nvim-telescope/telescope-frecency.nvim",
+                config = function () require "telescope".load_extension("frecency") end,
+            },
         },
         cmd = "Telescope",
         init = function ()
@@ -324,22 +331,10 @@ return {
             map("n", "<C-j><C-b>", "<Cmd>Telescope buffers<CR>", kopts)
             map("n", "<C-j><C-]>", "<Cmd>Telescope lsp_workspace_symbols<CR>", kopts)
             map("n", "<C-j><C-o>", "<Cmd>Telescope lsp_document_symbols<CR>", kopts)
-            map("n", "<C-j><C-r>", "<Cmd>Telescope oldfiles<CR>", kopts)
+            map("n", "<C-j><C-r>", "<Cmd>Telescope frecency workspace=CWD<CR>", kopts)
+            map("n", "<C-j><C-f>", "<Cmd>Telescope frecency<CR>", kopts)
         end,
         config = function () require("plugins.telescope") end,
-    },
-    {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-    },
-    { "kkharji/sqlite.lua" },
-    {
-        "nvim-telescope/telescope-frecency.nvim",
-        dependencies = {
-            "telescope.nvim",
-            "kkharji/sqlite.lua",
-        },
-        config = function () require "telescope".load_extension("frecency") end,
     },
 
     {
