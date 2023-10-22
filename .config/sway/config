@@ -41,10 +41,6 @@ bar {
   swaybar_command waybar
 }
 
-# ------------------------------------------------------------
-# key map
-# ------------------------------------------------------------
-input * xkb_options ctrl:nocaps
-
 include ~/.config/sway/config.d/keybind.conf
+include ~/.config/sway/config.d/keyboard.conf
 include ~/.config/sway/config.d/exec.conf
