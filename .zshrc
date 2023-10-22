@@ -31,6 +31,12 @@ else
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh-plugins/zsh-autosuggestions
 fi
 
+if [ -e ~/.zsh-plugins/fast-syntax-highlighting ]; then
+    source ~/.zsh-plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+else
+    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/.zsh-plugins/fast-syntax-highlighting
+fi
+
 # Init direnv
 if executable direnv; then
     eval "$(direnv hook zsh)"
