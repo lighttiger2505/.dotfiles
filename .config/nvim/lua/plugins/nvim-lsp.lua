@@ -11,20 +11,11 @@ autocmd({ "DiagnosticChanged" }, {
     end,
 })
 
--- Format on save
-autocmd({ "BufWritePre" }, {
-    group = group_name,
-    pattern = { "*.go", "*.lua" },
-    callback = function ()
-        vim.lsp.buf.format { async = false }
-    end,
-})
-
 local nvim_lsp = require("lspconfig")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function (client, bufnr)
+local on_attach = function (_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -40,14 +31,10 @@ local on_attach = function (client, bufnr)
     vim.keymap.set("n", "<LocalLeader>i", vim.lsp.buf.implementation, bufopts)
     vim.keymap.set("n", "<C-l>", vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
-    -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
-    -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
     vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
     vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, bufopts)
-    vim.keymap.set("n", "<LocalLeader>f", vim.lsp.buf.formatting, bufopts)
-    -- vim.keymap.set('n', '<LocalLeader>c', vim.lsp.buf.code_action, bufopts)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

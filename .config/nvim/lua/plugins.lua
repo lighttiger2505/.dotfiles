@@ -226,9 +226,6 @@ return {
             { "williamboman/mason-lspconfig.nvim" },
             {
                 "nvimdev/lspsaga.nvim",
-                dependencies = {
-                    { "nvim-lspconfig" },
-                },
                 config = function ()
                     require("lspsaga").setup({
                         symbol_in_winbar = {
@@ -243,6 +240,28 @@ return {
                     map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", kopts)
                 end,
             },
+            {
+                "nvimdev/guard.nvim",
+                dependencies = {
+                    "nvimdev/guard-collection",
+                },
+                cmd = {"GuardFmt"},
+                config = function ()
+                    local ft = require("guard.filetype")
+                    ft("lua"):fmt("lsp")
+                    ft("typescript,javascript,typescriptreact"):fmt("prettier")
+                    ft("go"):fmt("lsp"):lint("golangci")
+
+                    -- Call setup() LAST!
+                    require("guard").setup({
+                        fmt_on_save = false,
+                        lsp_as_default_formatter = false,
+                    })
+                end,
+                init = function ()
+                    map("n", "<LocalLeader>f", "<cmd>GuardFmt<CR>", kopts)
+                end,
+            }
         },
         config = function () require("plugins.nvim-lsp") end,
     },
