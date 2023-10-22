@@ -227,7 +227,10 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         cmd = { "LspInfo", "LspInstall", "LspUninstall" },
         dependencies = {
-            { "williamboman/mason.nvim" },
+            {
+                "williamboman/mason.nvim",
+                build = ":MasonUpdate",
+            },
             { "williamboman/mason-lspconfig.nvim" },
             {
                 "nvimdev/lspsaga.nvim",
@@ -247,13 +250,6 @@ return {
             },
         },
         config = function () require("plugins.nvim-lsp") end,
-    },
-    {
-        "williamboman/mason.nvim",
-        build = ":MasonUpdate",
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
     },
     {
         "j-hui/fidget.nvim",
