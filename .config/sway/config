@@ -58,13 +58,6 @@ for_window [instance="dropdown_*"] move scratchpad
 for_window [instance="dropdown_*"] sticky enable
 for_window [instance="dropdown_*"] scratchpad show
 
-# ------------------------------------------------------------
-# Starting External Applications
-# ------------------------------------------------------------
-exec mako
-exec fcitx -d
-exec nm-applet --indicator
-
 # Autolock
 exec swayidle -w \
   timeout 300 'swaylock' \
@@ -280,3 +273,5 @@ bindsym $sup+i exec wofi -G --show drun | xargs swaymsg exec --
 # key map
 # ------------------------------------------------------------
 input * xkb_options ctrl:nocaps
+
+include ~/.config/sway/config.d/exec.conf
