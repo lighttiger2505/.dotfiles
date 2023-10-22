@@ -65,7 +65,10 @@ return {
         dependencies = {
             { "JoosepAlviste/nvim-ts-context-commentstring" },
         },
-        keys = { "gc" },
+        keys = {
+            { "gc", mode = "n" },
+            { "gc", mode = "v" },
+        },
     },
 
     -- Indent
