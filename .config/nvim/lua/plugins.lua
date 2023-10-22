@@ -113,7 +113,12 @@ return {
                 vim.cmd [[map g# <Plug>(asterisk-gz#)]]
             end,
         },
-        keys = { "*", "#" },
+        keys = {
+            { "*", mode = "n" },
+            { "#", mode = "n" },
+            { "*", mode = "v" },
+            { "#", mode = "v" },
+        },
     },
 
     -- Code diff view
