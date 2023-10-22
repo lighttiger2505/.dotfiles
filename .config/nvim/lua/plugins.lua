@@ -140,7 +140,7 @@ return {
 
     -- General language server
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         ft = {
             "javascript",
             "javascript.jsx",
@@ -149,7 +149,14 @@ return {
             "typescript.tsx",
             "typescriptreact",
         },
-        config = function () require("plugins.null-ls") end,
+        config = function ()
+            local null_ls = require("null-ls")
+            null_ls.setup({
+                sources = {
+                    null_ls.builtins.diagnostics.eslint,
+                },
+            })
+        end,
     },
 
     -- Toggle terminal
