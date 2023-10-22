@@ -34,13 +34,7 @@ exec swayidle -w \
   timeout 300 'swaylock' \
   timeout 600 'systemctl suspend'
 
-# ------------------------------------------------------------
-# Status Bar Bettings
-# ------------------------------------------------------------
-bar { 
-  swaybar_command waybar
-}
-
 include ~/.config/sway/config.d/keybind.conf
 include ~/.config/sway/config.d/keyboard.conf
 include ~/.config/sway/config.d/exec.conf
+include ~/.config/sway/config.d/statusbar.conf
