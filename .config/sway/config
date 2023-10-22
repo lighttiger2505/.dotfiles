@@ -48,7 +48,7 @@ mode "$mode_system" {
 bindsym $sup+Ctrl+i mode "$mode_system"
 
 # Lock screen shortcut
-bindsym $sup+Ctrl+l exec ~/.config/i3/i3lock.sh
+bindsym $sup+Ctrl+l exec swaylock
 
 # ------------------------------------------------------------
 # Dropdown Windows
