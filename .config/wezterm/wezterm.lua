@@ -40,17 +40,6 @@ return {
             mods = "CTRL",
             action = wezterm.action.PasteFrom "PrimarySelection",
         },
-        -- paste from the primary selection by CTRL-v
-        {
-            key = "v",
-            mods = "CTRL",
-            action = wezterm.action.PasteFrom "Clipboard",
-        },
-        {
-            key = "v",
-            mods = "CTRL",
-            action = wezterm.action.PasteFrom "PrimarySelection",
-        },
         -- paste from the primary selection by WINDOW(Meta)-V
         {
             key = "V",
