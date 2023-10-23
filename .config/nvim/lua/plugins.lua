@@ -248,6 +248,10 @@ return {
                 end,
             },
         },
+        cond = function()
+            -- ignore filetype markdown
+            return vim.bo.filetype ~= "markdown"
+        end,
         config = function () require("plugins.nvim-lsp") end,
     },
     {
@@ -404,7 +408,7 @@ return {
     },
     {
         "folke/zen-mode.nvim",
-        ft = { "markdown" },
+        cmd = { "ZenMode" },
         config = function () require("zen-mode").setup {} end
     },
 
