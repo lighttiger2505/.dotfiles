@@ -506,13 +506,16 @@ return {
         "keaising/im-select.nvim",
         lazy = false,
         config = function ()
-            if vim.fn.has("macunix") then
+            if vim.fn.has("macunix") == 1 then
                 require("im_select").setup({
                     default_im_select = "com.apple.keylayout.US",
                     default_command = "im-select",
                 })
             else
-                require("im_select").setup()
+                require("im_select").setup({
+                    default_im_select = "keyboard-us",
+                    default_command = "fcitx5-remote",
+                })
             end
         end,
     }
