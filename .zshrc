@@ -24,6 +24,10 @@ source ~/.zsh/fzf.zsh
 source ~/.zsh/alias.zsh
 source ~/.zsh/keybind.zsh
 
+if [ -e ~/.zsh/workalias.zsh ]; then
+    source ~/.zsh/workalias.zsh
+fi
+
 # load plugins
 if [ -e ~/.zsh-plugins/zsh-autosuggestions ]; then
     source ~/.zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -8,4 +8,4 @@
 .config/nvim/lazy-lock.json
 .config/pgcli/history
 .config/pgcli/log
-.zsh/workalias.sh
+.zsh/workalias.zsh
