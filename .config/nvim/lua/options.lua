@@ -30,7 +30,7 @@ end
 opt.signcolumn = "yes:1"
 
 -- Drawing speed more fast
-opt.lazyredraw = false
+opt.lazyredraw = true
 opt.ttyfast = true
 
 -- Backup
@@ -92,7 +92,7 @@ opt.winwidth = 30
 -- Set minimal height for current window.
 opt.winheight = 1
 -- Hide command line
-opt.cmdheight=0
+opt.cmdheight=1
 -- Set maximam maximam command line window.
 opt.cmdwinheight = 5
 -- No equal window size.

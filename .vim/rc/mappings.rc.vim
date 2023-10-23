@@ -43,15 +43,6 @@ noremap <C-w>< 10<C-w><
 noremap <C-w>+ 10<C-w>+
 noremap <C-w>- 10<C-w>-
 
-" Search yank string
-nnoremap <Space>sy /<C-r>"<CR>
-" Search of under cousor
-vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>
-
-" Replace cousor word"
-nnoremap <expr> c* ':%s ;\<' . expand('<cword>') . '\>;'
-vnoremap <expr> c* ':s ;\<' . expand('<cword>') . '\>;'
-
 " Auto Escape
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
@@ -65,13 +56,10 @@ nnoremap <Space>p "0p
 vnoremap <Space>p "0p
 
 " Paste clipboard text
-nnoremap <Space>b "*p
-vnoremap <Space>b "*p
-inoremap <C-r><C-r> <C-r>*
-cnoremap <C-r><C-r> <C-r>*
-
-" Shortcut of write
-nnoremap <silent> <Space>w :<C-u>w<CR>
+inoremap <C-r><C-r> <C-r>0
+cnoremap <C-r><C-r> <C-r>0
+inoremap <C-r>p <C-r>*
+cnoremap <C-r>p <C-r>*
 
 " Jump quickfix
 nnoremap <silent> <C-p> :<C-u>cp<CR>
