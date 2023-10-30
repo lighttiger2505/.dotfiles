@@ -288,26 +288,31 @@ return {
         keys = { "K", "gK" }
     },
     {
-        "nvimdev/guard.nvim",
-        dependencies = {
-            "nvimdev/guard-collection",
+        "stevearc/conform.nvim",
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
+        keys = {
+            {
+                "<leader>f",
+                function ()
+                    require("conform").format({ async = true, lsp_fallback = true })
+                end,
+                mode = "",
+                desc = "Format buffer",
+            },
         },
-        cmd = { "GuardFmt" },
-        config = function ()
-            local ft = require("guard.filetype")
-            ft("lua"):fmt("lsp")
-            ft("typescript,javascript,typescriptreact,json"):fmt("prettier")
-            ft("go"):fmt("lsp")
-            ft("sql"):fmt("sqlfluff")
-
-            -- Call setup() LAST!
-            require("guard").setup({
-                fmt_on_save = false,
-                lsp_as_default_formatter = false,
-            })
-        end,
+        opts = {
+            formatters_by_ft = {
+                lua = { "stylua" },
+                javascript = { "prettier" },
+                typescript = { "prettier" },
+                typescriptreact = { "prettier" },
+                json = { "prettier" },
+            },
+            format_on_save = { timeout_ms = 500, lsp_fallback = true },
+        },
         init = function ()
-            map("n", "<LocalLeader>f", "<cmd>GuardFmt<CR>", kopts)
+            vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
         end,
     },
 
