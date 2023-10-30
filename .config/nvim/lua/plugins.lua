@@ -512,11 +512,13 @@ return {
                 require("im_select").setup({
                     default_im_select = "com.apple.keylayout.US",
                     default_command = "im-select",
+                    async_switch_im = false
                 })
             else
                 require("im_select").setup({
                     default_im_select = "keyboard-us",
                     default_command = "fcitx5-remote",
+                    async_switch_im = false
                 })
             end
         end,
