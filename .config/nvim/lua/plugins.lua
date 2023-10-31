@@ -25,8 +25,8 @@ return {
         "nvim-neo-tree/neo-tree.nvim",
         cmd = "Neotree",
         init = function ()
-            map("n", "<Leader>t", "<cmd>Neotree toggle<CR>", kopts)
-            map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
+            map("n", "<Leader>tt", "<cmd>Neotree toggle<CR>", kopts)
+            map("n", "<Leader>tf", "<cmd>Neotree reveal<CR>", kopts)
         end,
         config = function ()
             require("plugins.neo-tree")
@@ -293,7 +293,7 @@ return {
         cmd = { "ConformInfo" },
         keys = {
             {
-                "<leader>f",
+                "<LocalLeader>f",
                 function ()
                     require("conform").format({ async = true, lsp_fallback = true })
                 end,
@@ -304,10 +304,10 @@ return {
         opts = {
             formatters_by_ft = {
                 lua = { "stylua" },
-                javascript = { "prettier" },
-                typescript = { "prettier" },
-                typescriptreact = { "prettier" },
-                json = { "prettier" },
+                javascript = { { "prettierd", "prettier" } },
+                typescript = { { "prettierd", "prettier" } },
+                typescriptreact = { { "prettierd", "prettier" } },
+                json = { { "prettierd", "prettier" } },
             },
             format_on_save = { timeout_ms = 500, lsp_fallback = true },
         },
