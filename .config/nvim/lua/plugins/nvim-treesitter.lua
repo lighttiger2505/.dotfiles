@@ -10,6 +10,7 @@ require "nvim-treesitter.configs".setup {
         "make",
         "markdown",
         "markdown_inline",
+        "sql",
         "toml",
         "tsx",
         "typescript",
