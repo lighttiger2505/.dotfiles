@@ -393,7 +393,7 @@ return {
     -- Browser
     {
         "tyru/open-browser.vim",
-        event = { "BufReadPost" },
+        event = { "BufReadPre", "BufNewFile" },
         config = function ()
             map("n", "<Leader>bb", "<Plug>(openbrowser-smart-search)", mapopts)
             map("x", "<Leader>bb", "<Plug>(openbrowser-smart-search)", mapopts)
@@ -527,5 +527,10 @@ return {
                 })
             end
         end,
-    }
+    },
+
+    {
+        "folke/neodev.nvim",
+        ft = "lua"
+    },
 }
