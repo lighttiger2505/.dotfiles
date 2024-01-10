@@ -296,15 +296,21 @@ return {
         opts = {
             formatters_by_ft = {
                 lua = { "stylua" },
-                javascript = { { "prettierd", "prettier" } },
-                typescript = { { "prettierd", "prettier" } },
-                typescriptreact = { { "prettierd", "prettier" } },
-                json = { { "prettierd", "prettier" } },
+                javascript = { { "prettier" } },
+                typescript = { { "prettier" } },
+                typescriptreact = { { "prettier" } },
+                json = { { "prettier" } },
             },
             format_on_save = { timeout_ms = 500, lsp_fallback = true },
         },
         init = function ()
             vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                pattern = "*",
+                callback = function (args)
+                    require("conform").format({ bufnr = args.buf })
+                end,
+            })
         end,
     },
 
