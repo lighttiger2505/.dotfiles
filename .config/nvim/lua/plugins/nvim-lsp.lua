@@ -34,6 +34,7 @@ local on_attach = function (_, bufnr)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
     vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
     vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, bufopts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
