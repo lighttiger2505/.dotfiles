@@ -92,7 +92,7 @@ opt.winwidth = 30
 -- Set minimal height for current window.
 opt.winheight = 1
 -- Hide command line
-opt.cmdheight=1
+opt.cmdheight = 1
 -- Set maximam maximam command line window.
 opt.cmdwinheight = 5
 -- No equal window size.
@@ -141,3 +141,8 @@ opt.synmaxcol = 512
 
 -- Disable sql omni complete
 g.omni_sql_no_default_maps = 1
+
+opt.encoding = "utf-8"
+opt.fileencodings = "utf-8,sjis,iso-2022-jp,cp932,euc-jp"
+opt.fileencoding = "utf-8"
+g.encoding_set = 1
