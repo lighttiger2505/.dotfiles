@@ -219,6 +219,7 @@ return {
                     "rafamadriz/friendly-snippets"
                 },
             },
+            { "zbirenbaum/copilot-cmp" },
         },
         config = function () require("plugins.nvim-cmp") end,
     },
@@ -533,4 +534,14 @@ return {
         "folke/neodev.nvim",
         ft = "lua"
     },
+
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function ()
+            require("copilot").setup({})
+        end,
+    }
+
 }

@@ -1,6 +1,8 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
+require("copilot_cmp").setup()
+
 lspkind.init({
     mode = "symbol_text",
     preset = "codicons",
@@ -52,9 +54,10 @@ cmp.setup({
         })
     },
     sources = cmp.config.sources({
-        { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "nvim_lsp_signature_help" }
+        { name = "copilot" },
+        { name = "nvim_lsp_signature_help" },
+        { name = "nvim_lsp" },
     }, {
         { name = "buffer" },
     }),
@@ -108,6 +111,11 @@ cmp.setup.filetype("gitcommit", {
     sources = cmp.config.sources({
         { name = "spell" },
     }, {
+        { name = "buffer" },
+    })
+})
+cmp.setup.filetype("markdown", {
+    sources = cmp.config.sources({
         { name = "buffer" },
     })
 })
