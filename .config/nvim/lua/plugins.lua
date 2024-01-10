@@ -25,8 +25,8 @@ return {
         "nvim-neo-tree/neo-tree.nvim",
         cmd = "Neotree",
         init = function ()
-            map("n", "<Leader>tt", "<cmd>Neotree toggle<CR>", kopts)
-            map("n", "<Leader>tf", "<cmd>Neotree reveal<CR>", kopts)
+            map("n", "<Leader>t", "<cmd>Neotree toggle<CR>", kopts)
+            map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
         end,
         config = function ()
             require("plugins.neo-tree")
