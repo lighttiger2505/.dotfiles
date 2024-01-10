@@ -58,7 +58,15 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 require("mason").setup()
-local servers = { "gopls", "rust_analyzer", "tsserver", "lua_ls" }
+local servers = {
+    "gopls",
+    "rust_analyzer",
+    "tsserver",
+    "lua_ls",
+    "solargraph",
+    "rubocop",
+    "ruby_ls",
+}
 require("mason-lspconfig").setup({
     ensure_installed = servers,
 })
