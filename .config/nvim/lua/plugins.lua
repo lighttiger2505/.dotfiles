@@ -51,7 +51,13 @@ return {
             },
             {
                 "JoosepAlviste/nvim-ts-context-commentstring",
+                ft = {
+                    "typescript",
+                    "typescript.tsx",
+                    "typescriptreact",
+                },
                 config = function () require("plugins.nvim-ts-context-commentstring") end,
+
             },
             { "RRethy/nvim-treesitter-textsubjects" },
             { "RRethy/nvim-treesitter-endwise" },
