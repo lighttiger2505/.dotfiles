@@ -149,25 +149,22 @@ return {
         cmd = { "Template" },
     },
 
-    -- General language server
+    -- lint
     {
-        "nvimtools/none-ls.nvim",
-        ft = {
-            "javascript",
-            "javascript.jsx",
-            "javascriptreact",
-            "typescript",
-            "typescript.tsx",
-            "typescriptreact",
-            "go",
-        },
+        "mfussenegger/nvim-lint",
+        event = { "BufWritePre" },
         config = function ()
-            local null_ls = require("null-ls")
-            null_ls.setup({
-                sources = {
-                    null_ls.builtins.diagnostics.eslint,
-                    null_ls.builtins.diagnostics.golangci_lint,
-                },
+            local lint = require("lint")
+            lint.linters_by_ft = {
+                javascript = { "eslint" },
+                typescript = { "eslint" },
+                typescriptreact = { "eslint" },
+                go = { "golangcilint" },
+            }
+            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+                callback = function ()
+                    require("lint").try_lint()
+                end,
             })
         end,
     },
@@ -301,17 +298,8 @@ return {
                 typescriptreact = { { "prettier" } },
                 json = { { "prettier" } },
             },
-            format_on_save = { timeout_ms = 500, lsp_fallback = true },
+            format_on_save = { timeout_ms = 5000, lsp_fallback = true },
         },
-        init = function ()
-            vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                pattern = "*",
-                callback = function (args)
-                    require("conform").format({ bufnr = args.buf })
-                end,
-            })
-        end,
     },
 
     -- Fuzzy Finder
@@ -408,6 +396,10 @@ return {
         ft = { "markdown" },
         config = function ()
             vim.g.vim_markdown_no_default_key_mappings = 1
+            map("n", "<Leader><Enter>", "<Plug>Markdown_FollowLink", mapopts)
+            map("n", "O", "<Plug>Markdown_NewLineAbove", mapopts)
+            map("n", "o", "<Plug>Markdown_NewLineBelow", mapopts)
+            map("i", "<Enter>", "<Plug>Markdown_NewLineBelow", mapopts)
         end
     },
     {
