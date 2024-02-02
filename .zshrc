@@ -54,7 +54,7 @@ if [ "$(pgrep ssh-agent 2> /dev/null)" = "" ]; then
     eval $(ssh-agent) > /dev/null
     case ${OSTYPE} in
         darwin*)
-            ssh-add -K ~/.ssh/id_rsa > /dev/null 2>&1
+            ssh-add --apple-use-keychain ~/.ssh/id_rsa > /dev/null 2>&1
             ;;
         linux-gnu*)
             ssh-add ~/.ssh/id_rsa > /dev/null 2>&1
