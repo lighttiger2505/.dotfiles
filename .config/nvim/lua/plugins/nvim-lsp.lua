@@ -6,7 +6,7 @@ vim.api.nvim_create_augroup(group_name, { clear = true })
 autocmd({ "DiagnosticChanged" }, {
     group = group_name,
     pattern = "*",
-    callback = function ()
+    callback = function()
         vim.diagnostic.setloclist({ open = false })
     end,
 })
@@ -15,15 +15,13 @@ local nvim_lsp = require("lspconfig")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function (_, bufnr)
+local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-    vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, bufopts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
     vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, bufopts)
     vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
@@ -47,7 +45,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         },
         -- Use a function to dynamically turn signs off
         -- and on, using buffer local variables
-        signs = function (namespace, bufnr)
+        signs = function(namespace, bufnr)
             return vim.b[bufnr].show_signs == true
         end,
         -- Disable a feature

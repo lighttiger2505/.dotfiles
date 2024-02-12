@@ -8,7 +8,7 @@ return {
         "EdenEast/nightfox.nvim",
         lazy = false,
         priority = 1000,
-        config = function ()
+        config = function()
             vim.cmd([[colorscheme nightfox]])
             vim.cmd([[hi VertSplit guifg=#928374]])
         end,
@@ -18,17 +18,17 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         event = { "BufReadPre", "BufNewFile" },
-        config = function () require("plugins.lualine") end,
+        config = function() require("plugins.lualine") end,
     },
 
     {
         "nvim-neo-tree/neo-tree.nvim",
         cmd = "Neotree",
-        init = function ()
+        init = function()
             map("n", "<Leader>t", "<cmd>Neotree toggle<CR>", kopts)
             map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
         end,
-        config = function ()
+        config = function()
             require("plugins.neo-tree")
         end,
         dependencies = {
@@ -41,13 +41,13 @@ return {
     -- tree-sitter
     {
         "nvim-treesitter/nvim-treesitter",
-        config = function () require("plugins.nvim-treesitter") end,
+        config = function() require("plugins.nvim-treesitter") end,
         build = ":TSUpdate",
         event = "VeryLazy",
         dependencies = {
             {
                 "nvim-treesitter/nvim-treesitter-textobjects",
-                config = function () require("plugins.nvim-treesitter-textobjects") end,
+                config = function() require("plugins.nvim-treesitter-textobjects") end,
             },
             {
                 "JoosepAlviste/nvim-ts-context-commentstring",
@@ -56,7 +56,7 @@ return {
                     "typescript.tsx",
                     "typescriptreact",
                 },
-                config = function () require("plugins.nvim-ts-context-commentstring") end,
+                config = function() require("plugins.nvim-ts-context-commentstring") end,
 
             },
             { "RRethy/nvim-treesitter-textsubjects" },
@@ -67,7 +67,7 @@ return {
     -- Comment
     {
         "numToStr/Comment.nvim",
-        config = function () require("plugins.Comment") end,
+        config = function() require("plugins.Comment") end,
         dependencies = {
             { "JoosepAlviste/nvim-ts-context-commentstring" },
         },
@@ -81,7 +81,7 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPre", "BufNewFile" },
-        config = function ()
+        config = function()
             local ibl = require("ibl")
             ibl.setup()
             ibl.overwrite {
@@ -97,7 +97,7 @@ return {
     -- Git
     {
         "lewis6991/gitsigns.nvim",
-        config = function ()
+        config = function()
             require("gitsigns").setup()
             map("n", "]g", "<Cmd>Gitsigns next_hunk<CR>", kopts)
             map("n", "[g", "<Cmd>Gitsigns prev_hunk<CR>", kopts)
@@ -109,10 +109,10 @@ return {
     -- Search
     {
         "kevinhwang91/nvim-hlslens",
-        init = function () require("plugins.hlslens") end,
+        init = function() require("plugins.hlslens") end,
         dependencies = {
             "haya14busa/vim-asterisk",
-            init = function ()
+            init = function()
                 vim.cmd [[map *  <Plug>(asterisk-z*)]]
                 vim.cmd [[map #  <Plug>(asterisk-z#)]]
                 vim.cmd [[map g* <Plug>(asterisk-gz*)]]
@@ -131,10 +131,10 @@ return {
     {
         "sindrets/diffview.nvim",
         cmd = { "DiffviewOpen" },
-        init = function ()
+        init = function()
             map("n", "<Leader>d", ":DiffviewOpen<CR>", kopts)
         end,
-        config = function () require("plugins.diffview") end,
+        config = function() require("plugins.diffview") end,
     },
 
     -- Syntax
@@ -153,7 +153,7 @@ return {
     {
         "mfussenegger/nvim-lint",
         event = { "BufWritePre" },
-        config = function ()
+        config = function()
             local lint = require("lint")
             lint.linters_by_ft = {
                 javascript = { "eslint" },
@@ -162,7 +162,7 @@ return {
                 go = { "golangcilint" },
             }
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-                callback = function ()
+                callback = function()
                     require("lint").try_lint()
                 end,
             })
@@ -172,7 +172,7 @@ return {
     -- Toggle terminal
     {
         "akinsho/toggleterm.nvim",
-        config = function () require("plugins.toggleterm") end,
+        config = function() require("plugins.toggleterm") end,
         keys = { "<Leader>g" },
     },
 
@@ -190,7 +190,7 @@ return {
     -- LuaSnip
     {
         "benfowler/telescope-luasnip.nvim",
-        config = function ()
+        config = function()
             require("telescope").load_extension("luasnip")
         end,
         dependencies = {
@@ -217,14 +217,14 @@ return {
                 "L3MON4D3/LuaSnip",
                 version = "v2.*",
                 event = "InsertEnter",
-                config = function () require("plugins.LuaSnip") end,
+                config = function() require("plugins.LuaSnip") end,
                 dependencies = {
                     "rafamadriz/friendly-snippets"
                 },
             },
             { "zbirenbaum/copilot-cmp" },
         },
-        config = function () require("plugins.nvim-cmp") end,
+        config = function() require("plugins.nvim-cmp") end,
     },
 
     -- nvim-lsp
@@ -239,42 +239,43 @@ return {
             { "williamboman/mason-lspconfig.nvim" },
             {
                 "nvimdev/lspsaga.nvim",
-                config = function ()
+                config = function()
                     require("lspsaga").setup({
                         symbol_in_winbar = {
                             enable = false
                         }
                     })
                 end,
-                init = function ()
+                init = function()
                     map("n", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", kopts)
                     map("i", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", kopts)
                     map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", kopts)
                     map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", kopts)
+                    map("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", kopts)
+                    map("n", "gd", "<cmd>Lspsaga goto_definition<CR>", kopts)
                 end,
             },
         },
-        cond = function ()
+        cond = function()
             -- ignore filetype markdown
             return vim.bo.filetype ~= "markdown"
         end,
-        config = function () require("plugins.nvim-lsp") end,
+        config = function() require("plugins.nvim-lsp") end,
     },
     {
         "j-hui/fidget.nvim",
-        tag          = "legacy",
         dependencies = { "neovim/nvim-lspconfig" },
         event        = "LspAttach",
-        config       = function () require("fidget").setup() end,
+        config       = function() require("fidget").setup() end,
     },
     {
         "simrat39/symbols-outline.nvim",
         cmd = { "SymbolsOutline" },
         dependencies = { "neovim/nvim-lspconfig" },
-        init = function ()
+        init = function()
             map("n", "<Leader>o", ":SymbolsOutline<CR>", kopts)
         end,
-        config = function () require("plugins.symbols-outline") end,
+        config = function() require("plugins.symbols-outline") end,
     },
     {
         "stevearc/conform.nvim",
@@ -283,7 +284,7 @@ return {
         keys = {
             {
                 "<LocalLeader>f",
-                function ()
+                function()
                     require("conform").format({ async = true, lsp_fallback = true })
                 end,
                 mode = "",
@@ -314,16 +315,17 @@ return {
             { "nvim-telescope/telescope-frecency.nvim" },
         },
         cmd = "Telescope",
-        init = function ()
+        init = function()
             map("n", "<C-j><C-p>", "<Cmd>Telescope git_files<CR>", kopts)
             map("n", "<C-j><C-s>", "<Cmd>Telescope git_status<CR>", kopts)
             map("n", "<C-j><C-b>", "<Cmd>Telescope buffers<CR>", kopts)
             map("n", "<C-j><C-]>", "<Cmd>Telescope lsp_workspace_symbols<CR>", kopts)
             map("n", "<C-j><C-o>", "<Cmd>Telescope lsp_document_symbols<CR>", kopts)
-            map("n", "<C-j><C-r>", "<Cmd>Telescope frecency workspace=CWD<CR>", kopts)
+            -- map("n", "<C-j><C-r>", "<Cmd>Telescope frecency workspace=CWD<CR>", kopts)
+            map("n", "<C-j><C-r>", "<Cmd>Telescope oldfiles<CR>", kopts)
             map("n", "<C-j><C-f>", "<Cmd>Telescope frecency<CR>", kopts)
         end,
-        config = function () require("plugins.telescope") end,
+        config = function() require("plugins.telescope") end,
     },
 
     {
@@ -336,7 +338,7 @@ return {
             "CRFiletype",
             "CRProjects",
         },
-        init = function ()
+        init = function()
             map("n", "<leader>r", ":RunCode<CR>", kopts)
             map("n", "<leader>rf", ":RunFile<CR>", kopts)
             map("n", "<leader>rft", ":RunFile tab<CR>", kopts)
@@ -345,7 +347,7 @@ return {
             map("n", "<leader>crf", ":CRFiletype<CR>", kopts)
             map("n", "<leader>crp", ":CRProjects<CR>", kopts)
         end,
-        config = function ()
+        config = function()
             require("code_runner").setup({
                 filetype = {
                     python = "python3 -u",
@@ -380,7 +382,7 @@ return {
     {
         "tyru/open-browser.vim",
         event = { "BufReadPre", "BufNewFile" },
-        config = function ()
+        config = function()
             map("n", "<Leader>bb", "<Plug>(openbrowser-smart-search)", mapopts)
             map("x", "<Leader>bb", "<Plug>(openbrowser-smart-search)", mapopts)
             map("n", "<Leader>bh", "<Cmd>OpenGithubFile<CR>", kopts)
@@ -394,7 +396,7 @@ return {
     {
         "ixru/nvim-markdown",
         ft = { "markdown" },
-        config = function ()
+        config = function()
             vim.g.vim_markdown_no_default_key_mappings = 1
             map("n", "<Leader><Enter>", "<Plug>Markdown_FollowLink", mapopts)
             map("n", "O", "<Plug>Markdown_NewLineAbove", mapopts)
@@ -413,13 +415,13 @@ return {
     {
         "folke/zen-mode.nvim",
         cmd = { "ZenMode" },
-        config = function () require("zen-mode").setup {} end
+        config = function() require("zen-mode").setup {} end
     },
 
     -- Text object extension
     {
         "machakann/vim-sandwich",
-        config = function ()
+        config = function()
             map("n", "s", "<Nop>", kopts)
             map("x", "s", "<Nop>", kopts)
         end,
@@ -432,7 +434,7 @@ return {
     -- Highlight yank
     {
         "machakann/vim-highlightedyank",
-        init = function ()
+        init = function()
             vim.g.highlightedyank_highlight_duration = 200
         end,
         event = { "TextYankPost" },
@@ -441,7 +443,7 @@ return {
     -- Project management
     {
         "ahmedkhalf/project.nvim",
-        config = function ()
+        config = function()
             require("project_nvim").setup {
                 manual_mode = false,
                 detection_methods = { "lsp", "pattern" },
@@ -462,10 +464,10 @@ return {
             "neovim/nvim-lspconfig",
             "nvim-treesitter/nvim-treesitter",
         },
-        config = function ()
+        config = function()
             require("go").setup()
         end,
-        init = function ()
+        init = function()
             map("n", "<LocalLeader>b", "<Cmd>GoBuild<CR>", kopts)
             map("n", "<LocalLeader>m", "<Cmd>GoImport<CR>", kopts)
             map("n", "<LocalLeader>a", "<Cmd>GoAlt<CR>", kopts)
@@ -509,7 +511,7 @@ return {
     {
         "keaising/im-select.nvim",
         lazy = false,
-        config = function ()
+        config = function()
             if vim.fn.has("macunix") == 1 then
                 require("im_select").setup({
                     default_im_select = "com.apple.keylayout.US",
@@ -535,9 +537,61 @@ return {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
-        config = function ()
+        config = function()
             require("copilot").setup({})
         end,
-    }
+    },
 
+    {
+        "rmagatti/auto-session",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("auto-session").setup {
+                log_level = "error",
+                auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+            }
+        end,
+        init = function()
+            local autocmd = vim.api.nvim_create_autocmd
+            local lazy_did_show_install_view = false
+
+            -- Tips
+            -- https://github.com/rmagatti/auto-session/issues/223
+            local function auto_session_restore()
+                -- important! without vim.schedule other necessary plugins might not load (eg treesitter) after restoring the session
+                vim.schedule(function()
+                    require("auto-session").AutoRestoreSession()
+                end)
+            end
+            autocmd("User", {
+                pattern = "VeryLazy",
+                callback = function()
+                    local lazy_view = require("lazy.view")
+
+                    if lazy_view.visible() then
+                        -- if lazy view is visible do nothing with auto-session
+                        lazy_did_show_install_view = true
+                    else
+                        -- otherwise load (by require'ing) and restore session
+                        auto_session_restore()
+                    end
+                end,
+            })
+            autocmd("WinClosed", {
+                pattern = "*",
+                callback = function(ev)
+                    local lazy_view = require("lazy.view")
+
+                    -- if lazy view is currently visible and was shown at startup
+                    if lazy_view.visible() and lazy_did_show_install_view then
+                        -- if the window to be closed is actually the lazy view window
+                        if ev.match == tostring(lazy_view.view.win) then
+                            lazy_did_show_install_view = false
+                            auto_session_restore()
+                        end
+                    end
+                end,
+            })
+        end,
+    },
 }
