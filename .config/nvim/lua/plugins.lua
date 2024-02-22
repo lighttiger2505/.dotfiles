@@ -1,4 +1,5 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
+local autocmd = vim.api.nvim_create_autocmd
 local kopts = { noremap = true, silent = true }
 local mapopts = { noremap = false, silent = true }
 
@@ -10,7 +11,7 @@ return {
         priority = 1000,
         config = function()
             vim.cmd([[colorscheme nightfox]])
-            vim.cmd([[hi VertSplit guifg=#928374]])
+            vim.cmd([[highlight WinSeparator guifg=#928374]])
         end,
     },
     { "folke/tokyonight.nvim" },
@@ -23,6 +24,7 @@ return {
 
     {
         "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
         cmd = "Neotree",
         init = function()
             map("n", "<Leader>t", "<cmd>Neotree toggle<CR>", kopts)
@@ -187,18 +189,6 @@ return {
         ft = { "sql" },
     },
 
-    -- LuaSnip
-    {
-        "benfowler/telescope-luasnip.nvim",
-        config = function()
-            require("telescope").load_extension("luasnip")
-        end,
-        dependencies = {
-            "nvim-telescope/telescope.nvim",
-            "L3MON4D3/LuaSnip",
-        },
-    },
-
     -- nvim-cmp
     {
         "hrsh7th/nvim-cmp",
@@ -299,7 +289,7 @@ return {
                 typescriptreact = { { "prettier" } },
                 json = { { "prettier" } },
             },
-            format_on_save = { timeout_ms = 5000, lsp_fallback = true },
+            format_on_save = { timeout_ms = 300, lsp_fallback = true },
         },
     },
 
@@ -396,13 +386,25 @@ return {
     {
         "ixru/nvim-markdown",
         ft = { "markdown" },
+        init = function()
+            local group_name = "PluginNvimMarkdown"
+            vim.api.nvim_create_augroup(group_name, { clear = true })
+            autocmd('FileType', {
+                group = group_name,
+                pattern = { "markdown" },
+                callback = function()
+                    local bufnr = vim.api.nvim_get_current_buf()
+                    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+                    vim.keymap.set("n", "<Leader><Enter>", "<Plug>Markdown_FollowLink", bufopts)
+                    vim.keymap.set("n", "O", "<Plug>Markdown_NewLineAbove", bufopts)
+                    vim.keymap.set("n", "o", "<Plug>Markdown_NewLineBelow", bufopts)
+                    vim.keymap.set("i", "<Enter>", "<Plug>Markdown_NewLineBelow", bufopts)
+                end,
+            })
+        end,
         config = function()
             vim.g.vim_markdown_no_default_key_mappings = 1
-            map("n", "<Leader><Enter>", "<Plug>Markdown_FollowLink", mapopts)
-            map("n", "O", "<Plug>Markdown_NewLineAbove", mapopts)
-            map("n", "o", "<Plug>Markdown_NewLineBelow", mapopts)
-            map("i", "<Enter>", "<Plug>Markdown_NewLineBelow", mapopts)
-        end
+        end,
     },
     {
         "dhruvasagar/vim-table-mode",
@@ -429,15 +431,6 @@ return {
             { "s", mode = "n" },
             { "s", mode = "x" },
         },
-    },
-
-    -- Highlight yank
-    {
-        "machakann/vim-highlightedyank",
-        init = function()
-            vim.g.highlightedyank_highlight_duration = 200
-        end,
-        event = { "TextYankPost" },
     },
 
     -- Project management
@@ -544,7 +537,8 @@ return {
 
     {
         "rmagatti/auto-session",
-        event = { "BufReadPre", "BufNewFile" },
+        event = "VeryLazy",
+        -- event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("auto-session").setup {
                 log_level = "error",
@@ -594,4 +588,33 @@ return {
             })
         end,
     },
+
+    {
+        "gbprod/yanky.nvim",
+        event = "TextYankPost",
+        config = function()
+            require("yanky").setup({
+                ring = {
+                    history_length = 100,
+                    storage = "shada",
+                    sync_with_numbered_registers = true,
+                    cancel_event = "update",
+                    ignore_registers = { "_" },
+                    update_register_on_cycle = false,
+                },
+                system_clipboard = {
+                    sync_with_ring = true,
+                },
+                highlight = {
+                    on_put = true,
+                    on_yank = true,
+                    timer = 300,
+                },
+            })
+        end,
+        keys = {
+            { "y", mode = "n" },
+            { "p", mode = "n" },
+        },
+    }
 }
