@@ -17,6 +17,22 @@ return {
     { "folke/tokyonight.nvim" },
 
     {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                config = {
+                    theme = 'hyper',
+                    project = { enable = false },
+                    mru = { limit = 20, icon = 'your icon', label = '', cwd_only = true },
+                    footer = {},
+                }
+            }
+        end,
+        dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+    },
+
+    {
         "nvim-lualine/lualine.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function() require("plugins.lualine") end,
