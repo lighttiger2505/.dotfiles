@@ -227,24 +227,7 @@ return {
                 build = ":MasonUpdate",
             },
             { "williamboman/mason-lspconfig.nvim" },
-            {
-                "nvimdev/lspsaga.nvim",
-                config = function()
-                    require("lspsaga").setup({
-                        symbol_in_winbar = {
-                            enable = false
-                        }
-                    })
-                end,
-                init = function()
-                    map("n", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", kopts)
-                    map("i", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", kopts)
-                    map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", kopts)
-                    map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", kopts)
-                    map("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", kopts)
-                    map("n", "gd", "<cmd>Lspsaga goto_definition<CR>", kopts)
-                end,
-            },
+            { "nvimdev/lspsaga.nvim" },
         },
         cond = function()
             -- ignore filetype markdown
@@ -288,6 +271,7 @@ return {
                 typescript = { { "prettier" } },
                 typescriptreact = { { "prettier" } },
                 json = { { "prettier" } },
+                go = { "goimports", "gofmt" },
             },
             format_on_save = { timeout_ms = 300, lsp_fallback = true },
         },
@@ -295,27 +279,34 @@ return {
 
     -- Fuzzy Finder
     {
-        "nvim-telescope/telescope.nvim",
+        'prochri/telescope-all-recent.nvim',
         dependencies = {
-            { "nvim-lua/plenary.nvim" },
             {
-                "nvim-telescope/telescope-fzf-native.nvim",
-                build = "make",
+                "nvim-telescope/telescope.nvim",
+                dependencies = {
+                    { "nvim-lua/plenary.nvim" },
+                    {
+                        "nvim-telescope/telescope-fzf-native.nvim",
+                        build = "make",
+                    },
+                    -- { "nvim-telescope/telescope-frecency.nvim" },
+                },
+                cmd = "Telescope",
+                init = function()
+                    map("n", "<C-j><C-p>", "<Cmd>Telescope git_files<CR>", kopts)
+                    map("n", "<C-j><C-s>", "<Cmd>Telescope git_status<CR>", kopts)
+                    map("n", "<C-j><C-b>", "<Cmd>Telescope buffers<CR>", kopts)
+                    map("n", "<C-j><C-]>", "<Cmd>Telescope lsp_workspace_symbols<CR>", kopts)
+                    map("n", "<C-j><C-o>", "<Cmd>Telescope lsp_document_symbols<CR>", kopts)
+                    -- map("n", "<C-j><C-r>", "<Cmd>Telescope frecency workspace=CWD<CR>", kopts)
+                    map("n", "<C-j><C-r>", "<Cmd>Telescope oldfiles<CR>", kopts)
+                    map("n", "<C-j><C-f>", "<Cmd>Telescope frecency<CR>", kopts)
+                end,
+                config = function() require("plugins.telescope") end,
             },
-            { "nvim-telescope/telescope-frecency.nvim" },
+            { "kkharji/sqlite.lua" },
+            { "stevearc/dressing.nvim" }
         },
-        cmd = "Telescope",
-        init = function()
-            map("n", "<C-j><C-p>", "<Cmd>Telescope git_files<CR>", kopts)
-            map("n", "<C-j><C-s>", "<Cmd>Telescope git_status<CR>", kopts)
-            map("n", "<C-j><C-b>", "<Cmd>Telescope buffers<CR>", kopts)
-            map("n", "<C-j><C-]>", "<Cmd>Telescope lsp_workspace_symbols<CR>", kopts)
-            map("n", "<C-j><C-o>", "<Cmd>Telescope lsp_document_symbols<CR>", kopts)
-            -- map("n", "<C-j><C-r>", "<Cmd>Telescope frecency workspace=CWD<CR>", kopts)
-            map("n", "<C-j><C-r>", "<Cmd>Telescope oldfiles<CR>", kopts)
-            map("n", "<C-j><C-f>", "<Cmd>Telescope frecency<CR>", kopts)
-        end,
-        config = function() require("plugins.telescope") end,
     },
 
     {
@@ -532,60 +523,6 @@ return {
         event = "InsertEnter",
         config = function()
             require("copilot").setup({})
-        end,
-    },
-
-    {
-        "rmagatti/auto-session",
-        event = "VeryLazy",
-        -- event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            require("auto-session").setup {
-                log_level = "error",
-                auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-            }
-        end,
-        init = function()
-            local autocmd = vim.api.nvim_create_autocmd
-            local lazy_did_show_install_view = false
-
-            -- Tips
-            -- https://github.com/rmagatti/auto-session/issues/223
-            local function auto_session_restore()
-                -- important! without vim.schedule other necessary plugins might not load (eg treesitter) after restoring the session
-                vim.schedule(function()
-                    require("auto-session").AutoRestoreSession()
-                end)
-            end
-            autocmd("User", {
-                pattern = "VeryLazy",
-                callback = function()
-                    local lazy_view = require("lazy.view")
-
-                    if lazy_view.visible() then
-                        -- if lazy view is visible do nothing with auto-session
-                        lazy_did_show_install_view = true
-                    else
-                        -- otherwise load (by require'ing) and restore session
-                        auto_session_restore()
-                    end
-                end,
-            })
-            autocmd("WinClosed", {
-                pattern = "*",
-                callback = function(ev)
-                    local lazy_view = require("lazy.view")
-
-                    -- if lazy view is currently visible and was shown at startup
-                    if lazy_view.visible() and lazy_did_show_install_view then
-                        -- if the window to be closed is actually the lazy view window
-                        if ev.match == tostring(lazy_view.view.win) then
-                            lazy_did_show_install_view = false
-                            auto_session_restore()
-                        end
-                    end
-                end,
-            })
         end,
     },
 

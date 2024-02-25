@@ -12,6 +12,23 @@ autocmd({ "DiagnosticChanged" }, {
 })
 
 local nvim_lsp = require("lspconfig")
+require("lspsaga").setup({
+    symbol_in_winbar = {
+        enable = false
+    },
+    finder = {
+        keys = {
+            shuttle = '[w',
+            toggle_or_open = '<CR>',
+            vsplit = 'v',
+            split = 's',
+            tabe = 't',
+            tabnew = 'r',
+            quit = 'q',
+            close = '<C-c>k',
+        }
+    },
+})
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -21,18 +38,21 @@ local on_attach = function(_, bufnr)
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+    -- builtin lsp
     vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, bufopts)
     vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
-    vim.keymap.set("n", "<LocalLeader>i", vim.lsp.buf.implementation, bufopts)
     vim.keymap.set("n", "<C-l>", vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
     vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
     vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, bufopts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    -- lsp saga
+    vim.keymap.set("n", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", bufopts)
+    vim.keymap.set("i", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", bufopts)
+    vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
+    vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
+    vim.keymap.set("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", bufopts)
+    vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", bufopts)
+    vim.keymap.set("n", "<LocalLeader>i", "<cmd>Lspsaga finder imp<CR>", bufopts)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -64,6 +84,7 @@ local servers = {
     "solargraph",
     "rubocop",
     "ruby_ls",
+    "sqls",
 }
 require("mason-lspconfig").setup({
     ensure_installed = servers,
@@ -77,33 +98,34 @@ for _, lsp in ipairs(servers) do
     }
 end
 
--- nvim_lsp.sqls.setup {
---     on_attach = on_attach,
---     cmd = { 'sqls', '-log', os.getenv("HOME") .. '/sqls.log', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
---     -- cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
---     settings = {
---         gopls = {
---             analyses = {
---                 unusedparams = true,
---             },
---             formatting = {
---                 ["local"] = 'github.com/MobilityTechnologies',
---             },
---         },
---         sqls = {
---             connections = {
---                 {
---                     driver = 'mysql',
---                     dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
---                 },
---                 {
---                     driver = 'postgresql',
---                     dataSourceName = 'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
---                 },
---             },
---         },
---     },
--- }
+nvim_lsp.gopls.setup {
+    on_attach = on_attach,
+    settings = {
+        gopls = {
+            ["Formatting.local"] = 'github.com/MobilityTechnologies',
+        },
+    },
+}
+
+nvim_lsp.sqls.setup {
+    on_attach = on_attach,
+    cmd = { 'sqls', '-log', os.getenv("HOME") .. '/sqls.log', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
+    -- cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
+    settings = {
+        sqls = {
+            connections = {
+                {
+                    driver = 'mysql',
+                    dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
+                },
+                {
+                    driver = 'postgresql',
+                    dataSourceName = 'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
+                },
+            },
+        },
+    },
+}
 
 nvim_lsp.lua_ls.setup {
     settings = {
