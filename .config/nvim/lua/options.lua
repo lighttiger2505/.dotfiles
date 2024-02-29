@@ -142,6 +142,9 @@ opt.synmaxcol = 512
 -- Disable sql omni complete
 g.omni_sql_no_default_maps = 1
 
+-- single status line
+opt.laststatus = 3
+
 opt.encoding = "utf-8"
 opt.fileencodings = "utf-8,sjis,iso-2022-jp,cp932,euc-jp"
 opt.fileencoding = "utf-8"

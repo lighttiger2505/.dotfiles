@@ -22,11 +22,32 @@ return {
         config = function()
             require('dashboard').setup {
                 config = {
-                    theme = 'hyper',
-                    project = { enable = false },
-                    mru = { limit = 20, icon = 'your icon', label = '', cwd_only = true },
-                    footer = {},
-                }
+                    week_header = { enable = true },
+                    project = { enable = true, limit = 8, action = 'Telescope find_files cwd=' },
+                    mru = { limit = 20, cwd_only = true },
+                    shortcut = {
+                        {
+                            desc = 'New File',
+                            group = 'Label',
+                            action = 'enew',
+                            key = 'n',
+                        },
+                        {
+                            icon = ' ',
+                            desc = 'Find Files',
+                            group = 'Label',
+                            action = 'Telescope git_files',
+                            key = 'f',
+                        },
+                        {
+                            icon = '󰊳',
+                            desc = 'Update Plugins',
+                            group = '@property',
+                            action = 'Lazy update',
+                            key = 'u',
+                        },
+                    },
+                },
             }
         end,
         dependencies = { { 'nvim-tree/nvim-web-devicons' } }
