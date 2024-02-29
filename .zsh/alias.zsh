@@ -441,3 +441,5 @@ function draw-fibonacci() {
     done
 }
 alias fib=draw-fibonacci
+
+alias todo='vim ~/.config/todo/todo.md'
