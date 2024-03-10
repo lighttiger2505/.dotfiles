@@ -43,6 +43,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
     vim.keymap.set("n", "<C-l>", vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
     vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, bufopts)
     -- lsp saga
@@ -51,7 +52,6 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
     vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
     vim.keymap.set("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", bufopts)
-    vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", bufopts)
     vim.keymap.set("n", "<LocalLeader>i", "<cmd>Lspsaga finder imp<CR>", bufopts)
 end
 

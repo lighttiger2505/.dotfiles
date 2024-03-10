@@ -41,9 +41,12 @@ else
     git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/.zsh-plugins/fast-syntax-highlighting
 fi
 
-# Init direnv
 if executable direnv; then
     eval "$(direnv hook zsh)"
+fi
+
+if executable zoxide; then
+    eval "$(zoxide init zsh)"
 fi
 
  if [ -e $HOME/.asdf ]; then

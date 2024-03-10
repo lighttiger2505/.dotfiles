@@ -18,10 +18,6 @@ setopt correct
 setopt list_packed
 # Beep sound off
 setopt nolistbeep
-# Share history
-HISTFILE=~/.zsh_history
-HISTSIZE=6000000
-SAVEHIST=6000000
 # setopt share_history
 setopt hist_ignore_dups
 setopt hist_ignore_all_dups

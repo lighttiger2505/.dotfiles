@@ -22,7 +22,7 @@ local disabled_built_ins = {
 }
 
 for i = 1, 10 do
-  g["loaded_"..disabled_built_ins[i]] = 1
+  g["loaded_" .. disabled_built_ins[i]] = 1
 end
 
 
@@ -149,3 +149,9 @@ opt.encoding = "utf-8"
 opt.fileencodings = "utf-8,sjis,iso-2022-jp,cp932,euc-jp"
 opt.fileencoding = "utf-8"
 g.encoding_set = 1
+
+-- add ignore grep pattern
+vim.opt.wildignore = vim.opt.wildignore + {
+  "'**/*_test.go'",
+  "node_modules",
+}

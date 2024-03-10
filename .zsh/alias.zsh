@@ -81,6 +81,16 @@ else
     alias lr="ls -ltr"
 fi
 
+# diff to delta
+if executable delta; then
+    alias diff=delta
+fi
+
+# diff to delta
+if executable delta; then
+    alias diff=delta
+fi
+
 #####################################################################
 # Git
 #####################################################################

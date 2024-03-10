@@ -66,13 +66,13 @@ cmp.setup({
             mode = "symbol_text",
             maxwidth = 50,
             ellipsis_char = "...",
-            before = function (_, vim_item)
+            before = function(_, vim_item)
                 return vim_item
             end
         })
     },
     snippet = {
-        expand = function (args)
+        expand = function(args)
             require "luasnip".lsp_expand(args.body)
         end
     },

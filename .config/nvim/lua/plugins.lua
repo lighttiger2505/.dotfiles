@@ -17,43 +17,6 @@ return {
     { "folke/tokyonight.nvim" },
 
     {
-        'nvimdev/dashboard-nvim',
-        event = 'VimEnter',
-        config = function()
-            require('dashboard').setup {
-                config = {
-                    week_header = { enable = true },
-                    project = { enable = true, limit = 8, action = 'Telescope find_files cwd=' },
-                    mru = { limit = 20, cwd_only = true },
-                    shortcut = {
-                        {
-                            desc = 'New File',
-                            group = 'Label',
-                            action = 'enew',
-                            key = 'n',
-                        },
-                        {
-                            icon = ' ',
-                            desc = 'Find Files',
-                            group = 'Label',
-                            action = 'Telescope git_files',
-                            key = 'f',
-                        },
-                        {
-                            icon = '󰊳',
-                            desc = 'Update Plugins',
-                            group = '@property',
-                            action = 'Lazy update',
-                            key = 'u',
-                        },
-                    },
-                },
-            }
-        end,
-        dependencies = { { 'nvim-tree/nvim-web-devicons' } }
-    },
-
-    {
         "nvim-lualine/lualine.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function() require("plugins.lualine") end,
@@ -199,6 +162,7 @@ return {
                 typescript = { "eslint" },
                 typescriptreact = { "eslint" },
                 go = { "golangcilint" },
+                json = { "jsonlint" },
             }
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
                 callback = function()
@@ -313,6 +277,15 @@ return {
             format_on_save = { timeout_ms = 300, lsp_fallback = true },
         },
     },
+    {
+        "dmmulroy/ts-error-translator.nvim",
+        ft = {
+            "typescript",
+            "typescript.tsx",
+            "typescriptreact",
+        },
+        config = function() require("ts-error-translator").setup() end,
+    },
 
     -- Fuzzy Finder
     {
@@ -335,9 +308,8 @@ return {
                     map("n", "<C-j><C-b>", "<Cmd>Telescope buffers<CR>", kopts)
                     map("n", "<C-j><C-]>", "<Cmd>Telescope lsp_workspace_symbols<CR>", kopts)
                     map("n", "<C-j><C-o>", "<Cmd>Telescope lsp_document_symbols<CR>", kopts)
-                    -- map("n", "<C-j><C-r>", "<Cmd>Telescope frecency workspace=CWD<CR>", kopts)
                     map("n", "<C-j><C-r>", "<Cmd>Telescope oldfiles<CR>", kopts)
-                    map("n", "<C-j><C-f>", "<Cmd>Telescope frecency<CR>", kopts)
+                    map("n", "<C-j><C-e>", "<Cmd>Telescope live_grep<CR>", kopts)
                 end,
                 config = function() require("plugins.telescope") end,
             },
