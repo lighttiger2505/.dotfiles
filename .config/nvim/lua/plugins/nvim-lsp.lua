@@ -14,7 +14,7 @@ autocmd({ "DiagnosticChanged" }, {
 local nvim_lsp = require("lspconfig")
 require("lspsaga").setup({
     symbol_in_winbar = {
-        enable = false
+        enable = true
     },
     finder = {
         keys = {
