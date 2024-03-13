@@ -151,7 +151,9 @@ opt.fileencoding = "utf-8"
 g.encoding_set = 1
 
 -- add ignore grep pattern
-vim.opt.wildignore = vim.opt.wildignore + {
-  "'**/*_test.go'",
-  "node_modules",
-}
+opt.wildignore = opt.wildignore + "**/*_test.go"
+opt.wildignore = opt.wildignore + "node_modules"
+
+-- modify vim diff algorithm
+opt.diffopt = opt.diffopt + "algorithm:patience"
+opt.diffopt = opt.diffopt + "indent-heuristic"
