@@ -18,7 +18,7 @@ return {
 
     {
         "nvim-lualine/lualine.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        event = "VeryLazy",
         config = function() require("plugins.lualine") end,
     },
 
