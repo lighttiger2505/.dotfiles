@@ -82,7 +82,7 @@ return {
     -- Indent
     {
         "lukas-reineke/indent-blankline.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        event = "VeryLazy",
         config = function()
             local ibl = require("ibl")
             ibl.setup()
@@ -99,13 +99,14 @@ return {
     -- Git
     {
         "lewis6991/gitsigns.nvim",
+        event = "VeryLazy",
         config = function()
             require("gitsigns").setup()
             map("n", "]g", "<Cmd>Gitsigns next_hunk<CR>", kopts)
             map("n", "[g", "<Cmd>Gitsigns prev_hunk<CR>", kopts)
+            map("n", "<Leader>s", "<Cmd>Gitsigns stage_hunk<CR>", kopts)
         end,
         dependencies = { "nvim-lua/plenary.nvim" },
-        event = { "BufReadPre", "BufNewFile" },
     },
 
     -- Search
@@ -221,7 +222,7 @@ return {
     -- nvim-lsp
     {
         "neovim/nvim-lspconfig",
-        event = { "BufReadPost", "BufNewFile" },
+        event = "VeryLazy",
         dependencies = {
             {
                 "williamboman/mason.nvim",
@@ -436,6 +437,7 @@ return {
     -- Project management
     {
         "ahmedkhalf/project.nvim",
+        event = "VeryLazy",
         config = function()
             require("project_nvim").setup {
                 manual_mode = false,
@@ -446,7 +448,6 @@ return {
                 datapath = vim.fn.stdpath("data"),
             }
         end,
-        event = { "BufReadPost" },
     },
 
     -- Golang extensions
