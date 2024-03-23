@@ -371,7 +371,7 @@ return {
     -- Browser
     {
         "tyru/open-browser.vim",
-        event = { "BufReadPre", "BufNewFile" },
+        event = "VeryLazy",
         config = function()
             map("n", "<Leader>bb", "<Plug>(openbrowser-smart-search)", mapopts)
             map("x", "<Leader>bb", "<Plug>(openbrowser-smart-search)", mapopts)
@@ -395,10 +395,14 @@ return {
                 callback = function()
                     local bufnr = vim.api.nvim_get_current_buf()
                     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-                    vim.keymap.set("n", "<Leader><Enter>", "<Plug>Markdown_FollowLink", bufopts)
+                    vim.keymap.set("n", "]]", "<Plug>Markdown_MoveToNextHeader", bufopts)
+                    vim.keymap.set("n", "[[", "<Plug>Markdown_MoveToPreviousHeader", bufopts)
+                    vim.keymap.set("n", "<C-k>", "<Plug>Markdown_FollowLink", bufopts)
                     vim.keymap.set("n", "O", "<Plug>Markdown_NewLineAbove", bufopts)
                     vim.keymap.set("n", "o", "<Plug>Markdown_NewLineBelow", bufopts)
                     vim.keymap.set("i", "<Enter>", "<Plug>Markdown_NewLineBelow", bufopts)
+                    vim.keymap.set("i", "<C-k>", "<Plug>Markdown_CreateLink", bufopts)
+                    vim.keymap.set("x", "<C-k>", "<Plug>Markdown_CreateLink", bufopts)
                 end,
             })
         end,
@@ -407,12 +411,8 @@ return {
         end,
     },
     {
-        "dhruvasagar/vim-table-mode",
-        ft = { "markdown" },
-    },
-    {
-        "mzlogin/vim-markdown-toc",
-        ft = { "markdown" },
+        "mattn/vim-maketable",
+        cmd = { "MakeTable" },
     },
     {
         "folke/zen-mode.nvim",
