@@ -111,7 +111,21 @@ return {
     -- Search
     {
         "kevinhwang91/nvim-hlslens",
-        init = function() require("plugins.hlslens") end,
+        config = function()
+            require("hlslens").setup({
+                build_position_cb = function(plist, _, _, _)
+                    require("scrollbar.handlers.search").handler.show(plist.start_pos)
+                end,
+            })
+            local group_name = "ScrollbarSearchHide"
+            vim.api.nvim_create_augroup(group_name, { clear = true })
+            autocmd('CmdlineLeave', {
+                group = group_name,
+                callback = function()
+                    require('scrollbar.handlers.search').handler.hide()
+                end,
+            })
+        end,
         dependencies = {
             "haya14busa/vim-asterisk",
             init = function()
@@ -677,5 +691,19 @@ return {
 
 
         },
-    }
+    },
+
+    {
+        "petertriho/nvim-scrollbar",
+        event = "VeryLazy",
+        dependencies = {
+            "kevinhwang91/nvim-hlslens",
+            "lewis6991/gitsigns.nvim",
+        },
+        config = function()
+            require("scrollbar").setup()
+            require("scrollbar.handlers.search").setup()
+            require("scrollbar.handlers.gitsigns").setup()
+        end,
+    },
 }
