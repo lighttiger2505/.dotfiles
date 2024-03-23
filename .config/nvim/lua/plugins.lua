@@ -63,7 +63,12 @@ return {
                     "typescript.tsx",
                     "typescriptreact",
                 },
-                config = function() require("plugins.nvim-ts-context-commentstring") end,
+                config = function()
+                    vim.g.skip_ts_context_commentstring_module = true
+                    require('ts_context_commentstring').setup {
+                        enable_autocmd = false,
+                    }
+                end,
 
             },
             { "RRethy/nvim-treesitter-textsubjects" },
