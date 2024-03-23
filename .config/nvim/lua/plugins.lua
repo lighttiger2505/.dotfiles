@@ -614,26 +614,34 @@ return {
     {
         "gbprod/yanky.nvim",
         event = "VeryLazy",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+        },
         config = function()
             require("yanky").setup({
-                ring = {
-                    history_length = 100,
-                    storage = "shada",
-                    sync_with_numbered_registers = true,
-                    cancel_event = "update",
-                    ignore_registers = { "_" },
-                    update_register_on_cycle = false,
-                },
-                system_clipboard = {
-                    sync_with_ring = true,
-                },
                 highlight = {
                     on_put = true,
                     on_yank = true,
                     timer = 300,
                 },
             })
+            require("telescope").load_extension("yank_history")
+            map("n", "<Leader>p", "<Cmd>Telescope yank_history<CR>", kopts)
         end,
+        keys = {
+            {
+                "<Leader p>",
+                "<Cmd>Telescope yank_history<CR>",
+                mode = "n",
+                desc = "select yank history normal mode"
+            },
+            {
+                "<C-r>",
+                "<Cmd>Telescope yank_history<CR>",
+                mode = "i",
+                desc = "select yank history insert mode"
+            },
+        }
     },
 
     {
@@ -744,8 +752,6 @@ return {
                 mode = "n",
                 desc = "Watch the current file test",
             },
-
-
         },
     },
 
