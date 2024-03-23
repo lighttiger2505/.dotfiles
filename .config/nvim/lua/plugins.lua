@@ -420,6 +420,12 @@ return {
         cmd = { "ZenMode" },
         config = function() require("zen-mode").setup {} end
     },
+    {
+        "lukas-reineke/headlines.nvim",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        ft = { "markdown" },
+        config = true,
+    },
 
     -- Text object extension
     {
