@@ -6,7 +6,7 @@
 
 case "$1" in
     lock)
-        ~/.config/sway/scripts/swaylock.sh
+        swaylock
         ;;
     logout)
         swaymsg exit
