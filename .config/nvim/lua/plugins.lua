@@ -113,13 +113,15 @@ return {
         config = function()
             require("gitsigns").setup()
             local gs = package.loaded.gitsigns
-            map("n", "]g", gs.next_hunk, kopts)
-            map("n", "[g", gs.prev_hunk, kopts)
-            map('n', '<leader>hb', function() gs.blame_line { full = true } end, kopts)
-            map('n', '<leader>hs', gs.stage_hunk, kopts)
-            map('n', '<leader>hu', gs.undo_stage_hunk, kopts)
+            map("n", "]g", gs.next_hunk)
+            map("n", "[g", gs.prev_hunk)
+            map('n', '<leader>hb', function() gs.blame_line { full = true } end)
+            map('n', '<leader>hs', gs.stage_hunk)
+            map('n', '<leader>hu', gs.undo_stage_hunk)
+            map('n', '<leader>hr', gs.reset_hunk)
             map('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
             map('v', '<leader>hu', function() gs.undo_stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+            map('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
         end,
         dependencies = { "nvim-lua/plenary.nvim" },
     },
@@ -784,7 +786,7 @@ return {
         event = "VeryLazy",
         init = function()
             vim.o.timeout = true
-            vim.o.timeoutlen = 300
+            vim.o.timeoutlen = 500
         end,
         opts = {
             window = {
