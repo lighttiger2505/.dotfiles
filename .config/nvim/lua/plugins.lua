@@ -112,8 +112,14 @@ return {
         event = "VeryLazy",
         config = function()
             require("gitsigns").setup()
-            map("n", "]g", "<Cmd>Gitsigns next_hunk<CR>", kopts)
-            map("n", "[g", "<Cmd>Gitsigns prev_hunk<CR>", kopts)
+            local gs = package.loaded.gitsigns
+            map("n", "]g", gs.next_hunk, kopts)
+            map("n", "[g", gs.prev_hunk, kopts)
+            map('n', '<leader>hb', function() gs.blame_line { full = true } end, kopts)
+            map('n', '<leader>hs', gs.stage_hunk, kopts)
+            map('n', '<leader>hu', gs.undo_stage_hunk, kopts)
+            map('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+            map('v', '<leader>hu', function() gs.undo_stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
         end,
         dependencies = { "nvim-lua/plenary.nvim" },
     },
