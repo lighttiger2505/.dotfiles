@@ -543,7 +543,7 @@ return {
 
     {
         "gbprod/yanky.nvim",
-        event = "TextYankPost",
+        event = "VeryLazy",
         config = function()
             require("yanky").setup({
                 ring = {
@@ -564,10 +564,6 @@ return {
                 },
             })
         end,
-        keys = {
-            { "y", mode = "n" },
-            { "p", mode = "n" },
-        },
     },
 
     {
