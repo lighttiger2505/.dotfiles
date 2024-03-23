@@ -278,13 +278,24 @@ return {
         config       = function() require("fidget").setup() end,
     },
     {
-        "simrat39/symbols-outline.nvim",
-        cmd = { "SymbolsOutline" },
-        dependencies = { "neovim/nvim-lspconfig" },
-        init = function()
-            map("n", "<Leader>o", ":SymbolsOutline<CR>", kopts)
+        'stevearc/aerial.nvim',
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function()
+            require("aerial").setup({
+                backends = { "lsp", "treesitter", "markdown" },
+            })
+            require("telescope").load_extension("aerial")
         end,
-        config = function() require("plugins.symbols-outline") end,
+        keys = {
+            { "]]",         "<cmd>AerialNext<CR>",       mode = "n", desc = "jump prev symbol" },
+            { "[[",         "<cmd>AerialPrev<CR>",       mode = "n", desc = "jump next symbol" },
+            { "<Leader>o",  "<cmd>AerialToggle!<CR>",    mode = "n", desc = "open symbol list" },
+            { "<C-j><C-o>", "<Cmd>Telescope aerial<CR>", mode = "n", desc = "fuzzy search symbol list" },
+        },
     },
     {
         "stevearc/conform.nvim",
@@ -341,7 +352,6 @@ return {
                     map("n", "<C-j><C-s>", "<Cmd>Telescope git_status<CR>", kopts)
                     map("n", "<C-j><C-b>", "<Cmd>Telescope buffers<CR>", kopts)
                     map("n", "<C-j><C-]>", "<Cmd>Telescope lsp_workspace_symbols<CR>", kopts)
-                    map("n", "<C-j><C-o>", "<Cmd>Telescope lsp_document_symbols<CR>", kopts)
                     map("n", "<C-j><C-r>", "<Cmd>Telescope oldfiles<CR>", kopts)
                     map("n", "<C-j><C-e>", "<Cmd>Telescope live_grep<CR>", kopts)
                 end,
