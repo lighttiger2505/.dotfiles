@@ -332,7 +332,6 @@ return {
                         "nvim-telescope/telescope-fzf-native.nvim",
                         build = "make",
                     },
-                    -- { "nvim-telescope/telescope-frecency.nvim" },
                 },
                 cmd = "Telescope",
                 init = function()
