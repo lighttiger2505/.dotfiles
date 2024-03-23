@@ -626,7 +626,7 @@ return {
                 adapters = {
                     require("neotest-vitest"),
                     require("neotest-go"),
-                }
+                },
             })
         end,
         keys = {
@@ -647,12 +647,20 @@ return {
                 desc = "Run the current file",
             },
             {
+                "<Leader>sf",
+                function()
+                    require("neotest").summary.toggle()
+                end,
+                mode = "n",
+                desc = "Open test output to the floating window",
+            },
+            {
                 "<Leader>so",
                 function()
                     require("neotest").summary.toggle()
                 end,
                 mode = "n",
-                desc = "Open test output panel",
+                desc = "Open test summary panel",
             },
             {
                 "<Leader>sp",
