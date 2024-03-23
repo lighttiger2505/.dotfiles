@@ -1,5 +1,6 @@
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 local kopts = { noremap = true, silent = true }
 local mapopts = { noremap = false, silent = true }
 
@@ -19,6 +20,9 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
+        dependencies = {
+            "mfussenegger/nvim-lint",
+        },
         config = function() require("plugins.lualine") end,
     },
 
@@ -118,7 +122,7 @@ return {
                 end,
             })
             local group_name = "ScrollbarSearchHide"
-            vim.api.nvim_create_augroup(group_name, { clear = true })
+            augroup(group_name, { clear = true })
             autocmd('CmdlineLeave', {
                 group = group_name,
                 callback = function()
@@ -178,8 +182,11 @@ return {
                 go = { "golangcilint" },
                 json = { "jsonlint" },
             }
-            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+            autocmd({ "BufWritePost" }, {
                 callback = function()
+                    local ns = lint.get_namespace("my_linter_name")
+                    local bufnr = vim.api.nvim_get_current_buf()
+                    vim.diagnostic.reset(ns, bufnr)
                     require("lint").try_lint()
                 end,
             })
@@ -402,7 +409,7 @@ return {
         ft = { "markdown" },
         init = function()
             local group_name = "PluginNvimMarkdown"
-            vim.api.nvim_create_augroup(group_name, { clear = true })
+            augroup(group_name, { clear = true })
             autocmd('FileType', {
                 group = group_name,
                 pattern = { "markdown" },
