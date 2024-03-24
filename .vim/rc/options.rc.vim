@@ -78,7 +78,7 @@ set helpheight=12
 set showtabline=2
 
 " single status line
-set laststatus=3
+" set laststatus=3
 
 " Ignore case is search patterns
 set ignorecase

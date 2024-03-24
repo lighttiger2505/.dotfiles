@@ -1,28 +1,197 @@
-require('git').setup({
-  default_mappings = false, -- NOTE: `quit_blame` and `blame_commit` are still merged to the keymaps even if `default_mappings = false`
+local map = vim.keymap.set
+local kopts = { noremap = true, silent = true }
 
-  keymaps = {
-    -- Open blame window
-    blame = "<Leader>gb",
-    -- Close blame window
-    quit_blame = "q",
-    -- Open blame commit
-    blame_commit = "<CR>",
-    -- Open file/folder in git repository
-    browse = "<Leader>go",
-    -- Open pull request of the current branch
-    open_pull_request = "<Leader>gp",
-    -- Create a pull request with the target branch is set in the `target_branch` option
-    create_pull_request = "<Leader>gn",
-    -- Opens a new diff that compares against the current index
-    diff = "<Leader>gd",
-    -- Close git diff
-    diff_close = "<Leader>gD",
-    -- Revert to the specific commit
-    revert = "<Leader>gr",
-    -- Revert the current file to the specific commit
-    revert_file = "<Leader>gR",
-  },
-  -- Default target branch when create a pull request
-  target_branch = "master",
-})
+return {
+    {
+        "lewis6991/gitsigns.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("gitsigns").setup()
+            local gs = package.loaded.gitsigns
+            map("n", "]g", gs.next_hunk)
+            map("n", "[g", gs.prev_hunk)
+            map("n", "<leader>hb", function()
+                gs.blame_line({ full = true })
+            end)
+            map("n", "<leader>hs", gs.stage_hunk)
+            map("n", "<leader>hu", gs.undo_stage_hunk)
+            map("n", "<leader>hr", gs.reset_hunk)
+            map("v", "<leader>hs", function()
+                gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+            end)
+            map("v", "<leader>hu", function()
+                gs.undo_stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+            end)
+            map("v", "<leader>hr", function()
+                gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+            end)
+        end,
+        dependencies = { "nvim-lua/plenary.nvim" },
+    },
+
+    {
+        "sindrets/diffview.nvim",
+        cmd = { "DiffviewOpen" },
+        init = function()
+            map("n", "<Leader>d", ":DiffviewOpen<CR>", kopts)
+        end,
+        config = function()
+            local cb = require("diffview.config").diffview_callback
+            require("diffview").setup({
+                diff_binaries = false, -- Show diffs for binaries
+                enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
+                use_icons = true, -- Requires nvim-web-devicons
+                icons = { -- Only applies when use_icons is true.
+                    folder_closed = "",
+                    folder_open = "",
+                },
+                signs = {
+                    fold_closed = "",
+                    fold_open = "",
+                },
+                file_panel = {
+                    listing_style = "tree", -- One of 'list' or 'tree'
+                    tree_options = { -- Only applies when listing_style is 'tree'
+                        flatten_dirs = true, -- Flatten dirs that only contain one single dir
+                        folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
+                    },
+                },
+                default_args = { -- Default args prepended to the arg-list for the listed commands
+                    DiffviewOpen = {},
+                    DiffviewFileHistory = {},
+                },
+                hooks = {}, -- See ':h diffview-config-hooks'
+                key_bindings = {
+                    disable_defaults = false, -- Disable the default key bindings
+                    -- The `view` bindings are active in the diff buffers, only when the current
+                    -- tabpage is a Diffview.
+                    view = {
+                        ["<tab>"] = cb("select_next_entry"), -- Open the diff for the next file
+                        ["<s-tab>"] = cb("select_prev_entry"), -- Open the diff for the previous file
+                        ["gf"] = cb("goto_file"), -- Open the file in a new split in previous tabpage
+                        ["<C-w><C-f>"] = cb("goto_file_split"), -- Open the file in a new split
+                        ["<C-w>gf"] = cb("goto_file_tab"), -- Open the file in a new tabpage
+                        ["<leader>e"] = cb("focus_files"), -- Bring focus to the files panel
+                        ["<leader>b"] = cb("toggle_files"), -- Toggle the files panel.
+                    },
+                    file_panel = {
+                        ["j"] = cb("next_entry"), -- Bring the cursor to the next file entry
+                        ["<down>"] = cb("next_entry"),
+                        ["k"] = cb("prev_entry"), -- Bring the cursor to the previous file entry.
+                        ["<up>"] = cb("prev_entry"),
+                        ["<cr>"] = cb("select_entry"), -- Open the diff for the selected entry.
+                        ["o"] = cb("select_entry"),
+                        ["<2-LeftMouse>"] = cb("select_entry"),
+                        ["-"] = cb("toggle_stage_entry"), -- Stage / unstage the selected entry.
+                        ["S"] = cb("stage_all"), -- Stage all entries.
+                        ["U"] = cb("unstage_all"), -- Unstage all entries.
+                        ["X"] = cb("restore_entry"), -- Restore entry to the state on the left side.
+                        ["R"] = cb("refresh_files"), -- Update stats and entries in the file list.
+                        ["<tab>"] = cb("select_next_entry"),
+                        ["<s-tab>"] = cb("select_prev_entry"),
+                        ["gf"] = cb("goto_file"),
+                        ["<C-w><C-f>"] = cb("goto_file_split"),
+                        ["<C-w>gf"] = cb("goto_file_tab"),
+                        ["i"] = cb("listing_style"), -- Toggle between 'list' and 'tree' views
+                        ["f"] = cb("toggle_flatten_dirs"), -- Flatten empty subdirectories in tree listing style.
+                        ["<leader>e"] = cb("focus_files"),
+                        ["<leader>b"] = cb("toggle_files"),
+                    },
+                    file_history_panel = {
+                        ["g!"] = cb("options"), -- Open the option panel
+                        ["<C-A-d>"] = cb("open_in_diffview"), -- Open the entry under the cursor in a diffview
+                        ["y"] = cb("copy_hash"), -- Copy the commit hash of the entry under the cursor
+                        ["zR"] = cb("open_all_folds"),
+                        ["zM"] = cb("close_all_folds"),
+                        ["j"] = cb("next_entry"),
+                        ["<down>"] = cb("next_entry"),
+                        ["k"] = cb("prev_entry"),
+                        ["<up>"] = cb("prev_entry"),
+                        ["<cr>"] = cb("select_entry"),
+                        ["o"] = cb("select_entry"),
+                        ["<2-LeftMouse>"] = cb("select_entry"),
+                        ["<tab>"] = cb("select_next_entry"),
+                        ["<s-tab>"] = cb("select_prev_entry"),
+                        ["gf"] = cb("goto_file"),
+                        ["<C-w><C-f>"] = cb("goto_file_split"),
+                        ["<C-w>gf"] = cb("goto_file_tab"),
+                        ["<leader>e"] = cb("focus_files"),
+                        ["<leader>b"] = cb("toggle_files"),
+                    },
+                    option_panel = {
+                        ["<tab>"] = cb("select"),
+                        ["q"] = cb("close"),
+                    },
+                },
+            })
+
+            local kopts = { noremap = true, silent = true }
+            vim.api.nvim_set_keymap("n", "<Leader>d", ":DiffviewOpen<CR>", kopts)
+        end,
+    },
+
+    {
+        "akinsho/toggleterm.nvim",
+        config = function()
+            local toggleterm = require("toggleterm")
+
+            toggleterm.setup({
+                shade_terminals = true,
+            })
+
+            local Terminal = require("toggleterm.terminal").Terminal
+            local tig = Terminal:new({
+                cmd = "tig status",
+                dir = "git_dir",
+                direction = "float",
+                float_opts = {
+                    border = "double",
+                },
+                -- function to run on opening the terminal
+                on_open = function(term)
+                    vim.cmd("startinsert!")
+                    vim.api.nvim_buf_set_keymap(
+                        term.bufnr,
+                        "n",
+                        "q",
+                        "<cmd>close<CR>",
+                        { noremap = true, silent = true }
+                    )
+                end,
+                -- function to run on closing the terminal
+                on_close = function(term)
+                    vim.cmd("Closing terminal")
+                end,
+            })
+
+            function _tigToggle()
+                tig:toggle()
+            end
+
+            vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _tigToggle()<CR>", { noremap = true, silent = true })
+        end,
+        keys = { "<Leader>g" },
+    },
+
+    {
+        "ahmedkhalf/project.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("project_nvim").setup({
+                manual_mode = false,
+                detection_methods = { "lsp", "pattern" },
+                patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn" },
+                show_hidden = false,
+                silent_chdir = false,
+                datapath = vim.fn.stdpath("data"),
+            })
+        end,
+    },
+
+    {
+        "akinsho/git-conflict.nvim",
+        version = "*",
+        config = true,
+        event = "VeryLazy",
+    },
+}

@@ -53,3 +53,11 @@ autocmd('TermOpen', {
     l.number = false
   end,
 })
+
+-- Tarminal buffer guitter
+autocmd('TextYankPost', {
+  group = group_name,
+  callback = function()
+    vim.highlight.on_yank {higroup="IncSearch", timeout=200}
+  end,
+})

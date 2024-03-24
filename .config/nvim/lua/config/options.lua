@@ -9,22 +9,21 @@ g.loaded_ruby_provider = 0
 
 -- Disable some built-in plugins we don't want
 local disabled_built_ins = {
-  "gzip",
-  "man",
-  "matchit",
-  "matchparen",
-  "shada_plugin",
-  "tarPlugin",
-  "tar",
-  "zipPlugin",
-  "zip",
-  "netrwPlugin",
+    "gzip",
+    "man",
+    "matchit",
+    "matchparen",
+    "shada_plugin",
+    "tarPlugin",
+    "tar",
+    "zipPlugin",
+    "zip",
+    "netrwPlugin",
 }
 
 for i = 1, 10 do
-  g["loaded_" .. disabled_built_ins[i]] = 1
+    g["loaded_" .. disabled_built_ins[i]] = 1
 end
-
 
 -- Fix guitter size
 opt.signcolumn = "yes:1"
@@ -127,7 +126,7 @@ opt.pumblend = 10
 opt.hlsearch = true
 
 -- Sharing to clipborad of OS
-vim.cmd [[set clipboard+=unnamedplus]]
+vim.cmd([[set clipboard+=unnamedplus]])
 
 -- Disable fold
 opt.foldenable = false
@@ -143,7 +142,7 @@ opt.synmaxcol = 512
 g.omni_sql_no_default_maps = 1
 
 -- single status line
-opt.laststatus = 3
+-- opt.laststatus = 3
 
 opt.encoding = "utf-8"
 opt.fileencodings = "utf-8,sjis,iso-2022-jp,cp932,euc-jp"
