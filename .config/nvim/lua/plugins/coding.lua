@@ -1,3 +1,6 @@
+local map = vim.keymap.set
+local kopts = { noremap = true, silent = true }
+
 return {
     {
         "numToStr/Comment.nvim",
@@ -116,5 +119,43 @@ return {
     {
         "mattn/vim-sqlfmt",
         ft = { "sql" },
+    },
+
+    {
+        "CRAG666/code_runner.nvim",
+        cmd = {
+            "RunCode",
+            "RunFile",
+            "RunProject",
+            "RunClose",
+            "CRFiletype",
+            "CRProjects",
+        },
+        init = function()
+            map("n", "<leader>r", ":RunCode<CR>", kopts)
+            map("n", "<leader>rf", ":RunFile<CR>", kopts)
+            map("n", "<leader>rft", ":RunFile tab<CR>", kopts)
+            map("n", "<leader>rp", ":RunProject<CR>", kopts)
+            map("n", "<leader>rc", ":RunClose<CR>", kopts)
+            map("n", "<leader>crf", ":CRFiletype<CR>", kopts)
+            map("n", "<leader>crp", ":CRProjects<CR>", kopts)
+        end,
+        config = function()
+            require("code_runner").setup({
+                filetype = {
+                    python = "python3 -u",
+                    typescript = "deno run",
+                    rust = {
+                        "cd $dir &&",
+                        "rustc $fileName &&",
+                        "$dir/$fileNameWithoutExt",
+                    },
+                    go = {
+                        "cd $dir &&",
+                        "go run $fileName &&",
+                    },
+                },
+            })
+        end,
     },
 }
