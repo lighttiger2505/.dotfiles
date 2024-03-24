@@ -101,4 +101,9 @@ return {
             { "gc", mode = "v" },
         },
     },
+
+    {
+        "mattn/sonictemplate-vim",
+        cmd = { "Template" },
+    },
 }
