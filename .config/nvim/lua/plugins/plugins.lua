@@ -1,22 +1,8 @@
 local map = vim.keymap.set
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
 local kopts = { noremap = true, silent = true }
 local mapopts = { noremap = false, silent = true }
 
 return {
-    -- Translate sneak and camel
-    {
-        "nicwest/vim-camelsnek",
-        cmd = {
-            "Snek",
-            "Camel",
-            "CamelB",
-            "Kebab",
-            "Screm",
-        },
-    },
-
     -- Browser
     {
         "tyru/open-browser.vim",
@@ -30,52 +16,6 @@ return {
         dependencies = { "tyru/open-browser-github.vim" },
     },
 
-    -- Markdown edit
-    {
-        "ixru/nvim-markdown",
-        ft = { "markdown" },
-        init = function()
-            local group_name = "PluginNvimMarkdown"
-            augroup(group_name, { clear = true })
-            autocmd("FileType", {
-                group = group_name,
-                pattern = { "markdown" },
-                callback = function()
-                    local bufnr = vim.api.nvim_get_current_buf()
-                    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-                    vim.keymap.set("n", "]]", "<Plug>Markdown_MoveToNextHeader", bufopts)
-                    vim.keymap.set("n", "[[", "<Plug>Markdown_MoveToPreviousHeader", bufopts)
-                    vim.keymap.set("n", "<C-k>", "<Plug>Markdown_FollowLink", bufopts)
-                    vim.keymap.set("n", "O", "<Plug>Markdown_NewLineAbove", bufopts)
-                    vim.keymap.set("n", "o", "<Plug>Markdown_NewLineBelow", bufopts)
-                    vim.keymap.set("i", "<Enter>", "<Plug>Markdown_NewLineBelow", bufopts)
-                    vim.keymap.set("i", "<C-k>", "<Plug>Markdown_CreateLink", bufopts)
-                    vim.keymap.set("x", "<C-k>", "<Plug>Markdown_CreateLink", bufopts)
-                end,
-            })
-        end,
-        config = function()
-            vim.g.vim_markdown_no_default_key_mappings = 1
-        end,
-    },
-    {
-        "mattn/vim-maketable",
-        cmd = { "MakeTable" },
-    },
-    {
-        "folke/zen-mode.nvim",
-        cmd = { "ZenMode" },
-        config = function()
-            require("zen-mode").setup({})
-        end,
-    },
-    {
-        "lukas-reineke/headlines.nvim",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        ft = { "markdown" },
-        config = true,
-    },
-
     -- Text object extension
     {
         "machakann/vim-sandwich",
@@ -87,22 +27,6 @@ return {
             { "s", mode = "n" },
             { "s", mode = "x" },
         },
-    },
-
-    -- Project management
-    {
-        "ahmedkhalf/project.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("project_nvim").setup({
-                manual_mode = false,
-                detection_methods = { "lsp", "pattern" },
-                patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn" },
-                show_hidden = false,
-                silent_chdir = false,
-                datapath = vim.fn.stdpath("data"),
-            })
-        end,
     },
 
     -- Golang extensions

@@ -158,4 +158,15 @@ return {
             })
         end,
     },
+
+    {
+        "nicwest/vim-camelsnek",
+        cmd = {
+            "Snek",
+            "Camel",
+            "CamelB",
+            "Kebab",
+            "Screm",
+        },
+    },
 }
