@@ -288,10 +288,15 @@ return {
         config = function()
             local colors = require("tokyonight.colors").setup()
             require("scrollbar").setup({
+                show_in_active_only = true,
                 handle = {
-                    color = colors.bg_highlight,
+                    color = "#928374",
                 },
                 marks = {
+                    Cursor = {
+                        text = "●",
+                        color = colors.blue,
+                    },
                     Search = { color = colors.orange },
                     Error = { color = colors.error },
                     Warn = { color = colors.warning },
