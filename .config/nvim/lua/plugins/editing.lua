@@ -75,4 +75,57 @@ return {
             },
         },
     },
+
+    {
+        "keaising/im-select.nvim",
+        lazy = false,
+        config = function()
+            if vim.fn.has("macunix") == 1 then
+                require("im_select").setup({
+                    default_im_select = "com.apple.keylayout.US",
+                    default_command = "im-select",
+                    async_switch_im = false,
+                })
+            else
+                require("im_select").setup({
+                    default_im_select = "keyboard-us",
+                    default_command = "fcitx5-remote",
+                    async_switch_im = false,
+                })
+            end
+        end,
+    },
+
+    {
+        "gbprod/yanky.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function()
+            require("yanky").setup({
+                highlight = {
+                    on_put = true,
+                    on_yank = true,
+                    timer = 300,
+                },
+            })
+            require("telescope").load_extension("yank_history")
+            map("n", "<Leader>p", "<Cmd>Telescope yank_history<CR>", kopts)
+        end,
+        keys = {
+            {
+                "<Leader p>",
+                "<Cmd>Telescope yank_history<CR>",
+                mode = "n",
+                desc = "select yank history normal mode",
+            },
+            {
+                "<C-r>",
+                "<Cmd>Telescope yank_history<CR>",
+                mode = "i",
+                desc = "select yank history insert mode",
+            },
+        },
+    },
 }
