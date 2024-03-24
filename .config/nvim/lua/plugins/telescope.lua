@@ -15,13 +15,13 @@ return {
                     },
                 },
                 cmd = "Telescope",
-                init = function()
-                    map("n", "<Leader>fp", "<Cmd>Telescope git_files<CR>", kopts)
-                    map("n", "<Leader>fs", "<Cmd>Telescope git_status<CR>", kopts)
-                    map("n", "<Leader>fb", "<Cmd>Telescope buffers<CR>", kopts)
-                    map("n", "<Leader>fr", "<Cmd>Telescope oldfiles<CR>", kopts)
-                    map("n", "<Leader>fe", "<Cmd>Telescope live_grep<CR>", kopts)
-                end,
+                keys = {
+                    { "<Space>p", "<Cmd>Telescope git_files<CR>", mode = "n", desc = "find git files" },
+                    { "<Space>s", "<Cmd>Telescope git_status<CR>", mode = "n", desc = "find git status files" },
+                    { "<Space>b", "<Cmd>Telescope buffers<CR>", mode = "n", desc = "find buffer" },
+                    { "<Space>r", "<Cmd>Telescope oldfiles<CR>", mode = "n", desc = "find old files" },
+                    { "<Space>e", "<Cmd>Telescope live_grep<CR>", mode = "n", desc = "find live grep" },
+                },
                 config = function()
                     local telescope = require("telescope")
                     telescope.setup({
