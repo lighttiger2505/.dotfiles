@@ -166,6 +166,7 @@ return {
                     "prompt",
                     "TelescopePrompt",
                     "neo-tree",
+                    "gitcommit",
                 },
                 show_in_active_only = true,
                 handle = {
