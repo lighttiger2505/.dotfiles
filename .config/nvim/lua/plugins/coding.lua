@@ -106,4 +106,15 @@ return {
         "mattn/sonictemplate-vim",
         cmd = { "Template" },
     },
+
+    {
+        "nanotee/sqls.nvim",
+        ft = { "sql" },
+        dependencies = { "nvim-lua/plenary.nvim" },
+    },
+
+    {
+        "mattn/vim-sqlfmt",
+        ft = { "sql" },
+    },
 }
