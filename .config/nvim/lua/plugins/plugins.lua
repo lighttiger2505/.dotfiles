@@ -5,19 +5,6 @@ local kopts = { noremap = true, silent = true }
 local mapopts = { noremap = false, silent = true }
 
 return {
-    -- colorschema
-    {
-        "EdenEast/nightfox.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            vim.cmd([[colorscheme nightfox]])
-            vim.cmd([[highlight WinSeparator guifg=#928374]])
-        end,
-    },
-    { "folke/tokyonight.nvim",    lazy = true, priority = 1000, },
-    { "ellisonleao/gruvbox.nvim", lazy = true, priority = 1000, config = true },
-
     {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
@@ -33,7 +20,7 @@ return {
                 return "󱉶 " .. table.concat(linters, ", ")
             end
 
-            require("lualine").setup {
+            require("lualine").setup({
                 options = {
                     icons_enabled = true,
                     theme = "nightfox",
@@ -49,7 +36,7 @@ return {
                     lualine_c = { "diff", lint_progress, "diagnostics" },
                     lualine_x = { "encoding", "fileformat", "filetype" },
                     lualine_y = { "progress" },
-                    lualine_z = { "location" }
+                    lualine_z = { "location" },
                 },
                 inactive_sections = {
                     lualine_a = {},
@@ -57,11 +44,11 @@ return {
                     lualine_c = { "filename" },
                     lualine_x = { "location" },
                     lualine_y = {},
-                    lualine_z = {}
+                    lualine_z = {},
                 },
                 tabline = {},
                 extensions = {},
-            }
+            })
         end,
     },
 
@@ -111,17 +98,17 @@ return {
                     git_status = {
                         symbols = {
                             -- Change type
-                            added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                            modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-                            deleted   = "✖", -- this can only be used in the git_status source
-                            renamed   = "", -- this can only be used in the git_status source
+                            added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+                            modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+                            deleted = "✖", -- this can only be used in the git_status source
+                            renamed = "", -- this can only be used in the git_status source
                             -- Status type
                             untracked = "",
-                            ignored   = "",
-                            unstaged  = "",
-                            staged    = "",
-                            conflict  = "",
-                        }
+                            ignored = "",
+                            unstaged = "",
+                            staged = "",
+                            conflict = "",
+                        },
                     },
                 },
                 window = {
@@ -154,7 +141,7 @@ return {
                         ["m"] = "move", -- takes text input for destination
                         ["q"] = "close_window",
                         ["R"] = "refresh",
-                    }
+                    },
                 },
                 nesting_rules = {},
                 filesystem = {
@@ -164,7 +151,7 @@ return {
                         hide_gitignored = true,
                         hide_by_name = {
                             ".DS_Store",
-                            "node_modules"
+                            "node_modules",
                         },
                         hide_by_pattern = { -- uses glob style patterns
                             --"*.meta"
@@ -175,7 +162,7 @@ return {
                         },
                     },
                     follow_current_file = {
-                        enabled = true
+                        enabled = true,
                     },
                     -- time the current file is changed while the tree is open.
                     hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
@@ -193,8 +180,8 @@ return {
                             ["/"] = "fuzzy_finder",
                             ["f"] = "filter_on_submit",
                             ["<c-x>"] = "clear_filter",
-                        }
-                    }
+                        },
+                    },
                 },
                 buffers = {
                     show_unloaded = true,
@@ -203,23 +190,23 @@ return {
                             ["bd"] = "buffer_delete",
                             ["<bs>"] = "navigate_up",
                             ["."] = "set_root",
-                        }
+                        },
                     },
                 },
                 git_status = {
                     window = {
                         position = "float",
                         mappings = {
-                            ["A"]  = "git_add_all",
+                            ["A"] = "git_add_all",
                             ["gu"] = "git_unstage_file",
                             ["ga"] = "git_add_file",
                             ["gr"] = "git_revert_file",
                             ["gc"] = "git_commit",
                             ["gp"] = "git_push",
                             ["gg"] = "git_commit_and_push",
-                        }
-                    }
-                }
+                        },
+                    },
+                },
             })
         end,
         dependencies = {
@@ -233,7 +220,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         config = function()
-            require "nvim-treesitter.configs".setup {
+            require("nvim-treesitter.configs").setup({
                 ensure_installed = {
                     "bash",
                     "css",
@@ -281,7 +268,7 @@ return {
                     include_match_words = true,
                     enable_quotes = true,
                 },
-            }
+            })
         end,
         build = ":TSUpdate",
         event = "VeryLazy",
@@ -289,7 +276,7 @@ return {
             {
                 "nvim-treesitter/nvim-treesitter-textobjects",
                 config = function()
-                    require "nvim-treesitter.configs".setup {
+                    require("nvim-treesitter.configs").setup({
                         textobjects = {
                             swap = {
                                 enable = true,
@@ -329,10 +316,10 @@ return {
                                 },
                                 goto_previous = {
                                     ["[c"] = "@conditional.outer",
-                                }
+                                },
                             },
                         },
-                    }
+                    })
                 end,
             },
             {
@@ -344,11 +331,10 @@ return {
                 },
                 config = function()
                     vim.g.skip_ts_context_commentstring_module = true
-                    require('ts_context_commentstring').setup {
+                    require("ts_context_commentstring").setup({
                         enable_autocmd = false,
-                    }
+                    })
                 end,
-
             },
             { "RRethy/nvim-treesitter-textsubjects" },
             { "RRethy/nvim-treesitter-endwise" },
@@ -359,7 +345,7 @@ return {
     {
         "numToStr/Comment.nvim",
         config = function()
-            require('Comment').setup {
+            require("Comment").setup({
                 ---Add a space b/w comment and the line
                 ---@type boolean|fun():boolean
                 padding = true,
@@ -379,29 +365,29 @@ return {
                 ---@type table
                 toggler = {
                     ---Line-comment toggle keymap
-                    line = 'gcc',
+                    line = "gcc",
                     ---Block-comment toggle keymap
-                    block = 'gbc',
+                    block = "gbc",
                 },
 
                 ---LHS of operator-pending mappings in NORMAL + VISUAL mode
                 ---@type table
                 opleader = {
                     ---Line-comment keymap
-                    line = 'gc',
+                    line = "gc",
                     ---Block-comment keymap
-                    block = 'gb',
+                    block = "gb",
                 },
 
                 ---LHS of extra mappings
                 ---@type table
                 extra = {
                     ---Add comment on the line above
-                    above = 'gcO',
+                    above = "gcO",
                     ---Add comment on the line below
-                    below = 'gco',
+                    below = "gco",
                     ---Add comment at the end of line
-                    eol = 'gcA',
+                    eol = "gcA",
                 },
 
                 ---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
@@ -424,21 +410,21 @@ return {
                 ---@type fun(ctx: CommentCtx):string
                 pre_hook = function(ctx)
                     -- Only calculate commentstring for tsx filetypes
-                    if vim.bo.filetype == 'typescriptreact' then
-                        local U = require('Comment.utils')
+                    if vim.bo.filetype == "typescriptreact" then
+                        local U = require("Comment.utils")
 
                         -- Determine whether to use linewise or blockwise commentstring
-                        local type = ctx.ctype == U.ctype.line and '__default' or '__multiline'
+                        local type = ctx.ctype == U.ctype.line and "__default" or "__multiline"
 
                         -- Determine the location where to calculate commentstring from
                         local location = nil
                         if ctx.ctype == U.ctype.block then
-                            location = require('ts_context_commentstring.utils').get_cursor_location()
+                            location = require("ts_context_commentstring.utils").get_cursor_location()
                         elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
-                            location = require('ts_context_commentstring.utils').get_visual_start_location()
+                            location = require("ts_context_commentstring.utils").get_visual_start_location()
                         end
 
-                        return require('ts_context_commentstring.internal').calculate_commentstring({
+                        return require("ts_context_commentstring.internal").calculate_commentstring({
                             key = type,
                             location = location,
                         })
@@ -448,7 +434,7 @@ return {
                 ---Post-hook, called after commenting is done
                 ---@type fun(ctx: CommentCtx)
                 post_hook = nil,
-            }
+            })
         end,
         dependencies = {
             { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -466,11 +452,11 @@ return {
         config = function()
             local ibl = require("ibl")
             ibl.setup()
-            ibl.overwrite {
+            ibl.overwrite({
                 exclude = {
                     filetypes = { "go" },
-                }
-            }
+                },
+            })
         end,
         main = "ibl",
         opts = {},
@@ -485,13 +471,21 @@ return {
             local gs = package.loaded.gitsigns
             map("n", "]g", gs.next_hunk)
             map("n", "[g", gs.prev_hunk)
-            map('n', '<leader>hb', function() gs.blame_line { full = true } end)
-            map('n', '<leader>hs', gs.stage_hunk)
-            map('n', '<leader>hu', gs.undo_stage_hunk)
-            map('n', '<leader>hr', gs.reset_hunk)
-            map('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-            map('v', '<leader>hu', function() gs.undo_stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-            map('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+            map("n", "<leader>hb", function()
+                gs.blame_line({ full = true })
+            end)
+            map("n", "<leader>hs", gs.stage_hunk)
+            map("n", "<leader>hu", gs.undo_stage_hunk)
+            map("n", "<leader>hr", gs.reset_hunk)
+            map("v", "<leader>hs", function()
+                gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+            end)
+            map("v", "<leader>hu", function()
+                gs.undo_stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+            end)
+            map("v", "<leader>hr", function()
+                gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+            end)
         end,
         dependencies = { "nvim-lua/plenary.nvim" },
     },
@@ -507,20 +501,20 @@ return {
             })
             local group_name = "ScrollbarSearchHide"
             augroup(group_name, { clear = true })
-            autocmd('CmdlineLeave', {
+            autocmd("CmdlineLeave", {
                 group = group_name,
                 callback = function()
-                    require('scrollbar.handlers.search').handler.hide()
+                    require("scrollbar.handlers.search").handler.hide()
                 end,
             })
         end,
         dependencies = {
             "haya14busa/vim-asterisk",
             init = function()
-                vim.cmd [[map *  <Plug>(asterisk-z*)]]
-                vim.cmd [[map #  <Plug>(asterisk-z#)]]
-                vim.cmd [[map g* <Plug>(asterisk-gz*)]]
-                vim.cmd [[map g# <Plug>(asterisk-gz#)]]
+                vim.cmd([[map *  <Plug>(asterisk-z*)]])
+                vim.cmd([[map #  <Plug>(asterisk-z#)]])
+                vim.cmd([[map g* <Plug>(asterisk-gz*)]])
+                vim.cmd([[map g# <Plug>(asterisk-gz#)]])
             end,
         },
         keys = {
@@ -539,12 +533,12 @@ return {
             map("n", "<Leader>d", ":DiffviewOpen<CR>", kopts)
         end,
         config = function()
-            local cb = require 'diffview.config'.diffview_callback
-            require('diffview').setup {
-                diff_binaries = false,    -- Show diffs for binaries
+            local cb = require("diffview.config").diffview_callback
+            require("diffview").setup({
+                diff_binaries = false, -- Show diffs for binaries
                 enhanced_diff_hl = false, -- See ':h diffview-config-enhanced_diff_hl'
-                use_icons = true,         -- Requires nvim-web-devicons
-                icons = {                 -- Only applies when use_icons is true.
+                use_icons = true, -- Requires nvim-web-devicons
+                icons = { -- Only applies when use_icons is true.
                     folder_closed = "",
                     folder_open = "",
                 },
@@ -553,9 +547,9 @@ return {
                     fold_open = "",
                 },
                 file_panel = {
-                    listing_style = "tree",              -- One of 'list' or 'tree'
-                    tree_options = {                     -- Only applies when listing_style is 'tree'
-                        flatten_dirs = true,             -- Flatten dirs that only contain one single dir
+                    listing_style = "tree", -- One of 'list' or 'tree'
+                    tree_options = { -- Only applies when listing_style is 'tree'
+                        flatten_dirs = true, -- Flatten dirs that only contain one single dir
                         folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
                     },
                 },
@@ -563,73 +557,73 @@ return {
                     DiffviewOpen = {},
                     DiffviewFileHistory = {},
                 },
-                hooks = {},                   -- See ':h diffview-config-hooks'
+                hooks = {}, -- See ':h diffview-config-hooks'
                 key_bindings = {
                     disable_defaults = false, -- Disable the default key bindings
                     -- The `view` bindings are active in the diff buffers, only when the current
                     -- tabpage is a Diffview.
                     view = {
-                        ["<tab>"]      = cb("select_next_entry"), -- Open the diff for the next file
-                        ["<s-tab>"]    = cb("select_prev_entry"), -- Open the diff for the previous file
-                        ["gf"]         = cb("goto_file"),         -- Open the file in a new split in previous tabpage
-                        ["<C-w><C-f>"] = cb("goto_file_split"),   -- Open the file in a new split
-                        ["<C-w>gf"]    = cb("goto_file_tab"),     -- Open the file in a new tabpage
-                        ["<leader>e"]  = cb("focus_files"),       -- Bring focus to the files panel
-                        ["<leader>b"]  = cb("toggle_files"),      -- Toggle the files panel.
+                        ["<tab>"] = cb("select_next_entry"), -- Open the diff for the next file
+                        ["<s-tab>"] = cb("select_prev_entry"), -- Open the diff for the previous file
+                        ["gf"] = cb("goto_file"), -- Open the file in a new split in previous tabpage
+                        ["<C-w><C-f>"] = cb("goto_file_split"), -- Open the file in a new split
+                        ["<C-w>gf"] = cb("goto_file_tab"), -- Open the file in a new tabpage
+                        ["<leader>e"] = cb("focus_files"), -- Bring focus to the files panel
+                        ["<leader>b"] = cb("toggle_files"), -- Toggle the files panel.
                     },
                     file_panel = {
-                        ["j"]             = cb("next_entry"),   -- Bring the cursor to the next file entry
-                        ["<down>"]        = cb("next_entry"),
-                        ["k"]             = cb("prev_entry"),   -- Bring the cursor to the previous file entry.
-                        ["<up>"]          = cb("prev_entry"),
-                        ["<cr>"]          = cb("select_entry"), -- Open the diff for the selected entry.
-                        ["o"]             = cb("select_entry"),
+                        ["j"] = cb("next_entry"), -- Bring the cursor to the next file entry
+                        ["<down>"] = cb("next_entry"),
+                        ["k"] = cb("prev_entry"), -- Bring the cursor to the previous file entry.
+                        ["<up>"] = cb("prev_entry"),
+                        ["<cr>"] = cb("select_entry"), -- Open the diff for the selected entry.
+                        ["o"] = cb("select_entry"),
                         ["<2-LeftMouse>"] = cb("select_entry"),
-                        ["-"]             = cb("toggle_stage_entry"), -- Stage / unstage the selected entry.
-                        ["S"]             = cb("stage_all"),          -- Stage all entries.
-                        ["U"]             = cb("unstage_all"),        -- Unstage all entries.
-                        ["X"]             = cb("restore_entry"),      -- Restore entry to the state on the left side.
-                        ["R"]             = cb("refresh_files"),      -- Update stats and entries in the file list.
-                        ["<tab>"]         = cb("select_next_entry"),
-                        ["<s-tab>"]       = cb("select_prev_entry"),
-                        ["gf"]            = cb("goto_file"),
-                        ["<C-w><C-f>"]    = cb("goto_file_split"),
-                        ["<C-w>gf"]       = cb("goto_file_tab"),
-                        ["i"]             = cb("listing_style"),       -- Toggle between 'list' and 'tree' views
-                        ["f"]             = cb("toggle_flatten_dirs"), -- Flatten empty subdirectories in tree listing style.
-                        ["<leader>e"]     = cb("focus_files"),
-                        ["<leader>b"]     = cb("toggle_files"),
+                        ["-"] = cb("toggle_stage_entry"), -- Stage / unstage the selected entry.
+                        ["S"] = cb("stage_all"), -- Stage all entries.
+                        ["U"] = cb("unstage_all"), -- Unstage all entries.
+                        ["X"] = cb("restore_entry"), -- Restore entry to the state on the left side.
+                        ["R"] = cb("refresh_files"), -- Update stats and entries in the file list.
+                        ["<tab>"] = cb("select_next_entry"),
+                        ["<s-tab>"] = cb("select_prev_entry"),
+                        ["gf"] = cb("goto_file"),
+                        ["<C-w><C-f>"] = cb("goto_file_split"),
+                        ["<C-w>gf"] = cb("goto_file_tab"),
+                        ["i"] = cb("listing_style"), -- Toggle between 'list' and 'tree' views
+                        ["f"] = cb("toggle_flatten_dirs"), -- Flatten empty subdirectories in tree listing style.
+                        ["<leader>e"] = cb("focus_files"),
+                        ["<leader>b"] = cb("toggle_files"),
                     },
                     file_history_panel = {
-                        ["g!"]            = cb("options"),          -- Open the option panel
-                        ["<C-A-d>"]       = cb("open_in_diffview"), -- Open the entry under the cursor in a diffview
-                        ["y"]             = cb("copy_hash"),        -- Copy the commit hash of the entry under the cursor
-                        ["zR"]            = cb("open_all_folds"),
-                        ["zM"]            = cb("close_all_folds"),
-                        ["j"]             = cb("next_entry"),
-                        ["<down>"]        = cb("next_entry"),
-                        ["k"]             = cb("prev_entry"),
-                        ["<up>"]          = cb("prev_entry"),
-                        ["<cr>"]          = cb("select_entry"),
-                        ["o"]             = cb("select_entry"),
+                        ["g!"] = cb("options"), -- Open the option panel
+                        ["<C-A-d>"] = cb("open_in_diffview"), -- Open the entry under the cursor in a diffview
+                        ["y"] = cb("copy_hash"), -- Copy the commit hash of the entry under the cursor
+                        ["zR"] = cb("open_all_folds"),
+                        ["zM"] = cb("close_all_folds"),
+                        ["j"] = cb("next_entry"),
+                        ["<down>"] = cb("next_entry"),
+                        ["k"] = cb("prev_entry"),
+                        ["<up>"] = cb("prev_entry"),
+                        ["<cr>"] = cb("select_entry"),
+                        ["o"] = cb("select_entry"),
                         ["<2-LeftMouse>"] = cb("select_entry"),
-                        ["<tab>"]         = cb("select_next_entry"),
-                        ["<s-tab>"]       = cb("select_prev_entry"),
-                        ["gf"]            = cb("goto_file"),
-                        ["<C-w><C-f>"]    = cb("goto_file_split"),
-                        ["<C-w>gf"]       = cb("goto_file_tab"),
-                        ["<leader>e"]     = cb("focus_files"),
-                        ["<leader>b"]     = cb("toggle_files"),
+                        ["<tab>"] = cb("select_next_entry"),
+                        ["<s-tab>"] = cb("select_prev_entry"),
+                        ["gf"] = cb("goto_file"),
+                        ["<C-w><C-f>"] = cb("goto_file_split"),
+                        ["<C-w>gf"] = cb("goto_file_tab"),
+                        ["<leader>e"] = cb("focus_files"),
+                        ["<leader>b"] = cb("toggle_files"),
                     },
                     option_panel = {
                         ["<tab>"] = cb("select"),
-                        ["q"]     = cb("close"),
+                        ["q"] = cb("close"),
                     },
                 },
-            }
+            })
 
             local kopts = { noremap = true, silent = true }
-            vim.api.nvim_set_keymap('n', '<Leader>d', ':DiffviewOpen<CR>', kopts)
+            vim.api.nvim_set_keymap("n", "<Leader>d", ":DiffviewOpen<CR>", kopts)
         end,
     },
 
@@ -675,12 +669,12 @@ return {
         config = function()
             local toggleterm = require("toggleterm")
 
-            toggleterm.setup {
+            toggleterm.setup({
                 shade_terminals = true,
-            }
+            })
 
-            local Terminal = require('toggleterm.terminal').Terminal
-            local tig      = Terminal:new({
+            local Terminal = require("toggleterm.terminal").Terminal
+            local tig = Terminal:new({
                 cmd = "tig status",
                 dir = "git_dir",
                 direction = "float",
@@ -690,7 +684,13 @@ return {
                 -- function to run on opening the terminal
                 on_open = function(term)
                     vim.cmd("startinsert!")
-                    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+                    vim.api.nvim_buf_set_keymap(
+                        term.bufnr,
+                        "n",
+                        "q",
+                        "<cmd>close<CR>",
+                        { noremap = true, silent = true }
+                    )
                 end,
                 -- function to run on closing the terminal
                 on_close = function(term)
@@ -759,12 +759,14 @@ return {
                     })
 
                     vim.cmd(
-                        [[imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>']])
+                        [[imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>']]
+                    )
                     vim.cmd(
-                        [[smap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>']])
+                        [[smap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>']]
+                    )
                 end,
                 dependencies = {
-                    "rafamadriz/friendly-snippets"
+                    "rafamadriz/friendly-snippets",
                 },
             },
             { "zbirenbaum/copilot-cmp" },
@@ -823,7 +825,7 @@ return {
                     ["<CR>"] = cmp.mapping.confirm({
                         behavior = cmp.ConfirmBehavior.Replace,
                         select = true,
-                    })
+                    }),
                 },
                 sources = cmp.config.sources({
                     { name = "luasnip" },
@@ -840,13 +842,13 @@ return {
                         ellipsis_char = "...",
                         before = function(_, vim_item)
                             return vim_item
-                        end
-                    })
+                        end,
+                    }),
                 },
                 snippet = {
                     expand = function(args)
-                        require "luasnip".lsp_expand(args.body)
-                    end
+                        require("luasnip").lsp_expand(args.body)
+                    end,
                 },
             })
 
@@ -856,10 +858,10 @@ return {
                 },
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
-                    { name = "nvim_lsp_document_symbol" }
+                    { name = "nvim_lsp_document_symbol" },
                 }, {
-                    { name = "buffer" }
-                })
+                    { name = "buffer" },
+                }),
             })
             cmp.setup.cmdline(":", {
                 completion = {
@@ -867,15 +869,15 @@ return {
                 },
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
-                    { name = "path" }
+                    { name = "path" },
                 }, {
                     {
                         name = "cmdline",
                         option = {
-                            ignore_cmds = { "Man", "!" }
-                        }
-                    }
-                })
+                            ignore_cmds = { "Man", "!" },
+                        },
+                    },
+                }),
             })
 
             -- Set configuration for specific filetype.
@@ -884,12 +886,12 @@ return {
                     { name = "spell" },
                 }, {
                     { name = "buffer" },
-                })
+                }),
             })
             cmp.setup.filetype("markdown", {
                 sources = cmp.config.sources({
                     { name = "buffer" },
-                })
+                }),
             })
         end,
     },
@@ -926,19 +928,19 @@ return {
             local nvim_lsp = require("lspconfig")
             require("lspsaga").setup({
                 symbol_in_winbar = {
-                    enable = true
+                    enable = true,
                 },
                 finder = {
                     keys = {
-                        shuttle = '[w',
-                        toggle_or_open = '<CR>',
-                        vsplit = 'v',
-                        split = 's',
-                        tabe = 't',
-                        tabnew = 'r',
-                        quit = 'q',
-                        close = '<C-c>k',
-                    }
+                        shuttle = "[w",
+                        toggle_or_open = "<CR>",
+                        vsplit = "v",
+                        split = "s",
+                        tabe = "t",
+                        tabnew = "r",
+                        quit = "q",
+                        close = "<C-c>k",
+                    },
                 },
             })
 
@@ -955,7 +957,7 @@ return {
                 vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
                 vim.keymap.set("n", "<C-l>", vim.lsp.buf.signature_help, bufopts)
                 vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
-                vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
                 vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
                 vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, bufopts)
                 -- lsp saga
@@ -967,8 +969,8 @@ return {
                 vim.keymap.set("n", "<LocalLeader>i", "<cmd>Lspsaga finder imp<CR>", bufopts)
             end
 
-            vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-                vim.lsp.diagnostic.on_publish_diagnostics, {
+            vim.lsp.handlers["textDocument/publishDiagnostics"] =
+                vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
                     -- Enable underline, use default values
                     underline = true,
                     -- Enable virtual text, override spacing to 4
@@ -982,8 +984,7 @@ return {
                     end,
                     -- Disable a feature
                     update_in_insert = false,
-                }
-            )
+                })
 
             -- Use a loop to conveniently call 'setup' on multiple servers and
             -- map buffer local keybindings when the language server attaches
@@ -1002,44 +1003,50 @@ return {
                 ensure_installed = servers,
             })
             for _, lsp in ipairs(servers) do
-                nvim_lsp[lsp].setup {
+                nvim_lsp[lsp].setup({
                     on_attach = on_attach,
                     flags = {
                         debounce_text_changes = 150,
-                    }
-                }
+                    },
+                })
             end
 
-            nvim_lsp.gopls.setup {
+            nvim_lsp.gopls.setup({
                 on_attach = on_attach,
                 settings = {
                     gopls = {
-                        ["Formatting.local"] = 'github.com/MobilityTechnologies',
+                        ["Formatting.local"] = "github.com/MobilityTechnologies",
                     },
                 },
-            }
+            })
 
-            nvim_lsp.sqls.setup {
+            nvim_lsp.sqls.setup({
                 on_attach = on_attach,
-                cmd = { 'sqls', '-log', os.getenv("HOME") .. '/sqls.log', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
+                cmd = {
+                    "sqls",
+                    "-log",
+                    os.getenv("HOME") .. "/sqls.log",
+                    "-config",
+                    os.getenv("HOME") .. "/.config/sqls/config.yml",
+                },
                 -- cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
                 settings = {
                     sqls = {
                         connections = {
                             {
-                                driver = 'mysql',
-                                dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
+                                driver = "mysql",
+                                dataSourceName = "root:root@tcp(127.0.0.1:13306)/world",
                             },
                             {
-                                driver = 'postgresql',
-                                dataSourceName = 'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
+                                driver = "postgresql",
+                                dataSourceName = "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
                             },
                         },
                     },
                 },
-            }
+            })
 
-            nvim_lsp.lua_ls.setup {
+            nvim_lsp.lua_ls.setup({
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -1050,11 +1057,11 @@ return {
                             defaultConfig = {
                                 indent_style = "space",
                                 indent_size = "4",
-                            }
+                            },
                         },
                     },
                 },
-            }
+            })
 
             vim.diagnostic.config({
                 virtual_text = true,
@@ -1068,11 +1075,13 @@ return {
     {
         "j-hui/fidget.nvim",
         dependencies = { "neovim/nvim-lspconfig" },
-        event        = "LspAttach",
-        config       = function() require("fidget").setup() end,
+        event = "LspAttach",
+        config = function()
+            require("fidget").setup()
+        end,
     },
     {
-        'stevearc/aerial.nvim',
+        "stevearc/aerial.nvim",
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons",
@@ -1085,9 +1094,9 @@ return {
             require("telescope").load_extension("aerial")
         end,
         keys = {
-            { "]]",         "<cmd>AerialNext<CR>",       mode = "n", desc = "jump prev symbol" },
-            { "[[",         "<cmd>AerialPrev<CR>",       mode = "n", desc = "jump next symbol" },
-            { "<Leader>o",  "<cmd>AerialToggle!<CR>",    mode = "n", desc = "open symbol list" },
+            { "]]", "<cmd>AerialNext<CR>", mode = "n", desc = "jump prev symbol" },
+            { "[[", "<cmd>AerialPrev<CR>", mode = "n", desc = "jump next symbol" },
+            { "<Leader>o", "<cmd>AerialToggle!<CR>", mode = "n", desc = "open symbol list" },
             { "<C-j><C-o>", "<Cmd>Telescope aerial<CR>", mode = "n", desc = "fuzzy search symbol list" },
         },
     },
@@ -1124,12 +1133,14 @@ return {
             "typescript.tsx",
             "typescriptreact",
         },
-        config = function() require("ts-error-translator").setup() end,
+        config = function()
+            require("ts-error-translator").setup()
+        end,
     },
 
     -- Fuzzy Finder
     {
-        'prochri/telescope-all-recent.nvim',
+        "prochri/telescope-all-recent.nvim",
         dependencies = {
             {
                 "nvim-telescope/telescope.nvim",
@@ -1151,7 +1162,7 @@ return {
                 end,
                 config = function()
                     local telescope = require("telescope")
-                    telescope.setup {
+                    telescope.setup({
                         defaults = {
                             sorting_strategy = "ascending",
                             layout_config = {
@@ -1182,13 +1193,13 @@ return {
                                 override_generic_sorter = true,
                                 override_file_sorter = true,
                                 case_mode = "smart_case",
-                            }
-                        }
-                    }
+                            },
+                        },
+                    })
                     telescope.load_extension("fzf")
                     -- telescope.load_extension("frecency")
 
-                    require('telescope-all-recent').setup {
+                    require("telescope-all-recent").setup({
                         database = {
                             folder = vim.fn.stdpath("data"),
                             file = "telescope-all-recent.sqlite3",
@@ -1196,40 +1207,40 @@ return {
                         },
                         debug = false,
                         scoring = {
-                            recency_modifier = {                   -- also see telescope-frecency for these settings
-                                [1] = { age = 240, value = 100 },  -- past 4 hours
-                                [2] = { age = 1440, value = 80 },  -- past day
-                                [3] = { age = 4320, value = 60 },  -- past 3 days
+                            recency_modifier = { -- also see telescope-frecency for these settings
+                                [1] = { age = 240, value = 100 }, -- past 4 hours
+                                [2] = { age = 1440, value = 80 }, -- past day
+                                [3] = { age = 4320, value = 60 }, -- past 3 days
                                 [4] = { age = 10080, value = 40 }, -- past week
                                 [5] = { age = 43200, value = 20 }, -- past month
-                                [6] = { age = 129600, value = 10 } -- past 90 days
+                                [6] = { age = 129600, value = 10 }, -- past 90 days
                             },
                             -- how much the score of a recent item will be improved.
-                            boost_factor = 0.0001
+                            boost_factor = 0.0001,
                         },
                         default = {
-                            disable = true,    -- disable any unkown pickers (recommended)
-                            use_cwd = true,    -- differentiate scoring for each picker based on cwd
-                            sorting = 'recent' -- sorting: options: 'recent' and 'frecency'
+                            disable = true, -- disable any unkown pickers (recommended)
+                            use_cwd = true, -- differentiate scoring for each picker based on cwd
+                            sorting = "recent", -- sorting: options: 'recent' and 'frecency'
                         },
-                        pickers = {            -- allows you to overwrite the default settings for each picker
-                            man_pages = {      -- enable man_pages picker. Disable cwd and use frecency sorting.
+                        pickers = { -- allows you to overwrite the default settings for each picker
+                            man_pages = { -- enable man_pages picker. Disable cwd and use frecency sorting.
                                 disable = false,
                                 use_cwd = false,
-                                sorting = 'frecency',
+                                sorting = "frecency",
                             },
 
                             -- change settings for a telescope extension.
                             -- To find out about extensions, you can use `print(vim.inspect(require'telescope'.extensions))`
-                            ['extension_name#extension_method'] = {
+                            ["extension_name#extension_method"] = {
                                 -- [...]
-                            }
-                        }
-                    }
+                            },
+                        },
+                    })
                 end,
             },
             { "kkharji/sqlite.lua" },
-            { "stevearc/dressing.nvim" }
+            { "stevearc/dressing.nvim" },
         },
     },
 
@@ -1260,7 +1271,7 @@ return {
                     rust = {
                         "cd $dir &&",
                         "rustc $fileName &&",
-                        "$dir/$fileNameWithoutExt"
+                        "$dir/$fileNameWithoutExt",
                     },
                     go = {
                         "cd $dir &&",
@@ -1296,7 +1307,6 @@ return {
         dependencies = { "tyru/open-browser-github.vim" },
     },
 
-
     -- Markdown edit
     {
         "ixru/nvim-markdown",
@@ -1304,7 +1314,7 @@ return {
         init = function()
             local group_name = "PluginNvimMarkdown"
             augroup(group_name, { clear = true })
-            autocmd('FileType', {
+            autocmd("FileType", {
                 group = group_name,
                 pattern = { "markdown" },
                 callback = function()
@@ -1332,7 +1342,9 @@ return {
     {
         "folke/zen-mode.nvim",
         cmd = { "ZenMode" },
-        config = function() require("zen-mode").setup {} end
+        config = function()
+            require("zen-mode").setup({})
+        end,
     },
     {
         "lukas-reineke/headlines.nvim",
@@ -1359,14 +1371,14 @@ return {
         "ahmedkhalf/project.nvim",
         event = "VeryLazy",
         config = function()
-            require("project_nvim").setup {
+            require("project_nvim").setup({
                 manual_mode = false,
                 detection_methods = { "lsp", "pattern" },
                 patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn" },
                 show_hidden = false,
                 silent_chdir = false,
                 datapath = vim.fn.stdpath("data"),
-            }
+            })
         end,
     },
 
@@ -1405,7 +1417,7 @@ return {
         "monaqa/dial.nvim",
         config = function()
             local augend = require("dial.augend")
-            require("dial.config").augends:register_group {
+            require("dial.config").augends:register_group({
                 default = {
                     augend.integer.alias.decimal,
                     augend.integer.alias.hex,
@@ -1417,30 +1429,38 @@ return {
                     augend.date.alias["%Y年%-m月%-d日(%ja)"],
                     augend.constant.alias.ja_weekday_full,
                 },
-            }
+            })
         end,
         keys = {
             {
                 "<C-a>",
-                function() require("dial.map").manipulate("increment", "normal") end,
+                function()
+                    require("dial.map").manipulate("increment", "normal")
+                end,
                 mode = "n",
                 desc = "dial increment",
             },
             {
                 "<C-x>",
-                function() require("dial.map").manipulate("decrement", "normal") end,
+                function()
+                    require("dial.map").manipulate("decrement", "normal")
+                end,
                 mode = "n",
                 desc = "dial decrement",
             },
             {
                 "<C-a>",
-                function() require("dial.map").manipulate("increment", "visual") end,
+                function()
+                    require("dial.map").manipulate("increment", "visual")
+                end,
                 mode = "v",
                 desc = "dial increment",
             },
             {
                 "<C-x>",
-                function() require("dial.map").manipulate("decrement", "visual") end,
+                function()
+                    require("dial.map").manipulate("decrement", "visual")
+                end,
                 mode = "v",
                 desc = "dial decrement",
             },
@@ -1468,13 +1488,13 @@ return {
                 require("im_select").setup({
                     default_im_select = "com.apple.keylayout.US",
                     default_command = "im-select",
-                    async_switch_im = false
+                    async_switch_im = false,
                 })
             else
                 require("im_select").setup({
                     default_im_select = "keyboard-us",
                     default_command = "fcitx5-remote",
-                    async_switch_im = false
+                    async_switch_im = false,
                 })
             end
         end,
@@ -1482,7 +1502,7 @@ return {
 
     {
         "folke/neodev.nvim",
-        ft = "lua"
+        ft = "lua",
     },
 
     {
@@ -1526,45 +1546,45 @@ return {
                 "<Leader p>",
                 "<Cmd>Telescope yank_history<CR>",
                 mode = "n",
-                desc = "select yank history normal mode"
+                desc = "select yank history normal mode",
             },
             {
                 "<C-r>",
                 "<Cmd>Telescope yank_history<CR>",
                 mode = "i",
-                desc = "select yank history insert mode"
+                desc = "select yank history insert mode",
             },
-        }
+        },
     },
 
     {
         "b0o/incline.nvim",
         event = "VeryLazy",
         config = function()
-            local helpers = require 'incline.helpers'
-            local devicons = require 'nvim-web-devicons'
-            require('incline').setup {
+            local helpers = require("incline.helpers")
+            local devicons = require("nvim-web-devicons")
+            require("incline").setup({
                 window = {
                     padding = 0,
                     margin = { horizontal = 0 },
                 },
                 render = function(props)
-                    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
-                    if filename == '' then
-                        filename = '[No Name]'
+                    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+                    if filename == "" then
+                        filename = "[No Name]"
                     end
                     local ft_icon, ft_color = devicons.get_icon_color(filename)
                     local modified = vim.bo[props.buf].modified
                     return {
-                        ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or
-                        '',
-                        ' ',
-                        { filename, gui = modified and 'bold,italic' or 'bold' },
-                        ' ',
-                        guibg = '#44406e',
+                        ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) }
+                            or "",
+                        " ",
+                        { filename, gui = modified and "bold,italic" or "bold" },
+                        " ",
+                        guibg = "#44406e",
                     }
                 end,
-            }
+            })
         end,
     },
 
@@ -1678,6 +1698,6 @@ return {
                 winblend = 0,
                 zindex = 1000,
             },
-        }
-    }
+        },
+    },
 }
