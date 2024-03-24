@@ -14,7 +14,7 @@ return {
             local lint_progress = function()
                 local linters = require("lint").get_running()
                 if #linters == 0 then
-                    return "󰦕"
+                    return ""
                 end
                 return "󱉶 " .. table.concat(linters, ", ")
             end
@@ -27,15 +27,15 @@ return {
                     section_separators = { left = "", right = "" },
                     disabled_filetypes = {},
                     always_divide_middle = true,
-                    globalstatus = true,
+                    -- globalstatus = true,
                 },
                 sections = {
-                    lualine_a = { "mode" },
-                    lualine_b = { "filename" },
+                    lualine_a = { "filename" },
+                    lualine_b = { "branch" },
                     lualine_c = { "diff", lint_progress, "diagnostics" },
-                    lualine_x = { "encoding", "fileformat", "filetype" },
-                    lualine_y = { "progress" },
-                    lualine_z = { "location" },
+                    lualine_x = {},
+                    lualine_y = {},
+                    lualine_z = { "encoding", "fileformat", "filetype" },
                 },
                 inactive_sections = {
                     lualine_a = {},
@@ -45,7 +45,14 @@ return {
                     lualine_y = {},
                     lualine_z = {},
                 },
-                tabline = {},
+                tabline = {
+                    lualine_a = { "buffers" },
+                    lualine_b = {},
+                    lualine_c = {},
+                    lualine_x = {},
+                    lualine_y = {},
+                    lualine_z = { "tabs" },
+                },
                 extensions = {},
             })
         end,
@@ -268,37 +275,6 @@ return {
     {
         "kevinhwang91/nvim-bqf",
         ft = "qf",
-    },
-
-    {
-        "b0o/incline.nvim",
-        event = "VeryLazy",
-        config = function()
-            local helpers = require("incline.helpers")
-            local devicons = require("nvim-web-devicons")
-            require("incline").setup({
-                window = {
-                    padding = 0,
-                    margin = { horizontal = 0 },
-                },
-                render = function(props)
-                    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-                    if filename == "" then
-                        filename = "[No Name]"
-                    end
-                    local ft_icon, ft_color = devicons.get_icon_color(filename)
-                    local modified = vim.bo[props.buf].modified
-                    return {
-                        ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) }
-                            or "",
-                        " ",
-                        { filename, gui = modified and "bold,italic" or "bold" },
-                        " ",
-                        guibg = "#44406e",
-                    }
-                end,
-            })
-        end,
     },
 
     {
