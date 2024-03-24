@@ -157,13 +157,23 @@ return {
         config = function()
             local colors = require("tokyonight.colors").setup()
             require("scrollbar").setup({
+                excluded_buftypes = {
+                    "terminal",
+                },
+                excluded_filetypes = {
+                    "cmp_docs",
+                    "cmp_menu",
+                    "prompt",
+                    "TelescopePrompt",
+                    "neo-tree",
+                },
                 show_in_active_only = true,
                 handle = {
                     color = "#928374",
                 },
                 marks = {
                     Cursor = {
-                        text = "●",
+                        text = "■",
                         color = colors.blue,
                     },
                     Search = { color = colors.orange },
