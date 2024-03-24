@@ -11,45 +11,9 @@ return {
             { "hrsh7th/cmp-nvim-lsp-signature-help" },
             { "hrsh7th/cmp-path" },
             { "onsails/lspkind.nvim" },
-            { "saadparwaiz1/cmp_luasnip" },
-            {
-                "L3MON4D3/LuaSnip",
-                version = "v2.*",
-                event = "InsertEnter",
-                config = function()
-                    local luasnip = require("luasnip")
-                    local types = require("luasnip.util.types")
-
-                    luasnip.config.set_config({
-                        history = true,
-                        updateevents = "TextChanged,TextChangedI",
-                        delete_check_events = "TextChanged",
-                        ext_opts = { [types.choiceNode] = { active = { virt_text = { { "choiceNode", "Comment" } } } } },
-                        ext_base_prio = 300,
-                        ext_prio_increase = 1,
-                        enable_autosnippets = true,
-                        ft_func = function()
-                            return vim.split(vim.bo.filetype, ".", true)
-                        end,
-                    })
-
-                    require("luasnip.loaders.from_lua").lazy_load()
-                    require("luasnip.loaders.from_vscode").lazy_load({
-                        paths = { vim.fn.stdpath("data") .. "/lazy/friendly-snippets" },
-                    })
-
-                    vim.cmd(
-                        [[imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>']]
-                    )
-                    vim.cmd(
-                        [[smap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>']]
-                    )
-                end,
-                dependencies = {
-                    "rafamadriz/friendly-snippets",
-                },
-            },
             { "zbirenbaum/copilot-cmp" },
+            { "L3MON4D3/LuaSnip" },
+            { "saadparwaiz1/cmp_luasnip" },
         },
         config = function()
             local cmp = require("cmp")
@@ -174,6 +138,44 @@ return {
                 }),
             })
         end,
+    },
+
+    {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        event = "InsertEnter",
+        config = function()
+            local luasnip = require("luasnip")
+            local types = require("luasnip.util.types")
+
+            luasnip.config.set_config({
+                history = true,
+                updateevents = "TextChanged,TextChangedI",
+                delete_check_events = "TextChanged",
+                ext_opts = { [types.choiceNode] = { active = { virt_text = { { "choiceNode", "Comment" } } } } },
+                ext_base_prio = 300,
+                ext_prio_increase = 1,
+                enable_autosnippets = true,
+                ft_func = function()
+                    return vim.split(vim.bo.filetype, ".", true)
+                end,
+            })
+
+            require("luasnip.loaders.from_lua").lazy_load()
+            require("luasnip.loaders.from_vscode").lazy_load({
+                paths = { vim.fn.stdpath("data") .. "/lazy/friendly-snippets" },
+            })
+
+            vim.cmd(
+                [[imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>']]
+            )
+            vim.cmd(
+                [[smap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>']]
+            )
+        end,
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+        },
     },
 
     {
