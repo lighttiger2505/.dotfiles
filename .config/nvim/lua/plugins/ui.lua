@@ -264,4 +264,9 @@ return {
             { "#", mode = "v" },
         },
     },
+
+    {
+        "kevinhwang91/nvim-bqf",
+        ft = "qf",
+    },
 }
