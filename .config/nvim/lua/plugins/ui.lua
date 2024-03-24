@@ -39,20 +39,13 @@ return {
                 },
                 inactive_sections = {
                     lualine_a = {},
-                    lualine_b = {},
-                    lualine_c = { "filename" },
-                    lualine_x = { "location" },
-                    lualine_y = {},
-                    lualine_z = {},
-                },
-                tabline = {
-                    lualine_a = { "buffers" },
-                    lualine_b = {},
+                    lualine_b = { "filename" },
                     lualine_c = {},
                     lualine_x = {},
                     lualine_y = {},
-                    lualine_z = { "tabs" },
+                    lualine_z = {},
                 },
+                tabline = {},
                 extensions = {},
             })
         end,
@@ -63,8 +56,8 @@ return {
         branch = "v3.x",
         cmd = "Neotree",
         init = function()
-            map("n", "<Leader>tt", "<cmd>Neotree toggle<CR>", kopts)
-            map("n", "<Leader>tf", "<cmd>Neotree reveal<CR>", kopts)
+            map("n", "<Leader>t", "<cmd>Neotree toggle<CR>", kopts)
+            map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
         end,
         config = function()
             require("neo-tree").setup({
@@ -206,6 +199,27 @@ return {
                 winblend = 0,
                 zindex = 1000,
             },
+        },
+    },
+
+    {
+        "romgrk/barbar.nvim",
+        version = "^1.0.0",
+        event = "VeryLazy",
+        dependencies = {
+            "lewis6991/gitsigns.nvim",
+            "nvim-tree/nvim-web-devicons",
+        },
+        init = function()
+            vim.g.barbar_auto_setup = false
+        end,
+        opts = {},
+        keys = {
+            { "<C-j>", "<Cmd>BufferPrevious<CR>", mode = "n", desc = "change prev buffer" },
+            { "<C-k>", "<Cmd>BufferNext<CR>", mode = "n", desc = "change next buffer" },
+            { "<Space>q", "<Cmd>BufferClose<CR>", mode = "n", desc = "buffer close" },
+            { "<Space>j", "<Cmd>BufferPick<CR>", mode = "n", desc = "sort buffer by directroy" },
+            { "<Space>k", "<Cmd>BufferOrderByDirectory<CR>", mode = "n", desc = "sort buffer by directroy" },
         },
     },
 }

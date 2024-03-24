@@ -48,8 +48,6 @@ map("n", "<", "<<", opts)
 -- Jump quickfix
 map("n", "<C-p>", "<Cmd>cp<CR>", opts)
 map("n", "<C-n>", "<Cmd>cn<CR>", opts)
-map("n", "<C-j>", "<Cmd>bp<CR>", opts)
-map("n", "<C-k>", "<Cmd>bn<CR>", opts)
 
 -- Jump locationlist
 map("n", "[t", "<Cmd>lp<CR>", opts)
