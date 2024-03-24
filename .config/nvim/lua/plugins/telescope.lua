@@ -16,12 +16,11 @@ return {
                 },
                 cmd = "Telescope",
                 init = function()
-                    map("n", "<C-j><C-p>", "<Cmd>Telescope git_files<CR>", kopts)
-                    map("n", "<C-j><C-s>", "<Cmd>Telescope git_status<CR>", kopts)
-                    map("n", "<C-j><C-b>", "<Cmd>Telescope buffers<CR>", kopts)
-                    map("n", "<C-j><C-]>", "<Cmd>Telescope lsp_workspace_symbols<CR>", kopts)
-                    map("n", "<C-j><C-r>", "<Cmd>Telescope oldfiles<CR>", kopts)
-                    map("n", "<C-j><C-e>", "<Cmd>Telescope live_grep<CR>", kopts)
+                    map("n", "<Leader>fp", "<Cmd>Telescope git_files<CR>", kopts)
+                    map("n", "<Leader>fs", "<Cmd>Telescope git_status<CR>", kopts)
+                    map("n", "<Leader>fb", "<Cmd>Telescope buffers<CR>", kopts)
+                    map("n", "<Leader>fr", "<Cmd>Telescope oldfiles<CR>", kopts)
+                    map("n", "<Leader>fe", "<Cmd>Telescope live_grep<CR>", kopts)
                 end,
                 config = function()
                     local telescope = require("telescope")

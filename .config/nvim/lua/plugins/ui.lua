@@ -34,8 +34,8 @@ return {
                     lualine_b = { "branch" },
                     lualine_c = { "diff", lint_progress, "diagnostics" },
                     lualine_x = {},
-                    lualine_y = {},
-                    lualine_z = { "encoding", "fileformat", "filetype" },
+                    lualine_y = { "encoding", "fileformat", "filetype" },
+                    lualine_z = {},
                 },
                 inactive_sections = {
                     lualine_a = {},
@@ -63,8 +63,8 @@ return {
         branch = "v3.x",
         cmd = "Neotree",
         init = function()
-            map("n", "<Leader>t", "<cmd>Neotree toggle<CR>", kopts)
-            map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
+            map("n", "<Leader>tt", "<cmd>Neotree toggle<CR>", kopts)
+            map("n", "<Leader>tf", "<cmd>Neotree reveal<CR>", kopts)
         end,
         config = function()
             require("neo-tree").setup({
@@ -283,9 +283,23 @@ return {
         dependencies = {
             "kevinhwang91/nvim-hlslens",
             "lewis6991/gitsigns.nvim",
+            "folke/tokyonight.nvim",
         },
         config = function()
-            require("scrollbar").setup()
+            local colors = require("tokyonight.colors").setup()
+            require("scrollbar").setup({
+                handle = {
+                    color = colors.bg_highlight,
+                },
+                marks = {
+                    Search = { color = colors.orange },
+                    Error = { color = colors.error },
+                    Warn = { color = colors.warning },
+                    Info = { color = colors.info },
+                    Hint = { color = colors.hint },
+                    Misc = { color = colors.purple },
+                },
+            })
             require("scrollbar.handlers.search").setup()
             require("scrollbar.handlers.gitsigns").setup()
         end,
