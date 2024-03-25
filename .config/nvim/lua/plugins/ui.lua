@@ -102,30 +102,20 @@ return {
 
     {
         "kevinhwang91/nvim-hlslens",
-        config = function()
-            require("hlslens").setup({
-                build_position_cb = function(plist, _, _, _)
-                    require("scrollbar.handlers.search").handler.show(plist.start_pos)
-                end,
-            })
-            local group_name = "ScrollbarSearchHide"
-            augroup(group_name, { clear = true })
-            autocmd("CmdlineLeave", {
-                group = group_name,
-                callback = function()
-                    require("scrollbar.handlers.search").handler.hide()
-                end,
-            })
-        end,
         dependencies = {
             "haya14busa/vim-asterisk",
-            init = function()
-                vim.cmd([[map *  <Plug>(asterisk-z*)]])
-                vim.cmd([[map #  <Plug>(asterisk-z#)]])
-                vim.cmd([[map g* <Plug>(asterisk-gz*)]])
-                vim.cmd([[map g# <Plug>(asterisk-gz#)]])
-            end,
         },
+        config = function()
+            require("hlslens").setup()
+            vim.api.nvim_set_keymap('n', '*', [[<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('n', '#', [[<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('n', 'g*', [[<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('n', 'g#', [[<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('x', '*', [[<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('x', '#', [[<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('x', 'g*', [[<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('x', 'g#', [[<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+        end,
         keys = {
             { "*", mode = "n" },
             { "#", mode = "n" },
