@@ -103,4 +103,9 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         event = "VeryLazy",
     },
+
+    {
+        "sheerun/vim-polyglot",
+        event = "VeryLazy",
+    },
 }
