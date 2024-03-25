@@ -33,9 +33,9 @@ return {
                     lualine_a = { "filename" },
                     lualine_b = { "branch" },
                     lualine_c = { "diff", lint_progress, "diagnostics" },
-                    lualine_x = {},
-                    lualine_y = { "encoding", "fileformat", "filetype" },
-                    lualine_z = {},
+                    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+                    lualine_y = { 'progress' },
+                    lualine_z = { 'location' }
                 },
                 inactive_sections = {
                     lualine_a = {},
@@ -140,50 +140,6 @@ return {
     },
 
     {
-        "petertriho/nvim-scrollbar",
-        event = "VeryLazy",
-        dependencies = {
-            "kevinhwang91/nvim-hlslens",
-            "lewis6991/gitsigns.nvim",
-            "folke/tokyonight.nvim",
-        },
-        config = function()
-            local colors = require("tokyonight.colors").setup()
-            require("scrollbar").setup({
-                excluded_buftypes = {
-                    "terminal",
-                },
-                excluded_filetypes = {
-                    "cmp_docs",
-                    "cmp_menu",
-                    "prompt",
-                    "TelescopePrompt",
-                    "neo-tree",
-                    "gitcommit",
-                },
-                show_in_active_only = true,
-                handle = {
-                    color = "#928374",
-                },
-                marks = {
-                    Cursor = {
-                        text = "■",
-                        color = colors.blue,
-                    },
-                    Search = { color = colors.orange },
-                    Error = { color = colors.error },
-                    Warn = { color = colors.warning },
-                    Info = { color = colors.info },
-                    Hint = { color = colors.hint },
-                    Misc = { color = colors.purple },
-                },
-            })
-            require("scrollbar.handlers.search").setup()
-            require("scrollbar.handlers.gitsigns").setup()
-        end,
-    },
-
-    {
         "folke/which-key.nvim",
         event = "VeryLazy",
         init = function()
@@ -215,10 +171,10 @@ return {
         end,
         opts = {},
         keys = {
-            { "<C-j>", "<Cmd>BufferPrevious<CR>", mode = "n", desc = "change prev buffer" },
-            { "<C-k>", "<Cmd>BufferNext<CR>", mode = "n", desc = "change next buffer" },
-            { "<Space>q", "<Cmd>BufferClose<CR>", mode = "n", desc = "buffer close" },
-            { "<Space>j", "<Cmd>BufferPick<CR>", mode = "n", desc = "sort buffer by directroy" },
+            { "<C-j>",    "<Cmd>BufferPrevious<CR>",         mode = "n", desc = "change prev buffer" },
+            { "<C-k>",    "<Cmd>BufferNext<CR>",             mode = "n", desc = "change next buffer" },
+            { "<Space>q", "<Cmd>BufferClose<CR>",            mode = "n", desc = "buffer close" },
+            { "<Space>j", "<Cmd>BufferPick<CR>",             mode = "n", desc = "sort buffer by directroy" },
             { "<Space>k", "<Cmd>BufferOrderByDirectory<CR>", mode = "n", desc = "sort buffer by directroy" },
         },
     },
