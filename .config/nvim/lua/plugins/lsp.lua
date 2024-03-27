@@ -228,7 +228,7 @@ return {
                 javascript = { { "prettier" } },
                 typescript = { { "prettier" } },
                 typescriptreact = { { "prettier" } },
-                json = { { "prettier" } },
+                json = { { "jq" } },
                 go = { "goimports", "gofmt" },
             },
             format_on_save = { timeout_ms = 300, lsp_fallback = true },
@@ -253,11 +253,15 @@ return {
         config = function()
             local lint = require("lint")
             lint.linters_by_ft = {
+                lua = { "luacheck" },
                 javascript = { "eslint" },
                 typescript = { "eslint" },
                 typescriptreact = { "eslint" },
                 go = { "golangcilint" },
                 json = { "jsonlint" },
+                proto = { "buf_lint" },
+                make = { "checkmake" },
+                zsh = { "zsh" },
             }
             autocmd({ "BufWritePost" }, {
                 callback = function()
