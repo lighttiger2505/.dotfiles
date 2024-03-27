@@ -137,6 +137,13 @@ return {
             vim.o.timeoutlen = 500
         end,
         opts = {
+            triggers = {
+                "<Leader>",
+                "<Space>",
+                ",",
+                "]",
+                "[",
+            },
             window = {
                 border = "single",
                 position = "bottom",
