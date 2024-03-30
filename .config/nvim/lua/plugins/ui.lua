@@ -33,9 +33,9 @@ return {
                     lualine_a = { "filename" },
                     lualine_b = { "branch" },
                     lualine_c = { "diff", lint_progress, "diagnostics" },
-                    lualine_x = { 'encoding', 'fileformat', 'filetype' },
-                    lualine_y = { 'progress' },
-                    lualine_z = { 'location' }
+                    lualine_x = { "encoding", "fileformat", "filetype" },
+                    lualine_y = { "progress" },
+                    lualine_z = { "location" },
                 },
                 inactive_sections = {
                     lualine_a = {},
@@ -107,20 +107,12 @@ return {
         },
         config = function()
             require("hlslens").setup()
-            vim.api.nvim_set_keymap('n', '*', [[<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
-            vim.api.nvim_set_keymap('n', '#', [[<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
-            vim.api.nvim_set_keymap('n', 'g*', [[<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
-            vim.api.nvim_set_keymap('n', 'g#', [[<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
-            vim.api.nvim_set_keymap('x', '*', [[<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
-            vim.api.nvim_set_keymap('x', '#', [[<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
-            vim.api.nvim_set_keymap('x', 'g*', [[<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
-            vim.api.nvim_set_keymap('x', 'g#', [[<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
         end,
         keys = {
-            { "*", mode = "n" },
-            { "#", mode = "n" },
-            { "*", mode = "v" },
-            { "#", mode = "v" },
+            { "*", "<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>", mode = "n" },
+            { "#", "<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>", mode = "n" },
+            { "*", "<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>", mode = "v" },
+            { "#", "<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>", mode = "v" },
         },
     },
 
@@ -202,8 +194,8 @@ return {
             })
         end,
         keys = {
-            { "<C-j>",    "<Cmd>BufferLineCyclePrev<CR>",       mode = "n", desc = "buffer prev" },
-            { "<C-k>",    "<Cmd>BufferLineCycleNext<CR>",       mode = "n", desc = "buffer next" },
+            { "<C-j>", "<Cmd>BufferLineCyclePrev<CR>", mode = "n", desc = "buffer prev" },
+            { "<C-k>", "<Cmd>BufferLineCycleNext<CR>", mode = "n", desc = "buffer next" },
             { "<Space>j", "<Cmd>BufferLineSortByExtension<CR>", mode = "n", desc = "buffer sort by extension" },
             { "<Space>k", "<Cmd>BufferLineSortByDirectory<CR>", mode = "n", desc = "buffer sort by directory" },
         },
