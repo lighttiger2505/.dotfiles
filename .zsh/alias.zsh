@@ -119,6 +119,9 @@ alias ts="tig status"
 # Setting git local config
 alias gitlocal='git config --local user.name "lighttiger2505";git config --local user.email "lighttiger2505@gmail.com"'
 
+# lazygit shortcut
+alias lg='lazygit'
+
 #####################################################################
 # Zsh
 #####################################################################
