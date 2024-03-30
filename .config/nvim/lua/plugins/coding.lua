@@ -1,6 +1,3 @@
-local map = vim.keymap.set
-local kopts = { noremap = true, silent = true }
-
 return {
     {
         "numToStr/Comment.nvim",
@@ -8,16 +5,16 @@ return {
             {
                 "JoosepAlviste/nvim-ts-context-commentstring",
                 config = function()
-                    require('ts_context_commentstring').setup({
+                    require("ts_context_commentstring").setup({
                         enable_autocmd = false,
                     })
                 end,
             },
         },
         config = function()
-            require('Comment').setup {
-                pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-            }
+            require("Comment").setup({
+                pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+            })
         end,
         keys = {
             { "gc", mode = "n" },
@@ -52,13 +49,14 @@ return {
             "CRProjects",
         },
         init = function()
-            map("n", "<leader>r", ":RunCode<CR>", kopts)
-            map("n", "<leader>rf", ":RunFile<CR>", kopts)
-            map("n", "<leader>rft", ":RunFile tab<CR>", kopts)
-            map("n", "<leader>rp", ":RunProject<CR>", kopts)
-            map("n", "<leader>rc", ":RunClose<CR>", kopts)
-            map("n", "<leader>crf", ":CRFiletype<CR>", kopts)
-            map("n", "<leader>crp", ":CRProjects<CR>", kopts)
+            local kmopt = { noremap = true, silent = true }
+            vim.keymap.set("n", "<leader>r", ":RunCode<CR>", kmopt)
+            vim.keymap.set("n", "<leader>rf", ":RunFile<CR>", kmopt)
+            vim.keymap.set("n", "<leader>rft", ":RunFile tab<CR>", kmopt)
+            vim.keymap.set("n", "<leader>rp", ":RunProject<CR>", kmopt)
+            vim.keymap.set("n", "<leader>rc", ":RunClose<CR>", kmopt)
+            vim.keymap.set("n", "<leader>crf", ":CRFiletype<CR>", kmopt)
+            vim.keymap.set("n", "<leader>crp", ":CRProjects<CR>", kmopt)
         end,
         config = function()
             require("code_runner").setup({
@@ -101,9 +99,10 @@ return {
             require("go").setup()
         end,
         init = function()
-            map("n", "<LocalLeader>b", "<Cmd>GoBuild<CR>", kopts)
-            map("n", "<LocalLeader>m", "<Cmd>GoImport<CR>", kopts)
-            map("n", "<LocalLeader>a", "<Cmd>GoAlt<CR>", kopts)
+            local kmopt = { noremap = true, silent = true }
+            vim.keymap.set("n", "<LocalLeader>b", "<Cmd>GoBuild<CR>", kmopt)
+            vim.keymap.set("n", "<LocalLeader>m", "<Cmd>GoImport<CR>", kmopt)
+            vim.keymap.set("n", "<LocalLeader>a", "<Cmd>GoAlt<CR>", kmopt)
         end,
         ft = { "go", "gomod" },
         build = ':lua require("go.install").update_all_sync()',

@@ -1,14 +1,11 @@
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-
 return {
     {
         "ixru/nvim-markdown",
         ft = { "markdown" },
         init = function()
             local group_name = "PluginNvimMarkdown"
-            augroup(group_name, { clear = true })
-            autocmd("FileType", {
+            vim.api.nvim_create_augroup(group_name, { clear = true })
+            vim.api.nvim_create_autocmd("FileType", {
                 group = group_name,
                 pattern = { "markdown" },
                 callback = function()

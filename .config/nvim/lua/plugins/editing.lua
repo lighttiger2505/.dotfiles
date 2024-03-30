@@ -1,12 +1,10 @@
-local map = vim.keymap.set
-local kopts = { noremap = true, silent = true }
-
 return {
     {
         "machakann/vim-sandwich",
         config = function()
-            map("n", "s", "<Nop>", kopts)
-            map("x", "s", "<Nop>", kopts)
+            local kmopt = { noremap = true, silent = true }
+            vim.keymap.set("n", "s", "<Nop>", kmopt)
+            vim.keymap.set("x", "s", "<Nop>", kmopt)
         end,
         keys = {
             { "s", mode = "n" },
