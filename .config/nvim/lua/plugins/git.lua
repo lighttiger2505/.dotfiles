@@ -178,7 +178,9 @@ return {
             })
         end,
         keys = {
-            { "<Leader>d", "<cmd>DiffviewOpen<CR>", mode = "n", desc = "open diff view" },
+            { "<Leader>dd", "<cmd>DiffviewOpen<CR>", mode = "n", desc = "open diff view" },
+            { "<Leader>dc", "<cmd>DiffviewClose<CR>", mode = "n", desc = "close diff view" },
+            { "<Leader>dh", "<cmd>DiffviewFileHistory<CR>", mode = "n", desc = "open diff view for file history" },
         },
     },
 
