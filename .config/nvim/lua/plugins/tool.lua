@@ -11,7 +11,7 @@ return {
             map("n", "<Leader>bb", "<Plug>(openbrowser-smart-search)", mapopts)
             map("x", "<Leader>bb", "<Plug>(openbrowser-smart-search)", mapopts)
             map("n", "<Leader>bh", "<Cmd>OpenGithubFile<CR>", kopts)
-            map("x", "<Leader>bh", "<Cmd>OpenGithubFile<CR>", kopts)
+            map("x", "<Leader>bh", ":OpenGithubFile<CR>", kopts)
         end,
         dependencies = { "tyru/open-browser-github.vim" },
     },
