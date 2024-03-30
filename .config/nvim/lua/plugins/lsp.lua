@@ -143,7 +143,8 @@ return {
                             },
                             {
                                 driver = "postgresql",
-                                dataSourceName = "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
+                                dataSourceName =
+                                "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
                             },
                         },
                     },
@@ -200,10 +201,10 @@ return {
             require("telescope").load_extension("aerial")
         end,
         keys = {
-            { "]]", "<cmd>AerialNext<CR>", mode = "n", desc = "jump prev symbol" },
-            { "[[", "<cmd>AerialPrev<CR>", mode = "n", desc = "jump next symbol" },
-            { "<Leader>o", "<cmd>AerialToggle!<CR>", mode = "n", desc = "open symbol list" },
-            { "<C-j><C-o>", "<Cmd>Telescope aerial<CR>", mode = "n", desc = "fuzzy search symbol list" },
+            { "]]",        "<cmd>AerialNext<CR>",       mode = "n", desc = "jump prev symbol" },
+            { "[[",        "<cmd>AerialPrev<CR>",       mode = "n", desc = "jump next symbol" },
+            { "<Leader>o", "<cmd>AerialToggle!<CR>",    mode = "n", desc = "open symbol list" },
+            { "<Space>o",  "<Cmd>Telescope aerial<CR>", mode = "n", desc = "fuzzy search symbol list" },
         },
     },
 
@@ -227,7 +228,7 @@ return {
                 javascript = { { "prettier" } },
                 typescript = { { "prettier" } },
                 typescriptreact = { { "prettier" } },
-                json = { { "prettier" } },
+                json = { { "jq" } },
                 go = { "goimports", "gofmt" },
             },
             format_on_save = { timeout_ms = 300, lsp_fallback = true },
@@ -252,11 +253,15 @@ return {
         config = function()
             local lint = require("lint")
             lint.linters_by_ft = {
+                lua = { "luacheck" },
                 javascript = { "eslint" },
                 typescript = { "eslint" },
                 typescriptreact = { "eslint" },
                 go = { "golangcilint" },
                 json = { "jsonlint" },
+                proto = { "buf_lint" },
+                make = { "checkmake" },
+                zsh = { "zsh" },
             }
             autocmd({ "BufWritePost" }, {
                 callback = function()

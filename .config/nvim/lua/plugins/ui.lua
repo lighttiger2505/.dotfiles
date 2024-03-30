@@ -33,9 +33,9 @@ return {
                     lualine_a = { "filename" },
                     lualine_b = { "branch" },
                     lualine_c = { "diff", lint_progress, "diagnostics" },
-                    lualine_x = {},
-                    lualine_y = { "encoding", "fileformat", "filetype" },
-                    lualine_z = {},
+                    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+                    lualine_y = { 'progress' },
+                    lualine_z = { 'location' }
                 },
                 inactive_sections = {
                     lualine_a = {},
@@ -102,30 +102,20 @@ return {
 
     {
         "kevinhwang91/nvim-hlslens",
-        config = function()
-            require("hlslens").setup({
-                build_position_cb = function(plist, _, _, _)
-                    require("scrollbar.handlers.search").handler.show(plist.start_pos)
-                end,
-            })
-            local group_name = "ScrollbarSearchHide"
-            augroup(group_name, { clear = true })
-            autocmd("CmdlineLeave", {
-                group = group_name,
-                callback = function()
-                    require("scrollbar.handlers.search").handler.hide()
-                end,
-            })
-        end,
         dependencies = {
             "haya14busa/vim-asterisk",
-            init = function()
-                vim.cmd([[map *  <Plug>(asterisk-z*)]])
-                vim.cmd([[map #  <Plug>(asterisk-z#)]])
-                vim.cmd([[map g* <Plug>(asterisk-gz*)]])
-                vim.cmd([[map g# <Plug>(asterisk-gz#)]])
-            end,
         },
+        config = function()
+            require("hlslens").setup()
+            vim.api.nvim_set_keymap('n', '*', [[<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('n', '#', [[<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('n', 'g*', [[<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('n', 'g#', [[<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('x', '*', [[<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('x', '#', [[<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('x', 'g*', [[<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('x', 'g#', [[<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>]], kopts)
+        end,
         keys = {
             { "*", mode = "n" },
             { "#", mode = "n" },
@@ -140,50 +130,6 @@ return {
     },
 
     {
-        "petertriho/nvim-scrollbar",
-        event = "VeryLazy",
-        dependencies = {
-            "kevinhwang91/nvim-hlslens",
-            "lewis6991/gitsigns.nvim",
-            "folke/tokyonight.nvim",
-        },
-        config = function()
-            local colors = require("tokyonight.colors").setup()
-            require("scrollbar").setup({
-                excluded_buftypes = {
-                    "terminal",
-                },
-                excluded_filetypes = {
-                    "cmp_docs",
-                    "cmp_menu",
-                    "prompt",
-                    "TelescopePrompt",
-                    "neo-tree",
-                    "gitcommit",
-                },
-                show_in_active_only = true,
-                handle = {
-                    color = "#928374",
-                },
-                marks = {
-                    Cursor = {
-                        text = "■",
-                        color = colors.blue,
-                    },
-                    Search = { color = colors.orange },
-                    Error = { color = colors.error },
-                    Warn = { color = colors.warning },
-                    Info = { color = colors.info },
-                    Hint = { color = colors.hint },
-                    Misc = { color = colors.purple },
-                },
-            })
-            require("scrollbar.handlers.search").setup()
-            require("scrollbar.handlers.gitsigns").setup()
-        end,
-    },
-
-    {
         "folke/which-key.nvim",
         event = "VeryLazy",
         init = function()
@@ -191,6 +137,13 @@ return {
             vim.o.timeoutlen = 500
         end,
         opts = {
+            triggers = {
+                "<Leader>",
+                "<Space>",
+                ",",
+                "]",
+                "[",
+            },
             window = {
                 border = "single",
                 position = "bottom",
@@ -203,23 +156,67 @@ return {
     },
 
     {
-        "romgrk/barbar.nvim",
-        version = "^1.0.0",
+        'akinsho/bufferline.nvim',
         event = "VeryLazy",
-        dependencies = {
-            "lewis6991/gitsigns.nvim",
-            "nvim-tree/nvim-web-devicons",
-        },
-        init = function()
-            vim.g.barbar_auto_setup = false
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        config = function()
+            require("bufferline").setup({
+                options = {
+                    groups = {
+                        options = {
+                            toggle_hidden_on_enter = true -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
+                        },
+                        -- items = {
+                        --     {
+                        --         name = "Tests", -- Mandatory
+                        --         highlight = { underline = true, sp = "blue" }, -- Optional
+                        --         priority = 2, -- determines where it will appear relative to other groups (Optional)
+                        --         icon = "", -- Optional
+                        --         matcher = function(buf) -- Mandatory
+                        --             return buf.filename:match('%_test') or buf.filename:match('%_spec')
+                        --         end,
+                        --     },
+                        --     {
+                        --         name = "Docs",
+                        --         highlight = { undercurl = true, sp = "green" },
+                        --         auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
+                        --         -- matcher = function(buf)
+                        --         --     return buf.filename:match('%.md') or buf.filename:match('%.txt')
+                        --         -- end,
+                        --         separator = { -- Optional
+                        --             style = require('bufferline.groups').separator.tab
+                        --         },
+                        --     }
+                        -- }
+                    }
+                },
+            })
         end,
-        opts = {},
         keys = {
-            { "<C-j>", "<Cmd>BufferPrevious<CR>", mode = "n", desc = "change prev buffer" },
-            { "<C-k>", "<Cmd>BufferNext<CR>", mode = "n", desc = "change next buffer" },
-            { "<Space>q", "<Cmd>BufferClose<CR>", mode = "n", desc = "buffer close" },
-            { "<Space>j", "<Cmd>BufferPick<CR>", mode = "n", desc = "sort buffer by directroy" },
-            { "<Space>k", "<Cmd>BufferOrderByDirectory<CR>", mode = "n", desc = "sort buffer by directroy" },
+            { "<C-j>",    "<Cmd>BufferLineCyclePrev<CR>",       mode = "n", desc = "buffer prev" },
+            { "<C-k>",    "<Cmd>BufferLineCycleNext<CR>",       mode = "n", desc = "buffer next" },
+            { "<Space>j", "<Cmd>BufferLineSortByExtension<CR>", mode = "n", desc = "buffer sort by extension" },
+            { "<Space>k", "<Cmd>BufferLineSortByDirectory<CR>", mode = "n", desc = "buffer sort by directory" },
         },
     },
+    -- {
+    --     "romgrk/barbar.nvim",
+    --     version = "^1.0.0",
+    --     event = "VeryLazy",
+    --     dependencies = {
+    --         "lewis6991/gitsigns.nvim",
+    --         "nvim-tree/nvim-web-devicons",
+    --     },
+    --     init = function()
+    --         vim.g.barbar_auto_setup = false
+    --     end,
+    --     opts = {},
+    --     keys = {
+    --         { "<C-j>",    "<Cmd>BufferPrevious<CR>",         mode = "n", desc = "change prev buffer" },
+    --         { "<C-k>",    "<Cmd>BufferNext<CR>",             mode = "n", desc = "change next buffer" },
+    --         { "<Space>q", "<Cmd>BufferClose<CR>",            mode = "n", desc = "buffer close" },
+    --         { "<Space>j", "<Cmd>BufferPick<CR>",             mode = "n", desc = "sort buffer by directroy" },
+    --         { "<Space>k", "<Cmd>BufferOrderByDirectory<CR>", mode = "n", desc = "sort buffer by directroy" },
+    --     },
+    -- },
 }
