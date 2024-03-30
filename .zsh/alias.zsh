@@ -114,7 +114,7 @@ alias gp="git pull --prune --tags --all && rm-branch"
 alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
 
 # tig status
-alias ts="tig status"
+alias ts='lazygit'
 
 # Setting git local config
 alias gitlocal='git config --local user.name "lighttiger2505";git config --local user.email "lighttiger2505@gmail.com"'
