@@ -106,6 +106,13 @@
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
+    "bluetooth": {
+        "format-alt": "bluetooth: {status}",
+        "format-on": "",
+        "format-off": "!",
+        "on-click": "foot bluetoothctl",
+        "tooltip-format": "{status}"
+    },
     "battery": {
         "states": {
             // "good": 95,
