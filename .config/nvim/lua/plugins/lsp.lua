@@ -260,11 +260,8 @@ return {
                 make = { "checkmake" },
                 zsh = { "zsh" },
             }
-            autocmd({ "BufWritePost" }, {
+            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
                 callback = function()
-                    local ns = lint.get_namespace("my_linter_name")
-                    local bufnr = vim.api.nvim_get_current_buf()
-                    vim.diagnostic.reset(ns, bufnr)
                     require("lint").try_lint()
                 end,
             })
