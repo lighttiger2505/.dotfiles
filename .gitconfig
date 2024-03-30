@@ -7,6 +7,7 @@
 	excludesfile = ~/.gitignore_global
 [merge]
 	tool = vimdiff
+	ff = false
 [diff]
 	tool = vimdiff
 [difftool "vimdiff"]
@@ -20,6 +21,7 @@
 [pull]
 	ff = only
 	rebase = true
+	ff = only
 [branch "master"]
 	rebase = true
 [branch "develop"]
