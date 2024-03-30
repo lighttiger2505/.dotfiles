@@ -46,7 +46,7 @@ if executable direnv; then
 fi
 
 if executable zoxide; then
-    eval "$(zoxide init zsh)"
+    eval "$(zoxide init zsh --cmd cd)"
 fi
 
  if [ -e $HOME/.asdf ]; then

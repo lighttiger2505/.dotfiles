@@ -88,7 +88,7 @@ fi
 
 # diff to delta
 if executable zoxide; then
-    alias cd=zoxide
+    alias z=cdi
 fi
 
 #####################################################################
