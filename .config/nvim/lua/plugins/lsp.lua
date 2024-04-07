@@ -4,117 +4,73 @@ return {
         event = "VeryLazy",
         dependencies = {
             {
-                "williamboman/mason.nvim",
-                build = ":MasonUpdate",
+                "nvimdev/lspsaga.nvim",
+                config = function()
+                    require("lspsaga").setup({
+                        symbol_in_winbar = {
+                            enable = true,
+                        },
+                        finder = {
+                            keys = {
+                                shuttle = "[w",
+                                toggle_or_open = "<CR>",
+                                vsplit = "v",
+                                split = "s",
+                                tabe = "t",
+                                tabnew = "r",
+                                quit = "q",
+                                close = "<C-c>k",
+                            },
+                        },
+                    })
+                end
             },
-            { "williamboman/mason-lspconfig.nvim" },
-            { "nvimdev/lspsaga.nvim" },
         },
         cond = function()
             -- ignore filetype markdown
             return vim.bo.filetype ~= "markdown"
         end,
         config = function()
-            local group_name = "MyLspConfig"
-            vim.api.nvim_create_augroup(group_name, { clear = true })
-
-            -- Set diagnostics to location list
-            vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
-                group = group_name,
-                pattern = "*",
-                callback = function()
-                    vim.diagnostic.setloclist({ open = false })
-                end,
-            })
-
             local nvim_lsp = require("lspconfig")
-            require("lspsaga").setup({
-                symbol_in_winbar = {
-                    enable = true,
-                },
-                finder = {
-                    keys = {
-                        shuttle = "[w",
-                        toggle_or_open = "<CR>",
-                        vsplit = "v",
-                        split = "s",
-                        tabe = "t",
-                        tabnew = "r",
-                        quit = "q",
-                        close = "<C-c>k",
-                    },
-                },
-            })
-
-            -- Use an on_attach function to only map the following keys
-            -- after the language server attaches to the current buffer
-            local on_attach = function(_, bufnr)
-                -- Enable completion triggered by <c-x><c-o>
-                vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-                -- See `:help vim.lsp.*` for documentation on any of the below functions
-                local bufopts = { noremap = true, silent = true, buffer = bufnr }
-                -- builtin lsp
-                vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, bufopts)
-                vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
-                vim.keymap.set("n", "<C-l>", vim.lsp.buf.signature_help, bufopts)
-                vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-                vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
-                vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, bufopts)
-                -- lsp saga
-                vim.keymap.set("n", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", bufopts)
-                vim.keymap.set("i", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", bufopts)
-                vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
-                vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
-                vim.keymap.set("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", bufopts)
-                vim.keymap.set("n", "<LocalLeader>i", "<cmd>Lspsaga finder imp<CR>", bufopts)
-            end
-
-            vim.lsp.handlers["textDocument/publishDiagnostics"] =
-                vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                    -- Enable underline, use default values
-                    underline = true,
-                    -- Enable virtual text, override spacing to 4
-                    virtual_text = {
-                        spacing = 4,
-                    },
-                    -- Use a function to dynamically turn signs off
-                    -- and on, using buffer local variables
-                    signs = function(namespace, bufnr)
-                        return vim.b[bufnr].show_signs == true
-                    end,
-                    -- Disable a feature
-                    update_in_insert = false,
-                })
-
-            -- Use a loop to conveniently call 'setup' on multiple servers and
-            -- map buffer local keybindings when the language server attaches
-            require("mason").setup()
             local servers = {
                 "gopls",
-                "rust_analyzer",
                 "tsserver",
                 "lua_ls",
-                -- "solargraph",
-                -- "rubocop",
-                -- "ruby_ls",
                 "sqls",
             }
-            require("mason-lspconfig").setup({
-                ensure_installed = servers,
-            })
             for _, lsp in ipairs(servers) do
                 nvim_lsp[lsp].setup({
-                    on_attach = on_attach,
                     flags = {
                         debounce_text_changes = 150,
                     },
                 })
             end
 
+            -- Use LspAttach autocommand to only map the following keys
+            -- after the language server attaches to the current buffer
+            vim.api.nvim_create_autocmd('LspAttach', {
+                group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+                callback = function(ev)
+                    local bufopts = { noremap = true, silent = true, buffer = ev.buf }
+                    -- builtin lsp
+                    vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, bufopts)
+                    vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
+                    vim.keymap.set("n", "<C-l>", vim.lsp.buf.signature_help, bufopts)
+                    vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
+                    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+                    vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
+                    vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, bufopts)
+                    -- lsp saga
+                    vim.keymap.set("n", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", bufopts)
+                    vim.keymap.set("i", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", bufopts)
+                    vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
+                    vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
+                    vim.keymap.set("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", bufopts)
+                    vim.keymap.set("n", "<LocalLeader>i", "<cmd>Lspsaga finder imp<CR>", bufopts)
+                end,
+            })
+
             nvim_lsp.gopls.setup({
-                on_attach = on_attach,
                 settings = {
                     gopls = {
                         ["Formatting.local"] = "github.com/MobilityTechnologies",
@@ -123,7 +79,6 @@ return {
             })
 
             nvim_lsp.sqls.setup({
-                on_attach = on_attach,
                 cmd = {
                     "sqls",
                     "-log",
@@ -141,7 +96,8 @@ return {
                             },
                             {
                                 driver = "postgresql",
-                                dataSourceName = "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
+                                dataSourceName =
+                                "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
                             },
                         },
                     },
@@ -198,10 +154,10 @@ return {
             require("telescope").load_extension("aerial")
         end,
         keys = {
-            { "]]", "<cmd>AerialNext<CR>", mode = "n", desc = "jump prev symbol" },
-            { "[[", "<cmd>AerialPrev<CR>", mode = "n", desc = "jump next symbol" },
-            { "<Leader>o", "<cmd>AerialToggle!<CR>", mode = "n", desc = "open symbol list" },
-            { "<Space>o", "<Cmd>Telescope aerial<CR>", mode = "n", desc = "fuzzy search symbol list" },
+            { "]]",        "<cmd>AerialNext<CR>",       mode = "n", desc = "jump prev symbol" },
+            { "[[",        "<cmd>AerialPrev<CR>",       mode = "n", desc = "jump next symbol" },
+            { "<Leader>o", "<cmd>AerialToggle!<CR>",    mode = "n", desc = "open symbol list" },
+            { "<Space>o",  "<Cmd>Telescope aerial<CR>", mode = "n", desc = "fuzzy search symbol list" },
         },
     },
 
