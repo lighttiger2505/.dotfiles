@@ -107,10 +107,10 @@ return {
             require("hlslens").setup()
         end,
         keys = {
-            { "*", "<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>", mode = "n" },
-            { "#", "<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>", mode = "n" },
-            { "*", "<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>", mode = "v" },
-            { "#", "<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>", mode = "v" },
+            { "*",  "<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>",  mode = { "n", "v" } },
+            { "#",  "<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>",  mode = { "n", "v" } },
+            { "g*", "<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>", mode = { "n", "v" } },
+            { "g#", "<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>", mode = { "n", "v" } },
         },
     },
 
