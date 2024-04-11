@@ -149,61 +149,6 @@ return {
         },
     },
 
-    -- {
-    --     "akinsho/bufferline.nvim",
-    --     event = "VeryLazy",
-    --     dependencies = "nvim-tree/nvim-web-devicons",
-    --     config = function()
-    --         require("bufferline").setup({
-    --             options = {
-    --                 diagnostics = "nvim_lsp",
-    --                 diagnostics_indicator = function(count, level)
-    --                     local icon = level:match("error") and "E" or "W"
-    --                     return " " .. icon .. count
-    --                 end,
-    --                 groups = {
-    --                     options = {
-    --                         toggle_hidden_on_enter = true,
-    --                     },
-    --                     items = {
-    --                         {
-    --                             name = "Tests",
-    --                             highlight = { underline = true, sp = "blue" },
-    --                             priority = 2,
-    --                             matcher = function(buf)
-    --                                 return buf.name:match("%_test") or buf.name:match("%_spec")
-    --                             end,
-    --                         },
-    --                         {
-    --                             name = "Docs",
-    --                             highlight = { undercurl = true, sp = "green" },
-    --                             priority = 1,
-    --                             matcher = function(buf)
-    --                                 return buf.name:match("%.md") or buf.name:match("%.txt")
-    --                             end,
-    --                         },
-    --                         {
-    --                             name = "Conf",
-    --                             highlight = { undercurl = true, sp = "yellow" },
-    --                             priority = 1,
-    --                             matcher = function(buf)
-    --                                 return buf.name:match("%.yml") or buf.name:match("%.yaml")
-    --                             end,
-    --                         },
-    --                     },
-    --                 },
-    --             },
-    --         })
-    --     end,
-    --     keys = {
-    --         { "<C-j>",    "<Cmd>BufferLineCyclePrev<CR>",       mode = "n", desc = "buffer prev" },
-    --         { "<C-k>",    "<Cmd>BufferLineCycleNext<CR>",       mode = "n", desc = "buffer next" },
-    --         { "<Space>j", "<Cmd>BufferLineSortByExtension<CR>", mode = "n", desc = "buffer sort by extension" },
-    --         { "<Space>k", "<Cmd>BufferLineSortByDirectory<CR>", mode = "n", desc = "buffer sort by directory" },
-    --         { "<Space>q", "<Cmd>BufferLinePickClose<CR>",       mode = "n", desc = "buffer close" },
-    --     },
-    -- },
-
     {
         'romgrk/barbar.nvim',
         event = "VeryLazy",
