@@ -122,11 +122,24 @@ return {
             require("telescope").load_extension("yank_history")
         end,
         keys = {
-            { "y", mode = "n" },
-            { "Y", mode = "n" },
-            { "p", mode = "n" },
-            { "P", mode = "n" },
+            { "y",     mode = "n" },
+            { "Y",     mode = "n" },
+            { "p",     mode = "n" },
+            { "P",     mode = "n" },
             { "<C-r>", "<Cmd>Telescope yank_history<CR>", mode = "i", desc = "select yank history insert mode" },
+        },
+    },
+
+    {
+        'bloznelis/before.nvim',
+        config = function()
+            require('before').setup()
+        end,
+        keys = {
+            { "<C-h>",      function() require('before').jump_to_last_edit() end,       mode = "n", desc = "jump to last edit" },
+            { "<C-l>",      function() require('before').jump_to_next_edit() end,       mode = "n", desc = "jump to next edit" },
+            { "<leader>oq", function() require('before').show_edits_in_quickfix() end,  mode = "n", desc = "show edits in quickfix" },
+            { "<leader>oe", function() require('before').show_edits_in_telescope() end, mode = "n", desc = "show edits in telescope" },
         },
     },
 }
