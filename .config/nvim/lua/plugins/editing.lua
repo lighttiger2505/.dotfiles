@@ -34,6 +34,7 @@ return {
                     augend.date.alias["%H:%M"],
                     augend.date.alias["%Y年%-m月%-d日"],
                     augend.date.alias["%Y年%-m月%-d日(%ja)"],
+                    augend.constant.alias.ja_weekday,
                     augend.constant.alias.ja_weekday_full,
                 },
             })
