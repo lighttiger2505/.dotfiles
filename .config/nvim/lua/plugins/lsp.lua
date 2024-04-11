@@ -223,4 +223,15 @@ return {
             })
         end,
     },
+
+
+    {
+        "icholy/lsplinks.nvim",
+        config = function()
+            require("lsplinks").setup()
+        end,
+        keys = {
+            { "gx", function() require("lsplinks").gx() end, mode = "n", desc = "jump lsp link" },
+        },
+    },
 }

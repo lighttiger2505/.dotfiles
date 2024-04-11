@@ -136,6 +136,7 @@ return {
                 ",",
                 "]",
                 "[",
+                "g"
             },
             window = {
                 border = "single",
