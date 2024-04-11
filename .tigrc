@@ -35,6 +35,9 @@ bind generic S view-stash
 bind generic y none
 bind generic y !@sh -c "echo -n %(commit) | xsel --clipboard --input"
 
+# git commit amend
+bind generic + !git commit --amend
+
 # Show line nuber
 set pager-view  = line-number:yes,interval=1 text
 set stage-view  = line-number:yes,interval=1 text
