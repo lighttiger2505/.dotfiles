@@ -26,10 +26,12 @@ return {
             vim.g.vim_markdown_no_default_key_mappings = 1
         end,
     },
+
     {
         "mattn/vim-maketable",
         cmd = { "MakeTable" },
     },
+
     {
         "folke/zen-mode.nvim",
         cmd = { "ZenMode" },
@@ -37,10 +39,21 @@ return {
             require("zen-mode").setup({})
         end,
     },
+
+    -- {
+    --     "lukas-reineke/headlines.nvim",
+    --     dependencies = "nvim-treesitter/nvim-treesitter",
+    --     ft = { "markdown" },
+    --     config = true,
+    -- },
+
     {
-        "lukas-reineke/headlines.nvim",
-        dependencies = "nvim-treesitter/nvim-treesitter",
+        'MeanderingProgrammer/markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
         ft = { "markdown" },
-        config = true,
-    },
+        name = 'render-markdown',
+        config = function()
+            require('render-markdown').setup({})
+        end,
+    }
 }
