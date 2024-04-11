@@ -57,7 +57,7 @@ return {
                     vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
                     vim.keymap.set("n", "<C-l>", vim.lsp.buf.signature_help, bufopts)
                     vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
-                    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+                    -- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
                     vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
                     vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, bufopts)
                     -- lsp saga
@@ -224,6 +224,28 @@ return {
         end,
     },
 
+    {
+        "lewis6991/hover.nvim",
+        config = function()
+            require("hover").setup {
+                init = function()
+                    require("hover.providers.lsp")
+                    require('hover.providers.gh')
+                    require('hover.providers.gh_user')
+                    require('hover.providers.man')
+                end,
+                preview_opts = {
+                    border = 'single'
+                },
+                preview_window = false,
+                title = true,
+            }
+        end,
+        keys = {
+            { "K",  function() require("hover").hover() end,        mode = "n", desc = "hover" },
+            { "gK", function() require("hover").hover_select() end, mode = "n", desc = "hover select" },
+        },
+    },
 
     {
         "icholy/lsplinks.nvim",
