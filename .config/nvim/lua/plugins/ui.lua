@@ -83,19 +83,22 @@ return {
     },
 
     {
-        "lukas-reineke/indent-blankline.nvim",
-        event = "VeryLazy",
+        "shellRaining/hlchunk.nvim",
+        event = { "UIEnter" },
         config = function()
-            local ibl = require("ibl")
-            ibl.setup()
-            ibl.overwrite({
-                exclude = {
-                    filetypes = { "go" },
+            local palette = require('nightfox.palette').load("nightfox")
+            require("hlchunk").setup({
+                chunk = {
+                    style = {
+                        { fg = palette.blue.base },
+                        { fg = palette.red.base },
+                    },
+                },
+                line_num = {
+                    enable = false,
                 },
             })
-        end,
-        main = "ibl",
-        opts = {},
+        end
     },
 
     {
