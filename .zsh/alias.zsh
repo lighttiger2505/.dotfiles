@@ -30,21 +30,21 @@ alias pass='vim ~/secrets/pass.md'
 # Move to the selected directory from the results of find
 cd-fzf-find() {
     local dir
-    DIR=$(find ./ -path '*/\.*' -name .git -prune -o -type d -print 2> /dev/null | fzf +m --ansi --preview 'ls -al --color=always {}')
+    DIR=$(fd --hidden --type d 2> /dev/null | fzf +m --ansi --preview 'exa --long --all --icons --color=always {}')
     if [ -n "$DIR" ]; then
         cd $DIR
     fi
 }
-alias fd=cd-fzf-find
+alias cdd=cd-fzf-find
 
 # Open the selected file from the result of find in Vim
 vim-fzf-find() {
-    local FILE=$(find ./ -path '*/\.*' -name .git -prune -o -type f -print 2> /dev/null | fzf +m --ansi --preview 'cat {}')
+    local FILE=$(fd --hidden --type f 2> /dev/null | fzf +m --ansi --preview 'bat -n --color=always {}')
     if [ -n "$FILE" ]; then
         ${EDITOR:-vim} $FILE
     fi
 }
-alias fv=vim-fzf-find
+alias vimf=vim-fzf-find
 
 # less
 export LESS='--RAW-CONTROL-CHARS'
