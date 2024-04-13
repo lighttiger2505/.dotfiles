@@ -19,19 +19,6 @@ source ~/.zsh/fzf.zsh
 source ~/.zsh/alias.zsh
 source ~/.zsh/keybind.zsh
 
-# initialize command hooks
-if executable direnv; then
-    eval "$(direnv hook zsh)"
-fi
-
-if executable zoxide; then
-    eval "$(zoxide init zsh --cmd cd)"
-fi
-
-if [ -e $HOME/.asdf ]; then
-    . $HOME/.asdf/asdf.sh
-fi
-
 if [ "$(pgrep ssh-agent 2> /dev/null)" = "" ]; then
     eval $(ssh-agent) > /dev/null
     case ${OSTYPE} in

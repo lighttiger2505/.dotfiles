@@ -17,6 +17,11 @@ local = "~/.zsh"
 use = ["sync.zsh"]
 apply = ["source"]
 
+[plugins.zshrc-hook]
+local = "~/.zsh"
+use = ["command_hook.zsh"]
+apply = ["source"]
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 

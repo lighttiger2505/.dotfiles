@@ -23,18 +23,6 @@ function checkout-fzf-gitbranch() {
 }
 zle -N checkout-fzf-gitbranch
 
-# Set prompt command history
-function buffer-fzf-history() {
-    local HISTORY=$(history -n -r 1 | fzf +m)
-    BUFFER=$HISTORY
-    if [ -n "$HISTORY" ]; then
-        CURSOR=$#BUFFER
-    else
-        zle accept-line
-    fi
-}
-zle -N buffer-fzf-history
-
 # ssh selected host
 function ssh-fzf-sshconfig() {
     local SSH_HOST=$(awk '
