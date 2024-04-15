@@ -6,6 +6,7 @@ fi
 
 if executable zoxide; then
     eval "$(zoxide init zsh --cmd cd)"
+    export _ZO_FZF_OPTS='--height 70% --reverse'
 fi
 
 if executable atuin; then
