@@ -55,7 +55,6 @@ return {
                     -- builtin lsp
                     vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, bufopts)
                     vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
-                    vim.keymap.set("n", "<C-l>", vim.lsp.buf.signature_help, bufopts)
                     vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
                     -- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
                     vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
