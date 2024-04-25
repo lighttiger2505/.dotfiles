@@ -7,8 +7,10 @@ return {
         event = "VeryLazy",
         dependencies = {
             "mfussenegger/nvim-lint",
+            "stevearc/overseer.nvim",
         },
         config = function()
+            local overseer = require("overseer")
             local lint_progress = function()
                 local linters = require("lint").get_running()
                 if #linters == 0 then
@@ -16,6 +18,22 @@ return {
                 end
                 return "󱉶 " .. table.concat(linters, ", ")
             end
+            local overseer_progress = {
+                "overseer",
+                label = '',     -- Prefix for task counts
+                colored = true, -- Color the task icons and counts
+                symbols = {
+                    [overseer.STATUS.FAILURE] = "F:",
+                    [overseer.STATUS.CANCELED] = "C:",
+                    [overseer.STATUS.SUCCESS] = "S:",
+                    [overseer.STATUS.RUNNING] = "R:",
+                },
+                unique = false,     -- Unique-ify non-running task count by name
+                name = nil,         -- List of task names to search for
+                name_not = false,   -- When true, invert the name search
+                status = nil,       -- List of task statuses to display
+                status_not = false, -- When true, invert the status search
+            }
 
             require("lualine").setup({
                 options = {
@@ -30,7 +48,7 @@ return {
                 sections = {
                     lualine_a = { "filename" },
                     lualine_b = { "branch" },
-                    lualine_c = { "diff", lint_progress, "diagnostics" },
+                    lualine_c = { "diff", overseer_progress, lint_progress, "diagnostics" },
                     lualine_x = { "encoding", "fileformat", "filetype" },
                     lualine_y = { "progress" },
                     lualine_z = { "location" },
