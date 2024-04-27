@@ -184,4 +184,17 @@ return {
             { "<Space>q", "<Cmd>BufferPickDelete<CR>",       mode = "n", desc = "buffer close" },
         },
     },
+
+    {
+        "shortcuts/no-neck-pain.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("no-neck-pain").setup({
+                width = 144,
+                autocmds = {
+                    enableOnVimEnter = true,
+                },
+            })
+        end,
+    },
 }
