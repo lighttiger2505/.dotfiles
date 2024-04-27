@@ -8,7 +8,6 @@ return {
             { "hrsh7th/cmp-cmdline" },
             { "hrsh7th/cmp-nvim-lsp" },
             { "hrsh7th/cmp-nvim-lsp-document-symbol" },
-            { "hrsh7th/cmp-nvim-lsp-signature-help" },
             { "hrsh7th/cmp-path" },
             { "onsails/lspkind.nvim" },
             { "zbirenbaum/copilot-cmp" },
@@ -186,4 +185,11 @@ return {
             require("copilot").setup({})
         end,
     },
+
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        opts = {},
+        config = function(_, opts) require 'lsp_signature'.setup(opts) end
+    }
 }
