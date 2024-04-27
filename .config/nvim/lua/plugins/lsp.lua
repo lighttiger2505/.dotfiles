@@ -25,6 +25,10 @@ return {
                     })
                 end
             },
+            {
+                "folke/neodev.nvim",
+                ft = "lua",
+            },
         },
         cond = function()
             -- ignore filetype markdown
@@ -121,7 +125,7 @@ return {
             })
 
             vim.diagnostic.config({
-                virtual_text = true,
+                virtual_text = false,
                 signs = true,
                 underline = true,
                 update_in_insert = false,
