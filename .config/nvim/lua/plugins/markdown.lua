@@ -28,11 +28,6 @@ return {
     },
 
     {
-        "mattn/vim-maketable",
-        cmd = { "MakeTable" },
-    },
-
-    {
         "folke/zen-mode.nvim",
         cmd = { "ZenMode" },
         config = function()

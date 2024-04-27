@@ -132,6 +132,7 @@ return {
 
     {
         'bloznelis/before.nvim',
+        event = "VeryLazy",
         config = function()
             require('before').setup()
         end,

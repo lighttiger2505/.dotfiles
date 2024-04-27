@@ -58,7 +58,6 @@ color diff-chunk white magenta
 
 # Execute git difftool on selected commit or branch
 bind generic D none
-bind generic . none
 bind main D !sh -c "git difftool %(commit)~ %(commit)"
 bind diff D !sh -c "git difftool %(commit)~ %(commit)"
 bind refs D !sh -c "git difftool %(branch)"

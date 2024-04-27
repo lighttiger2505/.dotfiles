@@ -39,45 +39,6 @@ return {
     },
 
     {
-        "CRAG666/code_runner.nvim",
-        cmd = {
-            "RunCode",
-            "RunFile",
-            "RunProject",
-            "RunClose",
-            "CRFiletype",
-            "CRProjects",
-        },
-        init = function()
-            local kmopt = { noremap = true, silent = true }
-            vim.keymap.set("n", "<leader>r", ":RunCode<CR>", kmopt)
-            vim.keymap.set("n", "<leader>rf", ":RunFile<CR>", kmopt)
-            vim.keymap.set("n", "<leader>rft", ":RunFile tab<CR>", kmopt)
-            vim.keymap.set("n", "<leader>rp", ":RunProject<CR>", kmopt)
-            vim.keymap.set("n", "<leader>rc", ":RunClose<CR>", kmopt)
-            vim.keymap.set("n", "<leader>crf", ":CRFiletype<CR>", kmopt)
-            vim.keymap.set("n", "<leader>crp", ":CRProjects<CR>", kmopt)
-        end,
-        config = function()
-            require("code_runner").setup({
-                filetype = {
-                    python = "python3 -u",
-                    typescript = "deno run",
-                    rust = {
-                        "cd $dir &&",
-                        "rustc $fileName &&",
-                        "$dir/$fileNameWithoutExt",
-                    },
-                    go = {
-                        "cd $dir &&",
-                        "go run $fileName &&",
-                    },
-                },
-            })
-        end,
-    },
-
-    {
         "nicwest/vim-camelsnek",
         cmd = {
             "Snek",
@@ -118,4 +79,63 @@ return {
         "sheerun/vim-polyglot",
         event = "VeryLazy",
     },
+
+    {
+        'stevearc/overseer.nvim',
+        cmd = { "Make", "Grep" },
+        config = function()
+            local overseer = require("overseer")
+            overseer.setup({
+                templates = { "builtin", "user.run_script" },
+            })
+
+            -- Create async make command
+            vim.api.nvim_create_user_command("Make", function(params)
+                local cmd, num_subs = vim.o.makeprg:gsub("%$%*", params.args)
+                if num_subs == 0 then
+                    cmd = cmd .. " " .. params.args
+                end
+                local task = overseer.new_task({
+                    cmd = vim.fn.expandcmd(cmd),
+                    components = {
+                        { "on_output_quickfix", open = not params.bang, open_height = 8 },
+                        "default",
+                    },
+                })
+                task:start()
+            end, {
+                desc = "Run your makeprg as an Overseer task",
+                nargs = "*",
+                bang = true,
+            })
+
+            -- Create async grep command
+            vim.api.nvim_create_user_command("Grep", function(params)
+                -- Insert args at the '$*' in the grepprg
+                local cmd, num_subs = vim.o.grepprg:gsub("%$%*", params.args)
+                if num_subs == 0 then
+                    cmd = cmd .. " " .. params.args
+                end
+                local task = overseer.new_task({
+                    cmd = vim.fn.expandcmd(cmd),
+                    components = {
+                        {
+                            "on_output_quickfix",
+                            errorformat = vim.o.grepformat,
+                            open = not params.bang,
+                            open_height = 8,
+                            items_only = true,
+                        },
+                        -- We don't care to keep this around as long as most tasks
+                        { "on_complete_dispose", timeout = 30 },
+                        "default",
+                    },
+                })
+                task:start()
+            end, { nargs = "*", bang = true, complete = "file" })
+        end,
+        keys = {
+            { "<leader>r", "<Cmd>OverseerQuickAction<CR>", mode = "n", desc = "Overseer quick action" },
+        },
+    }
 }

@@ -25,6 +25,10 @@ return {
                     })
                 end
             },
+            {
+                "folke/neodev.nvim",
+                ft = "lua",
+            },
         },
         cond = function()
             -- ignore filetype markdown
@@ -55,9 +59,8 @@ return {
                     -- builtin lsp
                     vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, bufopts)
                     vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
-                    vim.keymap.set("n", "<C-l>", vim.lsp.buf.signature_help, bufopts)
                     vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
-                    -- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+                    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
                     vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
                     vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, bufopts)
                     -- lsp saga
@@ -122,7 +125,7 @@ return {
             })
 
             vim.diagnostic.config({
-                virtual_text = true,
+                virtual_text = false,
                 signs = true,
                 underline = true,
                 update_in_insert = false,
@@ -225,29 +228,6 @@ return {
     },
 
     {
-        "lewis6991/hover.nvim",
-        config = function()
-            require("hover").setup {
-                init = function()
-                    require("hover.providers.lsp")
-                    require('hover.providers.gh')
-                    require('hover.providers.gh_user')
-                    require('hover.providers.man')
-                end,
-                preview_opts = {
-                    border = 'single'
-                },
-                preview_window = false,
-                title = true,
-            }
-        end,
-        keys = {
-            { "K",  function() require("hover").hover() end,        mode = "n", desc = "hover" },
-            { "gK", function() require("hover").hover_select() end, mode = "n", desc = "hover select" },
-        },
-    },
-
-    {
         "icholy/lsplinks.nvim",
         config = function()
             require("lsplinks").setup()
@@ -255,5 +235,19 @@ return {
         keys = {
             { "gx", function() require("lsplinks").gx() end, mode = "n", desc = "jump lsp link" },
         },
+    },
+
+    {
+        "maan2003/lsp_lines.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+        },
+        config = function()
+            require("lsp_lines").setup()
+            vim.diagnostic.config({
+                virtual_text = false,
+            })
+        end,
     },
 }
