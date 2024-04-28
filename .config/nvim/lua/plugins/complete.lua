@@ -164,16 +164,23 @@ return {
             require("luasnip.loaders.from_vscode").lazy_load({
                 paths = { vim.fn.stdpath("data") .. "/lazy/friendly-snippets" },
             })
-
-            vim.cmd(
-                [[imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>']]
-            )
-            vim.cmd(
-                [[smap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<C-k>']]
-            )
         end,
         dependencies = {
             "rafamadriz/friendly-snippets",
+        },
+        keys = {
+            { "<C-k>", function() require("luasnip").expand() end, mode = { "i" } },
+            { "<C-L>", function() require("luasnip").jump(1) end,  mode = { "i", "s" } },
+            { "<C-J>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+            {
+                "<C-E>",
+                function()
+                    if require("luasnip").choice_active() then
+                        require("luasnip").change_choice(1)
+                    end
+                end,
+                mode = { "i", "s" }
+            },
         },
     },
 
