@@ -178,9 +178,10 @@ return {
             })
         end,
         keys = {
-            { "<Leader>dd", "<cmd>DiffviewOpen<CR>",        mode = "n", desc = "open diff view" },
-            { "<Leader>dc", "<cmd>DiffviewClose<CR>",       mode = "n", desc = "close diff view" },
-            { "<Leader>dh", "<cmd>DiffviewFileHistory<CR>", mode = "n", desc = "open diff view for file history" },
+            { "<Leader>dd", "<cmd>DiffviewOpen<CR>",          mode = "n", desc = "open diff view" },
+            { "<Leader>dc", "<cmd>DiffviewClose<CR>",         mode = "n", desc = "close diff view" },
+            { "<Leader>dh", "<cmd>DiffviewFileHistory<CR>",   mode = "n", desc = "open diff view for file history" },
+            { "<Leader>df", "<cmd>DiffviewFileHistory %<CR>", mode = "n", desc = "open diff view for file history" },
         },
     },
 
