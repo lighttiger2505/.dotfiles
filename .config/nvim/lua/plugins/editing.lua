@@ -127,10 +127,10 @@ return {
             { "p", mode = "n" },
             { "P", mode = "n" },
             {
-                "<Space>t",
+                "<Space>y",
                 "<Cmd>Telescope yank_history<CR>",
                 mode = "n",
-                desc = "select yank history insert mode",
+                desc = "select yank history",
             },
         },
     },
