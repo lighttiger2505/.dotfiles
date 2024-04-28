@@ -32,21 +32,6 @@ return {
                         end
                     end,
                 },
-                textsubjects = {
-                    enable = true,
-                    lookahead = true,
-                    max_file_lines = 5000,
-                    prev_selection = ",",
-                    keymaps = {
-                        ['.'] = 'textsubjects-smart',
-                        [':'] = 'textsubjects-container-outer',
-                        -- ['i;'] = 'textsubjects-container-inner',
-                        -- ['i;'] = { 'textsubjects-container-inner', desc = "Select inside containers (classes, functions, etc.)" },
-                    },
-                },
-                endwise = {
-                    enable = true,
-                },
                 matchup = {
                     enable = true,
                     include_match_words = true,
@@ -56,9 +41,14 @@ return {
         end,
         build = ":TSUpdate",
         event = "VeryLazy",
-        dependencies = {
-            { "RRethy/nvim-treesitter-textsubjects" },
-            { "RRethy/nvim-treesitter-endwise" },
-        },
     },
+
+    {
+        "sustech-data/wildfire.nvim",
+        event = "VeryLazy",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        config = function()
+            require("wildfire").setup()
+        end,
+    }
 }
