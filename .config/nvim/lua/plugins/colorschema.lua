@@ -8,6 +8,17 @@ return {
             vim.cmd([[highlight WinSeparator guifg=#928374]])
         end,
     },
-    { "folke/tokyonight.nvim", lazy = true, priority = 1000 },
-    { "ellisonleao/gruvbox.nvim", lazy = true, priority = 1000, config = true },
+    {
+        "folke/tokyonight.nvim",
+    },
+    {
+        "ellisonleao/gruvbox.nvim",
+    },
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+    },
+    {
+        "rebelot/kanagawa.nvim",
+    },
 }
