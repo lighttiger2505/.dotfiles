@@ -1,6 +1,9 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            { "RRethy/nvim-treesitter-textsubjects" },
+        },
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
@@ -37,18 +40,18 @@ return {
                     include_match_words = true,
                     enable_quotes = true,
                 },
+                textsubjects = {
+                    enable = true,
+                    prev_selection = "<BS>",
+                    keymaps = {
+                        ["."] = "textsubjects-smart",
+                        ["<CR>"] = "textsubjects-container-outer",
+                        ["i<CR>"] = "textsubjects-container-inner",
+                    },
+                },
             })
         end,
         build = ":TSUpdate",
         event = "VeryLazy",
     },
-
-    {
-        "sustech-data/wildfire.nvim",
-        event = "VeryLazy",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        config = function()
-            require("wildfire").setup()
-        end,
-    }
 }
