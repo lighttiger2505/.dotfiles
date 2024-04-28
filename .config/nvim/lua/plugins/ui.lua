@@ -194,9 +194,12 @@ return {
             require("no-neck-pain").setup({
                 width = 144,
                 autocmds = {
-                    enableOnVimEnter = true,
+                    enableOnVimEnter = false,
                 },
             })
         end,
+        keys = {
+            { "<Leader>n", "<Cmd>NoNeckPain<CR>", mode = "n", desc = "no neck pain" },
+        },
     },
 }
