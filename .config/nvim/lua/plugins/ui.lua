@@ -188,7 +188,7 @@ return {
 
     {
         "shortcuts/no-neck-pain.nvim",
-        event = "VeryLazy",
+        cmd = "NoNeckPain",
         config = function()
             require("no-neck-pain").setup({
                 width = 144,
