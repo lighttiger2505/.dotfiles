@@ -77,7 +77,7 @@ return {
 
     {
         "keaising/im-select.nvim",
-        lazy = false,
+        event = "InsertEnter",
         config = function()
             if vim.fn.has("macunix") == 1 then
                 require("im_select").setup({
@@ -122,16 +122,21 @@ return {
             require("telescope").load_extension("yank_history")
         end,
         keys = {
-            { "y",     mode = "n" },
-            { "Y",     mode = "n" },
-            { "p",     mode = "n" },
-            { "P",     mode = "n" },
-            { "<C-r>", "<Cmd>Telescope yank_history<CR>", mode = "i", desc = "select yank history insert mode" },
+            { "y", mode = "n" },
+            { "Y", mode = "n" },
+            { "p", mode = "n" },
+            { "P", mode = "n" },
+            {
+                "<Space>t",
+                "<Cmd>Telescope yank_history<CR>",
+                mode = "n",
+                desc = "select yank history insert mode",
+            },
         },
     },
 
     {
-        'bloznelis/before.nvim',
+        "bloznelis/before.nvim",
         event = "VeryLazy",
         config = function()
             require('before').setup()
