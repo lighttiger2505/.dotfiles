@@ -11,7 +11,8 @@ return {
             { "<Space>s", "<Cmd>Telescope git_status<CR>", mode = "n", desc = "find git status files" },
             { "<Space>b", "<Cmd>Telescope buffers<CR>",    mode = "n", desc = "find buffer" },
             { "<Space>r", "<Cmd>Telescope oldfiles<CR>",   mode = "n", desc = "find old files" },
-            { "<Space>e", "<Cmd>Telescope live_grep<CR>",  mode = "n", desc = "find live grep" },
+            { "<Space>l", "<Cmd>Telescope live_grep<CR>",  mode = "n", desc = "find live grep" },
+            { "<Space>h", "<Cmd>Telescope help_tags<CR>",  mode = "n", desc = "find help tags" },
         },
     },
 
