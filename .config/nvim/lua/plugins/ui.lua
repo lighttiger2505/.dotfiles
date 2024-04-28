@@ -151,6 +151,7 @@ return {
         opts = {
             triggers = {
                 "<Leader>",
+                "<LocalLeader>",
                 "<Space>",
                 ",",
                 "]",
