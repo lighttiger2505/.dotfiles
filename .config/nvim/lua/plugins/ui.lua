@@ -159,14 +159,24 @@ return {
             vim.o.timeoutlen = 500
         end,
         opts = {
+            registers = true,
             triggers = {
+                -- plugin mappgins
                 "<Leader>",
                 "<LocalLeader>",
                 "<Space>",
                 ",",
+                -- default mappings
                 "]",
                 "[",
-                "g"
+                "S",
+                "c",
+                "d",
+                "g",
+                "y",
+                -- register
+                "<C-r>",
+                '"',
             },
             window = {
                 border = "single",
@@ -212,7 +222,7 @@ return {
         cmd = "NoNeckPain",
         config = function()
             require("no-neck-pain").setup({
-                width = 144,
+                width = 166,
                 autocmds = {
                     enableOnVimEnter = false,
                 },
