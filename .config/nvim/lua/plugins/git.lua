@@ -213,16 +213,16 @@ return {
                     )
                 end,
                 -- function to run on closing the terminal
-                on_close = function(term)
+                on_close = function()
                     vim.cmd("Closing terminal")
                 end,
             })
 
-            function _tigToggle()
+            function TigToggle()
                 tig:toggle()
             end
 
-            vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _tigToggle()<CR>", { noremap = true, silent = true })
+            vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua TigToggle()<CR>", { noremap = true, silent = true })
         end,
         keys = { "<Leader>g" },
     },
