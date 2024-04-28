@@ -183,7 +183,23 @@ return {
             { "<C-k>",    "<Cmd>BufferNext<CR>",             mode = "n", desc = "buffer next" },
             { "<Space>j", "<Cmd>BufferOrderByName<CR>",      mode = "n", desc = "buffer sort by name" },
             { "<Space>k", "<Cmd>BufferOrderByDirectory<CR>", mode = "n", desc = "buffer sort by directory" },
-            { "<Space>q", "<Cmd>BufferPickDelete<CR>",       mode = "n", desc = "buffer close" },
+        },
+    },
+
+    {
+        "famiu/bufdelete.nvim",
+        config = function()
+            require('close_buffers').setup({
+                filetype_ignore = {},                            -- Filetype to ignore when running deletions
+                file_glob_ignore = {},                           -- File name glob pattern to ignore when running deletions (e.g. '*.md')
+                file_regex_ignore = {},                          -- File name regex pattern to ignore when running deletions (e.g. '.*[.]md')
+                preserve_window_layout = { 'this', 'nameless' }, -- Types of deletion that should preserve the window layout
+                next_buffer_cme = nil,                           -- Custom function to retrieve the next buffer when preserving window layout
+            })
+        end,
+        keys = {
+            { "<Space>c", function() require('close_buffers').delete({ type = 'hidden', force = true }) end, mode = "n", desc = "Delete all non-visible buffers" },
+            { "<Space>q", function() require('close_buffers').delete({ type = 'this' }) end,                 mode = "n", desc = "Delete the current buffer" },
         },
     },
 
