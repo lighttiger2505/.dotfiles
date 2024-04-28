@@ -10,7 +10,6 @@ return {
             "stevearc/overseer.nvim",
         },
         config = function()
-            local overseer = require("overseer")
             local lint_progress = function()
                 local linters = require("lint").get_running()
                 if #linters == 0 then
@@ -18,6 +17,8 @@ return {
                 end
                 return "󱉶 " .. table.concat(linters, ", ")
             end
+
+            local overseer = require("overseer")
             local overseer_progress = {
                 "overseer",
                 label = '',     -- Prefix for task counts
