@@ -8,6 +8,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "nvim-neotest/neotest-go",
             "marilari88/neotest-vitest",
+            "stevearc/overseer.nvim",
         },
         config = function()
             local neotest_ns = vim.api.nvim_create_namespace("neotest")
@@ -24,6 +25,13 @@ return {
                 adapters = {
                     require("neotest-vitest"),
                     require("neotest-go"),
+                },
+                consumers = {
+                    overseer = require("neotest.consumers.overseer"),
+                },
+                overseer = {
+                    enabled = true,
+                    force_default = false,
                 },
             })
         end,
