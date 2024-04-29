@@ -54,7 +54,7 @@ map("n", "[t", "<Cmd>lp<CR>", opts)
 map("n", "]t", "<Cmd>lne<CR>", opts)
 
 -- Clear search hi
-map("n", "<Space>h", "<Cmd>noh<CR>", opts)
+map("n", "?", "<Cmd>noh<CR>", opts)
 
 -- Command line mode mapping emacs like
 map("c", "<C-b>", "<Left>", opts)
