@@ -1,11 +1,24 @@
 return {
+    -- {
+    --     "kylechui/nvim-surround",
+    --     version = "*",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("nvim-surround").setup({})
+    --     end
+    -- },
+
     {
-        "kylechui/nvim-surround",
-        version = "*",
-        event = "VeryLazy",
+        "machakann/vim-sandwich",
         config = function()
-            require("nvim-surround").setup({})
-        end
+            local kmopt = { noremap = true, silent = true }
+            vim.keymap.set("n", "s", "<Nop>", kmopt)
+            vim.keymap.set("x", "s", "<Nop>", kmopt)
+        end,
+        keys = {
+            { "s", mode = "n" },
+            { "s", mode = "x" },
+        },
     },
 
     {
