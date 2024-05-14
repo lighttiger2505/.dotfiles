@@ -222,7 +222,7 @@ return {
         cmd = "NoNeckPain",
         config = function()
             require("no-neck-pain").setup({
-                width = 166,
+                width = 144,
                 autocmds = {
                     enableOnVimEnter = false,
                 },
