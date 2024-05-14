@@ -74,7 +74,7 @@ return {
         cmd = "Neotree",
         init = function()
             map("n", "<Leader>t", "<cmd>Neotree toggle<CR>", kopts)
-            -- map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
+            map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
         end,
         config = function()
             require("neo-tree").setup({
@@ -101,15 +101,15 @@ return {
         },
     },
 
-    {
-        'stevearc/oil.nvim',
-        cmd = "Oil",
-        opts = {},
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        keys = {
-            { "<Leader>f", "<CMD>Oil<CR>", mode = "n", desc = "Open parent directory" },
-        },
-    },
+    -- {
+    --     'stevearc/oil.nvim',
+    --     cmd = "Oil",
+    --     opts = {},
+    --     dependencies = { "nvim-tree/nvim-web-devicons" },
+    --     keys = {
+    --         { "<Leader>f", "<CMD>Oil<CR>", mode = "n", desc = "Open parent directory" },
+    --     },
+    -- },
 
     {
         "shellRaining/hlchunk.nvim",
