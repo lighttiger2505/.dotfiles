@@ -125,7 +125,7 @@ return {
             })
 
             vim.diagnostic.config({
-                virtual_text = false,
+                virtual_text = true,
                 signs = true,
                 underline = true,
                 update_in_insert = false,
@@ -236,18 +236,4 @@ return {
             { "gx", function() require("lsplinks").gx() end, mode = "n", desc = "jump lsp link" },
         },
     },
-
-    -- {
-    --     "maan2003/lsp_lines.nvim",
-    --     event = "VeryLazy",
-    --     dependencies = {
-    --         "neovim/nvim-lspconfig",
-    --     },
-    --     config = function()
-    --         require("lsp_lines").setup()
-    --         vim.diagnostic.config({
-    --             virtual_text = false,
-    --         })
-    --     end,
-    -- },
 }
