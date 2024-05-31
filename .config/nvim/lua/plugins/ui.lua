@@ -232,4 +232,9 @@ return {
             { "<Leader>n", "<Cmd>NoNeckPain<CR>", mode = "n", desc = "no neck pain" },
         },
     },
+
+    {
+        'Bekaboo/dropbar.nvim',
+        event = "VeryLazy",
+    }
 }
