@@ -12,7 +12,6 @@ return {
             { "<Space>b", "<Cmd>Telescope buffers<CR>",    mode = "n", desc = "find buffer" },
             { "<Space>r", "<Cmd>Telescope oldfiles<CR>",   mode = "n", desc = "find old files" },
             { "<Space>l", "<Cmd>Telescope live_grep<CR>",  mode = "n", desc = "find live grep" },
-            { "<Space>h", "<Cmd>Telescope help_tags<CR>",  mode = "n", desc = "find help tags" },
         },
     },
 
