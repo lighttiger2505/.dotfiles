@@ -1,6 +1,9 @@
 #!/usr/bin/zsh
 
-# load path and environment variables for sheldon
+# Load path and env first
 source $HOME/.zsh/path.zsh
 source $HOME/.zsh/env.zsh
-eval "$(sheldon source)"
+# not lazy loading
+source $HOME/.zsh/sync.zsh
+# lazy loading for zsh plugin and zsh hooks
+source $HOME/.zsh/lazy.zsh

@@ -1,15 +1,5 @@
 #!/usr/bin/zsh
 
-# OS Type
-case ${OSTYPE} in
-    darwin*)
-        [[ -f ~/.zshrc.osx ]] && source ~/.dotfiles/.zshrc.osx
-        ;;
-    linux-gnu*)
-        [[ -f ~/.zshrc.linux ]] && source ~/.dotfiles/.zshrc.linux
-        ;;
-esac
-
 # load settings
 source ~/.zsh/path.zsh
 source ~/.zsh/completion.zsh
