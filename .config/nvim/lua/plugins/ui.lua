@@ -199,8 +199,8 @@ return {
         init = function() vim.g.barbar_auto_setup = false end,
         opts = {},
         keys = {
-            { "<C-j>",    "<Cmd>BufferPrevious<CR>",         mode = "n", desc = "buffer prev" },
-            { "<C-k>",    "<Cmd>BufferNext<CR>",             mode = "n", desc = "buffer next" },
+            { "<C-h>",    "<Cmd>BufferPrevious<CR>",         mode = "n", desc = "buffer prev" },
+            { "<C-l>",    "<Cmd>BufferNext<CR>",             mode = "n", desc = "buffer next" },
             { "<Space>j", "<Cmd>BufferOrderByName<CR>",      mode = "n", desc = "buffer sort by name" },
             { "<Space>k", "<Cmd>BufferOrderByDirectory<CR>", mode = "n", desc = "buffer sort by directory" },
         },
