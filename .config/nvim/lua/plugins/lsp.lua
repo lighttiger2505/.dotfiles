@@ -59,6 +59,7 @@ return {
                     -- builtin lsp
                     vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, bufopts)
                     vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
+                    vim.keymap.set('n', '<LocalLeader>i', vim.lsp.buf.implementation, bufopts)
                     vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
                     vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
                     vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
@@ -69,7 +70,7 @@ return {
                     vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
                     vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
                     vim.keymap.set("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", bufopts)
-                    vim.keymap.set("n", "<LocalLeader>i", "<cmd>Lspsaga finder imp<CR>", bufopts)
+                    -- vim.keymap.set("n", "<LocalLeader>i", "<cmd>Lspsaga finder imp<CR>", bufopts)
                 end,
             })
 
