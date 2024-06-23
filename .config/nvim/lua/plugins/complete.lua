@@ -10,8 +10,7 @@ return {
             { "hrsh7th/cmp-path" },
             { "onsails/lspkind.nvim" },
             { "zbirenbaum/copilot-cmp" },
-            { "L3MON4D3/LuaSnip" },
-            { "saadparwaiz1/cmp_luasnip" },
+            { "garymjr/nvim-snippets" },
         },
         config = function()
             local cmp = require("cmp")
@@ -70,7 +69,7 @@ return {
                     }),
                 },
                 sources = cmp.config.sources({
-                    { name = "luasnip" },
+                    { name = "snippets" },
                     { name = "nvim_lsp" },
                     { name = "copilot" },
                 }, {
@@ -85,11 +84,6 @@ return {
                             return vim_item
                         end,
                     }),
-                },
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end,
                 },
             })
 
@@ -145,51 +139,6 @@ return {
     },
 
     {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
-        event = "InsertEnter",
-        config = function()
-            local luasnip = require("luasnip")
-            local types = require("luasnip.util.types")
-
-            luasnip.config.set_config({
-                history = true,
-                updateevents = "TextChanged,TextChangedI",
-                delete_check_events = "TextChanged",
-                ext_opts = { [types.choiceNode] = { active = { virt_text = { { "choiceNode", "Comment" } } } } },
-                ext_base_prio = 300,
-                ext_prio_increase = 1,
-                enable_autosnippets = true,
-                ft_func = function()
-                    return vim.split(vim.bo.filetype, ".", true)
-                end,
-            })
-
-            require("luasnip.loaders.from_lua").lazy_load()
-            require("luasnip.loaders.from_vscode").lazy_load({
-                paths = { vim.fn.stdpath("data") .. "/lazy/friendly-snippets" },
-            })
-        end,
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-        },
-        keys = {
-            { "<C-k>", function() require("luasnip").expand() end, mode = { "i" } },
-            { "<C-L>", function() require("luasnip").jump(1) end,  mode = { "i", "s" } },
-            { "<C-J>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
-            {
-                "<C-E>",
-                function()
-                    if require("luasnip").choice_active() then
-                        require("luasnip").change_choice(1)
-                    end
-                end,
-                mode = { "i", "s" }
-            },
-        },
-    },
-
-    {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
@@ -199,9 +148,55 @@ return {
     },
 
     {
-        "ray-x/lsp_signature.nvim",
-        event = "VeryLazy",
-        opts = {},
-        config = function(_, opts) require 'lsp_signature'.setup(opts) end
+        "garymjr/nvim-snippets",
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+        },
+        config = function()
+            require("snippets").setup({ friendly_snippets = true })
+        end,
+        keys = {
+            {
+                "<Tab>",
+                function()
+                    if vim.snippet.active({ direction = 1 }) then
+                        vim.schedule(function()
+                            vim.snippet.jump(1)
+                        end)
+                        return
+                    end
+                    return "<Tab>"
+                end,
+                expr = true,
+                silent = true,
+                mode = "i",
+            },
+            {
+                "<Tab>",
+                function()
+                    vim.schedule(function()
+                        vim.snippet.jump(1)
+                    end)
+                end,
+                expr = true,
+                silent = true,
+                mode = "s",
+            },
+            {
+                "<S-Tab>",
+                function()
+                    if vim.snippet.active({ direction = -1 }) then
+                        vim.schedule(function()
+                            vim.snippet.jump(-1)
+                        end)
+                        return
+                    end
+                    return "<S-Tab>"
+                end,
+                expr = true,
+                silent = true,
+                mode = { "i", "s" },
+            },
+        },
     }
 }
