@@ -101,16 +101,6 @@ return {
         },
     },
 
-    -- {
-    --     'stevearc/oil.nvim',
-    --     cmd = "Oil",
-    --     opts = {},
-    --     dependencies = { "nvim-tree/nvim-web-devicons" },
-    --     keys = {
-    --         { "<Leader>f", "<CMD>Oil<CR>", mode = "n", desc = "Open parent directory" },
-    --     },
-    -- },
-
     {
         "shellRaining/hlchunk.nvim",
         event = { "UIEnter" },
@@ -169,9 +159,6 @@ return {
                 -- default mappings
                 "]",
                 "[",
-                "S",
-                "c",
-                "d",
                 "g",
                 "y",
                 -- register

@@ -10,18 +10,6 @@ return {
                         symbol_in_winbar = {
                             enable = false,
                         },
-                        finder = {
-                            keys = {
-                                shuttle = "[w",
-                                toggle_or_open = "<CR>",
-                                vsplit = "v",
-                                split = "s",
-                                tabe = "t",
-                                tabnew = "r",
-                                quit = "q",
-                                close = "<C-c>k",
-                            },
-                        },
                     })
                 end
             },
@@ -50,8 +38,6 @@ return {
                 })
             end
 
-            -- Use LspAttach autocommand to only map the following keys
-            -- after the language server attaches to the current buffer
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
                 callback = function(ev)
@@ -70,7 +56,6 @@ return {
                     vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
                     vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
                     vim.keymap.set("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", bufopts)
-                    -- vim.keymap.set("n", "<LocalLeader>i", "<cmd>Lspsaga finder imp<CR>", bufopts)
                 end,
             })
 
@@ -173,9 +158,9 @@ return {
             {
                 "<LocalLeader>f",
                 function()
-                    require("conform").format({ async = true, lsp_fallback = true })
+                    require("conform").format({ async = true, lsp_format = "first" })
                 end,
-                mode = "",
+                mode = "n",
                 desc = "Format buffer",
             },
         },
@@ -188,7 +173,10 @@ return {
                 json = { { "jq" } },
                 go = { "goimports", "gofmt" },
             },
-            format_on_save = { timeout_ms = 300, lsp_fallback = true },
+            format_on_save = {
+                lsp_format = "first",
+                timeout_ms = 500,
+            },
         },
     },
 
@@ -226,15 +214,5 @@ return {
                 end,
             })
         end,
-    },
-
-    {
-        "icholy/lsplinks.nvim",
-        config = function()
-            require("lsplinks").setup()
-        end,
-        keys = {
-            { "gx", function() require("lsplinks").gx() end, mode = "n", desc = "jump lsp link" },
-        },
     },
 }
