@@ -5,13 +5,17 @@ return {
             "nvim-telescope/telescope.nvim",
             "kkharji/sqlite.lua",
         },
-        opts = {},
+        opts = {
+            default = {
+                sorting = 'frecent'
+            },
+        },
         keys = {
-            { "<Space>p", "<Cmd>Telescope git_files<CR>",  mode = "n", desc = "find git files" },
-            { "<Space>s", "<Cmd>Telescope git_status<CR>", mode = "n", desc = "find git status files" },
-            { "<Space>b", "<Cmd>Telescope buffers<CR>",    mode = "n", desc = "find buffer" },
-            { "<Space>r", "<Cmd>Telescope oldfiles<CR>",   mode = "n", desc = "find old files" },
-            { "<Space>l", "<Cmd>Telescope live_grep<CR>",  mode = "n", desc = "find live grep" },
+            { "<Space>p", "<Cmd>Telescope git_files<CR>",              mode = "n", desc = "find git files" },
+            { "<Space>s", "<Cmd>Telescope git_status<CR>",             mode = "n", desc = "find git status files" },
+            { "<Space>b", "<Cmd>Telescope buffers<CR>",                mode = "n", desc = "find buffer" },
+            { "<Space>r", "<Cmd>Telescope oldfiles cwd_only=true<CR>", mode = "n", desc = "find old files" },
+            { "<Space>l", "<Cmd>Telescope live_grep<CR>",              mode = "n", desc = "find live grep" },
         },
     },
 
