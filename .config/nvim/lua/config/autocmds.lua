@@ -18,7 +18,8 @@ autocmd('FileType', {
   group = group_name,
   pattern = { "markdown" },
   callback = function()
-    l.conceallevel = 0
+    l.conceallevel = 3
+    l.concealcursor = "c"
   end,
 })
 
@@ -58,6 +59,6 @@ autocmd('TermOpen', {
 autocmd('TextYankPost', {
   group = group_name,
   callback = function()
-    vim.highlight.on_yank {higroup="IncSearch", timeout=200}
+    vim.highlight.on_yank { higroup = "IncSearch", timeout = 200 }
   end,
 })
