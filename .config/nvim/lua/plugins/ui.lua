@@ -144,7 +144,7 @@ return {
     },
     {
         "yorickpeterse/nvim-pqf",
-        ft = "qf",
+        event = "VeryLazy",
         config = function()
             require("pqf").setup()
         end,
