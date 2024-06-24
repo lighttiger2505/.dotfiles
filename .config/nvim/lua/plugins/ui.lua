@@ -103,20 +103,21 @@ return {
 
     {
         "shellRaining/hlchunk.nvim",
-        event = { "UIEnter" },
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
+            require("hlchunk").setup({})
             local palette = require('nightfox.palette').load("nightfox")
-            require("hlchunk").setup({
-                chunk = {
-                    style = {
-                        { fg = palette.blue.base },
-                        { fg = palette.red.base },
-                    },
+            require('hlchunk.mods.chunk')({
+                style = {
+                    { fg = palette.blue.base },
+                    { fg = palette.red.base },
                 },
                 line_num = {
                     enable = false,
                 },
-            })
+            }):enable()
+            require('hlchunk.mods.indent')({}):enable()
+            require('hlchunk.mods.line_num')({}):enable()
         end
     },
 
@@ -136,9 +137,17 @@ return {
         },
     },
 
+    -- QuickFix
     {
         "kevinhwang91/nvim-bqf",
         ft = "qf",
+    },
+    {
+        "yorickpeterse/nvim-pqf",
+        ft = "qf",
+        config = function()
+            require("pqf").setup()
+        end,
     },
 
     {
@@ -160,7 +169,6 @@ return {
                 "]",
                 "[",
                 "g",
-                "y",
                 -- register
                 "<C-r>",
                 '"',
@@ -223,5 +231,5 @@ return {
     {
         'Bekaboo/dropbar.nvim',
         event = "VeryLazy",
-    }
+    },
 }
