@@ -6,7 +6,6 @@ source ~/.zsh/completion.zsh
 source ~/.zsh/setopt.zsh
 source ~/.zsh/prompt.zsh
 source ~/.zsh/fzf.zsh
-source ~/.zsh/alias.zsh
 source ~/.zsh/keybind.zsh
 
 if [ "$(pgrep ssh-agent 2> /dev/null)" = "" ]; then
