@@ -115,9 +115,13 @@ return {
                 line_num = {
                     enable = false,
                 },
+                duration = 0,
+                delay = 0,
             }):enable()
             require('hlchunk.mods.indent')({}):enable()
-            require('hlchunk.mods.line_num')({}):enable()
+            -- require('hlchunk.mods.line_num')({
+            --     style = palette.red.base,
+            -- }):enable()
         end
     },
 
