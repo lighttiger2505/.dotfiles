@@ -150,6 +150,26 @@ return {
     },
 
     {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        cmd = {
+            "CopilotChat",
+            "CopilotChatOpen",
+            "CopilotChatClose",
+            "CopilotChatToggle",
+            "CopilotChatStop",
+            "CopilotChatReset",
+        },
+        branch = "canary",
+        dependencies = {
+            { "zbirenbaum/copilot.lua" },
+            { "nvim-lua/plenary.nvim" },
+        },
+        opts = {
+            debug = true, -- Enable debugging
+        },
+    },
+
+    {
         "garymjr/nvim-snippets",
         dependencies = {
             "rafamadriz/friendly-snippets",
