@@ -11,6 +11,7 @@ return {
             { "onsails/lspkind.nvim" },
             { "zbirenbaum/copilot-cmp" },
             { "garymjr/nvim-snippets" },
+            { "hrsh7th/cmp-nvim-lsp-signature-help" },
         },
         config = function()
             local cmp = require("cmp")
@@ -69,6 +70,7 @@ return {
                     }),
                 },
                 sources = cmp.config.sources({
+                    { name = "nvim_lsp_signature_help" },
                     { name = "snippets" },
                     { name = "nvim_lsp" },
                     { name = "copilot" },
