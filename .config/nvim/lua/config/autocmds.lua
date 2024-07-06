@@ -27,8 +27,19 @@ autocmd('FileType', {
 autocmd('FileType', {
     group = group_name,
     pattern = { 'gitcommit', 'NeogitCommitMessage' },
-    callback = function()
+    callback = function(ev)
         l.spell = true
+        if vim.fn.has("CopilotChat.nvim") then
+            vim.keymap.set("n", "<leader>c", "<cmd>CopilotChatCommitStaged<CR>", { buffer = ev.buf })
+            vim.schedule(function()
+                require("CopilotChat")
+                vim.cmd.CopilotChatCommitStaged()
+            end)
+            vim.api.nvim_create_autocmd("QuitPre", {
+                command = "CopilotChatClose",
+            })
+            vim.keymap.set("ca", "qq", "execute 'CopilotChatClose' <bar> wqa")
+        end
     end,
 })
 
