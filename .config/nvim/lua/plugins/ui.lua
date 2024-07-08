@@ -211,7 +211,7 @@ return {
             require('close_buffers').setup({})
         end,
         keys = {
-            { "<Space>c", function() require('close_buffers').delete({ type = 'hidden', force = true }) end, mode = "n", desc = "Delete all non-visible buffers" },
+            { "<Space>a", function() require('close_buffers').delete({ type = 'hidden', force = true }) end, mode = "n", desc = "Delete all non-visible buffers" },
             { "<Space>q", function() require('close_buffers').delete({ type = 'this' }) end,                 mode = "n", desc = "Delete the current buffer" },
         },
     },
