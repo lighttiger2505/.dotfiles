@@ -163,9 +163,65 @@ return {
         dependencies = {
             { "zbirenbaum/copilot.lua" },
             { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope.nvim" },
+            { "hrsh7th/nvim-cmp" },
         },
         opts = {
-            debug = true, -- Enable debugging
+        },
+        config = function()
+            local select = require('CopilotChat.select')
+            require("CopilotChat.integrations.cmp").setup()
+            require('CopilotChat').setup({
+                mappings = {
+                    complete = {
+                        insert = '',
+                    },
+                },
+                prompts = {
+                    ReviewBufferJa = {
+                        prompt = 'このコードをレビューをしてください。',
+                        selection = select.buffer,
+                    },
+                    ReviewSelectedJa = {
+                        prompt = 'このコードをレビューをしてください。',
+                        selection = select.visual,
+                    },
+                    DocsJa = {
+                        prompt = '/COPILOT_GENERATE このコードを説明するドキュメントを記載してください。',
+                        selection = select.visual,
+                    },
+                    CommitStagedJa = {
+                        prompt =
+                        'コミットメッセージをコミット規約に従って記述してください。タイトルは最大50文字、メッセージは最大200文字かつ72文字で折り返してください。',
+                        selection = function(source)
+                            return select.gitdiff(source, true)
+                        end,
+                    },
+                },
+            })
+        end,
+        keys = {
+            {
+                "<Leader>cc",
+                "<Cmd>CopilotChat<CR>",
+                mode = "n",
+                desc = "CopilotChat Quick chat",
+            },
+            {
+                "<Leader>cm",
+                "<Cmd>CopilotChatCommitStaged<CR>",
+                mode = "n",
+                desc = "CopilotChat Commit staged ",
+            },
+            {
+                "<Leader>ca",
+                function()
+                    local actions = require("CopilotChat.actions")
+                    require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+                end,
+                mode = "n",
+                desc = "CopilotChat Select prompt actions",
+            },
         },
     },
 
