@@ -107,6 +107,7 @@ return {
 
     {
         "gbprod/yanky.nvim",
+        event = "TextYankPost",
         dependencies = {
             "nvim-telescope/telescope.nvim",
         },
@@ -122,11 +123,6 @@ return {
                 },
                 system_clipboard = {
                     sync_with_ring = true,
-                },
-                highlight = {
-                    on_put = true,
-                    on_yank = true,
-                    timer = 300,
                 },
             })
             require("telescope").load_extension("yank_history")
