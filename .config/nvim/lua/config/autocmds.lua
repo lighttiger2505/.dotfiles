@@ -23,12 +23,24 @@ autocmd('FileType', {
     end,
 })
 
--- Spell check gitcommit
 autocmd('FileType', {
     group = group_name,
     pattern = { 'gitcommit', 'NeogitCommitMessage' },
-    callback = function()
+    callback = function(ev)
+        -- Spell check gitcommit
         l.spell = true
+        -- Auto close copiloat chat
+        if vim.fn.has("CopilotChat.nvim") then
+            vim.schedule(function()
+                require("CopilotChat")
+            end)
+            vim.keymap.set("n", "<leader>ce", "<cmd>CopilotChatCommitStaged<CR>", { buffer = ev.buf })
+            vim.keymap.set("n", "<leader>cj", "<cmd>CopilotChatCommitStagedJa<CR>", { buffer = ev.buf })
+            vim.api.nvim_create_autocmd("QuitPre", {
+                command = "CopilotChatClose",
+            })
+            vim.keymap.set("ca", "qq", "execute 'CopilotChatClose' <bar> wqa")
+        end
     end,
 })
 

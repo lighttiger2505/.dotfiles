@@ -205,13 +205,7 @@ return {
                 "<Leader>cc",
                 "<Cmd>CopilotChat<CR>",
                 mode = "n",
-                desc = "CopilotChat Quick chat",
-            },
-            {
-                "<Leader>cm",
-                "<Cmd>CopilotChatCommitStaged<CR>",
-                mode = "n",
-                desc = "CopilotChat Commit staged ",
+                desc = "CopilotChat Open chat window",
             },
             {
                 "<Leader>ca",
