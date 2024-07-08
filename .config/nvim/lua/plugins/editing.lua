@@ -25,7 +25,7 @@ return {
     {
         "Wansmer/treesj",
         keys = {
-            { "<Leader>j", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
+            { "<Leader>j", "<cmd>TSJToggle<cr>", desc = "treesj Toggle split join" },
         },
         opts = { use_default_keymaps = false, max_join_length = 1500 },
     },
@@ -107,7 +107,6 @@ return {
 
     {
         "gbprod/yanky.nvim",
-        event = "TextYankPost",
         dependencies = {
             "nvim-telescope/telescope.nvim",
         },
@@ -136,7 +135,7 @@ return {
                 "<Space>y",
                 "<Cmd>Telescope yank_history<CR>",
                 mode = "n",
-                desc = "select yank history",
+                desc = "Yanky Select yank history",
             },
         },
     },

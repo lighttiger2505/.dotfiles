@@ -134,10 +134,10 @@ return {
             require("hlslens").setup()
         end,
         keys = {
-            { "*",  "<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>",  mode = { "n", "v" } },
-            { "#",  "<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>",  mode = { "n", "v" } },
-            { "g*", "<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>", mode = { "n", "v" } },
-            { "g#", "<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>", mode = { "n", "v" } },
+            { "*",  "<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>",  mode = { "n", "v" }, desc = "hlslens start" },
+            { "#",  "<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>",  mode = { "n", "v" }, desc = "hlslens start" },
+            { "g*", "<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>", mode = { "n", "v" }, desc = "hlslens start" },
+            { "g#", "<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>", mode = { "n", "v" }, desc = "hlslens start" },
         },
     },
 
@@ -198,10 +198,10 @@ return {
         init = function() vim.g.barbar_auto_setup = false end,
         opts = {},
         keys = {
-            { "<C-h>",    "<Cmd>BufferPrevious<CR>",         mode = "n", desc = "buffer prev" },
-            { "<C-l>",    "<Cmd>BufferNext<CR>",             mode = "n", desc = "buffer next" },
-            { "<Space>j", "<Cmd>BufferOrderByName<CR>",      mode = "n", desc = "buffer sort by name" },
-            { "<Space>k", "<Cmd>BufferOrderByDirectory<CR>", mode = "n", desc = "buffer sort by directory" },
+            { "<C-h>",    "<Cmd>BufferPrevious<CR>",         mode = "n", desc = "BarBar Move buffer prev" },
+            { "<C-l>",    "<Cmd>BufferNext<CR>",             mode = "n", desc = "BarBar Move buffer next" },
+            { "<Space>j", "<Cmd>BufferOrderByName<CR>",      mode = "n", desc = "BarBar Sort buffer by name" },
+            { "<Space>k", "<Cmd>BufferOrderByDirectory<CR>", mode = "n", desc = "BarBar Sort buffer by directory" },
         },
     },
 
@@ -211,8 +211,8 @@ return {
             require('close_buffers').setup({})
         end,
         keys = {
-            { "<Space>a", function() require('close_buffers').delete({ type = 'hidden', force = true }) end, mode = "n", desc = "Delete all non-visible buffers" },
-            { "<Space>q", function() require('close_buffers').delete({ type = 'this' }) end,                 mode = "n", desc = "Delete the current buffer" },
+            { "<Space>a", function() require('close_buffers').delete({ type = 'hidden', force = true }) end, mode = "n", desc = "CloseBuffers Close all non-visible buffers" },
+            { "<Space>q", function() require('close_buffers').delete({ type = 'this' }) end,                 mode = "n", desc = "CloseBuffers Close the current buffer" },
         },
     },
 
@@ -228,7 +228,7 @@ return {
             })
         end,
         keys = {
-            { "<Leader>n", "<Cmd>NoNeckPain<CR>", mode = "n", desc = "no neck pain" },
+            { "<Leader>n", "<Cmd>NoNeckPain<CR>", mode = "n", desc = "NoNeckPain" },
         },
     },
 

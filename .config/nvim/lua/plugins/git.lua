@@ -14,7 +14,7 @@ return {
                     require("gitsigns").next_hunk()
                 end,
                 mode = "n",
-                desc = "next hunk",
+                desc = "GitSigns Jump next hunk",
             },
             {
                 "[g",
@@ -22,7 +22,7 @@ return {
                     require("gitsigns").prev_hunk()
                 end,
                 mode = "n",
-                desc = "prev hunk",
+                desc = "GitSigns Jump prev hunk",
             },
             {
                 "<leader>hb",
@@ -30,7 +30,7 @@ return {
                     require("gitsigns").blame_line({ full = true })
                 end,
                 mode = "n",
-                desc = "show blame",
+                desc = "GitSigns show blame",
             },
             {
                 "<leader>hs",
@@ -38,7 +38,7 @@ return {
                     require("gitsigns").stage_hunk()
                 end,
                 mode = "n",
-                desc = "stage hunk",
+                desc = "GitSigns Stage hunk",
             },
             {
                 "<leader>hu",
@@ -46,7 +46,7 @@ return {
                     require("gitsigns").undo_stage_hunk()
                 end,
                 mode = "n",
-                desc = "unstage hunk",
+                desc = "GitSigns Unstage hunk",
             },
             {
                 "<leader>hr",
@@ -54,7 +54,7 @@ return {
                     require("gitsigns").reset_hunk()
                 end,
                 mode = "n",
-                desc = "reset hunk",
+                desc = "GitSigns Reset hunk",
             },
             -- visual mode
             {
@@ -63,7 +63,7 @@ return {
                     require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
                 end,
                 mode = "v",
-                desc = "stage hunk",
+                desc = "GitSigns Stage hunk",
             },
             {
                 "<leader>hu",
@@ -71,7 +71,7 @@ return {
                     require("gitsigns").undo_stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
                 end,
                 mode = "v",
-                desc = "unstage hunk",
+                desc = "GitSigns Unstage hunk",
             },
             {
                 "<leader>hr",
@@ -79,7 +79,7 @@ return {
                     require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
                 end,
                 mode = "v",
-                desc = "reset hunk",
+                desc = "GitSigns Reset hunk",
             },
         },
     },
@@ -178,10 +178,10 @@ return {
             })
         end,
         keys = {
-            { "<Leader>dd", "<cmd>DiffviewOpen<CR>",          mode = "n", desc = "open diff view" },
-            { "<Leader>dc", "<cmd>DiffviewClose<CR>",         mode = "n", desc = "close diff view" },
-            { "<Leader>dh", "<cmd>DiffviewFileHistory<CR>",   mode = "n", desc = "open diff view for file history" },
-            { "<Leader>df", "<cmd>DiffviewFileHistory %<CR>", mode = "n", desc = "open diff view for file history" },
+            { "<Leader>dd", "<cmd>DiffviewOpen<CR>",          mode = "n", desc = "Diffview Open diff view" },
+            { "<Leader>dc", "<cmd>DiffviewClose<CR>",         mode = "n", desc = "Diffview Close diff view" },
+            { "<Leader>dh", "<cmd>DiffviewFileHistory<CR>",   mode = "n", desc = "Diffview Open diff view for file history" },
+            { "<Leader>df", "<cmd>DiffviewFileHistory %<CR>", mode = "n", desc = "Diffview Open diff view for file history" },
         },
     },
 
@@ -255,8 +255,8 @@ return {
         cmd = "GitLink",
         opts = {},
         keys = {
-            { "gy", "<cmd>GitLink<cr>",  mode = { "n", "v" }, desc = "Yank git link" },
-            { "gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+            { "gy", "<cmd>GitLink<cr>",  mode = { "n", "v" }, desc = "GitLinker Yank git link" },
+            { "gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "GitLinker Open git link" },
         },
     },
 

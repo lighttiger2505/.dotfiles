@@ -41,48 +41,42 @@ return {
                 function()
                     require("neotest").run.run()
                 end,
-                mode = "n",
-                desc = "Run the nearest test",
+                desc = "NeoTest Run the nearest test",
             },
             {
                 "<Leader>sc",
                 function()
                     require("neotest").run.run(vim.fn.expand("%"))
                 end,
-                mode = "n",
-                desc = "Run the current file",
+                desc = "NeoTest Run the current file",
             },
             {
                 "<Leader>sf",
                 function()
                     require("neotest").summary.toggle()
                 end,
-                mode = "n",
-                desc = "Open test output to the floating window",
+                desc = "NeoTest Open test output to the floating window",
             },
             {
                 "<Leader>so",
                 function()
                     require("neotest").summary.toggle()
                 end,
-                mode = "n",
-                desc = "Open test summary panel",
+                desc = "NeoTest Open test summary panel",
             },
             {
                 "<Leader>sp",
                 function()
                     require("neotest").output_panel.toggle()
                 end,
-                mode = "n",
-                desc = "Open test output panel",
+                desc = "NeoTest Open test output panel",
             },
             {
                 "<Leader>sw",
                 function()
                     require("neotest").watch.toggle(vim.fn.expand("%"))
                 end,
-                mode = "n",
-                desc = "Watch the current file test",
+                desc = "NeoTest Watch the current file test",
             },
         },
     },

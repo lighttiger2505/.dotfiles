@@ -143,10 +143,10 @@ return {
             require("telescope").load_extension("aerial")
         end,
         keys = {
-            { "]]",        "<cmd>AerialNext<CR>",       mode = "n", desc = "jump prev symbol" },
-            { "[[",        "<cmd>AerialPrev<CR>",       mode = "n", desc = "jump next symbol" },
-            { "<Leader>o", "<cmd>AerialToggle!<CR>",    mode = "n", desc = "open symbol list" },
-            { "<Space>o",  "<Cmd>Telescope aerial<CR>", mode = "n", desc = "fuzzy search symbol list" },
+            { "]]",        "<cmd>AerialNext<CR>",       mode = "n", desc = "Aerial Jump prev symbol" },
+            { "[[",        "<cmd>AerialPrev<CR>",       mode = "n", desc = "Aerial Jump next symbol" },
+            { "<Leader>o", "<cmd>AerialToggle!<CR>",    mode = "n", desc = "Aerial Open symbol list" },
+            { "<Space>o",  "<Cmd>Telescope aerial<CR>", mode = "n", desc = "Aerial Find symbol list" },
         },
     },
 
@@ -161,7 +161,7 @@ return {
                     require("conform").format({ async = true, lsp_format = "first" })
                 end,
                 mode = "n",
-                desc = "Format buffer",
+                desc = "Conform Format buffer",
             },
         },
         opts = {
