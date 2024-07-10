@@ -38,3 +38,5 @@
 	insteadOf = https://github.com/MobilityTechnologies/
 [push]
 	autoSetupRemote = true
+[rerere]
+	enabled = true
