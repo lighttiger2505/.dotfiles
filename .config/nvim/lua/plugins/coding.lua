@@ -141,13 +141,31 @@ return {
         opts = {
             scope = "git",
         },
-        event = { "BufReadPost", "BufNewFile" },
+        event = "VeryLazy",
         cmd = "Grapple",
         keys = {
             { "<leader>m", "<cmd>Grapple toggle<cr>",          desc = "Grapple toggle tag" },
             { "<leader>n", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
             { "<leader>p", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
-            { "<Space>M", "<cmd>Grapple toggle_tags<cr>",     desc = "Grapple open tags window" },
+            { "<Space>m",  "<cmd>Grapple toggle_tags<cr>",     desc = "Grapple open tags window" },
         },
     },
+
+    {
+        "chentoast/marks.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("marks").setup {
+                mappings = {
+                    set_next = "mm",
+                    delete_line = "dmm",
+                    next = "]r",
+                    preview = "[r",
+                    set_bookmark0 = "m0",
+                    prev = false
+                }
+            }
+        end,
+    },
+
 }

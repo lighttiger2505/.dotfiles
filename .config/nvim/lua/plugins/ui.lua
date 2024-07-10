@@ -47,7 +47,17 @@ return {
                     -- globalstatus = true,
                 },
                 sections = {
-                    lualine_a = { "filename" },
+                    lualine_a = {
+                        "filename",
+                        {
+                            function()
+                                return require("grapple").name_or_index()
+                            end,
+                            cond = function()
+                                return package.loaded["grapple"] and require("grapple").exists()
+                            end
+                        }
+                    },
                     lualine_b = { "branch" },
                     lualine_c = { "diff", overseer_progress, lint_progress, "diagnostics" },
                     lualine_x = { "encoding", "fileformat", "filetype" },
