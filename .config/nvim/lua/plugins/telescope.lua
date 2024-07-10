@@ -6,8 +6,11 @@ return {
             "kkharji/sqlite.lua",
         },
         opts = {
+            scoring = {
+                boost_factor = 0.001
+            },
             default = {
-                sorting = 'frecent'
+                sorting = 'recent'
             },
         },
         keys = {
