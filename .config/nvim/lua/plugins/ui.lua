@@ -183,6 +183,7 @@ return {
                 "]",
                 "[",
                 "g",
+                "m",
                 -- register
                 "<C-r>",
                 '"',
@@ -238,7 +239,7 @@ return {
             })
         end,
         keys = {
-            { "<Leader>n", "<Cmd>NoNeckPain<CR>", mode = "n", desc = "NoNeckPain" },
+            { "<Leader>c", "<Cmd>NoNeckPain<CR>", mode = "n", desc = "NoNeckPain" },
         },
     },
 

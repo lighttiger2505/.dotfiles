@@ -19,6 +19,8 @@ return {
             { "<Space>b", "<Cmd>Telescope buffers<CR>",                mode = "n", desc = "Telescope Find buffer" },
             { "<Space>r", "<Cmd>Telescope oldfiles cwd_only=true<CR>", mode = "n", desc = "Telescope Find old files" },
             { "<Space>l", "<Cmd>Telescope live_grep<CR>",              mode = "n", desc = "Telescope Find live grep" },
+            { "<Space>m", "<Cmd>Telescope marks<CR>",                  mode = "n", desc = "Telescope Find marks" },
+            { "<Space>g", "<Cmd>Telescope grapple tags<CR>",           mode = "n", desc = "Telescope Find grapple tags" },
         },
     },
 
@@ -27,6 +29,7 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+            "cbochs/grapple.nvim",
         },
         config = function()
             local telescope = require("telescope")
@@ -65,6 +68,7 @@ return {
                 },
             })
             telescope.load_extension("fzf")
+            telescope.load_extension("grapple")
         end,
     },
 
