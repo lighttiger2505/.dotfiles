@@ -4,7 +4,7 @@ local kopts = { noremap = true, silent = true }
 return {
     {
         "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "mfussenegger/nvim-lint",
             "stevearc/overseer.nvim",
@@ -201,7 +201,7 @@ return {
 
     {
         'romgrk/barbar.nvim',
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             'lewis6991/gitsigns.nvim',
             'nvim-tree/nvim-web-devicons',
