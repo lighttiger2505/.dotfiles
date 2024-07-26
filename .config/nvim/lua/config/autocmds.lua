@@ -34,7 +34,7 @@ autocmd('FileType', {
             vim.schedule(function()
                 require("CopilotChat")
             end)
-            vim.keymap.set("n", "<leader>ce", "<cmd>CopilotChatCommitStaged<CR>", { buffer = ev.buf })
+            vim.keymap.set("n", "<leader>ce", "<cmd>CopilotChatCommitStagedEn<CR>", { buffer = ev.buf })
             vim.keymap.set("n", "<leader>cj", "<cmd>CopilotChatCommitStagedJa<CR>", { buffer = ev.buf })
             vim.api.nvim_create_autocmd("QuitPre", {
                 command = "CopilotChatClose",
