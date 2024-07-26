@@ -2,7 +2,7 @@
 # |<---- Problem, Task, Reason for Commit               ---->|
 
 
-# <Solution> (72 characters per line)
+# <Solution> (200 characters and 72 characters per line)
 # |<---- Solution or List of Changes                    ---->|
 
 

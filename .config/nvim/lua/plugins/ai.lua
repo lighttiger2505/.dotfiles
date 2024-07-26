@@ -71,7 +71,7 @@ return {
                     },
                     CommitStagedEn = {
                         prompt =
-                        'Please write your commit message according to the commit convention. The title should be a maximum of 50 characters, and the message should be a maximum of 200 characters and wrap at 72 characters.',
+                        'Write commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message should be a maximum of 200 characters and wrap at 72 characters. Wrap the whole message in code block with language gitcommit. As simply as possible.',
                         selection = function(source)
                             return select.gitdiff(source, true)
                         end,
