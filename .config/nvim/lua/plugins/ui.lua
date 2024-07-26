@@ -222,7 +222,7 @@ return {
             })
         end,
         keys = {
-            { "<Leader>c", "<Cmd>NoNeckPain<CR>", mode = "n", desc = "NoNeckPain" },
+            { "<Leader>w", "<Cmd>NoNeckPain<CR>", mode = "n", desc = "NoNeckPain" },
         },
     },
 
