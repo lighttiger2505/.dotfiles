@@ -28,4 +28,4 @@ bindkey '^\' ssh-fzf-sshconfig
 # Open editor
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^J' edit-command-line
+bindkey '^K' edit-command-line
