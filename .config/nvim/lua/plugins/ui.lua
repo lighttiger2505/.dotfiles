@@ -169,34 +169,15 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 500
-        end,
         opts = {
-            registers = true,
-            triggers = {
-                -- plugin mappgins
-                "<Leader>",
-                "<LocalLeader>",
-                "<Space>",
-                ",",
-                -- default mappings
-                "]",
-                "[",
-                "g",
-                "m",
-                -- register
-                "<C-r>",
-                '"',
-            },
-            window = {
-                border = "single",
-                position = "bottom",
-                margin = { 1, 0, 1, 0 },
-                padding = { 1, 2, 1, 2 },
-                winblend = 0,
-                zindex = 1000,
+        },
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
             },
         },
     },
