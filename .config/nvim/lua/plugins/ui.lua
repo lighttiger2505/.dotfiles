@@ -88,6 +88,8 @@ return {
         end,
         config = function()
             require("neo-tree").setup({
+                enable_diagnostics = false,
+                enable_git_status = true,
                 filesystem = {
                     filtered_items = {
                         visible = false,
