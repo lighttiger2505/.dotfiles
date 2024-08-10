@@ -8,13 +8,13 @@ else
     source ~/zsh-defer/zsh-defer.plugin.zsh
 fi
 
-# Install and lazy load zsh-syntax-highlighting
-zsyhidir=$HOME/zsh-syntax-highlighting
-zsyhifile=${zsyhidir}/zsh-syntax-highlighting.zsh
+# Install and lazy load fast-syntax-highlighting
+zsyhidir=$HOME/fast-syntax-highlighting
+zsyhifile=${zsyhidir}/fast-syntax-highlighting.plugin.zsh
 if [ -e ${zsyhidir} ]; then
     zsh-defer source ${zsyhifile}
 else
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting ${zsyhidir}
+    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ${zsyhidir}
     zsh-defer source ${zsyhifile}
 fi
 
