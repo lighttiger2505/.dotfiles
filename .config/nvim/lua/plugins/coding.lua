@@ -75,6 +75,15 @@ return {
                 templates = { "builtin", "user.run_script" },
             })
 
+            vim.api.nvim_create_user_command("OverseerRestartLast", function()
+                local tasks = overseer.list_tasks({ recent_first = true })
+                if vim.tbl_isempty(tasks) then
+                    vim.notify("No tasks found", vim.log.levels.WARN)
+                else
+                    overseer.run_action(tasks[1], "restart")
+                end
+            end, {})
+
             -- Create async make command
             vim.api.nvim_create_user_command("Make", function(params)
                 local cmd, num_subs = vim.o.makeprg:gsub("%$%*", params.args)
@@ -121,7 +130,8 @@ return {
             end, { nargs = "*", bang = true, complete = "file" })
         end,
         keys = {
-            { "<leader>r", "<Cmd>OverseerQuickAction<CR>", mode = "n", desc = "Overseer quick action" },
+            { "<leader>rl", "<Cmd>OverseerRestartLast<CR>", mode = "n", desc = "Overseer quick action" },
+            { "<leader>rr", "<Cmd>OverseerQuickAction<CR>", mode = "n", desc = "Overseer quick action" },
         },
     },
 
