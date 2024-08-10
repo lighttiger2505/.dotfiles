@@ -181,7 +181,7 @@ return {
             { "<Leader>dd", "<cmd>DiffviewOpen<CR>",          mode = "n", desc = "Diffview Open diff view" },
             { "<Leader>dc", "<cmd>DiffviewClose<CR>",         mode = "n", desc = "Diffview Close diff view" },
             { "<Leader>dh", "<cmd>DiffviewFileHistory<CR>",   mode = "n", desc = "Diffview Open diff view for file history" },
-            { "<Leader>df", "<cmd>DiffviewFileHistory %<CR>", mode = "n", desc = "Diffview Open diff view for file history" },
+            { "<Leader>df", "<cmd>DiffviewFileHistory %<CR>", mode = "n", desc = "Diffview Open diff view for current file history" },
         },
     },
 
@@ -222,10 +222,10 @@ return {
             function TigToggle()
                 tig:toggle()
             end
-
-            vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua TigToggle()<CR>", { noremap = true, silent = true })
         end,
-        keys = { "<Leader>g" },
+        keys = {
+            { "<Leader>gg", "<cmd>lua TigToggle()<CR>", mode = "n", desc = "ToggleTerm open tig view" },
+        },
     },
 
     {
@@ -247,7 +247,7 @@ return {
         "akinsho/git-conflict.nvim",
         version = "*",
         config = true,
-        event = "VeryLazy",
+        lazy = false,
     },
 
     {
@@ -270,6 +270,11 @@ return {
         },
         config = function()
             require("octo").setup()
-        end
+        end,
+        keys = {
+            { "<Leader>gl", "<cmd>Octo pr list<cr>",      mode = { "n", "v" }, desc = "Octo open pull request" },
+            { "<Leader>gd", "<cmd>Octo pr diff<cr>",      mode = { "n", "v" }, desc = "Octo show pull request diff" },
+            { "<Leader>gr", "<cmd>Octo review start<cr>", mode = { "n", "v" }, desc = "Octo start  pull request review" },
+        },
     },
 }
