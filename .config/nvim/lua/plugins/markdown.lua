@@ -61,5 +61,26 @@ return {
                 table_style = 'normal',
             })
         end,
-    }
+    },
+
+    {
+        "epwalsh/obsidian.nvim",
+        ft = "markdown",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        opts = {
+            workspaces = {
+                {
+                    name = "personal",
+                    path = "~/vaults/personal",
+                },
+                {
+                    name = "work",
+                    path = "~/vaults/work",
+                },
+            },
+        },
+    },
 }
