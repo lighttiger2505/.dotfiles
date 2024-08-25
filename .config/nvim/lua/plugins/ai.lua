@@ -69,6 +69,11 @@ return {
                         prompt = '/COPILOT_GENERATE このコードを説明するドキュメントを記載してください。',
                         selection = select.visual,
                     },
+                    PullRequestSummaryJa = {
+                        prompt =
+                        '差分から、内容の要約と変更内容の列挙をし、その上でレビューをしてださい。特にバグの可能性があれば教えてください。内容の要約は100文字以内で簡潔にまとめ、変更内容の列挙は箇条書きで詳しく記載してください。',
+                        selection = select.buffer,
+                    },
                     CommitStagedEn = {
                         prompt =
                         'Write commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.',
