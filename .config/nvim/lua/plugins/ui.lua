@@ -88,6 +88,9 @@ return {
         end,
         config = function()
             require("neo-tree").setup({
+                window = {
+                    position = "current",
+                },
                 enable_diagnostics = false,
                 enable_git_status = true,
                 filesystem = {
