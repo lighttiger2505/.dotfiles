@@ -304,8 +304,33 @@ fi
 # GitHub cli
 #####################################################################
 alias hb='gh repo view --web'
-alias hbp='gh pr view --web'
+alias hp='gh pr view --web'
 alias hci='gh workflow view --web'
+alias hcp='gh pr create --template "pull_request_template.md"'
+alias hfp='gh fzf pr'
+
+alias hpr=github-pr-review
+function github-pr-review() {
+    local pr_url="$1"
+    gh pr checkout ${pr_url}
+    nvim -c "Octo ${pr_url}"
+}
+
+# Create PR diff and open in nvim
+alias hd=create-pr-diff
+function create-pr-diff() {
+    local tmpfile="/tmp/pr-diff-$(date +%s)"
+    gh pr view --json url | jq .url | gh pr diff > ${tmpfile}
+    nvim ${tmpfile}
+}
+
+# Create PR diff and review by CopilotChat
+alias hdp=suggestion-pr-review
+function suggestion-pr-review() {
+    local tmpfile="/tmp/pr-diff-$(date +%s)"
+    gh pr view --json url | jq .url | gh pr diff > ${tmpfile}
+    nvim -c 'lua require("CopilotChat")' -c 'CopilotChatPullRequestSummaryJa' ${tmpfile}
+}
 
 #####################################################################
 # ripgrep
