@@ -149,7 +149,8 @@ return {
     {
         "cbochs/grapple.nvim",
         opts = {
-            scope = "git",
+            scope = "git_branch",
+            icons = true,
         },
         event = "VeryLazy",
         cmd = "Grapple",
