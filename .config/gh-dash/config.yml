@@ -53,6 +53,6 @@ repoPaths: {}
 theme:
   ui:
     table:
-      showSeparator: true
+      showSeparator: false
 pager:
   diff: ""
