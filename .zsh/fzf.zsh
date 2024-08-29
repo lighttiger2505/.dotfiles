@@ -17,7 +17,7 @@ zle -N cd-fzf-ghqlist
 function checkout-fzf-gitbranch() {
     local GIT_BRANCH=$(git branch --all | grep -v HEAD | fzf +m)
     if [ -n "$GIT_BRANCH" ]; then
-        git checkout $(echo "$GIT_BRANCH" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+        BUFFER="git checkout $(echo $GIT_BRANCH | sed 's/.* //' | sed 's#remotes/[^/]*/##')"
     fi
     zle accept-line
 }
