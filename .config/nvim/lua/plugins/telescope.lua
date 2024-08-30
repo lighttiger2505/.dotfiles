@@ -1,7 +1,6 @@
 return {
     {
         "prochri/telescope-all-recent.nvim",
-        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "nvim-telescope/telescope.nvim",
             "kkharji/sqlite.lua",
