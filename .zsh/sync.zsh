@@ -1,13 +1,13 @@
 #!/usr/bin/zsh
 
 # load settings
-source ~/.zsh/path.zsh
-source ~/.zsh/completion.zsh
-source ~/.zsh/setopt.zsh
-source ~/.zsh/prompt.zsh
-source ~/.zsh/fzf.zsh
-source ~/.zsh/keybind.zsh
+source $HOME/.zsh/prompt.zsh
+source $HOME/.zsh/setopt.zsh
+source $HOME/.zsh/completion.zsh
+source $HOME/.zsh/fzf.zsh
+source $HOME/.zsh/keybind.zsh
 
+# ssh-agent
 if [ "$(pgrep ssh-agent 2> /dev/null)" = "" ]; then
     eval $(ssh-agent) > /dev/null
     case ${OSTYPE} in
