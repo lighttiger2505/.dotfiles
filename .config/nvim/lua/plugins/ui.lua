@@ -89,7 +89,7 @@ return {
         config = function()
             require("neo-tree").setup({
                 window = {
-                    position = "current",
+                    position = "float",
                 },
                 enable_diagnostics = false,
                 enable_git_status = true,
