@@ -211,6 +211,22 @@ return {
                 make = { "checkmake" },
                 zsh = { "zsh" },
             }
+            -- Custom golangci-lint linter
+            -- https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/golangcilint.lua
+            local golangcilint = lint.linters.golangcilint
+            golangcilint.args = {
+                'run',
+                '--out-format',
+                'json',
+                '--show-stats=false',
+                '--print-issued-lines=false',
+                '--print-linter-name=false',
+                -- Add fast option
+                '--fast',
+                function()
+                    return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":h")
+                end
+            }
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
                 callback = function()
                     require("lint").try_lint()
