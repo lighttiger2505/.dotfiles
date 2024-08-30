@@ -5,6 +5,24 @@ return {
         event = "VeryLazy",
         config = function()
             require("nvim-surround").setup({
+                surrounds = {
+                    -- override non space pair
+                    ["("] = {
+                        add = function()
+                            return { { "(" }, { ")" } }
+                        end,
+                    },
+                    ["["] = {
+                        add = function()
+                            return { { "[" }, { "]" } }
+                        end,
+                    },
+                    ["{"] = {
+                        add = function()
+                            return { { "{" }, { "}" } }
+                        end,
+                    },
+                },
                 keymaps = {
                     -- insert = "<C-g>s",
                     -- insert_line = "<C-g>S",
