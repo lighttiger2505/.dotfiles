@@ -34,6 +34,7 @@ return {
                 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
             },
             "cbochs/grapple.nvim",
+            "nvim-telescope/telescope-file-browser.nvim",
         },
         config = function()
             local telescope = require("telescope")
@@ -62,6 +63,7 @@ return {
             })
             telescope.load_extension("fzf")
             telescope.load_extension("grapple")
+            telescope.load_extension("file_browser")
         end,
     },
 }

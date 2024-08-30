@@ -87,9 +87,20 @@ return {
             map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
         end,
         config = function()
+            local launchTelescopeFiler = function(state)
+                local node = state.tree:get_node()
+                local dir = vim.fn.fnamemodify(node.path, ":h")
+                require("telescope")
+                local cmd = string.format("Telescope file_browser path=%s select_buffer=true", dir)
+                vim.cmd(cmd)
+            end
             require("neo-tree").setup({
                 window = {
                     position = "float",
+                    mappings = {
+                        ["/"] = launchTelescopeFiler,
+                        ["f"] = launchTelescopeFiler,
+                    }
                 },
                 enable_diagnostics = false,
                 enable_git_status = true,
