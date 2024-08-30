@@ -74,3 +74,9 @@ autocmd('TextYankPost', {
         vim.highlight.on_yank { higroup = "IncSearch", timeout = 200 }
     end,
 })
+
+autocmd('FileType', {
+    group = group_name,
+    pattern = { "help" },
+    command = [[wincmd L]],
+})
