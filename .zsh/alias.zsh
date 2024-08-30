@@ -305,7 +305,6 @@ fi
 #####################################################################
 alias hb='gh repo view --web'
 alias hp='gh pr view --web'
-alias hci='gh workflow view --web'
 alias hcp='gh pr create --template "pull_request_template.md"'
 alias hfp='gh fzf pr --author @me'
 
