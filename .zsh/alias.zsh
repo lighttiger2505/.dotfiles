@@ -289,17 +289,6 @@ ecs-log-stopped() {
 }
 alias ecsls=ecs-log-stopped
 
-
-#####################################################################
-# todoist
-#####################################################################
-if type todoist > /dev/null 2>&1; then
-    # Cmd shutcut
-    alias to='todoist'
-    # Select todo key
-    alias -g T='`todoist list | fzf -m | awk '\''{print $1}'\''`'
-fi
-
 #####################################################################
 # GitHub cli
 #####################################################################
@@ -482,3 +471,5 @@ function draw-fibonacci() {
 alias fib=draw-fibonacci
 
 alias todo='vim ~/.config/todo/todo.md'
+alias link='vim ~/.config/todo/link.md'
+alias plob='vim ~/.config/todo/plob.md'
