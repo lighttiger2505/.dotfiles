@@ -29,9 +29,10 @@ return {
             local nvim_lsp = require("lspconfig")
             local servers = {
                 "gopls",
-                "tsserver",
+                "ts_ls",
                 "lua_ls",
                 "sqls",
+                "biome",
             }
             for _, lsp in ipairs(servers) do
                 nvim_lsp[lsp].setup({
