@@ -160,22 +160,4 @@ return {
             { "<leader>p", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
         },
     },
-
-    {
-        "chentoast/marks.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("marks").setup {
-                mappings = {
-                    set_next = "mm",
-                    delete_line = "dmm",
-                    next = "]r",
-                    preview = "[r",
-                    set_bookmark0 = "m0",
-                    prev = false
-                }
-            }
-        end,
-    },
-
 }
