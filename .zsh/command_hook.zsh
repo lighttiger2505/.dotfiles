@@ -16,3 +16,7 @@ fi
 if [ -e $HOME/.asdf ]; then
     . $HOME/.asdf/asdf.sh
 fi
+
+if [ -e $HOME/.local/bin/mise ]; then
+    eval "$(~/.local/bin/mise activate zsh)"
+fi
