@@ -186,53 +186,29 @@ return {
     },
 
     {
-        "akinsho/toggleterm.nvim",
-        config = function()
-            local toggleterm = require("toggleterm")
-
-            toggleterm.setup({
-                shade_terminals = true,
-            })
-
-            local Terminal = require("toggleterm.terminal").Terminal
-            local tig = Terminal:new({
-                cmd = "tig status",
-                dir = "git_dir",
-                direction = "float",
-                float_opts = {
-                    border = "double",
-                },
-                -- function to run on opening the terminal
-                on_open = function(term)
-                    vim.cmd("startinsert!")
-                    vim.api.nvim_buf_set_keymap(
-                        term.bufnr,
-                        "n",
-                        "q",
-                        "<cmd>close<CR>",
-                        { noremap = true, silent = true }
-                    )
-                end,
-                -- function to run on closing the terminal
-                on_close = function()
-                    vim.cmd("Closing terminal")
-                end,
-            })
-
-            function TigToggle()
-                tig:toggle()
-            end
-        end,
-        keys = {
-            { "<Leader>gg", "<cmd>lua TigToggle()<CR>", mode = "n", desc = "ToggleTerm open tig view" },
-        },
-    },
-
-    {
-        "willothy/flatten.nvim",
-        config = true,
+        "numToStr/FTerm.nvim",
         lazy = false,
-        priority = 1001,
+        config = function()
+            local fterm = require("FTerm")
+            require("FTerm").setup({
+                border     = 'double',
+                dimensions = {
+                    height = 0.9,
+                    width = 0.9,
+                },
+            })
+            local tig = fterm:new({
+                ft = 'fterm_tig',
+                cmd = "tig status",
+                dimensions = {
+                    height = 0.9,
+                    width = 0.9
+                }
+            })
+            vim.keymap.set('n', '<Leader>gg', function()
+                tig:toggle()
+            end)
+        end,
     },
 
     {
