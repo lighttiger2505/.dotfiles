@@ -30,7 +30,7 @@ alias pass='vim ~/secrets/pass.md'
 # Move to the selected directory from the results of find
 cd-fzf-find() {
     local dir
-    DIR=$(fd --hidden --type d 2> /dev/null | fzf +m --ansi --preview 'exa --long --all --icons --color=always {}')
+    DIR=$(fd --hidden --type d 2> /dev/null | fzf +m --ansi --preview 'eza --long --all --icons --color=always {}')
     if [ -n "$DIR" ]; then
         cd $DIR
     fi
@@ -65,9 +65,9 @@ if executable bat; then
     alias cat=bat
 fi
 
-# ls to exa
-if executable exa; then
-    alias ls=exa
+# ls to eza
+if executable eza; then
+    alias ls=eza
     # show list all files
     alias ll="ls --long --all --icons"
     # show list order by newer files

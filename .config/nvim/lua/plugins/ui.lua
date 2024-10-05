@@ -152,6 +152,12 @@ return {
     },
 
     {
+        "lukas-reineke/virt-column.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        opts = {},
+    },
+
+    {
         "kevinhwang91/nvim-hlslens",
         dependencies = {
             "haya14busa/vim-asterisk",
@@ -173,11 +179,9 @@ return {
         ft = "qf",
     },
     {
-        "yorickpeterse/nvim-pqf",
-        event = "VeryLazy",
-        config = function()
-            require("pqf").setup()
-        end,
+        "stevearc/quicker.nvim",
+        ft = "qf",
+        opts = {},
     },
 
     {
