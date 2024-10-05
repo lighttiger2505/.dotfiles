@@ -229,6 +229,13 @@ return {
     },
 
     {
+        "willothy/flatten.nvim",
+        config = true,
+        lazy = false,
+        priority = 1001,
+    },
+
+    {
         "ahmedkhalf/project.nvim",
         event = "VeryLazy",
         config = function()
