@@ -8,6 +8,7 @@ return {
             { "hrsh7th/cmp-cmdline" },
             { "hrsh7th/cmp-nvim-lsp" },
             { "hrsh7th/cmp-path" },
+            { "lukas-reineke/cmp-rg" },
             { "onsails/lspkind.nvim" },
             { "zbirenbaum/copilot-cmp" },
             { "garymjr/nvim-snippets" },
@@ -74,6 +75,7 @@ return {
                     { name = "nvim_lsp_signature_help" },
                     { name = "snippets" },
                     { name = "nvim_lsp" },
+                    { name = "rg" },
                     { name = "copilot" },
                 }, {
                     { name = "buffer" },
