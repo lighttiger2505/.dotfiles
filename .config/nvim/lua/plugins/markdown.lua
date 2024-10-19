@@ -32,13 +32,11 @@ return {
     },
 
     {
-        'dhruvasagar/vim-table-mode',
+        "Kicamon/markdown-table-mode.nvim",
         ft = { "markdown" },
         config = function()
-            vim.g.loaded_table_mode = 1
-            vim.g.table_mode_disable_mappings = 1
-            vim.g.table_mode_disable_tableize_mappings = 1
-        end,
+            require('markdown-table-mode').setup()
+        end
     },
 
     {
@@ -61,36 +59,5 @@ return {
                 table_style = 'normal',
             })
         end,
-    },
-
-    {
-        "epwalsh/obsidian.nvim",
-        ft = "markdown",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-        opts = {
-            workspaces = {
-                {
-                    name = "personal",
-                    path = "~/vaults/personal",
-                },
-                {
-                    name = "work",
-                    path = "~/vaults/work",
-                },
-            },
-        },
-    },
-
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        build = "cd app && yarn install",
-        init = function()
-            vim.g.mkdp_filetypes = { "markdown" }
-        end,
-        ft = { "markdown" },
     },
 }
