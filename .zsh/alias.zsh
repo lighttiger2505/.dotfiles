@@ -163,6 +163,9 @@ alias nvimlsp='nvim -u ~/.vim/dev/nvim-lsp.vim'
 #dein#update()
 alias upvplug='vim -c "call dein#check_update(v:true)" -c "q!"'
 
+# Open vim with tmux capture-pane
+alias tm='tmux capture-pane -pS - > /tmp/tmux_output && vim /tmp/tmux_output'
+
 #####################################################################
 # lab
 #####################################################################
