@@ -75,9 +75,9 @@ return {
                     { name = "nvim_lsp_signature_help" },
                     { name = "snippets" },
                     { name = "nvim_lsp" },
-                    { name = "rg" },
                     { name = "copilot" },
                 }, {
+                    { name = "rg" },
                     { name = "buffer" },
                 }),
                 formatting = {
@@ -88,6 +88,12 @@ return {
                         before = function(_, vim_item)
                             return vim_item
                         end,
+                        menu = ({
+                            buffer = "[Buf]",
+                            rg = "[RG]",
+                            nvim_lsp = "[LSP]",
+                            snippets = "[Snip]",
+                        })
                     }),
                 },
             })
