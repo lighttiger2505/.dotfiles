@@ -477,3 +477,6 @@ alias todo='vim ~/.config/todo/todo.md'
 alias link='vim ~/.config/todo/link.md'
 alias plob='vim ~/.config/todo/plob.md'
 alias lazydir='cd ~/.local/share/nvim/lazy/lazy.nvim'
+
+alias ch='crcd history'
+alias ck='crcd bookmark'
