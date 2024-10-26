@@ -178,11 +178,6 @@ return {
         "kevinhwang91/nvim-bqf",
         ft = "qf",
     },
-    {
-        "stevearc/quicker.nvim",
-        ft = "qf",
-        opts = {},
-    },
 
     {
         "folke/which-key.nvim",
