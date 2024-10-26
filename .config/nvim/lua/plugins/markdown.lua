@@ -39,25 +39,35 @@ return {
         end
     },
 
+    -- {
+    --     'MeanderingProgrammer/markdown.nvim',
+    --     dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    --     ft = { "markdown" },
+    --     name = 'render-markdown',
+    --     config = function()
+    --         require('render-markdown').setup({
+    --             win_options = {
+    --                 conceallevel = {
+    --                     default = vim.api.nvim_get_option_value('conceallevel', {}),
+    --                     rendered = 2,
+    --                 },
+    --                 concealcursor = {
+    --                     default = vim.api.nvim_get_option_value('concealcursor', {}),
+    --                     rendered = 'c',
+    --                 },
+    --             },
+    --             table_style = 'normal',
+    --         })
+    --     end,
+    -- },
+
     {
-        'MeanderingProgrammer/markdown.nvim',
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        "OXY2DEV/markview.nvim",
         ft = { "markdown" },
-        name = 'render-markdown',
-        config = function()
-            require('render-markdown').setup({
-                win_options = {
-                    conceallevel = {
-                        default = vim.api.nvim_get_option_value('conceallevel', {}),
-                        rendered = 2,
-                    },
-                    concealcursor = {
-                        default = vim.api.nvim_get_option_value('concealcursor', {}),
-                        rendered = 'c',
-                    },
-                },
-                table_style = 'normal',
-            })
-        end,
-    },
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        }
+    }
+
 }
