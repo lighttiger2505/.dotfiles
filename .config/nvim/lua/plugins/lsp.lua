@@ -171,10 +171,9 @@ return {
         opts = {
             formatters_by_ft = {
                 lua = { "stylua" },
-                javascript = { { "prettier" } },
-                typescript = { { "prettier" } },
-                typescriptreact = { { "prettier" } },
-                json = { { "jq" } },
+                javascript = { "biome", "prettier", stop_after_first = true },
+                typescript = { "biome", "prettier", stop_after_first = true },
+                typescriptreact = { "biome", "prettier", stop_after_first = true },
                 go = { "goimports", "gofmt" },
             },
             format_on_save = {
@@ -202,10 +201,9 @@ return {
         config = function()
             local lint = require("lint")
             lint.linters_by_ft = {
-                -- lua = { "luacheck" },
-                javascript = { "eslint" },
-                typescript = { "eslint" },
-                typescriptreact = { "eslint" },
+                javascript = { "biomejs", "eslint" },
+                typescript = { "biomejs", "eslint" },
+                typescriptreact = { "biomejs", "eslint" },
                 go = { "golangcilint" },
                 json = { "jsonlint" },
                 proto = { "buf_lint" },
