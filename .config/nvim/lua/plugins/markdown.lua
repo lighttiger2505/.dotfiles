@@ -39,35 +39,35 @@ return {
         end
     },
 
-    -- {
-    --     'MeanderingProgrammer/markdown.nvim',
-    --     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    --     ft = { "markdown" },
-    --     name = 'render-markdown',
-    --     config = function()
-    --         require('render-markdown').setup({
-    --             win_options = {
-    --                 conceallevel = {
-    --                     default = vim.api.nvim_get_option_value('conceallevel', {}),
-    --                     rendered = 2,
-    --                 },
-    --                 concealcursor = {
-    --                     default = vim.api.nvim_get_option_value('concealcursor', {}),
-    --                     rendered = 'c',
-    --                 },
-    --             },
-    --             table_style = 'normal',
-    --         })
-    --     end,
-    -- },
-
     {
-        "OXY2DEV/markview.nvim",
+        'MeanderingProgrammer/markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
         ft = { "markdown" },
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons"
-        }
-    }
+        name = 'render-markdown',
+        config = function()
+            require('render-markdown').setup({
+                win_options = {
+                    conceallevel = {
+                        default = vim.api.nvim_get_option_value('conceallevel', {}),
+                        rendered = 2,
+                    },
+                    concealcursor = {
+                        default = vim.api.nvim_get_option_value('concealcursor', {}),
+                        rendered = 'c',
+                    },
+                },
+                table_style = 'normal',
+                code = {
+                    width = 'block',
+                    min_width = 45,
+                    left_pad = 2,
+                    language_pad = 2,
+                },
+                pipe_table = {
+                    style = 'normal',
+                },
+            })
+        end,
+    },
 
 }
