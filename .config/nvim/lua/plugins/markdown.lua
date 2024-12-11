@@ -70,4 +70,23 @@ return {
         end,
     },
 
+    {
+        "epwalsh/obsidian.nvim",
+        cmd = {
+            "ObsidianNew",
+            "ObsidianToday",
+            "ObsidianQuickSwitch",
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        opts = {
+            workspaces = {
+                {
+                    name = "vault",
+                    path = "~/Documents/Obsidian Vault",
+                },
+            },
+        },
+    }
 }
