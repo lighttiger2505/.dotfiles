@@ -157,4 +157,15 @@ return {
             },
         },
     },
+
+    {
+        'hat0uma/csvview.nvim',
+        ft = { "csv" },
+        config = function()
+            require('csvview').setup()
+        end,
+        keys = {
+            { "<LocalLeader>c", "<Cmd>CsvViewToggle<CR>", mode = "n", desc = "Csv View Toggle" },
+        },
+    },
 }

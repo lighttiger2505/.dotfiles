@@ -80,3 +80,11 @@ autocmd('FileType', {
     pattern = { "help" },
     command = [[wincmd L]],
 })
+
+autocmd('FileType', {
+    group = group_name,
+    pattern = { "csv" },
+    callback = function()
+        l.wrap = false
+    end,
+})
