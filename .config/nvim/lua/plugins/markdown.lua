@@ -88,5 +88,8 @@ return {
                 },
             },
         },
+        keys = {
+            { "<Space>v", "<Cmd>ObsidianQuickSwitch<CR>", mode = "n", desc = "Obsidian Quick Switch" },
+        },
     }
 }
