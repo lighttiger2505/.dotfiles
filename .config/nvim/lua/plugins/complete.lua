@@ -146,6 +146,11 @@ return {
                     { name = "buffer" },
                 }),
             })
+            cmp.setup.filetype("csv", {
+                sources = cmp.config.sources({
+                    { name = "buffer" },
+                }),
+            })
         end,
     },
 
