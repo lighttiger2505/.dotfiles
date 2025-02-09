@@ -238,9 +238,4 @@ return {
             { "<Leader>w", "<Cmd>NoNeckPain<CR>", mode = "n", desc = "NoNeckPain" },
         },
     },
-
-    {
-        'Bekaboo/dropbar.nvim',
-        event = "VeryLazy",
-    },
 }

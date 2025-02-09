@@ -4,6 +4,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             { "RRethy/nvim-treesitter-textsubjects" },
+            { "nvim-treesitter/nvim-treesitter-context" }
         },
         config = function()
             require("nvim-treesitter.configs").setup({
@@ -53,6 +54,10 @@ return {
                     },
                 },
             })
+
+            require("treesitter-context").setup {
+                enable = true,
+            }
         end,
         build = ":TSUpdate",
     },
