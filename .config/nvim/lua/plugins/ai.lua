@@ -114,4 +114,24 @@ return {
         },
     },
 
+    {
+        "robitx/gp.nvim",
+        config = function()
+            local conf = {
+                chat_shortcut_respond = { modes = { "n", "i", "v", "x" }, shortcut = "<C-j><C-j>" },
+                chat_shortcut_delete = { modes = { "n", "i", "v", "x" }, shortcut = "<C-j>d" },
+                chat_shortcut_stop = { modes = { "n", "i", "v", "x" }, shortcut = "<C-j>s" },
+                chat_shortcut_new = { modes = { "n", "i", "v", "x" }, shortcut = "<C-j>c" },
+            }
+            require("gp").setup(conf)
+        end,
+        keys = {
+            {
+                "<Leader>aa",
+                "<Cmd>GpChatToggle<CR>",
+                mode = { "n", "x" },
+                desc = "ChatGPT Open chat window",
+            },
+        },
+    }
 }
