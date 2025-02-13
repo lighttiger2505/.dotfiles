@@ -122,6 +122,7 @@ return {
                 chat_shortcut_delete = { modes = { "n", "i", "v", "x" }, shortcut = "<C-j>d" },
                 chat_shortcut_stop = { modes = { "n", "i", "v", "x" }, shortcut = "<C-j>s" },
                 chat_shortcut_new = { modes = { "n", "i", "v", "x" }, shortcut = "<C-j>c" },
+                openai_api_key = { "op", "read", "op://Personal/OpenAI/credential", "--no-newline" },
             }
             require("gp").setup(conf)
         end,
