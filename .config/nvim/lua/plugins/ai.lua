@@ -50,7 +50,6 @@ return {
         },
         config = function()
             local select = require("CopilotChat.select")
-            local context = require("CopilotChat.context")
             require('CopilotChat').setup({
                 mappings = {
                     complete = {
