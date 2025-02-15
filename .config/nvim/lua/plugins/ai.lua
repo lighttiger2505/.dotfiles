@@ -94,23 +94,23 @@ return {
                 },
             })
         end,
-        keys = {
-            {
-                "<Leader>cc",
-                "<Cmd>CopilotChat<CR>",
-                mode = { "n", "x" },
-                desc = "CopilotChat Open chat window",
-            },
-            {
-                "<Leader>ca",
-                function()
-                    local actions = require("CopilotChat.actions")
-                    require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-                end,
-                mode = "n",
-                desc = "CopilotChat Select prompt actions",
-            },
-        },
+        -- keys = {
+        --     {
+        --         "<Leader>cc",
+        --         "<Cmd>CopilotChat<CR>",
+        --         mode = { "n", "x" },
+        --         desc = "CopilotChat Open chat window",
+        --     },
+        --     {
+        --         "<Leader>ca",
+        --         function()
+        --             local actions = require("CopilotChat.actions")
+        --             require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+        --         end,
+        --         mode = "n",
+        --         desc = "CopilotChat Select prompt actions",
+        --     },
+        -- },
     },
 
     {
@@ -152,7 +152,7 @@ return {
                                 modes = { n = "<C-j><C-j>", i = "<C-j><C-j>" },
                             },
                             close = {
-                                modes = { n = "q", i = "<Nop>" },
+                                modes = { n = "q" },
                             },
                             -- Add further custom keymaps here
                         },
@@ -163,5 +163,19 @@ return {
                 },
             })
         end,
+        keys = {
+            {
+                "<Leader>cc",
+                "<Cmd>CodeCompanionChat<CR>",
+                mode = { "n", "x" },
+                desc = "CodeCompanion Open chat window",
+            },
+            {
+                "<Leader>ca",
+                "<Cmd>CodeCompanionActions<CR>",
+                mode = { "n", "x" },
+                desc = "CodeCompanion Select prompt actions",
+            },
+        },
     },
 }
