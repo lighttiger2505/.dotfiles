@@ -14,7 +14,12 @@ return {
             },
         },
         keys = {
-            { "<Space>p", "<Cmd>Telescope git_files<CR>",              mode = "n", desc = "Telescope Find git files" },
+            {
+                "<Space>p",
+                "<Cmd>lua require('telescope.telescope-config').project_files()<CR>",
+                mode = "n",
+                desc = "Telescope Find git files",
+            },
             { "<Space>s", "<Cmd>Telescope git_status<CR>",             mode = "n", desc = "Telescope Find git status files" },
             { "<Space>b", "<Cmd>Telescope buffers<CR>",                mode = "n", desc = "Telescope Find buffer" },
             { "<Space>r", "<Cmd>Telescope oldfiles cwd_only=true<CR>", mode = "n", desc = "Telescope Find old files" },
