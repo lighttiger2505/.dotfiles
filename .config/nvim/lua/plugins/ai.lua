@@ -133,5 +133,35 @@ return {
                 desc = "ChatGPT Open chat window",
             },
         },
-    }
+    },
+
+    {
+        "olimorris/codecompanion.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("codecompanion").setup({
+                strategies = {
+                    chat = {
+                        adapter = "copilot",
+                        keymaps = {
+                            send = {
+                                modes = { n = "<C-j><C-j>", i = "<C-j><C-j>" },
+                            },
+                            close = {
+                                modes = { n = "q", i = "<Nop>" },
+                            },
+                            -- Add further custom keymaps here
+                        },
+                    },
+                    inline = {
+                        adapter = "copilot",
+                    },
+                },
+            })
+        end,
+    },
 }

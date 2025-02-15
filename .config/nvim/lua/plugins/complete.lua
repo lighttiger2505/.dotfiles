@@ -151,6 +151,11 @@ return {
                     { name = "buffer" },
                 }),
             })
+            cmp.setup.filetype("codecompanion", {
+                sources = cmp.config.sources({
+                    { name = "codecompanion" },
+                }),
+            })
         end,
     },
 
