@@ -3,10 +3,10 @@ return {
         "EdenEast/nightfox.nvim",
         lazy = false,
         priority = 1000,
-        config = function()
-            vim.cmd([[colorscheme nightfox]])
-            vim.cmd([[highlight WinSeparator guifg=#928374]])
-        end,
+        -- config = function()
+        --     vim.cmd([[colorscheme nightfox]])
+        --     vim.cmd([[highlight WinSeparator guifg=#928374]])
+        -- end,
     },
     {
         "rebelot/kanagawa.nvim",
@@ -34,5 +34,9 @@ return {
         name = "catppuccin",
         lazy = false,
         priority = 1000,
+        config = function()
+            vim.cmd([[colorscheme catppuccin-mocha]])
+            vim.cmd([[highlight WinSeparator guifg=#928374]])
+        end,
     }
 }
