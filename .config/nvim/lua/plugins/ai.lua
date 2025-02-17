@@ -168,12 +168,11 @@ return {
                         adapter = "copilot",
                         keymaps = {
                             send = {
-                                modes = { n = "<C-j><C-j>", i = "<C-j><C-j>" },
+                                modes = { n = "<C-j>", i = "<C-j>" },
                             },
                             close = {
-                                modes = { n = "q" },
+                                modes = { n = "<C-s>", i = "<C-s>" },
                             },
-                            -- Add further custom keymaps here
                         },
                     },
                     inline = {
