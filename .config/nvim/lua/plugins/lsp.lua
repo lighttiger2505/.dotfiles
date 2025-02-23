@@ -33,6 +33,7 @@ return {
                 "lua_ls",
                 "sqls",
                 "biome",
+                "tailwindcss",
             }
             for _, lsp in ipairs(servers) do
                 nvim_lsp[lsp].setup({
