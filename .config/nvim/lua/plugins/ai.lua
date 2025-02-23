@@ -125,7 +125,8 @@ return {
                 openai_api_key = { "op", "read", "op://Personal/OpenAI/credential", "--no-newline" },
                 hooks = {
                     Translator = function(gp, params)
-                        local chat_system_prompt = "You are a skilled translator with a deep understanding of both English and Japanese. Please translate the following English text into natural, fluent Japanese while preserving the context, nuance, and style of the original."
+                        local chat_system_prompt =
+                        "You are a skilled translator with a deep understanding of both English and Japanese. Please translate the following English text into natural, fluent Japanese while preserving the context, nuance, and style of the original."
                         gp.cmd.ChatNew(params, chat_system_prompt)
                     end,
                 },
