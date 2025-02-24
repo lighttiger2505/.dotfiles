@@ -135,19 +135,19 @@ return {
         end,
         keys = {
             {
-                "<Leader>aa",
+                "<Leader>cc",
                 "<Cmd>GpChatToggle<CR>",
                 mode = { "n", "x" },
                 desc = "ChatGPT Toggle chat window",
             },
             {
-                "<Leader>an",
+                "<Leader>cn",
                 "<Cmd>GpChatNew<CR>",
                 mode = { "n", "x" },
                 desc = "ChatGPT Create new chat window",
             },
             {
-                "<Leader>ae",
+                "<Leader>ct",
                 "<Cmd>GpTranslator vsplit<CR>",
                 mode = { "n", "x" },
                 desc = "ChatGPT call translate agent",
@@ -155,48 +155,48 @@ return {
         },
     },
 
-    {
-        "olimorris/codecompanion.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-            require("codecompanion").setup({
-                strategies = {
-                    chat = {
-                        adapter = "copilot",
-                        keymaps = {
-                            send = {
-                                modes = { n = "<C-j>", i = "<C-j>" },
-                            },
-                            close = {
-                                modes = { n = "<C-s>", i = "<C-s>" },
-                            },
-                        },
-                    },
-                    inline = {
-                        adapter = "copilot",
-                    },
-                },
-            })
-        end,
-        keys = {
-            {
-                "<Leader>cc",
-                "<Cmd>CodeCompanionChat<CR>",
-                mode = { "n", "x" },
-                desc = "CodeCompanion Open chat window",
-            },
-            {
-                "<Leader>ca",
-                "<Cmd>CodeCompanionActions<CR>",
-                mode = { "n", "x" },
-                desc = "CodeCompanion Select prompt actions",
-            },
-        },
-    },
+    -- {
+    --     "olimorris/codecompanion.nvim",
+    --     event = "VeryLazy",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-treesitter/nvim-treesitter",
+    --     },
+    --     config = function()
+    --         require("codecompanion").setup({
+    --             strategies = {
+    --                 chat = {
+    --                     adapter = "copilot",
+    --                     keymaps = {
+    --                         send = {
+    --                             modes = { n = "<C-j>", i = "<C-j>" },
+    --                         },
+    --                         close = {
+    --                             modes = { n = "<C-s>", i = "<C-s>" },
+    --                         },
+    --                     },
+    --                 },
+    --                 inline = {
+    --                     adapter = "copilot",
+    --                 },
+    --             },
+    --         })
+    --     end,
+    --     keys = {
+    --         {
+    --             "<Leader>cc",
+    --             "<Cmd>CodeCompanionChat<CR>",
+    --             mode = { "n", "x" },
+    --             desc = "CodeCompanion Open chat window",
+    --         },
+    --         {
+    --             "<Leader>ca",
+    --             "<Cmd>CodeCompanionActions<CR>",
+    --             mode = { "n", "x" },
+    --             desc = "CodeCompanion Select prompt actions",
+    --         },
+    --     },
+    -- },
 
     {
         "yetone/avante.nvim",
@@ -211,6 +211,10 @@ return {
                 timeout = 30000,
                 temperature = 0,
                 max_tokens = 4096,
+            },
+            hints = { enabled = false },
+            windows = {
+                width = 50,
             },
         },
         build = "make",
