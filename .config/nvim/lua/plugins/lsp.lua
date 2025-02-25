@@ -33,6 +33,7 @@ return {
                 "lua_ls",
                 "sqls",
                 "biome",
+                "tailwindcss",
             }
             for _, lsp in ipairs(servers) do
                 nvim_lsp[lsp].setup({
@@ -181,18 +182,6 @@ return {
                 timeout_ms = 500,
             },
         },
-    },
-
-    {
-        "dmmulroy/ts-error-translator.nvim",
-        ft = {
-            "typescript",
-            "typescript.tsx",
-            "typescriptreact",
-        },
-        config = function()
-            require("ts-error-translator").setup()
-        end,
     },
 
     {

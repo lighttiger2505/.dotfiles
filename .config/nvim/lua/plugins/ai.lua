@@ -125,7 +125,8 @@ return {
                 openai_api_key = { "op", "read", "op://Personal/OpenAI/credential", "--no-newline" },
                 hooks = {
                     Translator = function(gp, params)
-                        local chat_system_prompt = "You are a skilled translator with a deep understanding of both English and Japanese. Please translate the following English text into natural, fluent Japanese while preserving the context, nuance, and style of the original."
+                        local chat_system_prompt =
+                        "You are a skilled translator with a deep understanding of both English and Japanese. Please translate the following English text into natural, fluent Japanese while preserving the context, nuance, and style of the original."
                         gp.cmd.ChatNew(params, chat_system_prompt)
                     end,
                 },
@@ -134,19 +135,19 @@ return {
         end,
         keys = {
             {
-                "<Leader>aa",
+                "<Leader>cc",
                 "<Cmd>GpChatToggle<CR>",
                 mode = { "n", "x" },
                 desc = "ChatGPT Toggle chat window",
             },
             {
-                "<Leader>an",
+                "<Leader>cn",
                 "<Cmd>GpChatNew<CR>",
                 mode = { "n", "x" },
                 desc = "ChatGPT Create new chat window",
             },
             {
-                "<Leader>ae",
+                "<Leader>ct",
                 "<Cmd>GpTranslator vsplit<CR>",
                 mode = { "n", "x" },
                 desc = "ChatGPT call translate agent",
@@ -154,46 +155,98 @@ return {
         },
     },
 
+    -- {
+    --     "olimorris/codecompanion.nvim",
+    --     event = "VeryLazy",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-treesitter/nvim-treesitter",
+    --     },
+    --     config = function()
+    --         require("codecompanion").setup({
+    --             strategies = {
+    --                 chat = {
+    --                     adapter = "copilot",
+    --                     keymaps = {
+    --                         send = {
+    --                             modes = { n = "<C-j>", i = "<C-j>" },
+    --                         },
+    --                         close = {
+    --                             modes = { n = "<C-s>", i = "<C-s>" },
+    --                         },
+    --                     },
+    --                 },
+    --                 inline = {
+    --                     adapter = "copilot",
+    --                 },
+    --             },
+    --         })
+    --     end,
+    --     keys = {
+    --         {
+    --             "<Leader>cc",
+    --             "<Cmd>CodeCompanionChat<CR>",
+    --             mode = { "n", "x" },
+    --             desc = "CodeCompanion Open chat window",
+    --         },
+    --         {
+    --             "<Leader>ca",
+    --             "<Cmd>CodeCompanionActions<CR>",
+    --             mode = { "n", "x" },
+    --             desc = "CodeCompanion Select prompt actions",
+    --         },
+    --     },
+    -- },
+
     {
-        "olimorris/codecompanion.nvim",
+        "yetone/avante.nvim",
         event = "VeryLazy",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
+        lazy = false,
+        version = false,
+        opts = {
+            provider = "copilot",
+            openai = {
+                endpoint = "https://api.openai.com/v1",
+                model = "gpt-4o",
+                timeout = 30000,
+                temperature = 0,
+                max_tokens = 4096,
+            },
+            hints = { enabled = false },
+            windows = {
+                width = 50,
+            },
         },
-        config = function()
-            require("codecompanion").setup({
-                strategies = {
-                    chat = {
-                        adapter = "copilot",
-                        keymaps = {
-                            send = {
-                                modes = { n = "<C-j>", i = "<C-j>" },
-                            },
-                            close = {
-                                modes = { n = "<C-s>", i = "<C-s>" },
-                            },
+        build = "make",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "nvim-telescope/telescope.nvim",
+            "hrsh7th/nvim-cmp",
+            "zbirenbaum/copilot.lua",
+            {
+                "HakonHarnes/img-clip.nvim",
+                event = "VeryLazy",
+                opts = {
+                    default = {
+                        embed_image_as_base64 = false,
+                        prompt_for_file_name = false,
+                        drag_and_drop = {
+                            insert_mode = true,
                         },
-                    },
-                    inline = {
-                        adapter = "copilot",
+                        use_absolute_path = true,
                     },
                 },
-            })
-        end,
-        keys = {
-            {
-                "<Leader>cc",
-                "<Cmd>CodeCompanionChat<CR>",
-                mode = { "n", "x" },
-                desc = "CodeCompanion Open chat window",
             },
             {
-                "<Leader>ca",
-                "<Cmd>CodeCompanionActions<CR>",
-                mode = { "n", "x" },
-                desc = "CodeCompanion Select prompt actions",
+                'MeanderingProgrammer/render-markdown.nvim',
+                opts = {
+                    file_types = { "markdown", "Avante" },
+                },
+                ft = { "markdown", "Avante" },
             },
         },
-    },
+    }
 }
