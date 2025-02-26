@@ -53,8 +53,8 @@ bind diff R !git rebase -i %(commit)
 bind generic Ctrl-l refresh
 
 # # Change commit diff color
-# color diff-header white cyan
-# color diff-chunk white magenta
+color diff-header black cyan
+color diff-chunk black magenta
 
 # Execute git difftool on selected commit or branch
 bind generic D none
