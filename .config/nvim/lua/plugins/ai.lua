@@ -3,7 +3,7 @@ return {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
-        config = function()
+        config = function ()
             require("copilot").setup({
                 suggestion = {
                     enabled = true,
@@ -48,25 +48,25 @@ return {
         },
         opts = {
         },
-        config = function()
+        config = function ()
             local select = require("CopilotChat.select")
-            require('CopilotChat').setup({
+            require("CopilotChat").setup({
                 mappings = {
                     complete = {
-                        insert = '',
+                        insert = "",
                     },
                 },
                 prompts = {
                     ReviewBufferJa = {
-                        prompt = 'このコードをレビューをしてください。',
+                        prompt = "このコードをレビューをしてください。",
                         selection = select.buffer,
                     },
                     ReviewSelectedJa = {
-                        prompt = 'このコードをレビューをしてください。',
+                        prompt = "このコードをレビューをしてください。",
                         selection = select.visual,
                     },
                     DocsJa = {
-                        prompt = '/COPILOT_GENERATE このコードを説明するドキュメントを記載してください。',
+                        prompt = "/COPILOT_GENERATE このコードを説明するドキュメントを記載してください。",
                         selection = select.visual,
                     },
                     PullRequestSummaryJa = {
@@ -85,11 +85,11 @@ return {
                     },
                     CommitStagedEn = {
                         prompt =
-                        '#git:staged\nWrite commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.',
+                        "#git:staged\nWrite commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
                     },
                     CommitStagedJa = {
                         prompt =
-                        '#git:staged\nコミットメッセージをコミット規約に従って記述してください。タイトルは最大50文字、メッセージは最大200文字かつ72文字で折り返してください。',
+                        "#git:staged\nコミットメッセージをコミット規約に従って記述してください。タイトルは最大50文字、メッセージは最大200文字かつ72文字で折り返してください。",
                     },
                 },
             })
@@ -116,7 +116,7 @@ return {
     {
         "robitx/gp.nvim",
         event = "VeryLazy",
-        config = function()
+        config = function ()
             local conf = {
                 chat_shortcut_respond = { modes = { "n", "i", "v", "x" }, shortcut = "<C-j><C-j>" },
                 chat_shortcut_delete = { modes = { "n", "i", "v", "x" }, shortcut = "<C-j>d" },
@@ -124,7 +124,7 @@ return {
                 chat_shortcut_new = { modes = { "n", "i", "v", "x" }, shortcut = "<C-j>c" },
                 openai_api_key = { "op", "read", "op://Personal/OpenAI/credential", "--no-newline" },
                 hooks = {
-                    Translator = function(gp, params)
+                    Translator = function (gp, params)
                         local chat_system_prompt =
                         "You are a skilled translator with a deep understanding of both English and Japanese. Please translate the following English text into natural, fluent Japanese while preserving the context, nuance, and style of the original."
                         gp.cmd.ChatNew(params, chat_system_prompt)
@@ -201,7 +201,6 @@ return {
     {
         "yetone/avante.nvim",
         event = "VeryLazy",
-        lazy = false,
         version = false,
         opts = {
             provider = "copilot",
@@ -241,7 +240,7 @@ return {
                 },
             },
             {
-                'MeanderingProgrammer/render-markdown.nvim',
+                "MeanderingProgrammer/render-markdown.nvim",
                 opts = {
                     file_types = { "markdown", "Avante" },
                 },

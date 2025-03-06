@@ -95,6 +95,7 @@ return {
 
     {
         "previm/previm",
+        ft = { "markdown" },
         cmd = {
             "PrevimOpen",
         },
