@@ -6,23 +6,26 @@ return {
             "typescript.tsx",
             "typescriptreact",
         },
-        config = function()
+        config = function ()
             require("ts-error-translator").setup()
         end,
     },
 
-    -- {
-    --     "luckasRanarison/tailwind-tools.nvim",
-    --     ft = {
-    --         "typescript",
-    --         "typescript.tsx",
-    --         "typescriptreact",
-    --     },
-    --     name = "tailwind-tools",
-    --     build = ":UpdateRemotePlugins",
-    --     dependencies = {
-    --         "nvim-treesitter/nvim-treesitter",
-    --     },
-    --     opts = {}
-    -- },
+    {
+        "windwp/nvim-ts-autotag",
+        ft = {
+            "typescript",
+            "typescript.tsx",
+            "typescriptreact",
+        },
+        config = function ()
+            require("windwp/nvim-ts-autotag").setup({
+                opts = {
+                    enable_close = true,
+                    enable_rename = true,
+                    enable_close_on_slash = false
+                },
+            })
+        end,
+    },
 }
