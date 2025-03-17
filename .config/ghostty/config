@@ -1,4 +1,3 @@
+font-family = "UDEV Gothic NFLG"
+theme = catppuccin-mocha
 macos-option-as-alt = left
-
-keybind = alt+left=unbind
-keybind = alt+right=unbind
