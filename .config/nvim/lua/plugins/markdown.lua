@@ -84,8 +84,12 @@ return {
         opts = {
             workspaces = {
                 {
-                    name = "vault",
-                    path = "~/vaults",
+                    name = "personal",
+                    path = "~/vaults/Private",
+                },
+                {
+                    name = "work",
+                    path = "~/vaults/Work",
                 },
             },
         },
