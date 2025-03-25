@@ -204,12 +204,9 @@ return {
         version = false,
         opts = {
             provider = "copilot",
-            openai = {
-                endpoint = "https://api.openai.com/v1",
-                model = "gpt-4o",
-                timeout = 30000,
-                temperature = 0,
-                max_tokens = 4096,
+            copilot = {
+                model = "claude-3.5-sonnet",
+                -- max_tokens = 4096,
             },
             hints = { enabled = false },
             windows = {
@@ -239,13 +236,13 @@ return {
                     },
                 },
             },
-            {
-                "MeanderingProgrammer/render-markdown.nvim",
-                opts = {
-                    file_types = { "markdown", "Avante" },
-                },
-                ft = { "markdown", "Avante" },
-            },
+            -- {
+            --     "MeanderingProgrammer/render-markdown.nvim",
+            --     opts = {
+            --         file_types = { "markdown", "Avante" },
+            --     },
+            --     ft = { "markdown", "Avante" },
+            -- },
         },
     }
 }
