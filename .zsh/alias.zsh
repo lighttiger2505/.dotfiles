@@ -320,7 +320,7 @@ alias hdp=suggestion-pr-review
 function suggestion-pr-review() {
     local tmpfile="/tmp/pr-diff-$(date +%s)"
     gh pr view --json url | jq .url | gh pr diff > ${tmpfile}
-    nvim -c 'lua require("CopilotChat")' -c 'CopilotChatPullRequestSummaryJa' ${tmpfile}
+    nvim -c 'lua require("CopilotChat")' -c 'CopilotChatPullRequestReviewJa' ${tmpfile}
 }
 
 #####################################################################
