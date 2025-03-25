@@ -14,6 +14,7 @@ return {
 
     {
         "CopilotC-Nvim/CopilotChat.nvim",
+        lazy = true,
         branch = "main",
         build = "make tiktoken",
         dependencies = {
@@ -25,6 +26,7 @@ return {
         config = function ()
             local select = require("CopilotChat.select")
             require("CopilotChat").setup({
+                model = "claude-3.7-sonnet",
                 mappings = {
                     complete = {
                         insert = "",
