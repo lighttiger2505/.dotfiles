@@ -9,19 +9,19 @@ return {
             "mfussenegger/nvim-lint",
             "stevearc/overseer.nvim",
         },
-        config = function()
-            local lint_progress = function()
+        config = function ()
+            local lint_progress = function ()
                 local linters = require("lint").get_running()
                 if #linters == 0 then
                     return ""
                 end
-                return "󱉶 " .. table.concat(linters, ", ")
+                return "󱉶 "..table.concat(linters, ", ")
             end
 
             local overseer = require("overseer")
             local overseer_progress = {
                 "overseer",
-                label = '',     -- Prefix for task counts
+                label = "",     -- Prefix for task counts
                 colored = true, -- Color the task icons and counts
                 symbols = {
                     [overseer.STATUS.FAILURE] = "F:",
@@ -50,10 +50,10 @@ return {
                     lualine_a = {
                         "filename",
                         {
-                            function()
+                            function ()
                                 return require("grapple").name_or_index()
                             end,
-                            cond = function()
+                            cond = function ()
                                 return package.loaded["grapple"] and require("grapple").exists()
                             end
                         }
@@ -82,12 +82,12 @@ return {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
         cmd = "Neotree",
-        init = function()
+        init = function ()
             map("n", "<Leader>t", "<cmd>Neotree toggle<CR>", kopts)
             map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
         end,
-        config = function()
-            local launchTelescopeFiler = function(state)
+        config = function ()
+            local launchTelescopeFiler = function (state)
                 local node = state.tree:get_node()
                 local dir = vim.fn.fnamemodify(node.path, ":h")
                 require("telescope")
@@ -130,10 +130,10 @@ return {
     {
         "shellRaining/hlchunk.nvim",
         event = { "BufReadPre", "BufNewFile" },
-        config = function()
+        config = function ()
             require("hlchunk").setup({})
-            local palette = require('nightfox.palette').load("nightfox")
-            require('hlchunk.mods.chunk')({
+            local palette = require("nightfox.palette").load("nightfox")
+            require("hlchunk.mods.chunk")({
                 style = {
                     { fg = palette.blue.base },
                     { fg = palette.red.base },
@@ -144,7 +144,7 @@ return {
                 duration = 0,
                 delay = 0,
             }):enable()
-            require('hlchunk.mods.indent')({}):enable()
+            require("hlchunk.mods.indent")({}):enable()
             -- require('hlchunk.mods.line_num')({
             --     style = palette.red.base,
             -- }):enable()
@@ -162,7 +162,7 @@ return {
         dependencies = {
             "haya14busa/vim-asterisk",
         },
-        config = function()
+        config = function ()
             require("hlslens").setup()
         end,
         keys = {
@@ -187,7 +187,7 @@ return {
         keys = {
             {
                 "<leader>?",
-                function()
+                function ()
                     require("which-key").show({ global = false })
                 end,
                 desc = "Buffer Local Keymaps (which-key)",
@@ -196,13 +196,13 @@ return {
     },
 
     {
-        'romgrk/barbar.nvim',
+        "romgrk/barbar.nvim",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            'lewis6991/gitsigns.nvim',
-            'nvim-tree/nvim-web-devicons',
+            "lewis6991/gitsigns.nvim",
+            "nvim-tree/nvim-web-devicons",
         },
-        init = function() vim.g.barbar_auto_setup = false end,
+        init = function () vim.g.barbar_auto_setup = false end,
         opts = {},
         keys = {
             { "<C-h>",    "<Cmd>BufferPrevious<CR>",         mode = "n", desc = "BarBar Move buffer prev" },
@@ -214,19 +214,19 @@ return {
 
     {
         "kazhala/close-buffers.nvim",
-        config = function()
-            require('close_buffers').setup({})
+        config = function ()
+            require("close_buffers").setup({})
         end,
         keys = {
-            { "<Space>a", function() require('close_buffers').delete({ type = 'hidden', force = true }) end, mode = "n", desc = "CloseBuffers Close all non-visible buffers" },
-            { "<Space>q", function() require('close_buffers').delete({ type = 'this' }) end,                 mode = "n", desc = "CloseBuffers Close the current buffer" },
+            { "<Space>a", function () require("close_buffers").delete({ type = "hidden", force = true }) end, mode = "n", desc = "CloseBuffers Close all non-visible buffers" },
+            { "<Space>q", function () require("close_buffers").delete({ type = "this" }) end,                 mode = "n", desc = "CloseBuffers Close the current buffer" },
         },
     },
 
     {
         "shortcuts/no-neck-pain.nvim",
         cmd = "NoNeckPain",
-        config = function()
+        config = function ()
             require("no-neck-pain").setup({
                 width = 144,
                 autocmds = {
