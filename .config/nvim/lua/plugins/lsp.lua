@@ -5,13 +5,13 @@ return {
         dependencies = {
             {
                 "nvimdev/lspsaga.nvim",
-                config = function()
+                config = function ()
                     require("lspsaga").setup({
                         symbol_in_winbar = {
                             enable = false,
                         },
                         ui = {
-                            code_action = ''
+                            code_action = ""
                         }
                     })
                 end
@@ -21,11 +21,11 @@ return {
                 ft = "lua",
             },
         },
-        cond = function()
+        cond = function ()
             -- ignore filetype markdown
             return vim.bo.filetype ~= "markdown"
         end,
-        config = function()
+        config = function ()
             local nvim_lsp = require("lspconfig")
             local servers = {
                 "gopls",
@@ -43,14 +43,14 @@ return {
                 })
             end
 
-            vim.api.nvim_create_autocmd('LspAttach', {
-                group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-                callback = function(ev)
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+                callback = function (ev)
                     local bufopts = { noremap = true, silent = true, buffer = ev.buf }
                     -- builtin lsp
                     vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, bufopts)
                     vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
-                    vim.keymap.set('n', '<LocalLeader>i', vim.lsp.buf.implementation, bufopts)
+                    vim.keymap.set("n", "<LocalLeader>i", vim.lsp.buf.implementation, bufopts)
                     vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
                     vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
                     vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
@@ -76,9 +76,9 @@ return {
                 cmd = {
                     "sqls",
                     "-log",
-                    os.getenv("HOME") .. "/sqls.log",
+                    os.getenv("HOME").."/sqls.log",
                     "-config",
-                    os.getenv("HOME") .. "/.config/sqls/config.yml",
+                    os.getenv("HOME").."/.config/sqls/config.yml",
                 },
                 -- cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
                 settings = {
@@ -129,7 +129,7 @@ return {
         "j-hui/fidget.nvim",
         dependencies = { "neovim/nvim-lspconfig" },
         event = "LspAttach",
-        config = function()
+        config = function ()
             require("fidget").setup()
         end,
     },
@@ -141,7 +141,7 @@ return {
             "nvim-tree/nvim-web-devicons",
             "nvim-telescope/telescope.nvim",
         },
-        config = function()
+        config = function ()
             require("aerial").setup({
                 backends = { "lsp", "treesitter", "markdown" },
             })
@@ -162,7 +162,7 @@ return {
         keys = {
             {
                 "<LocalLeader>f",
-                function()
+                function ()
                     require("conform").format({ async = true, lsp_format = "first" })
                 end,
                 mode = "n",
@@ -175,6 +175,11 @@ return {
                 javascript = { "biome", "prettier", stop_after_first = true },
                 typescript = { "biome", "prettier", stop_after_first = true },
                 typescriptreact = { "biome", "prettier", stop_after_first = true },
+                -- javascript = { "prettier", stop_after_first = true },
+                -- typescript = { "prettier", stop_after_first = true },
+                -- typescriptreact = { "prettier", stop_after_first = true },
+                -- json = { "biome", "jq", stop_after_first = true },
+                json = { "jq", stop_after_first = true },
                 go = { "goimports", "gofmt" },
             },
             format_on_save = {
@@ -187,7 +192,7 @@ return {
     {
         "mfussenegger/nvim-lint",
         event = { "BufWritePost" },
-        config = function()
+        config = function ()
             local lint = require("lint")
             lint.linters_by_ft = {
                 javascript = { "biomejs", "eslint" },
@@ -203,20 +208,20 @@ return {
             -- https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/golangcilint.lua
             local golangcilint = lint.linters.golangcilint
             golangcilint.args = {
-                'run',
-                '--out-format',
-                'json',
-                '--show-stats=false',
-                '--print-issued-lines=false',
-                '--print-linter-name=false',
+                "run",
+                "--out-format",
+                "json",
+                "--show-stats=false",
+                "--print-issued-lines=false",
+                "--print-linter-name=false",
                 -- Add fast option
-                '--fast',
-                function()
+                "--fast",
+                function ()
                     return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":h")
                 end
             }
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-                callback = function()
+                callback = function ()
                     require("lint").try_lint(nil, { ignore_errors = true })
                 end,
             })
@@ -259,5 +264,5 @@ return {
                 desc = "Quickfix List (Trouble)",
             },
         },
-    }
+    },
 }
