@@ -75,6 +75,7 @@
   "render-markdown": { "branch": "main", "commit": "e724a49dee315744d6f5d3c651ddd604cc7afc52" },
   "render-markdown.nvim": { "branch": "main", "commit": "e724a49dee315744d6f5d3c651ddd604cc7afc52" },
   "rose-pine": { "branch": "main", "commit": "7d1b5c7dcd274921f0f58e90a8bf935f6a95fbf3" },
+  "smear-cursor.nvim": { "branch": "main", "commit": "01570fdc358979678380ff8704184307e87d8a29" },
   "sonictemplate-vim": { "branch": "master", "commit": "822a784af2f9df60d5bf5c0d00b816faa40cedeb" },
   "sqlite.lua": { "branch": "master", "commit": "50092d60feb242602d7578398c6eb53b4a8ffe7b" },
   "sqls.nvim": { "branch": "main", "commit": "a514379f5f89bf72955ed3bf5c1c31a40b8a1472" },
