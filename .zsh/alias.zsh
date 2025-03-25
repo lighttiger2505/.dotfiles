@@ -478,3 +478,12 @@ alias lazydir='cd ~/.local/share/nvim/lazy/lazy.nvim'
 
 alias ch='crcd history'
 alias ck='crcd bookmark'
+
+function obsidian-new() {
+    nvim -c 'lua require("CopilotChat")' -c 'ObsidianNew'
+}
+alias on=obsidian-new
+function obsidian-list-preview() {
+    nvim -c 'lua require("CopilotChat")' -c 'ObsidianQuickSwitch'
+}
+alias ov=obsidian-list-preview
