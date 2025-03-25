@@ -61,7 +61,7 @@ return {
                 code = {
                     width = "block",
                     min_width = 45,
-                    left_pad = 2,
+                    left_pad = 0,
                     language_pad = 2,
                 },
                 pipe_table = {
