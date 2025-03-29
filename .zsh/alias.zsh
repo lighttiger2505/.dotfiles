@@ -18,14 +18,6 @@ alias ....='cd ../..'
 alias ......='cd ../../..'
 alias c="cd ~/"
 alias dot="cd ~/.dotfiles"
-alias pack="cd ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
-
-alias vimrc="vim ~/init.lua"
-
-alias pd="pwd | pbcopy"
-alias untar='tar -zxvf'
-alias gip='curl inet-ip.info'
-alias pass='vim ~/secrets/pass.md'
 
 # Move to the selected directory from the results of find
 cd-fzf-find() {
