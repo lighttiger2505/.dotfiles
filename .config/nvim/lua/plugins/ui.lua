@@ -176,7 +176,12 @@ return {
     -- QuickFix
     {
         "kevinhwang91/nvim-bqf",
-        ft = "qf",
+        event = "FileType qf",
+    },
+    {
+        "stevearc/quicker.nvim",
+        event = "FileType qf",
+        opts = {},
     },
 
     {
