@@ -82,6 +82,9 @@ return {
             "nvim-lua/plenary.nvim",
         },
         opts = {
+            ui = {
+                enable = false,
+            },
             workspaces = {
                 {
                     name = "personal",
@@ -92,6 +95,7 @@ return {
                     path = "~/vaults/Work",
                 },
             },
+            mappings = {},
         },
         keys = {
             { "<Space>v", "<Cmd>ObsidianQuickSwitch<CR>", mode = "n", desc = "Obsidian Quick Switch" },
