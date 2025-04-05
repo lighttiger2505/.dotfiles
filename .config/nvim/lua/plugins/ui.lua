@@ -208,7 +208,9 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         init = function () vim.g.barbar_auto_setup = false end,
-        opts = {},
+        opts = {
+            animation = false,
+        },
         keys = {
             { "<C-h>",    "<Cmd>BufferPrevious<CR>",         mode = "n", desc = "BarBar Move buffer prev" },
             { "<C-l>",    "<Cmd>BufferNext<CR>",             mode = "n", desc = "BarBar Move buffer next" },
