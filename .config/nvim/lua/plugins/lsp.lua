@@ -203,6 +203,7 @@ return {
                 proto = { "buf_lint" },
                 make = { "checkmake" },
                 zsh = { "zsh" },
+                lua = { "luacheck" },
             }
             -- Custom golangci-lint linter
             -- https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/golangcilint.lua
