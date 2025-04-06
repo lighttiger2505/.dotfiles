@@ -5,27 +5,27 @@ return {
         dependencies = {
             {
                 "nvimdev/lspsaga.nvim",
-                config = function ()
+                config = function()
                     require("lspsaga").setup({
                         symbol_in_winbar = {
                             enable = false,
                         },
                         ui = {
-                            code_action = ""
-                        }
+                            code_action = "",
+                        },
                     })
-                end
+                end,
             },
             {
                 "folke/neodev.nvim",
                 ft = "lua",
             },
         },
-        cond = function ()
+        cond = function()
             -- ignore filetype markdown
             return vim.bo.filetype ~= "markdown"
         end,
-        config = function ()
+        config = function()
             local nvim_lsp = require("lspconfig")
             local servers = {
                 "gopls",
@@ -45,7 +45,7 @@ return {
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-                callback = function (ev)
+                callback = function(ev)
                     local bufopts = { noremap = true, silent = true, buffer = ev.buf }
                     -- builtin lsp
                     vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, bufopts)
@@ -76,9 +76,9 @@ return {
                 cmd = {
                     "sqls",
                     "-log",
-                    os.getenv("HOME").."/sqls.log",
+                    os.getenv("HOME") .. "/sqls.log",
                     "-config",
-                    os.getenv("HOME").."/.config/sqls/config.yml",
+                    os.getenv("HOME") .. "/.config/sqls/config.yml",
                 },
                 -- cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
                 settings = {
@@ -90,8 +90,7 @@ return {
                             },
                             {
                                 driver = "postgresql",
-                                dataSourceName =
-                                "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
+                                dataSourceName = "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
                             },
                         },
                     },
@@ -129,7 +128,7 @@ return {
         "j-hui/fidget.nvim",
         dependencies = { "neovim/nvim-lspconfig" },
         event = "LspAttach",
-        config = function ()
+        config = function()
             require("fidget").setup()
         end,
     },
@@ -141,17 +140,17 @@ return {
             "nvim-tree/nvim-web-devicons",
             "nvim-telescope/telescope.nvim",
         },
-        config = function ()
+        config = function()
             require("aerial").setup({
                 backends = { "lsp", "treesitter", "markdown" },
             })
             require("telescope").load_extension("aerial")
         end,
         keys = {
-            { "]]",        "<cmd>AerialNext<CR>",       mode = "n", desc = "Aerial Jump prev symbol" },
-            { "[[",        "<cmd>AerialPrev<CR>",       mode = "n", desc = "Aerial Jump next symbol" },
-            { "<Leader>o", "<cmd>AerialToggle!<CR>",    mode = "n", desc = "Aerial Open symbol list" },
-            { "<Space>o",  "<Cmd>Telescope aerial<CR>", mode = "n", desc = "Aerial Find symbol list" },
+            { "]]", "<cmd>AerialNext<CR>", mode = "n", desc = "Aerial Jump prev symbol" },
+            { "[[", "<cmd>AerialPrev<CR>", mode = "n", desc = "Aerial Jump next symbol" },
+            { "<Leader>o", "<cmd>AerialToggle!<CR>", mode = "n", desc = "Aerial Open symbol list" },
+            { "<Space>o", "<Cmd>Telescope aerial<CR>", mode = "n", desc = "Aerial Find symbol list" },
         },
     },
 
@@ -162,7 +161,7 @@ return {
         keys = {
             {
                 "<LocalLeader>f",
-                function ()
+                function()
                     require("conform").format({ async = true, lsp_format = "first" })
                 end,
                 mode = "n",
@@ -192,7 +191,7 @@ return {
     {
         "mfussenegger/nvim-lint",
         event = { "BufWritePost" },
-        config = function ()
+        config = function()
             local lint = require("lint")
             lint.linters_by_ft = {
                 javascript = { "biomejs", "eslint" },
@@ -217,12 +216,12 @@ return {
                 "--print-linter-name=false",
                 -- Add fast option
                 "--fast",
-                function ()
+                function()
                     return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":h")
-                end
+                end,
             }
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-                callback = function ()
+                callback = function()
                     require("lint").try_lint(nil, { ignore_errors = true })
                 end,
             })

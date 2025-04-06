@@ -3,7 +3,7 @@ return {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
-        config = function ()
+        config = function()
             require("copilot").setup({
                 copilot_model = "gpt-4o-copilot",
                 suggestion = {
@@ -21,7 +21,7 @@ return {
             { "zbirenbaum/copilot.lua" },
             { "nvim-lua/plenary.nvim" },
         },
-        config = function ()
+        config = function()
             local select = require("CopilotChat.select")
             require("CopilotChat").setup({
                 model = "claude-3.7-sonnet",
@@ -46,12 +46,10 @@ return {
                         selection = select.buffer,
                     },
                     CommitStagedEn = {
-                        prompt =
-                        "#git:staged\nWrite commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
+                        prompt = "#git:staged\nWrite commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
                     },
                     CommitStagedJa = {
-                        prompt =
-                        "#git:staged\nコミットメッセージをコミット規約に従って記述してください。タイトルは最大50文字、メッセージは最大200文字かつ72文字で折り返してください。",
+                        prompt = "#git:staged\nコミットメッセージをコミット規約に従って記述してください。タイトルは最大50文字、メッセージは最大200文字かつ72文字で折り返してください。",
                     },
                 },
             })
@@ -104,5 +102,5 @@ return {
                 ft = { "markdown", "Avante" },
             },
         },
-    }
+    },
 }

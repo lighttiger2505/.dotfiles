@@ -4,9 +4,9 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             { "RRethy/nvim-treesitter-textsubjects" },
-            { "nvim-treesitter/nvim-treesitter-context" }
+            { "nvim-treesitter/nvim-treesitter-context" },
         },
-        config = function ()
+        config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
                     "bash",
@@ -31,7 +31,7 @@ return {
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false,
-                    disable = function (_, buf)
+                    disable = function(_, buf)
                         local max_filesize = 1000 * 1024 -- 1000 KB
                         local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
                         if ok and stats and stats.size > max_filesize then
@@ -46,10 +46,10 @@ return {
                 },
             })
 
-            require("treesitter-context").setup {
+            require("treesitter-context").setup({
                 enable = true,
                 max_lines = 3,
-            }
+            })
 
             require("nvim-treesitter-textsubjects").configure({
                 prev_selection = ",",

@@ -7,10 +7,10 @@ return {
         },
         opts = {
             scoring = {
-                boost_factor = 0.001
+                boost_factor = 0.001,
             },
             default = {
-                sorting = 'recent'
+                sorting = "recent",
             },
         },
         keys = {
@@ -20,12 +20,22 @@ return {
                 mode = "n",
                 desc = "Telescope Find git files",
             },
-            { "<Space>s", "<Cmd>Telescope git_status<CR>",             mode = "n", desc = "Telescope Find git status files" },
-            { "<Space>b", "<Cmd>Telescope buffers<CR>",                mode = "n", desc = "Telescope Find buffer" },
+            {
+                "<Space>s",
+                "<Cmd>Telescope git_status<CR>",
+                mode = "n",
+                desc = "Telescope Find git status files",
+            },
+            { "<Space>b", "<Cmd>Telescope buffers<CR>", mode = "n", desc = "Telescope Find buffer" },
             { "<Space>r", "<Cmd>Telescope oldfiles cwd_only=true<CR>", mode = "n", desc = "Telescope Find old files" },
-            { "<Space>l", "<Cmd>Telescope live_grep<CR>",              mode = "n", desc = "Telescope Find live grep" },
-            { "<Space>m", "<Cmd>Telescope marks<CR>",                  mode = "n", desc = "Telescope Find marks" },
-            { "<Space>g", "<Cmd>Telescope grapple tags<CR>",           mode = "n", desc = "Telescope Find grapple tags" },
+            { "<Space>l", "<Cmd>Telescope live_grep<CR>", mode = "n", desc = "Telescope Find live grep" },
+            { "<Space>m", "<Cmd>Telescope marks<CR>", mode = "n", desc = "Telescope Find marks" },
+            {
+                "<Space>g",
+                "<Cmd>Telescope grapple tags<CR>",
+                mode = "n",
+                desc = "Telescope Find grapple tags",
+            },
         },
     },
 
@@ -34,9 +44,8 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             {
-                'nvim-telescope/telescope-fzf-native.nvim',
-                build =
-                'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
             },
             "cbochs/grapple.nvim",
             "nvim-telescope/telescope-file-browser.nvim",

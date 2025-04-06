@@ -9,19 +9,19 @@ return {
             "mfussenegger/nvim-lint",
             "stevearc/overseer.nvim",
         },
-        config = function ()
-            local lint_progress = function ()
+        config = function()
+            local lint_progress = function()
                 local linters = require("lint").get_running()
                 if #linters == 0 then
                     return ""
                 end
-                return "󱉶 "..table.concat(linters, ", ")
+                return "󱉶 " .. table.concat(linters, ", ")
             end
 
             local overseer = require("overseer")
             local overseer_progress = {
                 "overseer",
-                label = "",     -- Prefix for task counts
+                label = "", -- Prefix for task counts
                 colored = true, -- Color the task icons and counts
                 symbols = {
                     [overseer.STATUS.FAILURE] = "F:",
@@ -29,10 +29,10 @@ return {
                     [overseer.STATUS.SUCCESS] = "S:",
                     [overseer.STATUS.RUNNING] = "R:",
                 },
-                unique = false,     -- Unique-ify non-running task count by name
-                name = nil,         -- List of task names to search for
-                name_not = false,   -- When true, invert the name search
-                status = nil,       -- List of task statuses to display
+                unique = false, -- Unique-ify non-running task count by name
+                name = nil, -- List of task names to search for
+                name_not = false, -- When true, invert the name search
+                status = nil, -- List of task statuses to display
                 status_not = false, -- When true, invert the status search
             }
 
@@ -50,13 +50,13 @@ return {
                     lualine_a = {
                         "filename",
                         {
-                            function ()
+                            function()
                                 return require("grapple").name_or_index()
                             end,
-                            cond = function ()
+                            cond = function()
                                 return package.loaded["grapple"] and require("grapple").exists()
-                            end
-                        }
+                            end,
+                        },
                     },
                     lualine_b = { "branch" },
                     lualine_c = { "diff", overseer_progress, lint_progress, "diagnostics" },
@@ -82,12 +82,12 @@ return {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
         cmd = "Neotree",
-        init = function ()
+        init = function()
             map("n", "<Leader>t", "<cmd>Neotree toggle<CR>", kopts)
             map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
         end,
-        config = function ()
-            local launchTelescopeFiler = function (state)
+        config = function()
+            local launchTelescopeFiler = function(state)
                 local node = state.tree:get_node()
                 local dir = vim.fn.fnamemodify(node.path, ":h")
                 require("telescope")
@@ -100,7 +100,7 @@ return {
                     mappings = {
                         ["/"] = launchTelescopeFiler,
                         ["f"] = launchTelescopeFiler,
-                    }
+                    },
                 },
                 enable_diagnostics = false,
                 enable_git_status = true,
@@ -130,7 +130,7 @@ return {
     {
         "shellRaining/hlchunk.nvim",
         event = { "BufReadPre", "BufNewFile" },
-        config = function ()
+        config = function()
             require("hlchunk").setup({})
             local palette = require("nightfox.palette").load("nightfox")
             require("hlchunk.mods.chunk")({
@@ -148,7 +148,7 @@ return {
             -- require('hlchunk.mods.line_num')({
             --     style = palette.red.base,
             -- }):enable()
-        end
+        end,
     },
 
     {
@@ -162,14 +162,34 @@ return {
         dependencies = {
             "haya14busa/vim-asterisk",
         },
-        config = function ()
+        config = function()
             require("hlslens").setup()
         end,
         keys = {
-            { "*",  "<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>",  mode = { "n", "v" }, desc = "hlslens start" },
-            { "#",  "<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>",  mode = { "n", "v" }, desc = "hlslens start" },
-            { "g*", "<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>", mode = { "n", "v" }, desc = "hlslens start" },
-            { "g#", "<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>", mode = { "n", "v" }, desc = "hlslens start" },
+            {
+                "*",
+                "<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>",
+                mode = { "n", "v" },
+                desc = "hlslens start",
+            },
+            {
+                "#",
+                "<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>",
+                mode = { "n", "v" },
+                desc = "hlslens start",
+            },
+            {
+                "g*",
+                "<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>",
+                mode = { "n", "v" },
+                desc = "hlslens start",
+            },
+            {
+                "g#",
+                "<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>",
+                mode = { "n", "v" },
+                desc = "hlslens start",
+            },
         },
     },
 
@@ -187,12 +207,11 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        opts = {
-        },
+        opts = {},
         keys = {
             {
                 "<leader>?",
-                function ()
+                function()
                     require("which-key").show({ global = false })
                 end,
                 desc = "Buffer Local Keymaps (which-key)",
@@ -207,33 +226,49 @@ return {
             "lewis6991/gitsigns.nvim",
             "nvim-tree/nvim-web-devicons",
         },
-        init = function () vim.g.barbar_auto_setup = false end,
+        init = function()
+            vim.g.barbar_auto_setup = false
+        end,
         opts = {
             animation = false,
         },
         keys = {
-            { "<C-h>",    "<Cmd>BufferPrevious<CR>",         mode = "n", desc = "BarBar Move buffer prev" },
-            { "<C-l>",    "<Cmd>BufferNext<CR>",             mode = "n", desc = "BarBar Move buffer next" },
-            { "<Space>j", "<Cmd>BufferOrderByName<CR>",      mode = "n", desc = "BarBar Sort buffer by name" },
+            { "<C-h>", "<Cmd>BufferPrevious<CR>", mode = "n", desc = "BarBar Move buffer prev" },
+            { "<C-l>", "<Cmd>BufferNext<CR>", mode = "n", desc = "BarBar Move buffer next" },
+            { "<Space>j", "<Cmd>BufferOrderByName<CR>", mode = "n", desc = "BarBar Sort buffer by name" },
             { "<Space>k", "<Cmd>BufferOrderByDirectory<CR>", mode = "n", desc = "BarBar Sort buffer by directory" },
         },
     },
 
     {
         "kazhala/close-buffers.nvim",
-        config = function ()
+        config = function()
             require("close_buffers").setup({})
         end,
         keys = {
-            { "<Space>a", function () require("close_buffers").delete({ type = "hidden", force = true }) end, mode = "n", desc = "CloseBuffers Close all non-visible buffers" },
-            { "<Space>q", function () require("close_buffers").delete({ type = "this" }) end,                 mode = "n", desc = "CloseBuffers Close the current buffer" },
+            {
+                "<Space>a",
+                function()
+                    require("close_buffers").delete({ type = "hidden", force = true })
+                end,
+                mode = "n",
+                desc = "CloseBuffers Close all non-visible buffers",
+            },
+            {
+                "<Space>q",
+                function()
+                    require("close_buffers").delete({ type = "this" })
+                end,
+                mode = "n",
+                desc = "CloseBuffers Close the current buffer",
+            },
         },
     },
 
     {
         "shortcuts/no-neck-pain.nvim",
         cmd = "NoNeckPain",
-        config = function ()
+        config = function()
             require("no-neck-pain").setup({
                 width = 144,
                 autocmds = {
@@ -245,7 +280,6 @@ return {
             { "<Leader>w", "<Cmd>NoNeckPain<CR>", mode = "n", desc = "NoNeckPain" },
         },
     },
-
 
     {
         "sphamba/smear-cursor.nvim",

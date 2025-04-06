@@ -38,5 +38,5 @@ return {
             vim.cmd([[colorscheme catppuccin-mocha]])
             vim.cmd([[highlight WinSeparator guifg=#928374]])
         end,
-    }
+    },
 }

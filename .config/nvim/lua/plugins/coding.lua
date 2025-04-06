@@ -4,16 +4,16 @@ return {
         dependencies = {
             "JoosepAlviste/nvim-ts-context-commentstring",
             config = function()
-                require('ts_context_commentstring').setup {
+                require("ts_context_commentstring").setup({
                     enable_autocmd = false,
-                }
+                })
             end,
         },
         event = "VeryLazy",
         config = function()
-            require('Comment').setup {
-                pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-            }
+            require("Comment").setup({
+                pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+            })
         end,
     },
 
@@ -78,7 +78,7 @@ return {
     },
 
     {
-        'stevearc/overseer.nvim',
+        "stevearc/overseer.nvim",
         cmd = { "Make", "Grep" },
         config = function()
             local overseer = require("overseer")
@@ -166,7 +166,7 @@ return {
         event = "VeryLazy",
         cmd = "Grapple",
         keys = {
-            { "<leader>m", "<cmd>Grapple toggle<cr>",          desc = "Grapple toggle tag" },
+            { "<leader>m", "<cmd>Grapple toggle<cr>", desc = "Grapple toggle tag" },
             { "<leader>n", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
             { "<leader>p", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
         },

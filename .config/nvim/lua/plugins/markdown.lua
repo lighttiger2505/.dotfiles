@@ -2,13 +2,13 @@ return {
     {
         "ixru/nvim-markdown",
         ft = { "markdown" },
-        init = function ()
+        init = function()
             local group_name = "PluginNvimMarkdown"
             vim.api.nvim_create_augroup(group_name, { clear = true })
             vim.api.nvim_create_autocmd("FileType", {
                 group = group_name,
                 pattern = { "markdown" },
-                callback = function ()
+                callback = function()
                     local bufnr = vim.api.nvim_get_current_buf()
                     local bufopts = { noremap = true, silent = true, buffer = bufnr }
                     vim.keymap.set("n", "]]", "<Plug>Markdown_MoveToNextHeader", bufopts)
@@ -24,7 +24,7 @@ return {
                 end,
             })
         end,
-        config = function ()
+        config = function()
             vim.g.vim_markdown_no_default_key_mappings = 1
             vim.g.vim_markdown_conceal = 1
             vim.g.vim_markdown_toc_autofit = 1
@@ -34,9 +34,9 @@ return {
     {
         "Kicamon/markdown-table-mode.nvim",
         ft = { "markdown" },
-        config = function ()
+        config = function()
             require("markdown-table-mode").setup()
-        end
+        end,
     },
 
     {
@@ -45,7 +45,7 @@ return {
         -- ft = { "markdown" },
         event = "VeryLazy",
         name = "render-markdown",
-        config = function ()
+        config = function()
             require("render-markdown").setup({
                 win_options = {
                     conceallevel = {

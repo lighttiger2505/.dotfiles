@@ -109,7 +109,7 @@ return {
 
                         return vim_item
                     end,
-                }
+                },
             })
 
             cmp.setup.cmdline("/", {

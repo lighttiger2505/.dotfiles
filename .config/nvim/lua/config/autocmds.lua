@@ -8,7 +8,7 @@ vim.api.nvim_create_augroup(group_name, { clear = true })
 autocmd({ "BufRead", "BufNewFile" }, {
     group = group_name,
     pattern = { ".envrc" },
-    callback = function ()
+    callback = function()
         l.filetype = "sh"
     end,
 })
@@ -17,7 +17,7 @@ autocmd({ "BufRead", "BufNewFile" }, {
 autocmd("FileType", {
     group = group_name,
     pattern = { "markdown" },
-    callback = function ()
+    callback = function()
         l.conceallevel = 2
         l.concealcursor = "c"
     end,
@@ -26,12 +26,12 @@ autocmd("FileType", {
 autocmd("FileType", {
     group = group_name,
     pattern = { "gitcommit" },
-    callback = function (ev)
+    callback = function(ev)
         -- Spell check gitcommit
         l.spell = true
         -- Auto close copiloat chat
         if vim.fn.has("CopilotChat.nvim") then
-            vim.schedule(function ()
+            vim.schedule(function()
                 require("CopilotChat")
             end)
             vim.keymap.set("n", "<leader>ce", "<cmd>CopilotChatCommitStagedEn<CR>", { buffer = ev.buf })
@@ -61,7 +61,7 @@ autocmd("QuickFixCmdPost", {
 -- Tarminal buffer guitter
 autocmd("TermOpen", {
     group = group_name,
-    callback = function ()
+    callback = function()
         l.relativenumber = false
         l.number = false
     end,
@@ -70,8 +70,8 @@ autocmd("TermOpen", {
 -- Tarminal buffer guitter
 autocmd("TextYankPost", {
     group = group_name,
-    callback = function ()
-        vim.highlight.on_yank { higroup = "IncSearch", timeout = 200 }
+    callback = function()
+        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
     end,
 })
 
@@ -84,7 +84,7 @@ autocmd("FileType", {
 autocmd("FileType", {
     group = group_name,
     pattern = { "csv" },
-    callback = function ()
+    callback = function()
         l.wrap = false
     end,
 })

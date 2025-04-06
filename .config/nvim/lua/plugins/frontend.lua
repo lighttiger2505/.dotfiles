@@ -6,7 +6,7 @@ return {
             "typescript.tsx",
             "typescriptreact",
         },
-        config = function ()
+        config = function()
             require("ts-error-translator").setup()
         end,
     },

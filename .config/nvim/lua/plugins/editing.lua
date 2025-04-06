@@ -37,7 +37,7 @@ return {
                     -- change_line = "cS",
                 },
             })
-        end
+        end,
     },
 
     {
@@ -109,7 +109,7 @@ return {
         config = function()
             if vim.fn.has("macunix") == 1 then
                 require("im_select").setup({
-                    default_im_select = "com.apple.keylayout.US",
+                    default_im_select = "com.apple.keylayout.ABC",
                     default_command = "im-select",
                     async_switch_im = false,
                 })
@@ -161,20 +161,20 @@ return {
     {
         "hat0uma/csvview.nvim",
         ft = { "csv" },
-        init = function ()
+        init = function()
             local group_name = "PluginNvimCsv"
             vim.api.nvim_create_augroup(group_name, { clear = true })
             vim.api.nvim_create_autocmd("FileType", {
                 group = group_name,
                 pattern = { "csv" },
-                callback = function ()
+                callback = function()
                     local bufnr = vim.api.nvim_get_current_buf()
                     local bufopts = { noremap = true, silent = true, buffer = bufnr }
                     vim.keymap.set("n", "<Leader>c", "<Cmd>CsvViewToggle<CR>", bufopts)
                 end,
             })
         end,
-        config = function ()
+        config = function()
             require("csvview").setup()
         end,
     },
