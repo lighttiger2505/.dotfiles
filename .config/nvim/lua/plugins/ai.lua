@@ -16,13 +16,10 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         lazy = true,
-        branch = "main",
         build = "make tiktoken",
         dependencies = {
             { "zbirenbaum/copilot.lua" },
             { "nvim-lua/plenary.nvim" },
-            { "nvim-telescope/telescope.nvim" },
-            { "hrsh7th/nvim-cmp" },
         },
         config = function ()
             local select = require("CopilotChat.select")
