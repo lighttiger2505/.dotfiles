@@ -159,13 +159,23 @@ return {
     },
 
     {
-        'hat0uma/csvview.nvim',
+        "hat0uma/csvview.nvim",
         ft = { "csv" },
-        config = function()
-            require('csvview').setup()
+        init = function ()
+            local group_name = "PluginNvimCsv"
+            vim.api.nvim_create_augroup(group_name, { clear = true })
+            vim.api.nvim_create_autocmd("FileType", {
+                group = group_name,
+                pattern = { "csv" },
+                callback = function ()
+                    local bufnr = vim.api.nvim_get_current_buf()
+                    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+                    vim.keymap.set("n", "<Leader>c", "<Cmd>CsvViewToggle<CR>", bufopts)
+                end,
+            })
         end,
-        keys = {
-            { "<LocalLeader>c", "<Cmd>CsvViewToggle<CR>", mode = "n", desc = "Csv View Toggle" },
-        },
+        config = function ()
+            require("csvview").setup()
+        end,
     },
 }
