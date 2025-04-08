@@ -59,6 +59,9 @@ return {
                 },
                 table_style = "normal",
                 code = {
+                    position = "right",
+                    style = "full",
+                    border = "thick",
                     width = "block",
                     min_width = 45,
                     left_pad = 0,
