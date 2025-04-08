@@ -15,4 +15,5 @@ fi
 
 if [ -e $HOME/.local/bin/mise ]; then
     eval "$(~/.local/bin/mise activate zsh)"
+    eval "$(~/.local/bin/mise --shims)"
 fi

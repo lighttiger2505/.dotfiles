@@ -22,6 +22,8 @@ $HOME/.npm-global/bin(N-/)
 $GOENV_ROOT/bin(N-/)
 # volta
 $VOLTA_HOME/bin(N-/)
+# mise
+$HOME/.local/share/mise/shims
 
 # GNU utils for mac
 # coreutils
