@@ -13,7 +13,6 @@ return {
                     local bufopts = { noremap = true, silent = true, buffer = bufnr }
                     vim.keymap.set("n", "]]", "<Plug>Markdown_MoveToNextHeader", bufopts)
                     vim.keymap.set("n", "[[", "<Plug>Markdown_MoveToPreviousHeader", bufopts)
-                    vim.keymap.set("n", "<Leader>bb", "<Plug>Markdown_FollowLink", bufopts)
                     vim.keymap.set("n", "O", "<Plug>Markdown_NewLineAbove", bufopts)
                     vim.keymap.set("n", "o", "<Plug>Markdown_NewLineBelow", bufopts)
                     vim.keymap.set("n", "<Tab>", "<Plug>Markdown_Fold", bufopts)
