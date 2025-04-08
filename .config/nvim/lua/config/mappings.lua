@@ -77,3 +77,19 @@ map("n", "<C-w>t", "<C-w>T", opts)
 map("n", "t", "<Nop>", opts)
 map("n", "tn", "gt", opts)
 map("n", "tp", "gT", opts)
+
+
+-- Set a normal mode key mapping for "yp" to copy the current file's path to the system clipboard
+vim.keymap.set('n', 'yp', function()
+  -- Get the current buffer's full file path
+  local filepath = vim.api.nvim_buf_get_name(0)
+  -- Check if there is a file associated with the current buffer
+  if filepath == "" then
+    print("No file name available!")
+    return
+  end
+  -- Set the file path into the system clipboard register "+"
+  vim.fn.setreg('+', filepath)
+  -- Notify the user that the file path was copied
+  print("Copied file path to clipboard: " .. filepath)
+end, { noremap = true, silent = true, desc = "Copy current file path to clipboard" })
