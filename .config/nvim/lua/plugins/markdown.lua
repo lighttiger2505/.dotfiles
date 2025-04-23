@@ -68,7 +68,7 @@ return {
                 },
                 table_style = "normal",
                 code = {
-                    position = "right",
+                    position = "left",
                     style = "full",
                     border = "thick",
                     width = "block",
