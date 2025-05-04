@@ -58,11 +58,11 @@ return {
             require("render-markdown").setup({
                 win_options = {
                     conceallevel = {
-                        default = vim.api.nvim_get_option_value("conceallevel", {}),
+                        default = vim.o.conceallevel,
                         rendered = 2,
                     },
                     concealcursor = {
-                        default = vim.api.nvim_get_option_value("concealcursor", {}),
+                        default = vim.o.concealcursor,
                         rendered = "c",
                     },
                 },

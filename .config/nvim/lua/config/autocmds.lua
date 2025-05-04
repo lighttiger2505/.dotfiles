@@ -16,7 +16,7 @@ autocmd({ "BufRead", "BufNewFile" }, {
 -- Disable markdown collapse
 autocmd("FileType", {
     group = group_name,
-    pattern = { "markdown" },
+    pattern = { "markdown", "Avante" },
     callback = function()
         l.conceallevel = 2
         l.concealcursor = "c"
