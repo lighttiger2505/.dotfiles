@@ -274,4 +274,29 @@ return {
             },
         },
     },
+
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            require("neogit").setup()
+        end,
+        keys = {
+            { "<Leader>gb", "<cmd>Neogit branch<cr>", mode = { "n", "v" }, desc = "Neogit branch checkout" },
+            {
+                "<Leader>gps",
+                "<cmd>Neogit push<cr>",
+                mode = { "n", "v" },
+                desc = "Neogit push",
+            },
+            {
+                "<Leader>gpl",
+                "<cmd>Neogit pull<cr>",
+                mode = { "n", "v" },
+                desc = "Neogit pull",
+            },
+        },
+    },
 }
