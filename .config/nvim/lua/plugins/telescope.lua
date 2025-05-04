@@ -26,15 +26,35 @@ return {
                 mode = "n",
                 desc = "Telescope Find git status files",
             },
-            { "<Space>b", "<Cmd>Telescope buffers<CR>", mode = "n", desc = "Telescope Find buffer" },
-            { "<Space>r", "<Cmd>Telescope oldfiles cwd_only=true<CR>", mode = "n", desc = "Telescope Find old files" },
-            { "<Space>l", "<Cmd>Telescope live_grep<CR>", mode = "n", desc = "Telescope Find live grep" },
-            { "<Space>m", "<Cmd>Telescope marks<CR>", mode = "n", desc = "Telescope Find marks" },
             {
-                "<Space>g",
+                "<Space>b",
+                "<Cmd>Telescope buffers<CR>",
+                mode = "n",
+                desc = "Telescope Find buffer",
+            },
+            {
+                "<Space>r",
+                "<Cmd>Telescope oldfiles cwd_only=true<CR>",
+                mode = "n",
+                desc = "Telescope Find old files",
+            },
+            {
+                "<Space>l",
+                "<Cmd>Telescope live_grep<CR>",
+                mode = "n",
+                desc = "Telescope Find live grep",
+            },
+            {
+                "<Space>m",
                 "<Cmd>Telescope grapple tags<CR>",
                 mode = "n",
                 desc = "Telescope Find grapple tags",
+            },
+            {
+                "<Space>g",
+                "<Cmd>Telescope ghq<CR>",
+                mode = "n",
+                desc = "Telescope Find projects",
             },
         },
     },
@@ -49,9 +69,14 @@ return {
             },
             "cbochs/grapple.nvim",
             "nvim-telescope/telescope-file-browser.nvim",
+            "nvim-telescope/telescope-ghq.nvim",
         },
         config = function()
             local telescope = require("telescope")
+            telescope.load_extension("fzf")
+            telescope.load_extension("grapple")
+            telescope.load_extension("file_browser")
+            telescope.load_extension("ghq")
             telescope.setup({
                 defaults = {
                     sorting_strategy = "ascending",
@@ -75,9 +100,6 @@ return {
                     },
                 },
             })
-            telescope.load_extension("fzf")
-            telescope.load_extension("grapple")
-            telescope.load_extension("file_browser")
         end,
     },
 }
