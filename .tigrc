@@ -38,6 +38,12 @@ bind generic y !@sh -c "echo -n %(commit) | xsel --clipboard --input"
 # git commit amend
 bind generic + !git commit --amend
 
+# git push
+bind generic P !git push -u %(remote) %(repo:head)
+
+# git pull
+bind generic U !git pull
+
 # Show line nuber
 set pager-view  = line-number:yes,interval=1 text
 set stage-view  = line-number:yes,interval=1 text
