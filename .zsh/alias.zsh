@@ -296,7 +296,7 @@ alias hpr=github-pr-review
 function github-pr-review() {
     local pr_url="$1"
     gh pr checkout ${pr_url}
-    nvim -c "Octo ${pr_url}"
+    nvim -c "DiffviewOpen origin/HEAD...HEAD --imply-local"
 }
 
 # Create PR diff and open in nvim
