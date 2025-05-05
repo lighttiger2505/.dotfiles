@@ -113,13 +113,6 @@ return {
         lazy = false,
         config = function()
             local fterm = require("FTerm")
-            require("FTerm").setup({
-                border = "double",
-                dimensions = {
-                    height = 0.9,
-                    width = 0.9,
-                },
-            })
             local tig = fterm:new({
                 ft = "fterm_tig",
                 cmd = "tig status",
