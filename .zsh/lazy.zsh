@@ -30,17 +30,17 @@ load_plugin() {
     fi
 }
 
-# Install and load zsh-defer (without deferring itself)
+# Install and load zsh-defer
 install_plugin_if_needed "https://github.com/romkatv/zsh-defer" "zsh-defer"
 load_plugin "zsh-defer" "zsh-defer.plugin.zsh" "false"
 
-# Install and lazy load fast-syntax-highlighting
+# Install and load zsh plugins with zsh-defer
 install_plugin_if_needed "https://github.com/zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighting"
 load_plugin "fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh" "true"
-
-# Install and lazy load zsh-autosuggestions
 install_plugin_if_needed "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions"
 load_plugin "zsh-autosuggestions" "zsh-autosuggestions.zsh" "true"
+install_plugin_if_needed "https://github.com/olets/zsh-abbr" "zsh-abbr"
+load_plugin "zsh-abbr" "zsh-abbr.plugin.zsh" "true"
 
 # Load command hook with zsh-defer
 zsh-defer source ~/.zsh/command_hook.zsh
