@@ -186,9 +186,17 @@ return {
             scope = "git_branch",
             icons = true,
         },
-        event = "VeryLazy",
-        cmd = "Grapple",
+        config = function()
+            local telescope = require("telescope")
+            telescope.load_extension("grapple")
+        end,
         keys = {
+            {
+                "<Space>m",
+                "<Cmd>Telescope grapple tags<CR>",
+                mode = "n",
+                desc = "Telescope Find grapple tags",
+            },
             { "<leader>m", "<cmd>Grapple toggle<cr>", desc = "Grapple toggle tag" },
             { "<leader>n", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
             { "<leader>p", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },

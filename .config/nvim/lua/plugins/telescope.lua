@@ -44,18 +44,6 @@ return {
                 mode = "n",
                 desc = "Telescope Find live grep",
             },
-            {
-                "<Space>m",
-                "<Cmd>Telescope grapple tags<CR>",
-                mode = "n",
-                desc = "Telescope Find grapple tags",
-            },
-            {
-                "<Space>g",
-                "<Cmd>Telescope ghq<CR>",
-                mode = "n",
-                desc = "Telescope Find projects",
-            },
         },
     },
 
@@ -65,18 +53,12 @@ return {
             "nvim-lua/plenary.nvim",
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
-                build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+                build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
             },
-            "cbochs/grapple.nvim",
-            "nvim-telescope/telescope-file-browser.nvim",
-            "nvim-telescope/telescope-ghq.nvim",
         },
         config = function()
             local telescope = require("telescope")
             telescope.load_extension("fzf")
-            telescope.load_extension("grapple")
-            telescope.load_extension("file_browser")
-            telescope.load_extension("ghq")
             telescope.setup({
                 defaults = {
                     sorting_strategy = "ascending",
@@ -101,5 +83,21 @@ return {
                 },
             })
         end,
+    },
+
+    {
+        "nvim-telescope/telescope-ghq.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim" },
+        config = function()
+            require("telescope").load_extension("ghq")
+        end,
+        keys = {
+            {
+                "<Space>g",
+                "<Cmd>Telescope ghq<CR>",
+                mode = "n",
+                desc = "Telescope Find projects",
+            },
+        },
     },
 }

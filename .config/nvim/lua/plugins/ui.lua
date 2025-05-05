@@ -87,13 +87,18 @@ return {
             map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
         end,
         config = function()
+            require("telescope").load_extension("file_browser")
             local launchTelescopeFiler = function(state)
                 local node = state.tree:get_node()
                 local dir = vim.fn.fnamemodify(node.path, ":h")
-                require("telescope")
-                local cmd = string.format("Telescope file_browser path=%s select_buffer=true", dir)
-                vim.cmd(cmd)
+                require("telescope").extensions.file_browser.file_browser({
+                    path = dir,
+                    hide_parent_dir = true,
+                    select_buffer = true,
+                    hidden = true,
+                })
             end
+
             require("neo-tree").setup({
                 window = {
                     position = "float",
@@ -124,6 +129,10 @@ return {
             "nvim-lua/plenary.nvim",
             "kyazdani42/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
+            {
+                "nvim-telescope/telescope-file-browser.nvim",
+                dependencies = { "nvim-telescope/telescope.nvim" },
+            },
         },
     },
 
