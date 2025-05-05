@@ -91,8 +91,24 @@ return {
             require("diffview").setup()
         end,
         keys = {
-            { "<Leader>dd", "<cmd>DiffviewOpen<CR>", mode = "n", desc = "Diffview Open diff view" },
-            { "<Leader>dc", "<cmd>DiffviewClose<CR>", mode = "n", desc = "Diffview Close diff view" },
+            {
+                "<Leader>dd",
+                "<cmd>DiffviewOpen<CR>",
+                mode = "n",
+                desc = "Diffview Open diff view",
+            },
+            {
+                "<Leader>dr",
+                "<cmd>DiffviewOpen origin/HEAD...HEAD --imply-local<CR>",
+                mode = "n",
+                desc = "Diffview Open for pull request review",
+            },
+            {
+                "<Leader>dc",
+                "<cmd>DiffviewClose<CR>",
+                mode = "n",
+                desc = "Diffview Close diff view",
+            },
             {
                 "<Leader>dh",
                 "<cmd>DiffviewFileHistory<CR>",
