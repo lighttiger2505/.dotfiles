@@ -11,7 +11,7 @@ return {
             {
                 "]g",
                 function()
-                    require("gitsigns").next_hunk()
+                    require("gitsigns").nav_hunk("next")
                 end,
                 mode = "n",
                 desc = "GitSigns Jump next hunk",
@@ -19,7 +19,7 @@ return {
             {
                 "[g",
                 function()
-                    require("gitsigns").prev_hunk()
+                    require("gitsigns").nav_hunk("prev")
                 end,
                 mode = "n",
                 desc = "GitSigns Jump prev hunk",
@@ -41,14 +41,6 @@ return {
                 desc = "GitSigns Stage hunk",
             },
             {
-                "<leader>hu",
-                function()
-                    require("gitsigns").undo_stage_hunk()
-                end,
-                mode = "n",
-                desc = "GitSigns Unstage hunk",
-            },
-            {
                 "<leader>hr",
                 function()
                     require("gitsigns").reset_hunk()
@@ -64,14 +56,6 @@ return {
                 end,
                 mode = "v",
                 desc = "GitSigns Stage hunk",
-            },
-            {
-                "<leader>hu",
-                function()
-                    require("gitsigns").undo_stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                end,
-                mode = "v",
-                desc = "GitSigns Unstage hunk",
             },
             {
                 "<leader>hr",
