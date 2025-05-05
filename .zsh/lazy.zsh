@@ -39,8 +39,6 @@ install_plugin_if_needed "https://github.com/zdharma-continuum/fast-syntax-highl
 load_plugin "fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh" "true"
 install_plugin_if_needed "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions"
 load_plugin "zsh-autosuggestions" "zsh-autosuggestions.zsh" "true"
-install_plugin_if_needed "https://github.com/olets/zsh-abbr" "zsh-abbr"
-load_plugin "zsh-abbr" "zsh-abbr.plugin.zsh" "true"
 
 # Load command hook with zsh-defer
 zsh-defer source ~/.zsh/command_hook.zsh
