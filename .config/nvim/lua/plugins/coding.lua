@@ -140,9 +140,32 @@ return {
                 task:start()
             end, { nargs = "*", bang = true, complete = "file" })
         end,
+    },
+
+    {
+        "Zeioth/compiler.nvim",
+        cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+        dependencies = { "stevearc/overseer.nvim", "nvim-telescope/telescope.nvim" },
+        opts = {},
         keys = {
-            { "<leader>rl", "<Cmd>OverseerRestartLast<CR>", mode = "n", desc = "Overseer quick action" },
-            { "<leader>rr", "<Cmd>OverseerQuickAction<CR>", mode = "n", desc = "Overseer quick action" },
+            {
+                "<leader>rr",
+                "<Cmd>CompilerOpen<CR>",
+                mode = "n",
+                desc = "Open compiler",
+            },
+            {
+                "<leader>rs",
+                "<Cmd>CompilerRedo<CR>",
+                mode = "n",
+                desc = "Redo last selected option",
+            },
+            {
+                "<leader>rl",
+                "<Cmd>CompilerToggleResults<CR>",
+                mode = "n",
+                desc = "Toggle compiler results",
+            },
         },
     },
 
