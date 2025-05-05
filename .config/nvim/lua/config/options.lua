@@ -58,7 +58,7 @@ opt.textwidth = 0
 
 -- Invisible stirng
 opt.list = true
-opt.listchars = "tab:»-,extends:»,precedes:«,nbsp:%,eol:↲,trail:~"
+vim.opt.listchars = { tab = "»-", trail = "-", extends = "»", precedes = "«", nbsp = "%" }
 
 -- Don't unload buffer when it is abandones
 opt.hidden = true
