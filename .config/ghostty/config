@@ -1,3 +1,6 @@
+cursor-opacity = 0.7
+cursor-style = block
+cursor-style-blink = false
 font-family = "UDEV Gothic NFLG"
 theme = "catppuccin-mocha"
 macos-option-as-alt = left
