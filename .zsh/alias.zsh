@@ -479,3 +479,12 @@ function obsidian-list-preview() {
     nvim -c 'lua require("CopilotChat")' -c 'ObsidianQuickSwitch'
 }
 alias ov=obsidian-list-preview
+
+fzf_alias_exec() {
+  local selected=$(alias | fzf)
+  [[ -z $selected ]] && return
+  selected=${selected#alias }
+  local name=${selected%%=*}
+  eval "$name"
+}
+alias al='fzf_alias_exec'
