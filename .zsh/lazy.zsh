@@ -11,7 +11,7 @@ install_plugin() {
     local dir_name=${ZSH_PLUGIN_HOME}/${repo_tmp}
 
     if [ ! -e ${dir_name} ]; then
-        git clone ${repo} ${dir_name}
+        git clone --depth 1 --recursive ${repo} ${dir_name}
     fi
 }
 
