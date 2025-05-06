@@ -1,44 +1,47 @@
 #!/usr/bin/zsh
 
+local ZSH_PLUGIN_HOME=$HOME/.zsh_plugins
+
 # Function to install plugin if not exists
-# Arguments:
-# $1: Repository URL
-# $2: Directory name
-install_plugin_if_needed() {
-    local repo_url=$1
-    local dir_name=$HOME/$2
+install_plugin() {
+    local repo=$1
+    local repo_tmp=${repo%/}
+    repo_tmp=${repo_tmp##*/}
+    repo_tmp=${repo_tmp%.git}
+    local dir_name=${ZSH_PLUGIN_HOME}/${repo_tmp}
 
     if [ ! -e ${dir_name} ]; then
-        git clone ${repo_url} ${dir_name}
+        git clone ${repo} ${dir_name}
     fi
 }
 
 # Function to load plugin with optional defer
-# Arguments:
-# $1: Directory name
-# $2: Plugin file path (relative to directory)
-# $3: Use zsh-defer (true/false)
 load_plugin() {
-    local dir_name=$HOME/$1
-    local plugin_file=${dir_name}/$2
-    local use_defer=$3
+    local plugin=$1
+    local dir_name=${ZSH_PLUGIN_HOME}/${plugin}
 
-    if [[ "$use_defer" == "true" ]]; then
-        zsh-defer source ${plugin_file}
-    else
-        source ${plugin_file}
-    fi
+    for initscript in ${plugin#*/}.zsh ${plugin#*/}.plugin.zsh ${plugin#*/}.sh; do
+        local plugin_file=${dir_name}/${initscript}
+        if [[ -f ${plugin_file} ]]; then
+            if [[ "$use_defer" == "true" ]]; then
+                zsh-defer source ${plugin_file}
+            else
+                source ${plugin_file}
+            fi
+            break
+        fi
+    done
 }
 
 # Install and load zsh-defer
-install_plugin_if_needed "https://github.com/romkatv/zsh-defer" "zsh-defer"
-load_plugin "zsh-defer" "zsh-defer.plugin.zsh" "false"
+install_plugin "https://github.com/romkatv/zsh-defer"
+load_plugin "zsh-defer" "false"
 
 # Install and load zsh plugins with zsh-defer
-install_plugin_if_needed "https://github.com/zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighting"
-load_plugin "fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh" "true"
-install_plugin_if_needed "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions"
-load_plugin "zsh-autosuggestions" "zsh-autosuggestions.zsh" "true"
+install_plugin "https://github.com/zdharma-continuum/fast-syntax-highlighting"
+load_plugin "fast-syntax-highlighting" "true"
+install_plugin "https://github.com/zsh-users/zsh-autosuggestions"
+load_plugin "zsh-autosuggestions" "true"
 
 # Load command hook with zsh-defer
 zsh-defer source ~/.zsh/command_hook.zsh
