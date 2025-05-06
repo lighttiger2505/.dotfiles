@@ -216,7 +216,11 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        opts = {},
+        opts = {
+            win = {
+                border = "single",
+            },
+        },
         keys = {
             {
                 "<leader>?",
