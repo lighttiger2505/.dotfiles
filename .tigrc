@@ -36,7 +36,7 @@ bind generic y none
 bind generic y !@sh -c "echo -n %(commit) | xsel --clipboard --input"
 
 # git commit amend
-bind generic + !git commit --amend
+bind generic A !git commit --amend
 
 # git push
 bind generic P !git push -u %(remote) %(repo:head)
