@@ -23,7 +23,7 @@ load_plugin() {
     for initscript in ${plugin#*/}.zsh ${plugin#*/}.plugin.zsh ${plugin#*/}.sh; do
         local plugin_file=${dir_name}/${initscript}
         if [[ -f ${plugin_file} ]]; then
-            if [[ "$use_defer" == "true" ]]; then
+            if executable zsh-defer; then
                 zsh-defer source ${plugin_file}
             else
                 source ${plugin_file}
