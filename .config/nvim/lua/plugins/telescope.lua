@@ -58,7 +58,6 @@ return {
         },
         config = function()
             local telescope = require("telescope")
-            telescope.load_extension("fzf")
             telescope.setup({
                 defaults = {
                     sorting_strategy = "ascending",
@@ -82,6 +81,7 @@ return {
                     },
                 },
             })
+            telescope.load_extension("fzf")
         end,
     },
 
