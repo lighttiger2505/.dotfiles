@@ -4,3 +4,4 @@ cursor-style-blink = false
 font-family = "UDEV Gothic NFLG"
 theme = "catppuccin-mocha"
 macos-option-as-alt = left
+mouse-hide-while-typing = true
