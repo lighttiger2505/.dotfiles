@@ -5,3 +5,7 @@ font-family = "UDEV Gothic NFLG"
 theme = "catppuccin-mocha"
 macos-option-as-alt = left
 mouse-hide-while-typing = true
+
+keybind = cmd+n=ignore
+keybind = cmd+p=ignore
+keybind = cmd+enter=ignore
