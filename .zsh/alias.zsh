@@ -9,9 +9,6 @@ executable() {
 # Utils
 #####################################################################
 
-# Alias reminder
-alias fal='alias| sed "s/=/\t/" | fzf'
-
 # cd util
 alias ..='cd ..'
 alias ....='cd ../..'
@@ -393,19 +390,6 @@ gcloud-compute-ssh() {
     fi
 }
 alias gcssh=gcloud-compute-ssh
-
-#####################################################################
-# go module
-#####################################################################
-
-alias goplsup='go install golang.org/x/tools/gopls@latest'
-
-#####################################################################
-# Pomodoro
-#####################################################################
-
-alias worktime='~/.tmux/timer.sh 25'
-alias breaktime='~/.tmux/timer.sh 5'
 
 #####################################################################
 # Benchmarks
