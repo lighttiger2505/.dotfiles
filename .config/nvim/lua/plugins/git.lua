@@ -123,7 +123,7 @@ return {
             })
             vim.keymap.set("n", "<Leader>gg", function()
                 tig:toggle()
-            end)
+            end, { noremap = true, silent = true, desc = "Git open tig status" })
         end,
     },
 
