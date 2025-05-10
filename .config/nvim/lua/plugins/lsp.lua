@@ -45,22 +45,26 @@ return {
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-                callback = function(ev)
-                    local bufopts = { noremap = true, silent = true, buffer = ev.buf }
+                -- stylua: ignore
+                callback = function (ev)
                     -- builtin lsp
-                    vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, bufopts)
-                    vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, bufopts)
-                    vim.keymap.set("n", "<LocalLeader>i", vim.lsp.buf.implementation, bufopts)
-                    vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, bufopts)
-                    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-                    vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, bufopts)
-                    vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, bufopts)
+                    local optWithDesc = function (desc)
+                        local result = { noremap = true, silent = true, buffer = ev.buf, desc = desc }
+                        return result
+                    end
+                    vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, optWithDesc("LSP References"))
+                    vim.keymap.set("n", "<LocalLeader>R", vim.lsp.buf.rename, optWithDesc("LSP Rename"))
+                    vim.keymap.set("n", "<LocalLeader>i", vim.lsp.buf.implementation, optWithDesc("LSP Implementation"))
+                    vim.keymap.set("i", "<C-l>", vim.lsp.buf.signature_help, optWithDesc("LSP Signature Help"))
+                    vim.keymap.set("n", "K", vim.lsp.buf.hover, optWithDesc("LSP Hover"))
+                    vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, optWithDesc("Diagnostic Float"))
+                    vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, optWithDesc("Diagnostic List"))
                     -- lsp saga
-                    vim.keymap.set("n", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", bufopts)
-                    vim.keymap.set("i", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", bufopts)
-                    vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
-                    vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
-                    vim.keymap.set("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", bufopts)
+                    vim.keymap.set("n", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", optWithDesc("LSP Code Action"))
+                    vim.keymap.set("i", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", optWithDesc("LSP Code Action"))
+                    vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", optWithDesc("Prev Diagnostic"))
+                    vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", optWithDesc("Next Diagnostic"))
+                    vim.keymap.set("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", optWithDesc("Goto Definition"))
                 end,
             })
 
