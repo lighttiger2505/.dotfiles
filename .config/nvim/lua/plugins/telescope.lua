@@ -16,7 +16,9 @@ return {
         keys = {
             {
                 "<Space>p",
-                "<Cmd>lua require('telescope.telescope-config').project_files()<CR>",
+                function ()
+                    require('telescope.telescope-config').project_files()
+                end,
                 mode = "n",
                 desc = "Telescope Find git files",
             },
