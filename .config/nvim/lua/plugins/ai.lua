@@ -27,11 +27,6 @@ return {
             local select = require("CopilotChat.select")
             require("CopilotChat").setup({
                 model = "claude-3.7-sonnet",
-                mappings = {
-                    complete = {
-                        insert = "",
-                    },
-                },
                 prompts = {
                     PullRequestReviewJa = {
                         prompt = [=[
@@ -48,10 +43,19 @@ return {
                         selection = select.buffer,
                     },
                     CommitStagedEn = {
-                        prompt = "#git:staged\nWrite commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.",
+                        prompt = [=[
+"#git:staged
+Write commit message for the change with commitizen convention.
+Make sure the title has maximum 50 characters and message is wrapped at 72 characters.
+Wrap the whole message in code block with language gitcommit.
+                        ]=],
                     },
                     CommitStagedJa = {
-                        prompt = "#git:staged\nコミットメッセージをコミット規約に従って記述してください。タイトルは最大50文字、メッセージは最大200文字かつ72文字で折り返してください。",
+                        prompt = [=[
+git:staged
+コミットメッセージをコミット規約に従って記述してください。
+タイトルは最大50文字、メッセージは最大200文字かつ72文字で折り返してください。
+                        ]=],
                     },
                 },
             })
