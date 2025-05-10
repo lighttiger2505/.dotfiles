@@ -37,42 +37,42 @@ return {
         end,
         keys = {
             {
-                "<Leader>ss",
+                "<Leader>es",
                 function()
                     require("neotest").run.run()
                 end,
                 desc = "NeoTest Run the nearest test",
             },
             {
-                "<Leader>sc",
+                "<Leader>ec",
                 function()
                     require("neotest").run.run(vim.fn.expand("%"))
                 end,
                 desc = "NeoTest Run the current file",
             },
             {
-                "<Leader>sf",
+                "<Leader>ef",
                 function()
                     require("neotest").summary.toggle()
                 end,
                 desc = "NeoTest Open test output to the floating window",
             },
             {
-                "<Leader>so",
+                "<Leader>eo",
                 function()
                     require("neotest").summary.toggle()
                 end,
                 desc = "NeoTest Open test summary panel",
             },
             {
-                "<Leader>sp",
+                "<Leader>ep",
                 function()
                     require("neotest").output_panel.toggle()
                 end,
                 desc = "NeoTest Open test output panel",
             },
             {
-                "<Leader>sw",
+                "<Leader>ew",
                 function()
                     require("neotest").watch.toggle(vim.fn.expand("%"))
                 end,

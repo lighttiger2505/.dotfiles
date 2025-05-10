@@ -34,4 +34,19 @@ return {
             },
         },
     },
+
+    {
+        "MagicDuck/grug-far.nvim",
+        config = function()
+            require("grug-far").setup({})
+        end,
+        keys = {
+            {
+                "<Leader>s",
+                '<Cmd>lua require("grug-far").open({prefills = { flags = "--hidden" }})<CR>',
+                mode = { "n", "v" },
+                desc = "GrugFar open grug far panel",
+            },
+        },
+    },
 }
