@@ -9,6 +9,7 @@ return {
                 suggestion = {
                     enabled = true,
                 },
+                copilot_node_command = vim.fn.expand("$HOME") .. "/.local/share/mise/installs/node/20/bin/node",
             })
         end,
     },
