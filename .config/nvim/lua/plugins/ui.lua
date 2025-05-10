@@ -177,7 +177,17 @@ return {
         opts = {
             preset = "helix",
             win = {
-                border = "single",
+                width = { min = 30, max = 60 },
+                height = { min = 4, max = 0.75 },
+                padding = { 0, 1 },
+                col = 1,
+                row = -1,
+                border = "rounded",
+                title = true,
+                title_pos = "left",
+            },
+            layout = {
+                width = { min = 30 },
             },
         },
     },
