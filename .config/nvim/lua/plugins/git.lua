@@ -157,4 +157,25 @@ return {
             { "gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "GitLinker Open git link" },
         },
     },
+
+    {
+        "FabijanZulj/blame.nvim",
+        config = function()
+            require("blame").setup()
+        end,
+        opts = {
+            blame_options = { "-w" },
+            date_format = "%Y.%m.%d",
+            mappings = {
+                commit_info = "i",
+                stack_push = "<TAB>",
+                stack_pop = "<BS>",
+                show_commit = "",
+                close = { "<esc>", "q" },
+            },
+        },
+        keys = {
+            { "<Leader>gb", "<cmd>BlameToggle<cr>", mode = { "n" }, desc = "Git blame toggle" },
+        },
+    },
 }
