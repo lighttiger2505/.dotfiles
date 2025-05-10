@@ -4,7 +4,7 @@ local g = vim.g
 g.mapleader = [[,]]
 g.maplocalleader = [[\]]
 
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { silent = false, noremap = true }
 
 -- Ctrl + c = ESC for rectangle selection
