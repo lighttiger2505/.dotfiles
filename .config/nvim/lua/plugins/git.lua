@@ -157,27 +157,4 @@ return {
             { "gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "GitLinker Open git link" },
         },
     },
-
-    {
-        "pwntester/octo.nvim",
-        cmd = "Octo",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            require("octo").setup()
-        end,
-        keys = {
-            { "<Leader>gl", "<cmd>Octo pr list<cr>", mode = { "n", "v" }, desc = "Octo open pull request" },
-            { "<Leader>gd", "<cmd>Octo pr diff<cr>", mode = { "n", "v" }, desc = "Octo show pull request diff" },
-            {
-                "<Leader>gr",
-                "<cmd>Octo review start<cr>",
-                mode = { "n", "v" },
-                desc = "Octo start  pull request review",
-            },
-        },
-    },
 }
