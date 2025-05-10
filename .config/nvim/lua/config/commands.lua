@@ -113,4 +113,9 @@ local open_current_line_modified_pr = function()
     end
 end
 
-vim.keymap.set("n", "<leader>gh", open_current_line_modified_pr, { noremap = true, silent = true })
+vim.keymap.set(
+    "n",
+    "<leader>gh",
+    open_current_line_modified_pr,
+    { noremap = true, silent = true, desc = "Git open pull request by current line modified" }
+)
