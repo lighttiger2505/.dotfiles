@@ -16,10 +16,6 @@ return {
                     })
                 end,
             },
-            {
-                "folke/neodev.nvim",
-                ft = "lua",
-            },
         },
         cond = function()
             -- ignore filetype markdown
