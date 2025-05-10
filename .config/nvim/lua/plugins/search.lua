@@ -43,7 +43,9 @@ return {
         keys = {
             {
                 "<Leader>s",
-                '<Cmd>lua require("grug-far").open({prefills = { flags = "--hidden" }})<CR>',
+                function()
+                    require("grug-far").open({ prefills = { flags = "--hidden" } })
+                end,
                 mode = { "n", "v" },
                 desc = "GrugFar open grug far panel",
             },
