@@ -49,7 +49,6 @@ opt.undofile = true
 
 -- Show column number
 opt.number = true
-opt.relativenumber = true
 
 -- Long text
 opt.wrap = true
