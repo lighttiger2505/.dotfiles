@@ -292,8 +292,10 @@ alias hfp='gh fzf pr --author @me'
 alias hpr=github-pr-review
 function github-pr-review() {
     local pr_url="$1"
+    git pull origin $(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
     gh pr checkout ${pr_url}
-    nvim -c "DiffviewOpen origin/HEAD...HEAD --imply-local"
+    gh pr view --web ${pr_url}
+    nvim -c ":DiffviewOpen origin/$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')...HEAD --imply-local"
 }
 
 # Create PR diff and open in nvim
