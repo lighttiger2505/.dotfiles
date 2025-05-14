@@ -99,12 +99,20 @@ return {
             },
             workspaces = {
                 {
-                    name = "personal",
-                    path = "~/vaults/Private",
+                    name = "LiteratureNotes",
+                    path = "~/vaults/00-Literature-Notes",
                 },
                 {
-                    name = "work",
-                    path = "~/vaults/Work",
+                    name = "FleetingNotes",
+                    path = "~/vaults/01-Fleeting-Notes",
+                },
+                {
+                    name = "PermanentNotes",
+                    path = "~/vaults/02-Permanent-Notes",
+                },
+                {
+                    name = "StructuredNotes",
+                    path = "~/vaults/03-Structured-Notes",
                 },
             },
             mappings = {},
