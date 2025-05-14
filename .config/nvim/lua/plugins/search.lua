@@ -44,7 +44,7 @@ return {
             {
                 "<Leader>s",
                 function()
-                    require("grug-far").open({ prefills = { flags = "--hidden" } })
+                    require("grug-far").open({ prefills = { filesFilter = "!*_test.go", flags = "--hidden" } })
                 end,
                 mode = { "n", "v" },
                 desc = "GrugFar open grug far panel",
