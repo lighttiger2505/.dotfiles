@@ -289,6 +289,12 @@ alias hp='gh pr view --web'
 alias hcp='gh pr create --template "pull_request_template.md"'
 alias hfp='gh fzf pr --author @me'
 
+alias vimdiffpr=vimdiff-pr
+function vimdiff-pr() {
+  local base=$(gh pr status --json baseRefName -q .currentBranch.baseRefName)
+  nvim -c ":DiffviewOpen origin/${base}...HEAD --imply-local"
+}
+
 alias hpr=github-pr-review
 function github-pr-review() {
     local pr_url="$1"
