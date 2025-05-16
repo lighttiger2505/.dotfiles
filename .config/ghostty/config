@@ -1,4 +1,9 @@
-cursor-invert-fg-bg = true
+cursor-color = #eff1f5
+cursor-text = #4c4f69
+# cursor-invert-fg-bg = true
+# cursor-style-blink = true
+# cursor-opacity = 1
+# cursor-style = block
 
 font-family = "UDEV Gothic NFLG"
 theme = "catppuccin-mocha"
