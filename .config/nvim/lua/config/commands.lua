@@ -119,3 +119,33 @@ vim.keymap.set(
     open_current_line_modified_pr,
     { noremap = true, silent = true, desc = "Git open pull request by current line modified" }
 )
+
+local function tag_pr_changes()
+    local pr = vim.fn.systemlist({ "git", "rev-parse", "--abbrev-ref", "HEAD" })[1]
+    if pr == "" then
+        vim.notify("Failed to detect current branch", vim.log.levels.ERROR)
+        return
+    end
+
+    -- gh コマンドで変更ファイル一覧を取得
+    local cmd = { "gh", "pr", "diff", pr, "--name-only" }
+    local results = vim.fn.systemlist(cmd)
+    if vim.v.shell_error ~= 0 then
+        vim.notify("gh pr diff failed:\n" .. table.concat(results, "\n"), vim.log.levels.ERROR)
+        return
+    end
+
+    local grapple = require("grapple")
+    grapple.reset()
+    for _, file in ipairs(results) do
+        grapple.tag({ path = file })
+    end
+    vim.notify("Complete set grapple tags by pull request diff files", vim.log.levels.INFO)
+end
+
+vim.keymap.set(
+    "n",
+    "<leader>gt",
+    tag_pr_changes,
+    { noremap = true, silent = true, desc = "Git open pull request by current line modified" }
+)
