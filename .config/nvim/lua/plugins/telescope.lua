@@ -16,8 +16,8 @@ return {
         keys = {
             {
                 "<Space>p",
-                function ()
-                    require('telescope.telescope-config').project_files()
+                function()
+                    require("telescope.telescope-config").project_files()
                 end,
                 mode = "n",
                 desc = "Telescope Find git files",
@@ -84,6 +84,7 @@ return {
                 },
             })
             telescope.load_extension("fzf")
+            telescope.load_extension("gh_pr_changes")
         end,
     },
 
