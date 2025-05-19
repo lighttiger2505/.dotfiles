@@ -147,5 +147,33 @@ vim.keymap.set(
     "n",
     "<leader>gt",
     tag_pr_changes,
-    { noremap = true, silent = true, desc = "Git open pull request by current line modified" }
+    { noremap = true, silent = true, desc = "Grapple reset tag for pull request modified files" }
+)
+
+local function open_diff_view_pr()
+    local base = vim.fn
+        .system({
+            "gh",
+            "pr",
+            "status",
+            "--json",
+            "baseRefName",
+            "-q",
+            ".currentBranch.baseRefName",
+        })
+        :gsub("%s+", "")
+    if base == "" then
+        vim.notify("No pull request found for this branch", vim.log.levels.WARN)
+        return
+    end
+
+    vim.cmd("DiffviewOpen origin/" .. base .. "...HEAD --imply-local")
+end
+
+vim.api.nvim_create_user_command("OpenDiffviewPR", open_diff_view_pr, {})
+vim.keymap.set(
+    "n",
+    "<leader>gd",
+    open_diff_view_pr,
+    { noremap = true, silent = true, desc = "Diffview open diff view by pull request modifyed file" }
 )
