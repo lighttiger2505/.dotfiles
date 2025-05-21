@@ -171,13 +171,13 @@ return {
 
     {
         "cbochs/grapple.nvim",
-        opts = {
-            scope = "git_branch",
-            icons = true,
-        },
         config = function()
             local telescope = require("telescope")
             telescope.load_extension("grapple")
+            require("grapple").setup({
+                scope = "git_branch",
+                icons = true,
+            })
         end,
         keys = {
             {
