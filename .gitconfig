@@ -21,7 +21,6 @@
 [pull]
 	ff = only
 	rebase = true
-	ff = only
 [branch "master"]
 	rebase = true
 [branch "develop"]
