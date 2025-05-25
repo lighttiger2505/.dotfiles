@@ -63,49 +63,60 @@ git:staged
     },
 
     {
-        "yetone/avante.nvim",
-        event = "VeryLazy",
-        version = false,
-        opts = {
-            provider = "copilot",
-            copilot = {
-                model = "claude-3.7-sonnet",
-                -- max_tokens = 4096,
-            },
-            hints = { enabled = false },
-            windows = {
-                width = 50,
-            },
-        },
-        build = "make",
+        "olimorris/codecompanion.nvim",
+        cmd = { "CodeCompanionChat" },
+        opts = {},
         dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "stevearc/dressing.nvim",
             "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            "nvim-telescope/telescope.nvim",
-            "hrsh7th/nvim-cmp",
-            "zbirenbaum/copilot.lua",
-            {
-                "HakonHarnes/img-clip.nvim",
-                event = "VeryLazy",
-                opts = {
-                    default = {
-                        embed_image_as_base64 = false,
-                        prompt_for_file_name = false,
-                        drag_and_drop = {
-                            insert_mode = true,
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("codecompanion").setup({
+                strategies = {
+                    chat = {
+                        adapter = "copilot",
+                        keymaps = {
+                            send = {
+                                modes = { n = "<CR>", i = "<C-s>" },
+                            },
+                            close = {
+                                modes = { n = "q", i = "<Nop>" },
+                            },
                         },
-                        use_absolute_path = true,
+                    },
+                    inline = {
+                        adapter = "copilot",
+                    },
+                    cmd = {
+                        adapter = "copilot",
                     },
                 },
+            })
+        end,
+        keys = {
+            {
+                "<Space>a",
+                "<cmd>CodeCompanionActions<cr>",
+                mode = { "n", "v" },
+                desc = "CodeCompanion select code companion actions",
             },
             {
-                "MeanderingProgrammer/render-markdown.nvim",
-                opts = {
-                    file_types = { "markdown", "Avante" },
-                },
-                ft = { "markdown", "Avante" },
+                "<Leader>aa",
+                "<cmd>CodeCompanionChat Toggle<cr>",
+                mode = { "n", "v" },
+                desc = "CodeCompanion toggle codecompanion chat",
+            },
+            {
+                "<Leader>an",
+                "<cmd>CodeCompanionChat<cr>",
+                mode = { "n", "v" },
+                desc = "CodeCompanion new codecompanion chat",
+            },
+            {
+                "ga",
+                "<cmd>CodeCompanionChat Add<cr>",
+                mode = { "v" },
+                desc = "CodeCompanion add codecompanion chat",
             },
         },
     },
