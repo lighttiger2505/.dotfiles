@@ -198,12 +198,7 @@ return {
                 javascript = { "biome", "prettier", stop_after_first = true },
                 typescript = { "biome", "prettier", stop_after_first = true },
                 typescriptreact = { "biome", "prettier", stop_after_first = true },
-                -- javascript = { "prettier", stop_after_first = true },
-                -- typescript = { "prettier", stop_after_first = true },
-                -- typescriptreact = { "prettier", stop_after_first = true },
-                -- json = { "biome", "jq", stop_after_first = true },
                 json = { "jq", stop_after_first = true },
-                go = { "goimports", "gofmt" },
             },
             format_on_save = {
                 lsp_format = "first",
@@ -221,28 +216,11 @@ return {
                 javascript = { "biomejs", "eslint" },
                 typescript = { "biomejs", "eslint" },
                 typescriptreact = { "biomejs", "eslint" },
-                go = { "golangcilint" },
                 json = { "jsonlint" },
                 proto = { "buf_lint" },
                 make = { "checkmake" },
                 zsh = { "zsh" },
                 lua = { "luacheck" },
-            }
-            -- Custom golangci-lint linter
-            -- https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/golangcilint.lua
-            local golangcilint = lint.linters.golangcilint
-            golangcilint.args = {
-                "run",
-                "--out-format",
-                "json",
-                "--show-stats=false",
-                "--print-issued-lines=false",
-                "--print-linter-name=false",
-                -- Add fast option
-                "--fast",
-                function()
-                    return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":h")
-                end,
             }
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
                 callback = function()
