@@ -1,7 +1,11 @@
 return {
     {
         "stevearc/overseer.nvim",
-        cmd = { "Make", "Grep" },
+        cmd = {
+            "Make",
+            "Grep",
+            "GitPush",
+        },
         config = function()
             local overseer = require("overseer")
             overseer.setup({
@@ -61,6 +65,22 @@ return {
                 })
                 task:start()
             end, { nargs = "*", bang = true, complete = "file" })
+
+            -- Create async git push command
+            vim.api.nvim_create_user_command("GitPush", function(params)
+                local task = overseer.new_task({
+                    cmd = { "git", "push" },
+                    components = {
+                        { "on_output_quickfix", open = not params.bang, open_height = 8 },
+                        "default",
+                    },
+                })
+                task:start()
+            end, {
+                desc = "Run git push as an Overseer task",
+                nargs = "*",
+                bang = true,
+            })
         end,
     },
 
