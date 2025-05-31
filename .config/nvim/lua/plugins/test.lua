@@ -6,25 +6,15 @@ return {
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "nvim-neotest/neotest-go",
+            "fredrikaverpil/neotest-golang",
             "marilari88/neotest-vitest",
             "stevearc/overseer.nvim",
         },
         config = function()
-            local neotest_ns = vim.api.nvim_create_namespace("neotest")
-            vim.diagnostic.config({
-                virtual_text = {
-                    format = function(diagnostic)
-                        local message =
-                            diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-                        return message
-                    end,
-                },
-            }, neotest_ns)
             require("neotest").setup({
                 adapters = {
                     require("neotest-vitest"),
-                    require("neotest-go"),
+                    require("neotest-golang"),
                 },
                 consumers = {
                     overseer = require("neotest.consumers.overseer"),
@@ -37,7 +27,7 @@ return {
         end,
         keys = {
             {
-                "<Leader>es",
+                "<Leader>ee",
                 function()
                     require("neotest").run.run()
                 end,
