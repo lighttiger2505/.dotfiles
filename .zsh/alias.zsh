@@ -97,7 +97,7 @@ alias glogn="git log --oneline --graph -n10"
 # remove merged branch
 alias rm-branch="git branch --merged | grep -v \\* | xargs -I % git branch -d %"
 alias gp="git pull --prune --tags --all && rm-branch"
-alias grd="git checkout develop && git pull origin develop && git rebase origin/develop"
+alias gfd="git fetch origin develop:develop"
 
 # Select git branch
 alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
