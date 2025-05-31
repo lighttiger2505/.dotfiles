@@ -15,7 +15,14 @@ zle -N cd-fzf-ghqlist
 
 # Checkout git branch (including remote branches)
 function checkout-fzf-gitbranch() {
-    local GIT_BRANCH=$(git branch --all | grep -v HEAD | fzf +m)
+    local GIT_BRANCH=$(
+        git for-each-ref \
+            --sort=-creatordate \
+            --format="%(creatordate:iso8601)  %(refname:short)" \
+            refs/heads/ \
+            | fzf \
+            | awk '{ print $NF }'
+    )
     if [ -n "$GIT_BRANCH" ]; then
         BUFFER="git checkout $(echo $GIT_BRANCH | sed 's/.* //' | sed 's#remotes/[^/]*/##')"
     fi
