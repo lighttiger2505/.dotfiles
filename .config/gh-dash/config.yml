@@ -57,7 +57,7 @@ keybindings:
           git merge $(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
           gh pr checkout {{.PrNumber}} &&
           gh pr view --web  {{.PrNumber}} &&
-          nvim -c ":DiffviewOpen origin/$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')...{{.HeadRefName}}"
+          nvim -c ":OpenDiffviewPR"
         '
 repoPaths:
   MobilityTechnologies/*: ~/dev/src/github.com/MobilityTechnologies/*

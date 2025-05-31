@@ -287,21 +287,17 @@ alias ecsls=ecs-log-stopped
 alias hb='gh repo view --web'
 alias hp='gh pr view --web'
 alias hcp='gh pr create --template "pull_request_template.md"'
-alias hfp='gh fzf pr --author @me'
 
-alias vimdiffpr=vimdiff-pr
-function vimdiff-pr() {
-  local base=$(gh pr status --json baseRefName -q .currentBranch.baseRefName)
-  nvim -c ":DiffviewOpen origin/${base}...HEAD --imply-local"
-}
+alias vimdiffpr='nvim -c ":OpenDiffviewPR"'
 
 alias hpr=github-pr-review
 function github-pr-review() {
     local pr_url="$1"
-    git pull origin $(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
+    git fetch origin $(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
+    git merge $(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
     gh pr checkout ${pr_url}
     gh pr view --web ${pr_url}
-    nvim -c ":DiffviewOpen origin/$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')...HEAD --imply-local"
+    nvim -c ":OpenDiffviewPR"
 }
 
 # Create PR diff and open in nvim
@@ -313,8 +309,8 @@ function create-pr-diff() {
 }
 
 # Create PR diff and review by CopilotChat
-alias hdp=suggestion-pr-review
-function suggestion-pr-review() {
+alias aireview=ai-review-github-pr
+function ai-review-github-pr() {
     local tmpfile="/tmp/pr-diff-$(date +%s)"
     gh pr view --json url | jq .url | gh pr diff > ${tmpfile}
     nvim -c 'lua require("CopilotChat")' -c 'CopilotChatPullRequestReviewJa' ${tmpfile}
