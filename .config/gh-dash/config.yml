@@ -52,12 +52,12 @@ keybindings:
     - key: D
       command: |-
         tmux new-window -c {{.RepoPath}} '
-          tmux rename-window {{.RepoName}}#{{.PrNumber}} &&
-          git fetch origin $(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
-          git merge $(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
-          gh pr checkout {{.PrNumber}} &&
-          gh pr view --web  {{.PrNumber}} &&
-          nvim -c ":OpenDiffviewPR"
+          tmux rename-window {{.RepoName}}#{{.PrNumber}}
+          local branch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
+          git fetch origin ${branch}:${branch}
+          gh pr checkout {{.PrNumber}}
+          gh pr view --web  {{.PrNumber}}
+          nvim -c ":DiffviewOpen origin/${branch}...{{.HeadRefName}}"
         '
 repoPaths:
   MobilityTechnologies/*: ~/dev/src/github.com/MobilityTechnologies/*
