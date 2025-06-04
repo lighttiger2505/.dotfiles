@@ -97,7 +97,7 @@ alias glogn="git log --oneline --graph -n10"
 # remove merged branch
 alias rm-branch="git branch --merged | grep -v \\* | xargs -I % git branch -d %"
 alias gp="git pull --prune --tags --all && rm-branch"
-alias gfd="git fetch origin develop:develop"
+alias fetchdev="git fetch origin develop:develop"
 
 # Select git branch
 alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
@@ -286,26 +286,19 @@ alias ecsls=ecs-log-stopped
 #####################################################################
 alias hb='gh repo view --web'
 alias hp='gh pr view --web'
-alias hcp='gh pr create --template "pull_request_template.md"'
-
 alias vimdiffpr='nvim -c ":OpenDiffviewPR"'
 
-alias hpr=github-pr-review
+alias prcreate='gh pr create --template "pull_request_template.md"'
+
+## Pull Request Review
+alias prreview=github-pr-review
 function github-pr-review() {
     local pr_url="$1"
-    git fetch origin $(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
-    git merge $(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
     gh pr checkout ${pr_url}
+    local branch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
+    git fetch origin ${branch}:${branch}
     gh pr view --web ${pr_url}
     nvim -c ":OpenDiffviewPR"
-}
-
-# Create PR diff and open in nvim
-alias hd=create-pr-diff
-function create-pr-diff() {
-    local tmpfile="/tmp/pr-diff-$(date +%s)"
-    gh pr view --json url | jq .url | gh pr diff > ${tmpfile}
-    nvim ${tmpfile}
 }
 
 # Create PR diff and review by CopilotChat
