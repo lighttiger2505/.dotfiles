@@ -297,7 +297,6 @@ function github-pr-review() {
     gh pr checkout ${pr_url}
     local branch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
     git fetch origin ${branch}:${branch}
-    gh pr view --web ${pr_url}
     nvim -c ":OpenDiffviewPR"
 }
 
