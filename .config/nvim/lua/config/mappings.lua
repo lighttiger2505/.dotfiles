@@ -94,3 +94,6 @@ vim.keymap.set("n", "yp", function()
     -- Notify the user that the file path was copied
     print("Copied file path to clipboard: " .. relative_path)
 end, { noremap = true, silent = true, desc = "Copy current file path to clipboard" })
+
+vim.keymap.set("n", "<Leader><Leader>t", "<Cmd>e ~/.config/vimmemo/todo.md<CR>", opts)
+vim.keymap.set("n", "<Leader><Leader>l", "<Cmd>e ~/.config/vimmemo/link.md<CR>", opts)

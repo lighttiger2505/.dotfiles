@@ -445,8 +445,8 @@ function draw-fibonacci() {
 }
 alias fib=draw-fibonacci
 
-alias todo='vim ~/.config/todo/todo.md'
-alias lazydir='cd ~/.local/share/nvim/lazy/lazy.nvim'
+alias td='vim ~/.config/vimmemo/todo.md'
+alias tl='vim ~/.config/vimmemo/link.md'
 
 alias ch='crcd history'
 alias ck='crcd bookmark'
