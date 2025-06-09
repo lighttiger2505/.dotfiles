@@ -53,11 +53,11 @@ keybindings:
       command: |-
         tmux new-window -c {{.RepoPath}} '
           tmux rename-window {{.RepoName}}#{{.PrNumber}}
-          local branch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
-          git fetch origin ${branch}:${branch}
+          local baseBranch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
+          git fetch origin ${baseBranch}:${baseBranch}
           gh pr checkout {{.PrNumber}}
           gh pr view --web  {{.PrNumber}}
-          nvim -c ":DiffviewOpen origin/${branch}...{{.HeadRefName}}"
+          nvim -c ":OpenDiffviewPR"
         '
 repoPaths:
   MobilityTechnologies/*: ~/dev/src/github.com/MobilityTechnologies/*
