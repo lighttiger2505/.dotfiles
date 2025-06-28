@@ -39,3 +39,20 @@
 	autoSetupRemote = true
 [rerere]
 	enabled = true
+[alias]
+    wtnew = "!f() { \
+        if [ $# -ne 2 ]; then \
+            echo \"Usage: git wtnew <base_branch> <new_branch>\" >&2; \
+            exit 1; \
+        fi; \
+        base=$1; \
+        new=$2; \
+        repo_root=$(git rev-parse --show-toplevel) || exit 1; \
+        repo=$(basename \"$repo_root\"); \
+        parent_dir=$(dirname \"$repo_root\"); \
+        sanitized=${new//\\//-}; \
+        worktrees_dir=\"$parent_dir/${repo}-worktree\"; \
+        dest=\"$worktrees_dir/${repo}-${sanitized}\"; \
+        mkdir -p \"$worktrees_dir\"; \
+        git worktree add -b \"$new\" \"$dest\" \"$base\"; \
+    }; f"
