@@ -1,0 +1,7 @@
+[tools]
+node = "24"
+"npm:@anthropic-ai/claude-code" = "latest"
+"npm:@google/gemini-cli" = "latest"
+"npm:biome" = "latest"
+"npm:typescript" = "latest"
+"npm:typescript-language-server" = "latest"
