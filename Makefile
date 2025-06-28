@@ -15,3 +15,10 @@ deploy:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 	@$(foreach val, $(CONFIGDIRS), ln -sfnv $(abspath $(val)) $(HOME)/.config/$(notdir $(val));)
 	ln -sfnv $(abspath scripts) $(HOME)/scripts
+
+linkdropbox:
+	ln -s ~/Dropbox/vaults ~/vaults
+	mkdir -p ~/.config
+	ln -s ~/Dropbox/vimmemo ~/.config/vimmemo
+	mkdir -p ~/.config/liary
+	ln -s ~/Dropbox/liary/_post ~/.config/liary/_post
