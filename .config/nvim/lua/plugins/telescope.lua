@@ -53,10 +53,6 @@ return {
         "nvim-telescope/telescope.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            {
-                "nvim-telescope/telescope-fzf-native.nvim",
-                build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
-            },
         },
         config = function()
             local telescope = require("telescope")
@@ -74,16 +70,7 @@ return {
                     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
                     path_display = { "truncate" },
                 },
-                extensions = {
-                    fzf = {
-                        fuzzy = true,
-                        override_generic_sorter = true,
-                        override_file_sorter = true,
-                        case_mode = "smart_case",
-                    },
-                },
             })
-            telescope.load_extension("fzf")
             telescope.load_extension("gh_pr_changes")
         end,
     },
