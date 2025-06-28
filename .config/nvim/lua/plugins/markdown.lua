@@ -51,35 +51,11 @@ return {
     {
         "MeanderingProgrammer/markdown.nvim",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
-        -- ft = { "markdown" },
-        event = "VeryLazy",
+        ft = { "markdown" },
+        -- event = "VeryLazy",
         name = "render-markdown",
-        config = function()
-            require("render-markdown").setup({
-                win_options = {
-                    conceallevel = {
-                        default = vim.o.conceallevel,
-                        rendered = 2,
-                    },
-                    concealcursor = {
-                        default = vim.o.concealcursor,
-                        rendered = "c",
-                    },
-                },
-                table_style = "normal",
-                code = {
-                    position = "left",
-                    style = "full",
-                    border = "thick",
-                    width = "block",
-                    min_width = 45,
-                    left_pad = 0,
-                    language_pad = 2,
-                },
-                pipe_table = {
-                    style = "normal",
-                },
-            })
+        config = function ()
+            require("render-markdown").setup()
         end,
     },
 
