@@ -61,8 +61,8 @@ keybindings:
         '
 repoPaths:
   MobilityTechnologies/*: ~/dev/src/github.com/MobilityTechnologies/*
-  MobilityTechnologies/kingston: ~/dev/src/github.com/MobilityTechnologies/kingston_review
-  MobilityTechnologies/kingston-static: ~/dev/src/github.com/MobilityTechnologies/kingston-static_review
+  MobilityTechnologies/kingston: ~/dev/src/github.com/MobilityTechnologies/kingston-worktree/kingston-review
+  MobilityTechnologies/kingston-static: ~/dev/src/github.com/MobilityTechnologies/kingston-static-worktree/kingston-review
   key: d
 theme:
   ui:
