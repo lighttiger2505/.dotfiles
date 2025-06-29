@@ -54,9 +54,22 @@ return {
         ft = { "markdown" },
         -- event = "VeryLazy",
         name = "render-markdown",
-        config = function ()
+        config = function()
             require("render-markdown").setup()
         end,
+    },
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        ft = { "markdown" },
+        dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {
+            code = {
+                style = "normal",
+                border = "thick",
+            },
+        },
     },
 
     {
