@@ -66,7 +66,8 @@ return {
         ---@type render.md.UserConfig
         opts = {
             code = {
-                style = "normal",
+                language_icon = true,
+                language_name = true,
                 border = "thick",
             },
         },
