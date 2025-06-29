@@ -2,6 +2,10 @@
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 70% --reverse'
 
+#####################################################################
+# fzf git
+#####################################################################
+
 # Move repository dir of ghq managenemt
 function cd-fzf-ghqlist() {
     local GHQ_ROOT=`ghq root`
@@ -40,3 +44,26 @@ function ssh-fzf-sshconfig() {
     zle accept-line
 }
 zle -N ssh-fzf-sshconfig
+
+#####################################################################
+# fzf file
+#####################################################################
+
+# Move to the selected directory from the results of find
+cd-fzf-find() {
+    local dir
+    DIR=$(fd --hidden --type d 2> /dev/null | fzf +m --ansi --preview 'eza --long --all --icons --color=always {}')
+    if [ -n "$DIR" ]; then
+        cd $DIR
+    fi
+}
+alias cdd=cd-fzf-find
+
+# Open the selected file from the result of find in Vim
+vim-fzf-find() {
+    local FILE=$(fd --hidden --type f 2> /dev/null | fzf +m --ansi --preview 'bat -n --color=always {}')
+    if [ -n "$FILE" ]; then
+        ${EDITOR:-vim} $FILE
+    fi
+}
+alias vimf=vim-fzf-find
