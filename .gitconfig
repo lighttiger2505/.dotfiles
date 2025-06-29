@@ -47,12 +47,12 @@
         fi; \
         base=$1; \
         new=$2; \
-        repo_root=$(git rev-parse --show-toplevel) || exit 1; \
-        repo=$(basename \"$repo_root\"); \
-        parent_dir=$(dirname \"$repo_root\"); \
+        main_root=$(git worktree list --porcelain | awk '/^worktree /{print $2; exit}') || exit 1; \
+        repo=$(basename \"$main_root\"); \
+        parent_dir=$(dirname \"$main_root\"); \
         sanitized=${new//\\//-}; \
         worktrees_dir=\"$parent_dir/${repo}-worktree\"; \
-        dest=\"$worktrees_dir/${repo}-${sanitized}\"; \
+        dest=\"$worktrees_dir/${sanitized}\"; \
         mkdir -p \"$worktrees_dir\"; \
         git worktree add -b \"$new\" \"$dest\" \"$base\"; \
     }; f"
