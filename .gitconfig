@@ -56,3 +56,15 @@
         mkdir -p \"$worktrees_dir\"; \
         git worktree add -b \"$new\" \"$dest\" \"$base\"; \
     }; f"
+	st = status
+	br = branch
+	brd = branch -D
+	co = checkout
+	cob = checkout -b
+	co = commit
+	coa = commit --amend
+	me = merge
+	menf = merge --no-ff
+	meff = merge --ff
+	pu = pull
+	cp = cherry-pick
