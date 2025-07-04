@@ -1,8 +1,11 @@
 [settings]
 experimental = true
+trusted_config_paths = [
+"~/dev/src/github.com/MobilityTechnologies",
+]
 
 [tools]
-go = "1.24.2"
+go = "1.24.4"
 "go:golang.org/x/tools/gopls" = "latest"
 node = "24"
 "npm:@anthropic-ai/claude-code" = "latest"
@@ -10,3 +13,4 @@ node = "24"
 "npm:biome" = "latest"
 "npm:typescript" = "latest"
 "npm:typescript-language-server" = "latest"
+"npm:@devcontainers/cli" = "latest"
