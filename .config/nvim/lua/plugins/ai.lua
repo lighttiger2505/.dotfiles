@@ -9,7 +9,6 @@ return {
                 suggestion = {
                     enabled = true,
                 },
-                copilot_node_command = vim.fn.system("mise which node"):gsub("\n", ""),
             })
         end,
     },
