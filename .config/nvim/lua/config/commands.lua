@@ -173,7 +173,7 @@ end
 vim.api.nvim_create_user_command("OpenDiffviewPR", open_diff_view_pr, {})
 vim.keymap.set(
     "n",
-    "<leader>gd",
+    "<leader>dp",
     open_diff_view_pr,
     { noremap = true, silent = true, desc = "Diffview open diff view by pull request modifyed file" }
 )
