@@ -33,7 +33,7 @@ bind generic S view-stash
 
 # Yank commit hash
 bind generic y none
-bind generic y !@sh -c "echo -n %(commit) | xsel --clipboard --input"
+bind generic y +@sh -c "printf '%s' %(commit) | pbcopy && echo ' Copied %(commit) to clipboard'"
 
 # git commit amend
 bind generic A !git commit --amend
