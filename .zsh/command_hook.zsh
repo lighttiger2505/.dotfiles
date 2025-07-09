@@ -15,7 +15,6 @@ fi
 
 if [ -e $HOME/.local/bin/mise ]; then
     eval "$($HOME/.local/bin/mise activate zsh)"
-    export PATH="$HOME/.local/share/mise/shims:$PATH"
 fi
 
 # Google Cloud SDK.

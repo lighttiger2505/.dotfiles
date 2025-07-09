@@ -3,6 +3,8 @@
 # Path/Valiables
 typeset -U path
 path=(
+# mise
+$HOME/.local/share/mise/shims
 # brew
 /opt/homebrew/bin(N-/)
 /opt/homebrew/sbin(N-/)
