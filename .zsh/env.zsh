@@ -13,27 +13,14 @@ export LANG=en_US.UTF-8
 export GOPATH=$HOME/dev
 export GO111MODULE=auto
 export GOPRIVATE="github.com/MobilityTechnologies"
-# anyenv
-export ANYENV_PATH=$HOME/.anyenv
-# pyenv
-export PYENV_PATH=$HOME/.pyenv
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 # Neovim
 export XDG_CONGIG_HOME=~/.config
 # defaut editor is vim
 export EDITOR=nvim
-# enhancd disable fzf-tmux
-export ENHANCD_FILTER=fzf
-# defaut terminal is alacritty
-export TERMINAL=alacritty
-# AWS profile
-AWS_DEFAULT_PROFILE=default
 # goenv
 GOENV_ROOT="$HOME/.goenv"
 # volta
 export VOLTA_HOME="$HOME/.volta"
-# asdf go
-export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 
 # Mac
 ZSH_DISABLE_COMPFIX="true"
