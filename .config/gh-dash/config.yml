@@ -59,6 +59,10 @@ keybindings:
           gh pr view --web  {{.PrNumber}}
           nvim -c ":OpenDiffviewPR"
         '
+    - key: P
+      command: |-
+        git fetch origin {{.HeadRefName}}:{{.HeadRefName}}
+        git switch {{.HeadRefName}}
 repoPaths:
   MobilityTechnologies/*: ~/dev/src/github.com/MobilityTechnologies/*
   MobilityTechnologies/kingston: ~/dev/src/github.com/MobilityTechnologies/kingston-worktree/kingston-review
