@@ -49,16 +49,6 @@ return {
     },
 
     {
-        "MeanderingProgrammer/markdown.nvim",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        ft = { "markdown" },
-        -- event = "VeryLazy",
-        name = "render-markdown",
-        config = function()
-            require("render-markdown").setup()
-        end,
-    },
-    {
         "MeanderingProgrammer/render-markdown.nvim",
         ft = { "markdown" },
         dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
