@@ -22,8 +22,6 @@ $GOPATH/bin(N-/)
 $HOME/.npm-global/bin(N-/)
 # goenv
 $GOENV_ROOT/bin(N-/)
-# volta
-$VOLTA_HOME/bin(N-/)
 # mise
 $HOME/.local/share/mise/shims
 

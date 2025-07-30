@@ -19,8 +19,6 @@ export XDG_CONGIG_HOME=~/.config
 export EDITOR=nvim
 # goenv
 GOENV_ROOT="$HOME/.goenv"
-# volta
-export VOLTA_HOME="$HOME/.volta"
 
 # Mac
 ZSH_DISABLE_COMPFIX="true"
