@@ -121,14 +121,13 @@ vim.keymap.set(
 )
 
 local function tag_pr_changes()
-    local pr = vim.fn.systemlist({ "git", "rev-parse", "--abbrev-ref", "HEAD" })[1]
-    if pr == "" then
+    local branch = vim.fn.systemlist({ "git", "rev-parse", "--abbrev-ref", "HEAD" })[1]
+    if branch == "" then
         vim.notify("Failed to detect current branch", vim.log.levels.ERROR)
         return
     end
 
-    -- gh コマンドで変更ファイル一覧を取得
-    local cmd = { "gh", "pr", "diff", pr, "--name-only" }
+    local cmd = { "gh", "pr", "diff", branch, "--name-only" }
     local results = vim.fn.systemlist(cmd)
     if vim.v.shell_error ~= 0 then
         vim.notify("gh pr diff failed:\n" .. table.concat(results, "\n"), vim.log.levels.ERROR)
@@ -151,17 +150,7 @@ vim.keymap.set(
 )
 
 local function open_diff_view_pr()
-    local base = vim.fn
-        .system({
-            "gh",
-            "pr",
-            "status",
-            "--json",
-            "baseRefName",
-            "-q",
-            ".currentBranch.baseRefName",
-        })
-        :gsub("%s+", "")
+    local base = vim.fn.system({ "gh", "pr", "status", "--json", "baseRefName", "-q", ".currentBranch.baseRefName", }):gsub("%s+", "")
     if base == "" then
         vim.notify("No pull request found for this branch", vim.log.levels.WARN)
         return
