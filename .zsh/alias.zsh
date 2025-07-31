@@ -180,3 +180,11 @@ fzf_alias_exec() {
   eval "$name"
 }
 alias al='fzf_alias_exec'
+
+#####################################################################
+# Claude Code with devcontainer
+#####################################################################
+alias devc='devcontainer'
+alias devclaude='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . claude'
+alias devzsh='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . zsh'
+
