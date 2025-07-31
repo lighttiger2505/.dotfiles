@@ -117,7 +117,7 @@ return {
         keys = {
             {
                 "<Leader>gg",
-                "<cmd>TermExec name='TigStatus' direction=float cmd='tig status'<cr>",
+                "<cmd>TermExec name='TigStatus' direction=float cmd='tig status; exit'<cr>",
                 mode = { "n" },
                 desc = "Toggleterm tig status",
             },
