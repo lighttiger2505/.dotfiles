@@ -117,13 +117,13 @@ return {
         keys = {
             {
                 "<Leader>gg",
-                "<cmd>TermExec name='TigStatus' direction=float cmd='tig status; exit'<cr>",
+                "<cmd>1TermExec name='TigStatus' direction=float cmd='tig status; exit'<cr>",
                 mode = { "n" },
                 desc = "Toggleterm tig status",
             },
             {
                 "<Leader>gp",
-                "<cmd>TermExec name='GitPush' direction=horizontal cmd='git push'<cr>",
+                "<cmd>2TermExec name='GitPush' direction=horizontal size=20 cmd='git push && exit'<cr>",
                 mode = { "n" },
                 desc = "Toggleterm git push",
             },
