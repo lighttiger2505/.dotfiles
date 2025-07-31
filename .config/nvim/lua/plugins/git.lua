@@ -109,22 +109,25 @@ return {
     },
 
     {
-        "numToStr/FTerm.nvim",
-        lazy = false,
-        config = function()
-            local fterm = require("FTerm")
-            local tig = fterm:new({
-                ft = "fterm_tig",
-                cmd = "tig status",
-                dimensions = {
-                    height = 0.9,
-                    width = 0.9,
-                },
-            })
-            vim.keymap.set("n", "<Leader>gg", function()
-                tig:toggle()
-            end, { noremap = true, silent = true, desc = "Git open tig status" })
-        end,
+        "akinsho/toggleterm.nvim",
+        event = "VeryLazy",
+        version = "*",
+        opts = {},
+        -- TermExec direction=float cmd="tig status"
+        keys = {
+            {
+                "<Leader>gg",
+                "<cmd>TermExec name='TigStatus' direction=float cmd='tig status'<cr>",
+                mode = { "n" },
+                desc = "Toggleterm tig status",
+            },
+            {
+                "<Leader>gp",
+                "<cmd>TermExec name='GitPush' direction=horizontal cmd='git push'<cr>",
+                mode = { "n" },
+                desc = "Toggleterm git push",
+            },
+        },
     },
 
     {
