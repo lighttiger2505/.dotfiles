@@ -82,12 +82,6 @@ return {
                 desc = "Diffview Open diff view",
             },
             {
-                "<Leader>dr",
-                "<cmd>DiffviewOpen origin/HEAD...HEAD --imply-local<CR>",
-                mode = "n",
-                desc = "Diffview Open for pull request review",
-            },
-            {
                 "<Leader>dc",
                 "<cmd>DiffviewClose<CR>",
                 mode = "n",
