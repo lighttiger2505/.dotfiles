@@ -100,7 +100,7 @@ alias tl='vim ~/.config/vimmemo/link.md'
 #####################################################################
 # GitHub cli
 #####################################################################
-alias hb='gh repo view --web'
+alias hb='gh repo view --branch "$(git branch --show-current)" --web'
 alias hp='gh pr view --web'
 alias vimdiffpr='nvim -c ":OpenDiffviewPR"'
 
