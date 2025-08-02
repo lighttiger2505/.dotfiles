@@ -19,18 +19,12 @@ autocmd("FileType", {
     callback = function(ev)
         -- Spell check gitcommit
         l.spell = true
-        -- Auto close copiloat chat
-        if vim.fn.has("CopilotChat.nvim") then
+        -- generate commit message
+        if vim.fn.has("codecompanion.nvim") then
             vim.schedule(function()
-                require("CopilotChat")
-                vim.cmd.CopilotChatCommitStagedEn()
+                require("codecompanion")
+                vim.cmd("CodeCompanion /custom_commit_message")
             end)
-            vim.keymap.set("n", "<leader>ce", "<cmd>CopilotChatCommitStagedEn<CR>", { buffer = ev.buf })
-            vim.keymap.set("n", "<leader>cj", "<cmd>CopilotChatCommitStagedJa<CR>", { buffer = ev.buf })
-            vim.api.nvim_create_autocmd("QuitPre", {
-                command = "CopilotChatClose",
-            })
-            vim.keymap.set("ca", "qq", "execute 'CopilotChatClose' <bar> wqa")
         end
     end,
 })
