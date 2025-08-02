@@ -2,15 +2,24 @@
 ---@type LazySpec
 return {
     "saghen/blink.cmp",
+    version = "1.*",
     dependencies = {
         "mikavilpas/blink-ripgrep.nvim",
         "giuxtaposition/blink-cmp-copilot",
+        "rafamadriz/friendly-snippets",
     },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+        keymap = { preset = "enter" },
+        completion = {
+            documentation = {
+                auto_show = true,
+                auto_show_delay_ms = 50,
+            },
+            menu = { draw = { columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } } } },
+        },
         sources = {
-            keymap = { preset = "default" },
             default = {
                 "copilot",
                 "lsp",
@@ -19,7 +28,6 @@ return {
                 "buffer",
                 "ripgrep",
             },
-            completion = { documentation = { auto_show = true } },
             providers = {
                 ripgrep = {
                     module = "blink-ripgrep",
@@ -53,7 +61,10 @@ return {
                 },
             },
         },
-        fuzzy = { implementation = "prefer_rust_with_warning" },
-        opts_extend = { "sources.default" },
+        cmdline = {
+            keymap = { preset = "inherit" },
+            completion = { menu = { auto_show = true } },
+        },
     },
+    opts_extend = { "sources.default" },
 }
