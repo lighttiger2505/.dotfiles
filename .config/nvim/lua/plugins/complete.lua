@@ -30,13 +30,32 @@ return {
             enabled = true,
         },
         sources = {
-            default = {
-                "copilot",
-                "lsp",
-                "path",
-                "snippets",
-                "buffer",
-                "ripgrep",
+            default = function()
+                local success, node = pcall(vim.treesitter.get_node)
+                if
+                    success
+                    and node
+                    and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type())
+                then
+                    return {
+                        "copilot",
+                        "buffer",
+                        "ripgrep",
+                        "path",
+                    }
+                else
+                    return {
+                        "copilot",
+                        "lsp",
+                        "path",
+                        "snippets",
+                        "buffer",
+                        "ripgrep",
+                    }
+                end
+            end,
+            per_filetype = {
+                lua = { inherit_defaults = true, "lazydev" },
             },
             providers = {
                 ripgrep = {
@@ -51,6 +70,11 @@ return {
                     module = "blink-cmp-copilot",
                     score_offset = 100,
                     async = true,
+                },
+                lazydev = {
+                    name = "LazyDev",
+                    module = "lazydev.integrations.blink",
+                    score_offset = 100,
                 },
             },
         },
