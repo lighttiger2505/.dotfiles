@@ -59,7 +59,8 @@ alias rdev="git checkout develop && git pull origin develop && git rebase origin
 # global alias for git branch
 alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
 
-# tig status
+# git status
+alias gs='git status'
 alias ts='tig status'
 
 #####################################################################
@@ -123,6 +124,47 @@ function ai-review-github-pr() {
     gh pr view --json url | jq .url | gh pr diff > ${tmpfile}
     nvim -c 'lua require("CopilotChat")' -c 'CopilotChatPullRequestReviewJa' ${tmpfile}
 }
+
+function pr-review-fzf() {
+    local selected=$(
+        gh pr list \
+            --search "org:MobilityTechnologies review-requested:@me -label:dependencies sort:updated-desc" \
+            --json number,headRepositoryOwner,headRepository,title,updatedAt \
+            --jq '.[] | "\(.number)\t\(.headRepositoryOwner.login)/\(.headRepository.name)\t\(.title)\t\(.updatedAt)"' \
+            | fzf --reverse --prompt='Select PR> '
+    )
+    [[ -z $selected ]] && return 0
+
+    local prNum=$(awk -F'\t' '{print $1}' <<<"$selected")   # number
+    local repo=$(awk -F'\t' '{print $2}' <<<"$selected")    # REPO
+
+    local localDir
+    case "$repo" in
+        "MobilityTechnologies/kingston")
+            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-worktree/kingston-review
+            ;;
+        "MobilityTechnologies/kingston-static")
+            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-static-worktree/kingston-static-review
+            ;;
+        *)
+            echo "Error: No local mapping for repository '$repo'"
+            return 1
+            ;;
+    esac
+
+    [[ ! -d $localDir ]] && { echo "Error: Directory '$localDir' does not exist."; return 1; }
+    cd "$localDir" || return 1
+
+    local baseBranch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
+    git fetch origin "$baseBranch":"$baseBranch"
+    gh pr checkout "$prNum"
+    gh pr view --web "$prNum"
+    nvim -c ":OpenDiffviewPR"
+}
+alias prreviewf=pr-review-fzf
+
+# エイリアスとしても使えるように
+alias review-pr=review-pr
 
 #####################################################################
 # liary
@@ -188,3 +230,13 @@ alias devc='devcontainer'
 alias devclaude='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . claude'
 alias devzsh='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . zsh'
 
+#####################################################################
+# Process management
+#####################################################################
+function kill-process-fzf() {
+    local PROCESS=$(ps aux | sed 1d | fzf --multi --header --reverse)
+    if [[ -n "$PROCESS" ]]; then
+        echo "$PROCESS" | awk '{print $2}' | xargs -r kill
+    fi
+}
+alias pkf=kill-process-fzf
