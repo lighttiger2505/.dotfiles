@@ -16,27 +16,71 @@ return {
                     })
                 end,
             },
+            { "saghen/blink.cmp" },
         },
         cond = function()
             -- ignore filetype markdown
             return vim.bo.filetype ~= "markdown"
         end,
-        config = function()
-            local nvim_lsp = require("lspconfig")
-            local servers = {
-                "gopls",
-                "ts_ls",
-                "lua_ls",
-                "sqls",
-                "biome",
-                "tailwindcss",
-            }
-            for _, lsp in ipairs(servers) do
-                nvim_lsp[lsp].setup({
-                    flags = {
-                        debounce_text_changes = 150,
+        opts = {
+            servers = {
+                gopls = {
+                    settings = {
+                        gopls = {
+                            ["Formatting.local"] = "github.com/MobilityTechnologies",
+                        },
                     },
-                })
+                },
+                ts_ls = {},
+                lua_ls = {
+                    settings = {
+                        Lua = {
+                            diagnostics = {
+                                globals = { "vim" },
+                            },
+                            format = {
+                                enable = true,
+                                defaultConfig = {
+                                    indent_style = "space",
+                                    indent_size = "4",
+                                },
+                            },
+                        },
+                    },
+                },
+                sqls = {
+                    cmd = {
+                        "sqls",
+                        "-log",
+                        os.getenv("HOME") .. "/sqls.log",
+                        "-config",
+                        os.getenv("HOME") .. "/.config/sqls/config.yml",
+                    },
+                    -- cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
+                    settings = {
+                        sqls = {
+                            connections = {
+                                {
+                                    driver = "mysql",
+                                    dataSourceName = "root:root@tcp(127.0.0.1:13306)/world",
+                                },
+                                {
+                                    driver = "postgresql",
+                                    dataSourceName = "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
+                                },
+                            },
+                        },
+                    },
+                },
+                biome = {},
+                tailwindcss = {},
+            },
+        },
+        config = function(_, opts)
+            local lspconfig = require("lspconfig")
+            for server, config in pairs(opts.servers) do
+                config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+                lspconfig[server].setup(config)
             end
 
             vim.api.nvim_create_autocmd("LspAttach", {
@@ -62,56 +106,6 @@ return {
                     vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", optWithDesc("Next Diagnostic"))
                     vim.keymap.set("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", optWithDesc("Goto Definition"))
                 end,
-            })
-
-            nvim_lsp.gopls.setup({
-                settings = {
-                    gopls = {
-                        ["Formatting.local"] = "github.com/MobilityTechnologies",
-                    },
-                },
-            })
-
-            nvim_lsp.sqls.setup({
-                cmd = {
-                    "sqls",
-                    "-log",
-                    os.getenv("HOME") .. "/sqls.log",
-                    "-config",
-                    os.getenv("HOME") .. "/.config/sqls/config.yml",
-                },
-                -- cmd = { 'sqls', '-config', os.getenv("HOME") .. '/.config/sqls/config.yml' },
-                settings = {
-                    sqls = {
-                        connections = {
-                            {
-                                driver = "mysql",
-                                dataSourceName = "root:root@tcp(127.0.0.1:13306)/world",
-                            },
-                            {
-                                driver = "postgresql",
-                                dataSourceName = "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
-                            },
-                        },
-                    },
-                },
-            })
-
-            nvim_lsp.lua_ls.setup({
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { "vim" },
-                        },
-                        format = {
-                            enable = true,
-                            defaultConfig = {
-                                indent_style = "space",
-                                indent_size = "4",
-                            },
-                        },
-                    },
-                },
             })
 
             vim.diagnostic.config({
@@ -212,6 +206,7 @@ return {
         ft = "lua",
         opts = {
             library = {
+                "lazy.nvim",
                 { path = "${3rd}/luv/library", words = { "vim%.uv" } },
             },
         },
