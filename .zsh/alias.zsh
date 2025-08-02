@@ -108,7 +108,6 @@ alias vimdiffpr='nvim -c ":OpenDiffviewPR"'
 alias prcreate='gh pr create --template "pull_request_template.md"'
 
 ## Pull Request Review
-alias prreview=github-pr-review
 function github-pr-review() {
     local pr_url="$1"
     gh pr checkout ${pr_url}
@@ -116,16 +115,17 @@ function github-pr-review() {
     git fetch origin ${branch}:${branch}
     nvim -c ":OpenDiffviewPR"
 }
+alias prrev=github-pr-review
 
 # Create PR diff and review by CopilotChat
-alias aireview=ai-review-github-pr
 function ai-review-github-pr() {
     local tmpfile="/tmp/pr-diff-$(date +%s)"
     gh pr view --json url | jq .url | gh pr diff > ${tmpfile}
     nvim -c 'lua require("CopilotChat")' -c 'CopilotChatPullRequestReviewJa' ${tmpfile}
 }
+alias airev=ai-review-github-pr
 
-function pr-review-fzf() {
+function github-pr-review-fzf() {
     local selected=$(
         gh pr list \
             --search "org:MobilityTechnologies review-requested:@me -label:dependencies sort:updated-desc" \
@@ -161,7 +161,7 @@ function pr-review-fzf() {
     gh pr view --web "$prNum"
     nvim -c ":OpenDiffviewPR"
 }
-alias prreviewf=pr-review-fzf
+alias prrevf=github-pr-review-fzf
 
 function list-copilot-models() {
     curl -s \
