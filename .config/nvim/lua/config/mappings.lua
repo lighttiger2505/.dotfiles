@@ -97,3 +97,4 @@ end, { noremap = true, silent = true, desc = "Copy current file path to clipboar
 
 vim.keymap.set("n", "<Leader><Leader>t", "<Cmd>e ~/.config/vimmemo/todo.md<CR>", opts)
 vim.keymap.set("n", "<Leader><Leader>l", "<Cmd>e ~/.config/vimmemo/link.md<CR>", opts)
+vim.keymap.set("n", "<Leader>bp", ":!gh pr view --web<CR>", opts)
