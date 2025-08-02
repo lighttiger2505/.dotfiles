@@ -17,7 +17,17 @@ return {
                 auto_show = true,
                 auto_show_delay_ms = 50,
             },
-            menu = { draw = { columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } } } },
+            menu = {
+                draw = {
+                    columns = {
+                        { "label", "label_description", gap = 1 },
+                        { "kind_icon", "kind" },
+                    },
+                },
+            },
+        },
+        signature = {
+            enabled = true,
         },
         sources = {
             default = {
@@ -62,7 +72,9 @@ return {
             },
         },
         cmdline = {
-            keymap = { preset = "inherit" },
+            keymap = {
+                ["<Tab>"] = { "show", "accept" },
+            },
             completion = { menu = { auto_show = true } },
         },
     },
