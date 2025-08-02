@@ -63,15 +63,18 @@ return {
                 codecompanion = { "codecompanion" },
             },
             providers = {
+                lsp = { score_offset = 10 },
+                snippets = { score_offset = 50 },
                 ripgrep = {
+                    name = "RipGrep",
                     module = "blink-ripgrep",
-                    name = "Ripgrep",
+                    score_offset = -100,
                     ---@module "blink-ripgrep"
                     ---@type blink-ripgrep.Options
                     opts = {},
                 },
                 copilot = {
-                    name = "copilot",
+                    name = "Copilot",
                     module = "blink-cmp-copilot",
                     score_offset = 100,
                     async = true,
