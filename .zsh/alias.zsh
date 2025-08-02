@@ -163,8 +163,13 @@ function pr-review-fzf() {
 }
 alias prreviewf=pr-review-fzf
 
-# エイリアスとしても使えるように
-alias review-pr=review-pr
+function list-copilot-models() {
+    curl -s \
+        -H "Authorization: Bearer $(gh auth token)" \
+        https://api.githubcopilot.com/models \
+        | jq '.data[] | "\(.id): \(.name)"'
+}
+alias copilotmodels=list-copilot-models
 
 #####################################################################
 # liary
