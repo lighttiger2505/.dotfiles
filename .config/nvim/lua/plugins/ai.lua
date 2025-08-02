@@ -76,6 +76,7 @@ return {
                     },
                 },
                 prompt_library = {
+                    -- https://github.com/olimorris/codecompanion.nvim/discussions/694
                     ["Custom Commit Message"] = {
                         strategy = "chat",
                         description = "Generate a custom commit message",
