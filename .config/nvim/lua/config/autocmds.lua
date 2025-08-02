@@ -26,6 +26,11 @@ autocmd("FileType", {
                 vim.cmd("CodeCompanion /custom_commit_message")
             end)
         end
+        -- autoclose codecompanion buffer
+        -- :q → :qa
+        vim.cmd([[cnoreabbrev <buffer> q qa]])
+        -- :wq → :wqa
+        vim.cmd([[cnoreabbrev <buffer> wq wqa]])
     end,
 })
 
