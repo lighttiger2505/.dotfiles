@@ -2,6 +2,7 @@
 ---@type LazySpec
 return {
     "saghen/blink.cmp",
+    event = "InsertEnter",
     version = "1.*",
     dependencies = {
         "mikavilpas/blink-ripgrep.nvim",
