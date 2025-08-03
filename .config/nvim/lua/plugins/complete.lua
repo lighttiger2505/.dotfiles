@@ -63,8 +63,14 @@ return {
                 codecompanion = { "codecompanion" },
             },
             providers = {
-                lsp = { score_offset = 10 },
-                snippets = { score_offset = 50 },
+                lsp = {
+                    score_offset = 50,
+                    min_keyword_length = 0,
+                },
+                snippets = {
+                    score_offset = 10,
+                    min_keyword_length = 2,
+                },
                 ripgrep = {
                     name = "RipGrep",
                     module = "blink-ripgrep",
@@ -78,6 +84,7 @@ return {
                     module = "blink-cmp-copilot",
                     score_offset = 100,
                     async = true,
+                    min_keyword_length = 0,
                 },
                 lazydev = {
                     name = "LazyDev",
