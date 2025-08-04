@@ -163,6 +163,40 @@ function github-pr-review-fzf() {
 }
 alias prrevf=github-pr-review-fzf
 
+function github-pr-me-fzf() {
+    local selected=$(
+        gh pr list \
+            --search "org:MobilityTechnologies is:open author:@me -label:dependencies sort:updated-desc" \
+            --json number,headRepositoryOwner,headRepository,headRefName,title,updatedAt \
+            --jq '.[] | "\(.number)\t\(.headRepositoryOwner.login)/\(.headRepository.name)\t\(.headRefName)\t\(.title)\t\(.updatedAt)"' \
+            | fzf --reverse --prompt='Select PR> '
+    )
+    [[ -z $selected ]] && return 0
+
+    local prNum=$(awk -F'\t' '{print $1}' <<<"$selected")
+    local repo=$(awk -F'\t' '{print $2}' <<<"$selected")
+    local branch=$(awk -F'\t' '{print $3}' <<<"$selected")
+
+    local localDir
+    case "$repo" in
+        "MobilityTechnologies/kingston")
+            localDir=~/dev/src/github.com/MobilityTechnologies/kingston
+            ;;
+        "MobilityTechnologies/kingston-static")
+            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-static
+            ;;
+        *)
+            echo "Error: No local mapping for repository '$repo'"
+            return 1
+            ;;
+    esac
+
+    [[ ! -d $localDir ]] && { echo "Error: Directory '$localDir' does not exist."; return 1; }
+    cd "$localDir" || return 1
+    git switch $branch
+}
+alias prmef=github-pr-me-fzf
+
 function list-copilot-models() {
     curl -s \
         -H "Authorization: Bearer $(gh auth token)" \
@@ -170,7 +204,6 @@ function list-copilot-models() {
         | jq '.data[] | "\(.id): \(.name)"'
 }
 alias copilotmodels=list-copilot-models
-
 #####################################################################
 # liary
 #####################################################################
