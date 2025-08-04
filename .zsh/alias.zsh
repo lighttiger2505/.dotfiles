@@ -155,13 +155,47 @@ function github-pr-review-fzf() {
     [[ ! -d $localDir ]] && { echo "Error: Directory '$localDir' does not exist."; return 1; }
     cd "$localDir" || return 1
 
+    gh pr checkout "$prNum"
     local baseBranch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
     git fetch origin "$baseBranch":"$baseBranch"
-    gh pr checkout "$prNum"
     gh pr view --web "$prNum"
     nvim -c ":OpenDiffviewPR"
 }
 alias prrevf=github-pr-review-fzf
+
+function github-pr-review-url() {
+    local pr_url="$1"
+    if [ -z "$pr_url" ]; then
+        echo "Usage: $0 <github-pull-request-url>"
+        exit 1
+    fi
+    local repo="$(echo "$pr_url" | cut -d/ -f4-5)"
+    local prNum="$(basename "$pr_url")"
+
+    local localDir
+    case "$repo" in
+        "MobilityTechnologies/kingston")
+            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-worktree/kingston-review
+            ;;
+        "MobilityTechnologies/kingston-static")
+            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-static-worktree/kingston-static-review
+            ;;
+        *)
+            echo "Error: No local mapping for repository '$repo'"
+            return 1
+            ;;
+    esac
+
+    [[ ! -d $localDir ]] && { echo "Error: Directory '$localDir' does not exist."; return 1; }
+    cd "$localDir" || return 1
+
+    gh pr checkout "$prNum"
+    local baseBranch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
+    git fetch origin "$baseBranch":"$baseBranch"
+    gh pr view --web "$prNum"
+    nvim -c ":OpenDiffviewPR"
+}
+alias prrevu=github-pr-review-url
 
 function github-pr-me-fzf() {
     local selected=$(
