@@ -58,7 +58,7 @@ return {
             per_filetype = {
                 lua = { inherit_defaults = true, "lazydev" },
                 gitcommit = { "buffer" },
-                markdown = { "buffer" },
+                markdown = {},
                 csv = { "buffer" },
                 codecompanion = { "codecompanion" },
             },
