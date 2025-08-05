@@ -17,8 +17,8 @@ deploy:
 	ln -sfnv $(abspath scripts) $(HOME)/scripts
 
 linkdropbox:
-	ln -s ~/Dropbox/vaults ~/vaults
+	ln -s ~/Library/CloudStorage/Dropbox/vaults ~/vaults
 	mkdir -p ~/.config
-	ln -s ~/Dropbox/vimmemo ~/.config/vimmemo
+	ln -s ~/Library/CloudStorage/Dropbox/vimmemo ~/.config/vimmemo
 	mkdir -p ~/.config/liary
-	ln -s ~/Dropbox/liary/_post ~/.config/liary/_post
+	ln -s ~/Library/CloudStorage/Dropbox/liary/_post ~/.config/liary/_post
