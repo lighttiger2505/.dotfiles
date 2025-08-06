@@ -231,6 +231,13 @@ function github-pr-me-fzf() {
 }
 alias prmef=github-pr-me-fzf
 
+alias prmd='
+gh pr list \
+  --search "org:MobilityTechnologies is:open author:@me -label:dependencies sort:updated-desc" \
+  --json title,headRefName,url,headRepository,isDraft \
+  --template "{{range .}}{{printf \"- [%t %s %s %s](%s)\n\" .isDraft .headRepository.name .headRefName .title .url}}{{end}}"
+'
+
 function list-copilot-models() {
     curl -s \
         -H "Authorization: Bearer $(gh auth token)" \
