@@ -103,6 +103,8 @@ return {
                                         [=[
 #{buffer}
 
+MUST: Commit messages should follow the language of the commit template.
+
 You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a commit message for me:
 
 ```diff
