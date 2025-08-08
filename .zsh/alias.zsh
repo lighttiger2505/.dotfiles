@@ -126,18 +126,8 @@ function ai-review-github-pr() {
 }
 alias airev=ai-review-github-pr
 
-function github-pr-review-fzf() {
-    local selected=$(
-        gh pr list \
-            --search "org:MobilityTechnologies review-requested:@me -label:dependencies sort:updated-desc" \
-            --json number,headRepositoryOwner,headRepository,title,updatedAt \
-            --jq '.[] | "\(.number)\t\(.headRepositoryOwner.login)/\(.headRepository.name)\t\(.title)\t\(.updatedAt)"' \
-            | fzf --reverse --prompt='Select PR> '
-    )
-    [[ -z $selected ]] && return 0
-
-    local prNum=$(awk -F'\t' '{print $1}' <<<"$selected")   # number
-    local repo=$(awk -F'\t' '{print $2}' <<<"$selected")    # REPO
+function get_repo_local_review_dir() {
+    local repo="$1"
 
     local localDir
     case "$repo" in
@@ -148,12 +138,40 @@ function github-pr-review-fzf() {
             localDir=~/dev/src/github.com/MobilityTechnologies/kingston-static-worktree/kingston-static-review
             ;;
         *)
-            echo "Error: No local mapping for repository '$repo'"
+            echo "Error: No local mapping for repository '$repo'" >&2
             return 1
             ;;
     esac
 
-    [[ ! -d $localDir ]] && { echo "Error: Directory '$localDir' does not exist."; return 1; }
+    if [[ ! -d $localDir ]]; then
+        echo "Error: Directory '$localDir' does not exist." >&2
+        return 1
+    fi
+
+    echo "$localDir"
+    return 0
+}
+
+function github-pr-review-fzf() {
+    local selected=$(
+        gh pr list \
+            --search "org:MobilityTechnologies review-requested:@me -label:dependencies sort:updated-desc" \
+            --json number,headRepositoryOwner,headRepository,title,updatedAt,reviewRequests \
+            --jq '
+                .[] 
+                | select(any(.reviewRequests[]; .login == "lighttiger2505")) 
+                | "\(.number)\t\(.headRepositoryOwner.login)/\(.headRepository.name)\t\(.title)\t\(.updatedAt)"
+            ' \
+            | fzf --reverse --prompt='Select PR> '
+    )
+    [[ -z $selected ]] && return 0
+
+    local prNum=$(awk -F'\t' '{print $1}' <<<"$selected")   # number
+    local repo=$(awk -F'\t' '{print $2}' <<<"$selected")    # REPO
+    local localDir=$(get_repo_local_review_dir "$repo")
+    if [[ $? -ne 0 ]]; then
+        return 1
+    fi
     cd "$localDir" || return 1
 
     gh pr checkout "$prNum"
@@ -172,33 +190,46 @@ function github-pr-review-url() {
     fi
     local repo="$(echo "$pr_url" | cut -d/ -f4-5)"
     local prNum="$(basename "$pr_url")"
-
-    local localDir
-    case "$repo" in
-        "MobilityTechnologies/kingston")
-            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-worktree/kingston-review
-            ;;
-        "MobilityTechnologies/kingston-static")
-            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-static-worktree/kingston-static-review
-            ;;
-        *)
-            echo "Error: No local mapping for repository '$repo'"
-            return 1
-            ;;
-    esac
-
-    [[ ! -d $localDir ]] && { echo "Error: Directory '$localDir' does not exist."; return 1; }
+    local localDir=$(get_repo_local_review_dir "$repo")
+    if [[ $? -ne 0 ]]; then
+        return 1
+    fi
     cd "$localDir" || return 1
 
     gh pr checkout "$prNum"
     local baseBranch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
     git fetch origin "$baseBranch":"$baseBranch"
-    gh pr view --web "$prNum"
     nvim -c ":OpenDiffviewPR"
 }
 alias prrevu=github-pr-review-url
 
-function github-pr-me-fzf() {
+function get_repo_local_dir() {
+    local repo="$1"
+
+    local localDir
+    case "$repo" in
+        "MobilityTechnologies/kingston")
+            localDir=~/dev/src/github.com/MobilityTechnologies/kingston
+            ;;
+        "MobilityTechnologies/kingston-static")
+            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-static
+            ;;
+        *)
+            echo "Error: No local mapping for repository '$repo'" >&2
+            return 1
+            ;;
+    esac
+
+    if [[ ! -d $localDir ]]; then
+        echo "Error: Directory '$localDir' does not exist." >&2
+        return 1
+    fi
+
+    echo "$localDir"
+    return 0
+}
+
+function github-pr-switch-fzf() {
     local selected=$(
         gh pr list \
             --search "org:MobilityTechnologies is:open author:@me -label:dependencies sort:updated-desc" \
@@ -211,26 +242,15 @@ function github-pr-me-fzf() {
     local prNum=$(awk -F'\t' '{print $1}' <<<"$selected")
     local repo=$(awk -F'\t' '{print $2}' <<<"$selected")
     local branch=$(awk -F'\t' '{print $3}' <<<"$selected")
+    local localDir=$(get_repo_local_dir "$repo")
+    if [[ $? -ne 0 ]]; then
+        return 1
+    fi
 
-    local localDir
-    case "$repo" in
-        "MobilityTechnologies/kingston")
-            localDir=~/dev/src/github.com/MobilityTechnologies/kingston
-            ;;
-        "MobilityTechnologies/kingston-static")
-            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-static
-            ;;
-        *)
-            echo "Error: No local mapping for repository '$repo'"
-            return 1
-            ;;
-    esac
-
-    [[ ! -d $localDir ]] && { echo "Error: Directory '$localDir' does not exist."; return 1; }
     cd "$localDir" || return 1
     git switch $branch
 }
-alias prmef=github-pr-me-fzf
+alias prsif=github-pr-switch-fzf
 
 alias prmd='
 gh pr list \
