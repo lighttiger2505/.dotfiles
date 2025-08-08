@@ -35,8 +35,14 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
+            require("catppuccin").setup({
+                custom_highlights = function(colors)
+                    return {
+                        WinSeparator = { fg = colors.overlay2 },
+                    }
+                end,
+            })
             vim.cmd([[colorscheme catppuccin-mocha]])
-            vim.cmd([[highlight WinSeparator guifg=#928374]])
         end,
     },
 }
