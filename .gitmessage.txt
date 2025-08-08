@@ -1,21 +1,41 @@
-# <Type>: <Subject> (50 characters)
-# |<---- Problem, Task, Reason for Commit               ---->|
+# Define the commit message format below. Please write commit content in English.
+#
+# <type>[optional scope]: <title>
+#   - type:      An identifier that briefly indicates the nature of the change, select from the list below
+#   - scope:     Optional. Impact area (e.g. compiler, http, router, etc.) in lowercase
+#   - title:     Concise description of the change in imperative mood (within 50 characters, no period at the end)
 
+# [optional body]
+#   - Leave one line blank and then describe details
+#   - Specifically explain how you changed and why it was necessary
 
-# <Solution> (200 characters and 72 characters per line)
-# |<---- Solution or List of Changes                    ---->|
+# [optional footer]
+#   - BREAKING CHANGE: Describe details of breaking changes
+#   - Closes #<issue number>, etc., reference related issue numbers
 
-
-# <Note>
-# |<---- Special instructions, testing steps, rake, etc ---->|
-
-
-# Types
-#   feat     :A new feature
-#   fix      :A bug fix
-#   docs     :Documentation only changes
-#   style    :Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-#   refactor :A code change that neither fixes a bug nor adds a feature
-#   perf     :A code change that improves performance
-#   test     :Adding missing or correcting existing tests
-#   chore    :Changes to the build process or auxiliary tools and libraries such as documentation generation
+# Example:
+# ---
+# feat(parser): Add support for new operator
+#
+# Added parsing logic for the "??" operator to handle the Null coalescing operator.
+# With this change, expressions like `a ?? b` will fall back to b when a is null or undefined.
+#
+# BREAKING CHANGE: The deprecated fallback logic for the "||" operator has been removed.
+# Closes #1234
+# ---
+#
+# List of types:
+#   feat:     Add new features. Introduce new functionality/options to API or UI
+#   fix:      Bug fixes. Address issues or fix mistakes in existing functionality
+#   perf:     Performance improvements. Code changes that optimize processing speed or memory usage
+#   refactor: Refactoring (code restructuring without adding features or fixing bugs). Modularize code or eliminate duplication
+#   style:    Style changes that don't affect code behavior. Adding/removing indentation, line breaks, semicolons, formatting, etc.
+#   test:     Add or modify tests. Create new unit/integration tests or modify existing ones
+#   chore:    Update files other than source code or tests, project configuration or tool settings. Edit .gitignore, adjust build scripts, etc.
+#   revert:   Changes that revert previous commits
+#   build:    Changes affecting the build system or external dependencies. Configure task runners or bundlers, update npm/yarn dependencies, etc.
+#   ci:       Changes to CI configuration files and scripts. GitHub Actions workflow settings, etc.
+#   docs:     Documentation-only changes. Add/modify README, Wiki, comments, etc.
+#
+# Reference:
+#   https://www.conventionalcommits.org/en/v1.0.0/
