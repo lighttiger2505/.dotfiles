@@ -103,6 +103,7 @@ alias tl='vim ~/.config/vimmemo/link.md'
 #####################################################################
 alias hb='gh repo view --branch "$(git branch --show-current)" --web'
 alias hp='gh pr view --web'
+alias ha='gh run view --web'
 alias vimdiffpr='nvim -c ":OpenDiffviewPR"'
 
 alias prcreate='gh pr create --template "pull_request_template.md"'
