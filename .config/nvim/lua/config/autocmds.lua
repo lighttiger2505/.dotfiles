@@ -78,24 +78,3 @@ autocmd("FileType", {
         l.wrap = false
     end,
 })
-
-vim.api.nvim_create_autocmd("VimEnter", {
-    group = group_name,
-    callback = function()
-        if vim.wo.diff then
-            vim.cmd([[colorscheme desert]])
-        end
-    end,
-})
-
-vim.api.nvim_create_autocmd("OptionSet", {
-    pattern = "diff",
-    group = group_name,
-    callback = function()
-        if vim.wo.diff then
-            vim.cmd([[colorscheme desert]])
-        else
-            vim.cmd([[colorscheme catppuccin-mocha]])
-        end
-    end,
-})
