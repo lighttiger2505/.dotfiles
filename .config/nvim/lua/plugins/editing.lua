@@ -178,4 +178,15 @@ return {
             require("csvview").setup()
         end,
     },
+
+    {
+        "cappyzawa/trim.nvim",
+        cmd = {
+            "Trim",
+            "TrimToggle",
+        },
+        opts = {
+            trim_on_write = false,
+        },
+    },
 }
