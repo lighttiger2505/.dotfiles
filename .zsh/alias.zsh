@@ -325,8 +325,9 @@ fzf_alias_exec() {
 alias al='fzf_alias_exec'
 
 #####################################################################
-# Claude Code with devcontainer
+# Claude Code
 #####################################################################
+alias cc='claude'
 alias devc='devcontainer'
 alias devclaude='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . claude'
 alias devzsh='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . zsh'
