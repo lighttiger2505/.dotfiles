@@ -5,7 +5,7 @@ return {
         event = "InsertEnter",
         config = function()
             require("copilot").setup({
-                copilot_model = "gpt-4o-copilot",
+                -- copilot_model = "gpt-4o-copilot",
                 suggestion = {
                     enabled = true,
                 },
@@ -25,6 +25,7 @@ return {
         config = function()
             local select = require("CopilotChat.select")
             require("CopilotChat").setup({
+                -- model = "gpt-4.1",
                 model = "claude-sonnet-4",
                 prompts = {
                     PullRequestReviewJa = {
@@ -61,7 +62,9 @@ return {
                         return require("codecompanion.adapters").extend("copilot", {
                             schema = {
                                 model = {
-                                    default = "claude-3.7-sonnet",
+                                    -- default = "gpt-4.1",
+                                    -- default = "claude-3.7-sonnet",
+                                    default = "claude-sonnet-4",
                                 },
                             },
                         })
