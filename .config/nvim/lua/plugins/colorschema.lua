@@ -40,10 +40,10 @@ return {
                     return {
                         WinSeparator = { fg = colors.overlay2 },
                         DiffText = {
-                            bg = colors.yellow,
+                            bg = colors.blue,
                             fg = colors.crust,
-                            bold = true,
-                            nocombine = true,
+                            bold = false,
+                            nocombine = false,
                         },
                     }
                 end,
