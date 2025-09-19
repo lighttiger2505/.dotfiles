@@ -97,13 +97,14 @@ alias tm='tmux capture-pane -pS - > /tmp/tmux_output && vim /tmp/tmux_output'
 # open vim with vimmemo
 alias td='vim ~/.config/vimmemo/todo.md'
 alias tl='vim ~/.config/vimmemo/link.md'
+alias tf='vim ~/.config/vimmemo/feedback.md'
 
 #####################################################################
 # GitHub cli
 #####################################################################
 alias hb='gh repo view --branch "$(git branch --show-current)" --web'
 alias hp='gh pr view --web'
-alias ha='gh run view --web'
+alias ha='gh pr checks'
 alias vimdiffpr='nvim -c ":OpenDiffviewPR"'
 
 alias prcreate='gh pr create --template "pull_request_template.md"'
@@ -329,6 +330,7 @@ alias al='fzf_alias_exec'
 alias devc='devcontainer'
 alias devclaude='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . claude'
 alias devzsh='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . zsh'
+alias devrec='devcontainer up --workspace-folder . --remove-existing-container'
 
 #####################################################################
 # Process management
