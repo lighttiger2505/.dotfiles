@@ -150,7 +150,9 @@ vim.keymap.set(
 )
 
 local function open_diff_view_pr()
-    local base = vim.fn.system({ "gh", "pr", "status", "--json", "baseRefName", "-q", ".currentBranch.baseRefName", }):gsub("%s+", "")
+    local base = vim.fn
+        .system({ "gh", "pr", "status", "--json", "baseRefName", "-q", ".currentBranch.baseRefName" })
+        :gsub("%s+", "")
     if base == "" then
         vim.notify("No pull request found for this branch", vim.log.levels.WARN)
         return
@@ -166,3 +168,13 @@ vim.keymap.set(
     open_diff_view_pr,
     { noremap = true, silent = true, desc = "Diffview open diff view by pull request modifyed file" }
 )
+
+vim.api.nvim_create_user_command("GhPrView", function()
+    local cmd = { "gh", "pr", "view", "--web" }
+    if vim.system then
+        vim.system(cmd, { detach = true })
+    else
+        vim.fn.jobstart(cmd, { detach = true })
+    end
+end, { desc = "Open current branch's PR in browser" })
+vim.keymap.set("n", "<Leader>bp", "<Cmd>GhPrView<CR>", { silent = true, desc = "Open PR in browser" })
