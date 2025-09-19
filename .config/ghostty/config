@@ -6,7 +6,7 @@ cursor-text = #4c4f69
 # cursor-style = block
 
 font-family = "UDEV Gothic NFLG"
-theme = "catppuccin-mocha"
+theme = Catppuccin Mocha
 
 macos-option-as-alt = left
 mouse-hide-while-typing = true
