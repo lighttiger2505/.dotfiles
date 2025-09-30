@@ -144,7 +144,7 @@ end
 
 vim.keymap.set(
     "n",
-    "<leader>gt",
+    "<leader>gm",
     tag_pr_changes,
     { noremap = true, silent = true, desc = "Grapple reset tag for pull request modified files" }
 )
