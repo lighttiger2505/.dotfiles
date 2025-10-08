@@ -84,7 +84,7 @@ return {
         cmd = "Neotree",
         init = function()
             map("n", "<Leader>t", "<cmd>Neotree toggle<CR>", kopts)
-            map("n", "<Leader>f", "<cmd>Neotree reveal<CR>", kopts)
+            map("n", "<Leader>f", "<cmd>Neotree reveal reveal_force_cwd<CR>", kopts)
         end,
         config = function()
             require("telescope").load_extension("file_browser")
