@@ -26,7 +26,8 @@ return {
             local select = require("CopilotChat.select")
             require("CopilotChat").setup({
                 -- model = "gpt-4.1",
-                model = "claude-sonnet-4",
+                -- model = "claude-sonnet-4",
+                model = "claude-haiku-4.5",
                 prompts = {
                     PullRequestReviewJa = {
                         prompt = [=[
