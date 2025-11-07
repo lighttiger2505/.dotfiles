@@ -14,41 +14,6 @@ return {
     },
 
     {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        lazy = true,
-        branch = "main",
-        build = "make tiktoken",
-        dependencies = {
-            { "zbirenbaum/copilot.lua" },
-            { "nvim-lua/plenary.nvim" },
-        },
-        config = function()
-            local select = require("CopilotChat.select")
-            require("CopilotChat").setup({
-                -- model = "gpt-4.1",
-                -- model = "claude-sonnet-4",
-                model = "claude-haiku-4.5",
-                prompts = {
-                    PullRequestReviewJa = {
-                        prompt = [=[
-コードレビューをお願いします。アウトプットは以下の内容を簡潔に列挙してください。
-- 変更内容の要約: 内容の要約は100文字以内、1,2文でまとめてください
-- 変更内容の詳細: 変更内容の詳細を箇条書きで詳しく記載してください
-- レビュー内容: 以下の内容観点でレビューをお願いします。指摘箇所はどの部分かわかるようにリポジトリルールからの相対ファイルパスとコードの行、列と一緒に記載してください。
-    - コードで改善するべき箇所を教えてください
-    - 複雑で可読性の低いロジックをよりシンプルにする方法があれば教えてください
-    - 変更によってバグが発生していれば教えてください
-    - おかしな命名ないしタイポがあれば教えてください
-    - コメントを記載することでより文脈がわかりやすくなる箇所があれば教えてください
-                        ]=],
-                        selection = select.buffer,
-                    },
-                },
-            })
-        end,
-    },
-
-    {
         "olimorris/codecompanion.nvim",
         cmd = { "CodeCompanionChat" },
         opts = {},
@@ -126,6 +91,47 @@ When unsure about the module names to use in the commit message, you can refer t
 Output only the commit message without any explanations and follow-up suggestions.
 ]=],
                                         vim.fn.system("git diff --no-ext-diff --staged"),
+                                        vim.fn.system('git log --pretty=format:"%s" -n 20')
+                                    )
+                                end,
+                                opts = {
+                                    contains_code = true,
+                                },
+                            },
+                        },
+                    },
+                    ["Custom Pull Request Review"] = {
+                        strategy = "chat",
+                        description = "Review a pull request",
+                        opts = {
+                            short_name = "custom_review_pull_request",
+                            auto_submit = false,
+                        },
+                        prompts = {
+                            {
+                                role = "user",
+                                content = function()
+                                    return string.format(
+                                        [=[
+#{buffer}
+
+コードレビューをお願いします。アウトプットは以下の内容を簡潔に列挙してください。
+- 変更内容の要約: 内容の要約は100文字以内、1,2文でまとめてください
+- 変更内容の詳細: 変更内容の詳細を箇条書きで詳しく記載してください
+- レビュー内容: 以下の内容観点でレビューをお願いします。指摘箇所はどの部分かわかるようにリポジトリルールからの相対ファイルパスとコードの行、列と一緒に記載してください。
+    - コードで改善するべき箇所を教えてください
+    - 複雑で可読性の低いロジックをよりシンプルにする方法があれば教えてください
+    - 変更によってバグが発生していれば教えてください
+    - おかしな命名ないしタイポがあれば教えてください
+    - コメントを記載することでより文脈がわかりやすくなる箇所があれば教えてください
+
+レビューのコンテキストに悩んだ場合、このリポジトリの直近20件のコミットメッセージを参照してください。
+
+```
+%s
+```
+
+]=],
                                         vim.fn.system('git log --pretty=format:"%s" -n 20')
                                     )
                                 end,
