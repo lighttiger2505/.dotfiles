@@ -110,6 +110,12 @@ return {
         -- TermExec direction=float cmd="tig status"
         keys = {
             {
+                "<Leader>l",
+                "<cmd>ToggleTerm direction=float<cr>",
+                mode = { "n" },
+                desc = "Toggleterm launch floating terminal",
+            },
+            {
                 "<Leader>gg",
                 "<cmd>1TermExec name='TigStatus' direction=float cmd='tig status; exit'<cr>",
                 mode = { "n" },
