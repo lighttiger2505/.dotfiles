@@ -123,7 +123,7 @@ alias prrev=github-pr-review
 function ai-review-github-pr() {
     local tmpfile="/tmp/pr-diff-$(date +%s)"
     gh pr view --json url | jq .url | gh pr diff > ${tmpfile}
-    nvim -c 'lua require("CopilotChat")' -c 'CopilotChatPullRequestReviewJa' ${tmpfile}
+    nvim -c 'lua require("codecompanion")' -c 'lua vim.cmd("CodeCompanion /custom_review_pull_request")' ${tmpfile}
 }
 alias airev=ai-review-github-pr
 
