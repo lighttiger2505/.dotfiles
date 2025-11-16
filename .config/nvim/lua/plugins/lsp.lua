@@ -82,13 +82,35 @@ return {
                 vim.lsp.config[server] = config
             end
 
+            vim.lsp.enable({
+                "lua_ls",
+                "ts_ls",
+                "gopls",
+            })
+
+            -- Show LSP client status on attach
             vim.api.nvim_create_autocmd("LspAttach", {
-                group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-                -- stylua: ignore
-                callback = function (ev)
+                callback = function(args)
+                    local client = vim.lsp.get_client_by_id(args.data.client_id)
+                    if client then
+                        vim.notify(string.format("LSP attached: %s", client.name), vim.log.levels.INFO, {
+                            title = "LSP Status",
+                            timeout = 2000,
+                            animate = false,
+                            stage = "static",
+                        })
+                    end
+                end,
+            })
+
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("my.lsp", {}),
+                callback = function(args)
+                    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+                    local buf = args.buf
                     -- builtin lsp
-                    local optWithDesc = function (desc)
-                        local result = { noremap = true, silent = true, buffer = ev.buf, desc = desc }
+                    local optWithDesc = function(desc)
+                        local result = { noremap = true, silent = true, buffer = buf, desc = desc }
                         return result
                     end
                     vim.keymap.set("n", "<LocalLeader>n", vim.lsp.buf.references, optWithDesc("LSP References"))
@@ -99,8 +121,18 @@ return {
                     vim.keymap.set("n", "<LocalLeader>e", vim.diagnostic.open_float, optWithDesc("Diagnostic Float"))
                     vim.keymap.set("n", "<LocalLeader>d", vim.diagnostic.setloclist, optWithDesc("Diagnostic List"))
                     -- lsp saga
-                    vim.keymap.set("n", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", optWithDesc("LSP Code Action"))
-                    vim.keymap.set("i", "<LocalLeader>c", "<cmd>Lspsaga code_action<CR>", optWithDesc("LSP Code Action"))
+                    vim.keymap.set(
+                        "n",
+                        "<LocalLeader>c",
+                        "<cmd>Lspsaga code_action<CR>",
+                        optWithDesc("LSP Code Action")
+                    )
+                    vim.keymap.set(
+                        "i",
+                        "<LocalLeader>c",
+                        "<cmd>Lspsaga code_action<CR>",
+                        optWithDesc("LSP Code Action")
+                    )
                     vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", optWithDesc("Prev Diagnostic"))
                     vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", optWithDesc("Next Diagnostic"))
                     vim.keymap.set("n", "<C-]>", "<cmd>Lspsaga goto_definition<CR>", optWithDesc("Goto Definition"))
