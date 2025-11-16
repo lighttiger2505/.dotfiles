@@ -95,9 +95,12 @@ return {
         },
         cmdline = {
             keymap = {
-                ["<Tab>"] = { "show", "accept" },
+                preset = "cmdline",
             },
-            completion = { menu = { auto_show = true } },
+            completion = {
+                menu = { auto_show = true },
+                ghost_text = { enabled = true },
+            },
         },
     },
     opts_extend = { "sources.default" },
