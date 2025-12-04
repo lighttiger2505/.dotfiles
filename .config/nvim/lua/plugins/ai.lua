@@ -106,7 +106,7 @@ Output only the commit message without any explanations and follow-up suggestion
                         description = "Review a pull request",
                         opts = {
                             short_name = "custom_review_pull_request",
-                            auto_submit = false,
+                            auto_submit = true,
                         },
                         prompts = {
                             {
