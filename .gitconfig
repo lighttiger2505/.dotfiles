@@ -68,3 +68,5 @@
 	meff = merge --ff
 	pu = pull
 	cp = cherry-pick
+[url "ssh://git@github.com"]
+	insteadOf = https://github.com
