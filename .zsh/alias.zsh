@@ -119,7 +119,7 @@ function github-pr-review() {
 }
 alias prrev=github-pr-review
 
-# Create PR diff and review by CopilotChat
+# Create PR diff and review by AI
 function ai-review-github-pr() {
     local tmpfile="/tmp/pr-diff-$(date +%s)"
     gh pr view --json url | jq .url | gh pr diff > ${tmpfile}
@@ -307,11 +307,11 @@ alias fib=draw-fibonacci
 # Obsidian
 #####################################################################
 function obsidian-new() {
-    nvim -c 'lua require("CopilotChat")' -c 'ObsidianNew'
+    nvim -c 'lua require("obsidian")' -c 'ObsidianNew'
 }
 alias on=obsidian-new
 function obsidian-list-preview() {
-    nvim -c 'lua require("CopilotChat")' -c 'ObsidianQuickSwitch'
+    nvim -c 'lua require("obsidian")' -c 'ObsidianQuickSwitch'
 }
 alias ov=obsidian-list-preview
 
