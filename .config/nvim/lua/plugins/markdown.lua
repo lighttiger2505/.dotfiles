@@ -74,8 +74,8 @@ return {
             "nvim-lua/plenary.nvim",
         },
         opts = {
-            notes_subdir = "~/vaults/01_Index",
-            new_notes_location = "~/vaults/01_Index",
+            notes_subdir = "01_Index",
+            new_notes_location = "01_Index",
             note_id_func = function(title)
                 -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
                 -- In this case a note with the title 'My new note' will be given an ID that looks
