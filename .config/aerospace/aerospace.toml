@@ -61,6 +61,9 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-cmd-9 = 'workspace 9'
     alt-cmd-0 = 'workspace 10'
 
+    alt-cmd-m = 'workspace M'
+    alt-cmd-o = 'workspace O'
+
     alt-cmd-shift-1 = 'move-node-to-workspace 1'
     alt-cmd-shift-2 = 'move-node-to-workspace 2'
     alt-cmd-shift-3 = 'move-node-to-workspace 3'
@@ -72,9 +75,18 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-cmd-shift-9 = 'move-node-to-workspace 9'
     alt-cmd-shift-0 = 'move-node-to-workspace 10'
 
+    alt-cmd-shift-m = 'workspace M'
+    alt-cmd-shift-o = 'workspace O'
+
     alt-cmd-shift-c = 'reload-config'
 
     alt-cmd-r = 'mode resize'
+
+    # alt-cmd-p = ['focus-monitor prev']
+    # alt-cmd-n = ['focus-monitor next']
+
+    # alt-cmd-shift-p = ['move-workspace-to-monitor prev']
+    # alt-cmd-shift-n = ['move-workspace-to-monitor next']
 
 [mode.resize.binding]
     h = 'resize width -50'
@@ -93,9 +105,39 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-    inner.horizontal = 8
-    inner.vertical =   8
-    outer.left =       8
-    outer.bottom =     8
-    outer.top =        8
-    outer.right =      8
+    inner.horizontal = 16
+    inner.vertical =   16
+    outer.left =       16
+    outer.bottom =     16
+    outer.top =        16
+    outer.right =      16
+
+[[on-window-detected]]
+if.app-id = "com.apple.finder"
+run = "layout floating"
+
+[[on-window-detected]]
+    if.app-id = 'com.mitchellh.ghostty'
+    run = 'move-node-to-workspace M'
+
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = 'move-node-to-workspace O'
+
+[[on-window-detected]]
+    if.app-id = 'com.spotify.client'
+    run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+    if.app-id = 'com.rambox'
+    run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    run = 'move-node-to-workspace O'
+
+[workspace-to-monitor-force-assignment]
+M = "main"
+O = "secondary"
+1 = "main"
+2 = "main"
