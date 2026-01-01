@@ -34,7 +34,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-cmd-s = 'split horizontal'
     alt-cmd-v = 'split vertical'
 
-    alt-cmd-f = 'fullscreen'
+    alt-cmd-semicolon = 'fullscreen'
 
     alt-cmd-shift-v = 'layout v_accordion' # 'layout stacking' in i3
     alt-cmd-shift-s = 'layout h_accordion' # 'layout tabbed' in i3
@@ -82,11 +82,11 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
     alt-cmd-r = 'mode resize'
 
-    # alt-cmd-p = ['focus-monitor prev']
-    # alt-cmd-n = ['focus-monitor next']
+    alt-cmd-p = 'workspace --wrap-around prev'
+    alt-cmd-n = 'workspace --wrap-around next'
 
-    # alt-cmd-shift-p = ['move-workspace-to-monitor prev']
-    # alt-cmd-shift-n = ['move-workspace-to-monitor next']
+    # alt-cmd-shift-p = 'move-workspace-to-monitor --wrap-around prev'
+    # alt-cmd-shift-n = 'move-workspace-to-monitor --wrap-around next'
 
 [mode.resize.binding]
     h = 'resize width -50'
