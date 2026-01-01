@@ -114,10 +114,16 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 if.app-id = "com.apple.finder"
 run = "layout floating"
 
+#############
+# Main window
+#############
 [[on-window-detected]]
     if.app-id = 'com.mitchellh.ghostty'
     run = 'move-node-to-workspace M'
 
+#############
+# Sub Windown
+#############
 [[on-window-detected]]
     if.app-id = 'com.google.Chrome'
     run = 'move-node-to-workspace O'
@@ -126,12 +132,15 @@ run = "layout floating"
     if.app-id = 'com.tinyspeck.slackmacgap'
     run = 'move-node-to-workspace O'
 
+#############
+# Other window
+#############
 [[on-window-detected]]
-    if.app-id = 'com.spotify.client'
+    if.app-id = 'com.rambox'
     run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-    if.app-id = 'com.rambox'
+    if.app-id = 'com.spotify.client'
     run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
