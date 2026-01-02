@@ -47,9 +47,8 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
     alt-cmd-semicolon = 'fullscreen'
 
-    alt-cmd-shift-v = 'layout v_accordion' # 'layout stacking' in i3
-    alt-cmd-shift-s = 'layout h_accordion' # 'layout tabbed' in i3
-    alt-cmd-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+    alt-cmd-slash = 'layout tiles horizontal vertical'
+    alt-cmd-period = 'layout accordion horizontal vertical'
 
     alt-cmd-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
