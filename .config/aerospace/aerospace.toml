@@ -18,7 +18,18 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 [mode.main.binding]
-    # i3 wraps focus by default
+    # All possible keys:
+    # - Letters.        a, b, c, ..., z
+    # - Numbers.        0, 1, 2, ..., 9
+    # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+    # - F-keys.         f1, f2, ..., f20
+    # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
+    #                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
+    #                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
+    #                   sectionSign (ISO keyboards only, european keyboards only)
+    # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+    #                   keypadMinus, keypadMultiply, keypadPlus
+    # - Arrows.         left, down, up, right
     alt-cmd-h = 'focus --boundaries-action wrap-around-the-workspace left'
     alt-cmd-j = 'focus --boundaries-action wrap-around-the-workspace down'
     alt-cmd-k = 'focus --boundaries-action wrap-around-the-workspace up'
@@ -84,7 +95,11 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
     alt-cmd-p = 'workspace --wrap-around prev'
     alt-cmd-n = 'workspace --wrap-around next'
-    alt-cmd-tab = 'move-workspace-to-monitor --wrap-around next'
+
+    alt-cmd-leftSquareBracket = 'focus-monitor --wrap-around prev'
+    alt-cmd-rightSquareBracket = 'focus-monitor --wrap-around next'
+
+    alt-cmd-comma = 'move-workspace-to-monitor --wrap-around next'
 
 [mode.resize.binding]
     h = 'resize width -50'
