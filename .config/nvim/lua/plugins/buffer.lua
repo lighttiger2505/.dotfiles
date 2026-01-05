@@ -19,29 +19,4 @@ return {
             { "<Space>k", "<Cmd>BufferOrderByDirectory<CR>", mode = "n", desc = "BarBar Sort buffer by directory" },
         },
     },
-
-    {
-        "kazhala/close-buffers.nvim",
-        config = function()
-            require("close_buffers").setup({})
-        end,
-        keys = {
-            {
-                "<Space>a",
-                function()
-                    require("close_buffers").delete({ type = "hidden", force = true })
-                end,
-                mode = "n",
-                desc = "CloseBuffers Close all non-visible buffers",
-            },
-            {
-                "<Space>q",
-                function()
-                    require("close_buffers").delete({ type = "this" })
-                end,
-                mode = "n",
-                desc = "CloseBuffers Close the current buffer",
-            },
-        },
-    },
 }

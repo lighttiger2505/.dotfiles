@@ -1,0 +1,162 @@
+# Reference: https://nikitabobko.github.io/AeroSpace/commands
+
+config-version = 2
+
+# In i3, all workspaces are phantom
+persistent-workspaces = []
+
+start-at-login = true
+
+# i3 doesn't have "normalizations" feature that why we disable them here.
+# But the feature is very helpful.
+# Normalizations eliminate all sorts of weird tree configurations that don't make sense.
+# Give normalizations a chance and enable them back.
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+# Mouse follows focus when focused monitor changes
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+[mode.main.binding]
+    # All possible keys:
+    # - Letters.        a, b, c, ..., z
+    # - Numbers.        0, 1, 2, ..., 9
+    # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+    # - F-keys.         f1, f2, ..., f20
+    # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
+    #                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
+    #                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
+    #                   sectionSign (ISO keyboards only, european keyboards only)
+    # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+    #                   keypadMinus, keypadMultiply, keypadPlus
+    # - Arrows.         left, down, up, right
+    alt-cmd-h = 'focus --boundaries-action wrap-around-the-workspace left'
+    alt-cmd-j = 'focus --boundaries-action wrap-around-the-workspace down'
+    alt-cmd-k = 'focus --boundaries-action wrap-around-the-workspace up'
+    alt-cmd-l = 'focus --boundaries-action wrap-around-the-workspace right'
+
+    alt-cmd-shift-h = 'move left'
+    alt-cmd-shift-j = 'move down'
+    alt-cmd-shift-k = 'move up'
+    alt-cmd-shift-l = 'move right'
+
+    # Consider using 'join-with' command as a 'split' replacement if you want to enable
+    # normalizations
+    alt-cmd-s = 'split horizontal'
+    alt-cmd-v = 'split vertical'
+
+    alt-cmd-semicolon = 'fullscreen'
+
+    alt-cmd-slash = 'layout tiles horizontal vertical'
+    alt-cmd-period = 'layout accordion horizontal vertical'
+
+    alt-cmd-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+
+    # Not supported, because this command is redundant in AeroSpace mental model.
+    # See: https://nikitabobko.github.io/AeroSpace/guide#floating-windows
+    #alt-space = 'focus toggle_tiling_floating'
+
+    # `focus parent`/`focus child` are not yet supported, and it's not clear whether they
+    # should be supported at all https://github.com/nikitabobko/AeroSpace/issues/5
+    # alt-a = 'focus parent'
+
+    alt-cmd-1 = 'workspace 1'
+    alt-cmd-2 = 'workspace 2'
+    alt-cmd-3 = 'workspace 3'
+    alt-cmd-4 = 'workspace 4'
+    alt-cmd-5 = 'workspace 5'
+    alt-cmd-6 = 'workspace 6'
+    alt-cmd-7 = 'workspace 7'
+    alt-cmd-8 = 'workspace 8'
+    alt-cmd-9 = 'workspace 9'
+    alt-cmd-0 = 'workspace 10'
+
+    alt-cmd-m = 'workspace M'
+    alt-cmd-o = 'workspace O'
+
+    alt-cmd-shift-1 = 'move-node-to-workspace 1'
+    alt-cmd-shift-2 = 'move-node-to-workspace 2'
+    alt-cmd-shift-3 = 'move-node-to-workspace 3'
+    alt-cmd-shift-4 = 'move-node-to-workspace 4'
+    alt-cmd-shift-5 = 'move-node-to-workspace 5'
+    alt-cmd-shift-6 = 'move-node-to-workspace 6'
+    alt-cmd-shift-7 = 'move-node-to-workspace 7'
+    alt-cmd-shift-8 = 'move-node-to-workspace 8'
+    alt-cmd-shift-9 = 'move-node-to-workspace 9'
+    alt-cmd-shift-0 = 'move-node-to-workspace 10'
+
+    alt-cmd-shift-m = 'workspace M'
+    alt-cmd-shift-o = 'workspace O'
+
+    alt-cmd-shift-c = 'reload-config'
+
+    alt-cmd-r = 'mode resize'
+
+    alt-cmd-p = 'workspace --wrap-around prev'
+    alt-cmd-n = 'workspace --wrap-around next'
+
+    alt-cmd-leftSquareBracket = 'focus-monitor --wrap-around prev'
+    alt-cmd-rightSquareBracket = 'focus-monitor --wrap-around next'
+
+    alt-cmd-comma = 'move-workspace-to-monitor --wrap-around next'
+
+[mode.resize.binding]
+    h = 'resize width -50'
+    j = 'resize height +50'
+    k = 'resize height -50'
+    l = 'resize width +50'
+    enter = 'mode main'
+    esc = 'mode main'
+
+# Gaps between windows (inner-*) and between monitor edges (outer-*).
+# Possible values:
+# - Constant:     gaps.outer.top = 8
+# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
+#                 In this example, 24 is a default value when there is no match.
+#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
+#                 See:
+#                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+[gaps]
+    inner.horizontal = 16
+    inner.vertical =   16
+    outer.left =       16
+    outer.bottom =     16
+    outer.top =        16
+    outer.right =      16
+
+[[on-window-detected]]
+if.app-id = "com.apple.finder"
+run = "layout floating"
+
+#############
+# Main window
+#############
+[[on-window-detected]]
+    if.app-id = 'com.mitchellh.ghostty'
+    run = 'move-node-to-workspace M'
+
+#############
+# Sub Windown
+#############
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = 'move-node-to-workspace O'
+
+[[on-window-detected]]
+    if.app-id = 'com.tinyspeck.slackmacgap'
+    run = 'move-node-to-workspace O'
+
+#############
+# Other window
+#############
+[[on-window-detected]]
+    if.app-id = 'com.rambox'
+    run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+    if.app-id = 'com.spotify.client'
+    run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+    if.app-id = 'com.openai.chat'
+    run = 'move-node-to-workspace 6'
