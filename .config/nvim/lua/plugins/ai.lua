@@ -64,7 +64,7 @@ return {
                         strategy = "chat",
                         description = "Generate a custom commit message",
                         opts = {
-                            short_name = "custom_commit_message",
+                            alias = "custom_commit_message",
                             auto_submit = true,
                         },
                         prompts = {
@@ -105,7 +105,7 @@ Output only the commit message without any explanations and follow-up suggestion
                         strategy = "chat",
                         description = "Review a pull request",
                         opts = {
-                            short_name = "custom_review_pull_request",
+                            alias = "custom_review_pull_request",
                             auto_submit = true,
                         },
                         prompts = {
