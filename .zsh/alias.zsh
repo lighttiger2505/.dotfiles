@@ -332,6 +332,9 @@ alias devc='devcontainer'
 alias devclaude='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . claude'
 alias devzsh='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . zsh'
 alias devrec='devcontainer up --workspace-folder . --remove-existing-container'
+alias ccb='AWS_PROFILE="mot-sandbox-software-dev-aws_llm-trial-emp-ro" \
+AWS_REGION="ap-northeast-1" \
+claude code'
 
 #####################################################################
 # Process management

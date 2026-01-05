@@ -10,4 +10,16 @@ return {
             require("ts-error-translator").setup()
         end,
     },
+
+    {
+        "dmmulroy/tsc.nvim",
+        ft = {
+            "typescript",
+            "typescript.tsx",
+            "typescriptreact",
+        },
+        config = function()
+            require("tsc").setup({})
+        end,
+    },
 }
