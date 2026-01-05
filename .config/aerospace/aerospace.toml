@@ -119,10 +119,10 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 [gaps]
     inner.horizontal = 16
     inner.vertical =   16
-    outer.left =       16
-    outer.bottom =     16
-    outer.top =        16
-    outer.right =      16
+    outer.left =       8
+    outer.bottom =     8
+    outer.top =        8
+    outer.right =      8
 
 [[on-window-detected]]
 if.app-id = "com.apple.finder"
