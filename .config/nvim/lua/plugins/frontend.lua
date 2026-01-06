@@ -22,4 +22,18 @@ return {
             require("tsc").setup({})
         end,
     },
+
+    {
+        "pmizio/typescript-tools.nvim",
+        ft = {
+            "typescript",
+            "typescript.tsx",
+            "typescriptreact",
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "neovim/nvim-lspconfig",
+        },
+        opts = {},
+    },
 }
