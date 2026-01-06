@@ -31,7 +31,7 @@ return {
                         },
                     },
                 },
-                ts_ls = {},
+                -- ts_ls = {},
                 lua_ls = {
                     settings = {
                         Lua = {
@@ -84,7 +84,7 @@ return {
 
             vim.lsp.enable({
                 "lua_ls",
-                "ts_ls",
+                -- "ts_ls",
                 "gopls",
             })
 
