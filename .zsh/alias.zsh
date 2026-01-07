@@ -253,12 +253,14 @@ function github-pr-switch-fzf() {
 }
 alias prsif=github-pr-switch-fzf
 
-alias prmd='
-gh pr list \
-  --search "org:MobilityTechnologies is:open author:@me -label:dependencies sort:updated-desc" \
-  --json title,headRefName,url,headRepository,isDraft \
-  --template "{{range .}}{{printf \"- [%t %s %s %s](%s)\n\" .isDraft .headRepository.name .headRefName .title .url}}{{end}}"
-'
+github-pr-list-markdown() {
+  gh pr list \
+    --search "org:MobilityTechnologies is:open author:@me -label:dependencies sort:updated-desc" \
+    --json title,headRefName,url,headRepository,isDraft \
+    --template '{{range .}}- [{{if .isDraft}}(Draft) {{end}}{{.headRepository.name}} {{.headRefName}} {{.title}}]({{.url}})
+{{end}}'
+}
+alias prmd=github-pr-list-markdown
 
 function list-copilot-models() {
     curl -s \
