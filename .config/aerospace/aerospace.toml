@@ -48,7 +48,7 @@ enable-normalization-opposite-orientation-for-nested-containers = false
     alt-cmd-semicolon = 'fullscreen'
 
     alt-cmd-slash = 'layout tiles horizontal vertical'
-    alt-cmd-period = 'layout accordion horizontal vertical'
+    alt-cmd-period = 'layout accordion horizontal'
 
     alt-cmd-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
