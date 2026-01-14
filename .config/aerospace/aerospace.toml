@@ -7,6 +7,8 @@ persistent-workspaces = []
 
 start-at-login = true
 
+accordion-padding = 80
+
 # i3 doesn't have "normalizations" feature that why we disable them here.
 # But the feature is very helpful.
 # Normalizations eliminate all sorts of weird tree configurations that don't make sense.
@@ -154,9 +156,10 @@ run = "layout floating"
     run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-    if.app-id = 'com.spotify.client'
+    if.app-id = 'com.openai.chat'
     run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-    if.app-id = 'com.openai.chat'
-    run = 'move-node-to-workspace 6'
+    if.app-id = 'com.spotify.client'
+    run = 'move-node-to-workspace 3'
+
