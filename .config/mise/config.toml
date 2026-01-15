@@ -6,14 +6,13 @@ trusted_config_paths = [
 idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
-go = "1.24.4"
+go = "1.25.5"
 "go:golang.org/x/tools/gopls" = "latest"
-node = "24"
+node = "25"
 "npm:@anthropic-ai/claude-code" = "latest"
-"npm:@google/gemini-cli" = "latest"
 "npm:biome" = "latest"
 "npm:typescript" = "latest"
 "npm:typescript-language-server" = "latest"
-"npm:@devcontainers/cli" = "latest"
-python = "3.11.13"
-uv = "0.8.4"
+"npm:@github/copilot-language-server" = "latest"
+python = "3.14.2"
+uv = "0.9.25"
