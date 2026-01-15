@@ -54,6 +54,13 @@ return {
     },
 
     {
+        "gregorias/coerce.nvim",
+        tag = "v4.1.0",
+        config = true,
+        event = "VeryLazy",
+    },
+
+    {
         "ray-x/go.nvim",
         dependencies = {
             "ray-x/guihua.lua",
