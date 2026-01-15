@@ -74,6 +74,7 @@ return {
                 },
                 biome = {},
                 tailwindcss = {},
+                copilot = {},
             },
         },
         config = function(_, opts)
