@@ -239,39 +239,42 @@ return {
     {
         "y3owk1n/undo-glow.nvim",
         event = { "VeryLazy" },
-        ---@type UndoGlow.Config
-        opts = {
-            animation = {
-                enabled = true,
-                duration = 200,
-                animation_type = "zoom",
-                window_scoped = true,
-            },
-            highlights = {
-                undo = {
-                    hl_color = { bg = "#693232" }, -- Dark muted red
+        config = function()
+            local mocha = require("catppuccin.palettes").get_palette("mocha")
+            ---@type UndoGlow.Config
+            require("undo-glow").setup({
+                animation = {
+                    enabled = true,
+                    duration = 200,
+                    animation_type = "zoom",
+                    window_scoped = true,
                 },
-                redo = {
-                    hl_color = { bg = "#2F4640" }, -- Dark muted green
+                highlights = {
+                    undo = {
+                        hl_color = { bg = mocha.red },
+                    },
+                    redo = {
+                        hl_color = { bg = mocha.green },
+                    },
+                    yank = {
+                        hl_color = { bg = mocha.yellow },
+                    },
+                    paste = {
+                        hl_color = { bg = mocha.sky },
+                    },
+                    search = {
+                        hl_color = { bg = mocha.mauve },
+                    },
+                    comment = {
+                        hl_color = { bg = mocha.peach },
+                    },
+                    cursor = {
+                        hl_color = { bg = mocha.blue },
+                    },
                 },
-                yank = {
-                    hl_color = { bg = "#7A683A" }, -- Dark muted yellow
-                },
-                paste = {
-                    hl_color = { bg = "#325B5B" }, -- Dark muted cyan
-                },
-                search = {
-                    hl_color = { bg = "#5C475C" }, -- Dark muted purple
-                },
-                comment = {
-                    hl_color = { bg = "#7A5A3D" }, -- Dark muted orange
-                },
-                cursor = {
-                    hl_color = { bg = "#793D54" }, -- Dark muted pink
-                },
-            },
-            priority = 2048 * 3,
-        },
+                priority = 2048 * 3,
+            })
+        end,
         keys = {
             {
                 "u",
