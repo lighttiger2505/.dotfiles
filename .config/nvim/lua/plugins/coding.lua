@@ -56,8 +56,16 @@ return {
     {
         "gregorias/coerce.nvim",
         tag = "v4.1.0",
-        config = true,
         event = "VeryLazy",
+        config = function()
+            require("coerce").setup({
+                default_mode_mask = {
+                    normal_mode = true,
+                    motion_mode = false,
+                    visual_mode = false,
+                },
+            })
+        end,
     },
 
     {
