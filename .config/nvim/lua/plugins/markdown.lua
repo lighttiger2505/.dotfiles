@@ -118,6 +118,13 @@ return {
                 },
             },
             mappings = {},
+            daily_notes = {
+                folder = "06_Dailies",
+                date_format = "%Y-%m-%d",
+                alias_format = "%B %-d, %Y",
+                default_tags = { "daily-notes" },
+                template = nil,
+            },
         },
         keys = {
             { "<Space>v", "<Cmd>ObsidianQuickSwitch<CR>", mode = "n", desc = "Obsidian Quick Switch" },
