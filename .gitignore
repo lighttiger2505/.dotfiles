@@ -13,6 +13,11 @@
 .claude/projects
 .claude/statsig
 .claude/todos
+.claude/debug/
+.claude/history.jsonl
+.claude/cache/
+.claude/stats-cache.json
+.claude/plugins/
 
 # lazy.vim
 lazy-lock.json
