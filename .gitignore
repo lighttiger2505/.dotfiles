@@ -13,3 +13,6 @@
 .claude/projects
 .claude/statsig
 .claude/todos
+
+# lazy.vim
+lazy-lock.json
