@@ -223,6 +223,7 @@ return {
                 make = { "checkmake" },
                 zsh = { "zsh" },
                 lua = { "luacheck" },
+                go = { "golangcilint" },
             }
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
                 callback = function()
