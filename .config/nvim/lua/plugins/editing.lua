@@ -124,41 +124,6 @@ return {
     },
 
     {
-        "gbprod/yanky.nvim",
-        dependencies = {
-            "nvim-telescope/telescope.nvim",
-        },
-        config = function()
-            require("yanky").setup({
-                ring = {
-                    history_length = 100,
-                    storage = "shada",
-                    sync_with_numbered_registers = true,
-                    cancel_event = "update",
-                    ignore_registers = {},
-                    update_register_on_cycle = false,
-                },
-                system_clipboard = {
-                    sync_with_ring = true,
-                },
-            })
-            require("telescope").load_extension("yank_history")
-        end,
-        keys = {
-            { "y", mode = "n" },
-            { "Y", mode = "n" },
-            { "p", mode = "n" },
-            { "P", mode = "n" },
-            {
-                "<Space>y",
-                "<Cmd>Telescope yank_history<CR>",
-                mode = "n",
-                desc = "Yanky Select yank history",
-            },
-        },
-    },
-
-    {
         "hat0uma/csvview.nvim",
         ft = { "csv" },
         init = function()
