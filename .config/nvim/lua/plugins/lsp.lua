@@ -182,7 +182,8 @@ return {
 
     {
         "stevearc/conform.nvim",
-        event = "VeryLazy",
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
         keys = {
             {
                 "<LocalLeader>f",
@@ -200,7 +201,7 @@ return {
                 typescript = { "biome", "prettier", stop_after_first = true },
                 typescriptreact = { "biome", "prettier", stop_after_first = true },
                 json = { "jq", stop_after_first = true },
-                go = { "goimports", "gofmt" },
+                go = { "goimports", "gofmt", "golangci-lint", stop_after_first = true },
             },
             format_on_save = {
                 lsp_format = "fallback",
