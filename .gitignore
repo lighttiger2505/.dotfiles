@@ -8,3 +8,8 @@
 .config/pgcli/history
 .config/pgcli/log
 .zsh/workalias.zsh
+
+# claude code
+.claude/projects
+.claude/statsig
+.claude/todos
