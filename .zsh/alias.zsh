@@ -109,16 +109,6 @@ alias vimdiffpr='nvim -c ":OpenDiffviewPR"'
 
 alias prcreate='gh pr create --template "pull_request_template.md"'
 
-## Pull Request Review
-function github-pr-review() {
-    local pr_url="$1"
-    gh pr checkout ${pr_url}
-    local branch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
-    git fetch origin ${branch}:${branch}
-    nvim -c ":OpenDiffviewPR"
-}
-alias prrev=github-pr-review
-
 # Create PR diff and review by AI
 function ai-review-github-pr() {
     local tmpfile="/tmp/pr-diff-$(date +%s)"
@@ -337,6 +327,8 @@ alias devrec='devcontainer up --workspace-folder . --remove-existing-container'
 alias ccb='AWS_PROFILE="mot-sandbox-software-dev-aws_llm-trial-emp-ro" \
 AWS_REGION="ap-northeast-1" \
 claude code'
+alias lboxup='aws sso login --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro; lbox update-env'
+alias lboxcc='lbox exec sandbox claude'
 
 #####################################################################
 # Process management
