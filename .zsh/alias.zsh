@@ -340,3 +340,8 @@ function kill-process-fzf() {
     fi
 }
 alias pkf=kill-process-fzf
+
+#####################################################################
+# Mac Utilities
+#####################################################################
+alias stopsleep='caffeinate -i -d'
