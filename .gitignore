@@ -18,6 +18,9 @@
 .claude/cache/
 .claude/stats-cache.json
 .claude/plugins/
+.claude/file-history/
+.claude/plans/
+.claude/tasks/
 
 # lazy.vim
 lazy-lock.json
