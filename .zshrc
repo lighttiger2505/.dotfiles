@@ -5,18 +5,39 @@ executable() {
     type "$1" &> /dev/null ;
 }
 
-# ssh-agent
-if [ "$(pgrep ssh-agent 2> /dev/null)" = "" ]; then
-    eval $(ssh-agent) > /dev/null
-    case ${OSTYPE} in
+setup_ssh_agent() {
+    # Check if ssh-agent is already running
+    if [[ -n "$SSH_AUTH_SOCK" ]] && pgrep -q ssh-agent; then
+        return 0
+    fi
+
+    # Start ssh-agent
+    eval "$(ssh-agent -s)" >/dev/null
+    echo "ssh-agent launched. PID=$SSH_AGENT_PID"
+
+    # Add SSH keys based on OS
+    local ssh_keys=(~/.ssh/id_rsa ~/.ssh/id_ed25519)
+
+    case "$OSTYPE" in
         darwin*)
-            ssh-add --apple-use-keychain ~/.ssh/id_rsa > /dev/null 2>&1
+            for key in $ssh_keys; do
+                [[ -f "$key" ]] && ssh-add --apple-use-keychain "$key" >/dev/null 2>&1
+            done
             ;;
         linux-gnu*)
-            eval `keychain --eval --agents ssh ~/.ssh/id_rsa`
+            # Check if keychain is available
+            if command -v keychain >/dev/null 2>&1; then
+                local existing_keys=()
+                for key in $ssh_keys; do
+                    [[ -f "$key" ]] && existing_keys+=("$key")
+                done
+                [[ ${#existing_keys[@]} -gt 0 ]] && eval "$(keychain --eval --agents ssh $existing_keys)"
+            fi
             ;;
     esac
-fi
+}
+
+setup_ssh_agent
 
 source $HOME/.zsh/path.zsh
 source $HOME/.zsh/env.zsh
