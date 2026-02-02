@@ -327,8 +327,10 @@ alias devrec='devcontainer up --workspace-folder . --remove-existing-container'
 alias ccb='AWS_PROFILE="mot-sandbox-software-dev-aws_llm-trial-emp-ro" \
 AWS_REGION="ap-northeast-1" \
 claude code'
-alias lboxup='aws sso login --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro; lbox update-env'
+alias lboxauth='aws sso login --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro'
+alias lboxup='lbox update-env'
 alias lboxcc='lbox exec sandbox claude'
+alias lboxsh='lbox exec sandbox zsh'
 
 #####################################################################
 # Process management
