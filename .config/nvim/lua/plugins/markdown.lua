@@ -19,7 +19,7 @@ return {
                     vim.keymap.set("i", "<Enter>", "<Plug>Markdown_NewLineBelow", bufopts)
                     vim.keymap.set("i", "<C-k>", "<Plug>Markdown_CreateLink", bufopts)
                     vim.keymap.set("x", "<C-k>", "<Plug>Markdown_CreateLink", bufopts)
-                    vim.keymap.set("n", "<Leader>c", "<Plug>Markdown_Checkbox", bufopts)
+                    vim.keymap.set("n", "<Leader>cc", "<Plug>Markdown_Checkbox", bufopts)
                 end,
             })
         end,
