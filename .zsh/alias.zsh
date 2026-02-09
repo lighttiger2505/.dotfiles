@@ -324,13 +324,20 @@ alias devc='devcontainer'
 alias devclaude='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . claude'
 alias devzsh='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . zsh'
 alias devrec='devcontainer up --workspace-folder . --remove-existing-container'
+alias brmodels='aws bedrock list-inference-profiles --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro --region ap-northeast-1 | jq ".inferenceProfileSummaries.[] | [.inferenceProfileName, .inferenceProfileArn] | @csv"'
 alias ccb='AWS_PROFILE="mot-sandbox-software-dev-aws_llm-trial-emp-ro" \
+CLAUDE_CODE_USE_BEDROCK="1" \
 AWS_REGION="ap-northeast-1" \
+ANTHROPIC_MODEL="opusplan" \
+ANTHROPIC_DEFAULT_HAIKU_MODEL="jp.anthropic.claude-sonnet-4-5-20250929-v1:0" \
+ANTHROPIC_DEFAULT_SONNET_MODEL="jp.anthropic.claude-sonnet-4-5-20250929-v1:0" \
+ANTHROPIC_DEFAULT_OPUS_MODEL="global.anthropic.claude-opus-4-6-v1" \
 claude code'
 alias lboxauth='aws sso login --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro'
 alias lboxup='lbox update-env'
 alias lboxcc='lbox exec sandbox claude'
 alias lboxsh='lbox exec sandbox zsh'
+alias planv='vim "$(ls ~/.claude/plans 2>/dev/null | head -n 1 | sed "s|^|$HOME/.claude/plans/|")"'
 
 #####################################################################
 # Process management
