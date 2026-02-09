@@ -21,5 +21,10 @@
     "typescript-lsp@claude-plugins-official": true,
     "document-skills@anthropic-agent-skills": true,
     "example-skills@anthropic-agent-skills": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y ccstatusline@latest",
+    "padding": 0
   }
 }
