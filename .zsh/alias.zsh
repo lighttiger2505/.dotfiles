@@ -337,7 +337,19 @@ alias lboxauth='aws sso login --profile mot-sandbox-software-dev-aws_llm-trial-e
 alias lboxup='lbox update-env'
 alias lboxcc='lbox exec sandbox claude'
 alias lboxsh='lbox exec sandbox zsh'
-alias planv='vim "$(ls ~/.claude/plans 2>/dev/null | head -n 1 | sed "s|^|$HOME/.claude/plans/|")"'
+alias planv='nvim "$(eza -s modified ~/.claude/plans | head -n 1)"'
+
+function edit-claude-settings() {
+    local files=(
+        "$HOME/.claude/settings.json"
+        ".claude/settings.json"
+        ".claude/settings.local.json"
+    )
+    selected=$(printf "%s\n" "${files[@]}" | xargs -I{} sh -c "[ -f {} ] && echo {}" \
+        | fzf --preview "sed -n \"1,200p\" {}")
+    [ -n "$selected" ] && ${EDITOR:-nvim} "$selected"
+}
+alias cccon=edit-claude-settings
 
 #####################################################################
 # Process management
