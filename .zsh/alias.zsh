@@ -63,6 +63,13 @@ alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#r
 alias gs='git status'
 alias ts='tig status'
 
+function cd-git-worktree-fzf() {
+  local dir
+  dir=$(git worktree list | fzf | awk '$1=="*" {print $2; next} {print $1}')
+  [ -n "$dir" ] && cd "$dir"
+}
+alias cdw=cd-git-worktree-fzf
+
 #####################################################################
 # Zsh
 #####################################################################
