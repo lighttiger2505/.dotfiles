@@ -70,3 +70,7 @@
 	cp = cherry-pick
 [url "ssh://git@github.com"]
 	insteadOf = https://github.com
+[wt]
+	basedir = .worktrees
+	copy = .envrc
+	hook = git submodule update --init --recursive
