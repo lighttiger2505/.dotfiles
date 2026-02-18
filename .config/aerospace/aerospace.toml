@@ -7,7 +7,7 @@ persistent-workspaces = []
 
 start-at-login = true
 
-accordion-padding = 80
+accordion-padding = 40
 
 # i3 doesn't have "normalizations" feature that why we disable them here.
 # But the feature is very helpful.
@@ -121,10 +121,10 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 [gaps]
     inner.horizontal = 16
     inner.vertical =   16
-    outer.left =       8
+    outer.left =       16
     outer.bottom =     8
     outer.top =        8
-    outer.right =      8
+    outer.right =      16
 
 [[on-window-detected]]
 if.app-id = "com.apple.finder"
