@@ -16,6 +16,19 @@ accordion-padding = 40
 enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = false
 
+########################################
+# Workspace to monitor
+# show monitor list command `aerospace list-monitors`
+########################################
+after-startup-command = [
+  "workspace A",
+  "workspace M",
+  "workspace O",
+  "move-workspace-to-monitor A Built-in Retina Display",
+  "move-workspace-to-monitor M XV282K KV",
+  "move-workspace-to-monitor O LG ULTRAWIDE"
+]
+
 # Mouse follows focus when focused monitor changes
 # on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
@@ -174,23 +187,3 @@ run = "layout floating"
 [[on-window-detected]]
     if.app-id = 'com.spotify.client'
     run = 'move-node-to-workspace 3'
-
-########################################
-# Workspace to monitor
-# show monitor list command `aerospace list-monitors`
-########################################
-[exec-on-startup]
-commands = [
-  "aerospace workspace A",
-  "aerospace workspace M",
-  "aerospace workspace O",
-  "aerospace move-workspace-to-monitor A Built-in Retina Display",
-  "aerospace move-workspace-to-monitor M XV282K KV"
-  "aerospace move-workspace-to-monitor O LG ULTRAWIDE"
-]
-
-[on-monitor-added]
-commands = [
-  "aerospace move-workspace-to-monitor A Built-in Retina Display",
-  "aerospace move-workspace-to-monitor M XV282K KV"
-  "aerospace move-workspace-to-monitor O LG ULTRAWIDE"
