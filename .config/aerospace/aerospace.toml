@@ -75,6 +75,7 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 
     alt-cmd-m = 'workspace M'
     alt-cmd-o = 'workspace O'
+    alt-cmd-a = 'workspace A'
 
     alt-cmd-shift-1 = 'move-node-to-workspace 1'
     alt-cmd-shift-2 = 'move-node-to-workspace 2'
@@ -89,6 +90,7 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 
     alt-cmd-shift-m = 'workspace M'
     alt-cmd-shift-o = 'workspace O'
+    alt-cmd-shift-a = 'workspace A'
 
     alt-cmd-shift-c = 'reload-config'
 
@@ -130,27 +132,37 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 if.app-id = "com.apple.finder"
 run = "layout floating"
 
-#############
-# Main window
-#############
+########################################
+# Application to main window workspace
+########################################
 [[on-window-detected]]
     if.app-id = 'com.mitchellh.ghostty'
     run = 'move-node-to-workspace M'
 
-#############
-# Sub Windown
-#############
+########################################
+# Application to Sub Windown workspace
+########################################
 [[on-window-detected]]
     if.app-id = 'com.google.Chrome'
     run = 'move-node-to-workspace O'
 
+
+
+########################################
+# Application to Mac Display
+########################################
 [[on-window-detected]]
     if.app-id = 'com.tinyspeck.slackmacgap'
-    run = 'move-node-to-workspace O'
+    run = 'move-node-to-workspace A'
 
-#############
+# Google Meet
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan'
+    run = 'move-node-to-workspace A'
+
+########################################
 # Other window
-#############
+########################################
 [[on-window-detected]]
     if.app-id = 'com.rambox'
     run = 'move-node-to-workspace 1'
@@ -163,3 +175,22 @@ run = "layout floating"
     if.app-id = 'com.spotify.client'
     run = 'move-node-to-workspace 3'
 
+########################################
+# Workspace to monitor
+# show monitor list command `aerospace list-monitors`
+########################################
+[exec-on-startup]
+commands = [
+  "aerospace workspace A",
+  "aerospace workspace M",
+  "aerospace workspace O",
+  "aerospace move-workspace-to-monitor A Built-in Retina Display",
+  "aerospace move-workspace-to-monitor M XV282K KV"
+  "aerospace move-workspace-to-monitor O LG ULTRAWIDE"
+]
+
+[on-monitor-added]
+commands = [
+  "aerospace move-workspace-to-monitor A Built-in Retina Display",
+  "aerospace move-workspace-to-monitor M XV282K KV"
+  "aerospace move-workspace-to-monitor O LG ULTRAWIDE"
