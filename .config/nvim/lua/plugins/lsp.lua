@@ -31,7 +31,7 @@ return {
                         },
                     },
                 },
-                -- ts_ls = {},
+                ts_ls = {},
                 lua_ls = {
                     settings = {
                         Lua = {
@@ -75,6 +75,7 @@ return {
                 biome = {},
                 tailwindcss = {},
                 copilot = {},
+                jsonls = {},
             },
         },
         config = function(_, opts)
