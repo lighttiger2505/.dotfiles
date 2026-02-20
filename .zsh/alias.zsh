@@ -336,8 +336,8 @@ alias ccb='AWS_PROFILE="mot-sandbox-software-dev-aws_llm-trial-emp-ro" \
 CLAUDE_CODE_USE_BEDROCK="1" \
 AWS_REGION="ap-northeast-1" \
 ANTHROPIC_MODEL="opusplan" \
-ANTHROPIC_DEFAULT_HAIKU_MODEL="jp.anthropic.claude-sonnet-4-5-20250929-v1:0" \
-ANTHROPIC_DEFAULT_SONNET_MODEL="jp.anthropic.claude-sonnet-4-5-20250929-v1:0" \
+ANTHROPIC_DEFAULT_HAIKU_MODEL="jp.anthropic.claude-haiku-4-5-20251001-v1:0" \
+ANTHROPIC_DEFAULT_SONNET_MODEL="jp.anthropic.claude-sonnet-4-6" \
 ANTHROPIC_DEFAULT_OPUS_MODEL="global.anthropic.claude-opus-4-6-v1" \
 claude code'
 alias lboxauth='aws sso login --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro'
