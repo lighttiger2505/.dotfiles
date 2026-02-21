@@ -42,9 +42,9 @@ return {
             },
             {
                 "<Space>l",
-                "<Cmd>Telescope live_grep<CR>",
+                "<Cmd>Telescope lazy_plugins<CR>",
                 mode = "n",
-                desc = "Telescope Find live grep",
+                desc = "Telescope Find lazy plugins",
             },
         },
     },
@@ -58,6 +58,7 @@ return {
                 -- NOTE workaround https://github.com/nvim-telescope/telescope-fzf-native.nvim/issues/120#issuecomment-2929964883
                 build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 && cmake --build build --config Release'",
             },
+            "polirritmico/telescope-lazy-plugins.nvim",
         },
         config = function()
             local telescope = require("telescope")
@@ -86,22 +87,7 @@ return {
             })
             telescope.load_extension("fzf")
             telescope.load_extension("gh_pr_changes")
+            telescope.load_extension("lazy_plugins")
         end,
-    },
-
-    {
-        "nvim-telescope/telescope-ghq.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim" },
-        config = function()
-            require("telescope").load_extension("ghq")
-        end,
-        keys = {
-            {
-                "<Space>g",
-                "<Cmd>Telescope ghq<CR>",
-                mode = "n",
-                desc = "Telescope Find projects",
-            },
-        },
     },
 }
