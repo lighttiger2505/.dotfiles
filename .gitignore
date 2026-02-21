@@ -10,17 +10,17 @@
 .zsh/workalias.zsh
 
 # claude code
-.claude/projects
-.claude/statsig
-.claude/todos
-.claude/debug/
-.claude/history.jsonl
-.claude/cache/
-.claude/stats-cache.json
-.claude/plugins/
-.claude/file-history/
-.claude/plans/
-.claude/tasks/
+.claude-*/projects
+.claude-*/statsig
+.claude-*/todos
+.claude-*/debug/
+.claude-*/history.jsonl
+.claude-*/cache/
+.claude-*/stats-cache.json
+.claude-*/plugins/
+.claude-*/file-history/
+.claude-*/plans/
+.claude-*/tasks/
 
 # lazy.vim
 lazy-lock.json

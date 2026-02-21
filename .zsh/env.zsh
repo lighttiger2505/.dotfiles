@@ -27,3 +27,13 @@ ZSH_DISABLE_COMPFIX="true"
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
 sudo_path=({,/usr/pkg,/usr/local,/usr}/sbin(N-/))
+
+# Switch Claude config dir based on hostname
+case "$(hostname)" in
+  PC-71285)
+    export CLAUDE_CONFIG_DIR="$HOME/.claude-work"
+    ;;
+  *)
+    export CLAUDE_CONFIG_DIR="$HOME/.claude-private"
+    ;;
+esac
