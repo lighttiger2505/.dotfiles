@@ -6,7 +6,7 @@ return {
     version = "1.*",
     dependencies = {
         "mikavilpas/blink-ripgrep.nvim",
-        "giuxtaposition/blink-cmp-copilot",
+        "fang2hou/blink-copilot",
         "rafamadriz/friendly-snippets",
     },
     ---@module 'blink.cmp'
@@ -84,7 +84,7 @@ return {
                 },
                 copilot = {
                     name = "Copilot",
-                    module = "blink-cmp-copilot",
+                    module = "blink-copilot",
                     score_offset = 100,
                     async = true,
                     min_keyword_length = 0,

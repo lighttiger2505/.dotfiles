@@ -1,30 +1,5 @@
 return {
     {
-        "zbirenbaum/copilot.lua",
-        requires = {
-            "copilotlsp-nvim/copilot-lsp",
-        },
-        cmd = "Copilot",
-        event = "InsertEnter",
-        config = function()
-            require("copilot").setup({
-                -- copilot_model = "gpt-4o-copilot",
-                suggestion = {
-                    enabled = true,
-                },
-                -- nes = {
-                --     enabled = true,
-                --     keymap = {
-                --         accept_and_goto = "<leader>p",
-                --         accept = false,
-                --         dismiss = "<Esc>",
-                --     },
-                -- },
-            })
-        end,
-    },
-
-    {
         "olimorris/codecompanion.nvim",
         cmd = { "CodeCompanionChat" },
         opts = {},
