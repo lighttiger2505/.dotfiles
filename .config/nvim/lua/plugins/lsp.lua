@@ -84,11 +84,8 @@ return {
                 vim.lsp.config[server] = config
             end
 
-            vim.lsp.enable({
-                "lua_ls",
-                "ts_ls",
-                "gopls",
-            })
+            local servers = vim.tbl_keys(opts.servers)
+            vim.lsp.enable(servers)
 
             -- Show LSP client status on attach
             vim.api.nvim_create_autocmd("LspAttach", {
