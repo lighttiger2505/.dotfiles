@@ -11,9 +11,22 @@ function cd-fzf-ghqlist() {
     local GHQ_ROOT=`ghq root`
     local REPO=`ghq list -p | sed -e 's;'${GHQ_ROOT}/';;g' |fzf +m`
     if [ -n "${REPO}" ]; then
-        BUFFER="cd ${GHQ_ROOT}/${REPO}"
+        local NAME=$(echo "${REPO}" | sed "s|${GHQ_ROOT}/||" | tr '/' '_' | tr . _)
+        if tmux has-session -t "${NAME}" 2>/dev/null; then
+            if [ -n "$TMUX" ]; then
+                tmux switch-client -t "${NAME}"
+            else
+                tmux attach -t "${NAME}"
+            fi
+        else
+            if [ -n "$TMUX" ]; then
+                tmux new-session -ds "${NAME}" -c "${REPO}"
+                tmux switch-client -t "${NAME}"
+            else
+                tmux new-session -s "${NAME}" -c "${REPO}"
+            fi
+        fi
     fi
-    zle accept-line
 }
 zle -N cd-fzf-ghqlist
 
