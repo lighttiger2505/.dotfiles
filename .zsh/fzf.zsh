@@ -65,10 +65,7 @@ function checkout-fzf-gitbranch() {
   fi
 
   # No worktree found; just switch (prefer switch over checkout)
-  git switch "${BRANCH}" 2>/dev/null && return 0
-
-  # Remote-only branch: create a tracking branch and switch
-  git switch -c "${BRANCH}" --track "origin/${BRANCH}"
+  git switch "${BRANCH}"
 }
 
 zle -N checkout-fzf-gitbranch
