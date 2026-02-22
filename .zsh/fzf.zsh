@@ -53,7 +53,10 @@ _git_normalize_branch_name() {
 }
 
 function checkout-fzf-gitbranch() {
-  local SELECTED_BRANCH=$(git branch --sort=-authordate --all | grep -v HEAD | fzf +m)
+  local SELECTED_BRANCH=$(git branch --sort=-authordate --all | grep -v HEAD | fzf +m \
+    --prompt="branches > " \
+    --preview="branch=\$(echo {} | sed -E 's/^[*+ ]+//; s/^remotes\/[^\/]+\///'); echo '📚 Recent commits:' && git log --oneline --decorate -10 $branch && echo '' && echo '📊 Diff from HEAD:' && git diff --stat HEAD...$branch 2>/dev/null | tail -5" \
+    --preview-window=right:50%)
   local BRANCH="$(echo "${SELECTED_BRANCH}" | _git_normalize_branch_name)"
 
   if [[ -n "${BRANCH}" ]]; then
