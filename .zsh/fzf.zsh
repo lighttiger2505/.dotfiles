@@ -11,7 +11,7 @@ function cd-fzf-ghqlist() {
     local GHQ_ROOT=`ghq root`
     local REPO=`ghq list -p | sed -e 's;'${GHQ_ROOT}/';;g' |fzf +m`
     if [ -n "${REPO}" ]; then
-        local NAME=$(echo "${REPO}" | sed "s|${GHQ_ROOT}/||" | tr '/' '_' | tr . _)
+        local NAME=$(echo "${REPO}" | tr '/' '_' | tr . _)
         if tmux has-session -t "${NAME}" 2>/dev/null; then
             if [ -n "$TMUX" ]; then
                 tmux switch-client -t "${NAME}"
@@ -19,11 +19,12 @@ function cd-fzf-ghqlist() {
                 tmux attach -t "${NAME}"
             fi
         else
+            local REPO_PATH=${GHQ_ROOT}/${REPO}
             if [ -n "$TMUX" ]; then
-                tmux new-session -ds "${NAME}" -c "${REPO}"
+                tmux new-session -ds "${NAME}" -c "${REPO_PATH}"
                 tmux switch-client -t "${NAME}"
             else
-                tmux new-session -s "${NAME}" -c "${REPO}"
+                tmux new-session -s "${NAME}" -c "${REPO_PATH}"
             fi
         fi
     fi
