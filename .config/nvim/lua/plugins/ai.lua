@@ -157,5 +157,10 @@ Output only the commit message without any explanations and follow-up suggestion
             { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
             { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
         },
+        opts = {
+            terminal = {
+                split_width_percentage = 0.50,
+            },
+        },
     },
 }
