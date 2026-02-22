@@ -9,7 +9,6 @@ idiomatic_version_file_enable_tools = ["node"]
 go = "1.25.5"
 "go:golang.org/x/tools/gopls" = "latest"
 node = "25"
-"npm:@anthropic-ai/claude-code" = "latest"
 "npm:biome" = "latest"
 "npm:typescript" = "latest"
 "npm:typescript-language-server" = "latest"
