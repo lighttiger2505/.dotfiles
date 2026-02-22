@@ -12,14 +12,18 @@ function cd-fzf-ghqlist() {
     local REPO=`ghq list -p | sed -e 's;'${GHQ_ROOT}/';;g' |fzf +m`
     if [ -n "${REPO}" ]; then
         local NAME=$(echo "${REPO}" | tr '/' '_' | tr . _)
+        local REPO_PATH=${GHQ_ROOT}/${REPO}
         if tmux has-session -t "${NAME}" 2>/dev/null; then
             if [ -n "$TMUX" ]; then
                 tmux switch-client -t "${NAME}"
             else
                 tmux attach -t "${NAME}"
             fi
+            local CURRENT_PATH=$(tmux display-message -t "${NAME}" -p "#{pane_current_path}")
+            if [ "${CURRENT_PATH}" != "${REPO_PATH}" ]; then
+                tmux send-keys -t "${NAME}" "cd ${REPO_PATH}" Enter
+            fi
         else
-            local REPO_PATH=${GHQ_ROOT}/${REPO}
             if [ -n "$TMUX" ]; then
                 tmux new-session -ds "${NAME}" -c "${REPO_PATH}"
                 tmux switch-client -t "${NAME}"
