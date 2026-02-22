@@ -49,7 +49,7 @@ _git_worktree_path_for_branch() {
 
 # Normalize fzf selection to a branch name (remotes/origin/foo -> foo)
 _git_normalize_branch_name() {
-  sed -E 's#^[* ]+##; s#^remotes/[^/]+/##; s#^refs/heads/##'
+  sed -E 's#^[*+ ]+##; s#^remotes/[^/]+/##; s#^refs/heads/##'
 }
 
 function checkout-fzf-gitbranch() {
@@ -112,28 +112,6 @@ function fzf-worktree() {
     fi
 }
 alias fwt=fzf-worktree
-
-#####################################################################
-# fzf ssh
-#####################################################################
-
-# ssh selected host
-function ssh-fzf-sshconfig() {
-    local SSH_HOST=$(awk '
-        tolower($1)=="host" {
-            for (i=2; i<=NF; i++) {
-                if ($i !~ "[*?]") {
-                    print $i
-                }
-            }
-        }
-    ' ~/.ssh/config | sort | fzf +m)
-    if [ -n "$SSH_HOST" ]; then
-        BUFFER="ssh $SSH_HOST"
-    fi
-    zle accept-line
-}
-zle -N ssh-fzf-sshconfig
 
 #####################################################################
 # fzf file
