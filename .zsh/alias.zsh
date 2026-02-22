@@ -102,9 +102,9 @@ alias vimdiff='vim -d'
 alias tm='tmux capture-pane -pS - > /tmp/tmux_output && vim /tmp/tmux_output'
 
 # open vim with vimmemo
-alias td='vim ~/.config/vimmemo/todo.md'
-alias tl='vim ~/.config/vimmemo/link.md'
-alias tf='vim ~/.config/vimmemo/feedback.md'
+alias td='vim $VIM_MEMO_DIR/todo.md'
+alias tl='vim $VIM_MEMO_DIR/link.md'
+alias tf='vim $VIM_MEMO_DIR/feedback.md'
 
 #####################################################################
 # GitHub cli

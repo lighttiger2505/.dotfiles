@@ -32,8 +32,10 @@ sudo_path=({,/usr/pkg,/usr/local,/usr}/sbin(N-/))
 case "$(hostname)" in
   PC-71285)
     export CLAUDE_CONFIG_DIR="$HOME/.claude-work"
+    export VIM_MEMO_DIR="$HOME/.config/vimmemo/work"
     ;;
   *)
     export CLAUDE_CONFIG_DIR="$HOME/.claude-private"
+    export VIM_MEMO_DIR="$HOME/.config/vimmemo/private"
     ;;
 esac
