@@ -55,19 +55,18 @@ _git_normalize_branch_name() {
 function checkout-fzf-gitbranch() {
   local SELECTED_BRANCH=$(git branch --sort=-authordate --all | grep -v HEAD | fzf +m)
   local BRANCH="$(echo "${SELECTED_BRANCH}" | _git_normalize_branch_name)"
-  [[ -z "${BRANCH}" ]] && return 0
 
-  # If a worktree already exists for this branch, cd into it instead of checkout
-  local WT_PATH="$(_git_worktree_path_for_branch "${BRANCH}")"
-  if [[ -n "${WT_PATH}" ]]; then
-    cd "${WT_PATH}"
-    return 0
+  if [[ -n "${BRANCH}" ]]; then
+    local WT_PATH="$(_git_worktree_path_for_branch "${BRANCH}")"
+    if [[ -n "${WT_PATH}" ]]; then
+      cd "${WT_PATH}"
+    else
+      git switch "${BRANCH}"
+    fi
   fi
 
-  # No worktree found; just switch (prefer switch over checkout)
-  git switch "${BRANCH}"
+  zle-line-finish
 }
-
 zle -N checkout-fzf-gitbranch
 
 # Move worktree
