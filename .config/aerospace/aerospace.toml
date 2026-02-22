@@ -159,18 +159,16 @@ run = "layout floating"
     if.app-id = 'com.google.Chrome'
     run = 'move-node-to-workspace O'
 
-
+# Google Meet
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan'
+    run = 'move-node-to-workspace O'
 
 ########################################
 # Application to Mac Display
 ########################################
 [[on-window-detected]]
     if.app-id = 'com.tinyspeck.slackmacgap'
-    run = 'move-node-to-workspace A'
-
-# Google Meet
-[[on-window-detected]]
-    if.app-id = 'com.google.Chrome.app.kjgfgldnnfoeklkmfkjfagphfepbbdan'
     run = 'move-node-to-workspace A'
 
 ########################################
