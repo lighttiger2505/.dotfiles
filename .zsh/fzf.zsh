@@ -31,14 +31,42 @@ function cd-fzf-ghqlist() {
 }
 zle -N cd-fzf-ghqlist
 
-# Checkout git branch (including remote branches)
-function checkout-fzf-gitbranch() {
-    local GIT_BRANCH=$(git branch --sort=-authordate --all | grep -v HEAD | fzf +m)
-    if [ -n "$GIT_BRANCH" ]; then
-        git checkout $(echo "$GIT_BRANCH" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-    fi
-    zle accept-line
+# Look up existing worktree path for a given branch (refs/heads/xxx -> path)
+_git_worktree_path_for_branch() {
+  local b="$1"
+  local ref="refs/heads/$b"
+
+  git worktree list --porcelain \
+  | awk -v ref="$ref" '
+      $1=="worktree" { wt=$2 }
+      $1=="branch"   { br=$2; if (br==ref) { print wt; exit } }
+    '
 }
+
+# Normalize fzf selection to a branch name (remotes/origin/foo -> foo)
+_git_normalize_branch_name() {
+  sed -E 's#^[* ]+##; s#^remotes/[^/]+/##; s#^refs/heads/##'
+}
+
+function checkout-fzf-gitbranch() {
+  local SELECTED_BRANCH=$(git branch --sort=-authordate --all | grep -v HEAD | fzf +m)
+  local BRANCH="$(echo "${SELECTED_BRANCH}" | _git_normalize_branch_name)"
+  [[ -z "${BRANCH}" ]] && return 0
+
+  # If a worktree already exists for this branch, cd into it instead of checkout
+  local WT_PATH="$(_git_worktree_path_for_branch "${BRANCH}")"
+  if [[ -n "${WT_PATH}" ]]; then
+    cd "${WT_PATH}"
+    return 0
+  fi
+
+  # No worktree found; just switch (prefer switch over checkout)
+  git switch "${BRANCH}" 2>/dev/null && return 0
+
+  # Remote-only branch: create a tracking branch and switch
+  git switch -c "${BRANCH}" --track "origin/${BRANCH}"
+}
+
 zle -N checkout-fzf-gitbranch
 
 # Move worktree
