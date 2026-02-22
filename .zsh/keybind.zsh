@@ -23,7 +23,7 @@ bindkey -M viins '^H'  backward-delete-char
 # Fuzzy finder command
 bindkey '^L' cd-fzf-ghqlist
 bindkey '^O' checkout-fzf-gitbranch
-bindkey '^\' ssh-fzf-sshconfig
+bindkey '^W' fzf-worktree
 
 # Open editor
 autoload -Uz edit-command-line

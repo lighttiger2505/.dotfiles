@@ -107,7 +107,7 @@ function fzf-worktree() {
         zle clear-screen
     fi
 }
-alias fwt=fzf-worktree
+zle -N fzf-worktree
 
 #####################################################################
 # fzf file
