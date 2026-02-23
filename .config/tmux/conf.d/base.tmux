@@ -1,5 +1,5 @@
-# Prefix key is [Ctrl+g]
-set -g prefix C-g
+# Prefix key is [Ctrl+t]
+set -g prefix C-t
 
 # kill tmux when the last session is killed
 set -g detach-on-destroy off

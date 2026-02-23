@@ -1,3 +1,6 @@
+# Send literal C-t to application (prefix + C-t)
+bind-key C-t send-prefix
+
 # Release all key bind
 unbind-key Up
 unbind-key Down
