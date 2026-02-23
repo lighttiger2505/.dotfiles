@@ -5,18 +5,18 @@ set -eu
 
 # Replace all control characters (0x00-0x1F) with spaces to ensure valid JSON
 # Stop hook's last_assistant_message may contain unescaped control chars
-INPUT=$(cat | LC_ALL=C tr '\000-\037' ' ')
+INPUT=$(cat | perl -0777 -pe 's/[\x00-\x1f]/ /g')
 
-CWD=$(echo "$INPUT" | jq -r '.cwd // empty')
-HOOK_EVENT=$(echo "$INPUT" | jq -r '.hook_event_name // empty')
-SESSION_ID=$(echo "$INPUT" | jq -r '.session_id // "claude"')
+CWD=$(printf '%s\n' "$INPUT" | jq -r '.cwd // empty')
+HOOK_EVENT=$(printf '%s\n' "$INPUT" | jq -r '.hook_event_name // empty')
+SESSION_ID=$(printf '%s\n' "$INPUT" | jq -r '.session_id // "claude"')
 
 if [ "$HOOK_EVENT" = "Stop" ]; then
     TITLE="タスク完了"
-    MESSAGE="Claudeのターンが完了しました"
+    MESSAGE="Claudeに依頼したタスクが完了しました。"
 else
-    MESSAGE=$(echo "$INPUT" | jq -r '.message // "確認待ち"')
-    TITLE=$(echo "$INPUT" | jq -r '.title // "Claude Code"')
+    MESSAGE=$(printf '%s\n' "$INPUT" | jq -r '.message // "確認待ち"')
+    TITLE=$(printf '%s\n' "$INPUT" | jq -r '.title // "Claude Code"')
 fi
 
 REPO_NAME=$(basename "${CWD:-unknown}")
