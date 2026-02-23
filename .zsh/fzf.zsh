@@ -11,7 +11,7 @@ function cd-fzf-ghqlist() {
     local GHQ_ROOT=`ghq root`
     local REPO=`ghq list -p | sed -e 's;'${GHQ_ROOT}/';;g' |fzf +m`
     if [ -n "${REPO}" ]; then
-        local NAME=$(echo "${REPO}" | tr '/' '_' | tr . _)
+        local NAME=$(echo "${REPO#*/}" | tr '/' '_' | tr . _)
         local REPO_PATH=${GHQ_ROOT}/${REPO}
         if tmux has-session -t "${NAME}" 2>/dev/null; then
             if [ -n "$TMUX" ]; then
