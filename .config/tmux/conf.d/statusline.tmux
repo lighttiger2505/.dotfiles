@@ -1,7 +1,7 @@
 # Left status bar display setting
 set -g status-interval 1
 set -g status-left-length 128
-set -g status-left " Session #{session_name} "
+set -g status-left " #{session_name} "
 
 # Right status bar display setting
 set -g status-right-length 128
