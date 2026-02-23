@@ -3,12 +3,20 @@
 
 set -eu
 
-INPUT=$(cat)
+# Remove control characters that break jq parsing (Stop hook's last_assistant_message)
+INPUT=$(cat | LC_ALL=C tr -d '\001-\010\013\014\016-\037')
 
 CWD=$(echo "$INPUT" | jq -r '.cwd // empty')
-MESSAGE=$(echo "$INPUT" | jq -r '.message // "確認待ち"')
-TITLE=$(echo "$INPUT" | jq -r '.title // "Claude Code"')
+HOOK_EVENT=$(echo "$INPUT" | jq -r '.hook_event_name // empty')
 SESSION_ID=$(echo "$INPUT" | jq -r '.session_id // "claude"')
+
+if [ "$HOOK_EVENT" = "Stop" ]; then
+    TITLE="タスク完了"
+    MESSAGE="Claudeのターンが完了しました"
+else
+    MESSAGE=$(echo "$INPUT" | jq -r '.message // "確認待ち"')
+    TITLE=$(echo "$INPUT" | jq -r '.title // "Claude Code"')
+fi
 
 REPO_NAME=$(basename "${CWD:-unknown}")
 
