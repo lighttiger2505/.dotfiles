@@ -44,3 +44,5 @@ setw -g window-status-bell-style "bg=#{@my-color-yellow},fg=#{@my-color-base}"
 
 setw -g pane-border-style "bg=#{@my-color-surface0},fg=#{@my-color-overlay0}"
 setw -g pane-active-border-style "bg=#{@my-color-lavender},fg=#{@my-color-base}"
+
+set -g popup-border-style "fg=#{@my-color-red}"
