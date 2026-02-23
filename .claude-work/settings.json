@@ -41,9 +41,7 @@
     "enabledPlugins": {
         "gopls-lsp@claude-plugins-official": true,
         "context7@claude-plugins-official": true,
-        "typescript-lsp@claude-plugins-official": true,
-        "document-skills@anthropic-agent-skills": true,
-        "example-skills@anthropic-agent-skills": true
+        "typescript-lsp@claude-plugins-official": true
     },
     "statusLine": {
         "type": "command",
