@@ -3,8 +3,9 @@
 
 set -eu
 
-# Remove control characters that break jq parsing (Stop hook's last_assistant_message)
-INPUT=$(cat | LC_ALL=C tr -d '\001-\010\013\014\016-\037')
+# Replace all control characters (0x00-0x1F) with spaces to ensure valid JSON
+# Stop hook's last_assistant_message may contain unescaped control chars
+INPUT=$(cat | LC_ALL=C tr '\000-\037' ' ')
 
 CWD=$(echo "$INPUT" | jq -r '.cwd // empty')
 HOOK_EVENT=$(echo "$INPUT" | jq -r '.hook_event_name // empty')
