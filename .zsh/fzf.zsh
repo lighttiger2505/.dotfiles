@@ -10,7 +10,8 @@ export FZF_DEFAULT_OPTS='--height 70% --reverse'
 function cd-fzf-ghqlist() {
     local GHQ_ROOT=`ghq root`
     local REPO=$(ghq list -p | sed -e 's;'${GHQ_ROOT}/';;g' |fzf +m \
-      --prompt="repositories > "
+      --prompt="repositories > " \
+      --preview="dir='${GHQ_ROOT}/{}'; f=\$(ls \"\$dir\"/README* 2>/dev/null | head -1); if [ -n \"\$f\" ]; then bat --style=plain --color=always \"\$f\" 2>/dev/null || cat \"\$f\"; else echo 'No README found'; fi"
     )
     if [ -n "${REPO}" ]; then
         local NAME=$(echo "${REPO#*/}" | tr '/' '_' | tr . _)
@@ -58,7 +59,7 @@ function checkout-fzf-gitbranch() {
   local SELECTED_BRANCH=$(git branch --sort=-authordate --all | grep -v HEAD | fzf +m \
     --prompt="branches > " \
     --preview="branch=\$(echo {} | sed -E 's/^[*+ ]+//; s/^remotes\/[^\/]+\///'); echo '📚 Recent commits:' && git log --oneline --decorate -10 $branch && echo '' && echo '📊 Diff from HEAD:' && git diff --stat HEAD...$branch 2>/dev/null | tail -5" \
-    --preview-window=right:50%)
+    )
   local BRANCH="$(echo "${SELECTED_BRANCH}" | _git_normalize_branch_name)"
 
   if [[ -n "${BRANCH}" ]]; then
