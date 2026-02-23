@@ -22,6 +22,7 @@ bindkey -M viins '^H'  backward-delete-char
 
 # Fuzzy finder command
 bindkey '^L' cd-git-repository
+bindkey '^U' create-repository-session
 bindkey '^O' switch-git-branch
 bindkey '^\' cd-git-worktree
 
