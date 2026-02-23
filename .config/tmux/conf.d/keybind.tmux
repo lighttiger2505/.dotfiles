@@ -49,10 +49,10 @@ bind-key -n M-K resize-pane -U 5
 bind-key -n M-L resize-pane -R 5
 
 # Move(Select) window
-bind-key n select-window -n
-bind-key p select-window -p
-bind-key -n M-n select-window -n
-bind-key -n M-p select-window -p
+bind-key n next-window
+bind-key p previous-window
+bind-key -n M-n next-window
+bind-key -n M-p previous-window
 
 # Jump(Select) window
 bind-key -n M-1 select-window -t 1
