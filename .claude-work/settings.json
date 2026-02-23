@@ -21,7 +21,18 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "terminal-notifier -title \"Claude Codeが許可を求めています\" -message \"確認待ち\" -subtitle \"Claude Code\" -sound default"
+                        "command": "$HOME/scripts/claude-notification"
+                    }
+                ]
+            }
+        ],
+        "Stop": [
+            {
+                "matcher": "",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "$HOME/scripts/claude-notification"
                     }
                 ]
             }

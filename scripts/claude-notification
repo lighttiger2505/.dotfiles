@@ -1,0 +1,31 @@
+#!/bin/sh
+# Claude Code notification hook
+
+set -eu
+
+INPUT=$(cat)
+
+CWD=$(echo "$INPUT" | jq -r '.cwd // empty')
+MESSAGE=$(echo "$INPUT" | jq -r '.message // "確認待ち"')
+TITLE=$(echo "$INPUT" | jq -r '.title // "Claude Code"')
+SESSION_ID=$(echo "$INPUT" | jq -r '.session_id // "claude"')
+
+REPO_NAME=$(basename "${CWD:-unknown}")
+
+BRANCH=""
+if [ -n "$CWD" ] && git -C "$CWD" rev-parse --git-dir >/dev/null 2>&1; then
+    BRANCH=$(git -C "$CWD" rev-parse --abbrev-ref HEAD 2>/dev/null || true)
+fi
+
+if [ -n "$BRANCH" ]; then
+    NOTIFY_TITLE="${REPO_NAME} (${BRANCH})"
+else
+    NOTIFY_TITLE="${REPO_NAME}"
+fi
+
+terminal-notifier \
+    -title "$NOTIFY_TITLE" \
+    -subtitle "$TITLE" \
+    -message "$MESSAGE" \
+    -sound default \
+    -group "claude-${SESSION_ID}"
