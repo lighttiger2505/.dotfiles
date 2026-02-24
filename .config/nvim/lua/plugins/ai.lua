@@ -131,6 +131,26 @@ Output only the commit message without any explanations and follow-up suggestion
                 },
             })
         end,
+        keys = {
+            {
+                "<Leader>aa",
+                "<cmd>CodeCompanionChat Toggle<cr>",
+                mode = { "n", "v" },
+                desc = "CodeCompanion toggle codecompanion chat",
+            },
+            {
+                "<Leader>an",
+                "<cmd>CodeCompanionChat<cr>",
+                mode = { "n", "v" },
+                desc = "CodeCompanion new codecompanion chat",
+            },
+            {
+                "ga",
+                "<cmd>CodeCompanionChat Add<cr>",
+                mode = { "v" },
+                desc = "CodeCompanion add codecompanion chat",
+            },
+        },
     },
 
     {
