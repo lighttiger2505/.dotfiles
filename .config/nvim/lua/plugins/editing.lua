@@ -1,41 +1,18 @@
 return {
     {
         "kylechui/nvim-surround",
-        version = "*",
+        version = "^4.0.0",
         event = "VeryLazy",
         config = function()
-            require("nvim-surround").setup({
-                surrounds = {
-                    -- override non space pair
-                    ["("] = {
-                        add = function()
-                            return { { "(" }, { ")" } }
-                        end,
-                    },
-                    ["["] = {
-                        add = function()
-                            return { { "[" }, { "]" } }
-                        end,
-                    },
-                    ["{"] = {
-                        add = function()
-                            return { { "{" }, { "}" } }
-                        end,
-                    },
-                },
-                keymaps = {
-                    -- insert = "<C-g>s",
-                    -- insert_line = "<C-g>S",
-                    normal = "sa",
-                    -- normal_cur = "yss",
-                    -- normal_line = "yS",
-                    -- normal_cur_line = "ySS",
-                    visual = "sa",
-                    -- visual_line = "gS",
-                    delete = "sd",
-                    change = "sr",
-                    -- change_line = "cS",
-                },
+            vim.g.nvim_surround_no_normal_mappings = true
+            vim.keymap.set("n", "sa", "<Plug>(nvim-surround-normal)", {
+                desc = "Add a surrounding pair around a motion (normal mode)",
+            })
+            vim.keymap.set("n", "sd", "<Plug>(nvim-surround-delete)", {
+                desc = "Delete a surrounding pair",
+            })
+            vim.keymap.set("n", "sr", "<Plug>(nvim-surround-change)", {
+                desc = "Change a surrounding pair",
             })
         end,
     },
