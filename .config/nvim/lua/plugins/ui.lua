@@ -207,4 +207,138 @@ return {
             { "<Leader>w", "<Cmd>NoNeckPain<CR>", mode = "n", desc = "NoNeckPain" },
         },
     },
+
+    {
+        "y3owk1n/undo-glow.nvim",
+        event = { "VeryLazy" },
+        config = function()
+            local mocha = require("catppuccin.palettes").get_palette("mocha")
+            ---@type UndoGlow.Config
+            require("undo-glow").setup({
+                animation = {
+                    enabled = true,
+                    duration = 200,
+                    animation_type = "zoom",
+                    window_scoped = true,
+                },
+                highlights = {
+                    undo = {
+                        hl_color = { bg = mocha.red },
+                    },
+                    redo = {
+                        hl_color = { bg = mocha.green },
+                    },
+                    yank = {
+                        hl_color = { bg = mocha.yellow },
+                    },
+                    paste = {
+                        hl_color = { bg = mocha.sky },
+                    },
+                    search = {
+                        hl_color = { bg = mocha.mauve },
+                    },
+                    comment = {
+                        hl_color = { bg = mocha.peach },
+                    },
+                    cursor = {
+                        hl_color = { bg = mocha.blue },
+                    },
+                },
+                priority = 2048 * 3,
+            })
+        end,
+        keys = {
+            {
+                "u",
+                function()
+                    require("undo-glow").undo()
+                end,
+                mode = "n",
+                desc = "Undo with highlight",
+                noremap = true,
+            },
+            {
+                "U",
+                function()
+                    require("undo-glow").redo()
+                end,
+                mode = "n",
+                desc = "Redo with highlight",
+                noremap = true,
+            },
+            {
+                "p",
+                function()
+                    require("undo-glow").paste_below()
+                end,
+                mode = "n",
+                desc = "Paste below with highlight",
+                noremap = true,
+            },
+            {
+                "P",
+                function()
+                    require("undo-glow").paste_above()
+                end,
+                mode = "n",
+                desc = "Paste above with highlight",
+                noremap = true,
+            },
+        },
+        init = function()
+            vim.api.nvim_create_autocmd("TextYankPost", {
+                desc = "Highlight when yanking (copying) text",
+                callback = function()
+                    require("undo-glow").yank()
+                end,
+            })
+
+            -- This only handles neovim instance and do not highlight when switching panes in tmux
+            vim.api.nvim_create_autocmd("CursorMoved", {
+                desc = "Highlight when cursor moved significantly",
+                callback = function()
+                    require("undo-glow").cursor_moved({
+                        animation = {
+                            animation_type = "slide",
+                        },
+                    })
+                end,
+            })
+
+            -- This will handle highlights when focus gained, including switching panes in tmux
+            vim.api.nvim_create_autocmd("FocusGained", {
+                desc = "Highlight when focus gained",
+                callback = function()
+                    ---@type UndoGlow.CommandOpts
+                    local opts = {
+                        animation = {
+                            animation_type = "slide",
+                        },
+                    }
+
+                    opts = require("undo-glow.utils").merge_command_opts("UgCursor", opts)
+                    local pos = require("undo-glow.utils").get_current_cursor_row()
+
+                    require("undo-glow").highlight_region(vim.tbl_extend("force", opts, {
+                        s_row = pos.s_row,
+                        s_col = pos.s_col,
+                        e_row = pos.e_row,
+                        e_col = pos.e_col,
+                        force_edge = opts.force_edge == nil and true or opts.force_edge,
+                    }))
+                end,
+            })
+
+            vim.api.nvim_create_autocmd("CmdlineLeave", {
+                desc = "Highlight when search cmdline leave",
+                callback = function()
+                    require("undo-glow").search_cmd({
+                        animation = {
+                            animation_type = "fade",
+                        },
+                    })
+                end,
+            })
+        end,
+    },
 }
