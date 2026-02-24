@@ -8,6 +8,9 @@ return {
             vim.keymap.set("n", "sa", "<Plug>(nvim-surround-normal)", {
                 desc = "Add a surrounding pair around a motion (normal mode)",
             })
+            vim.keymap.set("x", "sa", "<Plug>(nvim-surround-visual)", {
+                desc = "Add a surrounding pair around a motion (visual mode)",
+            })
             vim.keymap.set("n", "sd", "<Plug>(nvim-surround-delete)", {
                 desc = "Delete a surrounding pair",
             })
