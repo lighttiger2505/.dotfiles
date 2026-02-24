@@ -121,13 +121,13 @@ return {
                     -- lsp saga
                     vim.keymap.set(
                         "n",
-                        "<LocalLeader>c",
+                        "<LocalLeader>a",
                         "<cmd>Lspsaga code_action<CR>",
                         optWithDesc("LSP Code Action")
                     )
                     vim.keymap.set(
                         "i",
-                        "<LocalLeader>c",
+                        "<LocalLeader>a",
                         "<cmd>Lspsaga code_action<CR>",
                         optWithDesc("LSP Code Action")
                     )
