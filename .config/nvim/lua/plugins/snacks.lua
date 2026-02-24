@@ -35,35 +35,6 @@ return {
                 mode = "n",
                 desc = "Snacks delete current buffer",
             },
-            {
-                "<leader>.",
-                function()
-                    Snacks.scratch()
-                end,
-                desc = "Snacks toggle Scratch Buffer",
-            },
-            {
-                "<leader>S",
-                function()
-                    Snacks.scratch.select()
-                end,
-                desc = "Snacks select Scratch Buffer",
-            },
-            {
-                "<leader>cR",
-                function()
-                    Snacks.rename.rename_file()
-                end,
-                desc = "Snacks rename File",
-            },
-            {
-                "<leader>bg",
-                function()
-                    Snacks.gitbrowse()
-                end,
-                desc = "Snacks git browse",
-                mode = { "n", "v" },
-            },
         },
     },
 }
