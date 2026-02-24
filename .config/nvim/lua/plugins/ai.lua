@@ -178,6 +178,7 @@ Output only the commit message without any explanations and follow-up suggestion
             { "<leader>cd", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
         },
         opts = {
+            terminal_cmd = "zsh -ic claude",
             terminal = {
                 split_width_percentage = 0.50,
             },
