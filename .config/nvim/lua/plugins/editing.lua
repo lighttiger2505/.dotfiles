@@ -17,6 +17,26 @@ return {
             vim.keymap.set("n", "sr", "<Plug>(nvim-surround-change)", {
                 desc = "Change a surrounding pair",
             })
+            require("nvim-surround").setup({
+                surrounds = {
+                    -- override non space pair
+                    ["("] = {
+                        add = function()
+                            return { { "(" }, { ")" } }
+                        end,
+                    },
+                    ["["] = {
+                        add = function()
+                            return { { "[" }, { "]" } }
+                        end,
+                    },
+                    ["{"] = {
+                        add = function()
+                            return { { "{" }, { "}" } }
+                        end,
+                    },
+                },
+            })
         end,
     },
 
