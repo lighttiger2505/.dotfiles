@@ -61,6 +61,15 @@ return {
                 border = "thick",
             },
         },
+        config = function(_, opts)
+            local rm = require("render-markdown")
+            rm.setup(opts)
+            vim.api.nvim_create_autocmd("VimLeavePre", {
+                callback = function()
+                    rm.disable()
+                end,
+            })
+        end,
     },
 
     {
