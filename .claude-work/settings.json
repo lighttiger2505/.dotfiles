@@ -1,51 +1,52 @@
 {
-    "$schema": "https://json.schemastore.org/claude-code-settings.json",
-    "language": "japanese",
-    "awsAuthRefresh": "aws sso login --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro",
-    "env": {
-        "AWS_PROFILE": "mot-sandbox-software-dev-aws_llm-trial-emp-ro",
-        "AWS_REGION": "ap-northeast-1",
-        "CLAUDE_CODE_USE_BEDROCK": "1",
-        "ANTHROPIC_MODEL": "opusplan",
-        "ANTHROPIC_DEFAULT_HAIKU_MODEL": "jp.anthropic.claude-haiku-4-5-20251001-v1:0",
-        "ANTHROPIC_DEFAULT_SONNET_MODEL": "jp.anthropic.claude-sonnet-4-6",
-        "ANTHROPIC_DEFAULT_OPUS_MODEL": "global.anthropic.claude-opus-4-6-v1"
-    },
-    "permissions": {
-        "defaultMode": "plan"
-    },
-    "hooks": {
-        "Notification": [
-            {
-                "matcher": "",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "$HOME/scripts/claude-notification"
-                    }
-                ]
-            }
-        ],
-        "Stop": [
-            {
-                "matcher": "",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "$HOME/scripts/claude-notification"
-                    }
-                ]
-            }
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "awsAuthRefresh": "aws sso login --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro",
+  "env": {
+    "AWS_PROFILE": "mot-sandbox-software-dev-aws_llm-trial-emp-ro",
+    "AWS_REGION": "ap-northeast-1",
+    "CLAUDE_CODE_USE_BEDROCK": "1",
+    "ANTHROPIC_MODEL": "opusplan",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "jp.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "jp.anthropic.claude-sonnet-4-6",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "global.anthropic.claude-opus-4-6-v1"
+  },
+  "permissions": {
+    "defaultMode": "plan"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/scripts/claude-notification"
+          }
         ]
-    },
-    "enabledPlugins": {
-        "gopls-lsp@claude-plugins-official": true,
-        "context7@claude-plugins-official": true,
-        "typescript-lsp@claude-plugins-official": true
-    },
-    "statusLine": {
-        "type": "command",
-        "command": "npx -y ccstatusline@latest",
-        "padding": 0
-    }
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/scripts/claude-notification"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y ccstatusline@latest",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true
+  },
+  "language": "japanese"
 }
