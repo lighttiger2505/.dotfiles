@@ -87,7 +87,7 @@ function switch-git-branch() {
     fi
   fi
 }
-alias gl=switch-git-branch
+alias sg=switch-git-branch
 
 # Move worktree
 function cd-git-worktree() {
@@ -124,13 +124,23 @@ function cd-git-worktree() {
 }
 alias cdw=cd-git-worktree
 
+function switch-repository-session() {
+  [ -n "$TMUX" ] || return
+  SELECTED="$(tmux list-sessions | fzf | cut -d : -f 1)"
+  if [ -n "$SELECTED" ]; then
+    tmux switch -t $SELECTED
+  fi
+}
+alias ss=switch-repository-session
+
 # Select and run a git fzf command
 function select-git-command() {
     local commands=(
-        "cd-git-repository:(cdr):リポジトリへcd"
-        "cd-git-worktree:(cdw):worktreeへcd",
-        "switch-git-branch:(gl):ブランチを切り替え",
-        "create-repository-session:(cs):リポジトリのtmuxセッションを作成"
+        "cd-git-repository:(cdr):Git Repositoryへ移動"
+        "cd-git-worktree:(cdw):Git Worktreeを移動",
+        "switch-git-branch:(sg):Git Branchを切り替え",
+        "create-repository-session:(cs):Git Repositoryのtmuxセッションを作成"
+        "switch-repository-session:(ss):Git Repositoryのtmuxセッションを切り替え"
     )
     local selected=$(printf '%s\n' "${commands[@]}" | fzf +m \
         --prompt="git commands > " \
