@@ -84,7 +84,7 @@ return {
             local kmopt = { noremap = true, silent = true }
             vim.keymap.set("n", "<LocalLeader>b", "<Cmd>GoBuild<CR>", kmopt)
             vim.keymap.set("n", "<LocalLeader>m", "<Cmd>GoImports<CR>", kmopt)
-            vim.keymap.set("n", "<LocalLeader>a", "<Cmd>GoAlt<CR>", kmopt)
+            vim.keymap.set("n", "<LocalLeader>t", "<Cmd>GoAlt<CR>", kmopt)
         end,
         ft = { "go", "gomod" },
         build = ':lua require("go.install").update_all_sync()',
