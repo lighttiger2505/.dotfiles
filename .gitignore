@@ -25,6 +25,8 @@
 .claude-*/ide/
 .claude-*/.claude.json
 .claude-*/paste-cache
+.claude-*/usage-data/facets/
+.claude-*/usage-data/session-meta/
 
 # lazy.vim
 lazy-lock.json
