@@ -137,8 +137,8 @@ alias ss=switch-repository-session
 function select-git-command() {
     local commands=(
         "cd-git-repository:(cdr):Git Repositoryへ移動"
-        "cd-git-worktree:(cdw):Git Worktreeを移動",
-        "switch-git-branch:(sg):Git Branchを切り替え",
+        "cd-git-worktree:(cdw):Git Worktreeを移動"
+        "switch-git-branch:(sg):Git Branchを切り替え"
         "create-repository-session:(cs):Git Repositoryのtmuxセッションを作成"
         "switch-repository-session:(ss):Git Repositoryのtmuxセッションを切り替え"
     )
