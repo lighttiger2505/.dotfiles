@@ -6,7 +6,7 @@ alias ..='cd ..'
 alias ....='cd ../..'
 alias ......='cd ../../..'
 alias c="cd ~/"
-alias dot="cd ~/.dotfiles"
+alias m="tmux switch -t main"
 
 # Move to the selected directory from the results of find
 cd-fzf-find() {
