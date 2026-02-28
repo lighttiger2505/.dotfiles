@@ -45,7 +45,7 @@ function create-repository-session() {
         zle clear-screen
     fi
 }
-alias gcs=create-repository-session
+alias cs=create-repository-session
 
 # Move repository dir (simple cd)
 function cd-git-repository() {
