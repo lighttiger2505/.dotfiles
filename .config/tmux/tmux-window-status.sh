@@ -28,8 +28,15 @@ cd ${dirpath}
 echostr=""
 gitdir=$(git rev-parse --show-toplevel 2> /dev/null)
 if [ "0" -eq "${?}" ]; then
-
-    echostr="${echostr}🌴 $(basename ${gitdir})"
+    git_common_dir=$(git rev-parse --git-common-dir 2> /dev/null)
+    git_dir=$(git rev-parse --git-dir 2> /dev/null)
+    if [ "$git_common_dir" != "$git_dir" ]; then
+        repo_name=$(basename "$(cd "$git_common_dir/.." && pwd)")
+        worktree_name=$(basename "${gitdir}")
+        echostr="${echostr}🌿 ${repo_name} 🌲 ${worktree_name}"
+    else
+        echostr="${echostr}🌿 $(basename ${gitdir})"
+    fi
 else
     echostr="${echostr}📁 $(basename ${dirpath})"
 fi
