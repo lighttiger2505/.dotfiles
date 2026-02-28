@@ -39,3 +39,5 @@ case "$(hostname)" in
     export VIM_MEMO_DIR="$HOME/.config/vimmemo/private"
     ;;
 esac
+
+export TMUX_DEFAULT_SESSION="main"

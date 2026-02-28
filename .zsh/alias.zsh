@@ -5,8 +5,8 @@
 alias ..='cd ..'
 alias ....='cd ../..'
 alias ......='cd ../../..'
-alias c="cd ~/"
-alias m="tmux switch -t main"
+alias c="tmux switch -t ${TMUX_DEFAULT_SESSION}; cd ~/"
+alias d="tmux switch -t ${TMUX_DEFAULT_SESSION}; cd ~/.dotfiles"
 
 # Move to the selected directory from the results of find
 cd-fzf-find() {
