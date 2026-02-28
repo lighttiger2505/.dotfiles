@@ -74,7 +74,7 @@ _git_normalize_branch_name() {
 function switch-git-branch() {
   local SELECTED_BRANCH=$(git branch --sort=-authordate --all | grep -v HEAD | fzf +m \
     --prompt="branches > " \
-    --preview="branch=\$(echo {} | sed -E 's/^[*+ ]+//; s/^remotes\/[^\/]+\///'); echo '📚 Recent commits:' && git log --oneline --decorate -10 $branch && echo '' && echo '📊 Diff from HEAD:' && git diff --stat HEAD...$branch 2>/dev/null | tail -5" \
+    --preview="echo '📚 Recent commits:' && git log --oneline --decorate -10 {1} && echo '' && echo '📊 Diff from HEAD:' && git diff --stat HEAD...{1} 2>/dev/null | tail -5" \
     )
   local BRANCH="$(echo "${SELECTED_BRANCH}" | _git_normalize_branch_name)"
 
