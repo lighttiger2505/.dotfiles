@@ -24,6 +24,7 @@
 .claude-*/backups/
 .claude-*/ide/
 .claude-*/.claude.json
+.claude-*/paste-cache
 
 # lazy.vim
 lazy-lock.json
