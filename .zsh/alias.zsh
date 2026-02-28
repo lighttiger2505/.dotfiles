@@ -289,7 +289,6 @@ alias copilotmodels=list-copilot-models
 # liary
 #####################################################################
 alias li='liary'
-alias cdl='cd `liary config --get diarydir`'
 
 #####################################################################
 # Draw.io
