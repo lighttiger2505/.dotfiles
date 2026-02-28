@@ -45,17 +45,14 @@ function create-repository-session() {
         zle clear-screen
     fi
 }
-zle -N create-repository-session
+alias gcs=create-repository-session
 
 # Move repository dir (simple cd)
 function cd-git-repository() {
     _fzf-select-ghq-repo || return
     cd "${_GHQ_ROOT}/${_GHQ_REPO}"
-    if zle; then
-        zle clear-screen
-    fi
 }
-zle -N cd-git-repository
+alias cdr=cd-git-repository
 
 # Look up existing worktree path for a given branch (refs/heads/xxx -> path)
 _git_worktree_path_for_branch() {
@@ -89,10 +86,8 @@ function switch-git-branch() {
       git switch "${BRANCH}"
     fi
   fi
-
-  zle-line-finish
 }
-zle -N switch-git-branch
+alias gl=switch-git-branch
 
 # Move worktree
 function cd-git-worktree() {
@@ -126,10 +121,25 @@ function cd-git-worktree() {
             return 1
         fi
     fi
+}
+alias cdw=cd-git-worktree
 
-    # Only clear screen if ZLE is active
-    if zle; then
-        zle clear-screen
+# Select and run a git fzf command
+function select-git-command() {
+    local commands=(
+        "cd-git-repository:(cdr):リポジトリへcd"
+        "cd-git-worktree:(cdw):worktreeへcd",
+        "switch-git-branch:(gl):ブランチを切り替え",
+        "create-repository-session:(cs):リポジトリのtmuxセッションを作成"
+    )
+    local selected=$(printf '%s\n' "${commands[@]}" | fzf +m \
+        --prompt="git commands > " \
+        --delimiter=":" \
+        --with-nth=1.. \
+    )
+    if [[ -n "${selected}" ]]; then
+        local cmd="${selected%%:*}"
+        ${cmd}
     fi
 }
-zle -N cd-git-worktree
+alias gj=select-git-command

@@ -20,12 +20,6 @@ bindkey -M viins '^E'  end-of-line
 bindkey -M viins '^F'  forward-char
 bindkey -M viins '^H'  backward-delete-char
 
-# Fuzzy finder command
-bindkey '^L' cd-git-repository
-bindkey '^U' create-repository-session
-bindkey '^O' switch-git-branch
-bindkey '^\' cd-git-worktree
-
 # Open editor
 autoload -Uz edit-command-line
 zle -N edit-command-line
