@@ -46,13 +46,16 @@ function create-repository-session() {
     fi
 }
 alias cs=create-repository-session
+zle -N create-repository-session
 
 # Move repository dir (simple cd)
 function cd-git-repository() {
     _fzf-select-ghq-repo || return
-    cd "${_GHQ_ROOT}/${_GHQ_REPO}"
+    BUFFER="${_GHQ_ROOT}/${_GHQ_REPO}"
+    zle accept-line
 }
 alias cdr=cd-git-repository
+zle -N cd-git-repository
 
 # Look up existing worktree path for a given branch (refs/heads/xxx -> path)
 _git_worktree_path_for_branch() {
@@ -81,13 +84,16 @@ function switch-git-branch() {
   if [[ -n "${BRANCH}" ]]; then
     local WT_PATH="$(_git_worktree_path_for_branch "${BRANCH}")"
     if [[ -n "${WT_PATH}" ]]; then
-      cd "${WT_PATH}"
+      BUFFER="cd ${WT_PATH}"
+      zle accept-line
     else
-      git switch "${BRANCH}"
+      BUFFER="git switch ${BRANCH}"
+      zle accept-line
     fi
   fi
 }
 alias sg=switch-git-branch
+zle -N switch-git-branch
 
 # Move worktree
 function cd-git-worktree() {
@@ -123,6 +129,7 @@ function cd-git-worktree() {
     fi
 }
 alias cdw=cd-git-worktree
+zle -N cd-git-worktree
 
 function switch-repository-session() {
   [ -n "$TMUX" ] || return
