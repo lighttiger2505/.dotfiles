@@ -2,21 +2,16 @@
 
 # ${1} tmux pane current path
 # ${2} tmux window command
+# ${3} tmux pane pid
 
 dirpath=${1}
 cmd=${2}
 pane_pid=${3}
 
-# Claude Code detection
-if [ "$cmd" = "node" ] && [ -n "$pane_pid" ]; then
-    for child_pid in $(ps -A -o pid= -o ppid= -o comm= | awk -v ppid="$pane_pid" '$2 == ppid {print $1}'); do
-        if ps -p "$child_pid" -o args= 2>/dev/null | grep -q "claude"; then
-            echo "🤖 Claude Code"
-            exit 0
-        fi
-    done
+if pgrep -P "${pane_pid}" -x claude > /dev/null 2>&1; then
+    echo "🤖 Claude"
+    exit 0
 fi
-
 
 spcmd=("zsh" "bash" "vim" "nvim" "tig");
 if ! `echo ${spcmd[@]} | grep -q "$cmd"` ; then
