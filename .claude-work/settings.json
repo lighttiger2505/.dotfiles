@@ -37,6 +37,10 @@
                     {
                         "type": "command",
                         "command": "$HOME/scripts/claude-notification"
+                    },
+                    {
+                        "type": "command",
+                        "command": "$HOME/scripts/claude-focus-pane"
                     }
                 ]
             }
@@ -48,6 +52,10 @@
                     {
                         "type": "command",
                         "command": "$HOME/scripts/claude-notification"
+                    },
+                    {
+                        "type": "command",
+                        "command": "$HOME/scripts/claude-focus-pane"
                     }
                 ]
             }
