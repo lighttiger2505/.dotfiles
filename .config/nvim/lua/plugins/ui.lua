@@ -228,21 +228,6 @@ return {
                     redo = {
                         hl_color = { bg = mocha.green },
                     },
-                    yank = {
-                        hl_color = { bg = mocha.yellow },
-                    },
-                    paste = {
-                        hl_color = { bg = mocha.sky },
-                    },
-                    search = {
-                        hl_color = { bg = mocha.mauve },
-                    },
-                    comment = {
-                        hl_color = { bg = mocha.peach },
-                    },
-                    cursor = {
-                        hl_color = { bg = mocha.blue },
-                    },
                 },
                 priority = 2048 * 3,
             })
@@ -285,14 +270,6 @@ return {
                 noremap = true,
             },
         },
-        init = function()
-            vim.api.nvim_create_autocmd("TextYankPost", {
-                desc = "Highlight when yanking (copying) text",
-                callback = function()
-                    require("undo-glow").yank()
-                end,
-            })
-        end,
     },
 
     {
