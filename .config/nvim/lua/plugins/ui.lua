@@ -212,7 +212,6 @@ return {
         "y3owk1n/undo-glow.nvim",
         event = { "VeryLazy" },
         config = function()
-            local mocha = require("catppuccin.palettes").get_palette("mocha")
             ---@type UndoGlow.Config
             require("undo-glow").setup({
                 animation = {
@@ -223,10 +222,16 @@ return {
                 },
                 highlights = {
                     undo = {
-                        hl_color = { bg = mocha.red },
+                        hl_color = { bg = "#693232" }, -- Dark muted red
                     },
                     redo = {
-                        hl_color = { bg = mocha.green },
+                        hl_color = { bg = "#2F4640" }, -- Dark muted green
+                    },
+                    yank = {
+                        hl_color = { bg = "#7A683A" }, -- Dark muted yellow
+                    },
+                    paste = {
+                        hl_color = { bg = "#325B5B" }, -- Dark muted cyan
                     },
                 },
                 priority = 2048 * 3,
@@ -244,6 +249,15 @@ return {
             },
             {
                 "U",
+                function()
+                    require("undo-glow").redo()
+                end,
+                mode = "n",
+                desc = "Redo with highlight",
+                noremap = true,
+            },
+            {
+                "<C-R>",
                 function()
                     require("undo-glow").redo()
                 end,
@@ -270,6 +284,14 @@ return {
                 noremap = true,
             },
         },
+        init = function()
+            vim.api.nvim_create_autocmd("TextYankPost", {
+                desc = "Highlight when yanking (copying) text",
+                callback = function()
+                    require("undo-glow").yank()
+                end,
+            })
+        end,
     },
 
     {

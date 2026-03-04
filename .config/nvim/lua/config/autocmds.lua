@@ -57,13 +57,6 @@ autocmd("TermOpen", {
     end,
 })
 
-autocmd("TextYankPost", {
-    group = group_name,
-    callback = function()
-        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
-    end,
-})
-
 autocmd("FileType", {
     group = group_name,
     pattern = { "help" },
