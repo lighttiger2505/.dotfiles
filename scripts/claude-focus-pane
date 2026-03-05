@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+cat > /dev/null
+
+[ -z "${TMUX_PANE:-}" ] && exit 0
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# ① 入力待ちスタイルを適用
+bash "$SCRIPT_DIR/claude-pane-style.sh" waiting
+
+# ② フォーカス
+TARGET_PANE="$TMUX_PANE"
+TARGET_WINDOW=$(tmux display-message -p -t "$TARGET_PANE" \
+  '#{session_name}:#{window_index}' 2>/dev/null) || exit 0
+
+CURRENT_PANE=$(tmux display-message -p '#{pane_id}' 2>/dev/null || echo "")
+if [ "$CURRENT_PANE" != "$TARGET_PANE" ]; then
+  tmux select-window -t "$TARGET_WINDOW" 2>/dev/null || true
+  tmux select-pane   -t "$TARGET_PANE"  2>/dev/null || true
+fi
+
+exit 0
