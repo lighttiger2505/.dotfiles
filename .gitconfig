@@ -74,3 +74,4 @@
 	basedir = .worktrees
 	copy = .envrc
 	hook = git submodule update --init --recursive
+	copy = .claude/settings.local.json
