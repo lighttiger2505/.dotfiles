@@ -21,12 +21,15 @@
             "Bash(mate test:*)",
             "Bash(make build:*)",
             "Bash(git add:*)",
+            "Bash(git log:*)",
             "Bash(git commit:*)",
             "Bash(git push:*)",
             "Bash(gh pr create:*)",
             "Bash(gh pr diff:*)",
             "Bash(gh pr list:*)",
-            "Bash(gh pr view:*)"
+            "Bash(gh pr view:*)",
+            "Bash(gh pr edit:*)",
+            "Bash(golangci-lint run:*)"
         ]
     },
     "hooks": {
