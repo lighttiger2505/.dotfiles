@@ -1,5 +1,5 @@
 ---
-name: git-commit-pr
+name: commit-push-pr
 description: 現在のファイル差分をコミット・プッシュし、プルリクエストを作成する。「コミットして」「プッシュして」「PRを作って」「プルリクを出して」「変更を送って」「commit」「push」「pull request」「PR」「open a PR」「submit for review」などのフレーズが含まれる場合は必ずこのスキルを使う。gitのコミット＋PRワークフロー全般に使用すること。
 ---
 

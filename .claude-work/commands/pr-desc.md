@@ -1,16 +1,6 @@
 ---
+name: pr-desc
 description: テンプレートにしたがって、Pull Requestの説明文を作成します。このとき過去のPull Requestを読み取りして考慮に入れます。
-allowed-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash(git log:*)
-  - Bash(git diff:*)
-  - Bash(git status:*)
-  - Bash(git show:*)
-  - Bash(gh pr list:*)
-  - Bash(gh pr view:*)
-  - Bash(gh pr diff:*)
 ---
 
 # PR Description Generator
