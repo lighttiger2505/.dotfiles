@@ -67,9 +67,7 @@ fi
 #####################################################################
 alias g="git"
 
-alias rm-branch='git branch --merged \
-    | grep -v \\* \
-    | xargs -I % git branch -d %'
+alias rm-branch="git branch --merged | grep -v \\* | xargs -I % git branch -d %"
 alias rm-wt='git worktree list --porcelain  \
     | awk '\''/^worktree/ {p=$2} /^branch/ {b=$2; sub("refs/heads/","",b); print p" "b}'\'' \
     | while read p b; do git branch --merged \
