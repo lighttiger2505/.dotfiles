@@ -13,13 +13,15 @@ if executable atuin; then
     eval "$(atuin init zsh)"
 fi
 
-if [ -e $HOME/.local/bin/mise ]; then
+if executable /opt/homebrew/bin/brew; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if executable $HOME/.local/bin/mise; then
     eval "$($HOME/.local/bin/mise activate zsh)"
 fi
 
-if executable direnv; then
-    eval "$(git wt --init zsh)"
-fi
+eval "$(git wt --init zsh)"
 
 # Google Cloud SDK.
 # The next line updates PATH for the Google Cloud SDK.
