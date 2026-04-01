@@ -33,8 +33,6 @@
 	template = ~/.gitmessage.txt
 [credential]
 	helper = osxkeychain
-[url "ssh://git@github.com/MobilityTechnologies/"]
-	insteadOf = https://github.com/MobilityTechnologies/
 [push]
 	autoSetupRemote = true
 [rerere]
