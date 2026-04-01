@@ -3,6 +3,8 @@
 # Path/Valiables
 typeset -U path
 path=(
+# nvim
+/opt/nvim/bin(N-/)
 # mise
 $HOME/.local/share/mise/shims
 # brew
