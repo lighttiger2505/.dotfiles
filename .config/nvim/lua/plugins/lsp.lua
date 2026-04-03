@@ -197,13 +197,20 @@ return {
                 javascript = { "biome", "prettier", stop_after_first = true },
                 typescript = { "biome", "prettier", stop_after_first = true },
                 typescriptreact = { "biome", "prettier", stop_after_first = true },
-                json = { "jq", stop_after_first = true },
-                go = { "goimports", "gofmt", "golangci-lint", stop_after_first = true },
+                json = { "jq" },
+                go = { "goimports", "gofmt", "golangci-lint", stop_after_first = false },
             },
             format_on_save = {
                 lsp_format = "fallback",
                 timeout_ms = 500,
             },
+            -- formatters = {
+            --     golangci_lint_fmt = {
+            --         command = "golangci-lint",
+            --         args = { "fmt", "$FILENAME" },
+            --         stdin = false,
+            --     },
+            -- },
         },
     },
 
