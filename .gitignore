@@ -10,23 +10,25 @@
 .zsh/workalias.zsh
 
 # claude code
-.claude-*/projects
-.claude-*/statsig
-.claude-*/todos
-.claude-*/debug/
-.claude-*/history.jsonl
-.claude-*/cache/
-.claude-*/stats-cache.json
-.claude-*/plugins/
-.claude-*/file-history/
-.claude-*/plans/
-.claude-*/tasks/
-.claude-*/backups/
-.claude-*/ide/
 .claude-*/.claude.json
+.claude-*/backups/
+.claude-*/cache/
+.claude-*/debug/
+.claude-*/file-history/
+.claude-*/history.jsonl
+.claude-*/ide/
 .claude-*/paste-cache
-.claude-*/usage-data/facets/
-.claude-*/usage-data/session-meta/
+.claude-*/plans/
+.claude-*/plugins/
+.claude-*/projects
+.claude-*/session-env/
+.claude-*/sessions/
+.claude-*/shell-snapshots/
+.claude-*/stats-cache.json
+.claude-*/statsig
+.claude-*/tasks/
+.claude-*/todos
+.claude-*/usage-data/
 
 # lazy.vim
 lazy-lock.json
