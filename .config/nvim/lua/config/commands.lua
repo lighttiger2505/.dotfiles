@@ -178,3 +178,23 @@ vim.api.nvim_create_user_command("GhPrView", function()
     end
 end, { desc = "Open current branch's PR in browser" })
 vim.keymap.set("n", "<Leader>bp", "<Cmd>GhPrView<CR>", { silent = true, desc = "Open PR in browser" })
+
+vim.api.nvim_create_user_command("LiaryEdit", function()
+    vim.system({ "liary", "edit", "--path" }, { text = true }, function(obj)
+        if obj.code ~= 0 then
+            vim.schedule(function()
+                vim.notify("liary command failed", vim.log.levels.ERROR)
+            end)
+            return
+        end
+
+        local path = vim.trim(obj.stdout)
+
+        if path ~= "" then
+            vim.schedule(function()
+                vim.cmd.edit(path)
+            end)
+        end
+    end)
+end, {})
+vim.keymap.set("n", "<Leader><Leader>d", "<cmd>LiaryEdit<CR>")
