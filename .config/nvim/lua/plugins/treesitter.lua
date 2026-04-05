@@ -1,31 +1,47 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "main",
+        build = ":TSUpdate",
         event = { "BufReadPre", "BufNewFile" },
-        dependencies = {
-            { "RRethy/nvim-treesitter-textsubjects" },
-            { "nvim-treesitter/nvim-treesitter-context" },
-        },
+        init = function()
+            local ensureInstalled = {
+                "bash",
+                "css",
+                "dockerfile",
+                "go",
+                "javascript",
+                "json",
+                "lua",
+                "make",
+                "markdown",
+                "markdown_inline",
+                "sql",
+                "toml",
+                "tsx",
+                "typescript",
+                "vim",
+                "yaml",
+            }
+            local alreadyInstalled = require("nvim-treesitter.config").get_installed()
+            local parsersToInstall = vim.iter(ensureInstalled)
+                :filter(function(parser)
+                    return not vim.tbl_contains(alreadyInstalled, parser)
+                end)
+                :totable()
+            require("nvim-treesitter").install(parsersToInstall)
+
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function()
+                    -- Enable treesitter highlighting and disable regex syntax
+                    pcall(vim.treesitter.start)
+                    -- Enable treesitter-based indentation
+                    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                end,
+            })
+        end,
         config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = {
-                    "bash",
-                    "css",
-                    "dockerfile",
-                    "go",
-                    "javascript",
-                    "json",
-                    "lua",
-                    "make",
-                    "markdown",
-                    "markdown_inline",
-                    "sql",
-                    "toml",
-                    "tsx",
-                    "typescript",
-                    "vim",
-                    "yaml",
-                },
+            require("nvim-treesitter").setup({
                 sync_install = true,
                 auto_install = true,
                 highlight = {
@@ -45,21 +61,6 @@ return {
                     enable_quotes = true,
                 },
             })
-
-            require("treesitter-context").setup({
-                enable = true,
-                max_lines = 3,
-            })
-
-            require("nvim-treesitter-textsubjects").configure({
-                prev_selection = ",",
-                keymaps = {
-                    ["."] = "textsubjects-smart",
-                    ["<CR>"] = "textsubjects-container-outer",
-                    ["i<CR>"] = "textsubjects-container-inner",
-                },
-            })
         end,
-        build = ":TSUpdate",
     },
 }
