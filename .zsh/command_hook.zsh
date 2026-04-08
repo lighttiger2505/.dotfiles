@@ -13,10 +13,6 @@ if executable atuin; then
     eval "$(atuin init zsh)"
 fi
 
-if executable /opt/homebrew/bin/brew; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 if executable $HOME/.local/bin/mise; then
     eval "$($HOME/.local/bin/mise activate zsh)"
 fi

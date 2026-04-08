@@ -7,6 +7,10 @@ path=(
 /opt/nvim/bin(N-/)
 # mise
 $HOME/.local/share/mise/shims
+# brew
+/opt/homebrew/bin(N-/)
+/opt/homebrew/sbin(N-/)
+/opt/homebrew/opt/mysql@8.0/bin(N-/)
 # bin
 /usr/local/bin(N-/)
 /usr/bin(N-/)
