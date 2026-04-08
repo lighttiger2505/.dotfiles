@@ -1,0 +1,4 @@
+worktree-path = ".worktrees/{{ branch | sanitize }}"
+[pre-start]
+copy_env = "wt step copy-ignored"
+allow_direnv = "direnv allow . || true"

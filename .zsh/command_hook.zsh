@@ -17,6 +17,10 @@ if executable $HOME/.local/bin/mise; then
     eval "$($HOME/.local/bin/mise activate zsh)"
 fi
 
+if executable wt; then
+    eval "$(command wt config shell init zsh)"
+fi
+
 eval "$(git wt --init zsh)"
 
 # Google Cloud SDK.
