@@ -24,7 +24,13 @@ bindkey -M viins '^H'  backward-delete-char
 bindkey '^L' cd-git-repository
 bindkey '^U' create-repository-session
 bindkey '^O' switch-git-branch
-bindkey '^\' cd-git-worktree
+
+wt-switch() {
+  BUFFER="wt switch"
+  zle accept-line
+}
+zle -N wt-switch
+bindkey '^\' wt-switch
 
 # Open editor
 autoload -Uz edit-command-line
