@@ -5,3 +5,8 @@ bind-key a run-shell '\
   tmux new-session -d -s "$SESSION" -c "#{pane_current_path}" "zsh -ic claude; tmux detach-client"; \
   tmux display-popup -w90% -h90% -E "tmux attach-session -d -t $SESSION"'
 
+# Launch popup pain on popup
+bind-key -n M-i display-popup -w90% -h90% -E
+
+# Launch tig status pain on popup
+bind-key -n M-o display-popup -w90% -h90% -E "tig status"
