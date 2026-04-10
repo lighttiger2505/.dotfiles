@@ -87,21 +87,6 @@ return {
             local servers = vim.tbl_keys(opts.servers)
             vim.lsp.enable(servers)
 
-            -- Show LSP client status on attach
-            vim.api.nvim_create_autocmd("LspAttach", {
-                callback = function(args)
-                    local client = vim.lsp.get_client_by_id(args.data.client_id)
-                    if client then
-                        vim.notify(string.format("LSP attached: %s", client.name), vim.log.levels.INFO, {
-                            title = "LSP Status",
-                            timeout = 2000,
-                            animate = false,
-                            stage = "static",
-                        })
-                    end
-                end,
-            })
-
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("my.lsp", {}),
                 callback = function(args)
