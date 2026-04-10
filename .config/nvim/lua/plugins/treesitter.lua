@@ -22,6 +22,7 @@ return {
                 "typescript",
                 "vim",
                 "yaml",
+                "gitcommit",
             }
             local alreadyInstalled = require("nvim-treesitter.config").get_installed()
             local parsersToInstall = vim.iter(ensureInstalled)
