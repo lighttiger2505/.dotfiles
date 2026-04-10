@@ -204,13 +204,6 @@ return {
                 lsp_format = "fallback",
                 timeout_ms = 500,
             },
-            -- formatters = {
-            --     golangci_lint_fmt = {
-            --         command = "golangci-lint",
-            --         args = { "fmt", "$FILENAME" },
-            --         stdin = false,
-            --     },
-            -- },
         },
     },
 
