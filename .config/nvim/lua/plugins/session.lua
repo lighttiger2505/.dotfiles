@@ -9,6 +9,8 @@ return {
     ---@module "auto-session"
     ---@type AutoSession.Config
     opts = {
+        bypass_save_filetypes = { "gitcommit", "gitrebase" },
+        close_filetypes_on_save = { "checkhealth", "gitcommit", "gitrebase" },
         session_lens = {
             picker = "telescope",
             mappings = {
@@ -18,5 +20,12 @@ return {
             },
             load_on_setup = true,
         },
+        auto_create = function()
+            local cmd = vim.fn.argv(0)
+            if cmd and cmd ~= "" then
+                return false
+            end
+            return true
+        end,
     },
 }
