@@ -101,9 +101,9 @@ after-startup-command = [
     alt-cmd-shift-9 = 'move-node-to-workspace 9'
     alt-cmd-shift-0 = 'move-node-to-workspace 10'
 
-    alt-cmd-shift-m = 'workspace M'
-    alt-cmd-shift-o = 'workspace O'
-    alt-cmd-shift-a = 'workspace A'
+    alt-cmd-shift-m = 'move-node-to-workspace M'
+    alt-cmd-shift-o = 'move-node-to-workspace O'
+    alt-cmd-shift-a = 'move-node-to-workspace A'
 
     alt-cmd-shift-c = 'reload-config'
 
