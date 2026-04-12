@@ -3,5 +3,5 @@
     "plugins": [],
     "theme": "tokyo-night",
     "sidebarWidth": 30,
-    "sidebarPosition": "right"
+    "sidebarPosition": "left"
 }
