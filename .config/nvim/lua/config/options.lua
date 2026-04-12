@@ -90,7 +90,7 @@ opt.winwidth = 30
 -- Set minimal height for current window.
 opt.winheight = 1
 -- Set command line hgith
-opt.cmdheight = 2
+opt.cmdheight = 1
 -- Set maximam maximam command line window.
 opt.cmdwinheight = 5
 -- No equal window size.
