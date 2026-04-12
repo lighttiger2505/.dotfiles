@@ -109,18 +109,18 @@ return {
         opts = {},
         -- TermExec direction=float cmd="tig status"
         keys = {
-            {
-                "<Leader>l",
-                "<cmd>ToggleTerm direction=float<cr>",
-                mode = { "n" },
-                desc = "Toggleterm launch floating terminal",
-            },
-            {
-                "<Leader>gg",
-                "<cmd>1TermExec name='TigStatus' direction=float cmd='tig status; exit'<cr>",
-                mode = { "n" },
-                desc = "Toggleterm tig status",
-            },
+            -- {
+            --     "<Leader>l",
+            --     "<cmd>ToggleTerm direction=float<cr>",
+            --     mode = { "n" },
+            --     desc = "Toggleterm launch floating terminal",
+            -- },
+            -- {
+            --     "<Leader>gg",
+            --     "<cmd>1TermExec name='TigStatus' direction=float cmd='tig status; exit'<cr>",
+            --     mode = { "n" },
+            --     desc = "Toggleterm tig status",
+            -- },
             {
                 "<Leader>gp",
                 "<cmd>2TermExec name='GitPush' direction=horizontal size=20 cmd='git push && exit'<cr>",
