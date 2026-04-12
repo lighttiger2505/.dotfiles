@@ -14,3 +14,6 @@ mouse-hide-while-typing = true
 keybind = cmd+n=ignore
 keybind = cmd+p=ignore
 keybind = cmd+enter=ignore
+
+custom-shader = shaders/cursor_warp.glsl
+custom-shader = shaders/ripple_cursor.glsl
