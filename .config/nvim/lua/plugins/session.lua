@@ -9,8 +9,22 @@ return {
     ---@module "auto-session"
     ---@type AutoSession.Config
     opts = {
-        bypass_save_filetypes = { "gitcommit", "gitrebase" },
-        close_filetypes_on_save = { "checkhealth", "gitcommit", "gitrebase" },
+        close_unsupported_windows = true,
+        bypass_save_filetypes = {
+            -- git
+            "gitcommit",
+            "gitrebase",
+        },
+        close_filetypes_on_save = {
+            -- git
+            "gitcommit",
+            "gitrebase",
+            -- default
+            "checkhealth",
+            -- plugins
+            "grug-far",
+            "neo-tree",
+        },
         session_lens = {
             picker = "telescope",
             mappings = {
