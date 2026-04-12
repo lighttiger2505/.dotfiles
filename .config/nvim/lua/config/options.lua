@@ -29,7 +29,7 @@ end
 opt.signcolumn = "yes:1"
 
 -- Drawing speed more fast
-opt.lazyredraw = false
+opt.lazyredraw = true
 opt.ttyfast = true
 
 -- Backup
