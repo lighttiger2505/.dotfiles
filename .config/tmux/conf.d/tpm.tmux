@@ -1,3 +1,5 @@
+set-environment -g TMUX_PLUGIN_MANAGER_PATH '~/.tmux/plugins'
+
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'alexwforsythe/tmux-which-key'
