@@ -46,3 +46,6 @@ setw -g pane-border-style "bg=#{@my-color-surface0},fg=#{@my-color-overlay0}"
 setw -g pane-active-border-style "bg=#{@my-color-lavender},fg=#{@my-color-base}"
 
 set -g popup-border-style "fg=#{@my-color-red}"
+
+set -g pane-border-lines single
+set -g pane-border-indicators arrows
