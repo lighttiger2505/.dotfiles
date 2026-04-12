@@ -304,4 +304,34 @@ return {
             vim.keymap.set("n", "];", dropbar_api.select_next_context, { desc = "Select next context" })
         end,
     },
+
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        opts = {
+            cmdline = {
+                enabled = true,
+                view = "cmdline_popup",
+            },
+            messages = {
+                enabled = false,
+            },
+            popupmenu = {
+                enabled = false,
+            },
+            notify = {
+                enabled = false,
+            },
+            lsp = {
+                progress = { enabled = false },
+                hover = { enabled = false },
+                signature = { enabled = false },
+                message = { enabled = false },
+                override = {},
+            },
+        },
+    },
 }
