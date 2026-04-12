@@ -185,10 +185,18 @@ return {
                 json = { "jq" },
                 go = { "goimports", "gofmt", "golangci-lint", stop_after_first = false },
             },
-            format_on_save = {
-                lsp_format = "fallback",
-                timeout_ms = 500,
-            },
+            format_on_save = function(bufnr)
+                -- disable filetypes
+                local disable_filetypes = { "json" }
+                local ft = vim.bo[bufnr].filetype
+                if vim.tbl_contains(disable_filetypes, ft) then
+                    return nil -- nilを返すと無効化
+                end
+                return {
+                    timeout_ms = 500,
+                    lsp_format = "fallback",
+                }
+            end,
         },
     },
 
