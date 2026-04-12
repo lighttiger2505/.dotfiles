@@ -5,7 +5,7 @@
 alias ..='cd ..'
 alias ....='cd ../..'
 alias ......='cd ../../..'
-alias dt="~/.dotfiles"
+alias do="~/.dotfiles"
 alias dl="~/Downloads"
 
 # Move to the selected directory from the results of find
