@@ -99,3 +99,5 @@ vim.keymap.set("n", "<Leader><Leader>t", "<Cmd>e $VIM_MEMO_DIR/todo.md<CR>", opt
 vim.keymap.set("n", "<Leader><Leader>l", "<Cmd>e $VIM_MEMO_DIR/link.md<CR>", opts)
 vim.keymap.set("n", "<Leader><Leader>f", "<Cmd>e $VIM_MEMO_DIR/feedback.md<CR>", opts)
 vim.keymap.set("n", "<Leader>bp", ":!gh pr view --web<CR>", opts)
+
+vim.keymap.set("n", "zr", "<Cmd>restart<CR>", opts)
