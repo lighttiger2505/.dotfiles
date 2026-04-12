@@ -17,3 +17,5 @@ keybind = cmd+enter=ignore
 
 custom-shader = shaders/cursor_warp.glsl
 # custom-shader = shaders/ripple_cursor.glsl
+
+confirm-close-surface = false
