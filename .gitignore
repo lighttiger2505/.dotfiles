@@ -32,3 +32,6 @@
 
 # lazy.vim
 lazy-lock.json
+
+# tpm
+.config/tmux/plugins/
