@@ -1,44 +1,44 @@
 {
-    "$schema": "https://json.schemastore.org/claude-code-settings.json",
-    "language": "japanese",
-    "env": {
-        "ANTHROPIC_MODEL": "opusplan"
-    },
-    "permissions": {
-        "defaultMode": "plan"
-    },
-    "hooks": {
-        "Notification": [
-            {
-                "matcher": "",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "$HOME/scripts/claude-notification"
-                    }
-                ]
-            }
-        ],
-        "Stop": [
-            {
-                "matcher": "",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "$HOME/scripts/claude-notification"
-                    }
-                ]
-            }
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "ANTHROPIC_MODEL": "opusplan"
+  },
+  "permissions": {
+    "defaultMode": "plan"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/scripts/claude-notification"
+          }
         ]
-    },
-    "enabledPlugins": {
-        "gopls-lsp@claude-plugins-official": true,
-        "context7@claude-plugins-official": true,
-        "typescript-lsp@claude-plugins-official": true
-    },
-    "statusLine": {
-        "type": "command",
-        "command": "npx -y ccstatusline@latest",
-        "padding": 0
-    }
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/scripts/claude-notification"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "$HOME/scripts/claude_statusline.sh",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "language": "japanese"
 }
