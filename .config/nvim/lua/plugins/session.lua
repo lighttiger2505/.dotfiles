@@ -41,5 +41,13 @@ return {
             end
             return true
         end,
+        pre_restore_cmds = {
+            function()
+                if os.getenv("NVIM_NO_SESSION") == "1" then
+                    return false
+                end
+                return true
+            end,
+        },
     },
 }

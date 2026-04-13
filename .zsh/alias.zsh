@@ -134,7 +134,7 @@ alias tf='vim $VIM_MEMO_DIR/feedback.md'
 alias hb='gh repo view --branch "$(git branch --show-current)" --web'
 alias hp='gh pr view --web'
 alias ha='gh pr checks'
-alias vimdiffpr='nvim -c ":OpenDiffviewPR"'
+alias vimdiffpr='NVIM_NO_SESSION=1 nvim -c ":OpenDiffviewPR"'
 
 alias prcreate='gh pr create --template "pull_request_template.md"'
 
@@ -273,11 +273,11 @@ alias fib=draw-fibonacci
 # Obsidian
 #####################################################################
 function obsidian-new() {
-    nvim -c 'lua require("obsidian")' -c 'ObsidianNew'
+    NVIM_NO_SESSION=1 nvim -c 'lua require("obsidian")' -c 'ObsidianNew'
 }
 alias on=obsidian-new
 function obsidian-list-preview() {
-    nvim -c 'lua require("obsidian")' -c 'ObsidianQuickSwitch'
+    NVIM_NO_SESSION=1 nvim -c 'lua require("obsidian")' -c 'ObsidianQuickSwitch'
 }
 alias ov=obsidian-list-preview
 
