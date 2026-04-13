@@ -6,7 +6,7 @@ bind-key a run-shell '\
   tmux display-popup -w90% -h90% -E "tmux attach-session -d -t $SESSION"'
 
 # Launch popup pain on popup
-bind-key -n M-o display-popup -w90% -h90% -E -d "#{pane_current_path}"
+bind-key -n M-i display-popup -w90% -h90% -E -d "#{pane_current_path}"
 
 # Launch tig status pain on popup
 bind-key -n M-o display-popup -w90% -h90% -E -d "#{pane_current_path}" "tig status"
