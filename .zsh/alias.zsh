@@ -146,32 +146,6 @@ function ai-review-github-pr() {
 }
 alias airev=ai-review-github-pr
 
-function get_repo_local_review_dir() {
-    local repo="$1"
-
-    local localDir
-    case "$repo" in
-        "MobilityTechnologies/kingston")
-            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-worktree/kingston-review
-            ;;
-        "MobilityTechnologies/kingston-static")
-            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-static-worktree/kingston-static-review
-            ;;
-        *)
-            echo "Error: No local mapping for repository '$repo'" >&2
-            return 1
-            ;;
-    esac
-
-    if [[ ! -d $localDir ]]; then
-        echo "Error: Directory '$localDir' does not exist." >&2
-        return 1
-    fi
-
-    echo "$localDir"
-    return 0
-}
-
 function github-pr-review-fzf() {
     local selected=$(
         gh pr list \
@@ -185,43 +159,15 @@ function github-pr-review-fzf() {
             | fzf --reverse --prompt='Select PR> '
     )
     [[ -z $selected ]] && return 0
+    local prNum=$(awk -F'\t' '{print $1}' <<<"$selected")
 
-    local prNum=$(awk -F'\t' '{print $1}' <<<"$selected")   # number
-    local repo=$(awk -F'\t' '{print $2}' <<<"$selected")    # REPO
-    local localDir=$(get_repo_local_review_dir "$repo")
-    if [[ $? -ne 0 ]]; then
-        return 1
-    fi
-    cd "$localDir" || return 1
-
-    gh pr checkout "$prNum"
+    wt switch --no-verify "pr:${prNum}"
     local baseBranch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
     git fetch origin "$baseBranch":"$baseBranch"
     gh pr view --web "$prNum"
     nvim -c ":OpenDiffviewPR"
 }
 alias prrevf=github-pr-review-fzf
-
-function github-pr-review-url() {
-    local pr_url="$1"
-    if [ -z "$pr_url" ]; then
-        echo "Usage: $0 <github-pull-request-url>"
-        exit 1
-    fi
-    local repo="$(echo "$pr_url" | cut -d/ -f4-5)"
-    local prNum="$(basename "$pr_url")"
-    local localDir=$(get_repo_local_review_dir "$repo")
-    if [[ $? -ne 0 ]]; then
-        return 1
-    fi
-    cd "$localDir" || return 1
-
-    gh pr checkout "$prNum"
-    local baseBranch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
-    git fetch origin "$baseBranch":"$baseBranch"
-    nvim -c ":OpenDiffviewPR"
-}
-alias prrevu=github-pr-review-url
 
 function get_repo_local_dir() {
     local repo="$1"
