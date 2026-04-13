@@ -21,8 +21,6 @@ if executable wt; then
     eval "$(command wt config shell init zsh)"
 fi
 
-eval "$(git wt --init zsh)"
-
 # Google Cloud SDK.
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f $HOME/google-cloud-sdk/path.zsh.inc ]; then . $HOME/google-cloud-sdk/path.zsh.inc; fi
