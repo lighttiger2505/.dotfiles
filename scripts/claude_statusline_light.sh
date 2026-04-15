@@ -6,8 +6,6 @@ model=$(echo "$input" | jq -r '.model.display_name // "Unknown"')
 context_pct=$(echo "$input" | jq -r '.context_window.used_percentage // 0')
 workspace=$(echo "$input" | jq -r '.workspace.current_dir // ""')
 cost=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
-rate_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty' 2>/dev/null || echo "")
-rate_7d=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty' 2>/dev/null || echo "")
 
 # Catppuccin Mocha palette (truecolor)
 LAVENDER="\033[38;2;180;190;254m"
@@ -36,19 +34,7 @@ bar=""
 for (( i=0; i<filled; i++ )); do bar+="█"; done
 for (( i=0; i<empty_count; i++ )); do bar+="░"; done
 
-if [[ -n "$rate_5h" && "$rate_5h" != "null" ]]; then
-  rate_5h_int="${rate_5h%.*}"
-  if (( rate_5h_int >= 90 )); then r5c="$RED"; elif (( rate_5h_int >= 70 )); then r5c="$YELLOW"; else r5c="$TEAL"; fi
-  rate_5h_display="${r5c}${rate_5h_int}%${RESET}"
-else rate_5h_display="${SUBTEXT0}--${RESET}"; fi
-
-if [[ -n "$rate_7d" && "$rate_7d" != "null" ]]; then
-  rate_7d_int="${rate_7d%.*}"
-  if (( rate_7d_int >= 90 )); then r7c="$RED"; elif (( rate_7d_int >= 70 )); then r7c="$YELLOW"; else r7c="$SKY"; fi
-  rate_7d_display="${r7c}${rate_7d_int}%${RESET}"
-else rate_7d_display="${SUBTEXT0}--${RESET}"; fi
-
 cost_display=$(printf '$%.2f' "$cost")
 
 echo -e "${LAVENDER}🤖Model:${model}${RESET} ${SUBTEXT0}▸${RESET} ${TEXT}📁WorkSpace:${ws_name}${RESET} ${SUBTEXT0}▸${RESET} ${TEAL}🌿Branch:${branch}${RESET}"
-echo -e "${TEXT}🪣Context:${RESET} ${BAR_COLOR}${bar}${RESET} ${TEXT}${context_int}%${RESET} ${SUBTEXT0}▸${RESET} 5h: ${rate_5h_display} ${SUBTEXT0}▸${RESET} 7d: ${rate_7d_display} ${SUBTEXT0}▸${RESET} ${PEACH}💰Cost:${cost_display}${RESET}"
+echo -e "${TEXT}🪣Context:${RESET} ${BAR_COLOR}${bar}${RESET} ${TEXT}${context_int}%${RESET} ${SUBTEXT0}▸${RESET} ${PEACH}💰Cost:${cost_display}${RESET}"

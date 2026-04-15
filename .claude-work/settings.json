@@ -67,7 +67,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "npx -y ccstatusline@latest",
+    "command": "$HOME/scripts/claude_statusline_light.sh",
     "padding": 0
   },
   "enabledPlugins": {
