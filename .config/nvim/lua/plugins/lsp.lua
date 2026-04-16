@@ -73,7 +73,6 @@ return {
                     },
                 },
                 biome = {},
-                tailwindcss = {},
                 copilot = {},
                 jsonls = {},
             },
