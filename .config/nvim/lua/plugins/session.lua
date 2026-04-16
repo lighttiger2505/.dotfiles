@@ -49,5 +49,22 @@ return {
                 return true
             end,
         },
+        pre_save_cmds = {
+            function()
+                local cwd = vim.fn.getcwd()
+                for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                    if not vim.api.nvim_buf_is_loaded(buf) then
+                        goto continue
+                    end
+                    local name = vim.api.nvim_buf_get_name(buf)
+                    if name ~= "" and vim.fn.filereadable(name) == 1 then
+                        if not vim.startswith(name, cwd .. "/") and name ~= cwd then
+                            vim.api.nvim_buf_delete(buf, { force = false })
+                        end
+                    end
+                    ::continue::
+                end
+            end,
+        },
     },
 }
