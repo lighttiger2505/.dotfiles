@@ -15,6 +15,7 @@ source $HOME/.zsh/completion.zsh
 source $HOME/.zsh/fzf.zsh
 source $HOME/.zsh/keybind.zsh
 source $HOME/.zsh/tmux.zsh
+source $HOME/.zsh/command_hook.zsh
 
 # lazy loading for zsh plugin and zsh hooks
 source $HOME/.zsh/lazy.zsh

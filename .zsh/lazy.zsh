@@ -42,5 +42,3 @@ install_plugin "https://github.com/zdharma-continuum/fast-syntax-highlighting"
 load_plugin "fast-syntax-highlighting"
 install_plugin "https://github.com/zsh-users/zsh-autosuggestions"
 load_plugin "zsh-autosuggestions"
-
-zsh-defer source $HOME/.zsh/command_hook.zsh
