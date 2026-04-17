@@ -164,7 +164,6 @@ function github-pr-review-fzf() {
     wt switch --no-verify "pr:${prNum}"
     local baseBranch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
     git fetch origin "$baseBranch":"$baseBranch"
-    gh pr view --web "$prNum"
     nvim -c ":OpenDiffviewPR"
 }
 alias prrevf=github-pr-review-fzf
