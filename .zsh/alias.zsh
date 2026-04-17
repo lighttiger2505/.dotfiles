@@ -307,7 +307,7 @@ alias planv='nvim "$(eza -s modified ~/.claude/plans | head -n 1)"'
 
 function edit-claude-settings() {
     local files=(
-        "$CLAUDE_CONFIG_DIR/settings.json"
+        "~/.claude/settings.json"
         ".claude/settings.json"
         ".claude/settings.local.json"
     )
