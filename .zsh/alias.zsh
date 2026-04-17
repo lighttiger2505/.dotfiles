@@ -214,7 +214,7 @@ function github-pr-switch-fzf() {
     fi
 
     cd "$localDir" || return 1
-    git switch $branch
+    wt switch $branch
 }
 alias prsif=github-pr-switch-fzf
 
