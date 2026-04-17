@@ -1,5 +1,5 @@
 CANDIDATES := $(wildcard .??*)
-EXCLUSIONS := .DS_Store .git .gitmodules .config
+EXCLUSIONS := .DS_Store .git .gitmodules .config .claude-private .claude-work
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 CONFIGDIRS := $(wildcard ./.config/*)
 
@@ -15,6 +15,12 @@ deploy:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 	@$(foreach val, $(CONFIGDIRS), ln -sfnv $(abspath $(val)) $(HOME)/.config/$(notdir $(val));)
 	ln -sfnv $(abspath scripts) $(HOME)/scripts
+
+deploy-work:
+	ln -sfnv $(abspath .claude-work) $(HOME)/.claude
+
+deploy-private:
+	ln -sfnv $(abspath .claude-private) $(HOME)/.claude
 
 linkdropbox:
 	ln -s ~/Library/CloudStorage/Dropbox/vaults ~/vaults
