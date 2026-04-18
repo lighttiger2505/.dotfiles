@@ -17,7 +17,10 @@ deploy:
 	ln -sfnv $(abspath scripts) $(HOME)/scripts
 
 deploy-work:
-	ln -sfnv $(abspath .claude-work) $(HOME)/.claude
+	@mkdir -p $(HOME)/.claude
+	@$(foreach val, $(wildcard .claude-work/* .claude-work/.*), \
+		$(if $(filter-out . .., $(notdir $(val))), \
+			ln -sfnv $(abspath $(val)) $(HOME)/.claude/$(notdir $(val));))
 
 deploy-private:
 	@mkdir -p $(HOME)/.claude
