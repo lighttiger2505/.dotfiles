@@ -304,4 +304,17 @@ return {
             vim.keymap.set("n", "];", dropbar_api.select_next_context, { desc = "Select next context" })
         end,
     },
+
+    {
+        "rachartier/tiny-cmdline.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        init = function()
+            vim.o.cmdheight = 0
+        end,
+        config = function()
+            require("tiny-cmdline").setup({
+                on_reposition = require("tiny-cmdline").adapters.blink,
+            })
+        end,
+    },
 }
