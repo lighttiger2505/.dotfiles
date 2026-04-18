@@ -20,7 +20,10 @@ deploy-work:
 	ln -sfnv $(abspath .claude-work) $(HOME)/.claude
 
 deploy-private:
-	ln -sfnv $(abspath .claude-private) $(HOME)/.claude
+	@mkdir -p $(HOME)/.claude
+	@$(foreach val, $(wildcard .claude-private/* .claude-private/.*), \
+		$(if $(filter-out . .., $(notdir $(val))), \
+			ln -sfnv $(abspath $(val)) $(HOME)/.claude/$(notdir $(val));))
 
 linkdropbox:
 	ln -s ~/Library/CloudStorage/Dropbox/vaults ~/vaults
