@@ -20,17 +20,17 @@ deploy-claude:
 	@mkdir -p $(HOME)/.claude
 	@$(foreach val, $(wildcard .claude/* .claude/.*), \
 		$(if $(filter-out . .., $(notdir $(val))), \
-			ln -sfnv $(abspath $(val)) $(HOME)/.claude/$(notdir $(val));))
+			rm -rf $(HOME)/.claude/$(notdir $(val)) && cp -Rv $(abspath $(val)) $(HOME)/.claude/$(notdir $(val));))
 
 deploy-work: deploy-claude
 	@$(foreach val, $(wildcard .claude-work/* .claude-work/.*), \
 		$(if $(filter-out . .., $(notdir $(val))), \
-			ln -sfnv $(abspath $(val)) $(HOME)/.claude/$(notdir $(val));))
+			rm -rf $(HOME)/.claude/$(notdir $(val)) && cp -Rv $(abspath $(val)) $(HOME)/.claude/$(notdir $(val));))
 
 deploy-private: deploy-claude
 	@$(foreach val, $(wildcard .claude-private/* .claude-private/.*), \
 		$(if $(filter-out . .., $(notdir $(val))), \
-			ln -sfnv $(abspath $(val)) $(HOME)/.claude/$(notdir $(val));))
+			rm -rf $(HOME)/.claude/$(notdir $(val)) && cp -Rv $(abspath $(val)) $(HOME)/.claude/$(notdir $(val));))
 
 linkdropbox:
 	ln -s ~/Library/CloudStorage/Dropbox/vaults ~/vaults
