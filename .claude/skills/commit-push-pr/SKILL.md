@@ -75,7 +75,7 @@ gh pr create \
   --base develop
 ```
 
-- Pull Requestの内容の書き方ついては他スキル`./pr-desc.md`を参照
+- Pull Requestの内容の書き方ついては他スキル`../pr-desc/SKILL.md`を参照
 - Pull Requestを作るときはドラフトで作ること
 
 ## 注意点
