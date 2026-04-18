@@ -181,4 +181,10 @@ return {
             { "<Leader>gb", "<cmd>BlameToggle<cr>", mode = { "n" }, desc = "Git blame toggle" },
         },
     },
+
+    {
+        "esmuellert/codediff.nvim",
+        lazy = true,
+        cmd = "CodeDiff",
+    },
 }
