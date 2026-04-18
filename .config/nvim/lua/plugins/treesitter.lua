@@ -24,6 +24,7 @@ return {
                 "yaml",
                 "gitcommit",
                 "ruby",
+                "tmux",
             }
             local alreadyInstalled = require("nvim-treesitter.config").get_installed()
             local parsersToInstall = vim.iter(ensureInstalled)
