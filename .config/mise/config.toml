@@ -6,8 +6,9 @@ trusted_config_paths = [
 idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
-go = "1.25.5"
+go = "1.26.2"
 "go:golang.org/x/tools/gopls" = "latest"
+"go:github.com/k1LoW/tcmux" = "latest"
 node = "25"
 "npm:biome" = "latest"
 "npm:typescript" = "latest"
