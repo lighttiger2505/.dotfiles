@@ -293,10 +293,53 @@ alias al='fzf_alias_exec'
 # Claude Code
 #####################################################################
 alias cc='claude'
+
+claude-code-with-tmux-session() {
+  # gitリポジトリ確認
+  local repo_root
+  repo_root=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [[ -z "$repo_root" ]]; then
+    echo "Error: git repository not found" >&2
+    return 1
+  fi
+
+  # tmux起動確認
+  if [[ -z "$TMUX" ]] && ! tmux info &>/dev/null; then
+    echo "Error: tmux is not running" >&2
+    return 1
+  fi
+
+  local repo_name
+  repo_name=$(basename "$repo_root")
+
+  # 暫定セッション名: cc-{repo}-{HHMMSS}（並列起動しても衝突しない）
+  local session="cc-${repo_name}-$(date +%H%M%S)"
+
+  if [[ -n "$TMUX" ]]; then
+    # tmux内から呼んだ場合: 新しいセッションを作って切り替え
+    tmux new-session -d -s "$session" -c "$repo_root"
+    tmux send-keys -t "$session" "claude" Enter
+    tmux switch-client -t "$session"
+  else
+    # tmux外から呼んだ場合: 新しいセッションを作ってアタッチ
+    tmux new-session -d -s "$session" -c "$repo_root"
+    tmux send-keys -t "$session" "claude" Enter
+    tmux attach -t "$session"
+  fi
+}
+alias ccss='claude-code-with-tmux-session'
+
+#####################################################################
+# devcontainer
+#####################################################################
 alias devc='devcontainer'
 alias devclaude='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . claude'
 alias devzsh='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . zsh'
 alias devrec='devcontainer up --workspace-folder . --remove-existing-container'
+
+#####################################################################
+# llmbox
+#####################################################################
 alias brmodels='aws bedrock list-inference-profiles --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro --region ap-northeast-1 | jq ".inferenceProfileSummaries.[] | [.inferenceProfileName, .inferenceProfileArn] | @csv"'
 alias lboxauth='aws sso login --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro'
 alias lboxup='lbox update-env'
