@@ -9,27 +9,6 @@
 .config/pgcli/log
 .zsh/workalias.zsh
 
-# claude code
-.claude-*/.claude.json
-.claude-*/backups/
-.claude-*/cache/
-.claude-*/debug/
-.claude-*/file-history/
-.claude-*/history.jsonl
-.claude-*/ide/
-.claude-*/paste-cache
-.claude-*/plans/
-.claude-*/plugins/
-.claude-*/projects
-.claude-*/session-env/
-.claude-*/sessions/
-.claude-*/shell-snapshots/
-.claude-*/stats-cache.json
-.claude-*/statsig
-.claude-*/tasks/
-.claude-*/todos
-.claude-*/usage-data/
-
 # lazy.vim
 lazy-lock.json
 
