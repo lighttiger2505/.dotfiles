@@ -1,5 +1,6 @@
 require("config.mappings")
 require("config.options")
+require("config.extui")
 require("config.autocmds")
 require("config.lazy")
 require("config.override")
