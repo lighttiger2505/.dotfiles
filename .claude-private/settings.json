@@ -4,6 +4,24 @@
     "ANTHROPIC_MODEL": "opusplan"
   },
   "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(sed:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(pnpm:*)",
+      "Bash(git add:*)",
+      "Bash(git log:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git checkout:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr edit:*)",
+      "Bash(golangci-lint run:*)"
+    ],
     "defaultMode": "plan"
   },
   "hooks": {
@@ -47,6 +65,7 @@
     "gopls-lsp@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
     "worktrunk@worktrunk": true,
     "superpowers@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
