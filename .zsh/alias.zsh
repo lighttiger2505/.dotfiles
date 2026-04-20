@@ -318,12 +318,12 @@ claude-code-with-tmux-session() {
   if [[ -n "$TMUX" ]]; then
     # tmux内から呼んだ場合: 新しいセッションを作って切り替え
     tmux new-session -d -s "$session" -c "$repo_root"
-    tmux send-keys -t "$session" 'claude "/tmux-workflow"' Enter
+    tmux send-keys -t "$session" "claude" Enter
     tmux switch-client -t "$session"
   else
     # tmux外から呼んだ場合: 新しいセッションを作ってアタッチ
     tmux new-session -d -s "$session" -c "$repo_root"
-    tmux send-keys -t "$session" 'claude "/tmux-workflow"' Enter
+    tmux send-keys -t "$session" "claude" Enter
     tmux attach -t "$session"
   fi
 }
