@@ -6,5 +6,6 @@ copy_env = "wt step copy-ignored"
 [[pre-start]]
 allow_direnv = "direnv allow . || true"
 
-[[pre-start]]
+[[post-start]]
 update_submodule = "git submodule update --init --recursive"
+pnpm_install = "pnpm install --no-frozen-lockfile"
