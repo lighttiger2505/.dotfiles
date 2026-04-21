@@ -161,7 +161,7 @@ function github-pr-review-fzf() {
     [[ -z $selected ]] && return 0
     local prNum=$(awk -F'\t' '{print $1}' <<<"$selected")
 
-    wt switch --no-verify "pr:${prNum}"
+    wt switch "pr:${prNum}"
     local baseBranch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
     git fetch origin "$baseBranch":"$baseBranch"
     nvim -c ":OpenDiffviewPR"
