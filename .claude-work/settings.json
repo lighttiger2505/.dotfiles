@@ -29,6 +29,9 @@
       "Bash(gh pr list:*)",
       "Bash(gh pr view:*)",
       "Bash(gh pr edit:*)",
+      "Bash(wt switch:*)",
+      "Bash(wt step commit:*)",
+      "Bash(tmux rename-session:*)",
       "Bash(golangci-lint run:*)"
     ],
     "defaultMode": "plan"
