@@ -307,7 +307,7 @@ return {
 
     {
         "rachartier/tiny-cmdline.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        event = { "VeryLazy" },
         init = function()
             vim.o.cmdheight = 0
         end,
