@@ -1,11 +1,9 @@
 worktree-path = ".worktrees/{{ branch | sanitize }}"
 
-[[pre-start]]
-copy_env = "wt step copy-ignored"
-
-[[pre-start]]
-allow_direnv = "direnv allow . || true"
-
 [[post-start]]
+copy_env = "wt step copy-ignored"
 update_submodule = "git submodule update --init --recursive"
 pnpm_install = "pnpm install --no-frozen-lockfile"
+
+[[post-start]]
+allow_direnv = "direnv allow . || true"
