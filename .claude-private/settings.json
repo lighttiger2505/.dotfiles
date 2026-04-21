@@ -10,6 +10,8 @@
       "Bash(find:*)",
       "Bash(grep:*)",
       "Bash(pnpm:*)",
+      "Bash(mate test:*)",
+      "Bash(make build:*)",
       "Bash(git add:*)",
       "Bash(git log:*)",
       "Bash(git commit:*)",
@@ -20,6 +22,9 @@
       "Bash(gh pr list:*)",
       "Bash(gh pr view:*)",
       "Bash(gh pr edit:*)",
+      "Bash(wt switch:*)",
+      "Bash(wt step commit:*)",
+      "Bash(tmux rename-session:*)",
       "Bash(golangci-lint run:*)"
     ],
     "defaultMode": "plan"
@@ -51,6 +56,17 @@
           {
             "type": "command",
             "command": "$HOME/scripts/claude-focus-pane"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
           }
         ]
       }
