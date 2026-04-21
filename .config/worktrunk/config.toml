@@ -1,5 +1,10 @@
 worktree-path = ".worktrees/{{ branch | sanitize }}"
-[pre-start]
+
+[[pre-start]]
 copy_env = "wt step copy-ignored"
+
+[[pre-start]]
 allow_direnv = "direnv allow . || true"
+
+[[pre-start]]
 update_submodule = "git submodule update --init --recursive"
