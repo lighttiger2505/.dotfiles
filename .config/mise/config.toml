@@ -9,6 +9,7 @@ idiomatic_version_file_enable_tools = ["node"]
 go = "1.26.2"
 "go:golang.org/x/tools/gopls" = "latest"
 "go:github.com/k1LoW/tcmux" = "latest"
+"go:github.com/evilmartians/lefthook/v2" = "v2.1.6"
 node = "25"
 "npm:biome" = "latest"
 "npm:typescript" = "latest"
