@@ -76,7 +76,7 @@ wt step commit
 
 ```bash
 git push -u origin <branch>
-gh pr create --title "<タイトル>" --body "<本文>"
+gh pr create --title "<タイトル>" --body "<本文>" --draft
 ```
 
 PR本文には以下を含める：
