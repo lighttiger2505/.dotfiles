@@ -68,11 +68,16 @@ fi
 alias g="git"
 
 alias rm-branch="git branch --merged | grep -v \\* | xargs -I % git branch -d %"
-alias rm-wt='git worktree list --porcelain  \
-    | awk '\''/^worktree/ {p=$2} /^branch/ {b=$2; sub("refs/heads/","",b); print p" "b}'\'' \
-    | while read p b; do git branch --merged \
-    | grep -q "origin/$b" && [[ "$p" != "$(pwd)" ]] && git worktree remove "$p"; done'
-alias gp="git pull --prune --tags --all && rm-branch"
+
+remove-safe-worktree() {
+  local branches=$(wt list --format=json | jq -r '.[] | select(.main_state == "integrated" or .main_state == "empty") | .branch')
+  if [[ -z "$branches" ]]; then
+    return 0
+  fi
+  echo "$branches" | xargs -I{} wt remove {}
+}
+alias rm-wt=remove-safe-worktree
+alias gp="git pull --prune --tags --all"
 
 # merge develop branch
 alias fdev="git fetch origin develop:develop"
