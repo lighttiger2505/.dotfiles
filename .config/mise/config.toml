@@ -1,7 +1,7 @@
 [settings]
 experimental = true
 trusted_config_paths = [
-"~/dev/src/github.com/MobilityTechnologies",
+"~/src/github.com/MobilityTechnologies",
 ]
 idiomatic_version_file_enable_tools = ["node"]
 

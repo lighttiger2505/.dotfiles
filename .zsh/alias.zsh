@@ -179,10 +179,10 @@ function get_repo_local_dir() {
     local localDir
     case "$repo" in
         "MobilityTechnologies/kingston")
-            localDir=~/dev/src/github.com/MobilityTechnologies/kingston
+            localDir=~/src/github.com/MobilityTechnologies/kingston
             ;;
         "MobilityTechnologies/kingston-static")
-            localDir=~/dev/src/github.com/MobilityTechnologies/kingston-static
+            localDir=~/src/github.com/MobilityTechnologies/kingston-static
             ;;
         *)
             echo "Error: No local mapping for repository '$repo'" >&2

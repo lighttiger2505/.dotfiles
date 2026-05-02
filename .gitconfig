@@ -2,7 +2,7 @@
 	email = lighttiger2505@gmail.com
 	name = lighttiger2505
 [ghq]
-	root = ~/dev/src
+	root = ~/src
 [core]
 	excludesfile = ~/.gitignore_global
 [merge]
@@ -25,9 +25,9 @@
 	rebase = true
 [branch "develop"]
 	rebase = true
-[includeIf "gitdir:~/dev/src/github.com/"]
+[includeIf "gitdir:~/src/github.com/"]
 	path = ~/.gitconfig-private
-[includeIf "gitdir:~/dev/src/github.dena.jp/"]
+[includeIf "gitdir:~/src/github.dena.jp/"]
 	path = ~/.gitconfig-work
 [commit]
 	template = ~/.gitmessage.txt

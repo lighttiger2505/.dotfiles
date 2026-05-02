@@ -64,9 +64,9 @@ keybindings:
         git fetch origin {{.HeadRefName}}:{{.HeadRefName}}
         git switch {{.HeadRefName}}
 repoPaths:
-  MobilityTechnologies/*: ~/dev/src/github.com/MobilityTechnologies/*
-  MobilityTechnologies/kingston: ~/dev/src/github.com/MobilityTechnologies/kingston-worktree/kingston-review
-  MobilityTechnologies/kingston-static: ~/dev/src/github.com/MobilityTechnologies/kingston-static-worktree/kingston-static-review
+  MobilityTechnologies/*: ~/src/github.com/MobilityTechnologies/*
+  MobilityTechnologies/kingston: ~/src/github.com/MobilityTechnologies/kingston-worktree/kingston-review
+  MobilityTechnologies/kingston-static: ~/dev/github.com/MobilityTechnologies/kingston-static-worktree/kingston-static-review
   key: d
 theme:
   ui:
