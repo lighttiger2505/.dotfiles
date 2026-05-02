@@ -14,3 +14,6 @@ lazy-lock.json
 
 # tpm
 .config/tmux/plugins/
+
+# claude code
+.claude/settings.local.json
