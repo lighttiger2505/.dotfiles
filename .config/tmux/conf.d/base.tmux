@@ -25,3 +25,5 @@ set -g display-panes-time 2000
 
 # maximum number of lines held in window history
 set -g history-limit 20000
+
+set -g focus-events on
