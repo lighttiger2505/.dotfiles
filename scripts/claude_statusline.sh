@@ -2,15 +2,19 @@
 # https://qiita.com/dai_chi/items/d72ec42444d66e88a044
 
 input=$(cat)
-model=$(echo "$input" | jq -r '.model.display_name // "Unknown"')
-context_pct=$(echo "$input" | jq -r '.context_window.used_percentage // 0')
-workspace=$(echo "$input" | jq -r '.workspace.current_dir // ""')
-cost=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
-rate_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty' 2>/dev/null || echo "")
-rate_7d=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty' 2>/dev/null || echo "")
-resets_at_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty' 2>/dev/null || echo "")
-resets_at_7d=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty' 2>/dev/null || echo "")
-ctx_tokens=$(echo "$input" | jq -r '.context_window.current_usage.input_tokens // empty' 2>/dev/null || echo "")
+
+IFS=$'\t' read -r model context_pct workspace cost rate_5h rate_7d resets_at_5h resets_at_7d ctx_tokens \
+  <<< "$(echo "$input" | jq -r '[
+    (.model.display_name // "Unknown"),
+    (.context_window.used_percentage // 0),
+    (.workspace.current_dir // ""),
+    (.cost.total_cost_usd // 0),
+    (.rate_limits.five_hour.used_percentage // ""),
+    (.rate_limits.seven_day.used_percentage // ""),
+    (.rate_limits.five_hour.resets_at // ""),
+    (.rate_limits.seven_day.resets_at // ""),
+    (.context_window.current_usage.input_tokens // "")
+  ] | @tsv' 2>/dev/null)"
 
 # Catppuccin Mocha palette (truecolor)
 LAVENDER="\033[38;2;180;190;254m"
@@ -24,55 +28,60 @@ SKY="\033[38;2;137;220;235m"
 TEXT="\033[38;2;205;214;244m"
 RESET="\033[0m"
 
+threshold_color() {
+  if (( $1 >= 90 )); then printf -v "$2" '%s' "$RED"
+  elif (( $1 >= 70 )); then printf -v "$2" '%s' "$YELLOW"
+  else printf -v "$2" '%s' "$3"; fi
+}
+
+_result=""
+format_rate() {
+  local pct="$1" resets_at="$2" default_color="$3" div1="$4" unit1="$5" div2="$6" unit2="$7"
+  if [[ -z "$pct" || "$pct" == "null" ]]; then
+    _result="${SUBTEXT0}--${RESET}"
+    return
+  fi
+  local pct_int="${pct%.*}" color
+  threshold_color "$pct_int" color "$default_color"
+  local reset_display=""
+  if [[ -n "$resets_at" && "$resets_at" != "null" ]]; then
+    local remaining=$(( resets_at - now ))
+    if (( remaining > 0 )); then
+      local u1=$(( remaining / div1 )) u2=$(( (remaining % div1) / div2 ))
+      reset_display=" ${SUBTEXT0}(${u1}${unit1}${u2}${unit2})${RESET}"
+    fi
+  fi
+  _result="${color}${pct_int}%${RESET}${reset_display}"
+}
+
 ws_name="--"
 [[ -n "$workspace" ]] && ws_name=$(basename "$workspace")
 branch=$(git -C "$workspace" branch --show-current 2>/dev/null || echo "--")
 branch="${branch:-"--"}"
 
 context_int="${context_pct%.*}"
-if (( context_int >= 90 )); then BAR_COLOR="$RED"
-elif (( context_int >= 70 )); then BAR_COLOR="$YELLOW"
-else BAR_COLOR="$GREEN"; fi
+threshold_color "$context_int" BAR_COLOR "$GREEN"
 
 filled=$(( context_int / 10 )); empty_count=$(( 10 - filled ))
 bar=""
 for (( i=0; i<filled; i++ )); do bar+="█"; done
 for (( i=0; i<empty_count; i++ )); do bar+="░"; done
 
-now=$(date +%s)
+[[ -n "$rate_5h$rate_7d" ]] && now=$(date +%s)
 
-if [[ -n "$rate_5h" && "$rate_5h" != "null" ]]; then
-  rate_5h_int="${rate_5h%.*}"
-  if (( rate_5h_int >= 90 )); then r5c="$RED"; elif (( rate_5h_int >= 70 )); then r5c="$YELLOW"; else r5c="$TEAL"; fi
-  if [[ -n "$resets_at_5h" && "$resets_at_5h" != "null" ]]; then
-    remaining_5h=$(( resets_at_5h - now ))
-    if (( remaining_5h > 0 )); then
-      h5=$(( remaining_5h / 3600 )); m5=$(( (remaining_5h % 3600) / 60 ))
-      reset_5h_display=" ${SUBTEXT0}(${h5}h${m5}m)${RESET}"
-    else reset_5h_display=""; fi
-  else reset_5h_display=""; fi
-  rate_5h_display="${r5c}${rate_5h_int}%${RESET}${reset_5h_display}"
-else rate_5h_display="${SUBTEXT0}--${RESET}"; fi
+format_rate "$rate_5h" "$resets_at_5h" "$TEAL" 3600 h 60 m
+rate_5h_display="$_result"
+format_rate "$rate_7d" "$resets_at_7d" "$SKY" 86400 d 3600 h
+rate_7d_display="$_result"
 
-if [[ -n "$rate_7d" && "$rate_7d" != "null" ]]; then
-  rate_7d_int="${rate_7d%.*}"
-  if (( rate_7d_int >= 90 )); then r7c="$RED"; elif (( rate_7d_int >= 70 )); then r7c="$YELLOW"; else r7c="$SKY"; fi
-  if [[ -n "$resets_at_7d" && "$resets_at_7d" != "null" ]]; then
-    remaining_7d=$(( resets_at_7d - now ))
-    if (( remaining_7d > 0 )); then
-      d7=$(( remaining_7d / 86400 )); h7=$(( (remaining_7d % 86400) / 3600 ))
-      reset_7d_display=" ${SUBTEXT0}(${d7}d${h7}h)${RESET}"
-    else reset_7d_display=""; fi
-  else reset_7d_display=""; fi
-  rate_7d_display="${r7c}${rate_7d_int}%${RESET}${reset_7d_display}"
-else rate_7d_display="${SUBTEXT0}--${RESET}"; fi
-
+ctx_tokens_display=""
 if [[ -n "$ctx_tokens" && "$ctx_tokens" != "null" ]]; then
   if (( ctx_tokens >= 1000 )); then
-    ctx_k=$(echo "scale=1; $ctx_tokens / 1000" | bc)
-    ctx_tokens_display=" ${SUBTEXT0}(${ctx_k}k)${RESET}"
-  else ctx_tokens_display=" ${SUBTEXT0}(${ctx_tokens})${RESET}"; fi
-else ctx_tokens_display=""; fi
+    ctx_tokens_display=" ${SUBTEXT0}($(( ctx_tokens / 1000 )).$(( (ctx_tokens % 1000) / 100 ))k)${RESET}"
+  else
+    ctx_tokens_display=" ${SUBTEXT0}(${ctx_tokens})${RESET}"
+  fi
+fi
 
 cost_display=$(printf '$%.2f' "$cost")
 
