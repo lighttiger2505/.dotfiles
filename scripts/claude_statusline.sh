@@ -3,7 +3,7 @@
 
 input=$(cat)
 
-IFS=$'\t' read -r model context_pct workspace cost rate_5h rate_7d resets_at_5h resets_at_7d ctx_tokens \
+IFS=$'\t' read -r model context_pct workspace cost rate_5h rate_7d resets_at_5h resets_at_7d total_in total_out \
   <<< "$(echo "$input" | jq -r '[
     (.model.display_name // "Unknown"),
     (.context_window.used_percentage // 0),
@@ -13,7 +13,8 @@ IFS=$'\t' read -r model context_pct workspace cost rate_5h rate_7d resets_at_5h 
     (.rate_limits.seven_day.used_percentage // ""),
     (.rate_limits.five_hour.resets_at // ""),
     (.rate_limits.seven_day.resets_at // ""),
-    (.context_window.current_usage.input_tokens // "")
+    (.context_window.total_input_tokens // ""),
+    (.context_window.total_output_tokens // "")
   ] | @tsv' 2>/dev/null)"
 
 # Catppuccin Mocha palette (truecolor)
@@ -74,13 +75,18 @@ rate_5h_display="$_result"
 format_rate "$rate_7d" "$resets_at_7d" "$SKY" 86400 d 3600 h
 rate_7d_display="$_result"
 
-ctx_tokens_display=""
-if [[ -n "$ctx_tokens" && "$ctx_tokens" != "null" ]]; then
-  if (( ctx_tokens >= 1000 )); then
-    ctx_tokens_display=" ${SUBTEXT0}($(( ctx_tokens / 1000 )).$(( (ctx_tokens % 1000) / 100 ))k)${RESET}"
+fmt_k() {
+  local n="$1"
+  if (( n >= 1000 )); then
+    printf '%d.%dk' "$(( n / 1000 ))" "$(( (n % 1000) / 100 ))"
   else
-    ctx_tokens_display=" ${SUBTEXT0}(${ctx_tokens})${RESET}"
+    printf '%d' "$n"
   fi
+}
+
+ctx_tokens_display=""
+if [[ -n "$total_in" && "$total_in" != "null" && -n "$total_out" && "$total_out" != "null" ]]; then
+  ctx_tokens_display=" ${SUBTEXT0}($(fmt_k "$total_in") in / $(fmt_k "$total_out") out)${RESET}"
 fi
 
 cost_display=$(printf '$%.2f' "$cost")
