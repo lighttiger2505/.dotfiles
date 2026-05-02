@@ -75,6 +75,7 @@ bind refs . !sh -c "git diff --name-only %(branch)"
 # https://github.com/edentsai/tig-theme-molokai-like/blob/master/colors/molokai-like-theme.tigrc
 color default                       253         233
 color cursor                        default     237
+color cursor-blur                   black       cyan
 color status                        250         235
 color title-focus                   default     238
 color title-blur                    default     238
