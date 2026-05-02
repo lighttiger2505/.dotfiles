@@ -86,10 +86,10 @@ fmt_k() {
 
 ctx_tokens_display=""
 if [[ -n "$total_in" && "$total_in" != "null" && -n "$total_out" && "$total_out" != "null" ]]; then
-  ctx_tokens_display=" ${SUBTEXT0}($(fmt_k "$total_in") in / $(fmt_k "$total_out") out)${RESET}"
+  ctx_tokens_display=" ${SUBTEXT0}(⬇️$(fmt_k "$total_in") in / ⬆️$(fmt_k "$total_out") out)${RESET}"
 fi
 
 cost_display=$(printf '$%.2f' "$cost")
 
 echo -e "${LAVENDER}🤖Model:${model}${RESET} ${SUBTEXT0}▸${RESET} ${TEXT}📁WorkSpace:${ws_name}${RESET} ${SUBTEXT0}▸${RESET} ${TEAL}🌿Branch:${branch}${RESET}"
-echo -e "${TEXT}🪣Context:${RESET} ${BAR_COLOR}${bar}${RESET} ${TEXT}${context_int}%${RESET}${ctx_tokens_display} ${SUBTEXT0}▸${RESET} 5h: ${rate_5h_display} ${SUBTEXT0}▸${RESET} 7d: ${rate_7d_display} ${SUBTEXT0}▸${RESET} ${PEACH}💰Cost:${cost_display}${RESET}"
+echo -e "${TEXT}🪣Context:${RESET} ${BAR_COLOR}${bar}${RESET} ${TEXT}${context_int}%${RESET}${ctx_tokens_display} ${SUBTEXT0}▸${RESET} 🔶5h: ${rate_5h_display} ${SUBTEXT0}▸${RESET} 🔴7d: ${rate_7d_display} ${SUBTEXT0}▸${RESET} ${PEACH}💰Cost:${cost_display}${RESET}"
