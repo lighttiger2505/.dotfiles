@@ -10,7 +10,7 @@ export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
 # golang
-export GOPATH=$HOME/dev
+export GOPATH=$HOME/go
 export GO111MODULE=auto
 export GOPRIVATE="github.com/MobilityTechnologies"
 # Neovim
