@@ -6,9 +6,13 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
+            "franco-ruggeri/codecompanion-spinner.nvim",
         },
         config = function()
             require("codecompanion").setup({
+                extensions = {
+                    spinner = {},
+                },
                 ignore_warnings = true,
                 adapters = {
                     http = {
