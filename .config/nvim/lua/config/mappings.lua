@@ -93,7 +93,22 @@ vim.keymap.set("n", "yp", function()
     vim.fn.setreg("+", relative_path)
     -- Notify the user that the file path was copied
     print("Copied file path to clipboard: " .. relative_path)
-end, { noremap = true, silent = true, desc = "Copy current file path to clipboard" })
+end, { noremap = true, silent = true, desc = "Copy current file relative path to clipboard" })
+
+vim.keymap.set("n", "yP", function()
+    local filepath = vim.api.nvim_buf_get_name(0)
+    if filepath == "" then
+        print("No file name available!")
+        return
+    end
+    local home = vim.env.HOME
+    local display_path = filepath
+    if home and filepath:sub(1, #home) == home then
+        display_path = "~/" .. filepath:sub(#home + 2)
+    end
+    vim.fn.setreg("+", display_path)
+    print("Copied file path to clipboard: " .. display_path)
+end, { noremap = true, silent = true, desc = "Copy current file full path to clipboard" })
 
 vim.keymap.set("n", "<Leader><Leader>t", "<Cmd>e $VIM_MEMO_DIR/todo.md<CR>", opts)
 vim.keymap.set("n", "<Leader><Leader>l", "<Cmd>e $VIM_MEMO_DIR/link.md<CR>", opts)
