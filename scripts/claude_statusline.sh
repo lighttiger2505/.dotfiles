@@ -3,7 +3,7 @@
 
 input=$(cat)
 
-IFS=$'\t' read -r model context_pct workspace cost rate_5h rate_7d resets_at_5h resets_at_7d total_in total_out \
+IFS=$'\x1f' read -r model context_pct workspace cost rate_5h rate_7d resets_at_5h resets_at_7d total_in total_out \
   <<< "$(echo "$input" | jq -r '[
     (.model.display_name // "Unknown"),
     (.context_window.used_percentage // 0),
@@ -15,7 +15,7 @@ IFS=$'\t' read -r model context_pct workspace cost rate_5h rate_7d resets_at_5h 
     (.rate_limits.seven_day.resets_at // ""),
     (.context_window.total_input_tokens // ""),
     (.context_window.total_output_tokens // "")
-  ] | @tsv' 2>/dev/null)"
+  ] | join("")' 2>/dev/null)"
 
 # Catppuccin Mocha palette (truecolor)
 LAVENDER="\033[38;2;180;190;254m"
