@@ -8,9 +8,10 @@ path=(
 # mise
 $HOME/.local/share/mise/shims
 # brew
+/opt/homebrew/opt/mysql@8.0/bin(N-/)
+/opt/homebrew/opt/postgresql@16/bin(N-/)
 /opt/homebrew/bin(N-/)
 /opt/homebrew/sbin(N-/)
-/opt/homebrew/opt/mysql@8.0/bin(N-/)
 # bin
 /usr/local/bin(N-/)
 /usr/bin(N-/)
