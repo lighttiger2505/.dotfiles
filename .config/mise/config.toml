@@ -1,5 +1,6 @@
 [settings]
 experimental = true
+install_before = "7d"
 trusted_config_paths = [
 "~/src/github.com/MobilityTechnologies",
 ]
