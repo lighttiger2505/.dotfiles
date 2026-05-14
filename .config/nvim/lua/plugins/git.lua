@@ -72,7 +72,23 @@ return {
         "sindrets/diffview.nvim",
         cmd = { "DiffviewOpen" },
         config = function()
-            require("diffview").setup()
+            local actions = require("diffview.actions")
+            require("diffview").setup({
+                keymaps = {
+                    view = {
+                        ["<leader>b"] = false,
+                        { "n", "<leader>t", actions.toggle_files, { desc = "Toggle the diffview file panel" } },
+                    },
+                    file_panel = {
+                        ["<leader>b"] = false,
+                        { "n", "<leader>t", actions.toggle_files, { desc = "Toggle the diffview file panel" } },
+                    },
+                    file_history_panel = {
+                        ["<leader>b"] = false,
+                        { "n", "<leader>t", actions.toggle_files, { desc = "Toggle the diffview file panel" } },
+                    },
+                },
+            })
         end,
         keys = {
             {
