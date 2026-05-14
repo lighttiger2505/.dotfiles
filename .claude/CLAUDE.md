@@ -1,7 +1,6 @@
 # 基本原則
 
-https://github.com/multica-ai/andrej-karpathy-skills/blob/main/CLAUDE.md
-を参考に構築
+https://github.com/multica-ai/andrej-karpathy-skills/blob/main/CLAUDE.md を参考に構築
 
 ## 1. コーディング前に不明点をすべて消す
 
