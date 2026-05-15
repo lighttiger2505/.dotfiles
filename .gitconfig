@@ -27,7 +27,7 @@
 	rebase = true
 [includeIf "gitdir:~/src/github.com/"]
 	path = ~/.gitconfig-private
-[includeIf "gitdir:~/src/github.dena.jp/"]
+[includeIf "gitdir:~/src/github.com/MobilityTechnologies/"]
 	path = ~/.gitconfig-work
 [commit]
 	template = ~/.gitmessage.txt
