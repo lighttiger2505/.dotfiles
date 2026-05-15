@@ -1,8 +1,8 @@
 #!/usr/bin/zsh
 
-if executable direnv; then
-    eval "$(direnv hook zsh)"
-fi
+# if executable direnv; then
+#     eval "$(direnv hook zsh)"
+# fi
 
 if executable zoxide; then
     eval "$(zoxide init zsh --cmd cd)"
@@ -17,9 +17,9 @@ if executable $HOME/.local/bin/mise; then
     eval "$($HOME/.local/bin/mise activate zsh)"
 fi
 
-if executable wt; then
-    eval "$(command wt config shell init zsh)"
-fi
+# if executable wt; then
+#     eval "$(command wt config shell init zsh)"
+# fi
 
 # Google Cloud SDK.
 # The next line updates PATH for the Google Cloud SDK.
