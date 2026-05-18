@@ -136,7 +136,7 @@ alias tf='vim $VIM_MEMO_DIR/feedback.md'
 #####################################################################
 # GitHub cli
 #####################################################################
-alias hb='gh repo view --branch "$(git branch --show-current)" --web'
+alias hb='gh repo view --web'
 alias hp='gh pr view --web'
 alias ha='gh pr checks'
 alias vimdiffpr='NVIM_NO_SESSION=1 nvim -c ":OpenDiffviewPR"'
