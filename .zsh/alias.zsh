@@ -350,11 +350,10 @@ alias devrec='devcontainer up --workspace-folder . --remove-existing-container'
 #####################################################################
 # llmbox
 #####################################################################
-alias brmodels='aws bedrock list-inference-profiles --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro --region ap-northeast-1 | jq ".inferenceProfileSummaries.[] | [.inferenceProfileName, .inferenceProfileArn] | @csv"'
-alias lboxauth='aws sso login --profile mot-sandbox-software-dev-aws_llm-trial-emp-ro'
 alias lboxup='lbox update-env'
 alias lboxcc='lbox exec sandbox claude'
 alias lboxsh='lbox exec sandbox zsh'
+alias lboxre='lbox down && lbox build && lbox up -d'
 alias planv='nvim "$(eza -s modified ~/.claude/plans | head -n 1)"'
 
 function edit-claude-settings() {
