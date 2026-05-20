@@ -31,8 +31,6 @@
 	path = ~/.gitconfig-work
 [commit]
 	template = ~/.gitmessage.txt
-[credential]
-	helper = osxkeychain
 [push]
 	autoSetupRemote = true
 [rerere]
