@@ -7,8 +7,7 @@ set -g status-left " #{session_name} "
 set -g status-right-length 128
 set -g status-right " %Y/%m/%d(%a) %H:%M "
 
-# Window display setting
-setw -g window-status-format \
-    ' #{window_index} #(${HOME}/.config/tmux/tmux-window-status.sh #{pane_current_path} #{window_name} #{pane_pid}) #{?#{m:#W,nvim},📝 ,}'
-setw -g window-status-current-format \
-    ' #{window_index} #(${HOME}/.config/tmux/tmux-window-status.sh #{pane_current_path} #{window_name} #{pane_pid}) #{?#{m:#W,nvim},📝 ,}'
+# Window display setting: mytmbar があれば優先、無ければシェルスクリプト
+if-shell '[ -x "$HOME/go/bin/mytmbar" ]' \
+    'source-file ~/.config/tmux/conf.d/statusline-mytmbar.tmux' \
+    'source-file ~/.config/tmux/conf.d/statusline-fallback.tmux'
