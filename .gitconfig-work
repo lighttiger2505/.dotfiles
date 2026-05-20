@@ -1,3 +1,5 @@
 [user]
-	email = toshikazu.ohashi@mo-t.com
+	email = toshikazu.ohashi@goinc.jp
 	name = toshikazu.ohashi
+[url "https://github.com/MobilityTechnologies/"]
+	insteadOf = https://github.com/MobilityTechnologies/

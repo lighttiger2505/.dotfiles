@@ -27,7 +27,7 @@
 	rebase = true
 [includeIf "gitdir:~/src/github.com/"]
 	path = ~/.gitconfig-private
-[includeIf "gitdir:~/src/github.dena.jp/"]
+[includeIf "gitdir:~/src/github.com/MobilityTechnologies/"]
 	path = ~/.gitconfig-work
 [commit]
 	template = ~/.gitmessage.txt
@@ -37,39 +37,3 @@
 	autoSetupRemote = true
 [rerere]
 	enabled = true
-[alias]
-    wtnew = "!f() { \
-        if [ $# -ne 2 ]; then \
-            echo \"Usage: git wtnew <base_branch> <new_branch>\" >&2; \
-            exit 1; \
-        fi; \
-        base=$1; \
-        new=$2; \
-        main_root=$(git worktree list --porcelain | awk '/^worktree /{print $2; exit}') || exit 1; \
-        repo=$(basename \"$main_root\"); \
-        parent_dir=$(dirname \"$main_root\"); \
-        sanitized=${new//\\//-}; \
-        worktrees_dir=\"$parent_dir/${repo}-worktree\"; \
-        dest=\"$worktrees_dir/${sanitized}\"; \
-        mkdir -p \"$worktrees_dir\"; \
-        git worktree add -b \"$new\" \"$dest\" \"$base\"; \
-    }; f"
-	st = status
-	br = branch
-	brd = branch -D
-	co = checkout
-	cob = checkout -b
-	co = commit
-	coa = commit --amend
-	me = merge
-	menf = merge --no-ff
-	meff = merge --ff
-	pu = pull
-	cp = cherry-pick
-[url "ssh://git@github.com"]
-	insteadOf = https://github.com
-[wt]
-	basedir = .worktrees
-	copy = .envrc
-	hook = git submodule update --init --recursive
-	copy = .claude/settings.local.json

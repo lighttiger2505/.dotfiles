@@ -136,10 +136,14 @@ alias tf='vim $VIM_MEMO_DIR/feedback.md'
 #####################################################################
 # GitHub cli
 #####################################################################
-alias hb='gh repo view --branch "$(git branch --show-current)" --web'
+alias hb='gh repo view --web'
 alias hp='gh pr view --web'
 alias ha='gh pr checks'
-alias vimdiffpr='NVIM_NO_SESSION=1 nvim -c ":OpenDiffviewPR"'
+
+function GitHubPRDiffVim() {
+    nvim -c 'lua require("ghlite")' -c 'GHLitePRDiffview'
+}
+alias vimdiffpr=GitHubPRDiffVim
 
 alias prcreate='gh pr create --template "pull_request_template.md"'
 
@@ -167,6 +171,7 @@ function github-pr-review-fzf() {
     local prNum=$(awk -F'\t' '{print $1}' <<<"$selected")
 
     wt switch "pr:${prNum}"
+    git pull --rebase
     local baseBranch=$(gh pr status --json baseRefName -q '.currentBranch.baseRefName')
     git fetch origin "$baseBranch":"$baseBranch"
     nvim -c ":OpenDiffviewPR"
@@ -277,11 +282,11 @@ alias fib=draw-fibonacci
 # Obsidian
 #####################################################################
 function obsidian-new() {
-    NVIM_NO_SESSION=1 nvim -c 'lua require("obsidian")' -c 'ObsidianNew'
+    nvim -c 'lua require("obsidian")' -c 'ObsidianNew'
 }
 alias on=obsidian-new
 function obsidian-list-preview() {
-    NVIM_NO_SESSION=1 nvim -c 'lua require("obsidian")' -c 'ObsidianQuickSwitch'
+    nvim -c 'lua require("obsidian")' -c 'ObsidianQuickSwitch'
 }
 alias ov=obsidian-list-preview
 
