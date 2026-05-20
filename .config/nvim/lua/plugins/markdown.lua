@@ -31,21 +31,8 @@ return {
     },
 
     {
-        "Kicamon/markdown-table-mode.nvim",
+        "dhruvasagar/vim-table-mode",
         ft = { "markdown" },
-        config = function()
-            require("markdown-table-mode").setup({
-                filetype = {
-                    "*.md",
-                },
-                options = {
-                    insert = true,
-                    insert_leave = true,
-                    pad_separator_line = false,
-                    alig_style = "default",
-                },
-            })
-        end,
     },
 
     {
