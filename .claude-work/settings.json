@@ -55,25 +55,6 @@
           {
             "type": "command",
             "command": "$HOME/scripts/claude-notification"
-          },
-          {
-            "type": "command",
-            "command": "$HOME/scripts/claude-focus-pane"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "$HOME/scripts/claude-notification"
-          },
-          {
-            "type": "command",
-            "command": "$HOME/scripts/claude-focus-pane"
           }
         ]
       }
