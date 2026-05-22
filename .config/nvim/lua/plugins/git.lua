@@ -151,7 +151,7 @@ return {
         event = "VeryLazy",
         config = function()
             require("project_nvim").setup({
-                manual_mode = false,
+                manual_mode = true,
                 detection_methods = { "lsp", "pattern" },
                 patterns = { "package.json", "go.mod", ".git" },
                 show_hidden = false,
