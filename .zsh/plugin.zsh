@@ -60,4 +60,3 @@ install_plugin "https://github.com/Aloxaf/fzf-tab"
 load_plugin "fzf-tab" "fzf-tab.plugin.zsh"
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
-zsh-defer source $HOME/.zsh/command_hook.zsh
