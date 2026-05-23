@@ -18,19 +18,30 @@ install_plugin() {
 # Function to load plugin with optional defer
 load_plugin() {
     local plugin=$1
+    local entry=$2
     local dir_name=${ZSH_PLUGIN_HOME}/${plugin}
+    local plugin_file=""
 
-    for initscript in ${plugin#*/}.zsh ${plugin#*/}.plugin.zsh ${plugin#*/}.sh; do
-        local plugin_file=${dir_name}/${initscript}
-        if [[ -f ${plugin_file} ]]; then
-            if executable zsh-defer; then
-                zsh-defer source ${plugin_file}
-            else
-                source ${plugin_file}
-            fi
-            break
+    if [[ -n ${entry} ]]; then
+        if [[ -f ${dir_name}/${entry} ]]; then
+            plugin_file=${dir_name}/${entry}
         fi
-    done
+    else
+        for initscript in ${plugin#*/}.zsh ${plugin#*/}.plugin.zsh ${plugin#*/}.sh; do
+            if [[ -f ${dir_name}/${initscript} ]]; then
+                plugin_file=${dir_name}/${initscript}
+                break
+            fi
+        done
+    fi
+
+    [[ -z ${plugin_file} ]] && return
+
+    if executable zsh-defer; then
+        zsh-defer source ${plugin_file}
+    else
+        source ${plugin_file}
+    fi
 }
 
 # Install and load zsh-defer
@@ -40,9 +51,12 @@ load_plugin "zsh-defer"
 # Install and load zsh plugins with zsh-defer
 install_plugin "https://github.com/zdharma-continuum/fast-syntax-highlighting"
 load_plugin "fast-syntax-highlighting"
+
 install_plugin "https://github.com/zsh-users/zsh-autosuggestions"
 load_plugin "zsh-autosuggestions"
+
 install_plugin "https://github.com/Aloxaf/fzf-tab"
-load_plugin "fzf-tab.plugin.zsh"
+load_plugin "fzf-tab" "fzf-tab.plugin.zsh"
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 zsh-defer source $HOME/.zsh/command_hook.zsh
