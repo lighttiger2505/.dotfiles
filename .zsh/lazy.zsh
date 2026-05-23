@@ -54,6 +54,7 @@ load_plugin "fast-syntax-highlighting"
 
 install_plugin "https://github.com/zsh-users/zsh-autosuggestions"
 load_plugin "zsh-autosuggestions"
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 install_plugin "https://github.com/Aloxaf/fzf-tab"
 load_plugin "fzf-tab" "fzf-tab.plugin.zsh"
