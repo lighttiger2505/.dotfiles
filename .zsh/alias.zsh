@@ -339,6 +339,17 @@ claude-code-with-tmux-session() {
 }
 alias ccss='claude-code-with-tmux-session'
 
+open-prompts() {
+  local dir="${HOME}/.config/prompts"
+  local file
+  file=$(fd --type f . "$dir" 2>/dev/null || find "$dir" -type f) || return
+  file=$(printf '%s\n' "$file" | fzf \
+    --preview 'bat --color=always --style=numbers {} 2>/dev/null || cat {}'
+  ) || return
+  [[ -n "$file" ]] && ${EDITOR:-nvim} "$file"
+}
+alias pt=open-prompts
+
 #####################################################################
 # devcontainer
 #####################################################################
