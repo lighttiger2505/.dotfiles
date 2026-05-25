@@ -48,7 +48,9 @@ load_plugin() {
 install_plugin "https://github.com/romkatv/zsh-defer"
 load_plugin "zsh-defer"
 
-# Install and load zsh plugins with zsh-defer
+install_plugin "https://github.com/zsh-users/zsh-completions"
+load_plugin "zsh-completions"
+
 install_plugin "https://github.com/zdharma-continuum/fast-syntax-highlighting"
 load_plugin "fast-syntax-highlighting"
 
