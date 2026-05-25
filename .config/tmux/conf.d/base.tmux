@@ -27,3 +27,6 @@ set -g display-panes-time 2000
 set -g history-limit 20000
 
 set -g focus-events on
+
+# Enable neitive scrollbar
+set -g pane-scrollbars on
