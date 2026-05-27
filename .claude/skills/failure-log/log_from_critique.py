@@ -7,7 +7,7 @@ Evaluator skill の末尾でこう呼ぶ:
     python3 ${CLAUDE_SKILL_DIR}/scripts/log_from_critique.py <critique.jsonのパス>
 
 オプション:
-    --failures <path>   FAILURES.md のパス（既定 .claude/workspace/FAILURES.md）
+    --failures <path>   FAILURES.md のパス（既定はメイン worktree ルートの .claude/workspace/FAILURES.md）
     --kind <kind>       chunk_id から導けないときの kind 明示指定
     --branch <name>     ヘッダに載せるブランチ/feature 名
 """
@@ -19,6 +19,17 @@ import sys
 from datetime import datetime, timezone
 
 LOG_VERDICTS = {"NEEDS_REVISION", "GENERATOR_FAILED"}
+
+
+def default_failures_path():
+    rel = os.path.join(".claude", "workspace", "FAILURES.md")
+    try:
+        common = subprocess.check_output(
+            ["git", "rev-parse", "--path-format=absolute", "--git-common-dir"],
+            text=True, stderr=subprocess.DEVNULL).strip()
+    except Exception:
+        common = ""
+    return os.path.join(os.path.dirname(common), rel) if common else rel
 
 # chunk_id 接尾辞 -> kind。プロジェクトの chunk 命名に合わせて編集する。
 SUFFIX_KIND = {
@@ -42,10 +53,12 @@ def derive_kind(chunk_id):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("critique")
-    ap.add_argument("--failures", default=".claude/workspace/FAILURES.md")
+    ap.add_argument("--failures", default=None)
     ap.add_argument("--kind", default=None)
     ap.add_argument("--branch", default=None)
     args = ap.parse_args()
+
+    failures = args.failures or default_failures_path()
 
     with open(args.critique, encoding="utf-8") as f:
         c = json.load(f)
@@ -84,11 +97,11 @@ def main():
         f"- fix: {fix}\n"
     )
 
-    os.makedirs(os.path.dirname(args.failures) or ".", exist_ok=True)
-    with open(args.failures, "a", encoding="utf-8") as f:
+    os.makedirs(os.path.dirname(failures) or ".", exist_ok=True)
+    with open(failures, "a", encoding="utf-8") as f:
         f.write(block)
 
-    print(f"FAILURES.md に追記した: [{kind}] {verdict} checks={failed}")
+    print(f"FAILURES.md に追記した: [{kind}] {verdict} checks={failed} → {failures}")
     return 0
 
 

@@ -7,8 +7,9 @@ allowed-tools: Bash(mkdir *) Bash(test *) Bash(cat *) Bash(printf *) Bash(python
 
 # failure-log
 
-このセッションで起きた **具体的な失敗を1件だけ** `.claude/workspace/FAILURES.md` に追記する。
+このセッションで起きた **具体的な失敗を1件だけ** **メイン worktree ルートの** `.claude/workspace/FAILURES.md` に追記する。
 失敗を残さないと次のセッションの自分が同じミスを繰り返すため、修正が入った直後に機械的に記録する。
+**なお修正対象には本スキルも含まれるものとする**
 
 ## 2つの入口
 
@@ -48,11 +49,13 @@ allowed-tools: Bash(mkdir *) Bash(test *) Bash(cat *) Bash(printf *) Bash(python
 1. branch を取得する: !`git branch --show-current 2>/dev/null || echo "no-branch"`
 2. 今日時刻(UTC)を取得する: !`date -u '+%Y-%m-%d %H:%M UTC'`
 3. 上記の値と、直前の失敗内容から1ブロックを組み立てる。
-4. ファイルが無ければ作成し、末尾に追記する:
+4. メイン worktree ルートを解決し、末尾に追記する:
 
 ```bash
-mkdir -p .claude/workspace
-cat >> .claude/workspace/FAILURES.md <<'EOF'
+common=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
+ROOT=${common:+$(dirname "$common")}; ROOT=${ROOT:-$PWD}
+mkdir -p "$ROOT/.claude/workspace"
+cat >> "$ROOT/.claude/workspace/FAILURES.md" <<'EOF'
 
 ## 2026-05-27 14:32 UTC — refactor-remove-unused-service-main-db / infra
 - kind: infra
@@ -62,9 +65,10 @@ cat >> .claude/workspace/FAILURES.md <<'EOF'
 EOF
 ```
 
-（上の中身は例。実際の値で置き換える。ヒアドキュメントは `'EOF'` でクォートし、変数展開を止める。）
+（上の中身は例。実際の値で置き換える。ヒアドキュメントは `'EOF'` でクォートし、変数展開を止める。
+`ROOT` は linked worktree からでもメイン worktree ルートに解決される。git 管理外なら `$PWD` にフォールバック。）
 
-5. 追記したら「FAILURES.md に1件記録した（kind/tags を一言）」とだけ短く報告する。長い説明は不要。
+5. 追記したら「`$ROOT/.claude/workspace/FAILURES.md` に1件記録した（kind/tags を一言）」とだけ短く報告する。保存先パスを含めることで worktree 内から実行されたときに確認しやすい。長い説明は不要。
 
 ## 注意
 

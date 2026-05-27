@@ -14,10 +14,20 @@
 """
 import os
 import re
+import subprocess
 import sys
 from collections import defaultdict
 
-DEFAULT_PATH = ".claude/workspace/FAILURES.md"
+
+def default_failures_path():
+    rel = os.path.join(".claude", "workspace", "FAILURES.md")
+    try:
+        common = subprocess.check_output(
+            ["git", "rev-parse", "--path-format=absolute", "--git-common-dir"],
+            text=True, stderr=subprocess.DEVNULL).strip()
+    except Exception:
+        common = ""
+    return os.path.join(os.path.dirname(common), rel) if common else rel
 THRESHOLD = int(os.environ.get("FAILURE_PROMOTE_THRESHOLD", "3"))
 
 # kind -> 昇格先（プロジェクトに合わせて編集すること）
@@ -91,7 +101,7 @@ def label(verdict, sig):
 
 
 def main():
-    path = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_PATH
+    path = sys.argv[1] if len(sys.argv) > 1 else default_failures_path()
     if not os.path.exists(path):
         print(f"FAILURES.md が見つからない: {path}")
         print("まだ失敗が記録されていない可能性が高い。/failure-log で蓄積してから再実行する。")
