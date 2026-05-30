@@ -209,92 +209,6 @@ return {
     },
 
     {
-        "y3owk1n/undo-glow.nvim",
-        event = { "VeryLazy" },
-        config = function()
-            ---@type UndoGlow.Config
-            require("undo-glow").setup({
-                animation = {
-                    enabled = true,
-                    duration = 200,
-                    animation_type = "zoom",
-                    window_scoped = true,
-                },
-                highlights = {
-                    undo = {
-                        hl_color = { bg = "#693232" }, -- Dark muted red
-                    },
-                    redo = {
-                        hl_color = { bg = "#2F4640" }, -- Dark muted green
-                    },
-                    yank = {
-                        hl_color = { bg = "#7A683A" }, -- Dark muted yellow
-                    },
-                    paste = {
-                        hl_color = { bg = "#325B5B" }, -- Dark muted cyan
-                    },
-                },
-                priority = 2048 * 3,
-            })
-        end,
-        keys = {
-            {
-                "u",
-                function()
-                    require("undo-glow").undo()
-                end,
-                mode = "n",
-                desc = "Undo with highlight",
-                noremap = true,
-            },
-            {
-                "U",
-                function()
-                    require("undo-glow").redo()
-                end,
-                mode = "n",
-                desc = "Redo with highlight",
-                noremap = true,
-            },
-            {
-                "<C-R>",
-                function()
-                    require("undo-glow").redo()
-                end,
-                mode = "n",
-                desc = "Redo with highlight",
-                noremap = true,
-            },
-            {
-                "p",
-                function()
-                    require("undo-glow").paste_below()
-                end,
-                mode = "n",
-                desc = "Paste below with highlight",
-                noremap = true,
-            },
-            {
-                "P",
-                function()
-                    require("undo-glow").paste_above()
-                end,
-                mode = "n",
-                desc = "Paste above with highlight",
-                noremap = true,
-            },
-        },
-        init = function()
-            vim.api.nvim_create_autocmd("TextYankPost", {
-                desc = "Highlight when yanking (copying) text",
-                callback = function()
-                    require("undo-glow").yank()
-                end,
-            })
-        end,
-    },
-
-    {
         "Bekaboo/dropbar.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
@@ -314,6 +228,56 @@ return {
         config = function()
             require("tiny-cmdline").setup({
                 on_reposition = require("tiny-cmdline").adapters.blink,
+            })
+        end,
+    },
+
+    {
+        "rachartier/tiny-glimmer.nvim",
+        event = "VeryLazy",
+        priority = 10,
+        config = function()
+            require("tiny-glimmer").setup({
+                enabled = true,
+                overwrite = {
+                    yank = {
+                        enabled = true,
+                        default_animation = "fade",
+                    },
+                    search = {
+                        enabled = false,
+                    },
+                    paste = {
+                        enabled = true,
+                        default_animation = "reverse_fade",
+                        paste_mapping = "p",
+                        Paste_mapping = "P",
+                    },
+                    undo = {
+                        enabled = true,
+                        default_animation = {
+                            name = "fade",
+                            settings = {
+                                from_color = "DiffDelete",
+                                max_duration = 800,
+                                min_duration = 800,
+                            },
+                        },
+                        undo_mapping = "u",
+                    },
+                    redo = {
+                        enabled = true,
+                        default_animation = {
+                            name = "fade",
+                            settings = {
+                                from_color = "DiffAdd",
+                                max_duration = 800,
+                                min_duration = 800,
+                            },
+                        },
+                        redo_mapping = "<c-r>",
+                    },
+                },
             })
         end,
     },
