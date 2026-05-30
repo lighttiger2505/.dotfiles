@@ -1,4 +1,5 @@
-require("config.mappings")
+require("config.remaps")
+require("config.addmaps")
 require("config.options")
 require("config.extui")
 require("config.autocmds")
