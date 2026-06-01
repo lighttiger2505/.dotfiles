@@ -5,27 +5,32 @@
   },
   "permissions": {
     "allow": [
-      "Bash(ls:*)",
-      "Bash(sed:*)",
       "Bash(find:*)",
-      "Bash(grep:*)",
-      "Bash(pnpm:*)",
-      "Bash(mate test:*)",
-      "Bash(make build:*)",
-      "Bash(git add:*)",
-      "Bash(git log:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(git checkout:*)",
       "Bash(gh pr create:*)",
       "Bash(gh pr diff:*)",
+      "Bash(gh pr edit:*)",
       "Bash(gh pr list:*)",
       "Bash(gh pr view:*)",
-      "Bash(gh pr edit:*)",
-      "Bash(wt switch:*)",
-      "Bash(wt step commit:*)",
-      "Bash(tmux rename-session:*)",
-      "Bash(golangci-lint run:*)"
+      "Bash(git add:*)",
+      "Bash(git checkout:*)",
+      "Bash(git commit:*)",
+      "Bash(git log:*)",
+      "Bash(git push:*)",
+      "Bash(go get *)",
+      "Bash(go mod *)",
+      "Bash(golangci-lint run:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(make build:*)",
+      "Bash(mate test:*)",
+      "Bash(pnpm:*)",
+      "Bash(rtk git *)",
+      "Bash(rtk go *)",
+      "Bash(rtk grep *)",
+      "Bash(rtk ls *)",
+      "Bash(rtk read *)",
+      "Bash(sed:*)",
+      "Bash(tmux rename-session:*)"
     ],
     "defaultMode": "plan"
   },
@@ -37,10 +42,6 @@
           {
             "type": "command",
             "command": "$HOME/scripts/claude-notification"
-          },
-          {
-            "type": "command",
-            "command": "$HOME/scripts/claude-focus-pane"
           }
         ]
       }
@@ -70,7 +71,8 @@
     "worktrunk@worktrunk": true,
     "superpowers@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true
+    "code-review@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "worktrunk": {
