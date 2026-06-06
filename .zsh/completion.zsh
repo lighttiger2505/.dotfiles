@@ -1,7 +1,15 @@
 # load command completion function
 autoload -Uz compinit
-# load compinit
-compinit
+# Run the full security audit only once a day; otherwise skip it for speed.
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+# Compile the dump so the next shell loads it faster.
+if [[ -s ${ZDOTDIR:-$HOME}/.zcompdump && ( ! -s ${ZDOTDIR:-$HOME}/.zcompdump.zwc || ${ZDOTDIR:-$HOME}/.zcompdump -nt ${ZDOTDIR:-$HOME}/.zcompdump.zwc ) ]]; then
+  zcompile ${ZDOTDIR:-$HOME}/.zcompdump
+fi
 
 # 補完方法毎にグループ化する。
 # 補完方法の表示方法

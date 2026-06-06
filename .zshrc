@@ -5,16 +5,25 @@ executable() {
     type "$1" &> /dev/null ;
 }
 
-source $HOME/.zsh/ssh.zsh
-source $HOME/.zsh/path.zsh
-source $HOME/.zsh/env.zsh
-source $HOME/.zsh/alias.zsh
-source $HOME/.zsh/prompt.zsh
-source $HOME/.zsh/setopt.zsh
-source $HOME/.zsh/completion.zsh
-source $HOME/.zsh/fzf.zsh
-source $HOME/.zsh/keybind.zsh
-source $HOME/.zsh/tmux.zsh
-source $HOME/.zsh/command_hook_sync.zsh
-source $HOME/.zsh/plugin.zsh
+# Compile a script to .zwc when missing or outdated, then source it.
+src() {
+  local f="$1"
+  if [[ -s "$f" && ( ! -s "$f.zwc" || "$f" -nt "$f.zwc" ) ]]; then
+    zcompile "$f"
+  fi
+  source "$f"
+}
+
+src $HOME/.zsh/ssh.zsh
+src $HOME/.zsh/path.zsh
+src $HOME/.zsh/env.zsh
+src $HOME/.zsh/alias.zsh
+src $HOME/.zsh/prompt.zsh
+src $HOME/.zsh/setopt.zsh
+src $HOME/.zsh/completion.zsh
+src $HOME/.zsh/fzf.zsh
+src $HOME/.zsh/keybind.zsh
+src $HOME/.zsh/tmux.zsh
+src $HOME/.zsh/command_hook_sync.zsh
+src $HOME/.zsh/plugin.zsh
 zsh-defer source $HOME/.zsh/command_hook_lazy.zsh
