@@ -17,15 +17,11 @@ function git-dirty() {
 # Build a Powerline-style prompt with colored segments joined by  arrows.
 #
 # Segments (left to right):
-#   1. cwd          – blue bg, white fg
-#   2. git branch   – green bg (clean) / yellow bg (dirty), black fg
-#   3. exit status  – red bg, white fg  (shown only on non-zero exit)
+#   1. cwd        – blue bg, white fg
+#   2. git branch – green bg (clean) / yellow bg (dirty), black fg
 #
-# 2nd line: prompt mark ($/#) colored green/red by exit status.
+# 2nd line: ❯ (success, green) or exit-code + ✗ (failure, red).
 function zle-line-init zle-line-finish {
-    # Capture $? before any other command overwrites it.
-    local last_code=$?
-
     local -a seg_txt seg_bg seg_fg
 
     # --- Segment 0: fixed mark ---
@@ -53,13 +49,6 @@ function zle-line-init zle-line-finish {
         fi
     fi
 
-    # --- Segment 3: exit status (non-zero only) ---
-    if (( last_code != 0 )); then
-        seg_txt+=( " ✗ ${last_code} " )
-        seg_bg+=( red )
-        seg_fg+=( white )
-    fi
-
     # --- Assemble segments with  (U+E0B0) separator arrows ---
     local sep=$''  # Powerline right-filled arrow
     local line="" prev_bg=""
@@ -75,7 +64,7 @@ function zle-line-init zle-line-finish {
     # Trailing arrow back to terminal background
     line+="%k%F{$prev_bg}${sep}%f"
 
-    local p_mark="%B%(?,%F{green},%F{red})%(!,#,$)%f%b"
+    local p_mark="%B%(?..%F{red}%? %f)%(?.%F{green}❯%f.%F{red}✗%f)%b"
     PROMPT="${line}
 ${p_mark} "
 
