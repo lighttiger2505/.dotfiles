@@ -30,7 +30,7 @@ function zle-line-init zle-line-finish {
 
     # --- Segment 0: fixed mark ---
     seg_txt+=( " 🎈🐯 " )
-    seg_bg+=( magenta )
+    seg_bg+=( white )
     seg_fg+=( black )
 
     # --- Segment 1: current working directory ---
