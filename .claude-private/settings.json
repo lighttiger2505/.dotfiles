@@ -24,11 +24,13 @@
       "Bash(make build:*)",
       "Bash(mate test:*)",
       "Bash(pnpm:*)",
+      "Bash(rtk find *)",
       "Bash(rtk git *)",
       "Bash(rtk go *)",
       "Bash(rtk grep *)",
       "Bash(rtk ls *)",
       "Bash(rtk read *)",
+      "Bash(rtk wc *)",
       "Bash(sed:*)",
       "Bash(tmux rename-session:*)"
     ],
