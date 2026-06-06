@@ -19,7 +19,10 @@ function _fzf-select-ghq-repo() {
 
 # Move repository dir with tmux session management
 function create-repository-session() {
-    _fzf-select-ghq-repo || return
+    if ! _fzf-select-ghq-repo; then
+        zle reset-prompt
+        return
+    fi
     local NAME=$(echo "${_GHQ_REPO#*/}" | tr '/' '_' | tr . _)
     local REPO_PATH=${_GHQ_ROOT}/${_GHQ_REPO}
     if tmux has-session -t "${NAME}" 2>/dev/null; then
@@ -50,7 +53,10 @@ zle -N create-repository-session
 
 # Move repository dir (simple cd)
 function cd-git-repository() {
-    _fzf-select-ghq-repo || return
+    if ! _fzf-select-ghq-repo; then
+        zle reset-prompt
+        return
+    fi
     BUFFER="${_GHQ_ROOT}/${_GHQ_REPO}"
     zle accept-line
 }
@@ -90,6 +96,8 @@ function switch-git-branch() {
       BUFFER="git checkout ${BRANCH}"
       zle accept-line
     fi
+  else
+    zle reset-prompt
   fi
 }
 alias sg=switch-git-branch
