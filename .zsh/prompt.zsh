@@ -37,7 +37,7 @@ function zle-line-init zle-line-finish {
     seg_fg+=( black )
 
     # --- Segment 1: current working directory ---
-    seg_txt+=( " %~ " )
+    seg_txt+=( "  %~ " )
     seg_bg+=( blue )
     seg_fg+=( black )
 
