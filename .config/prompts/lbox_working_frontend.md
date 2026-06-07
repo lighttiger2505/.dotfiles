@@ -3,15 +3,14 @@
 コンテナで起動したClaudeCodeから以下の作業が問題なく動作することを確認してください。
 動作しなかった場合、その原因を教えてください。
 
-- Golangの環境
-    - [ ] go buildができること(make build)
-    - [ ] golangci-lintが実行できること(make lint)
-    - [ ] Golangのユニットテストが実行できること(go test ./internal/application/ -run TestCarHandler_Find)
+- TypeScript/Reactの環境
+    - [ ] buildができること(pnpm build)
+    - [ ] lintが実行できること(pnpm lint)
+    - [ ] 単体テストが実行できること(pnpm test)
+    - [ ] storybookテストが実行できること(pnpm test-storybook:ci)
 - Gitの環境
     - [ ] Git操作ができること
     - [ ] ghコマンドによるGitHubアクセスができること
-- Gitの環境
-    - [ ] BrunoによるE2Eテストができること
 - ClaudeCodeプラグインの動作
     - [ ] gopls-lspプラグインを利用してgoplsの情報にアクセスできること
     - [ ] context7プラグインを利用して何らかの情報にアクセスできること
