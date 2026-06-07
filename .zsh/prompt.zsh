@@ -48,11 +48,11 @@ function zle-line-init zle-line-finish {
         local diff_stats
         diff_stats=$(git-diff-stats)
         if [[ -n $diff_stats ]]; then
-            seg_txt+=( $'  '"$br $diff_stats"$' ' )
+            seg_txt+=( $'  '"$br $diff_stats"$' ' )
             seg_bg+=( yellow )
             seg_fg+=( black )
         else
-            seg_txt+=( $'  '"$br"' ' )
+            seg_txt+=( $'  '"$br"' ' )
             seg_bg+=( green )
             seg_fg+=( black )
         fi
