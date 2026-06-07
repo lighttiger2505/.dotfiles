@@ -20,7 +20,7 @@ function git-dirty() {
 #   1. cwd        – blue bg, white fg
 #   2. git branch – green bg (clean) / yellow bg (dirty), black fg
 #
-# 2nd line: ❯ (success, green) or exit-code + ✗ (failure, red).
+# 2nd line: ❯ (success, green) / exit-code + ✗ (failure, red) / = (interrupt, yellow).
 function zle-line-init zle-line-finish {
     local -a seg_txt seg_bg seg_fg
 
@@ -64,7 +64,7 @@ function zle-line-init zle-line-finish {
     # Trailing arrow back to terminal background
     line+="%k%F{$prev_bg}${sep}%f"
 
-    local p_mark="%B%(?..%F{red}%? %f)%(?.%F{green}❯%f.%F{red}✗%f)%b"
+    local p_mark="%B%(130?.%F{yellow}=%f.%(?.%F{green}❯%f.%F{red}%? ✗%f))%b"
     PROMPT="${line}
 ${p_mark} "
 
