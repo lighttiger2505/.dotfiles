@@ -99,5 +99,9 @@
       }
     }
   },
-  "language": "japanese"
+  "language": "japanese",
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": ["Working"]
+  }
 }
