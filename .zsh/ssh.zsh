@@ -5,7 +5,6 @@ fi
 
 # Start ssh-agent
 eval "$(ssh-agent -s)" >/dev/null
-echo "ssh-agent launched. PID=$SSH_AGENT_PID"
 
 # Add SSH keys based on OS
 local ssh_keys=(~/.ssh/id_rsa ~/.ssh/id_ed25519)

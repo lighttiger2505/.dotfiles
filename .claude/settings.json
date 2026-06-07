@@ -1,31 +1,59 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
-    "ANTHROPIC_MODEL": "opusplan"
+    "ANTHROPIC_MODEL": "opusplan",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-sonnet-4-6",
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "400000"
   },
   "permissions": {
+    "deny": [
+      "Bash(sudo:*)",
+      "Read(**/.env*)",
+      "Read(**/id_rsa)",
+      "Read(**/id_ed25519)"
+    ],
     "allow": [
-      "Bash(ls:*)",
-      "Bash(sed:*)",
       "Bash(find:*)",
-      "Bash(grep:*)",
-      "Bash(pnpm:*)",
-      "Bash(mate test:*)",
-      "Bash(make build:*)",
-      "Bash(git add:*)",
-      "Bash(git log:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(git checkout:*)",
       "Bash(gh pr create:*)",
       "Bash(gh pr diff:*)",
+      "Bash(gh pr edit:*)",
       "Bash(gh pr list:*)",
       "Bash(gh pr view:*)",
-      "Bash(gh pr edit:*)",
-      "Bash(wt switch:*)",
-      "Bash(wt step commit:*)",
+      "Bash(git add:*)",
+      "Bash(git checkout:*)",
+      "Bash(git commit:*)",
+      "Bash(git log:*)",
+      "Bash(git push:*)",
+      "Bash(go get *)",
+      "Bash(go mod *)",
+      "Bash(go test:*)",
+      "Bash(golangci-lint run:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(make build:*)",
+      "Bash(mate test:*)",
+      "Bash(pnpm:*)",
+      "Bash(rtk find:*)",
+      "Bash(rtk git add:*)",
+      "Bash(rtk git checkout:*)",
+      "Bash(rtk git commit:*)",
+      "Bash(rtk git log:*)",
+      "Bash(rtk git push:*)",
+      "Bash(rtk go test:*)",
+      "Bash(rtk grep:*)",
+      "Bash(rtk ls:*)",
+      "Bash(rtk pnpm:*)",
+      "Bash(rtk read:*)",
+      "Bash(rtk wc *)",
+      "Bash(rtk sed:*)",
+      "Bash(sed:*)",
       "Bash(tmux rename-session:*)",
-      "Bash(golangci-lint run:*)"
+      "Bash(wt step commit:*)",
+      "Bash(wt switch:*)"
     ],
     "defaultMode": "plan"
   },
@@ -37,10 +65,6 @@
           {
             "type": "command",
             "command": "$HOME/scripts/claude-notification"
-          },
-          {
-            "type": "command",
-            "command": "$HOME/scripts/claude-focus-pane"
           }
         ]
       }
@@ -70,7 +94,8 @@
     "worktrunk@worktrunk": true,
     "superpowers@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true
+    "code-review@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "worktrunk": {

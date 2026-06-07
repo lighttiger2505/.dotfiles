@@ -15,20 +15,8 @@ deploy:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 	@$(foreach val, $(CONFIGDIRS), ln -sfnv $(abspath $(val)) $(HOME)/.config/$(notdir $(val));)
 	ln -sfnv $(abspath scripts) $(HOME)/scripts
-
-deploy-claude:
 	@mkdir -p $(HOME)/.claude
 	@$(foreach val, $(wildcard .claude/* .claude/.*), \
-		$(if $(filter-out . .., $(notdir $(val))), \
-			ln -sfnv $(abspath $(val)) $(HOME)/.claude/$(notdir $(val));))
-
-deploy-work: deploy-claude
-	@$(foreach val, $(wildcard .claude-work/* .claude-work/.*), \
-		$(if $(filter-out . .., $(notdir $(val))), \
-			ln -sfnv $(abspath $(val)) $(HOME)/.claude/$(notdir $(val));))
-
-deploy-private: deploy-claude
-	@$(foreach val, $(wildcard .claude-private/* .claude-private/.*), \
 		$(if $(filter-out . .., $(notdir $(val))), \
 			ln -sfnv $(abspath $(val)) $(HOME)/.claude/$(notdir $(val));))
 

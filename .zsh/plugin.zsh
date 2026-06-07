@@ -16,9 +16,12 @@ install_plugin() {
 }
 
 # Function to load plugin with optional defer
+# Usage: load_plugin <plugin> [entry] [no_defer]
+#   no_defer: pass any non-empty string to force synchronous loading
 load_plugin() {
     local plugin=$1
     local entry=$2
+    local no_defer=$3
     local dir_name=${ZSH_PLUGIN_HOME}/${plugin}
     local plugin_file=""
 
@@ -37,7 +40,7 @@ load_plugin() {
 
     [[ -z ${plugin_file} ]] && return
 
-    if executable zsh-defer; then
+    if [[ -z ${no_defer} ]] && executable zsh-defer; then
         zsh-defer source ${plugin_file}
     else
         source ${plugin_file}
@@ -55,10 +58,9 @@ install_plugin "https://github.com/zdharma-continuum/fast-syntax-highlighting"
 load_plugin "fast-syntax-highlighting"
 
 install_plugin "https://github.com/zsh-users/zsh-autosuggestions"
-load_plugin "zsh-autosuggestions"
+load_plugin "zsh-autosuggestions" "no_defer"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 install_plugin "https://github.com/Aloxaf/fzf-tab"
-load_plugin "fzf-tab" "fzf-tab.plugin.zsh"
+load_plugin "fzf-tab" "fzf-tab.plugin.zsh" "no_defer"
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-

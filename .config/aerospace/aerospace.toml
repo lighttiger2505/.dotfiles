@@ -60,7 +60,7 @@ after-startup-command = [
     alt-cmd-s = 'split horizontal'
     alt-cmd-v = 'split vertical'
 
-    alt-cmd-semicolon = 'fullscreen'
+    alt-cmd-f = 'fullscreen'
 
     alt-cmd-slash = 'layout tiles horizontal vertical'
     alt-cmd-period = 'layout accordion horizontal'

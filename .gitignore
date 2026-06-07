@@ -17,3 +17,7 @@ lazy-lock.json
 
 # claude code
 .claude/settings.local.json
+
+# zsh compiled bytecode
+.zsh/*.zwc
+.zcompdump.zwc

@@ -29,4 +29,4 @@ set -g history-limit 20000
 set -g focus-events on
 
 # Enable neitive scrollbar
-set -g pane-scrollbars on
+set -g pane-scrollbars off
