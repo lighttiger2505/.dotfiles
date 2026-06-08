@@ -106,6 +106,9 @@ alias zs="source ~/.zshrc"
 # zshrc load benchmark
 alias zb="time ( zsh -i -c exit; )"
 
+# zshrc remove cache
+alias zc="rm -f ~/.zsh/*.zwc"
+
 #####################################################################
 # Vim
 #####################################################################
