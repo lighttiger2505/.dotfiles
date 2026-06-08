@@ -15,8 +15,8 @@ src() {
 }
 
 src $HOME/.zsh/ssh.zsh
-src $HOME/.zsh/path.zsh
 src $HOME/.zsh/env.zsh
+src $HOME/.zsh/path.zsh
 src $HOME/.zsh/alias.zsh
 src $HOME/.zsh/prompt.zsh
 src $HOME/.zsh/setopt.zsh

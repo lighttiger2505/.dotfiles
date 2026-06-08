@@ -21,15 +21,13 @@ $HOME/.local/share/mise/shims
 /usr/sbin(N-/)
 /sbin(N-/)
 # Go lang
-$GOPATH/bin(N-/)
+$HOME/go/bin(N-/)
 # npm bin
 $HOME/.npm-global/bin(N-/)
-# goenv
-$GOENV_ROOT/bin(N-/)
 # mise
-$HOME/.local/share/mise/shims
+$HOME/.local/share/mise/shims(N-/)
 # OpenCode
-$HOME/.opencode/bin:$PATH
+$HOME/.opencode/bin(N-/)
 
 # GNU utils for mac
 # coreutils
