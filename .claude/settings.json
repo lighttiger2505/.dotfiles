@@ -12,9 +12,19 @@
   "permissions": {
     "deny": [
       "Bash(sudo:*)",
-      "Read(**/.env*)",
-      "Read(**/id_rsa)",
-      "Read(**/id_ed25519)"
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/secrets/**)",
+      "Read(**/*_rsa)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.config/gcloud/**)",
+      "Read(~/.kube/config)",
+      "Bash(rm -rf *)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)"
     ],
     "allow": [
       "Bash(find:*)",
@@ -105,5 +115,11 @@
       }
     }
   },
-  "language": "japanese"
+  "language": "japanese",
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Working"
+    ]
+  }
 }

@@ -58,7 +58,7 @@ install_plugin "https://github.com/zdharma-continuum/fast-syntax-highlighting"
 load_plugin "fast-syntax-highlighting"
 
 install_plugin "https://github.com/zsh-users/zsh-autosuggestions"
-load_plugin "zsh-autosuggestions" "no_defer"
+load_plugin "zsh-autosuggestions" "zsh-autosuggestions.zsh" "no_defer"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 install_plugin "https://github.com/Aloxaf/fzf-tab"

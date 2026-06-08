@@ -28,6 +28,8 @@ $HOME/.npm-global/bin(N-/)
 $GOENV_ROOT/bin(N-/)
 # mise
 $HOME/.local/share/mise/shims
+# OpenCode
+$HOME/.opencode/bin:$PATH
 
 # GNU utils for mac
 # coreutils
