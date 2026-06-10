@@ -1,22 +1,31 @@
 ---
 name: pr-desc
-description: テンプレートにしたがって、Pull Requestの説明文を作成します。このとき過去のPull Requestを読み取りして考慮に入れます。
+description: Pull Requestのタイトルと説明文を作成・更新するときに使う。「PRの説明文を書いて」「PR本文を作って」「PRの概要を埋めて」「プルリクの説明を書いて」「write PR description」「fill in the PR body」「update PR body」などのフレーズが含まれるとき、またはcommit-push-prからPR本文の作成を委譲されたときに必ず参照する。テンプレートと過去PRのスタイルに従う。
 ---
 
 # Pull Requestの説明の作成
+
+## 情報を集める
 
 1. `gh pr view --json number,title,body,headRefName,baseRefName` を実行し、現在のPR情報を取得。
 2. `git log $(gh pr view --json baseRefName -q .baseRefName)..HEAD --oneline` を実行し、コミット一覧を取得
 3. `.github/PULL_REQUEST_TEMPLATE.md` を読み込み、テンプレートの形式を確認
 4. `gh pr list --author @me --state merged --limit 5 --json number` を実行して直近でマージされたPR取得し、その後 `gh pr view <number> --json body` を実行して本文を確認し、スタイルの参考にする
-5. テンプレートとスタイルに従ってPRのタイトルおよび説明文を作成
- - `<!-- コメント -->` などのコメントは削除
- - `> [!CAUTION]` などの注意書きは残す
- - `<details>` などのHTML要素は残す
- - `mermaid` などの図形は残す
-6. `gh pr edit --title "<title>" --body "<description>"` を実行し、タイトルおよび説明文を更新
- - prが存在しないときは`gh pr create --title "<title>" --body "<description>" --draft --base develop`を実行して、新規作成する
- - 書き込みができないときは`<description>`をmarkdownに出力して終了する
+
+## タイトルと説明文を作成する
+
+テンプレートとスタイルに従ってPRのタイトルおよび説明文を作成
+以下の点に注意
+- `<!-- コメント -->` などのコメントは削除
+- `> [!CAUTION]` などの注意書きは残す
+- `<details>` などのHTML要素は残す
+- `mermaid` などの図形は残す
+
+## 反映する
+
+- `gh pr edit --title "<title>" --body "<description>"` を実行し、タイトルおよび説明文を更新
+    - prが存在しないときは`gh pr create --title "<title>" --body "<description>" --draft --base develop`を実行して、新規作成する
+    - 書き込みができないときは`<description>`をmarkdownに出力して終了する
  
 # Pull Requestタイトルのルール
 
