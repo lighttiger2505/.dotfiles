@@ -110,3 +110,8 @@ bind-key X kill-window
 # Key bind kill current session
 bind-key d confirm-before -p "kill-session #S? (y/n)" kill-session
 bind-key D kill-session
+
+# Fullscreen
+bind-key -n M-m resize-pane -Z
+set -g pane-border-format '[ ZOOMED ] #{pane_current_command}'
+set-hook -g after-resize-pane 'if -F "#{window_zoomed_flag}" "set pane-border-status top" "set pane-border-status off"'
