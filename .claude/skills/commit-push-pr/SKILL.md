@@ -1,6 +1,6 @@
 ---
 name: commit-push-pr
-description: 現在のファイル差分をコミット・プッシュし、プルリクエストを作成する。「コミットして」「プッシュして」「PRを作って」「プルリクを出して」「変更を送って」「commit」「push」「pull request」「PR」「open a PR」「submit for review」などのフレーズが含まれる場合は必ずこのスキルを使う。gitのコミット＋PRワークフロー全般に使用すること。
+description: 現在のファイル差分をコミット・プッシュし、プルリクエストを作成する。「コミットして」「プッシュして」「PRを作って」「プルリクを出して」「変更を送って」「commit」「push」「pull request」「PR」「open a PR」「submit for review」などのフレーズが含まれる場合は必ずこのスキルを使う。gitのコミット＋PRワークフロー全般に使用すること。ユーザーが明示的にコミットを依頼していなくても、レビューコメント対応や実装の結果として差分をコミット・プッシュする場合は必ずこのスキルを使うこと。
 ---
 
 # Git コミット → プッシュ → プルリクエスト作成スキル
@@ -60,7 +60,11 @@ git diff --cached --stat
 git commit -m "メッセージ" -m "変更の背景や理由を詳しく書く。"
 ```
 
-コミットテンプレートがあればそのコミットテンプレートに従う
+コミットメッセージの規約（プロジェクトにコミットテンプレートがある場合はテンプレートを優先する）:
+
+- 形式は `type: 説明`（例: `docs: サンドボックス手順書の更新`、`fix: 営業所検索の条件漏れを修正`）。type は pr-desc スキル（`../pr-desc/SKILL.md`）のプレフィックス一覧（feat/fix/perf/refactor/style/test/chore/revert/build/ci/docs）から選ぶ
+- pr-desc の PRタイトル用タグ（`(none)`、`(impact)`、`(unpublished)` 等）は PRタイトル専用であり、コミットメッセージには絶対に使わない（`docs(none):` は誤り）
+- type にスコープは原則付けない。例外は依存更新の `chore(deps):` のような bot 由来の確立済み慣例のみ
 
 ## Step 5: プッシュする
 
