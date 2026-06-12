@@ -38,8 +38,8 @@ function zle-line-init zle-line-finish {
 
     # --- Segment 1: current working directory ---
     seg_txt+=( "  %~ " )
-    seg_bg+=( blue )
-    seg_fg+=( black )
+    seg_bg+=( black )
+    seg_fg+=( blue )
 
     # --- Segment 2: git branch + diff stats ---
     local br
@@ -49,12 +49,12 @@ function zle-line-init zle-line-finish {
         diff_stats=$(git-diff-stats)
         if [[ -n $diff_stats ]]; then
             seg_txt+=( $'  '"$br $diff_stats"$' ' )
-            seg_bg+=( yellow )
-            seg_fg+=( black )
+            seg_bg+=( black )
+            seg_fg+=( yellow )
         else
             seg_txt+=( $'  '"$br"' ' )
-            seg_bg+=( green )
-            seg_fg+=( black )
+            seg_bg+=( black )
+            seg_fg+=( green )
         fi
     fi
 
