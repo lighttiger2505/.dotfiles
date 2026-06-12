@@ -420,3 +420,28 @@ alias cle='clto open'
 #####################################################################
 alias hi='chsu history'
 alias bk='chsu bookmark'
+
+#####################################################################
+# Microsoft Defender
+#####################################################################
+mdatp-rank() {
+  local n="${1:-20}"
+  printf "%-7s %10s %9s  %s\n" "PID" "FILES" "SCAN(s)" "COMMAND"
+  mdatp diagnostic real-time-protection-statistics --output json \
+  | jq -r '.counters
+      | sort_by(.totalScanTime | tonumber) | reverse
+      | .[]
+      | "\(.id)\t\(.totalFilesScanned)\t\(.totalScanTime)"' \
+  | head -n "$n" \
+  | while IFS=$'\t' read -r pid files ns; do
+      local sec
+      sec=$(awk "BEGIN{printf \"%.1f\", $ns/1e9}")
+      local cmd
+      cmd=$(ps -p "$pid" -o command= 2>/dev/null | cut -c1-70)
+      [[ -z "$cmd" ]] && cmd="(exited)"
+      printf "%-7s %10s %9s  %s\n" "$pid" "$files" "$sec" "$cmd"
+    done
+}
+alias mdatprank=mdatp-rank
+alias mdatpton="mdatp config real-time-protection-statistics --value disabled"
+alias mdatptoff="mdatp config real-time-protection-statistics --value enabled"
