@@ -146,7 +146,7 @@ alias ha='gh pr checks'
 function GitHubPRDiffVim() {
     nvim -c 'lua require("ghlite")' -c 'GHLitePRDiffview'
 }
-alias vimdiffpr=GitHubPRDiffVim
+alias vimdiffpr='nvim -c ":OpenDiffviewPR"'
 
 alias prcreate='gh pr create --template "pull_request_template.md"'
 
