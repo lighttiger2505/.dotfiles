@@ -142,6 +142,7 @@ alias tf='vim $VIM_MEMO_DIR/feedback.md'
 alias hb='gh repo view --web'
 alias hp='gh pr view --web'
 alias ha='gh pr checks'
+alias hl='gh pr view --json title,url --jq "\"[\(.title)](\(.url))\""'
 
 function GitHubPRDiffVim() {
     nvim -c 'lua require("ghlite")' -c 'GHLitePRDiffview'
