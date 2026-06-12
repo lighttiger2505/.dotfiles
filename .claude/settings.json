@@ -10,22 +10,6 @@
     "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "400000"
   },
   "permissions": {
-    "deny": [
-      "Bash(sudo:*)",
-      "Read(./.env)",
-      "Read(./.env.*)",
-      "Read(**/.env)",
-      "Read(**/.env.*)",
-      "Read(**/secrets/**)",
-      "Read(**/*_rsa)",
-      "Read(~/.ssh/**)",
-      "Read(~/.aws/**)",
-      "Read(~/.config/gcloud/**)",
-      "Read(~/.kube/config)",
-      "Bash(rm -rf *)",
-      "Bash(git push --force*)",
-      "Bash(git push -f*)"
-    ],
     "allow": [
       "Bash(find:*)",
       "Bash(gh pr create:*)",
@@ -64,6 +48,22 @@
       "Bash(tmux rename-session:*)",
       "Bash(wt step commit:*)",
       "Bash(wt switch:*)"
+    ],
+    "deny": [
+      "Bash(sudo:*)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/secrets/**)",
+      "Read(**/*_rsa)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.config/gcloud/**)",
+      "Read(~/.kube/config)",
+      "Bash(rm -rf *)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)"
     ],
     "defaultMode": "plan"
   },
