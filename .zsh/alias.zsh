@@ -127,6 +127,10 @@ else
 fi
 
 alias vimdiff='vim -d'
+function GitDiffVim() {
+    nvim -c 'lua require("diffview")' -c 'DiffviewOpen'
+}
+alias vimdiffdd=GitDiffVim
 
 # Open vim with tmux capture-pane
 alias tm='tmux capture-pane -pS - > /tmp/tmux_output && vim /tmp/tmux_output'
@@ -144,9 +148,6 @@ alias hp='gh pr view --web'
 alias ha='gh pr checks'
 alias hl='gh pr view --json title,url --jq "\"[\(.title)](\(.url))\""'
 
-function GitHubPRDiffVim() {
-    nvim -c 'lua require("ghlite")' -c 'GHLitePRDiffview'
-}
 alias vimdiffpr='nvim -c ":OpenDiffviewPR"'
 
 alias prcreate='gh pr create --template "pull_request_template.md"'
