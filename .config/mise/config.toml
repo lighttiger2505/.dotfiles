@@ -11,13 +11,14 @@ trusted_config_paths = [
 idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
+# Golang
 go = "1.26.2"
+golangci-lint = "2.11.4"
 "go:golang.org/x/tools/gopls" = "latest"
-"go:github.com/k1LoW/tcmux" = "latest"
-"go:github.com/evilmartians/lefthook/v2" = "v2.1.6"
 "go:github.com/lighttiger2505/liary" = "latest"
 "go:github.com/lighttiger2505/mcm" = "latest"
 "go:github.com/sqls-server/sqls" = "latest"
+# Node.js
 node = "25"
 "npm:biome" = "latest"
 "npm:typescript" = "latest"
@@ -29,7 +30,14 @@ node = "25"
 "npm:tree-sitter-cli" = "latest"
 "npm:ccusage" = "latest"
 "npm:@antfu/ni" = "latest"
-golangci-lint = "2.11.4"
+# Python
+python = "latest"
+uv = "latest"
+"pipx:mycli" = "latest"
+"pipx:pgcli" = "latest"
+# CLI commands
+"github:jonas/tig" =  "latest"
+"github:tmux/tmux" =  "latest"
 "aqua:jqlang/jq" = "latest"
 "aqua:BurntSushi/ripgrep" = "latest"
 "aqua:sharkdp/fd" = "latest"
@@ -38,4 +46,3 @@ golangci-lint = "2.11.4"
 "aqua:ajeetdsouza/zoxide" = "latest"
 "aqua:sharkdp/bat" = "latest"
 "aqua:x-motemen/ghq" = "latest"
-python = "3.14.6"
