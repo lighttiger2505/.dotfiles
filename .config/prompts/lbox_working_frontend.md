@@ -3,6 +3,7 @@
 コンテナで起動したClaudeCodeから以下の作業が問題なく動作することを確認してください。
 動作しなかった場合、その原因を教えてください。
 
+- **重要: 一番最初に新しいworktreeを作る**
 - TypeScript/Reactの環境
     - [ ] buildができること(pnpm build)
     - [ ] lintが実行できること(pnpm lint)
@@ -12,7 +13,7 @@
     - [ ] Git操作ができること
     - [ ] ghコマンドによるGitHubアクセスができること
 - ClaudeCodeプラグインの動作
-    - [ ] gopls-lspプラグインを利用してgoplsの情報にアクセスできること
+    - [ ] typescript-lspプラグインを利用してtypescript-lspの情報にアクセスできること
     - [ ] context7プラグインを利用して何らかの情報にアクセスできること
     - [ ] Confluenceへアクセスできること
         - https://mo-t.atlassian.net/wiki/spaces/Aiauto/pages/1798996204/GO

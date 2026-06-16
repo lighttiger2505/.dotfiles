@@ -366,7 +366,6 @@ alias devrec='devcontainer up --workspace-folder . --remove-existing-container'
 #####################################################################
 # llmbox
 #####################################################################
-alias lboxup='lbox update-env'
 alias lboxcc='lbox exec sandbox claude'
 alias lboxsh='lbox exec sandbox zsh'
 alias lboxre='lbox down && lbox build && lbox up -d'

@@ -1,0 +1,9 @@
+現状弊社では開発マシン上でClaudeCodeを実行することが許可されていません。
+普段ClaudeCodeを使う際には、sandboxというコンテナを立てて、その内部で作業を実施しています。
+コンテナの定義は`.lbox/compose.sandbox.yml`にあり、ClaudeCodeが動作しているのは`sandbox`というコンテナです。
+
+このときgit worktreeを利用して、同一リポジトリに対して複数の作業を並列並列作業を実施したいシチュエーションがあります。
+しかし現状sandboxコンテナでの開発には以下の課題があります。
+
+- git worktreeによるworktree作成した後にsandboxコンテナを起動した場合、sandboxコンテナがworktree個数分立ち上げされる
+    - しかし、同じポートを利用しているコンテナがあるので、想定通りの起動ができない

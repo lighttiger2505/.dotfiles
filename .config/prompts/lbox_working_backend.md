@@ -3,6 +3,7 @@
 コンテナで起動したClaudeCodeから以下の作業が問題なく動作することを確認してください。
 動作しなかった場合、その原因を教えてください。
 
+- **重要: 一番最初に新しいworktreeを作る**
 - Golangの環境
     - [ ] go buildができること(make build)
     - [ ] golangci-lintが実行できること(make lint)

@@ -1,0 +1,3 @@
+現状あなた(ClaudeCode)はコンテナ上で動作しています。
+コンテナの定義は`.lbox/compose.sandbox.yml`にあり、ClaudeCodeが動作しているのは`sandbox`というコンテナです。
+コンテナで起動したClaudeCodeからgit worktreeとClaudeCodeを併用した並列処理が実施できるか確認してください。
