@@ -47,6 +47,11 @@ return {
                 language_name = true,
                 border = "thick",
             },
+            html = {
+                comment = {
+                    conceal = false,
+                },
+            },
         },
         config = function(_, opts)
             local rm = require("render-markdown")
