@@ -5,9 +5,6 @@ GOBIN  = "{{env.HOME}}/go/bin"
 experimental = true
 go_set_gobin = false
 install_before = "7d"
-trusted_config_paths = [
-"~/src/github.com/MobilityTechnologies",
-]
 idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
@@ -51,7 +48,7 @@ uv = "latest"
 "aqua:sharkdp/bat" = "latest"
 "aqua:sharkdp/fd" = "latest"
 "aqua:x-motemen/ghq" = "latest"
-"github:eza-community/eza" = "latest"
-"github:jonas/tig" = "latest"
-"github:rtk-ai/rtk" = "latest"
-"github:tmux/tmux" = "latest"
+# "github:eza-community/eza" = "latest"
+# "github:jonas/tig" = "latest"
+# "github:rtk-ai/rtk" = "latest"
+# "github:tmux/tmux" = "latest"

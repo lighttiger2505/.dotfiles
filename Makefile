@@ -28,4 +28,4 @@ linkdropbox:
 	ln -s ~/Library/CloudStorage/Dropbox/liary/_post ~/.config/liary/_post
 
 mise-install:
-	export MISE_GITHUB_TOKEN=$(gh auth token) & mise install
+	export MISE_GITHUB_TOKEN=$(gh auth token) && mise install
