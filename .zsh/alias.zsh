@@ -308,6 +308,9 @@ alias al='fzf_alias_exec'
 # Claude Code
 #####################################################################
 alias cc='claude'
+alias ccao='claude --model opus --effort high --permission-mode auto'
+alias ccaoma='claude --model "opus[1m]" --effort max --permission-mode auto'
+alias ccaout='claude --model "opus[1m]" --settings '{"ultracode": true}' --permission-mode auto'
 
 claude-code-with-tmux-session() {
   # gitリポジトリ確認
