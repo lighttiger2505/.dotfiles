@@ -35,6 +35,14 @@ return {
                 mode = "n",
                 desc = "Snacks delete current buffer",
             },
+            {
+                "<Leader>bh",
+                function()
+                    Snacks.gitbrowse()
+                end,
+                mode = "n",
+                desc = "Snacks open github link",
+            },
         },
     },
 }
