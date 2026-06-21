@@ -8,6 +8,6 @@ set -g status-right-length 128
 set -g status-right " %Y/%m/%d(%a) %H:%M "
 
 # Window display setting: mytmbar があれば優先、無ければシェルスクリプト
-if-shell '[ -x "$HOME/go/bin/mytmbar" ]' \
+if-shell 'command -v mytmbar >/dev/null 2>&1' \
     'source-file ~/.config/tmux/conf.d/statusline-mytmbar.tmux' \
     'source-file ~/.config/tmux/conf.d/statusline-fallback.tmux'
