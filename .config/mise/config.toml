@@ -26,7 +26,7 @@ node = "25"
 "npm:jsonlint" = "latest"
 "npm:tree-sitter-cli" = "latest"
 "npm:ccusage" = "latest"
-"npm:@antfu/ni" = "latest"
+"npm:@marp-team/marp-cli" = "latest"
 # Python
 python = "latest"
 uv = "latest"
