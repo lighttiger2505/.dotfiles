@@ -67,7 +67,10 @@ fi
 #####################################################################
 alias g="git"
 
-alias rm-branch="git branch --merged | grep -vE '^[*+]' | xargs -r git branch -d"
+remove-merged-branch() {
+  git branch --merged | grep -vE '^[*+]' | xargs -r git branch -d
+}
+alias rm-branch=remove-merged-branch
 
 remove-safe-worktree() {
   local branches=$(wt list --format=json | jq -r '.[] | select(.main_state == "integrated" or .main_state == "empty") | .branch')
@@ -87,7 +90,13 @@ remove-force-worktree() {
 }
 alias rm-wtf=remove-force-worktree
 
-alias gp="git pull --prune --tags --all"
+git-pull-and-clean() {
+  git pull --prune --tags --force --all
+  remove-merged-branch
+  remove-safe-worktree
+  git worktree prune
+}
+alias gp=git-pull-and-clean
 
 # merge develop branch
 alias fdev="git fetch origin develop:develop"
