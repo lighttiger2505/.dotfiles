@@ -380,6 +380,7 @@ alias devrec='devcontainer up --workspace-folder . --remove-existing-container'
 # llmbox
 #####################################################################
 alias lboxcc='lbox exec sandbox claude'
+alias lboxcw='lbox exec sandbox claude -w'
 alias lboxsh='lbox exec sandbox zsh'
 alias lboxre='lbox down && lbox build && lbox up -d'
 alias planv='nvim "$(eza -s modified ~/.claude/plans | head -n 1)"'
