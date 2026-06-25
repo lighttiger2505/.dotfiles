@@ -328,8 +328,10 @@ alias al='fzf_alias_exec'
 #####################################################################
 alias cc='claude'
 alias ccao='claude --model opus --effort high --permission-mode auto'
-alias ccaoma='claude --model "opus[1m]" --effort max --permission-mode auto'
-alias ccaout='claude --model "opus[1m]" --settings '{"ultracode": true}' --permission-mode auto'
+claude-ultracode() {
+  claude --model opus --settings '{"ultracode": true}' --permission-mode auto
+}
+alias ult=claude-ultracode
 
 claude-code-with-tmux-session() {
   # gitリポジトリ確認
@@ -377,23 +379,6 @@ open-prompts() {
 }
 alias pt=open-prompts
 
-#####################################################################
-# devcontainer
-#####################################################################
-alias devc='devcontainer'
-alias devclaude='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . claude'
-alias devzsh='devcontainer up --workspace-folder . && devcontainer exec --workspace-folder . zsh'
-alias devrec='devcontainer up --workspace-folder . --remove-existing-container'
-
-#####################################################################
-# llmbox
-#####################################################################
-alias lboxcc='lbox exec sandbox claude'
-alias lboxcw='lbox exec sandbox claude -w'
-alias lboxsh='lbox exec sandbox zsh'
-alias lboxre='lbox down && lbox build && lbox up -d'
-alias planv='nvim "$(eza -s modified ~/.claude/plans | head -n 1)"'
-
 function edit-claude-settings() {
     local files=(
         "~/.claude/settings.json"
@@ -405,6 +390,15 @@ function edit-claude-settings() {
     [ -n "$selected" ] && ${EDITOR:-nvim} "$selected"
 }
 alias cccon=edit-claude-settings
+
+#####################################################################
+# llmbox
+#####################################################################
+alias lboxcc='lbox exec sandbox claude'
+alias lboxcw='lbox exec sandbox claude -w'
+alias lboxsh='lbox exec sandbox zsh'
+alias lboxre='lbox down && lbox build && lbox up -d'
+alias planv='nvim "$(eza -s modified ~/.claude/plans | head -n 1)"'
 
 #####################################################################
 # Process management
