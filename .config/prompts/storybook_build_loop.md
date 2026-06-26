@@ -3,10 +3,8 @@
   ## 前提・準備（最初に一度だけ）
 
   - 調査・作業は必ず **`origin/develop` の最新** を基準とする。ローカルの develop は古い可能性があるため、最初に `git fetch origin develop` を実行すること（ローカル基準で探索しないこと）。
-  - **作業用 worktree は1つだけ作って再利用する**。worktree には `node_modules` が無く、Storybook のブラウザテスト実行には実体の install が必須（symlink は Vite のモジュール配信を壊すため不可）。
-      - 初回: `git worktree add .claude/worktrees/test/coverage -b <初回ブランチ> origin/develop` → `EnterWorktree` → `CI=true pnpm install --frozen-lockfile --offline`（pnpm store のハードリンクで高速）
-      - 2回目以降の各イテレーションは **同じ worktree 内で `git checkout -b <type>/<feature>-coverage origin/develop`** して新ブランチを切る（install 不要）。
-  - **優先順位:** 事業者向け（company）機能をインターナル向け（internal）より優先する。判定は「`src/routes/` から参照されている = 事業者向け」「`src/apps/internal/` からのみ参照 = インターナル向け」。
+  - **優先順位:** 事業者向け（company）機能をインターナル向け（internal）より優先する。判定は「`src/routes/` から参照されている = 事業者向け」「`src/apps/internal/` からのみ参照 = インターナル向け」。そのうえでStoryファイルが存在しない画面を優先する。
+  - 陣頭指揮はopusを利用して、テストの実装はsonnetを利用すること、テストとPR作成はそれぞれ別のサブエージェントが実施し、コンテキストを分離すること
 
   ## ゴール
 
