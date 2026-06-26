@@ -394,11 +394,21 @@ alias cccon=edit-claude-settings
 #####################################################################
 # llmbox
 #####################################################################
-alias lboxcc='lbox exec sandbox claude'
-alias lboxcw='lbox exec sandbox claude -w'
-alias lboxsh='lbox exec sandbox zsh'
-alias lboxre='lbox down && lbox build && lbox up -d'
-alias planv='nvim "$(eza -s modified ~/.claude/plans | head -n 1)"'
+alias lbcc='lbox exec sandbox claude'
+alias lbccao='lbox exec sandbox claude --model opus --effort high --permission-mode auto'
+lbox-claude-ultracode() {
+  lbox exec sandbox claude --model opus --settings '{"ultracode": true}' --permission-mode auto
+}
+alias lbccult=lbox-claude-ultracode
+alias lbcw='lbox exec sandbox claude -w'
+alias lbcwao='lbox exec sandbox claude --model opus --effort high --permission-mode auto -w'
+lbox-claude-ultracode-worktree() {
+  lbox exec sandbox claude --model opus --settings '{"ultracode": true}' --permission-mode auto
+}
+alias lbcwult='lbox exec sandbox claude --model opus --effort high --permission-mode auto -w'
+alias lbsh='lbox exec sandbox zsh'
+alias lbre='lbox down && lbox build && lbox up -d'
+
 
 #####################################################################
 # Process management
