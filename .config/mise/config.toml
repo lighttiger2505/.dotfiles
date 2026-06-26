@@ -6,6 +6,10 @@ experimental = true
 go_set_gobin = false
 install_before = "7d"
 idiomatic_version_file_enable_tools = ["node"]
+trusted_config_paths = [
+    '$HOME/src/github.com/lighttiger2505',
+    '$HOME/src/github.com/MobilityTechnologies',
+]
 
 [tools]
 # Golang
