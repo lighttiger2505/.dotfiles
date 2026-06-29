@@ -472,3 +472,24 @@ mdatp-rank() {
 alias mdatprank=mdatp-rank
 alias mdatpton="mdatp config real-time-protection-statistics --value disabled"
 alias mdatptoff="mdatp config real-time-protection-statistics --value enabled"
+
+#####################################################################
+# work
+#####################################################################
+open-sale() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: osl <carRequestId>" >&2
+    return 1
+  fi
+  open "https://management.go.mo-t.com/sales?carRequestId=$1"
+}
+alias osl=open-sale
+
+open-car-request() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: ocr <carRequestId>" >&2
+    return 1
+  fi
+  open "https://management.go.mo-t.com/orders?carRequestId=$1"
+}
+alias ocr=open-car-request
