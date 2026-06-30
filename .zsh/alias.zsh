@@ -186,7 +186,7 @@ function github-pr-review-fzf() {
             --json number,headRepositoryOwner,headRepository,title,updatedAt,reviewRequests \
             --jq '
                 .[] 
-                | select(any(.reviewRequests[]; .login == "lighttiger2505")) 
+                | select(any(.reviewRequests[]; .login == "go-toshikazu-ohashi")) 
                 | "\(.number)\t\(.headRepositoryOwner.login)/\(.headRepository.name)\t\(.title)\t\(.updatedAt)"
             ' \
             | fzf --reverse --prompt='Select PR> '
