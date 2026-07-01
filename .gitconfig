@@ -31,6 +31,7 @@
 	path = ~/.gitconfig-work
 [commit]
 	template = ~/.gitmessage.txt
+	verbose = true
 [push]
 	autoSetupRemote = true
 [rerere]
