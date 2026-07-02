@@ -13,26 +13,26 @@ autocmd({ "BufRead", "BufNewFile" }, {
     end,
 })
 
-autocmd("FileType", {
-    group = group_name,
-    pattern = { "gitcommit" },
-    callback = function(ev)
-        -- Spell check gitcommit
-        l.spell = true
-        -- generate commit message
-        if vim.fn.has("codecompanion.nvim") then
-            vim.schedule(function()
-                require("codecompanion")
-                vim.cmd("CodeCompanion /custom_commit_message")
-            end)
-        end
-        -- autoclose codecompanion buffer
-        -- :q → :qa
-        vim.cmd([[cnoreabbrev <buffer> q qa]])
-        -- :wq → :wqa
-        vim.cmd([[cnoreabbrev <buffer> wq wqa]])
-    end,
-})
+-- autocmd("FileType", {
+--     group = group_name,
+--     pattern = { "gitcommit" },
+--     callback = function(ev)
+--         -- Spell check gitcommit
+--         l.spell = true
+--         -- generate commit message
+--         if vim.fn.has("codecompanion.nvim") then
+--             vim.schedule(function()
+--                 require("codecompanion")
+--                 vim.cmd("CodeCompanion /custom_commit_message")
+--             end)
+--         end
+--         -- autoclose codecompanion buffer
+--         -- :q → :qa
+--         vim.cmd([[cnoreabbrev <buffer> q qa]])
+--         -- :wq → :wqa
+--         vim.cmd([[cnoreabbrev <buffer> wq wqa]])
+--     end,
+-- })
 
 -- Save last cursor position
 autocmd("BufRead", {
