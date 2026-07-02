@@ -1,13 +1,14 @@
 ---
 name: loop-code-review
 description: 自分がauthorのオープンPRのうち、code-reviewが未実施のもの・レビュー後に変更されたものを列挙し、すべてをレビューする。「自分のPRをまとめてレビュー」「未レビューのPRをレビュー」「レビュー後に変更したPRを再レビュー」「自分のPRのレビュー状況を確認」などと依頼されたときに使う。
-allowed-tools: Read, Grep, Glob, Bash, LSP
+allowed-tools: Read, Grep, Glob, Bash, LSP, Workflow
 context: fork
 ---
 
 # 自分のPRをまとめてレビューするスキル
 
 自分がauthorのオープンPR（Draft含む）と他人が作成した非DraftのオープンPRを列挙し、`/code-review` 未実施・レビュー後に変更があったPRをすべてレビューします。
+レビューは Dynamic Workflow を使って全PRを並列実行します。
 
 ## 実行手順
 
@@ -91,16 +92,37 @@ gh api repos/<owner>/<repo>/issues/<PR番号>/comments \
 
 > **注意**: 本スキルの導入以前にレビューした旧PRはマーカーが存在しないため「未レビュー」に分類されます。
 
-### 5. 対象PRを全件レビュー
-
-「未レビュー」と「レビュー後変更あり」のPR全件について、以下を1件ずつ順に処理する:
-
-1. `../code-review/SKILL.md` を Read してその手順をそのまま適用する
-2. 対象PR番号を指定してレビューを実行（差分取得・チェック項目確認・PRコメント登録）
-3. サマリーコメント末尾に `<!-- claude-code-review reviewed-commit=<最新コミット完全SHA> -->` が付与されたことを確認する
-4. 各PRのレビュー完了後に「✅ #XXXX レビュー完了」と報告する
+### 5. 対象PRを全件並列レビュー
 
 対象PRが0件（全件スキップ）の場合は「すべてのPRはレビュー済みです」と報告して終了する。
+
+「未レビュー」と「レビュー後変更あり」のPR全件について、Dynamic Workflow で並列実行する。
+以下のスクリプトを `Workflow` ツールの `script` パラメータに渡す。
+`args` には対象PR全件の情報を配列で渡す（例: `[{number: 123, title: "...", url: "...", latestSha: "abc123", reason: "未レビュー"}, ...]`）。
+
+```javascript
+export const meta = {
+  name: 'review-prs-parallel',
+  description: '複数PRをcode-reviewスキルで並列レビュー',
+  phases: [{ title: 'Review' }],
+}
+
+const results = await parallel(args.map(pr => () =>
+  agent(
+    `/code-review スキルを使って PR #${pr.number} "${pr.title}" をレビューしてください。\n` +
+    `URL: ${pr.url}\n` +
+    `最新コミットSHA: ${pr.latestSha}\n` +
+    `レビュー理由: ${pr.reason}\n\n` +
+    `差分取得・チェック項目確認・PRコメント登録を実施し、` +
+    `サマリーコメント末尾に <!-- claude-code-review reviewed-commit=${pr.latestSha} --> を必ず付与すること。`,
+    { label: 'review:#' + pr.number, phase: 'Review' }
+  )
+))
+
+return results.filter(Boolean)
+```
+
+Workflow 完了後、各PRの実行結果を Step 6 の完了報告に使用する。
 
 ### 6. 完了報告
 
