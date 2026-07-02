@@ -34,18 +34,3 @@ vim.keymap.set("n", "<Leader><Leader>t", "<Cmd>e $VIM_MEMO_DIR/todo.md<CR>", opt
 vim.keymap.set("n", "<Leader><Leader>l", "<Cmd>e $VIM_MEMO_DIR/link.md<CR>", opts)
 vim.keymap.set("n", "<Leader><Leader>f", "<Cmd>e $VIM_MEMO_DIR/feedback.md<CR>", opts)
 vim.keymap.set("n", "<Leader>bp", ":!gh pr view --web<CR>", opts)
-
--- Enable inline completion
-vim.schedule(function()
-    vim.lsp.inline_completion.enable()
-end)
-
-vim.keymap.set("i", "<TAB>", function()
-    vim.lsp.inline_completion.get()
-end, { desc = "Accept inline completion" })
-vim.keymap.set({ "i", "n" }, "<C-j>", function()
-    vim.lsp.inline_completion.select({ count = 1 })
-end, { desc = "Next inline completion" })
-vim.keymap.set({ "i", "n" }, "<C-k>", function()
-    vim.lsp.inline_completion.select({ count = -1 })
-end, { desc = "Prev inline completion" })
