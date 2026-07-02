@@ -99,8 +99,16 @@ git-pull-and-clean() {
 alias gp=git-pull-and-clean
 
 # merge develop branch
-alias fdev="git fetch origin develop:develop"
-alias rdev="git checkout develop && git pull origin develop && git rebase origin/develop"
+git-rebase-develop-and-clean() {
+  git checkout develop 
+  git pull origin develop --prune --tags --force --all
+  git rebase origin/develop
+  git pull --prune --tags --force --all
+  remove-merged-branch
+  remove-safe-worktree
+  git worktree prune
+}
+alias rdev=git-rebase-develop-and-clean
 
 # global alias for git branch
 alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
