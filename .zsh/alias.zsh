@@ -124,6 +124,14 @@ function cd-git-worktree-fzf() {
 }
 alias cdw=cd-git-worktree-fzf
 
+function clean-submodule() {
+  git submodule sync --recursive
+  git submodule update --init --recursive --force
+  git submodule foreach --recursive git reset --hard
+  git submodule foreach --recursive git clean -xfd
+}
+alias gscl=clean-submodule
+
 #####################################################################
 # Zsh
 #####################################################################
