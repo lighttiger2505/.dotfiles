@@ -422,7 +422,7 @@ lbox-claude-ultracode-worktree() {
   lbox exec sandbox claude --model opus --settings '{"ultracode": true}' --permission-mode auto
 }
 alias lbcwult='lbox exec sandbox claude --model opus --effort high --permission-mode auto -w'
-alias lbsh='lbox exec sandbox zsh'
+alias lbsh='lbox exec sandbox bash'
 alias lbre='lbox down && lbox build && lbox up -d'
 
 
