@@ -35,4 +35,4 @@ bindkey '^\' wt-switch
 # Open editor
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^K' edit-command-line
+bindkey '^G' edit-command-line
