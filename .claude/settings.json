@@ -28,19 +28,6 @@
       "Bash(make build:*)",
       "Bash(mate test:*)",
       "Bash(pnpm:*)",
-      "Bash(rtk find:*)",
-      "Bash(rtk git add:*)",
-      "Bash(rtk git checkout:*)",
-      "Bash(rtk git commit:*)",
-      "Bash(rtk git log:*)",
-      "Bash(rtk git push:*)",
-      "Bash(rtk go test:*)",
-      "Bash(rtk grep:*)",
-      "Bash(rtk ls:*)",
-      "Bash(rtk pnpm:*)",
-      "Bash(rtk read:*)",
-      "Bash(rtk wc *)",
-      "Bash(rtk sed:*)",
       "Bash(sed:*)",
       "Bash(tmux rename-session:*)",
       "Bash(wt step commit:*)",
@@ -71,18 +58,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "$HOME/scripts/claude-notification"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "rtk hook claude"
+            "command": "$HOME/.claude/notification.sh"
           }
         ]
       }
@@ -90,7 +66,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "$HOME/scripts/claude_statusline.sh",
+    "command": "$HOME/.claude/statusline.sh",
     "padding": 0
   },
   "enabledPlugins": {
@@ -99,9 +75,6 @@
     "typescript-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
     "worktrunk@worktrunk": true,
-    "superpowers@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
