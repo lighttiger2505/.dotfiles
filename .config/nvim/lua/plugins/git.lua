@@ -213,11 +213,8 @@ return {
             })
         end,
         keys = {
-            { "<leader>us", ":GHLitePRSelect<cr>", silent = true, desc = "PR Select" },
-            { "<leader>uo", ":GHLitePRCheckout<cr>", silent = true, desc = "PR Checkout" },
             { "<leader>uv", ":GHLitePRView<cr>", silent = true, desc = "PR View" },
             { "<leader>uu", ":GHLitePRLoadComments<cr>", silent = true, desc = "PR Load Comments" },
-            { "<leader>up", ":GHLitePRDiff<cr>", silent = true, desc = "PR Diff" },
             { "<leader>ul", ":GHLitePRDiffview<cr>", silent = true, desc = "PR Diffview" },
             { "<leader>ua", ":GHLitePRAddComment<cr>", silent = true, desc = "PR Add comment" },
             {
