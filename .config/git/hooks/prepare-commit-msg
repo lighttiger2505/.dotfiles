@@ -1,14 +1,19 @@
 #!/bin/bash
 
-# Git prepare-commit-msg hook that generates commit messages using Claude Haiku
+# Git prepare-commit-msg hook that generates commit messages using an AI CLI
 #
 # Installation:
 #   1. Copy this file to .git/hooks/prepare-commit-msg
 #   2. Make it executable: chmod +x .git/hooks/prepare-commit-msg
-#   3. Ensure 'claude' CLI is installed and authenticated
+#   3. Ensure the chosen CLI is installed and authenticated
+#
+# Agent selection:
+#   Set COMMIT_MSG_AGENT to "claude" (default) or "copilot" to choose which
+#   CLI generates the commit message, e.g. COMMIT_MSG_AGENT=copilot git commit
 
 COMMIT_MSG_FILE="$1"
 COMMIT_SOURCE="$2"
+COMMIT_MSG_AGENT="${COMMIT_MSG_AGENT:-claude}"
 
 # Skip if this is a merge, squash, or amend commit
 if [ "$COMMIT_SOURCE" = "merge" ] || [ "$COMMIT_SOURCE" = "squash" ] || [ "$COMMIT_SOURCE" = "commit" ]; then
@@ -20,9 +25,9 @@ if [ "$COMMIT_SOURCE" = "message" ]; then
     exit 0
 fi
 
-# Check if claude CLI is available
-if ! command -v claude &> /dev/null; then
-    echo "Warning: 'claude' CLI not found. Skipping auto-commit message generation." >&2
+# Check if the selected agent's CLI is available
+if ! command -v "$COMMIT_MSG_AGENT" &> /dev/null; then
+    echo "Warning: '$COMMIT_MSG_AGENT' CLI not found. Skipping auto-commit message generation." >&2
     exit 0
 fi
 
@@ -55,9 +60,19 @@ Rules:
 Git diff:
 $DIFF"
 
-# Call Claude using the CLI with Haiku model
-# COMMIT_MSG=$(echo "$PROMPT" | claude -p --model haiku)
-COMMIT_MSG=$(copilot -p "$PROMPT" --no-ask-user 2>/dev/null || true)
+# Call the selected agent's CLI to generate the commit message
+case "$COMMIT_MSG_AGENT" in
+    claude)
+        COMMIT_MSG=$(echo "$PROMPT" | claude -p --model haiku)
+        ;;
+    copilot)
+        COMMIT_MSG=$(copilot -p "$PROMPT" --no-ask-user 2>/dev/null || true)
+        ;;
+    *)
+        echo "Warning: Unknown COMMIT_MSG_AGENT '$COMMIT_MSG_AGENT'. Skipping auto-commit message generation." >&2
+        exit 0
+        ;;
+esac
 
 # Check if we got a valid response
 if [ -z "$COMMIT_MSG" ]; then
@@ -68,7 +83,7 @@ fi
 # Write the generated message to the commit message file
 echo "$COMMIT_MSG" > "$COMMIT_MSG_FILE"
 
-echo "Generated commit message using Claude Haiku" >&2
+echo "Generated commit message using $COMMIT_MSG_AGENT" >&2
 
 # Check for and run local hook if it exists
 PROJECT_HOOK=".git/hooks/pre-commit"
