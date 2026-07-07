@@ -5,6 +5,7 @@
 	root = ~/src
 [core]
 	excludesfile = ~/.gitignore_global
+	hooksPath = ~/.config/git/hooks
 [merge]
 	tool = vimdiff
 	ff = false
