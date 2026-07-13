@@ -5,6 +5,8 @@
 	root = ~/src
 [core]
 	excludesfile = ~/.gitignore_global
+	precomposeunicode = true
+	quotepath = false
 [merge]
 	tool = vimdiff
 	ff = false
