@@ -138,4 +138,11 @@ return {
             "PrevimOpen",
         },
     },
+
+    {
+        "arto-app/arto.vim",
+        cmd = {
+            "Arto",
+        },
+    },
 }
