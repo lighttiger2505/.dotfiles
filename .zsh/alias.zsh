@@ -101,7 +101,7 @@ alias gp=git-pull-and-clean
 # merge develop branch
 git-rebase-develop-and-clean() {
   git checkout develop 
-  git pull origin develop --prune --tags --force --all
+  git pull origin develop --prune --tags --force
   git rebase origin/develop
   git pull --prune --tags --force --all
   remove-merged-branch
