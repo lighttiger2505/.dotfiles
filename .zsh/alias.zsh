@@ -425,6 +425,10 @@ alias lbcwult='lbox exec sandbox claude --model opus --effort high --permission-
 alias lbsh='lbox exec sandbox bash'
 alias lbre='lbox down && lbox build && lbox up -d'
 
+#####################################################################
+# Docker Sandboxes
+#####################################################################
+alias sbcc='sbx run claude'
 
 #####################################################################
 # Process management
