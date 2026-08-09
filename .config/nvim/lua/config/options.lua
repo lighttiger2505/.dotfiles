@@ -153,5 +153,4 @@ opt.wildignore = opt.wildignore + "**/*_test.go"
 opt.wildignore = opt.wildignore + "node_modules"
 
 -- modify vim diff algorithm
-opt.diffopt = opt.diffopt + "algorithm:patience"
-opt.diffopt = opt.diffopt + "indent-heuristic"
+opt.diffopt = opt.diffopt + { "algorithm:histogram", "indent-heuristic", "linematch:60", "inline:char" }
