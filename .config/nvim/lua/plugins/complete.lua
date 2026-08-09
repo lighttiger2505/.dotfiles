@@ -225,6 +225,25 @@ return {
                 end,
                 desc = "Sidekick Toggle Claude",
             },
+            -- Assumes `git commit` opened the COMMIT_EDITMSG buffer (filetype=gitcommit) in this Neovim
+            {
+                "<leader>ag",
+                function()
+                    if vim.bo.filetype ~= "gitcommit" then
+                        vim.notify("Not a gitcommit buffer", vim.log.levels.WARN)
+                        return
+                    end
+                    require("sidekick.cli").send({
+                        msg = "{file} は git commit のメッセージ編集用バッファです。"
+                            .. "git diff --staged の内容を確認し、Conventional Commits形式で"
+                            .. "簡潔なコミットメッセージを作成して、このファイルの本文として書き込んでください"
+                            .. "（#で始まるコメント行はそのまま残してください）。"
+                            .. "書き方に迷ったら git log -n 20 で直近のコミットメッセージの傾向を参考にしてください。"
+                            .. "git commit や git add の実行はせず、メッセージを記入するだけにとどめてください。",
+                    })
+                end,
+                desc = "Sidekick Write Commit Message",
+            },
         },
     },
 }
