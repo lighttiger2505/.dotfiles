@@ -1,149 +1,116 @@
 return {
     {
-        "olimorris/codecompanion.nvim",
-        cmd = { "CodeCompanionChat" },
-        opts = {},
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            "franco-ruggeri/codecompanion-spinner.nvim",
-            "github/copilot.vim",
+        "folke/sidekick.nvim",
+        event = "VeryLazy",
+        opts = {
+            cli = {
+                mux = {
+                    backend = "tmux",
+                    enabled = true,
+                },
+            },
         },
-        config = function()
-            require("codecompanion").setup({
-                extensions = {
-                    spinner = {},
-                },
-                interactions = {
-                    chat = {
-                        adapter = "copilot",
-                    },
-                    keymaps = {
-                        send = {
-                            modes = { n = "<CR>", i = "<C-s>" },
-                        },
-                        close = {
-                            modes = { n = "q", i = "<Nop>" },
-                        },
-                    },
-                    inline = {
-                        adapter = "copilot",
-                    },
-                    cmd = {
-                        adapter = "copilot",
-                    },
-                },
-                prompt_library = {
-                    -- https://github.com/olimorris/codecompanion.nvim/discussions/694
-                    ["Custom Commit Message"] = {
-                        strategy = "chat",
-                        description = "Generate a custom commit message",
-                        opts = {
-                            alias = "custom_commit_message",
-                            auto_submit = true,
-                        },
-                        prompts = {
-                            {
-                                role = "user",
-                                content = function()
-                                    return string.format(
-                                        [=[
-#{buffer}
-
-MUST: Commit messages should follow the language of the commit template.
-
-You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a commit message for me:
-
-```diff
-%s
-```
-
-When unsure about the module names to use in the commit message, you can refer to the last 20 commit messages in this repository:
-
-```
-%s
-```
-
-Output only the commit message without any explanations and follow-up suggestions.
-]=],
-                                        vim.fn.system("git diff --no-ext-diff --staged"),
-                                        vim.fn.system('git log --pretty=format:"%s" -n 20')
-                                    )
-                                end,
-                                opts = {
-                                    contains_code = true,
-                                },
-                            },
-                        },
-                    },
-                    ["Custom Pull Request Review"] = {
-                        strategy = "chat",
-                        description = "Review a pull request",
-                        opts = {
-                            alias = "custom_review_pull_request",
-                            auto_submit = true,
-                        },
-                        prompts = {
-                            {
-                                role = "user",
-                                content = function()
-                                    return string.format(
-                                        [=[
-#{buffer}
-
-コードレビューをお願いします。アウトプットは以下の内容を簡潔に列挙してください。
-- 変更内容の要約: 内容の要約は100文字以内、1,2文でまとめてください
-- 変更内容の詳細: 変更内容の詳細を箇条書きで詳しく記載してください
-- レビュー内容: 以下の内容観点でレビューをお願いします。指摘箇所はどの部分かわかるようにリポジトリルールからの相対ファイルパスとコードの行、列と一緒に記載してください。
-    - コードで改善するべき箇所を教えてください
-    - 複雑で可読性の低いロジックをよりシンプルにする方法があれば教えてください
-    - 変更によってバグが発生していれば教えてください
-    - おかしな命名ないしタイポがあれば教えてください
-    - コメントを記載することでより文脈がわかりやすくなる箇所があれば教えてください
-
-レビューのコンテキストに悩んだ場合、このリポジトリの直近20件のコミットメッセージを参照してください。
-
-```
-%s
-```
-
-]=],
-                                        vim.fn.system('git log --pretty=format:"%s" -n 20')
-                                    )
-                                end,
-                                opts = {
-                                    contains_code = true,
-                                },
-                            },
-                        },
-                    },
-                },
-            })
-        end,
-        -- keys = {
-        --     {
-        --         "<Leader>aa",
-        --         "<cmd>CodeCompanionChat Toggle<cr>",
-        --         mode = { "n", "v" },
-        --         desc = "CodeCompanion toggle codecompanion chat",
-        --     },
-        --     {
-        --         "<Leader>an",
-        --         "<cmd>CodeCompanionChat<cr>",
-        --         mode = { "n", "v" },
-        --         desc = "CodeCompanion new codecompanion chat",
-        --     },
-        --     {
-        --         "ga",
-        --         "<cmd>CodeCompanionChat Add<cr>",
-        --         mode = { "v" },
-        --         desc = "CodeCompanion add codecompanion chat",
-        --     },
-        -- },
-    },
-
-    {
-        "github/copilot.vim",
-        cmd = "Copilot",
+        keys = {
+            {
+                "<tab>",
+                function()
+                    -- if there is a next edit, jump to it, otherwise apply it if any
+                    if not require("sidekick").nes_jump_or_apply() then
+                        return "<Tab>" -- fallback to normal tab
+                    end
+                end,
+                expr = true,
+                desc = "Goto/Apply Next Edit Suggestion",
+            },
+            {
+                "<c-.>",
+                function()
+                    require("sidekick.cli").focus()
+                end,
+                desc = "Sidekick Focus",
+                mode = { "n", "t", "i", "x" },
+            },
+            {
+                "<leader>aa",
+                function()
+                    require("sidekick.cli").toggle({ name = "copilot", focus = true })
+                end,
+                desc = "Sidekick Toggle CLI",
+            },
+            {
+                "<leader>as",
+                function()
+                    require("sidekick.cli").select()
+                end,
+                -- Or to select only installed tools:
+                -- require("sidekick.cli").select({ filter = { installed = true } })
+                desc = "Select CLI",
+            },
+            {
+                "<leader>ad",
+                function()
+                    require("sidekick.cli").close()
+                end,
+                desc = "Detach a CLI Session",
+            },
+            {
+                "<leader>at",
+                function()
+                    require("sidekick.cli").send({ msg = "{this}" })
+                end,
+                mode = { "x", "n" },
+                desc = "Send This",
+            },
+            {
+                "<leader>af",
+                function()
+                    require("sidekick.cli").send({ msg = "{file}" })
+                end,
+                desc = "Send File",
+            },
+            {
+                "<leader>av",
+                function()
+                    require("sidekick.cli").send({ msg = "{selection}" })
+                end,
+                mode = { "x" },
+                desc = "Send Visual Selection",
+            },
+            {
+                "<leader>ap",
+                function()
+                    require("sidekick.cli").prompt()
+                end,
+                mode = { "n", "x" },
+                desc = "Sidekick Select Prompt",
+            },
+            -- Example of a keybinding to open Claude directly
+            {
+                "<leader>ac",
+                function()
+                    require("sidekick.cli").toggle({ name = "claude", focus = true })
+                end,
+                desc = "Sidekick Toggle Claude",
+            },
+            -- Assumes `git commit` opened the COMMIT_EDITMSG buffer (filetype=gitcommit) in this Neovim
+            {
+                "<leader>ag",
+                function()
+                    if vim.bo.filetype ~= "gitcommit" then
+                        vim.notify("Not a gitcommit buffer", vim.log.levels.WARN)
+                        return
+                    end
+                    require("sidekick.cli").send({
+                        msg = "{file} は git commit のメッセージ編集用バッファです。"
+                            .. "git diff --staged の内容を確認し、Conventional Commits形式で"
+                            .. "簡潔なコミットメッセージを作成して、このファイルの本文として書き込んでください"
+                            .. "（#で始まるコメント行はそのまま残してください）。"
+                            .. "書き方に迷ったら git log -n 20 で直近のコミットメッセージの傾向を参考にしてください。"
+                            .. "git commit や git add の実行はせず、メッセージを記入するだけにとどめてください。",
+                    })
+                end,
+                desc = "Sidekick Write Commit Message",
+            },
+        },
     },
 }
