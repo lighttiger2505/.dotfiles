@@ -5,7 +5,10 @@ return {
         config = function()
             require("gitsigns").setup()
         end,
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "barrettruth/diffs.nvim",
+        },
         keys = {
             -- normarl mode
             {
