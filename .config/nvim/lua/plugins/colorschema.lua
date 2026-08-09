@@ -35,19 +35,19 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            -- require("catppuccin").setup({
-            --     custom_highlights = function(colors)
-            --         return {
-            --             WinSeparator = { fg = colors.overlay2 },
-            --             DiffText = {
-            --                 bg = colors.blue,
-            --                 fg = colors.crust,
-            --                 bold = false,
-            --                 nocombine = false,
-            --             },
-            --         }
-            --     end,
-            -- })
+            require("catppuccin").setup({
+                custom_highlights = function(colors)
+                    return {
+                        WinSeparator = { fg = colors.overlay2 },
+                        -- DiffText = {
+                        --     bg = colors.blue,
+                        --     fg = colors.crust,
+                        --     bold = false,
+                        --     nocombine = false,
+                        -- },
+                    }
+                end,
+            })
             vim.cmd([[colorscheme catppuccin-mocha]])
         end,
     },
