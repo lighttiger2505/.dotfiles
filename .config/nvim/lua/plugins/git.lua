@@ -137,12 +137,6 @@ return {
     },
 
     {
-        "akinsho/git-conflict.nvim",
-        version = "*",
-        config = true,
-    },
-
-    {
         "linrongbin16/gitlinker.nvim",
         cmd = "GitLink",
         opts = {},
