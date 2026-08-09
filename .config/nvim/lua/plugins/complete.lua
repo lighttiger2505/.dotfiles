@@ -9,7 +9,6 @@ return {
             "mikavilpas/blink-ripgrep.nvim",
             "fang2hou/blink-copilot",
             "rafamadriz/friendly-snippets",
-            "folke/sidekick.nvim",
         },
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
