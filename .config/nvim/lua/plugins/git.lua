@@ -72,7 +72,7 @@ return {
     },
 
     {
-        "sindrets/diffview.nvim",
+        "dlyongemallo/diffview-plus.nvim",
         cmd = { "DiffviewOpen" },
         config = function()
             local actions = require("diffview.actions")
@@ -174,7 +174,7 @@ return {
 
     {
         "daliusd/ghlite.nvim",
-        dependencies = { "sindrets/diffview.nvim" },
+        dependencies = { "dlyongemallo/diffview-plus.nvim" },
         config = function()
             require("ghlite").setup({
                 diff_tool = "diffview",
