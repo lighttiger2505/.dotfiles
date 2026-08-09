@@ -4,6 +4,11 @@ return {
         event = "VeryLazy",
         opts = {
             cli = {
+                win = {
+                    split = {
+                        width = 0.5,
+                    },
+                },
                 mux = {
                     backend = "tmux",
                     enabled = true,
