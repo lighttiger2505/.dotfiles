@@ -7,37 +7,23 @@ return {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
             "franco-ruggeri/codecompanion-spinner.nvim",
+            "github/copilot.vim",
         },
         config = function()
             require("codecompanion").setup({
                 extensions = {
                     spinner = {},
                 },
-                ignore_warnings = true,
-                adapters = {
-                    http = {
-                        copilot = function()
-                            return require("codecompanion.adapters").extend("copilot", {
-                                schema = {
-                                    model = {
-                                        default = "gpt-4.1",
-                                        -- default = "gpt-5.2",
-                                    },
-                                },
-                            })
-                        end,
-                    },
-                },
-                strategies = {
+                interactions = {
                     chat = {
                         adapter = "copilot",
-                        keymaps = {
-                            send = {
-                                modes = { n = "<CR>", i = "<C-s>" },
-                            },
-                            close = {
-                                modes = { n = "q", i = "<Nop>" },
-                            },
+                    },
+                    keymaps = {
+                        send = {
+                            modes = { n = "<CR>", i = "<C-s>" },
+                        },
+                        close = {
+                            modes = { n = "q", i = "<Nop>" },
                         },
                     },
                     inline = {
@@ -134,25 +120,30 @@ Output only the commit message without any explanations and follow-up suggestion
                 },
             })
         end,
-        keys = {
-            {
-                "<Leader>aa",
-                "<cmd>CodeCompanionChat Toggle<cr>",
-                mode = { "n", "v" },
-                desc = "CodeCompanion toggle codecompanion chat",
-            },
-            {
-                "<Leader>an",
-                "<cmd>CodeCompanionChat<cr>",
-                mode = { "n", "v" },
-                desc = "CodeCompanion new codecompanion chat",
-            },
-            {
-                "ga",
-                "<cmd>CodeCompanionChat Add<cr>",
-                mode = { "v" },
-                desc = "CodeCompanion add codecompanion chat",
-            },
-        },
+        -- keys = {
+        --     {
+        --         "<Leader>aa",
+        --         "<cmd>CodeCompanionChat Toggle<cr>",
+        --         mode = { "n", "v" },
+        --         desc = "CodeCompanion toggle codecompanion chat",
+        --     },
+        --     {
+        --         "<Leader>an",
+        --         "<cmd>CodeCompanionChat<cr>",
+        --         mode = { "n", "v" },
+        --         desc = "CodeCompanion new codecompanion chat",
+        --     },
+        --     {
+        --         "ga",
+        --         "<cmd>CodeCompanionChat Add<cr>",
+        --         mode = { "v" },
+        --         desc = "CodeCompanion add codecompanion chat",
+        --     },
+        -- },
+    },
+
+    {
+        "github/copilot.vim",
+        cmd = "Copilot",
     },
 }

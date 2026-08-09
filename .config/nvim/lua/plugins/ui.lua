@@ -18,6 +18,35 @@ return {
                 return "󱉶 " .. table.concat(linters, ", ")
             end
 
+            local copilot_status = {
+                function()
+                    return " "
+                end,
+                color = function()
+                    local status = require("sidekick.status").get()
+                    if status then
+                        return status.kind == "Error" and "DiagnosticError" or status.busy and "DiagnosticWarn" or "Special"
+                    end
+                end,
+                cond = function()
+                    local status = require("sidekick.status")
+                    return status.get() ~= nil
+                end,
+            }
+
+            local cli_status = {
+                function()
+                    local status = require("sidekick.status").cli()
+                    return " " .. (#status > 1 and #status or "")
+                end,
+                cond = function()
+                    return #require("sidekick.status").cli() > 0
+                end,
+                color = function()
+                    return "Special"
+                end,
+            }
+
             local overseer = require("overseer")
             local overseer_progress = {
                 "overseer",
@@ -59,8 +88,8 @@ return {
                         },
                     },
                     lualine_b = { "branch" },
-                    lualine_c = { "diff", overseer_progress, lint_progress, "diagnostics" },
-                    lualine_x = { "encoding", "fileformat", "filetype" },
+                    lualine_c = { "diff", overseer_progress, lint_progress, "diagnostics", copilot_status },
+                    lualine_x = { "encoding", cli_status, "fileformat", "filetype" },
                     lualine_y = { "progress" },
                     lualine_z = { "location" },
                 },
