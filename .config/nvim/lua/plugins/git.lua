@@ -77,6 +77,12 @@ return {
         config = function()
             local actions = require("diffview.actions")
             require("diffview").setup({
+                hooks = {
+                    -- Hide gitsigns (and other) signs in diff windows; diffview already highlights the diff
+                    diff_buf_win_enter = function(_, winid)
+                        vim.wo[winid].signcolumn = "no"
+                    end,
+                },
                 keymaps = {
                     view = {
                         ["<leader>b"] = false,
