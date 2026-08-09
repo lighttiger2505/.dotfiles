@@ -429,6 +429,7 @@ alias lbre='lbox down && lbox build && lbox up -d'
 # Docker Sandboxes
 #####################################################################
 alias sbcc='sbx run claude'
+alias sbcw='sbx run claude -- --worktree'
 
 #####################################################################
 # Process management
