@@ -183,6 +183,7 @@ alias hp='gh pr view --web'
 alias ha='gh pr checks'
 alias hl='gh pr view --json title,url --jq "\"[\(.title)](\(.url))\""'
 
+alias vimdiffgd='nvim -c ":DiffviewOpen"'
 alias vimdiffpr='nvim -c ":OpenDiffviewPR"'
 
 alias prcreate='gh pr create --template "pull_request_template.md"'
