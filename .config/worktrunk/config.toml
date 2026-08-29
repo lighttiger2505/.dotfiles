@@ -1,3 +1,15 @@
 # https://worktrunk.dev/config/
-worktree-path = "{{ repo_path }}/../{{ repo }}.{{ branch | sanitize }}"
+
+## sibling directory (~/code/myproject.feature-auth):
+# worktree-path = "{{ repo_path }}/../{{ repo }}.{{ branch | sanitize }}"
+
+# Inside the repository (~/code/myproject/.worktrees/feature-auth):
+worktree-path = "{{ repo_path }}/.worktrees/{{ branch | sanitize }}"
+
 skip-shell-integration-prompt = true
+
+[list]
+json-schema = 2
+
+[projects."github.com/MobilityTechnologies/merida"]
+worktree-path = "{{ repo_path }}/.claude/worktrees/{{ branch | sanitize }}"
