@@ -17,7 +17,7 @@ return {
         },
         keys = {
             {
-                "<tab>",
+                "<Tab>",
                 function()
                     -- if there is a next edit, jump to it, otherwise apply it if any
                     if not require("sidekick").nes_jump_or_apply() then
@@ -26,6 +26,14 @@ return {
                 end,
                 expr = true,
                 desc = "Goto/Apply Next Edit Suggestion",
+            },
+            {
+                "<S-Tab>",
+                function()
+                    require("sidekick").clear()
+                end,
+                expr = true,
+                desc = "Clear Next Edit Suggestion",
             },
             {
                 "<c-.>",

@@ -27,8 +27,6 @@
 	rebase = true
 [branch "develop"]
 	rebase = true
-[includeIf "gitdir:~/src/github.com/"]
-	path = ~/.gitconfig-private
 [includeIf "gitdir:~/src/github.com/MobilityTechnologies/"]
 	path = ~/.gitconfig-work
 [commit]

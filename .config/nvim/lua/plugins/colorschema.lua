@@ -39,12 +39,6 @@ return {
                 custom_highlights = function(colors)
                     return {
                         WinSeparator = { fg = colors.overlay2 },
-                        -- DiffText = {
-                        --     bg = colors.blue,
-                        --     fg = colors.crust,
-                        --     bold = false,
-                        --     nocombine = false,
-                        -- },
                     }
                 end,
             })
