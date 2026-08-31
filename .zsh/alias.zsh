@@ -73,7 +73,7 @@ remove-merged-branch() {
 alias rm-branch=remove-merged-branch
 
 remove-safe-worktree() {
-  local branches=$(wt list --format=json | jq -r '.[] | select(.main_state == "integrated" or .main_state == "empty") | .branch')
+  local branches=$(wt list --format=json | jq -r '.items[] | select(.display.state == "integrated") | .branch')
   if [[ -z "$branches" ]]; then
     return 0
   fi
@@ -82,7 +82,7 @@ remove-safe-worktree() {
 alias rm-wt=remove-safe-worktree
 
 remove-force-worktree() {
-  local branches=$(wt list --format=json | jq -r '.[] | select(.main_state == "integrated" or .main_state == "empty" or .main_state == "behind") | .branch')
+  local branches=$(wt list --format=json | jq -r '.items[] | select(.display.state == "integrated" or .display.state == "empty" or .display.state == "behind") | .branch')
   if [[ -z "$branches" ]]; then
     return 0
   fi
