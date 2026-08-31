@@ -90,25 +90,25 @@ remove-force-worktree() {
 }
 alias rm-wtf=remove-force-worktree
 
-git-pull-and-clean() {
+git-clean() {
   git pull --prune --tags --force --all
   remove-merged-branch
   remove-safe-worktree
   git worktree prune
 }
-alias gp=git-pull-and-clean
+alias gc=git-clean
 
-# merge develop branch
-git-rebase-develop-and-clean() {
+git-pull() {
+  git pull --prune --tags --force --all
+}
+alias gp=git-pull
+
+git-rebase-develop() {
   git checkout develop 
   git pull origin develop --prune --tags --force
   git rebase origin/develop
-  git pull --prune --tags --force --all
-  remove-merged-branch
-  remove-safe-worktree
-  git worktree prune
 }
-alias rdev=git-rebase-develop-and-clean
+alias rdev=git-rebase-develop
 
 # global alias for git branch
 alias -g B='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
