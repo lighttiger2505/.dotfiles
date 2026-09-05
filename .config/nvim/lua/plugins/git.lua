@@ -5,10 +5,6 @@ return {
         config = function()
             require("gitsigns").setup()
         end,
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "barrettruth/diffs.nvim",
-        },
         keys = {
             -- normarl mode
             {
@@ -73,6 +69,9 @@ return {
 
     {
         "dlyongemallo/diffview-plus.nvim",
+        dependencies = {
+            "barrettruth/diffs.nvim",
+        },
         cmd = { "DiffviewOpen" },
         config = function()
             local actions = require("diffview.actions")
@@ -180,7 +179,10 @@ return {
 
     {
         "daliusd/ghlite.nvim",
-        dependencies = { "dlyongemallo/diffview-plus.nvim" },
+        dependencies = {
+            "lewis6991/async.nvim",
+            "dlyongemallo/diffview-plus.nvim",
+        },
         config = function()
             require("ghlite").setup({
                 diff_tool = "diffview",
