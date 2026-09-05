@@ -7,6 +7,8 @@
 	excludesfile = ~/.gitignore_global
 	precomposeunicode = true
 	quotepath = false
+	preloadIndex = true
+	untrackedCache = true
 [merge]
 	tool = vimdiff
 	ff = false
@@ -36,3 +38,7 @@
 	autoSetupRemote = true
 [rerere]
 	enabled = true
+[feature]
+	manyFiles = true
+[gc]
+	auto = 0
