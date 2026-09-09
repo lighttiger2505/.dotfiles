@@ -42,7 +42,7 @@ return {
                     }
                 end,
             })
-            -- vim.cmd("colorscheme catppuccin-mocha")
+            vim.cmd("colorscheme catppuccin-mocha")
         end,
     },
 
@@ -51,7 +51,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd("colorscheme onedark")
+            -- vim.cmd("colorscheme onedark")
         end,
     },
 }
