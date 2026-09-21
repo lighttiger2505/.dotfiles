@@ -31,7 +31,7 @@ return {
                         },
                     },
                 },
-                ts_ls = {},
+                tsc = {},
                 lua_ls = {
                     settings = {
                         Lua = {
@@ -205,9 +205,9 @@ return {
         config = function()
             local lint = require("lint")
             lint.linters_by_ft = {
-                javascript = { "biomejs", "eslint" },
-                typescript = { "biomejs", "eslint" },
-                typescriptreact = { "biomejs", "eslint" },
+                javascript = { "oxlint", "biomejs", "eslint" },
+                typescript = { "oxlint", "biomejs", "eslint" },
+                typescriptreact = { "oxlint", "biomejs", "eslint" },
                 json = { "jsonlint" },
                 proto = { "buf_lint" },
                 make = { "checkmake" },
