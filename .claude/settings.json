@@ -48,8 +48,7 @@
       "Bash(rm -rf *)",
       "Bash(git push --force*)",
       "Bash(git push -f*)"
-    ],
-    "defaultMode": "plan"
+    ]
   },
   "hooks": {
     "Notification": [
@@ -91,5 +90,7 @@
     "verbs": [
       "Working"
     ]
-  }
+  },
+  "outputStyle": "Concise",
+  "defaultMode": "auto"
 }
