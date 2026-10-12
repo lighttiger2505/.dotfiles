@@ -54,13 +54,6 @@ load_plugin "zsh-defer"
 install_plugin "https://github.com/zsh-users/zsh-completions"
 load_plugin "zsh-completions"
 
-install_plugin "https://github.com/zdharma-continuum/fast-syntax-highlighting"
-load_plugin "fast-syntax-highlighting"
-
-install_plugin "https://github.com/zsh-users/zsh-autosuggestions"
-load_plugin "zsh-autosuggestions" "zsh-autosuggestions.zsh" "no_defer"
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
 install_plugin "https://github.com/Aloxaf/fzf-tab"
 load_plugin "fzf-tab" "fzf-tab.plugin.zsh" "no_defer"
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
