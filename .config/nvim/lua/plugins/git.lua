@@ -175,6 +175,18 @@ return {
     {
         "esmuellert/codediff.nvim",
         cmd = "CodeDiff",
+        opts = {
+            explorer = {
+                width = 50,
+                view_mode = "tree",
+            },
+            keymaps = {
+                next_file = "<Tab>",
+                prev_file = "<S-Tab>",
+                stage_hunk = "<leader>hs",
+                unstage_hunk = "<leader>hu",
+            },
+        },
     },
 
     {
