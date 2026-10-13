@@ -29,7 +29,7 @@ typeset -U sudo_path
 sudo_path=({,/usr/pkg,/usr/local,/usr}/sbin(N-/))
 
 # Switch Claude config dir based on hostname
-case "$(hostname)" in
+case "$HOST" in
   PC-71285)
     export VIM_MEMO_DIR="$HOME/.config/vimmemo/work"
     ;;

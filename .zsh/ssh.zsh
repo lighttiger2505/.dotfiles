@@ -1,5 +1,5 @@
 # Check if ssh-agent is already running
-if [[ -n "$SSH_AUTH_SOCK" ]] && pgrep -q ssh-agent; then
+if [[ -S "$SSH_AUTH_SOCK" ]]; then
     return 0
 fi
 

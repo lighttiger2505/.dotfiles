@@ -8,24 +8,11 @@ function current-git-branch() {
     git rev-parse --abbrev-ref=loose HEAD 2>/dev/null
 }
 
-# Return "+A -D" with the number of added/deleted lines against HEAD,
-# or empty string when the working tree is clean.
-function git-diff-stats() {
-    local stats added=0 deleted=0 a d
-    stats=$(git diff --numstat HEAD 2>/dev/null)
-    [[ -z "$stats" ]] && return 0
-    while read a d _; do
-        added=$((added + a))
-        deleted=$((deleted + d))
-    done <<< "$stats"
-    echo "+${added} -${deleted}"
-}
-
 # Build a Powerline-style prompt with colored segments joined by  arrows.
 #
 # Segments (left to right):
 #   1. cwd        – blue bg, white fg
-#   2. git branch – green bg (clean) / yellow bg (dirty), black fg
+#   2. git branch – green fg
 #
 # 2nd line: ❯ (success, green) / exit-code + ✗ (failure, red) / = (interrupt, yellow).
 function zle-line-init zle-line-finish {
@@ -41,21 +28,13 @@ function zle-line-init zle-line-finish {
     seg_bg+=( black )
     seg_fg+=( blue )
 
-    # --- Segment 2: git branch + diff stats ---
+    # --- Segment 2: git branch ---
     local br
     br=$(current-git-branch)
     if [[ -n $br ]]; then
-        local diff_stats
-        diff_stats=$(git-diff-stats)
-        if [[ -n $diff_stats ]]; then
-            seg_txt+=( $'  '"$br $diff_stats"$' ' )
-            seg_bg+=( black )
-            seg_fg+=( yellow )
-        else
-            seg_txt+=( $'  '"$br"' ' )
-            seg_bg+=( black )
-            seg_fg+=( green )
-        fi
+        seg_txt+=( $'  '"$br"' ' )
+        seg_bg+=( black )
+        seg_fg+=( green )
     fi
 
     # --- Assemble segments with  (U+E0B0) separator arrows ---
