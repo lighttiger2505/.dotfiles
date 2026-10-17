@@ -149,6 +149,26 @@ vim.keymap.set(
     { noremap = true, silent = true, desc = "Grapple reset tag for pull request modified files" }
 )
 
+-- Returns the subset of `files` whose .gitattributes `linguist-generated` value is `true`.
+local function get_generated_files(files)
+    if #files == 0 then
+        return {}
+    end
+
+    local cmd = { "git", "check-attr", "linguist-generated", "--" }
+    vim.list_extend(cmd, files)
+    local results = vim.fn.systemlist(cmd)
+
+    local generated = {}
+    for _, line in ipairs(results) do
+        local path, value = line:match("^(.-): linguist%-generated: (%S+)$")
+        if value == "true" then
+            table.insert(generated, path)
+        end
+    end
+    return generated
+end
+
 local function open_diff_view_pr()
     local base = vim.fn
         .system({ "gh", "pr", "status", "--json", "baseRefName", "-q", ".currentBranch.baseRefName" })
@@ -158,7 +178,24 @@ local function open_diff_view_pr()
         return
     end
 
-    vim.cmd("DiffviewOpen origin/" .. base .. "...HEAD --imply-local")
+    local range = "origin/" .. base .. "...HEAD"
+    local files = vim.fn.systemlist({ "git", "diff", "--name-only", range })
+    if vim.v.shell_error ~= 0 then
+        vim.notify("git diff failed:\n" .. table.concat(files, "\n"), vim.log.levels.ERROR)
+        return
+    end
+
+    local args = { range, "--imply-local" }
+    local generated = get_generated_files(files)
+    if #generated > 0 then
+        table.insert(args, "--")
+        table.insert(args, ".")
+        for _, f in ipairs(generated) do
+            table.insert(args, ":!" .. f)
+        end
+    end
+
+    vim.api.nvim_cmd({ cmd = "DiffviewOpen", args = args }, {})
 end
 
 vim.api.nvim_create_user_command("OpenDiffviewPR", open_diff_view_pr, {})
