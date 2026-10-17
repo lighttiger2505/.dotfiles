@@ -412,6 +412,15 @@ alias cccon=edit-claude-settings
 # llmbox
 #####################################################################
 alias lbcc='lbox exec sandbox claude'
+lbox-review-worktree() {
+  local common root here rel
+  common=$(git rev-parse --path-format=absolute --git-common-dir) || return 1
+  root=${common%/.git}
+  here=$(pwd -P)
+  if [ "$here" = "$root" ]; then rel=.; else rel=${here#"$root"/}; fi
+  (cd "$root" && lbox exec sandbox sh -c 'cd "$1" && shift && exec claude "$@"' _ "$rel" "$@")
+}
+alias lbrev=lbox-review-worktree
 alias lbccao='lbox exec sandbox claude --model opus --effort high --permission-mode auto'
 lbox-claude-ultracode() {
   lbox exec sandbox claude --model opus --settings '{"ultracode": true}' --permission-mode auto
